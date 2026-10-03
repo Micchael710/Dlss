@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeMain/include/sr/sr_api.h
++++ friend/native/cpp/SRNativeMain/include/sr/sr_api.h
+@@ -2,4 +2,4 @@
+ 
+ #include "sr_api_enums.h"
+ #include "sr_api_structs.h"
+-#include "sr_api_functions.h"
++#include "sr_api_functions.h"

@@ -1,0 +1,31 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/natives/StreamlineNativeExtractor.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/natives/StreamlineNativeExtractor.java
+@@ -39,7 +39,7 @@
+             Files.createDirectories(targetDirectory);
+             for (Entry entry : entries) {
+                 Path target = targetDirectory.resolve(entry.name);
+-                if (Files.isRegularFile(target)) {
++                if (Files.isRegularFile(target) && Files.size(target) == entry.size) {
+                     continue;
+                 }
+                 try (InputStream source = open(entry.name)) {
+@@ -71,7 +71,10 @@
+                     continue;
+                 }
+                 int separator = trimmed.lastIndexOf(' ');
+-                entries.add(new Entry(trimmed.substring(0, separator)));
++                entries.add(new Entry(
++                        trimmed.substring(0, separator),
++                        Long.parseLong(trimmed.substring(separator + 1))
++                ));
+             }
+         } catch (IOException | RuntimeException failure) {
+             Wisteria.LOGGER.error("Failed to read the Streamline runtime index", failure);
+@@ -84,6 +87,6 @@
+         return StreamlineNativeExtractor.class.getResourceAsStream(RESOURCE_ROOT + name);
+     }
+ 
+-    private record Entry(String name) {
++    private record Entry(String name, long size) {
+     }
+ }

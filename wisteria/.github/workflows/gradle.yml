@@ -1,0 +1,137 @@
+name: Build
+
+on:
+  push:
+    branches: [ '*' ]
+
+env:
+  # NVIDIA Streamline SDK release supplying the runtime DLLs that common/build.gradle.kts
+  # syncs into the jar. Bump here; the cache key follows.
+  STREAMLINE_VERSION: v2.12.0
+
+jobs:
+  build:
+    if: ${{ !contains(github.event.head_commit.message, 'SKIP') }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 180
+    # Put [NOCACHE] in the commit message to build with nothing restored and every
+    # dependency re-resolved. Caches key on inputs that do not change when a -SNAPSHOT
+    # dependency is republished, so a stale artifact can survive every ordinary fix; this
+    # is the escape hatch for that, and for any other "it only fails on CI" state.
+    env:
+      NO_CACHE: ${{ contains(github.event.head_commit.message, '[NOCACHE]') }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Restore Streamline runtime
+        id: streamline-cache
+        if: ${{ env.NO_CACHE != 'true' }}
+        uses: actions/cache@v4
+        with:
+          path: streamline/bin/x64
+          key: streamline-${{ env.STREAMLINE_VERSION }}
+
+      - name: Download Streamline SDK
+        if: steps.streamline-cache.outputs.cache-hit != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release download "$STREAMLINE_VERSION" -R NVIDIA-RTX/Streamline \
+            --pattern 'streamline-sdk-*.zip' --output /tmp/streamline-sdk.zip --clobber
+          # Top-level bin/x64 only: development/ holds the much larger debug variants of the
+          # same DLLs, which are never shipped.
+          unzip -q /tmp/streamline-sdk.zip 'bin/x64/*' -x 'bin/x64/development/*' -d streamline
+          rm /tmp/streamline-sdk.zip
+
+      - name: Validate Gradle wrapper
+        uses: gradle/actions/wrapper-validation@v4
+
+      - name: Setup JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: 21
+          distribution: temurin
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          # [NOCACHE] starts from an empty Gradle home and writes nothing back, so the run
+          # cannot inherit or extend a poisoned entry.
+          cache-disabled: ${{ env.NO_CACHE == 'true' }}
+          cache-read-only: false
+          gradle-home-cache-includes: |
+            caches
+            notifications
+            wrapper
+          # Super Resolution's API is a -SNAPSHOT that moves whenever its dev branch does,
+          # but the dependency cache key does not change when it is republished. Caching it
+          # pins whichever build was current when the cache was first written, so the
+          # compile fails against symbols that already exist upstream.
+          gradle-home-cache-excludes: |
+            caches/build-cache-1
+            caches/modules-2/files-2.1/io.homo.superresolution
+            caches/modules-2/metadata-*/descriptors/io.homo.superresolution
+
+      # Which API jar the runner actually gets, and whether it carries the async dispatch
+      # types. Local builds resolve a jar that has them; when CI disagrees this says so
+      # directly instead of leaving it to be inferred from compile errors.
+      - name: Report resolved Super Resolution API
+        continue-on-error: true
+        run: |
+          ./gradlew checkSuperResolutionApi --console=plain -q
+          for jar in $(find ~/.gradle/caches -name 'superresolution-api-*.jar' 2>/dev/null); do
+            echo "jar: $jar ($(stat -c%s "$jar") bytes)"
+            echo "  AsyncFrameGenerationDispatchRequest entries: $(unzip -l "$jar" | grep -c AsyncFrameGenerationDispatchRequest)"
+          done
+
+      - name: Build
+        id: build
+        if: ${{ !cancelled() }}
+        env:
+          # buildAllVersions runs each Minecraft version as a nested GradleBuild, and those
+          # inherit the environment but not -P properties from the outer command line.
+          ORG_GRADLE_PROJECT_streamline_bin_dir: ${{ github.workspace }}/streamline/bin/x64
+        run: ./gradlew buildAllVersions ${{ env.NO_CACHE == 'true' && '--refresh-dependencies' || '' }}
+        # A version that fails to build must not cost us the jars of the ones that did, so
+        # the upload steps run either way. The job is failed at the end instead.
+        continue-on-error: true
+
+      - name: Install @actions/artifact
+        run: npm install @actions/artifact@2
+
+      - name: Upload JARs individually
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const {DefaultArtifactClient} = require('@actions/artifact')
+            const fs = require('fs')
+            const path = require('path')
+
+            const client = new DefaultArtifactClient()
+            const buildDir = path.join(process.env.GITHUB_WORKSPACE, 'build_jars')
+
+            if (!fs.existsSync(buildDir)) {
+              core.warning('build_jars directory not found, skipping upload')
+              return
+            }
+
+            const jars = fs.readdirSync(buildDir).filter(f => f.endsWith('.jar'))
+            core.info(`Found ${jars.length} JAR(s) to upload`)
+
+            for (const jar of jars) {
+              const name = path.basename(jar, '.jar')
+              const filePath = path.join(buildDir, jar)
+              core.info(`Uploading: ${jar}`)
+              await client.uploadArtifact(name, [filePath], buildDir, {
+                compressionLevel: 0
+              })
+            }
+
+            core.info(`Successfully uploaded ${jars.length} artifact(s)`)
+
+      - name: Report build result
+        if: steps.build.outcome == 'failure'
+        run: |
+          echo "::error::buildAllVersions failed. Any jars that were produced have still been uploaded."
+          exit 1

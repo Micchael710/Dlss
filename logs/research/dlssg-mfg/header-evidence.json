@@ -1,0 +1,78 @@
+[
+  {
+    "path": "logs\\research\\dlssg-ampere\\NVIDIA__DLSS\\include\\nvsdk_ngx_params_dlssg.h",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "sha256": "c24fa5aa68ffa2808c828b75cfa32843f1606f80a145f84055ac450d7e6c74ad",
+    "matches": [
+      {
+        "line": 45,
+        "text": "unsigned int multiFrameCount = 1;"
+      },
+      {
+        "line": 47,
+        "text": "//! to multiFrameCount (inclusive)"
+      },
+      {
+        "line": 48,
+        "text": "unsigned int multiFrameIndex = 1;"
+      }
+    ]
+  },
+  {
+    "path": "logs\\research\\dlssg-ampere\\NVIDIA__DLSS\\include\\nvsdk_ngx_defs_dlssg.h",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "sha256": "98ec3a6faa5aa250828c174bf8f3491aafac693dfe57cc798049c8918597fc60",
+    "matches": [
+      {
+        "line": 353,
+        "text": "#define NVSDK_NGX_DLSSG_Parameter_MultiFrameCountMax            \"DLSSG.MultiFrameCountMax\""
+      },
+      {
+        "line": 357,
+        "text": "#define NVSDK_NGX_DLSSG_Parameter_MultiFrameCount               \"DLSSG.MultiFrameCount\""
+      },
+      {
+        "line": 359,
+        "text": "#define NVSDK_NGX_DLSSG_Parameter_MultiFrameIndex               \"DLSSG.MultiFrameIndex\""
+      }
+    ]
+  },
+  {
+    "path": "logs\\research\\dlssg-ampere\\NVIDIA__DLSS\\include\\nvsdk_ngx_helpers_dlssg_vk.h",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "sha256": "b371d90b9f4372b9a415e68a0afbdc2f31b7b552e219a9637d848749bc965316",
+    "matches": [
+      {
+        "line": 82,
+        "text": "NVSDK_NGX_Parameter_SetUI(pInParams, NVSDK_NGX_DLSSG_Parameter_MultiFrameCount, pInDlssgOptEvalParams->multiFrameCount);"
+      },
+      {
+        "line": 83,
+        "text": "NVSDK_NGX_Parameter_SetUI(pInParams, NVSDK_NGX_DLSSG_Parameter_MultiFrameIndex, pInDlssgOptEvalParams->multiFrameIndex);"
+      },
+      {
+        "line": 192,
+        "text": "return NVSDK_NGX_VULKAN_EvaluateFeature_C(pInCmdBuf, pInHandle, pInParams, NULL);"
+      }
+    ]
+  },
+  {
+    "path": "logs\\research\\dlssg-ampere\\NVIDIA__DLSS\\include\\nvsdk_ngx_helpers_dlssg_d3d.h",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "sha256": "6335ebcb95de39a361e87fe0257d6ce0723e5d8deaa15db3b35afacf2b3f4220",
+    "matches": [
+      {
+        "line": 86,
+        "text": "NVSDK_NGX_Parameter_SetUI(pInParams, NVSDK_NGX_DLSSG_Parameter_MultiFrameCount, pInDlssgOptEvalParams->multiFrameCount);"
+      },
+      {
+        "line": 87,
+        "text": "NVSDK_NGX_Parameter_SetUI(pInParams, NVSDK_NGX_DLSSG_Parameter_MultiFrameIndex, pInDlssgOptEvalParams->multiFrameIndex);"
+      },
+      {
+        "line": 194,
+        "text": "return NVSDK_NGX_D3D12_EvaluateFeature_C(pInCmdList, pInHandle, pInParams, NULL);"
+      }
+    ]
+  }
+]

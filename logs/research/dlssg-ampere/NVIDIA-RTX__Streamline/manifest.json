@@ -1,0 +1,68 @@
+{
+  "repo": "NVIDIA-RTX/Streamline",
+  "commit": "2122257e0fce486f91b385aa63b9a09b0a34b363",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "3rd-party-licenses.md",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/3rd-party-licenses.md",
+      "sha256": "cb251639994465f31d2178c16acedf1ff4f9cef1c370a09782ed36d4c86c1dca"
+    },
+    {
+      "path": "NVIDIA Nsight Graphics SDK License (Apache 2.0).txt",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/NVIDIA%20Nsight%20Graphics%20SDK%20License%20%28Apache%202.0%29.txt",
+      "sha256": "44595e5ff02a0f1f0fae737e63ecb6fb70a3e9afac4e8878f9b083565013b893"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/README.md",
+      "sha256": "c3c5ceb29276a3e31880c3cadc37fad868efa05068c6b13d0d286fe02799d930"
+    },
+    {
+      "path": "docs/ProgrammingGuideDLSS_G.md",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/docs/ProgrammingGuideDLSS_G.md",
+      "sha256": "5e13d3dc19adc7dc3b57e701823a3544d6940d19c624483e5cda4117cf3b0270"
+    },
+    {
+      "path": "external/ngx-sdk/license.txt",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/external/ngx-sdk/license.txt",
+      "sha256": "3027f23ca5a46dd9cb8183fbd522983a86f64d7daac5982912bf9f214671f294"
+    },
+    {
+      "path": "external/nsight-sdk/SystemsGraphics/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/external/nsight-sdk/SystemsGraphics/LICENSE.txt",
+      "sha256": "44595e5ff02a0f1f0fae737e63ecb6fb70a3e9afac4e8878f9b083565013b893"
+    },
+    {
+      "path": "external/reflex-sdk-vk/reflex.license.txt",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/external/reflex-sdk-vk/reflex.license.txt",
+      "sha256": "ebf83c07fb3b2939908c3795d887afde3161c89a28ba391724efc784ce1bdabe"
+    },
+    {
+      "path": "include/sl_core_types.h",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/include/sl_core_types.h",
+      "sha256": "f420cb052ce14489fc9fa0d933c3ed81a010deb01fa13b1aa8d45da1c5ba3234"
+    },
+    {
+      "path": "include/sl_dlss_g.h",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/include/sl_dlss_g.h",
+      "sha256": "1fc18cbe004e280df1f787276d08a1b28b8a8c4c65856fbaa659f56dff6a915d"
+    },
+    {
+      "path": "include/sl_helpers_vk.h",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/include/sl_helpers_vk.h",
+      "sha256": "82604567d239d00ac0ac2270cec744f6f11266e1d9d5187a95d4954f76d8c41c"
+    },
+    {
+      "path": "include/sl_reflex.h",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/include/sl_reflex.h",
+      "sha256": "3b623a1189e04a686384d224a58c4ad9974c4e6e3204077676f6ec529475164c"
+    },
+    {
+      "path": "license.txt",
+      "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/license.txt",
+      "sha256": "7b6f23e7d6f3ad6292f9308d2b42cdc3d82ae4e9b2abb55f230279d83bedd43d"
+    }
+  ],
+  "binary_downloads": 0
+}

@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeXeSS/src/sr_provider.cpp
++++ friend/native/cpp/SRNativeXeSS/src/sr_provider.cpp
+@@ -22,4 +22,4 @@
+         *outCount = 1;
+         return (SRReturnCode) SR_RETURN_CODE_OK;
+     }
+-}
++}

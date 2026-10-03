@@ -1,0 +1,8 @@
+{
+  "file": "super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.f0e41bf8.opengl-fg-backpressure.jar",
+  "sha256": "20fa05a42731692d5c20aa2cd82d7ff1367febc4fc1261fcad1a3a3c478c0896",
+  "bytes": 32331533,
+  "java21_own_classes": 1385,
+  "native_core_unchanged": true,
+  "label": "fg-backpressure"
+}

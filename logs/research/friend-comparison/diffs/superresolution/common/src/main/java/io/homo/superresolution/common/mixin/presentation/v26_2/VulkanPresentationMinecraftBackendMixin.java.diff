@@ -1,0 +1,11 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/presentation/v26_2/VulkanPresentationMinecraftBackendMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/presentation/v26_2/VulkanPresentationMinecraftBackendMixin.java
+@@ -18,7 +18,7 @@
+ 
+ package io.homo.superresolution.common.mixin.presentation.v26_2;
+ 
+-#if MC_VER == MC_26_2
++#if MC_VER >= MC_26_2
+ import com.mojang.blaze3d.opengl.GlBackend;
+ import io.homo.superresolution.common.presentation.PresentationBackendManager;
+ import io.homo.superresolution.common.presentation.window.VulkanPresentationGlBackend;

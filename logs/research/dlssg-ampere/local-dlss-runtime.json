@@ -1,0 +1,8 @@
+{
+  "path": "D:\\ProjectDllsss\\runtime-baseline\\instance\\config\\super_resolution\\libraries\\nvngx_dlss.dll",
+  "bytes": 74187376,
+  "version": "310,9,0,0",
+  "sha256": "07C7FEA19A24C75102BF34D1A4A775640CE323A0B2265D4887B331E62486C44F",
+  "signatureStatus": "Valid",
+  "signer": "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+}

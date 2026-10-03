@@ -1,0 +1,118 @@
+{
+  "repo": "pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version",
+  "commit": "cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/CMakeLists.txt",
+      "sha256": "0aa80fb70bd83579d2803834639d7ceba31f609a1f3fe5579fe2b439f6a8def1"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/LICENSE",
+      "sha256": "e3b3f3be6d9e6e316a08b4f327bbc435fe55337b7eff83a38443675dda2ed0f2"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/README.md",
+      "sha256": "714aacb28913a50fd668081b3ea3a4c74b8495568f091010110caad701dd6ec6"
+    },
+    {
+      "path": "VULKAN_SUPPORT.md",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/VULKAN_SUPPORT.md",
+      "sha256": "f856f9d7d3d998da7dfb350b795a7ebd90c530498e7fdeb5a56a2ce68eb357a1"
+    },
+    {
+      "path": "include/renderer/dx9_renderer.hpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/include/renderer/dx9_renderer.hpp",
+      "sha256": "49fc4ef083df5759b172a8f013cc62adcb1b01f31c9406f62e8990ed673a2463"
+    },
+    {
+      "path": "include/renderer/renderer.hpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/include/renderer/renderer.hpp",
+      "sha256": "f746268abe4a27e8efc90f011af3298cd52df445798f892f8cfa94195fbbd11a"
+    },
+    {
+      "path": "include/renderer/vulkan_renderer.hpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/include/renderer/vulkan_renderer.hpp",
+      "sha256": "0f036762c30eca562f1fa845398dd527dc88467e10d4eeea7d3c42c90b69fb84"
+    },
+    {
+      "path": "src/CMakeLists.txt",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/CMakeLists.txt",
+      "sha256": "c7a7b127edf1ad01b333e80964844dcc6db1a05d60b116ee523d373080ae84e5"
+    },
+    {
+      "path": "src/renderer/dx9_renderer.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/renderer/dx9_renderer.cpp",
+      "sha256": "d162365e07f21fe5ba670d6d4892466326879541140226ce72dbbe48db7fdce5"
+    },
+    {
+      "path": "src/renderer/renderer.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/renderer/renderer.cpp",
+      "sha256": "88562da5036d23a78f5c2d13d1d415385ece2dc8a2a4d5008b2c75abeb821546"
+    },
+    {
+      "path": "src/renderer/vulkan_renderer.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/renderer/vulkan_renderer.cpp",
+      "sha256": "0366350ca51507f305e693eb7a0ba536ede1e7779e05dd0b5cb607e129d9f1e6"
+    },
+    {
+      "path": "src/vulkan_ngx_loader.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_ngx_loader.cpp",
+      "sha256": "15be20aa844e5daed034531162e08582f9fcb073decaa2a8ed7948638431cc4d"
+    },
+    {
+      "path": "src/vulkan_ngx_loader.h",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_ngx_loader.h",
+      "sha256": "c5562354c0ce10b3eeec9e9b7e4f49628db0b66df27da8ad32d3e483b41fae0d"
+    },
+    {
+      "path": "src/vulkan_proxy.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_proxy.cpp",
+      "sha256": "b1df04d9109b43dd0a1edcf6950e89e46dc6c6f749eb5ee2ac45f1854ed61f7a"
+    },
+    {
+      "path": "src/vulkan_proxy.h",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_proxy.h",
+      "sha256": "2b707c652f94cc937b1953d84f642f9648b05924e57bea36fafba258fbd29566"
+    },
+    {
+      "path": "src/vulkan_route.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_route.cpp",
+      "sha256": "090031164c0546148feb6743adf87332bb9fa74f0af1b6ea5260ad434a0cc591"
+    },
+    {
+      "path": "src/vulkan_route.hpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_route.hpp",
+      "sha256": "02868da0461dac83360ed4d150f7767c140db18d48d392efb3da8e4a8c550ec4"
+    },
+    {
+      "path": "src/vulkan_route_abi.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_route_abi.cpp",
+      "sha256": "26e6b717ee6e75688c5717a74a0f3dd9a9bcbf875a4c66df3642635e42c874ad"
+    },
+    {
+      "path": "src/vulkan_route_abi.h",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_route_abi.h",
+      "sha256": "a61c367df80903d2629d3aec090a049da84fd45ff96f154144132e5ed7a720aa"
+    },
+    {
+      "path": "src/vulkan_support.cpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_support.cpp",
+      "sha256": "2549228648cc4959c9718ce32131573e7d68186ed5fb2d26d311d204319c6f1d"
+    },
+    {
+      "path": "src/vulkan_support.hpp",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/src/vulkan_support.hpp",
+      "sha256": "91bf573949bd055e587d70a11bfe0cfbcc0bd8dcd463fced421e4bcb385169c0"
+    },
+    {
+      "path": "vulkan/SHA256SUMS.txt",
+      "url": "https://raw.githubusercontent.com/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742/vulkan/SHA256SUMS.txt",
+      "sha256": "90ac62eef22f2c271d210a5eab132fd62e3962528696cef5ecfe98852726779c"
+    }
+  ],
+  "binary_downloads": 0
+}

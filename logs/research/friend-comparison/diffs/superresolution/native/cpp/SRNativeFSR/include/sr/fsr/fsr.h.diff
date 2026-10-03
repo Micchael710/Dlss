@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR/include/sr/fsr/fsr.h
++++ friend/native/cpp/SRNativeFSR/include/sr/fsr/fsr.h
+@@ -14,4 +14,4 @@
+ 
+ FfxResourceUsage srTextureResourceUsageToFfx(SRResourceUsage usage);
+ 
+-FfxSurfaceFormat srTextureFormatToFfxSurfaceFormat(SRTextureFormat format);
++FfxSurfaceFormat srTextureFormatToFfxSurfaceFormat(SRTextureFormat format);

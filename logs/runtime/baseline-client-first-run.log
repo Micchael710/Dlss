@@ -1,0 +1,244 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Task :createMinecraftArtifacts
+Loaded 129 artifacts from D:\ProjectDllsss\runtime-baseline\build\tmp\createMinecraftArtifacts\nfrt_artifact_manifest.properties
+*** Started working on downloadJson
+ DONE  Completed downloadJson in 0.03s
+*** Started working on downloadServer
+*** Started working on downloadClient
+*** Started working on downloadClientMappings
+ DONE  Completed downloadClientMappings in 0.04s
+ DONE  Completed downloadServer in 0.04s
+ DONE  Completed downloadClient in 0.04s
+*** Started working on mergeMappings
+ REUSE Used cache of mergeMappings in 0.00s
+*** Started working on stripClient
+ REUSE Used cache of stripClient in 0.00s
+*** Started working on extractServer
+ REUSE Used cache of extractServer in 0.00s
+*** Started working on stripServer
+ REUSE Used cache of stripServer in 0.00s
+*** Started working on merge
+ REUSE Used cache of merge in 0.00s
+*** Started working on rename
+ REUSE Used cache of rename in 0.00s
+*** Started working on decompile
+ REUSE Used cache of decompile in 0.00s
+*** Started working on inject
+ REUSE Used cache of inject in 0.00s
+*** Started working on patch
+ REUSE Used cache of patch in 0.00s
+*** Started working on applyNeoforgePatches
+ REUSE Used cache of applyNeoforgePatches in 0.00s
+*** Started working on transformSources
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-stb:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-stb:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows-x86 is not present in the artifact manifest
+ RUN   Running external tool net.neoforged.jst:jst-cli-bundle:2.0.11
+ DONE  Completed transformSources in 7.47s
+*** Started working on recompile
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-freetype:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-glfw:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-jemalloc:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-openal:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-opengl:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-stb:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-stb:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl-tinyfd:3.3.3:natives-windows-x86 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows-arm64 is not present in the artifact manifest
+  WARNING: org.lwjgl:lwjgl:3.3.3:natives-windows-x86 is not present in the artifact manifest
+ 110 items on the compile classpath
+ 0 items on the sourcepath
+*** Started working on sourcesWithNeoForge
+ Compiling 5364 source files
+ DONE  Completed sourcesWithNeoForge in 6.56s
+Copied 0 resource files
+ DONE  Completed recompile in 36.04s
+*** Started working on compiledWithNeoForge
+ DONE  Completed compiledWithNeoForge in 7.82s
+*** Started working on sourcesAndCompiledWithNeoForge
+ DONE  Completed sourcesAndCompiledWithNeoForge in 2.52s
+Total runtime: 55.23s
+
+
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+
+> Task :downloadAssets
+Loaded 129 artifacts from D:\ProjectDllsss\runtime-baseline\build\tmp\downloadAssets\nfrt_artifact_manifest.properties
+Downloading asset index 17
+Using Minecraft asset root: <USER_HOME>\.gradle\caches\neoformruntime\assets
+  DL    https://piston-meta.mojang.com/v1/packages/9b16298b1dc0697878cec88bb2d96168f5239e4f/17.json
+100/3888 downloads
+200/3888 downloads
+300/3888 downloads
+400/3888 downloads
+500/3888 downloads
+600/3888 downloads
+700/3888 downloads
+800/3888 downloads
+900/3888 downloads
+1000/3888 downloads
+1100/3888 downloads
+1200/3888 downloads
+1300/3888 downloads
+1400/3888 downloads
+1500/3888 downloads
+1600/3888 downloads
+1700/3888 downloads
+1800/3888 downloads
+1900/3888 downloads
+2000/3888 downloads
+2100/3888 downloads
+2200/3888 downloads
+2300/3888 downloads
+2400/3888 downloads
+2500/3888 downloads
+2600/3888 downloads
+2700/3888 downloads
+2800/3888 downloads
+2900/3888 downloads
+3000/3888 downloads
+3100/3888 downloads
+3200/3888 downloads
+3300/3888 downloads
+3400/3888 downloads
+3500/3888 downloads
+3600/3888 downloads
+3700/3888 downloads
+3800/3888 downloads
+Downloaded 3888 files with a total size of 786 MiB
+
+> Task :writeClientLegacyClasspath
+> Task :prepareClientRun
+
+> Task :runClient
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[15:53:36] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.219, --assetIndex, 17, --assetsDir, C:\\Users\\micha\\.gradle\\caches\\neoformruntime\\assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.219, --fml.neoFormVersion, 20240808.144430]
+[15:53:36] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.12.1+1-LTS
+[15:53:36] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.12.1 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[15:53:37] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: Loading ImmediateWindowProvider fmlearlywindow
+[LWJGL] Version: 3.3.4+7
+	 OS: Windows 11 v10.0
+	JRE: Windows amd64 21.0.12.1
+	JVM: OpenJDK 64-Bit Server VM v21.0.12.1+1-LTS by Eclipse Adoptium
+[LWJGL] Loading JNI library: lwjgl
+	Module: org.lwjgl
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.4/dd0927c1348cdcd9573fa24b7278ec1ac2bb0a76/lwjgl-3.3.4-natives-windows.jar%23168!/windows/x64/org/lwjgl/lwjgl.dll
+	        to: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl.dll
+[LWJGL] Loading library: glfw
+	Module: org.lwjgl.glfw
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-glfw/3.3.4/370ef92d15819a123c643dd2b0fc3a2d40bb263c/lwjgl-glfw-3.3.4-natives-windows.jar%23155!/windows/x64/org/lwjgl/glfw/glfw.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\glfw.dll
+[15:53:38] [main/INFO] [EARLYDISPLAY/]: Trying GL version 4.6
+[15:53:38] [main/INFO] [EARLYDISPLAY/]: Requested GL version 4.6 got version 4.6
+[LWJGL] Loading library: jemalloc
+	Module: org.lwjgl.jemalloc
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-jemalloc/3.3.4/4fa19a3d8262e2d73d9632b70b753a2b67552951/lwjgl-jemalloc-3.3.4-natives-windows.jar%23157!/windows/x64/org/lwjgl/jemalloc/jemalloc.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\jemalloc.dll
+[LWJGL] MemoryUtil allocator: JEmallocAllocator
+[LWJGL] Loading JNI library: lwjgl_stb
+	Module: org.lwjgl.stb
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/1d9facdf6541de114b0f963be33505b7679c78cb/lwjgl-stb-3.3.3-natives-windows.jar%23163!/windows/x64/org/lwjgl/stb/lwjgl_stb.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_stb.dll
+[LWJGL] Java 16 memcpy enabled
+[LWJGL] Java 9 check intrinsics enabled
+[LWJGL] Closure Registry: simple
+[15:53:39] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/<USER_HOME>/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23122!/ Service=ModLauncher Env=CLIENT
+[LWJGL] Loading JNI library: lwjgl_opengl
+	Module: org.lwjgl.opengl
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.4/f7ca4e75573a9ce83075bd86bc8a3e49ff106696/lwjgl-opengl-3.3.4-natives-windows.jar%23162!/windows/x64/org/lwjgl/opengl/lwjgl_opengl.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_opengl.dll
+[LWJGL] Loading library: opengl32
+	Module: org.lwjgl.opengl
+	opengl32.dll not found in org.lwjgl.librarypath=<USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\opengl32.dll
+[LWJGL] Java 10 multiplyHigh enabled
+[LWJGL] Java 9 text decoding enabled
+[15:53:39] [pool-2-thread-1/INFO] [EARLYDISPLAY/]: GL info: NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2 GL version 4.6.0 NVIDIA 596.49, NVIDIA Corporation
+[15:53:40] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 14 dependencies adding them to mods collection
+[15:53:40] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Architectury 13.0.6 (architectury)
+		Forgified Fabric API Base 0.4.42+d1308ded19 (fabric_api_base)
+		Forgified Fabric BlockView API (v2) 1.0.10+9afaaf8c19 (fabric_block_view_api_v2)
+		Forgified Fabric Renderer API (v1) 3.4.0+acb05a3919 (fabric_renderer_api_v1)
+		Forgified Fabric Rendering Data Attachment (v1) 0.3.48+73761d2e19 (fabric_rendering_data_attachment_v1)
+		Iris 1.8.8+mc1.21.1 (iris)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.219 (neoforge)
+		Sodium 0.6.13+mc1.21.1 (sodium)
+		Super Resolution 0.9.2-alpha.1+dev.e365f5b3.opengl (super_resolution)
+		Wisteria 0.1.0-alpha.1+1.21.1 (wisteria)
+[15:53:41] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[15:53:41] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[15:53:41] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.219, --gameDir, ., --assetsDir, <USER_HOME>\.gradle\caches\neoformruntime\assets, --assetIndex, 17]
+[15:53:41] [main/WARN] [SodiumConfig/]: Mod 'super_resolution' attempted to override option 'mixin.features.render.gui.debug', which doesn't exist, ignoring
+[15:53:41] [main/INFO] [Sodium/]: Loaded configuration file for Sodium: 43 options available, 2 override(s) found
+[15:53:41] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.fantastic.json could not be read. If this is a development environment you can ignore this message
+[LWJGL] Loading JNI library: lwjgl_tinyfd
+	Module: org.lwjgl.tinyfd
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-tinyfd/3.3.4/edb114fba87b0bb02866f18fbd0e98e999c48676/lwjgl-tinyfd-3.3.4-natives-windows.jar%23166!/windows/x64/org/lwjgl/tinyfd/lwjgl_tinyfd.dll
+[15:53:41] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.vertexformat.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for iris-batched-entity-rendering.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.compat.sodium.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.hack.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:53:41] [main/INFO] [SuperResolution/]: SuperResolution需要覆盖OpenGL版本，但由于一些原因，你需要关闭游戏并重新打开它
+请不要把fml.toml中的earlyWindowControl修改为true，这会导致这条消息再次出现。
+[15:53:41] [main/INFO] [SuperResolution/]: SuperResolution requires OpenGL version override, but due to technical constraints, you must close and restart the game.
+Please do NOT manually revert earlyWindowControl to true, as this will trigger this message again.
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_tinyfd.dll

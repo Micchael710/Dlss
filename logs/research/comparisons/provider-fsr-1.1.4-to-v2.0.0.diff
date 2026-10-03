@@ -1,0 +1,289 @@
+--- fsr-1.1.4
++++ v2.0.0
+@@ -1,6 +1,6 @@
+ // This file is part of the FidelityFX SDK.
+ //
+-// Copyright (C) 2024 Advanced Micro Devices, Inc.
++// Copyright (C) 2025 Advanced Micro Devices, Inc.
+ // 
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files(the "Software"), to deal
+@@ -20,17 +20,16 @@
+ // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ // THE SOFTWARE.
+ 
+-#include "ffx_provider_framegeneration.h"
+-#include "backends.h"
+-#include <ffx_api/ffx_framegeneration.hpp>
+-#include <FidelityFX/host/ffx_fsr3.h>
+-#include <FidelityFX/host/ffx_frameinterpolation.h>
+-#include <FidelityFX/host/ffx_opticalflow.h>
+-#include <FidelityFX/gpu/fsr3/ffx_fsr3_resources.h>
++#include "../../../api/internal/ffx_backends.h"
++#include "../../include/ffx_framegeneration.hpp"
++#include "../include/ffx_provider_fsr3framegeneration.h"
++#include "../include/ffx_frameinterpolation.h"
++#include "../include/ffx_opticalflow.h"
++#include "../../../upscalers/fsr3/include/gpu/fsr3/ffx_fsr3_resources.h"
+ 
+ #include <stdlib.h>
+ 
+-bool ffxProvider_FrameGeneration::CanProvide(uint64_t type) const
++bool ffxProvider_Fsr3FrameGeneration::CanProvide(uint64_t type) const
+ {
+     return (type & FFX_API_EFFECT_MASK) == FFX_API_EFFECT_ID_FRAMEGENERATION;
+ }
+@@ -51,8 +50,8 @@
+     float deltaTime;
+     bool asyncWorkloadSupported;
+ 
+-    FfxResource HUDLessColor;
+-    FfxResource distortionField;
++    FfxApiResource HUDLessColor;
++    FfxApiResource distortionField;
+ 
+     bool frameGenEnabled;
+     uint32_t frameGenFlags;
+@@ -74,18 +73,18 @@
+ #define STRINGIFY(X) STRINGIFY_(X) 
+ #define MAKE_VERSION_STRING(major, minor, patch) STRINGIFY major "." STRINGIFY minor "." STRINGIFY patch
+ 
+-uint64_t ffxProvider_FrameGeneration::GetId() const
++uint64_t ffxProvider_Fsr3FrameGeneration::GetId() const
+ {
+     // FG, version from header
+     return 0xF600'0000ui64 << 32u | (FFX_SDK_MAKE_VERSION(FFX_FRAMEINTERPOLATION_VERSION_MAJOR, FFX_FRAMEINTERPOLATION_VERSION_MINOR, FFX_FRAMEINTERPOLATION_VERSION_PATCH) & 0xFFFF'FFFF);
+ }
+ 
+-const char* ffxProvider_FrameGeneration::GetVersionName() const
++const char* ffxProvider_Fsr3FrameGeneration::GetVersionName() const
+ {
+     return MAKE_VERSION_STRING(FFX_FRAMEINTERPOLATION_VERSION_MAJOR, FFX_FRAMEINTERPOLATION_VERSION_MINOR, FFX_FRAMEINTERPOLATION_VERSION_PATCH);
+ }
+ 
+-ffxReturnCode_t ffxProvider_FrameGeneration::CreateContext(ffxContext* context, ffxCreateContextDescHeader* header, Allocator& alloc) const
++ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::CreateContext(ffxContext* context, ffxCreateContextDescHeader* header, Allocator& alloc) const
+ {
+     if (auto desc = ffx::DynamicCast<ffxCreateContextDescFrameGeneration>(header))
+     {
+@@ -122,13 +121,13 @@
+             fiDescription.maxRenderSize.height    = desc->maxRenderSize.height;
+             fiDescription.displaySize.width       = desc->displaySize.width;
+             fiDescription.displaySize.height      = desc->displaySize.height;
+-            fiDescription.backBufferFormat = ConvertEnum<FfxSurfaceFormat>(desc->backBufferFormat);
+-            fiDescription.previousInterpolationSourceFormat = ConvertEnum<FfxSurfaceFormat>(desc->backBufferFormat);
++            fiDescription.backBufferFormat = ConvertEnum<FfxApiSurfaceFormat>(desc->backBufferFormat);
++            fiDescription.previousInterpolationSourceFormat = ConvertEnum<FfxApiSurfaceFormat>(desc->backBufferFormat);
+             for (auto it = header; it; it = it->pNext)
+             {
+                 if (auto descHudless = ffx::DynamicCast<ffxCreateContextDescFrameGenerationHudless>(it))
+                 {
+-                    fiDescription.previousInterpolationSourceFormat = ConvertEnum<FfxSurfaceFormat>(descHudless->hudlessBackBufferFormat);
++                    fiDescription.previousInterpolationSourceFormat = ConvertEnum<FfxApiSurfaceFormat>(descHudless->hudlessBackBufferFormat);
+                 }
+             }
+             // set up Frameinterpolation
+@@ -187,7 +186,7 @@
+     }
+ }
+ 
+-ffxReturnCode_t ffxProvider_FrameGeneration::DestroyContext(ffxContext* context, Allocator& alloc) const
++ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::DestroyContext(ffxContext* context, Allocator& alloc) const
+ {
+     VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
+     VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
+@@ -214,7 +213,7 @@
+     return FFX_API_RETURN_OK;
+ }
+ 
+-ffxReturnCode_t ffxProvider_FrameGeneration::Configure(ffxContext* context, const ffxConfigureDescHeader* header) const
++ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Configure(ffxContext* context, const ffxConfigureDescHeader* header) const
+ {
+     VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
+     VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
+@@ -253,11 +252,11 @@
+                 dispatchDesc.minMaxLuminance[0] = desc->minMaxLuminance[0];
+                 dispatchDesc.minMaxLuminance[1] = desc->minMaxLuminance[1];
+                 dispatchDesc.numGeneratedFrames = desc->numInterpolatedFrames;
+-                dispatchDesc.outputs[0] = Convert(desc->outputs[0]);
+-                dispatchDesc.outputs[1] = Convert(desc->outputs[1]);
+-                dispatchDesc.outputs[2] = Convert(desc->outputs[2]);
+-                dispatchDesc.outputs[3] = Convert(desc->outputs[3]);
+-                dispatchDesc.presentColor = Convert(desc->presentColor);
++                dispatchDesc.outputs[0] = desc->outputs[0];
++                dispatchDesc.outputs[1] = desc->outputs[1];
++                dispatchDesc.outputs[2] = desc->outputs[2];
++                dispatchDesc.outputs[3] = desc->outputs[3];
++                dispatchDesc.presentColor = desc->presentColor;
+                 dispatchDesc.reset = desc->reset;
+                 dispatchDesc.generationRect.top = desc->interpolationRect.top;
+                 dispatchDesc.generationRect.left = desc->interpolationRect.left;
+@@ -287,11 +286,11 @@
+                 cbDesc.header.type = FFX_API_CALLBACK_DESC_TYPE_FRAMEGENERATION_PRESENT;
+ 
+                 cbDesc.commandList = params->commandList;
+-                cbDesc.currentBackBuffer = Convert(params->currentBackBuffer);
+-                cbDesc.currentUI = Convert(params->currentUI);
++                cbDesc.currentBackBuffer = params->currentBackBuffer;
++                cbDesc.currentUI = params->currentUI;
+                 cbDesc.device = params->device;
+                 cbDesc.isGeneratedFrame = params->isInterpolatedFrame;
+-                cbDesc.outputSwapChainBuffer = Convert(params->outputSwapChainBuffer);
++                cbDesc.outputSwapChainBuffer = params->outputSwapChainBuffer;
+                 cbDesc.frameID = params->frameID;
+ 
+                 if (FFX_API_RETURN_OK != callbacks->presentCallback(&cbDesc, callbacks->presentCallbackUserContext))
+@@ -308,7 +307,7 @@
+         }
+ 
+         config.frameGenerationEnabled = desc->frameGenerationEnabled;
+-        config.HUDLessColor = Convert(desc->HUDLessColor);
++        config.HUDLessColor = desc->HUDLessColor;
+         config.onlyPresentInterpolated = desc->onlyPresentGenerated;
+         config.swapChain = desc->swapChain;
+ 
+@@ -350,14 +349,14 @@
+             }
+         }
+ 
+-        internal_context->distortionField = FfxResource({});
++        internal_context->distortionField = FfxApiResource({});
+         for (auto it = header; it; it = it->pNext)
+         {
+             if (auto distortionFieldDesc = ffx::DynamicCast<ffxConfigureDescFrameGenerationRegisterDistortionFieldResource>(it))
+             {
+                 if (distortionFieldDesc->distortionField.resource)
+                 {
+-                    internal_context->distortionField = Convert(distortionFieldDesc->distortionField);
++                    internal_context->distortionField = distortionFieldDesc->distortionField;
+                 }
+             }
+         }
+@@ -381,33 +380,67 @@
+     }
+ }
+ 
+-ffxReturnCode_t ffxProvider_FrameGeneration::Query(ffxContext* context, ffxQueryDescHeader* header) const
++ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Query(ffxContext* context, ffxQueryDescHeader* header) const
+ {
+     VERIFY(header, FFX_API_RETURN_ERROR_PARAMETER);
+-    VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
+-    VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
+-
+-    InternalFgContext* internal_context = reinterpret_cast<InternalFgContext*>(*context);
++    
+     if (auto desc = ffx::DynamicCast<ffxQueryDescFrameGenerationGetGPUMemoryUsage>(header))
+     {
+-        FfxEffectMemoryUsage pGpuMemoryUsageFrameGeneration;
+-        FfxEffectMemoryUsage pGpuMemoryUsageOpticalFlow;
+-        FfxEffectMemoryUsage pGpuMemoryUsageShared;
++        VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
++        VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
++        VERIFY(desc->gpuMemoryUsageFrameGeneration, FFX_API_RETURN_ERROR_PARAMETER);
++
++        memset(desc->gpuMemoryUsageFrameGeneration, 0, sizeof(FfxApiEffectMemoryUsage));
++
++        InternalFgContext* internal_context = reinterpret_cast<InternalFgContext*>(*context);
++        FfxApiEffectMemoryUsage pGpuMemoryUsageFrameGeneration;
++        FfxApiEffectMemoryUsage pGpuMemoryUsageOpticalFlow;
++        FfxApiEffectMemoryUsage pGpuMemoryUsageShared;
+ 
+         TRY2(ffxFrameInterpolationContextGetGpuMemoryUsage(&internal_context->fiContext, &pGpuMemoryUsageFrameGeneration));
+         TRY2(ffxOpticalflowContextGetGpuMemoryUsage(&internal_context->ofContext, &pGpuMemoryUsageOpticalFlow));
+         TRY2(ffxSharedContextGetGpuMemoryUsage(&internal_context->backendInterfaceShared, &pGpuMemoryUsageShared));
+         desc->gpuMemoryUsageFrameGeneration->totalUsageInBytes = pGpuMemoryUsageFrameGeneration.totalUsageInBytes + pGpuMemoryUsageOpticalFlow.totalUsageInBytes + pGpuMemoryUsageShared.totalUsageInBytes;
+         desc->gpuMemoryUsageFrameGeneration->aliasableUsageInBytes = pGpuMemoryUsageFrameGeneration.aliasableUsageInBytes + pGpuMemoryUsageOpticalFlow.aliasableUsageInBytes + pGpuMemoryUsageShared.aliasableUsageInBytes;
++
+         return FFX_API_RETURN_OK;
+     }
++    if (auto desc = ffx::DynamicCast<ffxQueryDescFrameGenerationGetGPUMemoryUsageV2>(header))
++    {
++        VERIFY(desc->gpuMemoryUsageFrameGeneration, FFX_API_RETURN_ERROR_PARAMETER);
++
++        memset(desc->gpuMemoryUsageFrameGeneration, 0, sizeof(FfxApiEffectMemoryUsage));
++
++        FfxApiEffectMemoryUsage pGpuMemoryUsageFrameGenerationAndShared;
++        memset(&pGpuMemoryUsageFrameGenerationAndShared, 0, sizeof(FfxApiEffectMemoryUsage));
++        FfxApiEffectMemoryUsage pGpuMemoryUsageOpticalFlowAndShared;
++        memset(&pGpuMemoryUsageOpticalFlowAndShared, 0, sizeof(FfxApiEffectMemoryUsage));
++
++        FfxApiSurfaceFormat backBufferFormat = (FfxApiSurfaceFormat)desc->backBufferFormat;
++        FfxApiSurfaceFormat hudlessBackBufferFormat = (FfxApiSurfaceFormat)desc->hudlessBackBufferFormat;
++        FfxApiSurfaceFormat previousInterpolationSourceFormat = hudlessBackBufferFormat != FFX_API_SURFACE_FORMAT_UNKNOWN ? hudlessBackBufferFormat : backBufferFormat;
++        TRY2(ffxFrameInterpolationGetGpuMemoryUsage(
++            static_cast<FfxDevice> (desc->device),
++            &(desc->maxRenderSize),
++            &(desc->displaySize),
++            previousInterpolationSourceFormat,
++            &pGpuMemoryUsageFrameGenerationAndShared));
++        TRY2(ffxOpticalflowGetGpuMemoryUsage(
++            static_cast<FfxDevice> (desc->device),
++            &(desc->displaySize),
++            &pGpuMemoryUsageOpticalFlowAndShared));
++        desc->gpuMemoryUsageFrameGeneration->totalUsageInBytes = pGpuMemoryUsageFrameGenerationAndShared.totalUsageInBytes + pGpuMemoryUsageOpticalFlowAndShared.totalUsageInBytes;
++        desc->gpuMemoryUsageFrameGeneration->aliasableUsageInBytes = pGpuMemoryUsageFrameGenerationAndShared.aliasableUsageInBytes + pGpuMemoryUsageOpticalFlowAndShared.aliasableUsageInBytes;
++
++        return FFX_API_RETURN_OK;
++    }
+     else
+     {
+         return FFX_API_RETURN_ERROR_UNKNOWN_DESCTYPE;
+     }
+ }
+ 
+-ffxReturnCode_t ffxProvider_FrameGeneration::Dispatch(ffxContext* context, const ffxDispatchDescHeader* header) const
++ffxReturnCode_t ffxProvider_Fsr3FrameGeneration::Dispatch(ffxContext* context, const ffxDispatchDescHeader* header) const
+ {
+     VERIFY(context, FFX_API_RETURN_ERROR_PARAMETER);
+     VERIFY(*context, FFX_API_RETURN_ERROR_PARAMETER);
+@@ -421,7 +454,7 @@
+         {
+             FfxOpticalflowDispatchDescription ofDispatchDesc{};
+             ofDispatchDesc.commandList = desc->commandList;
+-            ofDispatchDesc.color = Convert(desc->presentColor);
++            ofDispatchDesc.color = desc->presentColor;
+             if (internal_context->HUDLessColor.resource)
+             {
+                 ofDispatchDesc.color = internal_context->HUDLessColor;
+@@ -444,13 +477,13 @@
+             fiDispatchDesc.commandList = desc->commandList;
+             fiDispatchDesc.displaySize.width = desc->presentColor.description.width;
+             fiDispatchDesc.displaySize.height = desc->presentColor.description.height;
+-            fiDispatchDesc.currentBackBuffer = Convert(desc->presentColor);
++            fiDispatchDesc.currentBackBuffer = desc->presentColor;
+             fiDispatchDesc.currentBackBuffer_HUDLess = internal_context->HUDLessColor;
+             fiDispatchDesc.reset = desc->reset;
+ 
+             fiDispatchDesc.renderSize.width  = prepDesc->renderSize.width;
+             fiDispatchDesc.renderSize.height = prepDesc->renderSize.height;
+-            fiDispatchDesc.output = Convert(desc->outputs[0]);
++            fiDispatchDesc.output = desc->outputs[0];
+             fiDispatchDesc.opticalFlowVector = internal_context->backendInterfaceShared.fpGetResource(&internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_OPTICAL_FLOW_VECTOR]);
+             fiDispatchDesc.opticalFlowSceneChangeDetection = internal_context->backendInterfaceShared.fpGetResource(&internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_OPTICAL_FLOW_SCD_OUTPUT]);
+             fiDispatchDesc.opticalFlowBlockSize = 8;
+@@ -506,7 +539,7 @@
+                 fiDispatchDesc.flags |= FFX_FRAMEINTERPOLATION_DISPATCH_RESERVED_2;
+             }
+ 
+-            fiDispatchDesc.backBufferTransferFunction = ConvertEnum<FfxBackbufferTransferFunction>(desc->backbufferTransferFunction);
++            fiDispatchDesc.backBufferTransferFunction = ConvertEnum<FfxApiBackbufferTransferFunction>(desc->backbufferTransferFunction);
+             fiDispatchDesc.minMaxLuminance[0]         = desc->minMaxLuminance[0];
+             fiDispatchDesc.minMaxLuminance[1]         = desc->minMaxLuminance[1];
+ 
+@@ -541,8 +574,8 @@
+         dispatchDesc.cameraFar = desc->cameraFar;
+         dispatchDesc.viewSpaceToMetersFactor = desc->viewSpaceToMetersFactor;
+         dispatchDesc.cameraFovAngleVertical = desc->cameraFovAngleVertical;
+-        dispatchDesc.depth = Convert(desc->depth);
+-        dispatchDesc.motionVectors = Convert(desc->motionVectors);
++        dispatchDesc.depth = desc->depth;
++        dispatchDesc.motionVectors = desc->motionVectors;
+         dispatchDesc.frameID = desc->frameID;
+ 
+         dispatchDesc.dilatedDepth = internal_context->backendInterfaceShared.fpGetResource( &internal_context->backendInterfaceShared, internal_context->sharedResources[FFX_FSR3_RESOURCE_IDENTIFIER_DILATED_DEPTH_0 + (internal_context->sharedResoureFrameToggle * FFX_FSR3_RESOURCE_IDENTIFIER_UPSCALED_COUNT)]);
+@@ -570,4 +603,4 @@
+     }
+ }
+ 
+-ffxProvider_FrameGeneration ffxProvider_FrameGeneration::Instance;
++ffxProvider_Fsr3FrameGeneration ffxProvider_Fsr3FrameGeneration::Instance;

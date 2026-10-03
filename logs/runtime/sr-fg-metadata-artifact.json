@@ -1,0 +1,8 @@
+{
+  "file": "super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.2ae956e6.opengl-fg-metadata.jar",
+  "sha256": "cd5d02b0de62fa69ab3be9bfc0e6965845f601086c2f0d387e8ccd6176444ed2",
+  "bytes": 32329155,
+  "java21_own_classes": 1385,
+  "native_core_unchanged": true,
+  "label": "fg-metadata"
+}

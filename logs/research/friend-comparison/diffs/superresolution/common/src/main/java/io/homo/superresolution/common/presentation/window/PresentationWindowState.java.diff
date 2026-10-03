@@ -1,0 +1,80 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/window/PresentationWindowState.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/window/PresentationWindowState.java
+@@ -18,11 +18,7 @@
+ 
+ package io.homo.superresolution.common.presentation.window;
+ 
+-#if MC_VER >= MC_26_3
+-import org.lwjgl.sdl.SDLVideo;
+-#else
+ import org.lwjgl.glfw.GLFW;
+-#endif
+ import org.lwjgl.opengl.GL;
+ 
+ import static org.lwjgl.system.MemoryUtil.NULL;
+@@ -52,15 +48,7 @@
+ 
+     public static synchronized void attachRender(long handle) {
+         requireNonZero(handle, "render");
+-        #if MC_VER >= MC_26_3
+-        if (ownerThread == null) {
+-            attachOwnerThread();
+-        } else {
+-            requireOwnerThread();
+-        }
+-        #else
+         requireOwnerThread();
+-        #endif
+         if (renderHandle == handle) {
+             return;
+         }
+@@ -103,19 +91,11 @@
+         requireOwnerThread();
+         long handle = renderHandle;
+         renderHandle = NULL;
+-        #if MC_VER >= MC_26_3
+-        if (SDLVideo.SDL_GL_GetCurrentWindow() == handle) {
+-            GL.setCapabilities(null);
+-            SDLVideo.SDL_GL_MakeCurrent(NULL, NULL);
+-        }
+-        SDLVideo.SDL_DestroyWindow(handle);
+-        #else
+         if (GLFW.glfwGetCurrentContext() == handle) {
+             GL.setCapabilities(null);
+             GLFW.glfwMakeContextCurrent(NULL);
+         }
+         GLFW.glfwDestroyWindow(handle);
+-        #endif
+         clearOwnerThreadIfUnused();
+     }
+ 
+@@ -137,13 +117,7 @@
+ 
+     public static synchronized void requireOwnerThread() {
+         if (ownerThread == null || ownerThread != Thread.currentThread()) {
+-            throw new IllegalStateException(
+-                    #if MC_VER >= MC_26_3
+-                    "Presentation SDL handles must be accessed on their owner thread"
+-                    #else
+-                    "Presentation GLFW handles must be accessed on their owner thread"
+-                    #endif
+-            );
++            throw new IllegalStateException("Presentation GLFW handles must be accessed on their owner thread");
+         }
+     }
+ 
+@@ -152,13 +126,7 @@
+         if (ownerThread == null) {
+             ownerThread = current;
+         } else if (ownerThread != current) {
+-            throw new IllegalStateException(
+-                    #if MC_VER >= MC_26_3
+-                    "Presentation SDL handles must be attached on the render thread"
+-                    #else
+-                    "Presentation GLFW handles must be attached on the render thread"
+-                    #endif
+-            );
++            throw new IllegalStateException("Presentation GLFW handles must be attached on the render thread");
+         }
+     }
+ 

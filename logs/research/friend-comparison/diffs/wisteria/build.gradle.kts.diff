@@ -1,0 +1,43 @@
+--- ours/build.gradle.kts
++++ friend/build.gradle.kts
+@@ -130,28 +130,24 @@
+     // Super Resolution is provided at runtime by the SR mod itself, so it is never
+     // bundled: compile-time only, on every module.
+     dependencies {
+-        val localApi = providers.gradleProperty("sr_api_jar").orNull
+-        if (localApi != null) {
+-            val apiFile = rootProject.file(localApi)
+-            require(apiFile.isFile) { "Local Super Resolution API jar missing: $apiFile" }
+-            "compileOnly"(files(apiFile))
+-        } else {
+-            "compileOnly"(superResolutionApi())
+-        }
++        "compileOnly"(superResolutionApi())
+     }
+ 
+     // On Linux, NeoForm's decompile step spawns Vineflower with only -Xmx4G, which OOMs
+     // on modern Minecraft. Route the tool JVM through a wrapper that raises the heap.
+     // ModDevGradle sets `toolsJavaExecutable` from its tools toolchain during task
+     // registration, so this must be a `configure` action to win the last write.
+-    if (System.getProperty("os.name").contains("linux", ignoreCase = true)) {
+-        val toolWrapper = rootProject.file("script/java_tool_wrapper.sh")
+-        listOf("net.neoforged.moddev", "net.neoforged.moddev.legacyforge").forEach { pluginId ->
+-            plugins.withId(pluginId) {
+-                afterEvaluate {
+-                    tasks.withType(CreateMinecraftArtifacts::class.java).configureEach {
+-                        toolsJavaExecutable.set(toolWrapper.absolutePath)
+-                    }
++    val isWindows = System.getProperty("os.name").contains("windows", ignoreCase = true)
++    val toolWrapper = if (isWindows) {
++        rootProject.file("script/java_tool_wrapper.exe")
++    } else {
++        rootProject.file("script/java_tool_wrapper.sh")
++    }
++    listOf("net.neoforged.moddev", "net.neoforged.moddev.legacyforge").forEach { pluginId ->
++        plugins.withId(pluginId) {
++            afterEvaluate {
++                tasks.withType(CreateMinecraftArtifacts::class.java).configureEach {
++                    toolsJavaExecutable.set(toolWrapper.absolutePath)
+                 }
+             }
+         }

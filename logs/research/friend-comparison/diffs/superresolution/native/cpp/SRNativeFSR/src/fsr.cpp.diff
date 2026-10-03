@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR/src/fsr.cpp
++++ friend/native/cpp/SRNativeFSR/src/fsr.cpp
+@@ -112,4 +112,4 @@
+     if (usage & SR_RESOURCE_USAGE_DCC_RENDERTARGET)
+         ffxUsage = static_cast<FfxResourceUsage>(ffxUsage | FFX_RESOURCE_USAGE_DCC_RENDERTARGET);
+     return ffxUsage;
+-}
++}

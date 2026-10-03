@@ -1,0 +1,116 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/vulkan/FrameQueue.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/vulkan/FrameQueue.java
+@@ -22,10 +22,9 @@
+ import java.util.Collection;
+ import java.util.Deque;
+ import java.util.List;
++import java.util.function.BooleanSupplier;
+ import java.util.concurrent.locks.Condition;
+ import java.util.concurrent.locks.ReentrantLock;
+-import java.util.function.BooleanSupplier;
+-import java.util.function.ToIntFunction;
+ 
+ /**
+  * Bounded queue used by the application-managed presentation threads.
+@@ -36,24 +35,17 @@
+  */
+ final class FrameQueue<T> implements AutoCloseable {
+     private final int capacity;
+-    private final ToIntFunction<T> weight;
+     private final ReentrantLock lock = new ReentrantLock();
+     private final Condition notEmpty = lock.newCondition();
+     private final Condition hasCapacity = lock.newCondition();
+     private final Deque<T> items = new ArrayDeque<>();
+     private boolean closed;
+-    private int queuedWeight;
+ 
+     FrameQueue(int capacity) {
+-        this(capacity, item -> 1);
+-    }
+-
+-    FrameQueue(int capacity, ToIntFunction<T> weight) {
+         if (capacity <= 0) {
+             throw new IllegalArgumentException("capacity must be positive");
+         }
+         this.capacity = capacity;
+-        this.weight = weight;
+     }
+ 
+     long put(T item) throws InterruptedException {
+@@ -65,15 +57,14 @@
+         if (snapshot.isEmpty()) {
+             throw new IllegalArgumentException("batch cannot be empty");
+         }
+-        int batchWeight = snapshot.stream().mapToInt(weight).sum();
+-        if (batchWeight <= 0 || batchWeight > capacity) {
++        if (snapshot.size() > capacity) {
+             throw new IllegalArgumentException("batch exceeds queue capacity");
+         }
+ 
+         long waitedNanos = 0L;
+         lock.lockInterruptibly();
+         try {
+-            while (!closed && capacity - queuedWeight < batchWeight) {
++            while (!closed && capacity - items.size() < snapshot.size()) {
+                 long waitStartedAtNanos = System.nanoTime();
+                 try {
+                     hasCapacity.await();
+@@ -83,7 +74,6 @@
+             }
+             requireOpen();
+             items.addAll(snapshot);
+-            queuedWeight += batchWeight;
+             notEmpty.signalAll();
+             return waitedNanos;
+         } finally {
+@@ -103,7 +93,7 @@
+ 
+         lock.lockInterruptibly();
+         try {
+-            while (!closed && capacity - queuedWeight < requiredCapacity) {
++            while (!closed && capacity - items.size() < requiredCapacity) {
+                 hasCapacity.await();
+             }
+             requireOpen();
+@@ -150,7 +140,6 @@
+                 return TakeResult.closed(waited);
+             }
+             T item = items.removeFirst();
+-            queuedWeight -= weight.applyAsInt(item);
+             hasCapacity.signalAll();
+             return new TakeResult<>(item, waited, false);
+         } finally {
+@@ -164,7 +153,7 @@
+             if (items.peekFirst() != expected) {
+                 throw new IllegalStateException("Queue head changed before ownership removal");
+             }
+-            queuedWeight -= weight.applyAsInt(items.removeFirst());
++            items.removeFirst();
+             hasCapacity.signalAll();
+             return true;
+         } finally {
+@@ -223,11 +212,8 @@
+ 
+     record HeadResult<T>(
+             T value,
+-
+             boolean waited,
+-
+             boolean closedAndEmpty,
+-
+             boolean externalWake
+     ) {
+         private static <T> HeadResult<T> closed(boolean waited) {
+@@ -239,11 +225,7 @@
+         }
+     }
+ 
+-    record TakeResult<T>(T value,
+-
+-                         boolean waited,
+-
+-                         boolean closedAndEmpty) {
++    record TakeResult<T>(T value, boolean waited, boolean closedAndEmpty) {
+         private static <T> TakeResult<T> closed(boolean waited) {
+             return new TakeResult<>(null, waited, true);
+         }

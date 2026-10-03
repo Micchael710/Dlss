@@ -1,0 +1,272 @@
+{
+  "sha": "cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742",
+  "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/cd4b4bb9f483ee3c59d3a912cd4075d1c8ebc742",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a9be7439b26b2829fb771efd3d34267e4a1e9054",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/a9be7439b26b2829fb771efd3d34267e4a1e9054"
+    },
+    {
+      "path": ".github/modernize",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a7b94071d9b8a1a34d5a86cec2d8d8b64a2f513f",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/a7b94071d9b8a1a34d5a86cec2d8d8b64a2f513f"
+    },
+    {
+      "path": ".github/modernize/canvas-dlssg-vulkan.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9843c40b79e2ab6c80c193649b128e7743ba125d",
+      "size": 782,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/9843c40b79e2ab6c80c193649b128e7743ba125d"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edd21477baa99994a1ff1b8b14ccc65ab61cc66a",
+      "size": 579,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/edd21477baa99994a1ff1b8b14ccc65ab61cc66a"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a5c56812f2f1279d38645b9b73c4887c4cd7e79",
+      "size": 1061,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/5a5c56812f2f1279d38645b9b73c4887c4cd7e79"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f0a27954003d41f28ce77149cca69372466c18ba",
+      "size": 2213,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/f0a27954003d41f28ce77149cca69372466c18ba"
+    },
+    {
+      "path": "SM75-X5-X6-experimental.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0de7abbe758ae5e7d49e05f95bd10f3961639679",
+      "size": 18182206,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/0de7abbe758ae5e7d49e05f95bd10f3961639679"
+    },
+    {
+      "path": "VULKAN_SUPPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25faebcd7ceecefcbf4829d5c182db8b827a3adf",
+      "size": 7387,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/25faebcd7ceecefcbf4829d5c182db8b827a3adf"
+    },
+    {
+      "path": "include",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "febf878cd160a7c1640414553450c956a4aa98d7",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/febf878cd160a7c1640414553450c956a4aa98d7"
+    },
+    {
+      "path": "include/renderer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "26b0ff16746ec6aa725d49194559034d00ae7ba1",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/26b0ff16746ec6aa725d49194559034d00ae7ba1"
+    },
+    {
+      "path": "include/renderer/dx9_renderer.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "149389f437104c9954a54589fcf00a09c6a53f4c",
+      "size": 985,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/149389f437104c9954a54589fcf00a09c6a53f4c"
+    },
+    {
+      "path": "include/renderer/renderer.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58a0a4268c2a71560399322afb3690499c851199",
+      "size": 1871,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/58a0a4268c2a71560399322afb3690499c851199"
+    },
+    {
+      "path": "include/renderer/vulkan_renderer.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "126018dcb5a66360f8e536b7f0218c280a73ac57",
+      "size": 2248,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/126018dcb5a66360f8e536b7f0218c280a73ac57"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8f29395c3e4d78d121a8124bb69063586ee65eea",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/8f29395c3e4d78d121a8124bb69063586ee65eea"
+    },
+    {
+      "path": "src/CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8bd4eeea25d3c5e3a632afd27f2e71e8492aaf2",
+      "size": 966,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/f8bd4eeea25d3c5e3a632afd27f2e71e8492aaf2"
+    },
+    {
+      "path": "src/renderer",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4dac4e03edcd6f3ec40d16ecbce900adc13c9af7",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/4dac4e03edcd6f3ec40d16ecbce900adc13c9af7"
+    },
+    {
+      "path": "src/renderer/dx9_renderer.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ba6b00a640cfb5806172b3aaf705395ae64e69d8",
+      "size": 7494,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/ba6b00a640cfb5806172b3aaf705395ae64e69d8"
+    },
+    {
+      "path": "src/renderer/renderer.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ad3e29db93f475282408775b7f2d95d05366a75",
+      "size": 1263,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/7ad3e29db93f475282408775b7f2d95d05366a75"
+    },
+    {
+      "path": "src/renderer/vulkan_renderer.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "096eb9eaf5914a85e7ff112129ecf92c20a4b922",
+      "size": 19005,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/096eb9eaf5914a85e7ff112129ecf92c20a4b922"
+    },
+    {
+      "path": "src/vulkan_ngx_loader.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07bda3bbae7c53b44f369cba28bd0da3fa90d0e5",
+      "size": 4469,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/07bda3bbae7c53b44f369cba28bd0da3fa90d0e5"
+    },
+    {
+      "path": "src/vulkan_ngx_loader.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5d98ab631c77f97538e621d0da3fcd6be65e46b8",
+      "size": 1645,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/5d98ab631c77f97538e621d0da3fcd6be65e46b8"
+    },
+    {
+      "path": "src/vulkan_proxy.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e5c3bd85659d5d865e6fbb5cc184f170f4f11e7",
+      "size": 4087,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/5e5c3bd85659d5d865e6fbb5cc184f170f4f11e7"
+    },
+    {
+      "path": "src/vulkan_proxy.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dfe1569690c1e44741757a8053de61a914be7a59",
+      "size": 888,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/dfe1569690c1e44741757a8053de61a914be7a59"
+    },
+    {
+      "path": "src/vulkan_route.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a4a988e3ee8ed6c448d0c36b66fe32360f95943",
+      "size": 3468,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/2a4a988e3ee8ed6c448d0c36b66fe32360f95943"
+    },
+    {
+      "path": "src/vulkan_route.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a1b2b00fdd1037ca168e7a5e8a34449f6920b1c9",
+      "size": 1232,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/a1b2b00fdd1037ca168e7a5e8a34449f6920b1c9"
+    },
+    {
+      "path": "src/vulkan_route_abi.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2f58b7474f723ce4b34b5973ad63ec2b59a3aa66",
+      "size": 5745,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/2f58b7474f723ce4b34b5973ad63ec2b59a3aa66"
+    },
+    {
+      "path": "src/vulkan_route_abi.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1bbf25f22ffa568ecb1b0e0937d349cf9f2d8932",
+      "size": 2423,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/1bbf25f22ffa568ecb1b0e0937d349cf9f2d8932"
+    },
+    {
+      "path": "src/vulkan_support.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ea981c38b0474c7c78f177056cf4efcfcc3212de",
+      "size": 7455,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/ea981c38b0474c7c78f177056cf4efcfcc3212de"
+    },
+    {
+      "path": "src/vulkan_support.hpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5620d50dc70301e2e5432f3424dea9ace2553999",
+      "size": 2374,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/5620d50dc70301e2e5432f3424dea9ace2553999"
+    },
+    {
+      "path": "vulkan",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0c27919edba2212ba728f9e7e1b69c515d9cd3ab",
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/trees/0c27919edba2212ba728f9e7e1b69c515d9cd3ab"
+    },
+    {
+      "path": "vulkan/SHA256SUMS.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5af1f5ce7991383be0b0b9e69ae2dc54262cf17e",
+      "size": 265,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/5af1f5ce7991383be0b0b9e69ae2dc54262cf17e"
+    },
+    {
+      "path": "vulkan/dlssg_vulkan_ngx.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8b102ed19f8ac0cf4aa812b3a8e4b50568fdc80",
+      "size": 15872,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/d8b102ed19f8ac0cf4aa812b3a8e4b50568fdc80"
+    },
+    {
+      "path": "vulkan/dlssg_vulkan_proxy.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "00f462c3cf81d7f5c3fb3d20c0bfecb1ff89561a",
+      "size": 14848,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/00f462c3cf81d7f5c3fb3d20c0bfecb1ff89561a"
+    },
+    {
+      "path": "vulkan/dlssg_vulkan_route.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dcdcfe6640106b09a4a796945889a72565f7e133",
+      "size": 22528,
+      "url": "https://api.github.com/repos/pipotoufikxyz-lgtm/dlssg_for_sm86-MFG-version/git/blobs/dcdcfe6640106b09a4a796945889a72565f7e133"
+    }
+  ],
+  "truncated": false
+}

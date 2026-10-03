@@ -1,0 +1,1773 @@
+Compiled from "FsrFgBackend.java"
+public final class org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend extends java.lang.Enum<org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend> {
+  public static final org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend AUTO;
+
+  public static final org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend VULKAN;
+
+  public static final org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend D3D12;
+
+  private final java.lang.String configId;
+
+  private final java.lang.String translationKey;
+
+  private static final org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend[] $VALUES;
+
+  public static org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend[] values();
+    Code:
+       0: getstatic     #13                 // Field $VALUES:[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       3: invokevirtual #17                 // Method "[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;".clone:()Ljava/lang/Object;
+       6: checkcast     #18                 // class "[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;"
+       9: areturn
+
+  public static org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend valueOf(java.lang.String);
+    Code:
+       0: ldc           #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+       2: aload_0
+       3: invokestatic  #22                 // Method java/lang/Enum.valueOf:(Ljava/lang/Class;Ljava/lang/String;)Ljava/lang/Enum;
+       6: checkcast     #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+       9: areturn
+
+  private org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend(java.lang.String, java.lang.String);
+    Code:
+       0: aload_0
+       1: aload_1
+       2: iload_2
+       3: invokespecial #28                 // Method java/lang/Enum."<init>":(Ljava/lang/String;I)V
+       6: aload_0
+       7: aload_3
+       8: putfield      #32                 // Field configId:Ljava/lang/String;
+      11: aload_0
+      12: aload         4
+      14: putfield      #36                 // Field translationKey:Ljava/lang/String;
+      17: return
+
+  public java.lang.String configId();
+    Code:
+       0: aload_0
+       1: getfield      #32                 // Field configId:Ljava/lang/String;
+       4: areturn
+
+  public java.lang.String translationKey();
+    Code:
+       0: aload_0
+       1: getfield      #36                 // Field translationKey:Ljava/lang/String;
+       4: areturn
+
+  public boolean isAvailable();
+    Code:
+       0: aload_0
+       1: getstatic     #10                 // Field D3D12:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       4: if_acmpne     11
+       7: invokestatic  #39                 // Method io/homo/superresolution/core/NativeLibManager.d3d12Available:()Z
+      10: ireturn
+      11: iconst_1
+      12: ireturn
+
+  public static org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend fromConfig();
+    Code:
+       0: invokestatic  #45                 // Method io/homo/superresolution/common/config/SuperResolutionConfig.getFrameGenerationBackend:()Ljava/lang/String;
+       3: astore_0
+       4: invokestatic  #51                 // Method values:()[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       7: astore_1
+       8: aload_1
+       9: arraylength
+      10: istore_2
+      11: iconst_0
+      12: istore_3
+      13: iload_3
+      14: iload_2
+      15: if_icmpge     44
+      18: aload_1
+      19: iload_3
+      20: aaload
+      21: astore        4
+      23: aload         4
+      25: getfield      #32                 // Field configId:Ljava/lang/String;
+      28: aload_0
+      29: invokevirtual #55                 // Method java/lang/String.equals:(Ljava/lang/Object;)Z
+      32: ifeq          38
+      35: aload         4
+      37: areturn
+      38: iinc          3, 1
+      41: goto          13
+      44: getstatic     #3                  // Field AUTO:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      47: areturn
+
+  public static void save(org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend);
+    Code:
+       0: aload_0
+       1: ifnonnull     13
+       4: getstatic     #3                  // Field AUTO:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       7: getfield      #32                 // Field configId:Ljava/lang/String;
+      10: goto          17
+      13: aload_0
+      14: getfield      #32                 // Field configId:Ljava/lang/String;
+      17: invokestatic  #61                 // Method io/homo/superresolution/common/config/SuperResolutionConfig.setFrameGenerationBackend:(Ljava/lang/String;)V
+      20: return
+
+  private static org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend[] $values();
+    Code:
+       0: iconst_3
+       1: anewarray     #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+       4: dup
+       5: iconst_0
+       6: getstatic     #3                  // Field AUTO:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       9: aastore
+      10: dup
+      11: iconst_1
+      12: getstatic     #7                  // Field VULKAN:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      15: aastore
+      16: dup
+      17: iconst_2
+      18: getstatic     #10                 // Field D3D12:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      21: aastore
+      22: areturn
+
+  static {};
+    Code:
+       0: new           #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+       3: dup
+       4: ldc           #65                 // String AUTO
+       6: iconst_0
+       7: ldc           #68                 // String superresolution:auto
+       9: ldc           #70                 // String wisteria.screen.config.special.fsr_fg.backend.auto
+      11: invokespecial #72                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+      14: putstatic     #3                  // Field AUTO:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      17: new           #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+      20: dup
+      21: ldc           #75                 // String VULKAN
+      23: iconst_1
+      24: ldc           #76                 // String wisteria:fsr_vulkan
+      26: ldc           #78                 // String wisteria.screen.config.special.fsr_fg.backend.vulkan
+      28: invokespecial #72                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+      31: putstatic     #7                  // Field VULKAN:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      34: new           #1                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+      37: dup
+      38: ldc           #80                 // String D3D12
+      40: iconst_2
+      41: ldc           #81                 // String wisteria:fsr_d3d12
+      43: ldc           #83                 // String wisteria.screen.config.special.fsr_fg.backend.d3d12
+      45: invokespecial #72                 // Method "<init>":(Ljava/lang/String;ILjava/lang/String;Ljava/lang/String;)V
+      48: putstatic     #10                 // Field D3D12:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      51: invokestatic  #85                 // Method $values:()[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      54: putstatic     #13                 // Field $VALUES:[Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+      57: return
+}
+Compiled from "FsrFrameGenerationBackend.java"
+public final class org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationBackend implements io.homo.superresolution.api.registry.FrameGenerationProvider {
+  public org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationBackend();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public io.homo.superresolution.api.registry.FrameGenerationExecutionModel executionModel();
+    Code:
+       0: getstatic     #7                  // Field io/homo/superresolution/api/registry/FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC:Lio/homo/superresolution/api/registry/FrameGenerationExecutionModel;
+       3: areturn
+
+  public void initialize();
+    Code:
+       0: invokestatic  #13                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.initialize:()V
+       3: return
+
+  public void shutdownOnFrameGenerationThread();
+    Code:
+       0: invokestatic  #18                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.shutdownOnFrameGenerationThread:()V
+       3: return
+
+  public void shutdown();
+    Code:
+       0: invokestatic  #21                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.shutdown:()V
+       3: return
+
+  public boolean isAvailable();
+    Code:
+       0: ldc           #24                 // String wisteria:fsr
+       2: invokestatic  #26                 // Method org/ireallywanttosleep/wisteria/backend/VulkanAsyncFoundationBridge.syncProvider:(Ljava/lang/String;)Z
+       5: pop
+       6: invokestatic  #32                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.isAvailable:()Z
+       9: ireturn
+
+  public int supportedGeneratedFrameCount();
+    Code:
+       0: invokestatic  #36                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.supportedGeneratedFrameCount:()I
+       3: ireturn
+
+  public int presentationManagedGeneratedFrameCount(io.homo.superresolution.common.framegeneration.FrameGenerationMode);
+    Code:
+       0: iconst_1
+       1: aload_1
+       2: invokevirtual #40                 // Method io/homo/superresolution/common/framegeneration/FrameGenerationMode.generatedFrameCount:()I
+       5: invokestatic  #45                 // Method java/lang/Math.max:(II)I
+       8: aload_0
+       9: invokevirtual #51                 // Method supportedGeneratedFrameCount:()I
+      12: invokestatic  #54                 // Method java/lang/Math.min:(II)I
+      15: ireturn
+
+  public boolean dependenciesSatisfied();
+    Code:
+       0: ldc           #24                 // String wisteria:fsr
+       2: invokestatic  #26                 // Method org/ireallywanttosleep/wisteria/backend/VulkanAsyncFoundationBridge.syncProvider:(Ljava/lang/String;)Z
+       5: pop
+       6: iconst_1
+       7: ireturn
+
+  public io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchResult dispatchAsync(io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchRequest);
+    Code:
+       0: aload_1
+       1: invokestatic  #57                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.dispatchAsync:(Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+       4: areturn
+
+  public void finishPresent(io.homo.superresolution.common.presentation.capture.FrameResources, boolean);
+    Code:
+       0: return
+
+  public void disable();
+    Code:
+       0: invokestatic  #61                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter.disable:()V
+       3: return
+}
+Compiled from "FsrFrameGenerationAdapter.java"
+public final class org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter {
+  private static final int MIN_WIDTH_OR_HEIGHT;
+
+  private static final int MIN_OUTPUT_SLOT_COUNT;
+
+  private static final int SCHEDULER_PRESENT_QUEUE_CAPACITY;
+
+  private static final int MAX_GENERATED_FRAMES;
+
+  private static final java.util.Set<java.lang.String> REPORTED_FAILURES;
+
+  private static volatile boolean latencyWarningReported;
+
+  private static long lastDispatchNanos;
+
+  private static org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$SlotKey outputKey;
+
+  private static final java.util.List<org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$OutputSlot> outputSlots;
+
+  private static io.homo.superresolution.core.graphics.vulkan.VulkanTexture historyTexture;
+
+  private static java.lang.Thread fgThread;
+
+  private static boolean historyInvalid;
+
+  private org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter();
+    Code:
+       0: aload_0
+       1: invokespecial #3                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static synchronized void initialize();
+    Code:
+       0: iconst_0
+       1: putstatic     #9                  // Field historyInvalid:Z
+       4: aconst_null
+       5: putstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+       8: getstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+      11: invokeinterface #23,  1           // InterfaceMethod java/util/Set.clear:()V
+      16: iconst_0
+      17: putstatic     #28                 // Field latencyWarningReported:Z
+      20: lconst_0
+      21: putstatic     #31                 // Field lastDispatchNanos:J
+      24: return
+
+  public static synchronized void shutdownOnFrameGenerationThread();
+    Code:
+       0: invokestatic  #35                 // Method requireFgThread:()V
+       3: invokestatic  #38                 // Method destroyOutputSlots:()V
+       6: iconst_0
+       7: putstatic     #9                  // Field historyInvalid:Z
+      10: aconst_null
+      11: putstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      14: return
+
+  public static synchronized void shutdown();
+    Code:
+       0: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+       3: invokeinterface #45,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+       8: ifne          14
+      11: invokestatic  #38                 // Method destroyOutputSlots:()V
+      14: iconst_0
+      15: putstatic     #9                  // Field historyInvalid:Z
+      18: getstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+      21: invokeinterface #23,  1           // InterfaceMethod java/util/Set.clear:()V
+      26: return
+
+  public static boolean isAvailable();
+    Code:
+       0: invokestatic  #51                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrNativeBridge.isNativeLoaded:()Z
+       3: ireturn
+
+  public static int supportedGeneratedFrameCount();
+    Code:
+       0: iconst_5
+       1: ireturn
+
+  public static int minimumWidthOrHeight();
+    Code:
+       0: sipush        128
+       3: ireturn
+
+  public static void disable();
+    Code:
+       0: iconst_1
+       1: putstatic     #9                  // Field historyInvalid:Z
+       4: return
+
+  public static synchronized io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchResult dispatchAsync(io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchRequest);
+    Code:
+       0: invokestatic  #35                 // Method requireFgThread:()V
+       3: aload_0
+       4: ifnonnull     13
+       7: ldc           #56                 // String FSR FG dispatch request is null
+       9: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+      12: areturn
+      13: invokestatic  #51                 // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrNativeBridge.isNativeLoaded:()Z
+      16: ifne          25
+      19: ldc           #64                 // String FSR FG native pipeline is not loaded or available
+      21: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+      24: areturn
+      25: aload_0
+      26: invokevirtual #66                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.frameResources:()Lio/homo/superresolution/common/presentation/capture/FrameResources;
+      29: astore_1
+      30: aload_1
+      31: invokevirtual #72                 // Method io/homo/superresolution/common/presentation/capture/FrameResources.finalColorVulkanTexture:()Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      34: astore_2
+      35: aload_1
+      36: invokevirtual #78                 // Method io/homo/superresolution/common/presentation/capture/FrameResources.depthVulkanTexture:()Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      39: astore_3
+      40: aload_1
+      41: invokevirtual #81                 // Method io/homo/superresolution/common/presentation/capture/FrameResources.motionVectorVulkanTexture:()Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      44: astore        4
+      46: aload_0
+      47: aload_2
+      48: aload_3
+      49: aload         4
+      51: invokestatic  #84                 // Method inputFailureReason:(Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)Ljava/lang/String;
+      54: astore        5
+      56: aload         5
+      58: ifnull        72
+      61: aload         5
+      63: invokedynamic #88,  0             // InvokeDynamic #0:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+      68: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+      71: areturn
+      72: aload_0
+      73: invokevirtual #92                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.requestedGeneratedFrameCount:()I
+      76: invokestatic  #96                 // Method supportedGeneratedFrameCount:()I
+      79: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+      82: iconst_5
+      83: aload_0
+      84: invokevirtual #105                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.commandBufferCount:()I
+      87: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+      90: invokestatic  #99                 // Method java/lang/Math.min:(II)I
+      93: istore        6
+      95: iload         6
+      97: ifgt          106
+     100: ldc           #108                // String FSR FG requested no generated frames
+     102: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+     105: areturn
+     106: iload         6
+     108: iconst_1
+     109: iadd
+     110: istore        7
+     112: aload_0
+     113: invokevirtual #110                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.providerInputSnapshot:()Lio/homo/superresolution/api/registry/ProviderInputSnapshot;
+     116: invokeinterface #114,  1          // InterfaceMethod io/homo/superresolution/api/registry/ProviderInputSnapshot.constants:()Lio/homo/superresolution/common/framegeneration/constants/FGConstants;
+     121: astore        8
+     123: invokestatic  #120                // Method java/lang/System.nanoTime:()J
+     126: lstore        9
+     128: getstatic     #31                 // Field lastDispatchNanos:J
+     131: lconst_0
+     132: lcmp
+     133: ifle          151
+     136: lload         9
+     138: getstatic     #31                 // Field lastDispatchNanos:J
+     141: lsub
+     142: l2d
+     143: ldc2_w        #126                // double 1.0E9d
+     146: ddiv
+     147: d2f
+     148: goto          153
+     151: ldc           #128                // float 0.016666668f
+     153: fstore        11
+     155: lload         9
+     157: putstatic     #31                 // Field lastDispatchNanos:J
+     160: fload         11
+     162: fconst_0
+     163: fcmpg
+     164: ifle          175
+     167: fload         11
+     169: ldc           #129                // float 0.5f
+     171: fcmpl
+     172: ifle          179
+     175: ldc           #128                // float 0.016666668f
+     177: fstore        11
+     179: iload         7
+     181: iconst_2
+     182: if_icmple     230
+     185: fload         11
+     187: ldc           #130                // float 0.022222223f
+     189: fcmpl
+     190: ifle          230
+     193: getstatic     #28                 // Field latencyWarningReported:Z
+     196: ifne          230
+     199: iconst_1
+     200: putstatic     #28                 // Field latencyWarningReported:Z
+     203: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     206: ldc           #137                // String FSR FG: Target multiplier {}x selected with low native input framerate ({:.1f} FPS). High multipliers with low native framerates cause increased input latency.
+     208: iload         7
+     210: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     213: fconst_1
+     214: ldc           #145                // float 0.001f
+     216: fload         11
+     218: invokestatic  #146                // Method java/lang/Math.max:(FF)F
+     221: fdiv
+     222: invokestatic  #150                // Method java/lang/Float.valueOf:(F)Ljava/lang/Float;
+     225: invokeinterface #155,  4          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Object;Ljava/lang/Object;)V
+     230: aload_0
+     231: aload_2
+     232: iload         6
+     234: invokestatic  #161                // Method acquireOutputSlot:(Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;I)Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot;
+     237: astore        12
+     239: aload         12
+     241: ifnonnull     250
+     244: ldc           #165                // String No reusable FSR FG output slot
+     246: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+     249: areturn
+     250: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     253: ifnull        282
+     256: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     259: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+     262: aload_2
+     263: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+     266: if_icmpne     282
+     269: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     272: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+     275: aload_2
+     276: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+     279: if_icmpeq     286
+     282: iconst_1
+     283: goto          287
+     286: iconst_0
+     287: istore        13
+     289: iload         13
+     291: ifeq          323
+     294: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     297: ifnull        306
+     300: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     303: invokevirtual #179                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.destroy:()V
+     306: aload_0
+     307: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     310: aload_2
+     311: ldc           #186                // String SRFsrFG-History
+     313: invokestatic  #188                // Method createOutputTexture:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Ljava/lang/String;)Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     316: putstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     319: iconst_1
+     320: putstatic     #9                  // Field historyInvalid:Z
+     323: invokestatic  #192                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+     326: astore        14
+     328: aload         12
+     330: invokevirtual #196                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.realOutput:()Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     333: astore        15
+     335: aload         12
+     337: iload         6
+     339: invokevirtual #201                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.generatedOutputs:(I)Ljava/util/List;
+     342: astore        16
+     344: aload_0
+     345: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     348: aload_0
+     349: invokevirtual #205                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.commandBuffer:()J
+     352: aload_2
+     353: aload_3
+     354: aload         4
+     356: aload         16
+     358: aload         15
+     360: invokestatic  #208                // Method recordTransitionsToGeneral:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;JLio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)Ljava/util/List;
+     363: astore        14
+     365: getstatic     #9                  // Field historyInvalid:Z
+     368: ifne          391
+     371: aload_0
+     372: invokevirtual #110                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.providerInputSnapshot:()Lio/homo/superresolution/api/registry/ProviderInputSnapshot;
+     375: invokeinterface #212,  1          // InterfaceMethod io/homo/superresolution/api/registry/ProviderInputSnapshot.historyResetRequested:()Z
+     380: ifne          391
+     383: aload         8
+     385: invokevirtual #215                // Method io/homo/superresolution/common/framegeneration/constants/FGConstants.reset:()B
+     388: ifeq          395
+     391: iconst_1
+     392: goto          396
+     395: iconst_0
+     396: istore        17
+     398: aload_0
+     399: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     402: aload_0
+     403: invokevirtual #205                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.commandBuffer:()J
+     406: aload_2
+     407: aload         15
+     409: invokestatic  #221                // Method recordImageCopy:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;JLio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+     412: iload         17
+     414: ifeq          424
+     417: aload_2
+     418: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     421: goto          430
+     424: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     427: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     430: lstore        18
+     432: iconst_1
+     433: istore        20
+     435: iload         20
+     437: iload         6
+     439: if_icmpgt     565
+     442: iload         20
+     444: i2f
+     445: iload         7
+     447: i2f
+     448: fdiv
+     449: fstore        21
+     451: fload         11
+     453: fload         21
+     455: fmul
+     456: fstore        22
+     458: aload         16
+     460: iload         20
+     462: iconst_1
+     463: isub
+     464: invokeinterface #228,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     469: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+     472: astore        23
+     474: aload_0
+     475: iload         20
+     477: iconst_1
+     478: isub
+     479: invokevirtual #232                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.generatedFrameCommandBuffer:(I)J
+     482: lstore        24
+     484: aload_0
+     485: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     488: invokevirtual #236                // Method io/homo/superresolution/core/graphics/vulkan/VulkanDevice.getVkDevice:()Lorg/lwjgl/vulkan/VkDevice;
+     491: invokevirtual #242                // Method org/lwjgl/vulkan/VkDevice.address:()J
+     494: lload         24
+     496: lload         18
+     498: aload_2
+     499: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     502: aload_3
+     503: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     506: aload         4
+     508: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     511: aload_2
+     512: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     515: aload         23
+     517: invokevirtual #225                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getImageView:()J
+     520: aload_2
+     521: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+     524: aload_2
+     525: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+     528: fload         22
+     530: fload         21
+     532: iload         17
+     534: invokestatic  #247                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrNativeBridge.dispatchFrameFsr:(JJJJJJJJIIFFZ)I
+     537: istore        26
+     539: iload         26
+     541: ifeq          559
+     544: new           #251                // class java/lang/IllegalStateException
+     547: dup
+     548: iload         26
+     550: invokedynamic #253,  0            // InvokeDynamic #1:makeConcatWithConstants:(I)Ljava/lang/String;
+     555: invokespecial #256                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+     558: athrow
+     559: iinc          20, 1
+     562: goto          435
+     565: aload_0
+     566: iload         6
+     568: iconst_1
+     569: isub
+     570: invokevirtual #232                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.generatedFrameCommandBuffer:(I)J
+     573: lstore        20
+     575: aload_0
+     576: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     579: lload         20
+     581: aload_2
+     582: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+     585: invokestatic  #221                // Method recordImageCopy:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;JLio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+     588: aload         16
+     590: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     595: astore        22
+     597: aload         22
+     599: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     604: ifeq          628
+     607: aload         22
+     609: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     614: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+     617: astore        23
+     619: aload         23
+     621: iconst_1
+     622: invokevirtual #272                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.setCurrentLayout:(I)V
+     625: goto          597
+     628: aload         15
+     630: iconst_1
+     631: invokevirtual #272                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.setCurrentLayout:(I)V
+     634: iconst_0
+     635: putstatic     #9                  // Field historyInvalid:Z
+     638: iload         6
+     640: aload         12
+     642: aload         16
+     644: aload         14
+     646: invokevirtual #276                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.lease:(Ljava/util/List;Ljava/util/List;)Lio/homo/superresolution/api/registry/ProviderOutputLease;
+     649: iload         17
+     651: ifeq          660
+     654: getstatic     #280                // Field io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult$HistoryDisposition.RESET:Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult$HistoryDisposition;
+     657: goto          663
+     660: getstatic     #286                // Field io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult$HistoryDisposition.UNCHANGED:Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult$HistoryDisposition;
+     663: invokestatic  #289                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.success:(ILio/homo/superresolution/api/registry/ProviderOutputLease;Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult$HistoryDisposition;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+     666: areturn
+     667: astore        15
+     669: aload         14
+     671: invokestatic  #295                // Method restoreLayouts:(Ljava/util/List;)V
+     674: aload         12
+     676: invokevirtual #299                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.abort:()V
+     679: iconst_1
+     680: putstatic     #9                  // Field historyInvalid:Z
+     683: ldc_w         #302                // String dispatch-exception
+     686: ldc_w         #304                // String FSR FG dispatch exception
+     689: aload         15
+     691: invokestatic  #306                // Method reportFailureOnce:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+     694: aload         15
+     696: invokevirtual #310                // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+     699: invokedynamic #314,  0            // InvokeDynamic #2:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     704: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+     707: areturn
+     708: astore_1
+     709: iconst_1
+     710: putstatic     #9                  // Field historyInvalid:Z
+     713: ldc_w         #315                // String dispatch-outer
+     716: ldc_w         #317                // String FSR FG outer dispatch error
+     719: aload_1
+     720: invokestatic  #306                // Method reportFailureOnce:(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+     723: aload_1
+     724: invokevirtual #310                // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+     727: invokedynamic #319,  0            // InvokeDynamic #3:makeConcatWithConstants:(Ljava/lang/String;)Ljava/lang/String;
+     732: invokestatic  #58                 // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult.failed:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/AsyncFrameGenerationDispatchResult;
+     735: areturn
+    Exception table:
+       from    to  target type
+         328   666   667   Class java/lang/Throwable
+          25    71   708   Class java/lang/Throwable
+          72   105   708   Class java/lang/Throwable
+         106   249   708   Class java/lang/Throwable
+         250   666   708   Class java/lang/Throwable
+         667   707   708   Class java/lang/Throwable
+
+  private static void recordImageCopy(io.homo.superresolution.core.graphics.vulkan.VulkanDevice, long, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, io.homo.superresolution.core.graphics.vulkan.VulkanTexture);
+    Code:
+       0: invokestatic  #320                // Method org/lwjgl/system/MemoryStack.stackPush:()Lorg/lwjgl/system/MemoryStack;
+       3: astore        5
+       5: iconst_1
+       6: aload         5
+       8: invokestatic  #326                // Method org/lwjgl/vulkan/VkImageCopy.calloc:(ILorg/lwjgl/system/MemoryStack;)Lorg/lwjgl/vulkan/VkImageCopy$Buffer;
+      11: astore        6
+      13: aload         6
+      15: invokevirtual #332                // Method org/lwjgl/vulkan/VkImageCopy$Buffer.srcSubresource:()Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      18: aload_3
+      19: invokevirtual #338                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getAspectMask:()I
+      22: invokevirtual #341                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.aspectMask:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      25: iconst_0
+      26: invokevirtual #347                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.mipLevel:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      29: iconst_0
+      30: invokevirtual #350                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.baseArrayLayer:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      33: iconst_1
+      34: invokevirtual #353                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.layerCount:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      37: pop
+      38: aload         6
+      40: invokevirtual #356                // Method org/lwjgl/vulkan/VkImageCopy$Buffer.srcOffset:()Lorg/lwjgl/vulkan/VkOffset3D;
+      43: iconst_0
+      44: iconst_0
+      45: iconst_0
+      46: invokevirtual #360                // Method org/lwjgl/vulkan/VkOffset3D.set:(III)Lorg/lwjgl/vulkan/VkOffset3D;
+      49: pop
+      50: aload         6
+      52: invokevirtual #366                // Method org/lwjgl/vulkan/VkImageCopy$Buffer.dstSubresource:()Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      55: aload         4
+      57: invokevirtual #338                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getAspectMask:()I
+      60: invokevirtual #341                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.aspectMask:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      63: iconst_0
+      64: invokevirtual #347                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.mipLevel:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      67: iconst_0
+      68: invokevirtual #350                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.baseArrayLayer:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      71: iconst_1
+      72: invokevirtual #353                // Method org/lwjgl/vulkan/VkImageSubresourceLayers.layerCount:(I)Lorg/lwjgl/vulkan/VkImageSubresourceLayers;
+      75: pop
+      76: aload         6
+      78: invokevirtual #369                // Method org/lwjgl/vulkan/VkImageCopy$Buffer.dstOffset:()Lorg/lwjgl/vulkan/VkOffset3D;
+      81: iconst_0
+      82: iconst_0
+      83: iconst_0
+      84: invokevirtual #360                // Method org/lwjgl/vulkan/VkOffset3D.set:(III)Lorg/lwjgl/vulkan/VkOffset3D;
+      87: pop
+      88: aload         6
+      90: invokevirtual #372                // Method org/lwjgl/vulkan/VkImageCopy$Buffer.extent:()Lorg/lwjgl/vulkan/VkExtent3D;
+      93: aload_3
+      94: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+      97: aload_3
+      98: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+     101: iconst_1
+     102: invokevirtual #376                // Method org/lwjgl/vulkan/VkExtent3D.set:(III)Lorg/lwjgl/vulkan/VkExtent3D;
+     105: pop
+     106: new           #381                // class org/lwjgl/vulkan/VkCommandBuffer
+     109: dup
+     110: lload_1
+     111: aload_0
+     112: invokevirtual #236                // Method io/homo/superresolution/core/graphics/vulkan/VulkanDevice.getVkDevice:()Lorg/lwjgl/vulkan/VkDevice;
+     115: invokespecial #383                // Method org/lwjgl/vulkan/VkCommandBuffer."<init>":(JLorg/lwjgl/vulkan/VkDevice;)V
+     118: aload_3
+     119: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+     122: iconst_1
+     123: aload         4
+     125: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+     128: iconst_1
+     129: aload         6
+     131: invokestatic  #389                // Method org/lwjgl/vulkan/VK10.vkCmdCopyImage:(Lorg/lwjgl/vulkan/VkCommandBuffer;JIJILorg/lwjgl/vulkan/VkImageCopy$Buffer;)V
+     134: aload         5
+     136: ifnull        174
+     139: aload         5
+     141: invokevirtual #393                // Method org/lwjgl/system/MemoryStack.close:()V
+     144: goto          174
+     147: astore        6
+     149: aload         5
+     151: ifnull        171
+     154: aload         5
+     156: invokevirtual #393                // Method org/lwjgl/system/MemoryStack.close:()V
+     159: goto          171
+     162: astore        7
+     164: aload         6
+     166: aload         7
+     168: invokevirtual #396                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     171: aload         6
+     173: athrow
+     174: return
+    Exception table:
+       from    to  target type
+           5   134   147   Class java/lang/Throwable
+         154   159   162   Class java/lang/Throwable
+
+  private static java.lang.String inputFailureReason(io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchRequest, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, io.homo.superresolution.core.graphics.vulkan.VulkanTexture);
+    Code:
+       0: aload_1
+       1: ifnull        13
+       4: aload_1
+       5: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+       8: lconst_0
+       9: lcmp
+      10: ifne          17
+      13: ldc_w         #400                // String Backbuffer is null or invalid
+      16: areturn
+      17: aload_1
+      18: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+      21: sipush        128
+      24: if_icmplt     37
+      27: aload_1
+      28: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+      31: sipush        128
+      34: if_icmpge     41
+      37: ldc_w         #402                // String Backbuffer dimension is smaller than 128
+      40: areturn
+      41: aload_2
+      42: ifnull        54
+      45: aload_2
+      46: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+      49: lconst_0
+      50: lcmp
+      51: ifne          58
+      54: ldc_w         #404                // String Depth buffer is null or invalid
+      57: areturn
+      58: aload_3
+      59: ifnull        71
+      62: aload_3
+      63: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+      66: lconst_0
+      67: lcmp
+      68: ifne          75
+      71: ldc_w         #406                // String Motion vectors buffer is null or invalid
+      74: areturn
+      75: aload_0
+      76: invokevirtual #408                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.outputWidth:()I
+      79: aload_1
+      80: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+      83: if_icmpne     97
+      86: aload_0
+      87: invokevirtual #411                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.outputHeight:()I
+      90: aload_1
+      91: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+      94: if_icmpeq     101
+      97: ldc_w         #414                // String Request output dimensions do not match backbuffer dimensions
+     100: areturn
+     101: aconst_null
+     102: areturn
+
+  private static org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$OutputSlot acquireOutputSlot(io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchRequest, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, int);
+    Code:
+       0: new           #416                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey
+       3: dup
+       4: aload_1
+       5: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+       8: aload_1
+       9: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+      12: aload_1
+      13: invokevirtual #418                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getTextureFormat:()Lio/homo/superresolution/core/graphics/impl/texture/TextureFormat;
+      16: invokevirtual #422                // Method io/homo/superresolution/core/graphics/impl/texture/TextureFormat.vk:()I
+      19: iload_2
+      20: invokespecial #427                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey."<init>":(IIII)V
+      23: astore_3
+      24: aload_3
+      25: getstatic     #430                // Field outputKey:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey;
+      28: invokevirtual #434                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey.equals:(Ljava/lang/Object;)Z
+      31: ifeq          45
+      34: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+      37: invokeinterface #45,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      42: ifeq          220
+      45: invokestatic  #438                // Method hasLeasedSlots:()Z
+      48: ifeq          53
+      51: aconst_null
+      52: areturn
+      53: iload_2
+      54: invokestatic  #441                // Method outputSlotCount:(I)I
+      57: istore        4
+      59: new           #445                // class java/util/ArrayList
+      62: dup
+      63: iload         4
+      65: invokespecial #447                // Method java/util/ArrayList."<init>":(I)V
+      68: astore        5
+      70: iconst_0
+      71: istore        6
+      73: iload         6
+      75: iload         4
+      77: if_icmpge     105
+      80: aload         5
+      82: aload_0
+      83: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+      86: aload_1
+      87: iload         6
+      89: iload_2
+      90: invokestatic  #449                // Method createOutputSlot:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;II)Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot;
+      93: invokeinterface #453,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      98: pop
+      99: iinc          6, 1
+     102: goto          73
+     105: goto          152
+     108: astore        6
+     110: aload         5
+     112: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     117: astore        7
+     119: aload         7
+     121: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     126: ifeq          149
+     129: aload         7
+     131: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     136: checkcast     #197                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot
+     139: astore        8
+     141: aload         8
+     143: invokevirtual #460                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.destroy:()V
+     146: goto          119
+     149: aload         6
+     151: athrow
+     152: invokestatic  #38                 // Method destroyOutputSlots:()V
+     155: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     158: aload         5
+     160: invokeinterface #461,  2          // InterfaceMethod java/util/List.addAll:(Ljava/util/Collection;)Z
+     165: pop
+     166: aload_3
+     167: putstatic     #430                // Field outputKey:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey;
+     170: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     173: ldc_w         #465                // String Allocated {} FSR FG output slots of {} interpolated frame(s) at {}x{}
+     176: iconst_4
+     177: anewarray     #4                  // class java/lang/Object
+     180: dup
+     181: iconst_0
+     182: iload         4
+     184: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     187: aastore
+     188: dup
+     189: iconst_1
+     190: iload_2
+     191: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     194: aastore
+     195: dup
+     196: iconst_2
+     197: aload_3
+     198: invokevirtual #467                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey.width:()I
+     201: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     204: aastore
+     205: dup
+     206: iconst_3
+     207: aload_3
+     208: invokevirtual #470                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey.height:()I
+     211: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     214: aastore
+     215: invokeinterface #473,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;[Ljava/lang/Object;)V
+     220: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     223: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     228: astore        4
+     230: aload         4
+     232: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     237: ifeq          266
+     240: aload         4
+     242: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     247: checkcast     #197                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot
+     250: astore        5
+     252: aload         5
+     254: invokevirtual #477                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.acquire:()Z
+     257: ifeq          263
+     260: aload         5
+     262: areturn
+     263: goto          230
+     266: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     269: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     274: bipush        8
+     276: if_icmpge     355
+     279: aload_0
+     280: invokevirtual #182                // Method io/homo/superresolution/api/registry/AsyncFrameGenerationDispatchRequest.device:()Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;
+     283: aload_1
+     284: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     287: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     292: iload_2
+     293: invokestatic  #449                // Method createOutputSlot:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;II)Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot;
+     296: astore        4
+     298: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     301: aload         4
+     303: invokeinterface #453,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     308: pop
+     309: aload         4
+     311: invokevirtual #477                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.acquire:()Z
+     314: pop
+     315: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     318: ldc_w         #483                // String Dynamically expanded FSR FG output slots to {}
+     321: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+     324: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     329: invokestatic  #139                // Method java/lang/Integer.valueOf:(I)Ljava/lang/Integer;
+     332: invokeinterface #485,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     337: aload         4
+     339: areturn
+     340: astore        4
+     342: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     345: ldc_w         #488                // String Failed to dynamically expand FSR FG output slots
+     348: aload         4
+     350: invokeinterface #490,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+     355: aconst_null
+     356: areturn
+    Exception table:
+       from    to  target type
+          70   105   108   Class java/lang/RuntimeException
+          70   105   108   Class java/lang/Error
+         279   339   340   Class java/lang/Throwable
+
+  private static int outputSlotCount(int);
+    Code:
+       0: iconst_4
+       1: bipush        6
+       3: iload_0
+       4: iconst_1
+       5: iadd
+       6: idiv
+       7: iconst_2
+       8: iadd
+       9: invokestatic  #493                // Method java/lang/Math.max:(II)I
+      12: ireturn
+
+  private static boolean hasLeasedSlots();
+    Code:
+       0: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+       3: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       8: astore_0
+       9: aload_0
+      10: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          40
+      18: aload_0
+      19: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #197                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot
+      27: astore_1
+      28: aload_1
+      29: getfield      #495                // Field org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.leased:Z
+      32: ifeq          37
+      35: iconst_1
+      36: ireturn
+      37: goto          9
+      40: iconst_0
+      41: ireturn
+
+  private static org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$OutputSlot createOutputSlot(io.homo.superresolution.core.graphics.vulkan.VulkanDevice, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, int, int);
+    Code:
+       0: new           #445                // class java/util/ArrayList
+       3: dup
+       4: iload_3
+       5: invokespecial #447                // Method java/util/ArrayList."<init>":(I)V
+       8: astore        4
+      10: aconst_null
+      11: astore        5
+      13: iconst_0
+      14: istore        6
+      16: iload         6
+      18: iload_3
+      19: if_icmpge     49
+      22: aload         4
+      24: aload_0
+      25: aload_1
+      26: iload_2
+      27: iload         6
+      29: invokedynamic #498,  0            // InvokeDynamic #4:makeConcatWithConstants:(II)Ljava/lang/String;
+      34: invokestatic  #188                // Method createOutputTexture:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Ljava/lang/String;)Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      37: invokeinterface #453,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      42: pop
+      43: iinc          6, 1
+      46: goto          16
+      49: aload_0
+      50: aload_1
+      51: iload_2
+      52: invokedynamic #501,  0            // InvokeDynamic #5:makeConcatWithConstants:(I)Ljava/lang/String;
+      57: invokestatic  #188                // Method createOutputTexture:(Lio/homo/superresolution/core/graphics/vulkan/VulkanDevice;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;Ljava/lang/String;)Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      60: astore        5
+      62: new           #197                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot
+      65: dup
+      66: aload         4
+      68: aload         5
+      70: invokespecial #502                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot."<init>":(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      73: areturn
+      74: astore        6
+      76: aload         4
+      78: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      83: astore        7
+      85: aload         7
+      87: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      92: ifeq          115
+      95: aload         7
+      97: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     102: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+     105: astore        8
+     107: aload         8
+     109: invokevirtual #179                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.destroy:()V
+     112: goto          85
+     115: aload         5
+     117: ifnull        125
+     120: aload         5
+     122: invokevirtual #179                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.destroy:()V
+     125: aload         6
+     127: athrow
+    Exception table:
+       from    to  target type
+          13    73    74   Class java/lang/RuntimeException
+          13    73    74   Class java/lang/Error
+
+  private static io.homo.superresolution.core.graphics.vulkan.VulkanTexture createOutputTexture(io.homo.superresolution.core.graphics.vulkan.VulkanDevice, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, java.lang.String);
+    Code:
+       0: invokestatic  #505                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription.create:()Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+       3: getstatic     #511                // Field io/homo/superresolution/core/graphics/impl/texture/TextureType.Texture2D:Lio/homo/superresolution/core/graphics/impl/texture/TextureType;
+       6: invokevirtual #517                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.type:(Lio/homo/superresolution/core/graphics/impl/texture/TextureType;)Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+       9: aload_1
+      10: invokevirtual #418                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getTextureFormat:()Lio/homo/superresolution/core/graphics/impl/texture/TextureFormat;
+      13: invokevirtual #523                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.format:(Lio/homo/superresolution/core/graphics/impl/texture/TextureFormat;)Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+      16: aload_1
+      17: invokevirtual #171                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getWidth:()I
+      20: aload_1
+      21: invokevirtual #176                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getHeight:()I
+      24: invokevirtual #527                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.size:(II)Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+      27: invokestatic  #530                // Method io/homo/superresolution/core/graphics/impl/texture/TextureUsages.create:()Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;
+      30: invokevirtual #535                // Method io/homo/superresolution/core/graphics/impl/texture/TextureUsages.sampler:()Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;
+      33: invokevirtual #538                // Method io/homo/superresolution/core/graphics/impl/texture/TextureUsages.storage:()Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;
+      36: invokevirtual #541                // Method io/homo/superresolution/core/graphics/impl/texture/TextureUsages.transferSource:()Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;
+      39: invokevirtual #544                // Method io/homo/superresolution/core/graphics/impl/texture/TextureUsages.transferDestination:()Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;
+      42: invokevirtual #547                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.usages:(Lio/homo/superresolution/core/graphics/impl/texture/TextureUsages;)Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+      45: aload_2
+      46: invokevirtual #551                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.label:(Ljava/lang/String;)Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder;
+      49: invokevirtual #555                // Method io/homo/superresolution/core/graphics/impl/texture/TextureDescription$Builder.build:()Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription;
+      52: astore_3
+      53: aload_0
+      54: aload_3
+      55: invokevirtual #559                // Method io/homo/superresolution/core/graphics/vulkan/VulkanDevice.createTexture:(Lio/homo/superresolution/core/graphics/impl/texture/TextureDescription;)Lio/homo/superresolution/core/graphics/impl/texture/ITexture;
+      58: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+      61: areturn
+
+  private static void destroyOutputSlots();
+    Code:
+       0: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+       3: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       8: astore_0
+       9: aload_0
+      10: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      15: ifeq          35
+      18: aload_0
+      19: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      24: checkcast     #197                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot
+      27: astore_1
+      28: aload_1
+      29: invokevirtual #460                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$OutputSlot.destroy:()V
+      32: goto          9
+      35: getstatic     #41                 // Field outputSlots:Ljava/util/List;
+      38: invokeinterface #563,  1          // InterfaceMethod java/util/List.clear:()V
+      43: aconst_null
+      44: putstatic     #430                // Field outputKey:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$SlotKey;
+      47: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      50: ifnull        63
+      53: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      56: invokevirtual #179                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.destroy:()V
+      59: aconst_null
+      60: putstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      63: return
+
+  private static java.util.List<org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$LayoutTransition> recordTransitionsToGeneral(io.homo.superresolution.core.graphics.vulkan.VulkanDevice, long, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, io.homo.superresolution.core.graphics.vulkan.VulkanTexture, java.util.List<io.homo.superresolution.core.graphics.vulkan.VulkanTexture>, io.homo.superresolution.core.graphics.vulkan.VulkanTexture);
+    Code:
+       0: new           #445                // class java/util/ArrayList
+       3: dup
+       4: invokespecial #564                // Method java/util/ArrayList."<init>":()V
+       7: astore        8
+       9: aload         8
+      11: aload_3
+      12: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      15: aload         8
+      17: aload         4
+      19: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      22: aload         8
+      24: aload         5
+      26: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      29: aload         6
+      31: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+      36: astore        9
+      38: aload         9
+      40: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      45: ifeq          70
+      48: aload         9
+      50: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      55: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+      58: astore        10
+      60: aload         8
+      62: aload         10
+      64: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      67: goto          38
+      70: aload         8
+      72: aload         7
+      74: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      77: aload         8
+      79: getstatic     #167                // Field historyTexture:Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      82: invokestatic  #565                // Method addIfNotGeneral:(Ljava/util/List;Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)V
+      85: aload         8
+      87: invokeinterface #45,  1           // InterfaceMethod java/util/List.isEmpty:()Z
+      92: ifeq          99
+      95: invokestatic  #192                // InterfaceMethod java/util/List.of:()Ljava/util/List;
+      98: areturn
+      99: new           #445                // class java/util/ArrayList
+     102: dup
+     103: aload         8
+     105: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     110: invokespecial #447                // Method java/util/ArrayList."<init>":(I)V
+     113: astore        9
+     115: invokestatic  #320                // Method org/lwjgl/system/MemoryStack.stackPush:()Lorg/lwjgl/system/MemoryStack;
+     118: astore        10
+     120: aload         8
+     122: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     127: aload         10
+     129: invokestatic  #568                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.calloc:(ILorg/lwjgl/system/MemoryStack;)Lorg/lwjgl/vulkan/VkImageMemoryBarrier$Buffer;
+     132: astore        11
+     134: iconst_0
+     135: istore        12
+     137: iload         12
+     139: aload         8
+     141: invokeinterface #480,  1          // InterfaceMethod java/util/List.size:()I
+     146: if_icmpge     267
+     149: aload         8
+     151: iload         12
+     153: invokeinterface #228,  2          // InterfaceMethod java/util/List.get:(I)Ljava/lang/Object;
+     158: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+     161: astore        13
+     163: aload         13
+     165: invokevirtual #573                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getCurrentLayout:()I
+     168: istore        14
+     170: aload         9
+     172: new           #576                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$LayoutTransition
+     175: dup
+     176: aload         13
+     178: iload         14
+     180: invokespecial #578                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$LayoutTransition."<init>":(Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;I)V
+     183: invokeinterface #453,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+     188: pop
+     189: aload         11
+     191: iload         12
+     193: invokevirtual #581                // Method org/lwjgl/vulkan/VkImageMemoryBarrier$Buffer.get:(I)Lorg/lwjgl/system/Struct;
+     196: checkcast     #569                // class org/lwjgl/vulkan/VkImageMemoryBarrier
+     199: bipush        45
+     201: invokevirtual #586                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.sType:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     204: iload         14
+     206: ifne          213
+     209: iconst_0
+     210: goto          216
+     213: ldc_w         #590                // int 98304
+     216: invokevirtual #591                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.srcAccessMask:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     219: ldc_w         #590                // int 98304
+     222: invokevirtual #594                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.dstAccessMask:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     225: iload         14
+     227: invokevirtual #597                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.oldLayout:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     230: iconst_1
+     231: invokevirtual #600                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.newLayout:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     234: iconst_m1
+     235: invokevirtual #603                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.srcQueueFamilyIndex:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     238: iconst_m1
+     239: invokevirtual #606                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.dstQueueFamilyIndex:(I)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     242: aload         13
+     244: invokevirtual #386                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.handle:()J
+     247: invokevirtual #609                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.image:(J)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     250: aload         13
+     252: invokedynamic #613,  0            // InvokeDynamic #6:accept:(Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;)Ljava/util/function/Consumer;
+     257: invokevirtual #617                // Method org/lwjgl/vulkan/VkImageMemoryBarrier.subresourceRange:(Ljava/util/function/Consumer;)Lorg/lwjgl/vulkan/VkImageMemoryBarrier;
+     260: pop
+     261: iinc          12, 1
+     264: goto          137
+     267: new           #381                // class org/lwjgl/vulkan/VkCommandBuffer
+     270: dup
+     271: lload_1
+     272: aload_0
+     273: invokevirtual #236                // Method io/homo/superresolution/core/graphics/vulkan/VulkanDevice.getVkDevice:()Lorg/lwjgl/vulkan/VkDevice;
+     276: invokespecial #383                // Method org/lwjgl/vulkan/VkCommandBuffer."<init>":(JLorg/lwjgl/vulkan/VkDevice;)V
+     279: ldc_w         #621                // int 65536
+     282: ldc_w         #621                // int 65536
+     285: iconst_0
+     286: aconst_null
+     287: aconst_null
+     288: aload         11
+     290: invokestatic  #622                // Method org/lwjgl/vulkan/VK10.vkCmdPipelineBarrier:(Lorg/lwjgl/vulkan/VkCommandBuffer;IIILorg/lwjgl/vulkan/VkMemoryBarrier$Buffer;Lorg/lwjgl/vulkan/VkBufferMemoryBarrier$Buffer;Lorg/lwjgl/vulkan/VkImageMemoryBarrier$Buffer;)V
+     293: aload         10
+     295: ifnull        333
+     298: aload         10
+     300: invokevirtual #393                // Method org/lwjgl/system/MemoryStack.close:()V
+     303: goto          333
+     306: astore        11
+     308: aload         10
+     310: ifnull        330
+     313: aload         10
+     315: invokevirtual #393                // Method org/lwjgl/system/MemoryStack.close:()V
+     318: goto          330
+     321: astore        12
+     323: aload         11
+     325: aload         12
+     327: invokevirtual #396                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     330: aload         11
+     332: athrow
+     333: aload         8
+     335: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+     340: astore        10
+     342: aload         10
+     344: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+     349: ifeq          373
+     352: aload         10
+     354: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+     359: checkcast     #172                // class io/homo/superresolution/core/graphics/vulkan/VulkanTexture
+     362: astore        11
+     364: aload         11
+     366: iconst_1
+     367: invokevirtual #272                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.setCurrentLayout:(I)V
+     370: goto          342
+     373: aload         9
+     375: invokestatic  #626                // InterfaceMethod java/util/List.copyOf:(Ljava/util/Collection;)Ljava/util/List;
+     378: areturn
+    Exception table:
+       from    to  target type
+         120   293   306   Class java/lang/Throwable
+         313   318   321   Class java/lang/Throwable
+
+  private static void restoreLayouts(java.util.List<org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationAdapter$LayoutTransition>);
+    Code:
+       0: aload_0
+       1: invokeinterface #259,  1          // InterfaceMethod java/util/List.iterator:()Ljava/util/Iterator;
+       6: astore_1
+       7: aload_1
+       8: invokeinterface #263,  1          // InterfaceMethod java/util/Iterator.hasNext:()Z
+      13: ifeq          40
+      16: aload_1
+      17: invokeinterface #268,  1          // InterfaceMethod java/util/Iterator.next:()Ljava/lang/Object;
+      22: checkcast     #576                // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$LayoutTransition
+      25: astore_2
+      26: aload_2
+      27: invokevirtual #630                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$LayoutTransition.texture:()Lio/homo/superresolution/core/graphics/vulkan/VulkanTexture;
+      30: aload_2
+      31: invokevirtual #633                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFrameGenerationAdapter$LayoutTransition.oldLayout:()I
+      34: invokevirtual #272                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.setCurrentLayout:(I)V
+      37: goto          7
+      40: return
+
+  private static void addIfNotGeneral(java.util.List<io.homo.superresolution.core.graphics.vulkan.VulkanTexture>, io.homo.superresolution.core.graphics.vulkan.VulkanTexture);
+    Code:
+       0: aload_1
+       1: ifnull        20
+       4: aload_1
+       5: invokevirtual #573                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getCurrentLayout:()I
+       8: iconst_1
+       9: if_icmpeq     20
+      12: aload_0
+      13: aload_1
+      14: invokeinterface #453,  2          // InterfaceMethod java/util/List.add:(Ljava/lang/Object;)Z
+      19: pop
+      20: return
+
+  public static synchronized void resetSession();
+    Code:
+       0: invokestatic  #38                 // Method destroyOutputSlots:()V
+       3: iconst_1
+       4: putstatic     #9                  // Field historyInvalid:Z
+       7: aconst_null
+       8: putstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      11: getstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+      14: invokeinterface #23,  1           // InterfaceMethod java/util/Set.clear:()V
+      19: return
+
+  private static void requireFgThread();
+    Code:
+       0: invokestatic  #635                // Method java/lang/Thread.currentThread:()Ljava/lang/Thread;
+       3: astore_0
+       4: getstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+       7: ifnull        19
+      10: getstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      13: invokevirtual #641                // Method java/lang/Thread.isAlive:()Z
+      16: ifne          69
+      19: getstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      22: ifnull        62
+      25: getstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      28: aload_0
+      29: if_acmpeq     62
+      32: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+      35: ldc_w         #644                // String FSR FG worker thread replaced (old thread is dead); updating thread affinity to {}
+      38: aload_0
+      39: invokevirtual #646                // Method java/lang/Thread.getName:()Ljava/lang/String;
+      42: invokeinterface #485,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+      47: invokestatic  #38                 // Method destroyOutputSlots:()V
+      50: iconst_1
+      51: putstatic     #9                  // Field historyInvalid:Z
+      54: getstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+      57: invokeinterface #23,  1           // InterfaceMethod java/util/Set.clear:()V
+      62: aload_0
+      63: putstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      66: goto          87
+      69: getstatic     #15                 // Field fgThread:Ljava/lang/Thread;
+      72: aload_0
+      73: if_acmpeq     87
+      76: new           #251                // class java/lang/IllegalStateException
+      79: dup
+      80: ldc_w         #649                // String FSR FG session access must stay on the FG thread
+      83: invokespecial #256                // Method java/lang/IllegalStateException."<init>":(Ljava/lang/String;)V
+      86: athrow
+      87: return
+
+  private static void reportFailureOnce(java.lang.String, java.lang.String, java.lang.Throwable);
+    Code:
+       0: getstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+       3: aload_0
+       4: invokeinterface #651,  2          // InterfaceMethod java/util/Set.add:(Ljava/lang/Object;)Z
+       9: ifne          13
+      12: return
+      13: aload_2
+      14: ifnonnull     29
+      17: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+      20: aload_1
+      21: invokeinterface #652,  2          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;)V
+      26: goto          39
+      29: getstatic     #131                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+      32: aload_1
+      33: aload_2
+      34: invokeinterface #490,  3          // InterfaceMethod org/slf4j/Logger.warn:(Ljava/lang/String;Ljava/lang/Throwable;)V
+      39: return
+
+  private static void lambda$recordTransitionsToGeneral$0(io.homo.superresolution.core.graphics.vulkan.VulkanTexture, org.lwjgl.vulkan.VkImageSubresourceRange);
+    Code:
+       0: aload_1
+       1: aload_0
+       2: invokevirtual #338                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getAspectMask:()I
+       5: invokevirtual #654                // Method org/lwjgl/vulkan/VkImageSubresourceRange.aspectMask:(I)Lorg/lwjgl/vulkan/VkImageSubresourceRange;
+       8: iconst_0
+       9: invokevirtual #659                // Method org/lwjgl/vulkan/VkImageSubresourceRange.baseMipLevel:(I)Lorg/lwjgl/vulkan/VkImageSubresourceRange;
+      12: aload_0
+      13: invokevirtual #662                // Method io/homo/superresolution/core/graphics/vulkan/VulkanTexture.getMipmapSettings:()Lio/homo/superresolution/core/graphics/impl/texture/TextureMipmapSettings;
+      16: invokevirtual #666                // Method io/homo/superresolution/core/graphics/impl/texture/TextureMipmapSettings.getLevels:()I
+      19: invokevirtual #671                // Method org/lwjgl/vulkan/VkImageSubresourceRange.levelCount:(I)Lorg/lwjgl/vulkan/VkImageSubresourceRange;
+      22: iconst_0
+      23: invokevirtual #674                // Method org/lwjgl/vulkan/VkImageSubresourceRange.baseArrayLayer:(I)Lorg/lwjgl/vulkan/VkImageSubresourceRange;
+      26: iconst_1
+      27: invokevirtual #676                // Method org/lwjgl/vulkan/VkImageSubresourceRange.layerCount:(I)Lorg/lwjgl/vulkan/VkImageSubresourceRange;
+      30: pop
+      31: return
+
+  static {};
+    Code:
+       0: invokestatic  #678                // Method java/util/concurrent/ConcurrentHashMap.newKeySet:()Ljava/util/concurrent/ConcurrentHashMap$KeySetView;
+       3: putstatic     #19                 // Field REPORTED_FAILURES:Ljava/util/Set;
+       6: iconst_0
+       7: putstatic     #28                 // Field latencyWarningReported:Z
+      10: lconst_0
+      11: putstatic     #31                 // Field lastDispatchNanos:J
+      14: new           #445                // class java/util/ArrayList
+      17: dup
+      18: invokespecial #564                // Method java/util/ArrayList."<init>":()V
+      21: putstatic     #41                 // Field outputSlots:Ljava/util/List;
+      24: return
+}
+Compiled from "FsrNativeBridge.java"
+public final class org.ireallywanttosleep.wisteria.backend.fsr.FsrNativeBridge {
+  private static volatile boolean nativeLoaded;
+
+  private org.ireallywanttosleep.wisteria.backend.fsr.FsrNativeBridge();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public static boolean isNativeLoaded();
+    Code:
+       0: getstatic     #7                  // Field nativeLoaded:Z
+       3: ireturn
+
+  public static void setNativeLoaded(boolean);
+    Code:
+       0: iload_0
+       1: putstatic     #7                  // Field nativeLoaded:Z
+       4: return
+
+  public static native void setAlgorithm(int);
+
+  public static native void setMultiplier(int);
+
+  public static native void setFsrBackend(int);
+
+  public static native int dispatchFrameFsr(long, long, long, long, long, long, long, long, int, int, float, float, boolean);
+
+  static {};
+    Code:
+       0: iconst_0
+       1: putstatic     #7                  // Field nativeLoaded:Z
+       4: getstatic     #13                 // Field io/homo/superresolution/core/SuperResolutionConstants.NATIVE_LIBRARIES_DIR:Lio/homo/superresolution/core/utils/DirectoryEnsurer;
+       7: invokevirtual #19                 // Method io/homo/superresolution/core/utils/DirectoryEnsurer.getPath:()Ljava/nio/file/Path;
+      10: astore_0
+      11: ldc           #25                 // String os.name
+      13: ldc           #27                 // String
+      15: invokestatic  #29                 // Method java/lang/System.getProperty:(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+      18: invokevirtual #35                 // Method java/lang/String.toLowerCase:()Ljava/lang/String;
+      21: astore_1
+      22: aload_1
+      23: ldc           #41                 // String win
+      25: invokevirtual #43                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      28: ifeq          40
+      31: ldc           #47                 // String WisteriaNative.dll
+      33: astore_2
+      34: ldc           #49                 // String /natives/WisteriaNative.dll
+      36: astore_3
+      37: goto          64
+      40: aload_1
+      41: ldc           #51                 // String mac
+      43: invokevirtual #43                 // Method java/lang/String.contains:(Ljava/lang/CharSequence;)Z
+      46: ifeq          58
+      49: ldc           #53                 // String libWisteriaNative.dylib
+      51: astore_2
+      52: ldc           #55                 // String /natives/libWisteriaNative.dylib
+      54: astore_3
+      55: goto          64
+      58: ldc           #57                 // String libWisteriaNative.so
+      60: astore_2
+      61: ldc           #59                 // String /natives/libWisteriaNative.so
+      63: astore_3
+      64: aload_0
+      65: aload_2
+      66: invokeinterface #61,  2           // InterfaceMethod java/nio/file/Path.resolve:(Ljava/lang/String;)Ljava/nio/file/Path;
+      71: astore        4
+      73: ldc           #8                  // class org/ireallywanttosleep/wisteria/backend/fsr/FsrNativeBridge
+      75: aload_3
+      76: invokevirtual #67                 // Method java/lang/Class.getResourceAsStream:(Ljava/lang/String;)Ljava/io/InputStream;
+      79: astore        5
+      81: aload         5
+      83: ifnull        113
+      86: aload_0
+      87: iconst_0
+      88: anewarray     #73                 // class java/nio/file/attribute/FileAttribute
+      91: invokestatic  #75                 // Method java/nio/file/Files.createDirectories:(Ljava/nio/file/Path;[Ljava/nio/file/attribute/FileAttribute;)Ljava/nio/file/Path;
+      94: pop
+      95: aload         5
+      97: aload         4
+      99: iconst_1
+     100: anewarray     #81                 // class java/nio/file/CopyOption
+     103: dup
+     104: iconst_0
+     105: getstatic     #83                 // Field java/nio/file/StandardCopyOption.REPLACE_EXISTING:Ljava/nio/file/StandardCopyOption;
+     108: aastore
+     109: invokestatic  #89                 // Method java/nio/file/Files.copy:(Ljava/io/InputStream;Ljava/nio/file/Path;[Ljava/nio/file/CopyOption;)J
+     112: pop2
+     113: aload         5
+     115: ifnull        153
+     118: aload         5
+     120: invokevirtual #93                 // Method java/io/InputStream.close:()V
+     123: goto          153
+     126: astore        6
+     128: aload         5
+     130: ifnull        150
+     133: aload         5
+     135: invokevirtual #93                 // Method java/io/InputStream.close:()V
+     138: goto          150
+     141: astore        7
+     143: aload         6
+     145: aload         7
+     147: invokevirtual #100                // Method java/lang/Throwable.addSuppressed:(Ljava/lang/Throwable;)V
+     150: aload         6
+     152: athrow
+     153: goto          158
+     156: astore        5
+     158: aload         4
+     160: iconst_0
+     161: anewarray     #104                // class java/nio/file/LinkOption
+     164: invokestatic  #106                // Method java/nio/file/Files.exists:(Ljava/nio/file/Path;[Ljava/nio/file/LinkOption;)Z
+     167: ifeq          204
+     170: aload         4
+     172: invokeinterface #110,  1          // InterfaceMethod java/nio/file/Path.toAbsolutePath:()Ljava/nio/file/Path;
+     177: invokeinterface #113,  1          // InterfaceMethod java/nio/file/Path.toString:()Ljava/lang/String;
+     182: invokestatic  #116                // Method java/lang/System.load:(Ljava/lang/String;)V
+     185: iconst_1
+     186: putstatic     #7                  // Field nativeLoaded:Z
+     189: getstatic     #120                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     192: ldc           #126                // String Successfully loaded WisteriaNative library from {}
+     194: aload         4
+     196: invokeinterface #128,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;Ljava/lang/Object;)V
+     201: goto          223
+     204: ldc           #134                // String WisteriaNative
+     206: invokestatic  #136                // Method java/lang/System.loadLibrary:(Ljava/lang/String;)V
+     209: iconst_1
+     210: putstatic     #7                  // Field nativeLoaded:Z
+     213: getstatic     #120                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     216: ldc           #139                // String Successfully loaded WisteriaNative library via System.loadLibrary
+     218: invokeinterface #141,  2          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;)V
+     223: goto          245
+     226: astore_0
+     227: getstatic     #120                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     230: ldc           #143                // String Failed to load WisteriaNative library: {}
+     232: aload_0
+     233: invokevirtual #145                // Method java/lang/Throwable.getMessage:()Ljava/lang/String;
+     236: invokeinterface #148,  3          // InterfaceMethod org/slf4j/Logger.error:(Ljava/lang/String;Ljava/lang/Object;)V
+     241: iconst_0
+     242: putstatic     #7                  // Field nativeLoaded:Z
+     245: return
+    Exception table:
+       from    to  target type
+          81   113   126   Class java/lang/Throwable
+         133   138   141   Class java/lang/Throwable
+          73   153   156   Class java/lang/Throwable
+           4   223   226   Class java/lang/Throwable
+}
+Compiled from "WisteriaFrameGeneration.java"
+public final class org.ireallywanttosleep.wisteria.backend.WisteriaFrameGeneration {
+  public static final java.lang.String STREAMLINE_ID;
+
+  public static final java.lang.String NGX_ID;
+
+  public static final io.homo.superresolution.api.registry.BackendGroup FSR_FG;
+
+  public static final java.lang.String FSR_ID;
+
+  public static final java.lang.String FSR_VULKAN_ID;
+
+  public static final java.lang.String FSR_D3D12_ID;
+
+  private org.ireallywanttosleep.wisteria.backend.WisteriaFrameGeneration();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  private static io.homo.superresolution.common.config.special.SpecialConfigDescription<org.ireallywanttosleep.wisteria.backend.DlssFgBackend> dlssFgBackendOption();
+    Code:
+       0: ldc           #7                  // String dlss_fg_backend
+       2: getstatic     #9                  // Field io/homo/superresolution/common/config/ConfigSpecType.ENUM:Lio/homo/superresolution/common/config/ConfigSpecType;
+       5: getstatic     #15                 // Field org/ireallywanttosleep/wisteria/backend/DlssFgBackend.AUTO:Lorg/ireallywanttosleep/wisteria/backend/DlssFgBackend;
+       8: invokestatic  #21                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.of:(Ljava/lang/String;Lio/homo/superresolution/common/config/ConfigSpecType;Ljava/lang/Object;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      11: ldc           #27                 // String wisteria.screen.config.special.dlss_fg.backend.name
+      13: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      16: invokevirtual #35                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      19: ldc           #39                 // String wisteria.screen.config.special.dlss_fg.backend.tooltip
+      21: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      24: invokevirtual #41                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setTooltip:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      27: ldc           #16                 // class org/ireallywanttosleep/wisteria/backend/DlssFgBackend
+      29: invokevirtual #44                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setClazz:(Ljava/lang/Class;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      32: invokedynamic #48,  0             // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      37: invokevirtual #52                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setValueNameSupplier:(Ljava/util/function/Function;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      40: invokedynamic #56,  0             // InvokeDynamic #1:get:()Ljava/util/function/Supplier;
+      45: invokevirtual #60                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setValueSupplier:(Ljava/util/function/Supplier;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      48: invokedynamic #64,  0             // InvokeDynamic #2:test:()Ljava/util/function/Predicate;
+      53: invokevirtual #68                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setItemEnableRequirement:(Ljava/util/function/Predicate;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      56: invokedynamic #72,  0             // InvokeDynamic #3:accept:()Ljava/util/function/Consumer;
+      61: invokevirtual #76                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setSaveConsumer:(Ljava/util/function/Consumer;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      64: iconst_1
+      65: invokevirtual #80                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setRequiresRestartGame:(Z)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      68: areturn
+
+  private static io.homo.superresolution.common.config.special.SpecialConfigDescription<org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend> fsrFgBackendOption();
+    Code:
+       0: ldc           #84                 // String fsr_fg_backend
+       2: getstatic     #9                  // Field io/homo/superresolution/common/config/ConfigSpecType.ENUM:Lio/homo/superresolution/common/config/ConfigSpecType;
+       5: getstatic     #86                 // Field org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend.AUTO:Lorg/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend;
+       8: invokestatic  #21                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.of:(Ljava/lang/String;Lio/homo/superresolution/common/config/ConfigSpecType;Ljava/lang/Object;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      11: ldc           #91                 // String wisteria.screen.config.special.fsr_fg.backend.name
+      13: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      16: invokevirtual #35                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      19: ldc           #93                 // String wisteria.screen.config.special.fsr_fg.backend.tooltip
+      21: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      24: invokevirtual #41                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setTooltip:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      27: ldc           #87                 // class org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend
+      29: invokevirtual #44                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setClazz:(Ljava/lang/Class;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      32: invokedynamic #95,  0             // InvokeDynamic #4:apply:()Ljava/util/function/Function;
+      37: invokevirtual #52                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setValueNameSupplier:(Ljava/util/function/Function;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      40: invokedynamic #96,  0             // InvokeDynamic #5:get:()Ljava/util/function/Supplier;
+      45: invokevirtual #60                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setValueSupplier:(Ljava/util/function/Supplier;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      48: invokedynamic #97,  0             // InvokeDynamic #6:test:()Ljava/util/function/Predicate;
+      53: invokevirtual #68                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setItemEnableRequirement:(Ljava/util/function/Predicate;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      56: invokedynamic #98,  0             // InvokeDynamic #7:accept:()Ljava/util/function/Consumer;
+      61: invokevirtual #76                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setSaveConsumer:(Ljava/util/function/Consumer;)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      64: iconst_1
+      65: invokevirtual #80                 // Method io/homo/superresolution/common/config/special/SpecialConfigDescription.setRequiresRestartGame:(Z)Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      68: areturn
+
+  public static void register();
+    Code:
+       0: getstatic     #99                 // Field io/homo/superresolution/api/SuperResolutionAPI.EVENT_BUS:Lnet/neoforged/bus/api/IEventBus;
+       3: ldc           #105                // class io/homo/superresolution/api/event/FrameGenerationRegisterEvent
+       5: invokedynamic #107,  0            // InvokeDynamic #8:accept:()Ljava/util/function/Consumer;
+      10: invokeinterface #108,  3          // InterfaceMethod net/neoforged/bus/api/IEventBus.addListener:(Ljava/lang/Class;Ljava/util/function/Consumer;)V
+      15: return
+
+  private static void lambda$register$3(io.homo.superresolution.api.event.FrameGenerationRegisterEvent);
+    Code:
+       0: invokestatic  #114                // Method io/homo/superresolution/api/registry/FrameGenerationDescription.builder:()Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+       3: ldc           #122                // String wisteria:ngx
+       5: invokevirtual #124                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.id:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+       8: ldc           #130                // String NVNGX
+      10: invokestatic  #132                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      13: invokevirtual #135                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.displayName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      16: getstatic     #139                // Field io/homo/superresolution/api/registry/FrameGenerationGroups.DLSS_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+      19: invokevirtual #145                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.group:(Lio/homo/superresolution/api/registry/BackendGroup;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      22: sipush        200
+      25: invokevirtual #149                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.priority:(I)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      28: getstatic     #153                // Field io/homo/superresolution/api/registry/FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC:Lio/homo/superresolution/api/registry/FrameGenerationExecutionModel;
+      31: invokevirtual #159                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.executionModel:(Lio/homo/superresolution/api/registry/FrameGenerationExecutionModel;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      34: ldc           #165                // String wisteria:reflex_streamline
+      36: invokestatic  #167                // Method io/homo/superresolution/api/registry/LowLatencyBinding.excludes:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/LowLatencyBinding;
+      39: invokevirtual #173                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.lowLatencyBinding:(Lio/homo/superresolution/api/registry/LowLatencyBinding;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      42: invokestatic  #177                // Method dlssFgBackendOption:()Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+      45: invokevirtual #181                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.addOptionDescription:(Lio/homo/superresolution/common/config/special/SpecialConfigDescription;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      48: invokedynamic #185,  0            // InvokeDynamic #9:get:()Ljava/util/function/Supplier;
+      53: invokevirtual #186                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.providerFactory:(Ljava/util/function/Supplier;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      56: invokevirtual #190                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.build:()Lio/homo/superresolution/api/registry/FrameGenerationDescription;
+      59: invokestatic  #194                // Method io/homo/superresolution/api/registry/FrameGenerationRegistry.register:(Lio/homo/superresolution/api/registry/FrameGenerationDescription;)V
+      62: invokestatic  #114                // Method io/homo/superresolution/api/registry/FrameGenerationDescription.builder:()Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      65: ldc           #200                // String wisteria:streamline
+      67: invokevirtual #124                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.id:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      70: ldc           #202                // String Streamline
+      72: invokestatic  #132                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+      75: invokevirtual #135                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.displayName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      78: getstatic     #139                // Field io/homo/superresolution/api/registry/FrameGenerationGroups.DLSS_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+      81: invokevirtual #145                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.group:(Lio/homo/superresolution/api/registry/BackendGroup;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      84: bipush        100
+      86: invokevirtual #149                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.priority:(I)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+      89: invokestatic  #204                // Method io/homo/superresolution/api/utils/Requirement.nothing:()Lio/homo/superresolution/api/utils/Requirement;
+      92: invokedynamic #210,  0            // InvokeDynamic #10:get:()Ljava/util/function/Supplier;
+      97: invokevirtual #211                // Method io/homo/superresolution/api/utils/Requirement.isTrue:(Ljava/util/function/Supplier;)Lio/homo/superresolution/api/utils/Requirement;
+     100: invokevirtual #215                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.requirement:(Lio/homo/superresolution/api/utils/Requirement;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     103: ldc           #165                // String wisteria:reflex_streamline
+     105: invokestatic  #219                // Method io/homo/superresolution/api/registry/LowLatencyBinding.requires:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/LowLatencyBinding;
+     108: invokevirtual #173                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.lowLatencyBinding:(Lio/homo/superresolution/api/registry/LowLatencyBinding;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     111: invokestatic  #177                // Method dlssFgBackendOption:()Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+     114: invokevirtual #181                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.addOptionDescription:(Lio/homo/superresolution/common/config/special/SpecialConfigDescription;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     117: invokedynamic #222,  0            // InvokeDynamic #11:get:()Ljava/util/function/Supplier;
+     122: invokevirtual #186                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.providerFactory:(Ljava/util/function/Supplier;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     125: invokevirtual #190                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.build:()Lio/homo/superresolution/api/registry/FrameGenerationDescription;
+     128: invokestatic  #194                // Method io/homo/superresolution/api/registry/FrameGenerationRegistry.register:(Lio/homo/superresolution/api/registry/FrameGenerationDescription;)V
+     131: getstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+     134: invokevirtual #226                // Method io/homo/superresolution/api/registry/BackendGroup.getId:()Ljava/lang/String;
+     137: invokestatic  #232                // Method io/homo/superresolution/api/registry/FrameGenerationRegistry.isRegistered:(Ljava/lang/String;)Z
+     140: ifne          179
+     143: invokestatic  #114                // Method io/homo/superresolution/api/registry/FrameGenerationDescription.builder:()Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     146: getstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+     149: invokevirtual #226                // Method io/homo/superresolution/api/registry/BackendGroup.getId:()Ljava/lang/String;
+     152: invokevirtual #124                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.id:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     155: getstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+     158: invokevirtual #236                // Method io/homo/superresolution/api/registry/BackendGroup.getDisplayName:()Lnet/minecraft/network/chat/Component;
+     161: invokevirtual #135                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.displayName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     164: invokevirtual #240                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.automatic:()Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     167: getstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+     170: invokevirtual #145                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.group:(Lio/homo/superresolution/api/registry/BackendGroup;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     173: invokevirtual #190                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.build:()Lio/homo/superresolution/api/registry/FrameGenerationDescription;
+     176: invokestatic  #194                // Method io/homo/superresolution/api/registry/FrameGenerationRegistry.register:(Lio/homo/superresolution/api/registry/FrameGenerationDescription;)V
+     179: invokestatic  #114                // Method io/homo/superresolution/api/registry/FrameGenerationDescription.builder:()Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     182: ldc           #243                // String wisteria:fsr
+     184: invokevirtual #124                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.id:(Ljava/lang/String;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     187: ldc           #245                // String FSR 3.1
+     189: invokestatic  #132                // InterfaceMethod net/minecraft/network/chat/Component.literal:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+     192: invokevirtual #135                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.displayName:(Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     195: getstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+     198: invokevirtual #145                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.group:(Lio/homo/superresolution/api/registry/BackendGroup;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     201: sipush        150
+     204: invokevirtual #149                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.priority:(I)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     207: getstatic     #153                // Field io/homo/superresolution/api/registry/FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC:Lio/homo/superresolution/api/registry/FrameGenerationExecutionModel;
+     210: invokevirtual #159                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.executionModel:(Lio/homo/superresolution/api/registry/FrameGenerationExecutionModel;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     213: invokestatic  #247                // Method fsrFgBackendOption:()Lio/homo/superresolution/common/config/special/SpecialConfigDescription;
+     216: invokevirtual #181                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.addOptionDescription:(Lio/homo/superresolution/common/config/special/SpecialConfigDescription;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     219: invokedynamic #250,  0            // InvokeDynamic #12:get:()Ljava/util/function/Supplier;
+     224: invokevirtual #186                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.providerFactory:(Ljava/util/function/Supplier;)Lio/homo/superresolution/api/registry/FrameGenerationDescription$Builder;
+     227: invokevirtual #190                // Method io/homo/superresolution/api/registry/FrameGenerationDescription$Builder.build:()Lio/homo/superresolution/api/registry/FrameGenerationDescription;
+     230: invokestatic  #194                // Method io/homo/superresolution/api/registry/FrameGenerationRegistry.register:(Lio/homo/superresolution/api/registry/FrameGenerationDescription;)V
+     233: getstatic     #251                // Field org/ireallywanttosleep/wisteria/Wisteria.LOGGER:Lorg/slf4j/Logger;
+     236: ldc_w         #257                // String Registered frame generation backends {}, {} and {}
+     239: iconst_3
+     240: anewarray     #2                  // class java/lang/Object
+     243: dup
+     244: iconst_0
+     245: ldc           #200                // String wisteria:streamline
+     247: aastore
+     248: dup
+     249: iconst_1
+     250: ldc           #122                // String wisteria:ngx
+     252: aastore
+     253: dup
+     254: iconst_2
+     255: ldc           #243                // String wisteria:fsr
+     257: aastore
+     258: invokeinterface #259,  3          // InterfaceMethod org/slf4j/Logger.info:(Ljava/lang/String;[Ljava/lang/Object;)V
+     263: return
+
+  private static java.lang.Boolean lambda$register$2();
+    Code:
+       0: invokestatic  #265                // Method io/homo/superresolution/core/streamline/Streamline.isSupportedPlatform:()Z
+       3: ifeq          28
+       6: invokestatic  #271                // Method io/homo/superresolution/core/streamline/Streamline.isNativeAvailable:()Z
+       9: ifeq          28
+      12: invokestatic  #274                // Method io/homo/superresolution/core/streamline/Streamline.isInitialized:()Z
+      15: ifeq          28
+      18: invokestatic  #277                // Method io/homo/superresolution/common/presentation/vulkan/VulkanPresentationFeature.shouldInitializeStreamline:()Z
+      21: ifeq          28
+      24: iconst_1
+      25: goto          29
+      28: iconst_0
+      29: invokestatic  #282                // Method java/lang/Boolean.valueOf:(Z)Ljava/lang/Boolean;
+      32: areturn
+
+  private static java.util.Optional lambda$fsrFgBackendOption$1(org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend);
+    Code:
+       0: aload_0
+       1: invokevirtual #288                // Method org/ireallywanttosleep/wisteria/backend/fsr/FsrFgBackend.translationKey:()Ljava/lang/String;
+       4: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       7: invokestatic  #291                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: areturn
+
+  private static java.util.Optional lambda$dlssFgBackendOption$0(org.ireallywanttosleep.wisteria.backend.DlssFgBackend);
+    Code:
+       0: aload_0
+       1: invokevirtual #296                // Method org/ireallywanttosleep/wisteria/backend/DlssFgBackend.translationKey:()Ljava/lang/String;
+       4: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       7: invokestatic  #291                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+      10: areturn
+
+  static {};
+    Code:
+       0: ldc_w         #297                // String wisteria:fsr_fg
+       3: ldc_w         #299                // String wisteria.algorithm.frame_generation.fsr
+       6: invokestatic  #29                 // InterfaceMethod net/minecraft/network/chat/Component.translatable:(Ljava/lang/String;)Lnet/minecraft/network/chat/MutableComponent;
+       9: invokestatic  #301                // Method io/homo/superresolution/api/registry/BackendGroup.of:(Ljava/lang/String;Lnet/minecraft/network/chat/Component;)Lio/homo/superresolution/api/registry/BackendGroup;
+      12: putstatic     #223                // Field FSR_FG:Lio/homo/superresolution/api/registry/BackendGroup;
+      15: return
+}

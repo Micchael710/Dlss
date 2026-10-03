@@ -1,0 +1,28 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :auditRuntimeProfile FAILED
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\ProjectDllsss\runtime-baseline\build.gradle' line: 61
+
+* What went wrong:
+Execution failed for task ':auditRuntimeProfile' (registered in build file 'build.gradle').
+> Could not resolve all artifacts for configuration ':runtimeClasspath'.
+   > Could not find dev.architectury:architectury-neoforge:13.0.6.
+     Searched in the following locations:
+       - https://maven.neoforged.net/releases/dev/architectury/architectury-neoforge/13.0.6/architectury-neoforge-13.0.6.pom
+       - https://repo.maven.apache.org/maven2/dev/architectury/architectury-neoforge/13.0.6/architectury-neoforge-13.0.6.pom
+       - https://libraries.minecraft.net/dev/architectury/architectury-neoforge/13.0.6/architectury-neoforge-13.0.6.pom
+     Required by:
+         root project 'isolated-baseline-runtime'
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 21s
+1 actionable task: 1 executed

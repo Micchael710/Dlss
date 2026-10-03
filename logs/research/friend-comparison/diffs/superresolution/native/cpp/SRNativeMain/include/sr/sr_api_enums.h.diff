@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeMain/include/sr/sr_api_enums.h
++++ friend/native/cpp/SRNativeMain/include/sr/sr_api_enums.h
+@@ -59,4 +59,4 @@
+ 
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

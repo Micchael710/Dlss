@@ -1,0 +1,171 @@
+{"timestamp_ns":59272670216800,"pid":1081088,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-205509-501\\component\\dlssg_sm86.dll"}
+{"timestamp_ns":59272680510100,"pid":1081088,"type":"external_load_complete","detail":"00007FFD81400000"}
+{"timestamp_ns":59272805126200,"pid":1081088,"type":"vulkan_result","detail":"instance extension count=0"}
+{"timestamp_ns":59272807821700,"pid":1081088,"type":"vulkan_result","detail":"instance extensions=0"}
+{"timestamp_ns":59272810483800,"pid":1081088,"type":"vulkan_result","detail":"layer count=0"}
+{"timestamp_ns":59272812935400,"pid":1081088,"type":"vulkan_result","detail":"layers=0"}
+{"timestamp_ns":59272873154300,"pid":1081088,"type":"vulkan_result","detail":"vkCreateInstance=0"}
+{"timestamp_ns":59272873350500,"pid":1081088,"type":"vulkan_result","detail":"debug messenger=0"}
+{"timestamp_ns":59272876121000,"pid":1081088,"type":"vulkan_result","detail":"physical device count=0"}
+{"timestamp_ns":59272879220400,"pid":1081088,"type":"vulkan_result","detail":"physical devices=0"}
+{"timestamp_ns":59272879333200,"pid":1081088,"type":"vulkan_result","detail":"device extension count=0"}
+{"timestamp_ns":59272879353800,"pid":1081088,"type":"vulkan_result","detail":"device extensions=0"}
+{"timestamp_ns":59274535071500,"pid":1081088,"type":"vulkan_result","detail":"vkCreateDevice=0"}
+{"timestamp_ns":59274538464200,"pid":1081088,"type":"vulkan_result","detail":"vkCreateCommandPool=0"}
+{"timestamp_ns":59274539726600,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateCommandBuffers=0"}
+{"timestamp_ns":59274539799800,"pid":1081088,"type":"vulkan_result","detail":"vkCreateFence=0"}
+{"timestamp_ns":59274539826900,"pid":1081088,"type":"vulkan_result","detail":"timestamp pool=0"}
+{"timestamp_ns":59275745629000,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275747090600,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275747235300,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275747348300,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275747444600,"pid":1081088,"type":"resource","detail":"A image=0000019ED2C7FE10 view=0000019EE3CC9CC0 format=37"}
+{"timestamp_ns":59275747478400,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275747710000,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275747734700,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275747756000,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275747770800,"pid":1081088,"type":"resource","detail":"B image=0000019EDC77AD10 view=0000019EE3CC7800 format=37"}
+{"timestamp_ns":59275747803100,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275748073200,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275748565700,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275748808900,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275748898700,"pid":1081088,"type":"resource","detail":"G1 image=0000019EDC77B8B0 view=0000019EE3CC7170 format=37"}
+{"timestamp_ns":59275748933600,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275749680900,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275749715900,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275749763800,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275749780000,"pid":1081088,"type":"resource","detail":"warmup image=0000019EDC77BE80 view=0000019EE3CCA4A0 format=37"}
+{"timestamp_ns":59275749806200,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275750568700,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275750675500,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275750708300,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275750722200,"pid":1081088,"type":"resource","detail":"depth image=0000019EDC77B2E0 view=0000019EE3CC94E0 format=100"}
+{"timestamp_ns":59275750738000,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImage=0"}
+{"timestamp_ns":59275751281100,"pid":1081088,"type":"vulkan_result","detail":"image memory=0"}
+{"timestamp_ns":59275751312600,"pid":1081088,"type":"vulkan_result","detail":"vkBindImageMemory=0"}
+{"timestamp_ns":59275751332000,"pid":1081088,"type":"vulkan_result","detail":"vkCreateImageView=0"}
+{"timestamp_ns":59275751344100,"pid":1081088,"type":"resource","detail":"motion image=0000019EDC77C450 view=0000019EE3CCA740 format=103"}
+{"timestamp_ns":59275770144100,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275770452700,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275770475400,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275770485500,"pid":1081088,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":59275771179700,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275773628400,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275777317200,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275777360700,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275777840600,"pid":1081088,"type":"submit","detail":"fixture upload sequence=1 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275780353400,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275780408500,"pid":1081088,"type":"completion","detail":"fixture upload sequence=1 result=0"}
+{"timestamp_ns":59275785324300,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275785373700,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275787559700,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275787611700,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275787625200,"pid":1081088,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":59275789348400,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275789396300,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275791149700,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275791183200,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275791286500,"pid":1081088,"type":"submit","detail":"fixture upload sequence=2 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275792849000,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275792917500,"pid":1081088,"type":"completion","detail":"fixture upload sequence=2 result=0"}
+{"timestamp_ns":59275797572600,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275797616800,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275797930100,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275797952000,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275797964400,"pid":1081088,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":59275800625100,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275800675700,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275802394200,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275802462100,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275802635600,"pid":1081088,"type":"submit","detail":"fixture upload sequence=3 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275804046400,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275804086600,"pid":1081088,"type":"completion","detail":"fixture upload sequence=3 result=0"}
+{"timestamp_ns":59275809277300,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275809376100,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275809731000,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275809755300,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275809797300,"pid":1081088,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":59275812979600,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275813032500,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275814580600,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275814611400,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275814713500,"pid":1081088,"type":"submit","detail":"fixture upload sequence=4 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275816878500,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275816978000,"pid":1081088,"type":"completion","detail":"fixture upload sequence=4 result=0"}
+{"timestamp_ns":59275820467700,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275820510500,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275820862600,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275820888100,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275820899300,"pid":1081088,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":59275829544000,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275829606300,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275831416300,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275831465600,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275831606200,"pid":1081088,"type":"submit","detail":"fixture upload sequence=5 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275833076800,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275833117800,"pid":1081088,"type":"completion","detail":"fixture upload sequence=5 result=0"}
+{"timestamp_ns":59275836350700,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275836413600,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275836744700,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275836765600,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275836792500,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275836811500,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275839679100,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275839724400,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275839842400,"pid":1081088,"type":"submit","detail":"A readback sequence=6 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275842396600,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275845068400,"pid":1081088,"type":"completion","detail":"A readback sequence=6 result=0"}
+{"timestamp_ns":59275848073200,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275848104300,"pid":1081088,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":59275926444900,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59275926803400,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59275926850900,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59275926919100,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59275926950800,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59275929398900,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59275929564800,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59275929759300,"pid":1081088,"type":"submit","detail":"B readback sequence=7 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59275931509400,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59275931554700,"pid":1081088,"type":"completion","detail":"B readback sequence=7 result=0"}
+{"timestamp_ns":59275935152000,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59275935202800,"pid":1081088,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":59276012725800,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59276012997900,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59276013021700,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59276013049000,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59276013072500,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59276014672600,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59276014702200,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59276014795900,"pid":1081088,"type":"submit","detail":"depth readback sequence=8 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59276016667600,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59276016738100,"pid":1081088,"type":"completion","detail":"depth readback sequence=8 result=0"}
+{"timestamp_ns":59276020062600,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59276020096500,"pid":1081088,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":59276046918200,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59276047276800,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59276047304800,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59276047328800,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59276047351300,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59276048909300,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59276048942400,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59276049037300,"pid":1081088,"type":"submit","detail":"motion readback sequence=9 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59276050757500,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59276052862500,"pid":1081088,"type":"completion","detail":"motion readback sequence=9 result=0"}
+{"timestamp_ns":59276056342100,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59276056417400,"pid":1081088,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":59276107839100,"pid":1081088,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":59276108474500,"pid":1081088,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":59276108535600,"pid":1081088,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":59276108602100,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59276108652800,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59276110812000,"pid":1081088,"type":"vulkan_result","detail":"vkEndCommandBuffer=0"}
+{"timestamp_ns":59276110853400,"pid":1081088,"type":"vulkan_result","detail":"vkResetFences=0"}
+{"timestamp_ns":59276110967000,"pid":1081088,"type":"submit","detail":"sentinel readback sequence=10 result=0 commandBuffer=0000019EE3A5D000 fence=0000019EDBC28030"}
+{"timestamp_ns":59276112427200,"pid":1081088,"type":"vulkan_result","detail":"vkQueueSubmit=0"}
+{"timestamp_ns":59276112465300,"pid":1081088,"type":"completion","detail":"sentinel readback sequence=10 result=0"}
+{"timestamp_ns":59276116176400,"pid":1081088,"type":"vulkan_result","detail":"vkWaitForFences=0"}
+{"timestamp_ns":59276116208800,"pid":1081088,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":59276194036700,"pid":1081088,"type":"vulkan_result","detail":"vkResetCommandBuffer=0"}
+{"timestamp_ns":59276194112900,"pid":1081088,"type":"vulkan_result","detail":"vkBeginCommandBuffer=0"}
+{"timestamp_ns":59276194141500,"pid":1081088,"type":"create_begin","detail":"0000019EE3A5D000"}
+{"timestamp_ns":59276230243000,"pid":1081088,"type":"failure","detail":"CreateFeature failed 0xbad00002"}

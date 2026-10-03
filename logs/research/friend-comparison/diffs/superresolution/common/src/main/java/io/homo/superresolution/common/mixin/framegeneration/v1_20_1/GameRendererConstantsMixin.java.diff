@@ -1,0 +1,40 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/framegeneration/v1_20_1/GameRendererConstantsMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/framegeneration/v1_20_1/GameRendererConstantsMixin.java
+@@ -20,6 +20,7 @@
+ 
+ #if MC_VER == MC_1_20_1
+ import com.mojang.blaze3d.vertex.PoseStack;
++import io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat;
+ import io.homo.superresolution.common.framegeneration.constants.FGConstantsFeature;
+ import io.homo.superresolution.common.framegeneration.constants.MinecraftCameraState;
+ import net.minecraft.client.Camera;
+@@ -50,6 +51,9 @@
+             double d0
+             //fov
+     ) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         MinecraftCameraState.fov = (float) d0;
+     }
+ 
+@@ -59,6 +63,9 @@
+ 		require = 1
+ 	)
+ 	private void super_resolution$beginConstantsFrame(float partialTicks, long nanoTime, boolean renderLevel, CallbackInfo ci) {
++		if (ImmersivePortalsCompat.isRenderingPortal()) {
++			return;
++		}
+ 		FGConstantsFeature.beginRenderFrame();
+ 	}
+ 
+@@ -68,6 +75,9 @@
+ 		require = 1
+ 	)
+ 	private void super_resolution$endConstantsFrame(float partialTicks, long nanoTime, boolean renderLevel, CallbackInfo ci) {
++		if (ImmersivePortalsCompat.isRenderingPortal()) {
++			return;
++		}
+ 		FGConstantsFeature.endRenderFrame();
+ 	}
+ }

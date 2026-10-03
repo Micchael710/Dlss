@@ -1,0 +1,20 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/capture/CaptureFrameRing.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/capture/CaptureFrameRing.java
+@@ -114,11 +114,12 @@
+                 return frame;
+             }
+         }
+-        // A full async ring is normal producer backpressure, not an ownership failure.
+-        FrameResources pending = requireSlot(cursor);
+-        pending.awaitSubmissionForReuse();
+-        cursor = (cursor + 1) % slots.length;
+-        return pending;
++        throw new IllegalStateException(
++                "No reusable capture slot is available; states="
++                        + Arrays.toString(Arrays.stream(slots)
++                                .map(FrameResources::state)
++                                .toArray())
++        );
+     }
+ 
+     private FrameResources requireSlot(int index) {

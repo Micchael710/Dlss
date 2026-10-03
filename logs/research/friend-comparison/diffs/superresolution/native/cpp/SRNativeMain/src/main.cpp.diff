@@ -1,0 +1,20 @@
+--- ours/native/cpp/SRNativeMain/src/main.cpp
++++ friend/native/cpp/SRNativeMain/src/main.cpp
+@@ -1,8 +1,8 @@
+-#include <cmath>
++#include <string>
++#include "define.h"
+ #include "utils.h"
+ #include "io_homo_superresolution_core_SuperResolutionNative.h"
+-#include "nvg/nanovg_cpp.h"
+-
++#include "nvg/all.h"
+ 
+ JNIEXPORT jstring JNICALL Java_io_homo_superresolution_core_SuperResolutionNative_getVersionInfo(JNIEnv *env, jclass) {
+     return (env)->NewStringUTF(SRLIB_VERSION);
+@@ -13,4 +13,4 @@
+     void *ptr = env->GetDirectBufferAddress(buffer);
+     if (ptr)
+         free(ptr);
+-}
++}

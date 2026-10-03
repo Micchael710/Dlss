@@ -1,0 +1,94 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/Wisteria.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/Wisteria.java
+@@ -1,7 +1,12 @@
+ package org.ireallywanttosleep.wisteria;
+ 
+ import io.homo.superresolution.api.StreamlineDistribution;
++import io.homo.superresolution.common.config.SuperResolutionConfig;
++import io.homo.superresolution.common.presentation.vulkan.VulkanPresentationFeature;
+ import io.homo.superresolution.core.SuperResolutionConstants;
++import io.homo.superresolution.common.framegeneration.FrameGenerationDescriptions;
++import io.homo.superresolution.api.registry.FrameGenerationGroups;
++import org.ireallywanttosleep.wisteria.backend.VulkanAsyncFoundationBridge;
+ import org.ireallywanttosleep.wisteria.backend.WisteriaFrameGeneration;
+ import org.ireallywanttosleep.wisteria.backend.WisteriaLowLatency;
+ import org.ireallywanttosleep.wisteria.natives.StreamlineNativeExtractor;
+@@ -43,9 +48,76 @@
+         LOGGER.info("Wisteria initializing");
+         // Extraction itself is deferred: SR only asks for the directory if it decides to
+         // load Streamline, so builds without the SDK never touch the disk.
+-        StreamlineDistribution.provide(() ->
+-                StreamlineNativeExtractor.extract(SuperResolutionConstants.NATIVE_LIBRARIES_DIR.getPath()));
++        StreamlineDistribution.provide(() -> {
++            StreamlineNativeExtractor.extract(SuperResolutionConstants.NATIVE_LIBRARIES_DIR.getPath());
++            if (VulkanPresentationFeature.shouldInitializeStreamline()){
++                return SuperResolutionConstants.NATIVE_LIBRARIES_DIR.getPath();
++            }
++            return null;
++        });
+         WisteriaFrameGeneration.register();
+         WisteriaLowLatency.register();
++
++        try {
++            String currentProvider = SuperResolutionConfig.FRAME_GENERATION_PROVIDER.get();
++            String currentBackend = SuperResolutionConfig.getFrameGenerationBackend();
++            boolean isDlss = "superresolution:dlss_fg".equals(currentProvider)
++                    || "wisteria:dlss_fg".equals(currentProvider)
++                    || (FrameGenerationGroups.DLSS_FG != null && FrameGenerationGroups.DLSS_FG.getId().equals(currentProvider));
++            boolean isFsr = "wisteria:fsr_fg".equals(currentProvider);
++
++            if (isDlss) {
++                VulkanAsyncFoundationBridge.syncProvider("wisteria:ngx");
++                if ("wisteria:fsr".equals(currentBackend) || "wisteria:fsr_vulkan".equals(currentBackend)) {
++                    SuperResolutionConfig.setFrameGenerationBackend(FrameGenerationDescriptions.AUTO_ID);
++                    LOGGER.info("Resetting conflicting FSR backend to auto for DLSS provider at startup");
++                }
++            } else if (isFsr) {
++                VulkanAsyncFoundationBridge.syncProvider("wisteria:fsr");
++                if ("wisteria:ngx".equals(currentBackend) || "wisteria:ngx_vulkan".equals(currentBackend) || "wisteria:streamline".equals(currentBackend)) {
++                    SuperResolutionConfig.setFrameGenerationBackend(FrameGenerationDescriptions.AUTO_ID);
++                    LOGGER.info("Resetting conflicting DLSS backend to auto for FSR provider at startup");
++                }
++            }
++        } catch (Throwable t) {
++            LOGGER.debug("Error checking startup frame generation configuration: {}", t.getMessage());
++        }
++
++        try {
++            SuperResolutionConfig.FRAME_GENERATION_PROVIDER.onChange((oldVal, newVal) -> {
++                boolean isDlss = "superresolution:dlss_fg".equals(newVal)
++                        || "wisteria:dlss_fg".equals(newVal)
++                        || (FrameGenerationGroups.DLSS_FG != null && FrameGenerationGroups.DLSS_FG.getId().equals(newVal));
++                boolean isFsr = "wisteria:fsr_fg".equals(newVal);
++
++                if (isFsr) {
++                    VulkanAsyncFoundationBridge.drainAndSwitch("wisteria:fsr");
++                    String b = SuperResolutionConfig.getFrameGenerationBackend();
++                    if (!"wisteria:fsr".equals(b) && !"wisteria:fsr_vulkan".equals(b) && !FrameGenerationDescriptions.AUTO_ID.equals(b)) {
++                        SuperResolutionConfig.setFrameGenerationBackend(FrameGenerationDescriptions.AUTO_ID);
++                    }
++                } else if (isDlss) {
++                    VulkanAsyncFoundationBridge.drainAndSwitch("wisteria:ngx");
++                    String b = SuperResolutionConfig.getFrameGenerationBackend();
++                    if (!"wisteria:ngx".equals(b) && !"wisteria:ngx_vulkan".equals(b) && !FrameGenerationDescriptions.AUTO_ID.equals(b)) {
++                        SuperResolutionConfig.setFrameGenerationBackend(FrameGenerationDescriptions.AUTO_ID);
++                    }
++                } else {
++                    VulkanAsyncFoundationBridge.drainAndResetScheduler();
++                }
++            });
++        } catch (Throwable t) {
++            LOGGER.debug("Could not register FRAME_GENERATION_PROVIDER onChange listener: {}", t.getMessage());
++        }
++
++        try {
++            SuperResolutionConfig.FRAME_GENERATION_BACKEND.onChange((oldVal, newVal) -> {
++                if (oldVal != null && !oldVal.equals(newVal)) {
++                    VulkanAsyncFoundationBridge.drainAndResetScheduler();
++                }
++            });
++        } catch (Throwable t) {
++            LOGGER.debug("Could not register FRAME_GENERATION_BACKEND onChange listener: {}", t.getMessage());
++        }
+     }
+ }

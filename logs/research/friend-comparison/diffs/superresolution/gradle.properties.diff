@@ -1,0 +1,26 @@
+--- ours/gradle.properties
++++ friend/gradle.properties
+@@ -1,18 +1,18 @@
+ ##### Gradle #####
+-org.gradle.jvmargs=-Xmx8G
++org.gradle.jvmargs=-Xmx4G
+ org.gradle.daemon=false
+ org.gradle.caching=true
+-org.gradle.parallel=true
++org.gradle.parallel=false
+ # Bound concurrent workers: the default is nproc, and each forked JavaCompile
+ # gets its own heap, so an unbounded worker count can reserve far more than RAM.
+-org.gradle.workers.max=8
++org.gradle.workers.max=2
+ 
+ ##### Project #####
+ group=io.homo.superresolution
+ projectName=super_resolution
+ manifold_version=2026.1.12
+-minecraft_version_config=26.2
+-mod_version=0.9.2-alpha.1
++minecraft_version_config=1.21.1
++mod_version=0.9.1-alpha.2
+ mod_id=super_resolution
+ 
+ ##### Mod Behavior Config #####

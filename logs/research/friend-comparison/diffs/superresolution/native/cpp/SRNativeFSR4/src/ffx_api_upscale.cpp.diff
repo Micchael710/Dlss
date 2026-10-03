@@ -1,0 +1,19 @@
+--- ours/native/cpp/SRNativeFSR4/src/ffx_api_upscale.cpp
++++ friend/native/cpp/SRNativeFSR4/src/ffx_api_upscale.cpp
+@@ -69,7 +69,6 @@
+         }
+ 
+         SRFfxApiModuleGuard(const SRFfxApiModuleGuard &) = delete;
+-
+         SRFfxApiModuleGuard &operator=(const SRFfxApiModuleGuard &) = delete;
+ 
+         void publish(HMODULE loadedModule) noexcept {
+@@ -415,7 +414,7 @@
+             return SR_RETURN_CODE_NULL_POINTER;
+         }
+         const auto *privateData =
+-                static_cast<SRFfxApiPrivateData *>(context->userContext);
++            static_cast<SRFfxApiPrivateData *>(context->userContext);
+         if (!privateData->contextCreated || !privateData->context) {
+             return SR_RETURN_CODE_UNSUPPORTED;
+         }

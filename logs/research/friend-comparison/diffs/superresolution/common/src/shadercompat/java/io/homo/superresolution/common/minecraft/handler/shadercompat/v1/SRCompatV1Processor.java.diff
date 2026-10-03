@@ -1,0 +1,27 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/common/minecraft/handler/shadercompat/v1/SRCompatV1Processor.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/common/minecraft/handler/shadercompat/v1/SRCompatV1Processor.java
+@@ -69,7 +69,7 @@
+ 
+     @Override
+     public boolean needsAdaptJitter(SRShaderCompatData config, AbstractAlgorithm algorithm, AlgorithmDescription<?> description) {
+-        return true;
++        return false;
+     }
+ 
+     @Override
+@@ -80,15 +80,11 @@
+ 
+     @Override
+     public Vector2f adaptJitterForAlgorithm(Vector2f rawJitter, AbstractAlgorithm algorithm, SRShaderCompatData config, AlgorithmDescription<?> description) {
+-        if (!SuperResolutionConfig.isFlipVkGlInteropResourcesY() && !description.equals(AlgorithmDescriptions.FSR4_D3D12)) {
+-            return rawJitter.mul(1,-1);
+-        }
+         return rawJitter;
+     }
+ 
+     @Override
+     public Vector2f adaptJitterForShaderpack(Vector2f rawJitter, AbstractAlgorithm algorithm, SRShaderCompatData config, AlgorithmDescription<?> description) {
+-
+         return rawJitter;
+     }
+ 

@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR/src/fsr2.cpp
++++ friend/native/cpp/SRNativeFSR/src/fsr2.cpp
+@@ -65,4 +65,4 @@
+ 
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

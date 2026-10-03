@@ -1,0 +1,20 @@
+--- ours/native/cpp/SRNativeFSR/include/sr/fsr/fsr2_internal.h
++++ friend/native/cpp/SRNativeFSR/include/sr/fsr/fsr2_internal.h
+@@ -7,9 +7,8 @@
+     SR_API SRReturnCode srFfxFsr2VkCreateUpscaleContext(SRUpscaleContext *context,
+                                                         const SRCreateUpscaleContextDesc *desc);
+ 
+-    SR_API SRReturnCode srFfxFsr2VkInitUpscaleContext(SRUpscaleContext *context);
+-
+-    SR_API SRReturnCode srFfxFsr2VkDestroyUpscaleContext(SRUpscaleContext *context);
++    SR_API SRReturnCode srFfxFsr2VkInitUpscaleContext(SRUpscaleContext * context);
++    SR_API SRReturnCode srFfxFsr2VkDestroyUpscaleContext(SRUpscaleContext * context);
+ 
+     SR_API SRReturnCode srFfxFsr2VkQueryUpscale(SRUpscaleContext *context, SRUpscaleContextQueryResult *result,
+                                                 SRUpscaleContextQueryType queryType);
+@@ -19,4 +18,4 @@
+     SR_API SRReturnCode srFfxFsr2VkShutdown();
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

@@ -1,0 +1,29 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/impl/texture/TextureFormat.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/impl/texture/TextureFormat.java
+@@ -127,11 +127,6 @@
+             TextureComponent.Depth,
+             TextureComponent.Stencil
+     ),
+-    DEPTH16(
+-            GL_DEPTH_COMPONENT16, VK_FORMAT_D16_UNORM,
+-            DataType.UNSIGNED_NORMALIZED,
+-            TextureComponent.Depth
+-    ),
+     DEPTH24(
+             GL_DEPTH_COMPONENT24, VK_FORMAT_X8_D24_UNORM_PACK32,
+             DataType.UNSIGNED_NORMALIZED,
+@@ -239,7 +234,7 @@
+             case RGB8 -> 3;
+             case RG8 -> 2;
+             case R8 -> 1;
+-            case R16_SNORM, R16F, DEPTH16 -> 2;
++            case R16_SNORM, R16F -> 2;
+             case RG16F -> 4;
+             case RG32F -> 8;
+             case R32F, R32UI -> 4;
+@@ -324,4 +319,4 @@
+         UNSIGNED_NORMALIZED,
+         SIGNED_NORMALIZED,
+     }
+-}
++}

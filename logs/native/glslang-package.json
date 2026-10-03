@@ -1,0 +1,9 @@
+{
+  "url": "https://github.com/187J3X1-114514/glslang-prebuilt/releases/download/a8d28b/glslang-windows-release.zip",
+  "sha256": "9ec17d54fdebed4a6f851c75c02ebdc70a2cefeef44d0b25b3843f8dd860c0a0",
+  "bytes": 14589730,
+  "configured_commit_prefix": "a8d28b",
+  "pinned_source_commit": "a8d28bd082bff18ffbe80996e922b012f915cf07",
+  "scope": "windows-x86_64-release",
+  "independent_binary_reproducibility": "NOT_VERIFIED"
+}

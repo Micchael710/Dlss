@@ -1,0 +1,11 @@
+{
+  "file": "wisteria-neoforge-1.21.1-0.1.0-alpha.1+1.21.1-fsr-dispatch.jar",
+  "sha256": "4c49f270fa74fb195c3bac7bc5fb42e9ecaee0e2d7f571d2d622915624bf22f2",
+  "bytes": 2851716,
+  "java21_classes": 31,
+  "natives": {
+    "amd_fidelityfx_vk.dll": "c84ca40421ff5594edfc6553cb89a2d07982b0cadb1a66beb989b2cdedd39197",
+    "wisteria_fsr_bridge.dll": "b0388beb885271fafa59e788bb4f9c2ce7d508ae4ecb11879b113a7f0d043f7b"
+  },
+  "config": "isolated instance only; SR1.7; Complementary; Vulkan; wisteria:fsr X2; OptiScaler OFF"
+}

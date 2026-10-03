@@ -1,0 +1,8 @@
+{
+  "file": "super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.03c0e447.opengl-phase-a-fix.jar",
+  "sha256": "a0a345486e59968dde0b60812e63e1420223ca12e07d758b2af281cfd72691b9",
+  "bytes": 32320829,
+  "java21_own_classes": 1381,
+  "native_core_unchanged": true,
+  "label": "phase-a-fix"
+}

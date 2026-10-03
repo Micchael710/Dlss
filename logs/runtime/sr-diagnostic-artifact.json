@@ -1,0 +1,8 @@
+{
+  "file": "super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.03c0e447.opengl-diagnostic.jar",
+  "sha256": "af3600ea5dac2cfe8c3dbd886c8dc156fb89f855d7e79b7087e9cf76fcee48d8",
+  "bytes": 32319486,
+  "java21_own_classes": 1381,
+  "native_core_unchanged": true,
+  "label": "diagnostic"
+}

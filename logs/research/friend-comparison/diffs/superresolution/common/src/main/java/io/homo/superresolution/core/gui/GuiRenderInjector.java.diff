@@ -1,0 +1,17 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/gui/GuiRenderInjector.java
++++ friend/common/src/main/java/io/homo/superresolution/core/gui/GuiRenderInjector.java
+@@ -76,13 +76,7 @@
+                                     }
+ 
+                                     @Override
+-                                    public
+-                                    #if MC_VER >= MC_26_3
+-                                    com.mojang.renderpearl.api.pipeline.RenderPipeline
+-                                    #else
+-                                    com.mojang.blaze3d.pipeline.RenderPipeline
+-                                    #endif
+-                                    pipeline() {
++                                    public com.mojang.blaze3d.pipeline.RenderPipeline pipeline() {
+                                         return new CustomActionRenderPipeline(renderAction);
+                                     }
+ 

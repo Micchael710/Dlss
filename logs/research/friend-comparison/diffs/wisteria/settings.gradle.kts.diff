@@ -1,0 +1,20 @@
+--- ours/settings.gradle.kts
++++ friend/settings.gradle.kts
+@@ -44,16 +44,10 @@
+ println("❇️ Wisteria target: Minecraft ${versionProperties.getProperty("minecraft_version")} ($versionId)")
+ 
+ include("common")
+-val supportedLoaders = versionProperties.getProperty("loaders")
++versionProperties.getProperty("loaders")
+     .split(",")
+     .map { it.trim() }
+     .filter { it.isNotEmpty() }
+-val requestedLoader = providers.gradleProperty("loader").orNull
+-if (requestedLoader != null && requestedLoader !in supportedLoaders) {
+-    throw GradleException("Unsupported loader '$requestedLoader' for $versionId")
+-}
+-supportedLoaders
+-    .filter { requestedLoader == null || it == requestedLoader }
+     .forEach {
+         println("❇️ loader $it")
+         include(it)

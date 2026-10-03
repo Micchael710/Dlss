@@ -1,0 +1,57 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/ShaderCompatSRWorkModeProvider.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/ShaderCompatSRWorkModeProvider.java
+@@ -1,7 +1,6 @@
+ package io.homo.superresolution.shadercompat;
+ 
+ import io.homo.superresolution.api.InitializationDescription;
+-import io.homo.superresolution.api.interop.InteropResourceContext;
+ import io.homo.superresolution.api.platform.Platform;
+ import io.homo.superresolution.common.debug.imgui.ImGuiDebugContext;
+ import io.homo.superresolution.common.minecraft.handler.IMinecraftRenderHandler;
+@@ -18,18 +17,10 @@
+ 
+ public class ShaderCompatSRWorkModeProvider implements SRWorkModeProvider {
+     private boolean listenersRegistered;
+-    // 0 - unchecked
+-    // 1 - true
+-    // -1 - false
+-    private int depthTransformStatus = 0;
++
+     @Override
+     public String id() {
+         return SRWorkModeManager.SHADER_COMPAT;
+-    }
+-
+-    @Override
+-    public InteropResourceContext getInteropResourceContext() {
+-        return IrisShaderCompatUpscaleDispatcher.getInteropResourceContext();
+     }
+ 
+     @Override
+@@ -62,8 +53,7 @@
+             SRShaderCompatData.UpscaleConfig upscale = profile.get().upscale;
+             desc.setHdrInput(upscale.isHdrInput)
+                     .setAutoExposure(upscale.isAutoExposure)
+-                    .setMotionJittered(upscale.isMotionJittered)
+-                    .setDepthInverted(isHasDepthTransform());
++                    .setMotionJittered(upscale.isMotionJittered);
+             internalFormat = upscale.internalFormat;
+             if (upscale.customs != null) {
+                 motionVectorPreprocessingFunction = upscale.customs.motionVectorPreprocessingFunction;
+@@ -122,16 +112,4 @@
+             ctx.property("Motion Jittered", upscale.isMotionJittered);
+         }
+     }
+-
+-    private boolean isHasDepthTransform(){
+-        if (depthTransformStatus != 0) return depthTransformStatus == 1;
+-        try {
+-            Class.forName("net.irisshaders.iris.pipeline.transform.transformer.DepthTransformer");
+-            depthTransformStatus = 1;
+-        } catch (ClassNotFoundException e) {
+-            depthTransformStatus = -1;
+-            return false;
+-        }
+-        return true;
+-    }
+ }

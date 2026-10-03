@@ -1,0 +1,156 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/backend/StreamlineFrameGenerationAdapter.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/backend/StreamlineFrameGenerationAdapter.java
+@@ -10,10 +10,8 @@
+ 
+ package org.ireallywanttosleep.wisteria.backend;
+ 
+-import io.homo.superresolution.api.registry.framegeneration.ExternalFrameGenerationDispatchInput;
+-import io.homo.superresolution.api.registry.framegeneration.ExternalFrameGenerationDispatchResult;
+ import io.homo.superresolution.common.framegeneration.FrameGenerationMode;
+-import io.homo.superresolution.common.framegeneration.constants.FrameGenerationConstants;
++import io.homo.superresolution.common.framegeneration.constants.FGConstants;
+ import io.homo.superresolution.common.presentation.capture.FrameResources;
+ import io.homo.superresolution.core.graphics.impl.texture.TextureUsage;
+ import io.homo.superresolution.core.graphics.vulkan.VulkanTexture;
+@@ -90,26 +88,29 @@
+         return minimumWidthOrHeight;
+     }
+ 
+-    static synchronized ExternalFrameGenerationDispatchResult prepareExternalFrame(
+-            ExternalFrameGenerationDispatchInput input
++    static synchronized boolean prepareFrame(
++            FrameResources frameResources,
++            FGConstants constants,
++            StreamlineTypes.FrameToken token,
++            FrameGenerationMode mode,
++            int colorWidth,
++            int colorHeight,
++            int colorFormat,
++            int backBufferCount,
++            long commandBuffer
+     ) {
+         StreamlineSession session = sessionOrNull();
+-        FrameResources frameResources = input.frameResources();
+-        FrameGenerationConstants constants = input.constants();
+-        FrameGenerationMode mode = input.mode();
+-        int colorWidth = input.colorWidth();
+-        int colorHeight = input.colorHeight();
+-        int colorFormat = input.colorFormat();
+-        int backBufferCount = input.backBufferCount();
+-        long commandBuffer = input.vkCommandBuffer();
+-        StreamlineTypes.FrameToken token = Streamline.currentFrame();
+         VulkanTexture hudlessColor = frameResources.hudlessColorVulkanTexture();
+         VulkanTexture depth = frameResources.depthVulkanTexture();
+         VulkanTexture motionVectors = frameResources.motionVectorVulkanTexture();
+         if (session == null
++                || constants == null
+                 || token == null
+                 || token.nativeHandle == 0L
+                 || token.frameIndex != frameResources.logicalFrameIndex()
++                || hudlessColor == null
++                || depth == null
++                || motionVectors == null
+                 || hudlessColor.getWidth() != colorWidth
+                 || hudlessColor.getHeight() != colorHeight
+                 || depth.getWidth() != motionVectors.getWidth()
+@@ -117,7 +118,7 @@
+                 || colorWidth < minimumWidthOrHeight()
+                 || colorHeight < minimumWidthOrHeight()) {
+             disable();
+-            return ExternalFrameGenerationDispatchResult.INACTIVE;
++            return false;
+         }
+ 
+         int constantsResult = session.setConstants(
+@@ -128,7 +129,7 @@
+         if (constantsResult != 0) {
+             reportResultFailure("slSetConstants", constantsResult, frameResources.logicalFrameIndex());
+             disable();
+-            return ExternalFrameGenerationDispatchResult.INACTIVE;
++            return false;
+         }
+ 
+         StreamlineTypes.ResourceTag[] tags = {
+@@ -145,7 +146,7 @@
+         if (tagResult != 0) {
+             reportResultFailure("slSetTagForFrame", tagResult, frameResources.logicalFrameIndex());
+             disable();
+-            return ExternalFrameGenerationDispatchResult.INACTIVE;
++            return false;
+         }
+ 
+         boolean applied = applyOptions(new DlssGOptionsKey(
+@@ -164,16 +165,11 @@
+         if (!applied) {
+             disable();
+         }
+-        return applied
+-                ? ExternalFrameGenerationDispatchResult.active()
+-                : ExternalFrameGenerationDispatchResult.INACTIVE;
+-    }
+-
+-    static synchronized void finishExternalFrame(
+-            FrameResources frameResources,
+-            ExternalFrameGenerationDispatchResult result
+-    ) {
+-        if (!result.frameGenerationActive() || !frameResources.isSubmitted()) {
++        return applied;
++    }
++
++    static synchronized void finishPresent(FrameResources frameResources, boolean frameGenerationEnabled) {
++        if (!frameGenerationEnabled || frameResources == null || !frameResources.isSubmitted()) {
+             return;
+         }
+         StreamlineSession session = sessionOrNull();
+@@ -187,19 +183,19 @@
+         }
+ 
+         StreamlineTypes.DlssGState state = new StreamlineTypes.DlssGState();
+-        int stateResult;
++        int result;
+         try {
+-            stateResult = session.dlssGGetState(
++            result = session.dlssGGetState(
+                     new StreamlineTypes.Viewport(VIEWPORT),
+                     state,
+                     null
+             );
+-        } catch (RuntimeException throwable) {
++        } catch (Throwable throwable) {
+             reportFailureOnce("finish-present-exception", "slDLSSGGetState threw an exception", throwable);
+             return;
+         }
+-        if (stateResult != 0) {
+-            reportResultFailure("slDLSSGGetState", stateResult, frameResources.logicalFrameIndex());
++        if (result != 0) {
++            reportResultFailure("slDLSSGGetState", result, frameResources.logicalFrameIndex());
+             return;
+         }
+ 
+@@ -243,7 +239,7 @@
+                         null
+                 );
+             }
+-        } catch (RuntimeException throwable) {
++        } catch (Throwable throwable) {
+             reportFailureOnce("support-exception", "Failed to query DLSS-G support", throwable);
+         }
+     }
+@@ -283,7 +279,7 @@
+         int result;
+         try {
+             result = session.dlssGSetOptions(new StreamlineTypes.Viewport(VIEWPORT), options);
+-        } catch (RuntimeException throwable) {
++        } catch (Throwable throwable) {
+             reportFailureOnce("options-exception", "slDLSSGSetOptions threw an exception", throwable);
+             return false;
+         }
+@@ -363,7 +359,7 @@
+         return usage;
+     }
+ 
+-    private static StreamlineTypes.Constants toStreamlineConstants(FrameGenerationConstants source) {
++    private static StreamlineTypes.Constants toStreamlineConstants(FGConstants source) {
+         StreamlineTypes.Constants constants = new StreamlineTypes.Constants();
+         constants.cameraViewToClip = source.cameraViewToClip();
+         constants.clipToCameraView = source.clipToCameraView();

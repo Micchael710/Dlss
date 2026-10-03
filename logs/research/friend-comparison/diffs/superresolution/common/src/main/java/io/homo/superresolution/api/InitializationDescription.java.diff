@@ -1,0 +1,53 @@
+--- ours/common/src/main/java/io/homo/superresolution/api/InitializationDescription.java
++++ friend/common/src/main/java/io/homo/superresolution/api/InitializationDescription.java
+@@ -23,22 +23,12 @@
+     private boolean isHdrInput;
+     private boolean isAutoExposure;
+     private boolean isMotionJittered;
+-    private boolean isDepthInverted;
+ 
+     public InitializationDescription() {
+     }
+ 
+     public static InitializationDescription defaults() {
+         return new InitializationDescription();
+-    }
+-
+-    public boolean isDepthInverted() {
+-        return isDepthInverted;
+-    }
+-
+-    public InitializationDescription setDepthInverted(boolean depthInverted) {
+-        isDepthInverted = depthInverted;
+-        return this;
+     }
+ 
+     public boolean isMotionJittered() {
+@@ -69,20 +59,16 @@
+     }
+ 
+     @Override
+-    public int hashCode() {
+-        return java.util.Objects.hash(isHdrInput, isAutoExposure, isMotionJittered);
+-    }
+-
+-    @Override
+     public boolean equals(Object o) {
+-        if (this == o) {
+-            return true;
+-        }
+-        if (!(o instanceof InitializationDescription that)) {
+-            return false;
+-        }
++        if (this == o) return true;
++        if (!(o instanceof InitializationDescription that)) return false;
+         return isHdrInput == that.isHdrInput
+                 && isAutoExposure == that.isAutoExposure
+                 && isMotionJittered == that.isMotionJittered;
+     }
++
++    @Override
++    public int hashCode() {
++        return java.util.Objects.hash(isHdrInput, isAutoExposure, isMotionJittered);
++    }
+ }

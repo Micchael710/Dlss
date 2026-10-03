@@ -1,0 +1,225 @@
+--- ours/common/build.gradle.kts
++++ friend/common/build.gradle.kts
+@@ -1,10 +1,13 @@
+-// Imported because in a Kotlin build script `java` resolves to the Gradle extension,
+-// which shadows the java.* package.
+ import multiversion.BasePlatformConfig
+ import multiversion.Dependency
+ import multiversion.VersionConfig
++import org.gradle.api.tasks.SourceSetContainer
++import org.gradle.api.tasks.compile.JavaCompile
++import org.gradle.jvm.toolchain.JavaLanguageVersion
++import org.gradle.jvm.toolchain.JavaToolchainService
+ import org.gradle.jvm.tasks.Jar
+-import utils.MinecraftVersion
++// Imported because in a Kotlin build script `java` resolves to the Gradle extension,
++// which shadows the java.* package.
+ import java.util.zip.ZipFile
+ 
+ plugins {
+@@ -13,7 +16,6 @@
+ 
+ @Suppress("UNCHECKED_CAST")
+ val versionConfig = rootProject.extra["versionConfig"] as VersionConfig
+-
+ @Suppress("UNCHECKED_CAST")
+ val getCurrentNeoFormVersion = rootProject.extra["getCurrentNeoFormVersion"] as () -> String
+ val imguiVersion = if (versionConfig.common.minecraftVersion >= "26.1") "1.92.0" else "1.90.0"
+@@ -71,23 +73,6 @@
+             includeGroup("org.appliedenergistics.yoga")
+         }
+     }
+-    maven {
+-        name = "CaffeineMC"
+-        url = uri("https://maven.caffeinemc.net/releases")
+-        mavenContent { releasesOnly() }
+-        content {
+-            includeGroup("net.caffeinemc")
+-        }
+-    }
+-
+-    maven {
+-        name = "CaffeineMC"
+-        url = uri("https://maven.caffeinemc.net/snapshots")
+-        mavenContent { snapshotsOnly() }
+-        content {
+-            includeGroup("net.caffeinemc")
+-        }
+-    }
+     flatDir {
+         dirs("../libs")
+     }
+@@ -110,17 +95,14 @@
+ 
+     return null
+ }
+-
+ fun findFirstConfiguration(vararg names: String): String {
+     return names.firstOrNull { name -> configurations.findByName(name) != null } ?: names.last()
+ }
+-
+ fun DependencyHandler.modCompileOnlyCompat(notation: Any) =
+     add(findFirstConfiguration("modCompileOnly", "compileOnly"), notation)
+ 
+ 
+ dependencies {
+-    testImplementation("junit:junit:4.13.2")
+     compileOnly("org.anarres:jcpp:1.4.14")
+     compileOnly("org.spongepowered:mixin:0.8.7")
+     compileOnly("io.github.spair:imgui-java-app:$imguiVersion")
+@@ -176,18 +158,6 @@
+             }
+         }
+     }
+-
+-    for (lib in versionConfig.fabric.dependencies.modrinth) {
+-        if ((lib.name == "sodium" && MinecraftVersion.of(versionConfig.common.minecraftVersion) > MinecraftVersion.of(
+-                "1.21.10"
+-            )) || lib.name == "sodium.maven"
+-        ) {
+-            var depName = "net.caffeinemc:sodium-fabric:${lib.version}"
+-            modCompileOnlyCompat(depName)
+-            break
+-        }
+-    }
+-
+ }
+ 
+ configurations {
+@@ -204,16 +174,12 @@
+ val sourceSets = extensions.getByType(SourceSetContainer::class.java)
+ val javaToolchains = extensions.getByType(JavaToolchainService::class.java)
+ val mainSourceSet = sourceSets.getByName("main")
+-val testSourceSet = sourceSets.getByName("test")
+-testSourceSet.annotationProcessorPath += mainSourceSet.annotationProcessorPath
+ val irisapiSourceSet = sourceSets.maybeCreate("irisapi")
+ val sharedSourceSet = sourceSets.maybeCreate("shared")
+ val materialSourceSet = sourceSets.maybeCreate("material")
+ val hackSourceSet = sourceSets.maybeCreate("hack")
+ val shaderCompatSourceSet = sourceSets.maybeCreate("shadercompat")
+-val irisVelocityExtSourceSet = sourceSets.maybeCreate("iris_velocity_ext")
+-val irisVelocityExtJavaRoot = file("src/iris_velocity_ext/java")
+-val irisVelocityExtResourcesRoot = file("src/iris_velocity_ext/resources")
++
+ tasks.register<JavaCompile>("genJNIHeader") {
+     description = "Generate JNI Header"
+     val outputDir = file("../native/cpp/SRNativeMain/include")
+@@ -228,7 +194,7 @@
+     }
+ 
+     classpath = mainSourceSet.compileClasspath + mainSourceSet.output
+-    destinationDirectory.set(file("${layout.buildDirectory}/jni-temp"))
++    destinationDirectory.set(file("$buildDir/jni-temp"))
+     javaCompiler.set(javaToolchains.compilerFor {
+         languageVersion.set(JavaLanguageVersion.of(versionConfig.common.javaVersion))
+     })
+@@ -242,7 +208,7 @@
+ 
+     doLast {
+         println("JNI headers generated at: ${outputDir.absolutePath}")
+-        delete("$layout.buildDirectory/jni-temp")
++        delete("$buildDir/jni-temp")
+     }
+ }
+ 
+@@ -266,48 +232,6 @@
+ mainSourceSet.runtimeClasspath += sharedSourceSet.output
+ mainSourceSet.compileClasspath += materialSourceSet.output
+ mainSourceSet.runtimeClasspath += materialSourceSet.output
+-
+-irisVelocityExtSourceSet.annotationProcessorPath += mainSourceSet.annotationProcessorPath
+-irisVelocityExtSourceSet.compileClasspath += mainSourceSet.compileClasspath
+-irisVelocityExtSourceSet.runtimeClasspath += mainSourceSet.runtimeClasspath
+-irisVelocityExtSourceSet.compileClasspath += irisapiSourceSet.output
+-irisVelocityExtSourceSet.runtimeClasspath += irisapiSourceSet.output
+-irisVelocityExtSourceSet.compileClasspath += sharedSourceSet.output
+-irisVelocityExtSourceSet.runtimeClasspath += sharedSourceSet.output
+-irisVelocityExtSourceSet.compileClasspath += mainSourceSet.output
+-irisVelocityExtSourceSet.runtimeClasspath += mainSourceSet.output
+-
+-val irisVelocityExtVersion = when {
+-    versionConfig.common.minecraftVersion.startsWith("26.1") -> "26_1"
+-    versionConfig.common.minecraftVersion == "26.2" -> "26_2"
+-    versionConfig.common.minecraftVersion == "26.3" -> "26_3"
+-    else -> null
+-}
+-val irisVelocityExtSupported = irisVelocityExtVersion != null
+-if (irisVelocityExtSupported) {
+-    irisVelocityExtSourceSet.java.setSrcDirs(
+-        listOf(
+-            File(
+-                irisVelocityExtJavaRoot,
+-                "io/homo/superresolution/iris_velocity_ext/v${irisVelocityExtVersion}"
+-            )
+-        )
+-    )
+-    irisVelocityExtSourceSet.resources.setSrcDirs(
+-        listOf(
+-            File(
+-                irisVelocityExtResourcesRoot,
+-                "v${irisVelocityExtVersion}"
+-            )
+-        )
+-    )
+-    dependencies {
+-        add("iris_velocity_extCompileOnly", "io.github.llamalad7:mixinextras-common:0.5.0")
+-    }
+-} else {
+-    irisVelocityExtSourceSet.java.setSrcDirs(emptyList<File>())
+-    irisVelocityExtSourceSet.resources.setSrcDirs(emptyList<File>())
+-}
+ 
+ hackSourceSet.annotationProcessorPath += mainSourceSet.annotationProcessorPath
+ hackSourceSet.compileClasspath += mainSourceSet.compileClasspath
+@@ -333,24 +257,10 @@
+     from(materialSourceSet.output)
+     from(hackSourceSet.output)
+     from(shaderCompatSourceSet.output)
+-    if (irisVelocityExtSupported) {
+-        from(irisVelocityExtSourceSet.output)
+-    }
+ }
+ 
+ artifacts {
+-    var sourceSets: ArrayList<SourceSet> = ArrayList(
+-        listOf(
+-            mainSourceSet,
+-            irisapiSourceSet,
+-            sharedSourceSet,
+-            materialSourceSet,
+-            hackSourceSet,
+-            shaderCompatSourceSet
+-        )
+-    )
+-    if (irisVelocityExtSupported) sourceSets.add(irisVelocityExtSourceSet)
+-    sourceSets.forEach { sourceSet ->
++    listOf(mainSourceSet, irisapiSourceSet, sharedSourceSet, materialSourceSet, hackSourceSet, shaderCompatSourceSet).forEach { sourceSet ->
+         sourceSet.java.sourceDirectories.files.forEach { dir ->
+             add("commonJava", dir)
+         }
+@@ -398,7 +308,7 @@
+ if (publishingApiToShnexus && minecraftVersionConfig != "1.20.1") {
+     throw GradleException(
+         "Remote Super Resolution API publishing must use minecraft_version_config=1.20.1; "
+-                + "run :publishApiToShnexus."
++            + "run :publishApiToShnexus."
+     )
+ }
+ 
+@@ -445,11 +355,11 @@
+         if (offenders.isNotEmpty()) {
+             throw GradleException(
+                 "The API jar contains class files newer than Java 17 (major $apiMaxClassFileMajor), "
+-                        + "so mods built for older Minecraft versions could not read it. "
+-                        + "Build it from the oldest configuration that consumers target: "
+-                        + "-Pminecraft_version_config=$apiSourceVersionConfig\n"
+-                        + offenders.take(5).joinToString("\n") { "  $it" }
+-                        + if (offenders.size > 5) "\n  ... and ${offenders.size - 5} more" else ""
++                    + "so mods built for older Minecraft versions could not read it. "
++                    + "Build it from the oldest configuration that consumers target: "
++                    + "-Pminecraft_version_config=$apiSourceVersionConfig\n"
++                    + offenders.take(5).joinToString("\n") { "  $it" }
++                    + if (offenders.size > 5) "\n  ... and ${offenders.size - 5} more" else ""
+             )
+         }
+     }

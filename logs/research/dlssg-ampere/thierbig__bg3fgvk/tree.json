@@ -1,0 +1,486 @@
+{
+  "sha": "66082e6f691fba1c48e319b688a25fa5ae196e56",
+  "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/66082e6f691fba1c48e319b688a25fa5ae196e56",
+  "tree": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3c0384d4d767af815c2ee1d5916643868cd0e482",
+      "size": 103,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/3c0384d4d767af815c2ee1d5916643868cd0e482"
+    },
+    {
+      "path": "BUILD.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ccc910f671ea79c18b431d20d1e0a014d6e5c105",
+      "size": 10235,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/ccc910f671ea79c18b431d20d1e0a014d6e5c105"
+    },
+    {
+      "path": "CMakeLists.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d86310a8764605f4154c1fa38f0142146946d103",
+      "size": 1476,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/d86310a8764605f4154c1fa38f0142146946d103"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d3fac69aecf46d20dfb08ad92ced4f6dd901d18a",
+      "size": 1065,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/d3fac69aecf46d20dfb08ad92ced4f6dd901d18a"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "60c8ca491ff1391612b3875b7ea50e9975c33adf",
+      "size": 9812,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/60c8ca491ff1391612b3875b7ea50e9975c33adf"
+    },
+    {
+      "path": "build.bat",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0b4b23daa8772f4bd09e1b97393cdd81752077b",
+      "size": 179,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/d0b4b23daa8772f4bd09e1b97393cdd81752077b"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7fda57f0da457e4f7cb3843f4495da7678e30c62",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/7fda57f0da457e4f7cb3843f4495da7678e30c62"
+    },
+    {
+      "path": "docs/2026-08-27-fgvk-design.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a64b804b7f84d77841e7cddfeb86fd75c8b0dfc3",
+      "size": 9360,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/a64b804b7f84d77841e7cddfeb86fd75c8b0dfc3"
+    },
+    {
+      "path": "docs/DLSS5.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f73cede4ed7b57cc5f7486cb191a7c117922ac88",
+      "size": 8204,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/f73cede4ed7b57cc5f7486cb191a7c117922ac88"
+    },
+    {
+      "path": "docs/M1-result.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6391f7e0a071a91863cc2879f16066435179fd8e",
+      "size": 1576,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/6391f7e0a071a91863cc2879f16066435179fd8e"
+    },
+    {
+      "path": "docs/RTX30.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "da646322118e5da5a4a9e77eb59bc6cd46c5fa10",
+      "size": 6962,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/da646322118e5da5a4a9e77eb59bc6cd46c5fa10"
+    },
+    {
+      "path": "docs/images",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c420025220a744d0752667a978a1725c1fe33195",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/c420025220a744d0752667a978a1725c1fe33195"
+    },
+    {
+      "path": "docs/images/dlss5-fg-x4-shattered-sanctum.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "684eb0de7868fd23f31940a7a82b988527f31735",
+      "size": 5970127,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/684eb0de7868fd23f31940a7a82b988527f31735"
+    },
+    {
+      "path": "docs/images/dlss5-indicator-dlss-nr.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ec17a8ec9f343b95f027cc862cbfbaa3e7d9ad53",
+      "size": 164586,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/ec17a8ec9f343b95f027cc862cbfbaa3e7d9ad53"
+    },
+    {
+      "path": "docs/images/dlss5-indicator-dlssg.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "827fa33284c5f659491872818e984eb1d75e763b",
+      "size": 53368,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/827fa33284c5f659491872818e984eb1d75e763b"
+    },
+    {
+      "path": "docs/images/dlss5-neural-rendering-closeup.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d83cccd5961ae516c9577df7b511f7fa93dcb4e1",
+      "size": 2051428,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/d83cccd5961ae516c9577df7b511f7fa93dcb4e1"
+    },
+    {
+      "path": "docs/images/mcm-dlssg-x4.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "84e3f61639e6ab3dc5b816709aea4b1cf2e24da2",
+      "size": 3016985,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/84e3f61639e6ab3dc5b816709aea4b1cf2e24da2"
+    },
+    {
+      "path": "docs/superpowers",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "50a9d235c29e3efcc6334c23661503d46b08e28f",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/50a9d235c29e3efcc6334c23661503d46b08e28f"
+    },
+    {
+      "path": "docs/superpowers/plans",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "15d19d120fe7eb1a2becc638483066ab7fa2feaa",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/15d19d120fe7eb1a2becc638483066ab7fa2feaa"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-08-27-fgvk-m1-arming.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "484b9e5d584a6d04f76784ea5c3b258a3b662d89",
+      "size": 17426,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/484b9e5d584a6d04f76784ea5c3b258a3b662d89"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-08-27-fgvk-m2-watermark.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "552b28d377fdbc2ef1282bdffe22c882561d103e",
+      "size": 4259,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/552b28d377fdbc2ef1282bdffe22c882561d103e"
+    },
+    {
+      "path": "docs/superpowers/plans/2026-08-28-full-interposition.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "911de56065b09348d59ba78c2abea5fd382ea157",
+      "size": 15905,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/911de56065b09348d59ba78c2abea5fd382ea157"
+    },
+    {
+      "path": "docs/superpowers/specs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "f27edfe92dfd7a5a29175f50384fb9e8d11a3875",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/f27edfe92dfd7a5a29175f50384fb9e8d11a3875"
+    },
+    {
+      "path": "docs/superpowers/specs/2026-08-28-full-interposition-design.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e5902b5f065864c0277a123f9922731f8933c35",
+      "size": 5920,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/3e5902b5f065864c0277a123f9922731f8933c35"
+    },
+    {
+      "path": "getcrash.ps1",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a46135de8dc37d73ec50134f535c700059aa2c80",
+      "size": 375,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/a46135de8dc37d73ec50134f535c700059aa2c80"
+    },
+    {
+      "path": "package.ps1",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "73f8795472dfe1f67f126a71824e69dfcd4f2c20",
+      "size": 4144,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/73f8795472dfe1f67f126a71824e69dfcd4f2c20"
+    },
+    {
+      "path": "redist",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "38d9e9173bd11fb151235bc45cca19bcee655ea0",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/38d9e9173bd11fb151235bc45cca19bcee655ea0"
+    },
+    {
+      "path": "redist/NvLowLatencyVk.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "043c2d455c180d16923cf0f30035bc8a790df49c",
+      "size": 57840,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/043c2d455c180d16923cf0f30035bc8a790df49c"
+    },
+    {
+      "path": "redist/STREAMLINE-LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "32b1654790d552e70194f70f9717f0eedfcb8f22",
+      "size": 1591,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/32b1654790d552e70194f70f9717f0eedfcb8f22"
+    },
+    {
+      "path": "redist/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fbafdced456db1567d59dc1637dc127cc83c5f15",
+      "size": 7519856,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/fbafdced456db1567d59dc1637dc127cc83c5f15"
+    },
+    {
+      "path": "redist/sl.common.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57e78293f62fa581752251d0770e9ca0c9855230",
+      "size": 830080,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/57e78293f62fa581752251d0770e9ca0c9855230"
+    },
+    {
+      "path": "redist/sl.dlss_g.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "36a00646cc625a1b53bb8a9718c91606597a2aa0",
+      "size": 612992,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/36a00646cc625a1b53bb8a9718c91606597a2aa0"
+    },
+    {
+      "path": "redist/sl.interposer.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cf737d203bb906132d78a7b5d7c95e22a7bae225",
+      "size": 647808,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/cf737d203bb906132d78a7b5d7c95e22a7bae225"
+    },
+    {
+      "path": "redist/sl.pcl.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "676b22d3ecf0d979f31d12ed2610aa195fc8f184",
+      "size": 359552,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/676b22d3ecf0d979f31d12ed2610aa195fc8f184"
+    },
+    {
+      "path": "redist/sl.reflex.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fa0c54cc8d2c51a0aa0eed81779ea1da91586ea9",
+      "size": 382080,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/fa0c54cc8d2c51a0aa0eed81779ea1da91586ea9"
+    },
+    {
+      "path": "src",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4d40c2f8bada613eeaabeb005096b1462df0a17f",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/4d40c2f8bada613eeaabeb005096b1462df0a17f"
+    },
+    {
+      "path": "src/config.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "31ded7cc539f8c652ac91e06276473cfb5ed7d0f",
+      "size": 5400,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/31ded7cc539f8c652ac91e06276473cfb5ed7d0f"
+    },
+    {
+      "path": "src/config.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "784943a72a1d577f7a18b8d0a537dfc9101fcd54",
+      "size": 1659,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/784943a72a1d577f7a18b8d0a537dfc9101fcd54"
+    },
+    {
+      "path": "src/dllmain.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "840127b37a48ed7985af58ec707dbf435893d467",
+      "size": 426,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/840127b37a48ed7985af58ec707dbf435893d467"
+    },
+    {
+      "path": "src/exportroute.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d3e373b52d3858d1c10f729ecb67c9d1307c6ca",
+      "size": 1866,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/2d3e373b52d3858d1c10f729ecb67c9d1307c6ca"
+    },
+    {
+      "path": "src/inimigrate.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "385d9f89f4c164b7512f24e6383904b5677d43c8",
+      "size": 1026,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/385d9f89f4c164b7512f24e6383904b5677d43c8"
+    },
+    {
+      "path": "src/inputs.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3865e66997dcb2c63db100402403382cb5a528b0",
+      "size": 31637,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/3865e66997dcb2c63db100402403382cb5a528b0"
+    },
+    {
+      "path": "src/inputs.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b71c6c80a1c1511031ad79421fbb8f472cb6bc9",
+      "size": 1011,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/1b71c6c80a1c1511031ad79421fbb8f472cb6bc9"
+    },
+    {
+      "path": "src/log.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6761fd06c7565cdb058ff25cc0a9893c1358e8e",
+      "size": 1220,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/e6761fd06c7565cdb058ff25cc0a9893c1358e8e"
+    },
+    {
+      "path": "src/log.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce3419179e78eaa6c40aeba2e7661081d7e454cc",
+      "size": 80,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/ce3419179e78eaa6c40aeba2e7661081d7e454cc"
+    },
+    {
+      "path": "src/mvecscale.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79a76752155d585eaf5ae7bb2e19b4b026aefd87",
+      "size": 936,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/79a76752155d585eaf5ae7bb2e19b4b026aefd87"
+    },
+    {
+      "path": "src/presentpacer.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0bcc59b0e477594d0327352f14612918de64a808",
+      "size": 2812,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/0bcc59b0e477594d0327352f14612918de64a808"
+    },
+    {
+      "path": "src/slboot.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a6cbc913bc30c2314c866de0a3cc8371ba188cb",
+      "size": 12084,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/7a6cbc913bc30c2314c866de0a3cc8371ba188cb"
+    },
+    {
+      "path": "src/slboot.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b008026bba98528840a51afa9c900e4a00d97693",
+      "size": 643,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/b008026bba98528840a51afa9c900e4a00d97693"
+    },
+    {
+      "path": "src/slmodule.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7a24def0f150cad83bb01ba197c0a4a756834335",
+      "size": 907,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/7a24def0f150cad83bb01ba197c0a4a756834335"
+    },
+    {
+      "path": "src/tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "50cf158945b955dbb2b538e831d39fd821213cd5",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/50cf158945b955dbb2b538e831d39fd821213cd5"
+    },
+    {
+      "path": "src/tests/exportroute_test.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e4efc251ef9d9a9f62b3714d18777d8af9c7d986",
+      "size": 2628,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/e4efc251ef9d9a9f62b3714d18777d8af9c7d986"
+    },
+    {
+      "path": "src/tests/inimigrate_test.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e9c22d71ef979c2d6c4173570bdefdf5eb5537bb",
+      "size": 1962,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/e9c22d71ef979c2d6c4173570bdefdf5eb5537bb"
+    },
+    {
+      "path": "src/tests/mvecscale_test.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e56c92598f3a18fa55afc71ee7a78d07582df443",
+      "size": 1394,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/e56c92598f3a18fa55afc71ee7a78d07582df443"
+    },
+    {
+      "path": "src/tests/presentpacer_test.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "edeaf55778c3daeba7a37bf692c76f70ab247167",
+      "size": 4441,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/edeaf55778c3daeba7a37bf692c76f70ab247167"
+    },
+    {
+      "path": "src/tests/slmodule_test.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "faccae779716b989905871a2d637a69797c1dad0",
+      "size": 2252,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/faccae779716b989905871a2d637a69797c1dad0"
+    },
+    {
+      "path": "src/tests/tests_main.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef60b2ab96f92593a71ea519571cc798481e5831",
+      "size": 395,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/ef60b2ab96f92593a71ea519571cc798481e5831"
+    },
+    {
+      "path": "src/tools",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "db26767ece30fb2f25c46e741225950d3ac5dc75",
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/trees/db26767ece30fb2f25c46e741225950d3ac5dc75"
+    },
+    {
+      "path": "src/tools/fgvk-stack.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a5d3176ad157b350379e9157e8fc3c940359a6bf",
+      "size": 4827,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/a5d3176ad157b350379e9157e8fc3c940359a6bf"
+    },
+    {
+      "path": "src/vkhooks.cpp",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "09a3a0449b541c803108fb5ecd6d110a1c532e2a",
+      "size": 31057,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/09a3a0449b541c803108fb5ecd6d110a1c532e2a"
+    },
+    {
+      "path": "src/vkhooks.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce7d8902db1c026b99169fc8345cb6ff85b8965c",
+      "size": 334,
+      "url": "https://api.github.com/repos/thierbig/bg3fgvk/git/blobs/ce7d8902db1c026b99169fc8345cb6ff85b8965c"
+    }
+  ],
+  "truncated": false
+}

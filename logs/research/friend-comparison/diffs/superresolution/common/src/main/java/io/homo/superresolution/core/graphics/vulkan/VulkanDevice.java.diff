@@ -1,0 +1,11 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanDevice.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanDevice.java
+@@ -718,7 +718,7 @@
+      * the driver cannot write timestamps on this queue. Created lazily so a normal session
+      * never allocates the query pool.
+      */
+-    public synchronized VulkanTimestampProfiler timestampProfiler() {
++    public VulkanTimestampProfiler timestampProfiler() {
+         if (!SuperResolutionConfig.isEnableDetailedProfiling()) {
+             return null;
+         }

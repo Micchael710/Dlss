@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR/include/sr/fsr/fsr2.h
++++ friend/native/cpp/SRNativeFSR/include/sr/fsr/fsr2.h
+@@ -6,4 +6,4 @@
+     SR_API SRUpscaleContextCallbacks srGetFfxFSR2UpscaleCallbacks();
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

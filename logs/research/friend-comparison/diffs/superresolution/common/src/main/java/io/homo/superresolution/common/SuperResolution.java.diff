@@ -1,0 +1,85 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/SuperResolution.java
++++ friend/common/src/main/java/io/homo/superresolution/common/SuperResolution.java
+@@ -48,7 +48,6 @@
+ import io.homo.superresolution.core.graphics.glslang.GlslangShaderCompiler;
+ import io.homo.superresolution.core.graphics.opengl.GlState;
+ import io.homo.superresolution.core.gui.MaterialUI;
+-import io.homo.superresolution.core.gui.core.backends.render.GuiScaleManager;
+ import io.homo.superresolution.core.impl.Destroyable;
+ import io.homo.superresolution.core.ngx.NgxInitializer;
+ import io.homo.superresolution.core.streamline.Streamline;
+@@ -155,6 +154,11 @@
+         if (minecraft == null) {
+             minecraft = Minecraft.getInstance();
+         }
++
++        OptiScalerLoader.loadConfiguredDll();
++        if (PresentationBackendManager.shouldInitializeStreamline() && !Streamline.prepareEarly()) {
++            LOGGER.warn("Streamline is unavailable; falling back to non-Streamline backends.");
++        }
+     }
+ 
+     public static void onGameLoadFinished() {
+@@ -167,15 +171,11 @@
+             return;
+         }
+         SuperResolutionConfig.SPEC.load();
+-        GuiScaleManager.getInstance().setUserScale(SuperResolutionConfig.getUiScale());
+         gameIsStarted = true;
+         instance = new SuperResolution();
+-        OptiScalerLoader.loadConfiguredDll();
+-        if (PresentationBackendManager.shouldInitializeStreamline() && !Streamline.prepareEarly()) {
+-            LOGGER.warn("Streamline is unavailable; falling back to non-Streamline backends.");
+-        }
+         SuperResolution.check();
+         SuperResolution.preInit();
++        Streamline.prepareEarly();
+         SuperResolution.initRendering();
+         SuperResolution.getInstance().init();
+         MaterialUI.init();
+@@ -276,16 +276,12 @@
+                                 .formatted(String.join("\n", installedMods)),
+                         Component.translatable("superresolution.common_requirement.not_support.msg").getString()
+                 );
+-                System.exit(1);
+             }
+         });
+     }
+ 
+     public static void initRendering() {
+         renderThread = Thread.currentThread();
+-        if (Boolean.getBoolean("sr.baselineDiagnostics")) {
+-            org.lwjgl.opengl.GL11.glEnable(org.lwjgl.opengl.GL43.GL_DEBUG_OUTPUT_SYNCHRONOUS);
+-        }
+         if (B3DVulkanBridge.isB3DVulkanBackend()) {
+             if (minecraft == null) {
+                 minecraft = Minecraft.getInstance();
+@@ -386,8 +382,6 @@
+             candidate = algorithmDescription.createNewInstance();
+             candidate.initialize(desc);
+             currentAlgorithm = candidate;
+-            previous.destroy();
+-
+             // 算法创建时已按当前尺寸初始化，同步尺寸缓存避免渲染路径上重复重建。
+             cachedWidth = RenderHandlerManager.getScreenWidth();
+             cachedHeight = RenderHandlerManager.getScreenHeight();
+@@ -610,7 +604,7 @@
+         Error error = findAlgorithmError(
+                 failure,
+                 Collections.newSetFromMap(new IdentityHashMap<>()));
+-        if (error != null && !(error instanceof UnsatisfiedLinkError) ) {
++        if (error != null) {
+             throw error;
+         }
+     }
+@@ -649,10 +643,6 @@
+             return currentAlgorithm;
+         }
+         return defaultAlgorithm;
+-    }
+-
+-    public static AlgorithmDescription<?> getAlgorithmDescription() {
+-        return algorithmDescription;
+     }
+ 
+     public static InitializationDescription getInitializationDescription() {

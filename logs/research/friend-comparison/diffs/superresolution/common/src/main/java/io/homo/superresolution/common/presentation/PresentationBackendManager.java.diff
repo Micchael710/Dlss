@@ -1,0 +1,26 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/PresentationBackendManager.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/PresentationBackendManager.java
+@@ -48,14 +48,6 @@
+ 
+     public static boolean isInitialized() {
+         return backend().isInitialized();
+-    }
+-
+-    public static void beginRealFrameRendering() {
+-        backend().beginRealFrameRendering();
+-    }
+-
+-    public static void endRealFrameRendering() {
+-        backend().endRealFrameRendering();
+     }
+ 
+     public static void endMinecraftFrame() {
+@@ -143,7 +135,7 @@
+     }
+ 
+     private static boolean isVulkanSupported() {
+-        #if (MC_VER >= MC_1_21_11 && MC_VER < MC_26_2) || (MC_VER >= MC_1_21 && MC_VER < MC_1_21_2) || MC_VER == MC_1_20_1 || MC_VER == MC_26_2 || MC_VER == MC_26_3
++        #if (MC_VER >= MC_1_21_11 && MC_VER < MC_26_2) || (MC_VER >= MC_1_21 && MC_VER < MC_1_21_2) || MC_VER == MC_1_20_1 || MC_VER == MC_26_2
+         return true;
+         #else
+         return false;

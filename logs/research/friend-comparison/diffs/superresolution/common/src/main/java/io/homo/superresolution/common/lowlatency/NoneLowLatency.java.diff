@@ -1,0 +1,13 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/lowlatency/NoneLowLatency.java
++++ friend/common/src/main/java/io/homo/superresolution/common/lowlatency/NoneLowLatency.java
+@@ -18,8 +18,8 @@
+ 
+ package io.homo.superresolution.common.lowlatency;
+ 
+-import io.homo.superresolution.api.registry.lowlatency.LowLatencyMarker;
+-import io.homo.superresolution.api.registry.lowlatency.LowLatencyProvider;
++import io.homo.superresolution.api.registry.LowLatencyMarker;
++import io.homo.superresolution.api.registry.LowLatencyProvider;
+ 
+ public class NoneLowLatency implements LowLatencyProvider {
+     @Override

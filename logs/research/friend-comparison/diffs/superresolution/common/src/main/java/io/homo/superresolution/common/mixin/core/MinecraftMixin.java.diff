@@ -1,0 +1,11 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/core/MinecraftMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/core/MinecraftMixin.java
+@@ -161,7 +161,7 @@
+         SuperResolution.onClientStopping();
+     }
+ 
+-    @Inject(method = "destroy",at = @At(value = "INVOKE", target = "Lnet/minecraft/client/Minecraft;close()V",shift = At.Shift.AFTER))
++    @Inject(method = "destroy",at = @At(value = "TAIL"))
+     public void super_resolution$onDestroyTail(CallbackInfo ci) {
+         SuperResolution.onClientStopped();
+     }

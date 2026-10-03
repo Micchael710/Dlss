@@ -1,0 +1,20 @@
+-- The CXX compiler identification is MSVC 19.51.36244.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/Programs File2/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Configuring done (7.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/ProjectDllsss/wisteria/native/build/fsr-windows-x64
+[1/2] Building CXX object CMakeFiles\wisteria_fsr_bridge.dir\bridge.cpp.obj
+FAILED: [code=2] CMakeFiles/wisteria_fsr_bridge.dir/bridge.cpp.obj 
+"D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe"  /nologo /TP -DNOMINMAX -DWIN32_LEAN_AND_MEAN -Dwisteria_fsr_bridge_EXPORTS -ID:\ProjectDllsss\third_party\amd-fidelityfx-1.1.4\ffx-api\include -ID:\ProjectDllsss\superresolution\native\cpp\third_party -I"D:\Programs File2\Eclipse Adoptium\jdk-21.0.12.101-hotspot\include" -I"D:\Programs File2\Eclipse Adoptium\jdk-21.0.12.101-hotspot\include\win32" /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++20 -MT /W4 /utf-8 /showIncludes /FoCMakeFiles\wisteria_fsr_bridge.dir\bridge.cpp.obj /FdCMakeFiles\wisteria_fsr_bridge.dir\ /FS -c D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): error C2664: 'void ffxLoadFunctions(ffxFunctions *,HMODULE)': cannot convert argument 1 from 'HMODULE' to 'ffxFunctions *'
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): note: Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or parenthesized function-style cast
+D:\ProjectDllsss\third_party\amd-fidelityfx-1.1.4\ffx-api\include\ffx_api/ffx_api_loader.h(36): note: see declaration of 'ffxLoadFunctions'
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): note: while trying to match the argument list '(HMODULE, ffxFunctions *)'
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): error C2171: operator '!' cannot be applied to an operand of type 'void'
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): error C2451: a conditional expression of type 'void' is not valid
+D:\ProjectDllsss\wisteria\native\fsr\bridge.cpp(46): note: Expressions of type void cannot be converted to other types
+ninja: build stopped: subcommand failed.

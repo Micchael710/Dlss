@@ -1,0 +1,34 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/gui/GuiRendererMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/gui/GuiRendererMixin.java
+@@ -18,9 +18,7 @@
+ 
+ package io.homo.superresolution.common.mixin.gui;
+ 
+-#if MC_VER >= MC_26_3
+-import com.mojang.renderpearl.api.pipeline.IndexType;
+-#elif MC_VER > MC_26_1_2
++#if MC_VER > MC_26_1_2
+ import com.mojang.blaze3d.IndexType;
+ #else
+ import com.mojang.blaze3d.vertex.VertexFormat.IndexType;
+@@ -34,11 +32,6 @@
+ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+ 
+ #if MC_VER > MC_1_21_5
+-#if MC_VER >= MC_26_3
+-import com.mojang.renderpearl.api.commands.RenderPass;
+-#else
+-import com.mojang.blaze3d.systems.RenderPass;
+-#endif
+ @Mixin(net.minecraft.client.gui.render.GuiRenderer.class)
+ public class GuiRendererMixin {
+     #if MC_VER >= MC_26_2
+@@ -55,7 +48,7 @@
+     public void executeDraw(
+             @Coerce
+             Object draw,
+-            RenderPass renderPass,
++            com.mojang.blaze3d.systems.RenderPass renderPass,
+             #if MC_VER < MC_26_2
+             com.mojang.blaze3d.buffers.GpuBuffer buffer,
+             IndexType indexType,

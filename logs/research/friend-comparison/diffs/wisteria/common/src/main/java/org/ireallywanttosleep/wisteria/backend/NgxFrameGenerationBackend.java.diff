@@ -1,0 +1,61 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/backend/NgxFrameGenerationBackend.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/backend/NgxFrameGenerationBackend.java
+@@ -10,11 +10,12 @@
+ 
+ package org.ireallywanttosleep.wisteria.backend;
+ 
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationDispatchInput;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationDispatchResult;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationExecutionModel;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationProvider;
++import io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchRequest;
++import io.homo.superresolution.api.registry.AsyncFrameGenerationDispatchResult;
++import io.homo.superresolution.api.registry.FrameGenerationExecutionModel;
++import io.homo.superresolution.api.registry.FrameGenerationProvider;
+ import io.homo.superresolution.common.framegeneration.FrameGenerationMode;
++import io.homo.superresolution.common.presentation.capture.FrameResources;
+ 
+ /**
+  * Cross-platform NVNGX (raw DLSS-G) backend. Wraps {@link NgxFrameGenerationAdapter},
+@@ -45,6 +46,7 @@
+ 
+     @Override
+     public boolean isAvailable() {
++        VulkanAsyncFoundationBridge.syncProvider("wisteria:ngx");
+         return NgxFrameGenerationAdapter.isAvailable();
+     }
+ 
+@@ -57,22 +59,28 @@
+     public int presentationManagedGeneratedFrameCount(FrameGenerationMode mode) {
+         // NGX hands the interpolated frames back for the swapchain to present.
+         return Math.min(
+-                mode.generatedFrameCount(),
++                Math.max(1, mode.generatedFrameCount()),
+                 supportedGeneratedFrameCount()
+         );
+     }
+ 
+     @Override
+-    public boolean isDependenciesSatisfied() {
++    public boolean dependenciesSatisfied() {
+         // No Reflex requirement: Linux has none, and the mod drives the pacing itself.
++        VulkanAsyncFoundationBridge.syncProvider("wisteria:ngx");
+         return true;
+     }
+ 
+     @Override
+-    public FrameGenerationDispatchResult dispatchAsync(
+-            FrameGenerationDispatchInput input
++    public AsyncFrameGenerationDispatchResult dispatchAsync(
++            AsyncFrameGenerationDispatchRequest request
+     ) {
+-        return NgxFrameGenerationAdapter.dispatchAsync(input);
++        return NgxFrameGenerationAdapter.dispatchAsync(request);
++    }
++
++    @Override
++    public void finishPresent(FrameResources frameResources, boolean frameGenerationActive) {
++        // The mod paces and presents NGX frames itself; nothing to report back.
+     }
+ 
+     @Override

@@ -1,0 +1,47 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanTimestampProfiler.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanTimestampProfiler.java
+@@ -118,7 +118,7 @@
+      * @return the slot id, or {@code -1} when nothing was recorded (caller should skip
+      * the matching {@code endRegion}).
+      */
+-    public synchronized int beginRegion(VkCommandBuffer commandBuffer, String name) {
++    public int beginRegion(VkCommandBuffer commandBuffer, String name) {
+         if (destroyed || commandBuffer == null || name == null) {
+             return -1;
+         }
+@@ -138,7 +138,7 @@
+         return slot;
+     }
+ 
+-    public synchronized void endRegion(VkCommandBuffer commandBuffer, int slot) {
++    public void endRegion(VkCommandBuffer commandBuffer, int slot) {
+         if (destroyed || commandBuffer == null || slot < 0 || slot >= MAX_REGIONS || !slotPending[slot]) {
+             return;
+         }
+@@ -157,7 +157,7 @@
+      * this the slot would sit pending until the age-out, and a fallback that fires every
+      * frame would exhaust the pool exactly when the numbers are most wanted.
+      */
+-    public synchronized void cancelRegion(int slot) {
++    public void cancelRegion(int slot) {
+         if (destroyed || slot < 0 || slot >= MAX_REGIONS) {
+             return;
+         }
+@@ -168,7 +168,7 @@
+      * Publishes every region whose timestamps have landed. Call once per frame; regions
+      * still in flight stay pending and are picked up on a later call.
+      */
+-    public synchronized void collect() {
++    public void collect() {
+         if (destroyed) {
+             return;
+         }
+@@ -224,7 +224,7 @@
+     }
+ 
+     @Override
+-    public synchronized void close() {
++    public void close() {
+         if (destroyed) {
+             return;
+         }

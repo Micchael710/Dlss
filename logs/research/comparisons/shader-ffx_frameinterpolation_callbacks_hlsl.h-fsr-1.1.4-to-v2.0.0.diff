@@ -1,0 +1,395 @@
+--- fsr-1.1.4
++++ v2.0.0
+@@ -1,6 +1,6 @@
+ // This file is part of the FidelityFX SDK.
+ //
+-// Copyright (C) 2024 Advanced Micro Devices, Inc.
++// Copyright (C) 2025 Advanced Micro Devices, Inc.
+ // 
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files(the "Software"), to deal
+@@ -27,7 +27,7 @@
+ #pragma dxc diagnostic push
+ #pragma dxc diagnostic ignored "-Wambig-lit-shift"
+ #endif //__hlsl_dx_compiler
+-#include "ffx_core.h"
++#include "../../../../../api/internal/gpu/ffx_core.h"
+ #ifdef __hlsl_dx_compiler
+ #pragma dxc diagnostic pop
+ #endif //__hlsl_dx_compiler
+@@ -42,7 +42,7 @@
+  // declare CBs and CB accessors
+ ///////////////////////////////////////////////
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
+-    cbuffer cbFI : FFX_DECLARE_CB(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
++    cbuffer cbFI FFX_DECLARE_CB(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
+     {
+         FfxInt32x2      renderSize;
+         FfxInt32x2      displaySize;
+@@ -198,7 +198,7 @@
+ #endif // #if defined(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_CB_INPAINTING_PYRAMID)
+-    cbuffer cbInpaintingPyramid : FFX_DECLARE_CB(FFX_FRAMEINTERPOLATION_BIND_CB_INPAINTING_PYRAMID)
++    cbuffer cbInpaintingPyramid FFX_DECLARE_CB(FFX_FRAMEINTERPOLATION_BIND_CB_INPAINTING_PYRAMID)
+     {
+         FfxUInt32 mips;
+         FfxUInt32 numWorkGroups;
+@@ -242,7 +242,7 @@
+                                                       "comparisonFunc = COMPARISON_NEVER, " \
+                                                       "borderColor = STATIC_BORDER_COLOR_TRANSPARENT_BLACK)" )]
+ 
+-#if defined(FFX_FRAMEINTERPOLATION_EMBED_ROOTSIG)
++#if defined(FFX_FRAMEINTERPOLATION_EMBED_ROOTSIG) && FFX_FRAMEINTERPOLATION_EMBED_ROOTSIG==1
+ #define FFX_FRAMEINTERPOLATION_EMBED_ROOTSIG_CONTENT FFX_FRAMEINTERPOLATION_ROOTSIG
+ #define FFX_FRAMEINTERPOLATION_EMBED_INPAINTING_ROOTSIG_CONTENT FFX_FRAMEINTERPOLATION_INPAINTING_ROOTSIG
+ #else
+@@ -254,14 +254,14 @@
+ // declare samplers
+ ///////////////////////////////////////////////
+ 
+-SamplerState s_LinearClamp : register(s0);
++SamplerState s_LinearClamp FFX_DECLARE_SAMPLER(0);
+ 
+ ///////////////////////////////////////////////
+ // declare SRVs and SRV accessors
+ ///////////////////////////////////////////////
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_PREVIOUS_INTERPOLATION_SOURCE
+-    Texture2D<FfxFloat32x4> r_previous_interpolation_source : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_PREVIOUS_INTERPOLATION_SOURCE);
++    Texture2D<FfxFloat32x4> r_previous_interpolation_source FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_PREVIOUS_INTERPOLATION_SOURCE);
+ 
+     FfxFloat32x3 LoadPreviousBackbuffer(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -274,7 +274,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_CURRENT_INTERPOLATION_SOURCE
+-    Texture2D<FfxFloat32x4> r_current_interpolation_source : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_CURRENT_INTERPOLATION_SOURCE);
++    Texture2D<FfxFloat32x4> r_current_interpolation_source FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_CURRENT_INTERPOLATION_SOURCE);
+ 
+     FfxFloat32x3 LoadCurrentBackbuffer(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -287,7 +287,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_MOTION_VECTORS
+-    Texture2D<FfxFloat32x2> r_dilated_motion_vectors : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_MOTION_VECTORS);
++    Texture2D<FfxFloat32x2> r_dilated_motion_vectors FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_MOTION_VECTORS);
+ 
+     FfxFloat32x2 LoadDilatedMotionVector(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -296,7 +296,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_DEPTH
+-    Texture2D<FfxFloat32> r_dilated_depth : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_DEPTH);
++    Texture2D<FfxFloat32> r_dilated_depth FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DILATED_DEPTH);
+ 
+     FfxFloat32 LoadDilatedDepth(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -305,7 +305,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME
+-    Texture2D<FfxUInt32>   r_reconstructed_depth_previous_frame : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME);
++    Texture2D<FfxUInt32>   r_reconstructed_depth_previous_frame FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME);
+ 
+     FfxFloat32 LoadReconstructedDepthPreviousFrame(FFX_PARAMETER_IN FfxInt32x2 iPxInput)
+     {
+@@ -314,7 +314,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME
+-    Texture2D<FfxUInt32>   r_reconstructed_depth_interpolated_frame : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME);
++    Texture2D<FfxUInt32>   r_reconstructed_depth_interpolated_frame FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME);
+ 
+     FfxFloat32 LoadEstimatedInterpolationFrameDepth(FFX_PARAMETER_IN FfxInt32x2 iPxInput)
+     {
+@@ -323,7 +323,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_DISOCCLUSION_MASK
+-    Texture2D<FfxFloat32x4> r_disocclusion_mask : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DISOCCLUSION_MASK);
++    Texture2D<FfxFloat32x4> r_disocclusion_mask FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DISOCCLUSION_MASK);
+ 
+     FfxFloat32x4 LoadDisocclusionMask(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -337,8 +337,8 @@
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_X) && \
+     defined(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_Y)
+-    Texture2D<FfxUInt32> r_game_motion_vector_field_x : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_X);
+-    Texture2D<FfxUInt32> r_game_motion_vector_field_y : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_Y);
++    Texture2D<FfxUInt32> r_game_motion_vector_field_x FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_X);
++    Texture2D<FfxUInt32> r_game_motion_vector_field_y FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_GAME_MOTION_VECTOR_FIELD_Y);
+ 
+     FfxUInt32x2 LoadGameFieldMv(FFX_PARAMETER_IN FfxInt32x2 iPxSample)
+     {
+@@ -351,8 +351,8 @@
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X) && \
+     defined(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y)
+-    Texture2D<FfxUInt32> r_optical_flow_motion_vector_field_x : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X);
+-    Texture2D<FfxUInt32> r_optical_flow_motion_vector_field_y : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y);
++    Texture2D<FfxUInt32> r_optical_flow_motion_vector_field_x FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X);
++    Texture2D<FfxUInt32> r_optical_flow_motion_vector_field_y FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y);
+ 
+     FfxUInt32x2 LoadOpticalFlowFieldMv(FFX_PARAMETER_IN FfxInt32x2 iPxSample)
+     {
+@@ -364,7 +364,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW
+-    Texture2D<FfxInt32x2> r_optical_flow : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW);
++    Texture2D<FfxInt32x2> r_optical_flow FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW);
+     
+     #if defined(FFX_FRAMEINTERPOLATION_BIND_CB_FRAMEINTERPOLATION)
+         FfxFloat32x2 LoadOpticalFlow(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+@@ -375,7 +375,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_UPSAMPLED
+-    Texture2D<FfxFloat32x2> r_optical_flow_upsampled : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_UPSAMPLED);
++    Texture2D<FfxFloat32x2> r_optical_flow_upsampled FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_UPSAMPLED);
+ 
+     FfxFloat32x2 LoadOpticalFlowUpsampled(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -384,7 +384,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_CONFIDENCE
+-    Texture2D<FfxUInt32x2> r_optical_flow_confidence : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_CONFIDENCE);
++    Texture2D<FfxUInt32x2> r_optical_flow_confidence FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_CONFIDENCE);
+     
+     FfxFloat32 LoadOpticalFlowConfidence(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -393,7 +393,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_GLOBAL_MOTION
+-    Texture2D<FfxUInt32> r_optical_flow_global_motion : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_GLOBAL_MOTION);
++    Texture2D<FfxUInt32> r_optical_flow_global_motion FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_GLOBAL_MOTION);
+ 
+     FfxUInt32 LoadOpticalFlowGlobalMotion(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -402,7 +402,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_SCENE_CHANGE_DETECTION
+-    Texture2D<FfxUInt32> r_optical_flow_scd : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_SCENE_CHANGE_DETECTION);
++    Texture2D<FfxUInt32> r_optical_flow_scd FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_SCENE_CHANGE_DETECTION);
+ 
+     FfxUInt32 LoadOpticalFlowSceneChangeDetection(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -426,7 +426,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_DEBUG
+-    Texture2D<FfxFloat32x4> r_optical_flow_debug : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_DEBUG);
++    Texture2D<FfxFloat32x4> r_optical_flow_debug FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OPTICAL_FLOW_DEBUG);
+ 
+     FfxFloat32x4 LoadOpticalFlowDebug(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -435,15 +435,15 @@
+ #endif
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_MASK) && defined(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT)
+-    Texture2D<FfxFloat32x3> r_output          : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT);
+-    Texture2D<FfxFloat32>   r_inpainting_mask : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_MASK);
++    Texture2D<FfxFloat32x3> r_output          FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT);
++    Texture2D<FfxFloat32>   r_inpainting_mask FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_MASK);
+ 
+     FfxFloat32x4 LoadFrameInterpolationOutput(FFX_PARAMETER_IN FfxInt32x2 iPxInput)
+     {
+         return FfxFloat32x4(r_output[iPxInput], r_inpainting_mask[iPxInput]);
+     }
+ #elif defined(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT)
+-    Texture2D<FfxFloat32x4> r_output          : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT);
++    Texture2D<FfxFloat32x4> r_output          FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_OUTPUT);
+     FfxFloat32x4 LoadFrameInterpolationOutput(FFX_PARAMETER_IN FfxInt32x2 iPxInput)
+     {
+         return r_output[iPxInput];
+@@ -451,7 +451,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_PYRAMID
+-    Texture2D<FfxFloat32x4> r_inpainting_pyramid : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_PYRAMID);
++    Texture2D<FfxFloat32x4> r_inpainting_pyramid FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPAINTING_PYRAMID);
+ 
+     FfxFloat32x4 LoadInpaintingPyramid(FFX_PARAMETER_IN FfxInt32 mipLevel, FFX_PARAMETER_IN FfxUInt32x2 iPxInput)
+     {
+@@ -460,7 +460,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_PRESENT_BACKBUFFER
+-    Texture2D<FfxFloat32x4> r_present_backbuffer : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_PRESENT_BACKBUFFER);
++    Texture2D<FfxFloat32x4> r_present_backbuffer FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_PRESENT_BACKBUFFER);
+ 
+     FfxFloat32x4 LoadPresentBackbuffer(FFX_PARAMETER_IN FfxInt32x2 iPxInput)
+     {
+@@ -473,7 +473,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_SRV_COUNTERS
+-    StructuredBuffer<FfxUInt32> r_counters : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_COUNTERS);
++    StructuredBuffer<FfxUInt32> r_counters FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_COUNTERS);
+ 
+     FfxUInt32 LoadCounter(FFX_PARAMETER_IN FfxInt32 iPxPos)
+     {
+@@ -487,7 +487,7 @@
+ #endif
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_DEPTH)
+-Texture2D<FfxFloat32> r_input_depth : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_DEPTH);
++Texture2D<FfxFloat32> r_input_depth FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_DEPTH);
+ FfxFloat32 LoadInputDepth(FfxInt32x2 iPxPos)
+ {
+     return r_input_depth[iPxPos];
+@@ -495,7 +495,7 @@
+ #endif
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_MOTION_VECTORS)
+-Texture2D<FfxFloat32x4> r_input_motion_vectors : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_MOTION_VECTORS);
++Texture2D<FfxFloat32x4> r_input_motion_vectors FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_INPUT_MOTION_VECTORS);
+ FfxFloat32x2 LoadInputMotionVector(FfxInt32x2 iPxDilatedMotionVectorPos)
+ {
+     FfxFloat32x2 fSrcMotionVector = r_input_motion_vectors[iPxDilatedMotionVectorPos].xy;
+@@ -511,7 +511,7 @@
+ #endif
+ 
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_SRV_DISTORTION_FIELD)
+-    Texture2D<FfxFloat32x2> r_input_distortion_field : FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DISTORTION_FIELD);
++    Texture2D<FfxFloat32x2> r_input_distortion_field FFX_DECLARE_SRV(FFX_FRAMEINTERPOLATION_BIND_SRV_DISTORTION_FIELD);
+     FfxFloat32x2 SampleDistortionField(FFX_PARAMETER_IN FfxFloat32x2 fUv)
+     {
+         return r_input_distortion_field.SampleLevel(s_LinearClamp, fUv, 0);
+@@ -522,8 +522,8 @@
+ // declare UAVs and UAV accessors
+ ///////////////////////////////////////////////
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_MASK) && defined(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT)
+-    RWTexture2D<FfxFloat32x3> rw_output          : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT);
+-    RWTexture2D<FfxFloat32>   rw_inpainting_mask : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_MASK);
++    RWTexture2D<FfxFloat32x3> rw_output          FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT);
++    RWTexture2D<FfxFloat32>   rw_inpainting_mask FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_MASK);
+ 
+     FfxFloat32x4 RWLoadFrameinterpolationOutput(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -537,7 +537,7 @@
+     }
+ 
+ #elif defined(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT)
+-    RWTexture2D<FfxFloat32x4> rw_output : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT);
++    RWTexture2D<FfxFloat32x4> rw_output FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OUTPUT);
+ 
+     FfxFloat32x4 RWLoadFrameinterpolationOutput(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -551,7 +551,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_MOTION_VECTORS
+-    RWTexture2D<FfxFloat32x2> rw_dilated_motion_vectors : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_MOTION_VECTORS);
++    RWTexture2D<FfxFloat32x2> rw_dilated_motion_vectors FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_MOTION_VECTORS);
+ 
+     FfxFloat32x2 RWLoadDilatedMotionVectors(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -565,7 +565,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_DEPTH
+-    RWTexture2D<FfxFloat32> rw_dilated_depth : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_DEPTH);
++    RWTexture2D<FfxFloat32> rw_dilated_depth FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DILATED_DEPTH);
+ 
+     FfxFloat32 RWLoadDilatedDepth(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -579,7 +579,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME
+-    RWTexture2D<FfxUInt32> rw_reconstructed_depth_previous_frame : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME);
++    RWTexture2D<FfxUInt32> rw_reconstructed_depth_previous_frame FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME);
+ 
+     FfxFloat32 RWLoadReconstructedDepthPreviousFrame(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -599,7 +599,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME
+-    RWTexture2D<FfxUInt32>   rw_reconstructed_depth_interpolated_frame : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME);
++    RWTexture2D<FfxUInt32>   rw_reconstructed_depth_interpolated_frame FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME);
+     
+     FfxFloat32 RWLoadReconstructedDepthInterpolatedFrame(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -625,7 +625,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_DISOCCLUSION_MASK
+-    RWTexture2D<FfxFloat32x2> rw_disocclusion_mask : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DISOCCLUSION_MASK);
++    RWTexture2D<FfxFloat32x2> rw_disocclusion_mask FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_DISOCCLUSION_MASK);
+ 
+     FfxFloat32x2 RWLoadDisocclusionMask(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -641,8 +641,8 @@
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_X) && \
+     defined(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_Y)
+ 
+-    RWTexture2D<FfxUInt32> rw_game_motion_vector_field_x : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_X);
+-    RWTexture2D<FfxUInt32> rw_game_motion_vector_field_y : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_Y);
++    RWTexture2D<FfxUInt32> rw_game_motion_vector_field_x FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_X);
++    RWTexture2D<FfxUInt32> rw_game_motion_vector_field_y FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_GAME_MOTION_VECTOR_FIELD_Y);
+ 
+     FfxUInt32 RWLoadGameMotionVectorFieldX(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -686,8 +686,8 @@
+ #if defined(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X) && \
+     defined(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y)
+ 
+-    RWTexture2D<FfxUInt32> rw_optical_flow_motion_vector_field_x : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X);
+-    RWTexture2D<FfxUInt32> rw_optical_flow_motion_vector_field_y : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y);
++    RWTexture2D<FfxUInt32> rw_optical_flow_motion_vector_field_x FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X);
++    RWTexture2D<FfxUInt32> rw_optical_flow_motion_vector_field_y FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y);
+ 
+     FfxUInt32 RWLoadOpticalflowMotionVectorFieldX(FFX_PARAMETER_IN FfxInt32x2 iPxPos)
+     {
+@@ -713,7 +713,7 @@
+ #endif
+ 
+ #ifdef FFX_FRAMEINTERPOLATION_BIND_UAV_COUNTERS
+-    globallycoherent RWStructuredBuffer<FfxUInt32> rw_counters : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_COUNTERS);
++    globallycoherent RWStructuredBuffer<FfxUInt32> rw_counters FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_COUNTERS);
+ 
+     FfxUInt32 RWLoadCounter(FFX_PARAMETER_IN FfxInt32 iPxPos)
+     {
+@@ -745,19 +745,19 @@
+     defined(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_11)   && \
+     defined(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_12)
+ 
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid0   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_0);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid1   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_1);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid2   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_2);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid3   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_3);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid4   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_4);
+-    globallycoherent RWTexture2D<FfxFloat32x4>  rw_inpainting_pyramid5   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_5);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid6   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_6);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid7   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_7);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid8   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_8);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid9   : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_9);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid10  : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_10);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid11  : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_11);
+-    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid12  : FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_12);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid0   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_0);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid1   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_1);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid2   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_2);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid3   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_3);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid4   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_4);
++    globallycoherent RWTexture2D<FfxFloat32x4>  rw_inpainting_pyramid5   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_5);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid6   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_6);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid7   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_7);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid8   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_8);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid9   FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_9);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid10  FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_10);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid11  FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_11);
++    RWTexture2D<FfxFloat32x4>                   rw_inpainting_pyramid12  FFX_DECLARE_UAV(FFX_FRAMEINTERPOLATION_BIND_UAV_INPAINTING_PYRAMID_MIPMAP_12);
+ 
+ 
+     FfxFloat32x4 RWLoadInpaintingPyramid(FFX_PARAMETER_IN FfxInt32x2 iPxPos, FFX_PARAMETER_IN FfxUInt32 index)

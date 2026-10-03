@@ -1,0 +1,30 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanTexture.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/vulkan/VulkanTexture.java
+@@ -360,6 +360,27 @@
+             throw new VulkanException("Memory handle not exported");
+         }
+         return exportedHandle;
++    }
++
++    public void resize(int newWidth, int newHeight) {
++        if (newWidth == width && newHeight == height) {
++            return;
++        }
++
++        destroy();
++        this.width = newWidth;
++        this.height = newHeight;
++
++        try (MemoryStack stack = stackPush()) {
++            createImage(stack);
++            if (isExternal) {
++                throw new VulkanException("Cannot resize external memory texture");
++            } else {
++                allocateMemory(stack);
++            }
++            createImageView(stack);
++            updateDebugLabels();
++        }
+     }
+ 
+     public void transitionImageLayout(

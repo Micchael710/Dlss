@@ -1,0 +1,17 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/opengl/OpenGLPresentationBackend.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/opengl/OpenGLPresentationBackend.java
+@@ -17,14 +17,6 @@
+     @Override
+     public boolean isInitialized() {
+         return true;
+-    }
+-
+-    @Override
+-    public void beginRealFrameRendering() {
+-    }
+-
+-    @Override
+-    public void endRealFrameRendering() {
+     }
+ 
+     @Override

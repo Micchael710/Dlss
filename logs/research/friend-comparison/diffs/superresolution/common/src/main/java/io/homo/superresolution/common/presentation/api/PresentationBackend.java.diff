@@ -1,0 +1,13 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/api/PresentationBackend.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/api/PresentationBackend.java
+@@ -6,10 +6,6 @@
+     boolean isAvailable();
+ 
+     boolean isInitialized();
+-
+-    void beginRealFrameRendering();
+-
+-    void endRealFrameRendering();
+ 
+     void endMinecraftFrame();
+ 

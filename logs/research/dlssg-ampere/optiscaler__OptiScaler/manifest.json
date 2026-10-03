@@ -1,0 +1,188 @@
+{
+  "repo": "optiscaler/OptiScaler",
+  "commit": "6b91154867affa0b6874bc1487b1cf0c8e257060",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "Features.md",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/Features.md",
+      "sha256": "ce6e3dbfcca526867f46dfe1ad82af8d9c648aafd203c3d18fb73177a4e7e0b5"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "path": "OptiScaler.ini",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler.ini",
+      "sha256": "535d8bd64fa528415289c4d83b6fc410810fae26a741b618fe30ea233040a8e0"
+    },
+    {
+      "path": "OptiScaler/NVNGX_Parameter.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/NVNGX_Parameter.cpp",
+      "sha256": "53338a6161b5ef7e04aa6e183b8ed50b2d7e2c2906ff9e8ded3e7fc03c115bf5"
+    },
+    {
+      "path": "OptiScaler/NVNGX_Parameter.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/NVNGX_Parameter.h",
+      "sha256": "854569c1f45b2a96bc6f5d9d3ac7e041dde5df0727d2dca9cc769ba5e132b5a0"
+    },
+    {
+      "path": "OptiScaler/framegen/dlssg/DLSSG_Dx12.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/dlssg/DLSSG_Dx12.cpp",
+      "sha256": "9b36074a41fe5666293403df423db01b07ed8340a159d3aa9817d8cd7339c57b"
+    },
+    {
+      "path": "OptiScaler/framegen/dlssg/DLSSG_Dx12.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/dlssg/DLSSG_Dx12.h",
+      "sha256": "8e0b73c7104c81881c0bab4adfde8ea9f9aaccd1a57999a2830e33563c8632c7"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/IFGNvngx.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/IFGNvngx.h",
+      "sha256": "f67bbcc1f097f1f92a966a100b92e6d53355421d461036d649f7f1fd0b023223"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Arturs.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Arturs.cpp",
+      "sha256": "c0b37eb7ae3453232833dac54d0dd31b9ec0df14278b4b0e626cc072cbeed7bf"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Arturs.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Arturs.h",
+      "sha256": "42c5f1504589889db41bb4d0bc5366356982db16a4af34c25e9cc637097cd450"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Combo.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Combo.cpp",
+      "sha256": "efa6e7ac2c4a1f6e996c209e582e9ce883203f54ea18c655bebc1e16e2b51fa4"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Combo.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Combo.h",
+      "sha256": "0c93d63a888b87dae683f13102f9fc0866591d0dd9da2890d3123ed74dfaec4f"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_DllProxy.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_DllProxy.cpp",
+      "sha256": "2d60965142904c2ab54dbc67aae25b081a2f8780190709cc9315eafbe28ac12d"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_DllProxy.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_DllProxy.h",
+      "sha256": "cb08de9ce64979f01e9b7883f00b6056573a3fa25326512c5f302d378c62f304"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_FFX.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_FFX.cpp",
+      "sha256": "8d9be5a20e236b6d6648158928d6be88ea19c2357d689e7f73a694b578709ebc"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_FFX.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_FFX.h",
+      "sha256": "547c355882c3751a568fc1336d881098e2a14bb4cf306c78c779b6dc6b041237"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_FG.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_FG.cpp",
+      "sha256": "a8c3d1bb35af012be93eab0b79fde3b3370c0220a930691cae8419c7913bc09d"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_FG.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_FG.h",
+      "sha256": "a036d957e83d9d2e8a6be750844ac439a5fdc6658c71db85bf93f8f1e2557fe2"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Nukems.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Nukems.cpp",
+      "sha256": "748944cc69651dc741aed00d926942e2e98548fec2e4778e94bbcb27bba4eae8"
+    },
+    {
+      "path": "OptiScaler/framegen/nvngx/Nvngx_Nukems.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/framegen/nvngx/Nvngx_Nukems.h",
+      "sha256": "8802efa8b680d51833f613333cb716dc2dc0ae58d1a7cd9c17d8bf0fd7c84adc"
+    },
+    {
+      "path": "OptiScaler/include/imgui/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/include/imgui/LICENSE.txt",
+      "sha256": "c80c5789748d955c4a650562baa0d750494e2c7128c2ca66aaebe2e3c4e198bf"
+    },
+    {
+      "path": "OptiScaler/inputs/NVNGX.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/inputs/NVNGX.cpp",
+      "sha256": "089e440336f717ef1044e8615fa59d0c82dc45da9da4e616b494c8aca8b4bc59"
+    },
+    {
+      "path": "OptiScaler/inputs/NVNGX_DLSS.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/inputs/NVNGX_DLSS.h",
+      "sha256": "b6f70617ba973756bcec577e761d19be48a9f842fc709dbf5368217594b47800"
+    },
+    {
+      "path": "OptiScaler/inputs/NVNGX_DLSS_Dx11.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/inputs/NVNGX_DLSS_Dx11.cpp",
+      "sha256": "ed2a6e195c730524b8d4de9c4ae52d66aec4cd0f407e9212eb3831800e317505"
+    },
+    {
+      "path": "OptiScaler/inputs/NVNGX_DLSS_Dx12.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/inputs/NVNGX_DLSS_Dx12.cpp",
+      "sha256": "7e68e806228f901e1eb9560c2235163bf04bdc1354c627a04a25f29d644ad203"
+    },
+    {
+      "path": "OptiScaler/inputs/NVNGX_DLSS_Vk.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/inputs/NVNGX_DLSS_Vk.cpp",
+      "sha256": "309f53c5ebbea063a717e05f4bd8a0d8b32bdeb4efd865173f103a535c586a1f"
+    },
+    {
+      "path": "OptiScaler/proxies/NVNGX_Proxy.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/proxies/NVNGX_Proxy.h",
+      "sha256": "3bc2dd2ed2656383680c8ce189c8fa993a2eed72050a746648c13beff0bd037f"
+    },
+    {
+      "path": "OptiScaler/upscalers/ffx/FFXFeature_VkOn12.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/upscalers/ffx/FFXFeature_VkOn12.cpp",
+      "sha256": "d33ff2063d6031e9329a298730177b47794e1c436ea718b8c0e8e8aa447ddb6c"
+    },
+    {
+      "path": "OptiScaler/upscalers/ffx/FFXFeature_VkOn12.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/upscalers/ffx/FFXFeature_VkOn12.h",
+      "sha256": "4fec4f98b7ae48a8722fc899b68d3b3d43001eea3f6cac26445ca424fffb3c76"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/README.md",
+      "sha256": "bbeb7eab65b3c3d0ac95a59371f26182ea65e11050d91f103ef6584422cc82e6"
+    },
+    {
+      "path": "Spoofing.md",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/Spoofing.md",
+      "sha256": "1651eaf710694b920cb4f022961f5c2aafcf4ca92e91174823a6c26935c802b5"
+    },
+    {
+      "path": "external/directx_agility_sdk/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/external/directx_agility_sdk/LICENSE.txt",
+      "sha256": "95598665ca96fc6a9355e57be75fe3afcdf2501bb39f3b40ac6b91d0ed85915c"
+    },
+    {
+      "path": "OptiScaler/hooks/VulkanwDx12_Hooks.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/hooks/VulkanwDx12_Hooks.cpp",
+      "sha256": "e9a0b636ce9b50d196cbb84838b8ccdb4e0fed51a4a8ad36513c848dbfa41d23"
+    },
+    {
+      "path": "OptiScaler/hooks/VulkanwDx12_Hooks.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/hooks/VulkanwDx12_Hooks.h",
+      "sha256": "825370722e2aeabaaebc193fb6fde88953e9d2a0419531f99f1df76029bc0676"
+    },
+    {
+      "path": "OptiScaler/upscalers/IFeature_VkwDx12.cpp",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/upscalers/IFeature_VkwDx12.cpp",
+      "sha256": "e072d064f252adc7c530f4336aaba5140238ee166ab861260ebeb5f545b85749"
+    },
+    {
+      "path": "OptiScaler/upscalers/IFeature_VkwDx12.h",
+      "url": "https://raw.githubusercontent.com/optiscaler/OptiScaler/6b91154867affa0b6874bc1487b1cf0c8e257060/OptiScaler/upscalers/IFeature_VkwDx12.h",
+      "sha256": "4fe92a7783aebcc7ca5668a1787b4571b6568591db93c4130ea9c752eb98de1b"
+    }
+  ],
+  "binary_downloads": 0
+}

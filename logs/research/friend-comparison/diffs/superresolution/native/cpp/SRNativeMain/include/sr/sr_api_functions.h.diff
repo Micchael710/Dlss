@@ -1,0 +1,29 @@
+--- ours/native/cpp/SRNativeMain/include/sr/sr_api_functions.h
++++ friend/native/cpp/SRNativeMain/include/sr/sr_api_functions.h
+@@ -20,7 +20,7 @@
+         SRUpscaleProvider *provider,
+         const SRCreateUpscaleContextDesc *desc);
+ 
+-    SR_API SRReturnCode srDestroyUpscaleContext(SRUpscaleContext *context);
++    SR_API SRReturnCode srDestroyUpscaleContext(SRUpscaleContext * context);
+ 
+     SR_API SRReturnCode srQueryUpscaleContext(
+         SRUpscaleContext *context,
+@@ -28,7 +28,7 @@
+         SRUpscaleContextQueryType queryType);
+ 
+     SR_API SRReturnCode srInitUpscaleContext(
+-        SRUpscaleContext *context);
++        SRUpscaleContext * context);
+ 
+     SR_API SRReturnCode srDispatchUpscale(
+         SRUpscaleContext *context,
+@@ -131,7 +131,7 @@
+         const char *name,
+         void **outValue);
+ 
+-    SR_API void srDestroyExtraParams(SRContextExtraParams *params);
++    SR_API void srDestroyExtraParams(SRContextExtraParams * params);
+ 
+     #ifdef __cplusplus
+ }

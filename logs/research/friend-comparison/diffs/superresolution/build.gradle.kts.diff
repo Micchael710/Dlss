@@ -1,0 +1,48 @@
+--- ours/build.gradle.kts
++++ friend/build.gradle.kts
+@@ -18,7 +18,6 @@
+ 
+ import groovy.json.JsonSlurper
+ import net.neoforged.nfrtgradle.CreateMinecraftArtifacts
+-import multiversion.WindowsX64MinecraftNativesRule
+ import utils.CurseForgeUploader
+ import utils.ModrinthUploader
+ import java.io.BufferedReader
+@@ -28,23 +27,9 @@
+ private val consoleReader = BufferedReader(InputStreamReader(System.`in`))
+ 
+ plugins {
+-    id("net.neoforged.moddev") version "2.0.147" apply false
++    id("net.neoforged.moddev") version "2.0.141" apply false
+     id("multiversion")
+     id("multiversion-neoform")
+-}
+-
+-val nativeArchitecture = providers.gradleProperty("sr_native_arch").orNull
+-if (nativeArchitecture != null) {
+-    require(nativeArchitecture == "windows-x64") { "Unsupported sr_native_arch: $nativeArchitecture" }
+-    require(System.getProperty("os.name").startsWith("Windows") &&
+-        System.getProperty("os.arch") in listOf("amd64", "x86_64")) {
+-        "The windows-x64 native profile requires a Windows x64 Gradle JVM"
+-    }
+-    require(providers.gradleProperty("minecraft_version_config").get() == "1.21.1" &&
+-        providers.gradleProperty("loader").orNull == "neoforge") {
+-        "The windows-x64 native profile is currently verified only for NeoForge 1.21.1"
+-    }
+-    logger.lifecycle("Minecraft native dependency profile: windows-x64 (LWJGL versions unchanged)")
+ }
+ 
+ allprojects {
+@@ -74,12 +59,6 @@
+         maven(url = "https://maven.fabricmc.net/")
+         maven(url = "https://maven.parchmentmc.org/")
+         maven(url = "https://maven.blamejared.com")
+-    }
+-
+-    if (nativeArchitecture == "windows-x64") {
+-        dependencies.components.withModule<WindowsX64MinecraftNativesRule>(
+-            "net.neoforged:minecraft-dependencies"
+-        )
+     }
+ 
+     if (project.name != "native") {

@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeMain/include/sr/sr_api_types.h
++++ friend/native/cpp/SRNativeMain/include/sr/sr_api_types.h
+@@ -96,4 +96,4 @@
+ 
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

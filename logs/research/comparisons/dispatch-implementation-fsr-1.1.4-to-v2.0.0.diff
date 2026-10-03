@@ -1,0 +1,492 @@
+--- fsr-1.1.4
++++ v2.0.0
+@@ -1,6 +1,6 @@
+ // This file is part of the FidelityFX SDK.
+ //
+-// Copyright (C) 2024 Advanced Micro Devices, Inc.
++// Copyright (C) 2025 Advanced Micro Devices, Inc.
+ // 
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files(the "Software"), to deal
+@@ -24,20 +24,30 @@
+ #include <cmath>        // for fabs, abs, sinf, sqrt, etc.
+ #include <string>       // for memset
+ #include <cfloat>       // for FLT_EPSILON
+-#include <FidelityFX/host/ffx_frameinterpolation.h>
++#include "../include/ffx_frameinterpolation.h"
+ 
+ #define FFX_CPU
+ 
+ #ifdef __clang__
+ #pragma clang diagnostic ignored "-Wunused-function"
+ #pragma clang diagnostic ignored "-Wsign-compare"
++#pragma clang diagnostic ignored "-Wno-narrowing"
+ #endif
+ 
+-#include <FidelityFX/gpu/ffx_core.h>
+-#include <FidelityFX/gpu/spd/ffx_spd.h>
+-#include <ffx_object_management.h>
+-
++#ifdef _MSC_VER
++#pragma warning(push)
++#pragma warning(disable : 4838)
++#endif
++
++#include "../../../api/internal/gpu/ffx_core.h"
++#include "../include/gpu/spd/ffx_spd.h"
++#include "../../../api/internal/ffx_object_management.h"
+ #include "ffx_frameinterpolation_private.h"
++#include "ffx_frameinterpolation_shaderblobs.h"
++
++#ifdef FFX_BACKEND_DX12
++#include "../../../backend/dx12/ffx_dx12.h"
++#endif // FFX_BACKEND_DX12
+ 
+ // lists to map shader resource bindpoint name to resource identifier
+ typedef struct ResourceBinding
+@@ -287,13 +297,13 @@
+ 
+     // Set up pipeline descriptor (basically RootSignature and binding)
+     auto CreateComputePipeline = [&](FfxPass pass, const wchar_t* name, FfxPipelineState* pipeline) -> FfxErrorCode {
++        FfxShaderBlob shaderBlob = {}; 
++        frameInterpolationGetPermutationBlobByIndex((FfxFrameInterpolationPass)pass, getPipelinePermutationFlags(contextFlags, pass, supportedFP16, canForceWave64, useLut), &shaderBlob);
+         ffxSafeReleasePipeline(&context->contextDescription.backendInterface, pipeline, context->effectContextId);
+         wcscpy_s(pipelineDescription.name, name);
+         FFX_VALIDATE(context->contextDescription.backendInterface.fpCreatePipeline(
+             &context->contextDescription.backendInterface,
+-            FFX_EFFECT_FRAMEINTERPOLATION,
+-            pass,
+-            getPipelinePermutationFlags(contextFlags, pass, supportedFP16, canForceWave64, useLut),
++            &shaderBlob,
+             &pipelineDescription,
+             context->effectContextId,
+             pipeline));
+@@ -306,11 +316,13 @@
+         wcscpy_s(pipelineDescription.name, name);
+         pipelineDescription.stage            = (FfxBindStage)(FFX_BIND_VERTEX_SHADER_STAGE | FFX_BIND_PIXEL_SHADER_STAGE);
+         pipelineDescription.backbufferFormat = context->contextDescription.backBufferFormat;
++
++        FfxShaderBlob shaderBlob = {};
++        frameInterpolationGetPermutationBlobByIndex(
++            (FfxFrameInterpolationPass)pass, getPipelinePermutationFlags(contextFlags, pass, supportedFP16, canForceWave64, useLut), &shaderBlob);
+         FFX_VALIDATE(context->contextDescription.backendInterface.fpCreatePipeline(
+             &context->contextDescription.backendInterface,
+-            FFX_EFFECT_FRAMEINTERPOLATION,
+-            pass,
+-            getPipelinePermutationFlags(contextFlags, pass, supportedFP16, canForceWave64, useLut),
++            &shaderBlob,
+             &pipelineDescription,
+             context->effectContextId,
+             pipeline));
+@@ -338,62 +350,91 @@
+ // Format precision group for HUDless.
+ // Also format needs at least the 3 RGB channels to be valid
+ // int formats aren't accepted.
+-int GetFormatPrecisionGroup(FfxSurfaceFormat format)
++int GetFormatPrecisionGroup(FfxApiSurfaceFormat format)
+ {
+     switch (format)
+     {
+-    case FFX_SURFACE_FORMAT_R32G32B32A32_TYPELESS:
+-    case FFX_SURFACE_FORMAT_R32G32B32A32_FLOAT:
+-    case FFX_SURFACE_FORMAT_R32G32B32_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R32G32B32A32_TYPELESS:
++    case FFX_API_SURFACE_FORMAT_R32G32B32A32_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R32G32B32_FLOAT:
+         return 0;
+ 
+-    case FFX_SURFACE_FORMAT_R16G16B16A16_TYPELESS:
+-    case FFX_SURFACE_FORMAT_R16G16B16A16_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R16G16B16A16_TYPELESS:
++    case FFX_API_SURFACE_FORMAT_R16G16B16A16_FLOAT:
+         return 1;
+ 
+-    case FFX_SURFACE_FORMAT_R8G8B8A8_TYPELESS:
+-    case FFX_SURFACE_FORMAT_R8G8B8A8_UNORM:
+-    case FFX_SURFACE_FORMAT_B8G8R8A8_TYPELESS:
+-    case FFX_SURFACE_FORMAT_B8G8R8A8_UNORM:
++    case FFX_API_SURFACE_FORMAT_R8G8B8A8_TYPELESS:
++    case FFX_API_SURFACE_FORMAT_R8G8B8A8_UNORM:
++    case FFX_API_SURFACE_FORMAT_B8G8R8A8_TYPELESS:
++    case FFX_API_SURFACE_FORMAT_B8G8R8A8_UNORM:
+         return 2;
+ 
+-    case FFX_SURFACE_FORMAT_R8G8B8A8_SNORM:
++    case FFX_API_SURFACE_FORMAT_R8G8B8A8_SNORM:
+         return 3;
+ 
+-    case FFX_SURFACE_FORMAT_R8G8B8A8_SRGB:
+-    case FFX_SURFACE_FORMAT_B8G8R8A8_SRGB:
++    case FFX_API_SURFACE_FORMAT_R8G8B8A8_SRGB:
++    case FFX_API_SURFACE_FORMAT_B8G8R8A8_SRGB:
+         return 4;
+ 
+-    case FFX_SURFACE_FORMAT_R11G11B10_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R11G11B10_FLOAT:
+         return 5;
+ 
+-    case FFX_SURFACE_FORMAT_R10G10B10A2_TYPELESS:
+-    case FFX_SURFACE_FORMAT_R10G10B10A2_UNORM:
++    case FFX_API_SURFACE_FORMAT_R10G10B10A2_TYPELESS:
++    case FFX_API_SURFACE_FORMAT_R10G10B10A2_UNORM:
+         return 6;
+ 
+-    case FFX_SURFACE_FORMAT_R9G9B9E5_SHAREDEXP:
++    case FFX_API_SURFACE_FORMAT_R9G9B9E5_SHAREDEXP:
+         return 7;
+ 
+     // we don't accept the following formats
+-    case FFX_SURFACE_FORMAT_R32G32B32A32_UINT:
+-    case FFX_SURFACE_FORMAT_R32G32_FLOAT:
+-    case FFX_SURFACE_FORMAT_R8_UINT:
+-    case FFX_SURFACE_FORMAT_R32_UINT:
+-    case FFX_SURFACE_FORMAT_R16G16_UINT:
+-    case FFX_SURFACE_FORMAT_R16G16_SINT:
+-    case FFX_SURFACE_FORMAT_R16G16_FLOAT:
+-    case FFX_SURFACE_FORMAT_R16_FLOAT:
+-    case FFX_SURFACE_FORMAT_R16_UINT:
+-    case FFX_SURFACE_FORMAT_R16_UNORM:
+-    case FFX_SURFACE_FORMAT_R16_SNORM:
+-    case FFX_SURFACE_FORMAT_R8_UNORM:
+-    case FFX_SURFACE_FORMAT_R8G8_UNORM:
+-    case FFX_SURFACE_FORMAT_R8G8_UINT:
+-    case FFX_SURFACE_FORMAT_R32_FLOAT:
+-    case FFX_SURFACE_FORMAT_UNKNOWN:
++    case FFX_API_SURFACE_FORMAT_R32G32B32A32_UINT:
++    case FFX_API_SURFACE_FORMAT_R32G32_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R8_UINT:
++    case FFX_API_SURFACE_FORMAT_R32_UINT:
++    case FFX_API_SURFACE_FORMAT_R16G16_UINT:
++    case FFX_API_SURFACE_FORMAT_R16G16_SINT:
++    case FFX_API_SURFACE_FORMAT_R16G16_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R16_FLOAT:
++    case FFX_API_SURFACE_FORMAT_R16_UINT:
++    case FFX_API_SURFACE_FORMAT_R16_UNORM:
++    case FFX_API_SURFACE_FORMAT_R16_SNORM:
++    case FFX_API_SURFACE_FORMAT_R8_UNORM:
++    case FFX_API_SURFACE_FORMAT_R8G8_UNORM:
++    case FFX_API_SURFACE_FORMAT_R8G8_UINT:
++    case FFX_API_SURFACE_FORMAT_R32_FLOAT:
++    case FFX_API_SURFACE_FORMAT_UNKNOWN:
+     default:
+         return -1;
+     }
++}
++
++static void getInternalResourceDescriptions(const FfxApiDimensions2D* maxRenderSize, const FfxApiDimensions2D* displaySize, FfxApiSurfaceFormat previousInterpolationSourceFormat, FfxFrameInterpolationInternalResourceDescriptions* internalResourceDescriptions)
++{
++    internalResourceDescriptions->reconstructedDepthInterpolatedFrame = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_ReconstructedDepthInterpolatedFrame", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->gameMotionVectorFieldX = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_GameMotionVectorFieldX", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_X, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->gameMotionVectorFieldY = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_GameMotionVectorFieldY", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_Y, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->inpaintingPyramid = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R16G16B16A16_FLOAT, displaySize->width / 2, displaySize->height / 2, 1, 0, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_InpaintingPyramid", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_PYRAMID, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->counters = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_BUFFER, FFX_API_SURFACE_FORMAT_UNKNOWN, 8, 4, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_Counters", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->opticalFlowMotionVectorFieldX = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_OpticalFlowMotionVectorFieldX", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->opticalFlowMotionVectorFieldY = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_OpticalFlowMotionVectorFieldY", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->previousInterpolationSource = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, (uint32_t)previousInterpolationSourceFormat, displaySize->width, displaySize->height, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_PreviousInterpolationSouce", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_PREVIOUS_INTERPOLATION_SOURCE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->inpaintingMask = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R8_UNORM, displaySize->width, displaySize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_InpaintingMask", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_MASK, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    internalResourceDescriptions->disocclusionMask = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R8G8_UNORM, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_ALIASABLE, FFX_API_RESOURCE_USAGE_UAV }, FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FI_DisocclusionMask", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DISOCCLUSION_MASK, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++
++    // Default data for resources with init data
++    static uint8_t defaultDistortionFieldData[2] = { 0, 0 };
++    internalResourceDescriptions->defaultDistortionField = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R8G8_UNORM, 1, 1, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, FFX_API_RESOURCE_USAGE_READ_ONLY }, FFX_API_RESOURCE_STATE_COMPUTE_READ, L"FI_DefaultDistortionField", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DEFAULT_DISTORTION_FIELD, FfxResourceInitData::FfxResourceInitBuffer(sizeof(defaultDistortionFieldData), defaultDistortionFieldData) };
++
++}
++
++static void getSharedResourceDescriptions(const FfxApiDimensions2D* maxRenderSize, const FfxApiDimensions2D* displaySize, FfxFrameInterpolationSharedResourceDescriptions* sharedResourceDescriptions)
++{
++    sharedResourceDescriptions->dilatedDepth = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_FLOAT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, (FFX_API_RESOURCE_USAGE_RENDERTARGET | FFX_API_RESOURCE_USAGE_UAV | FFX_API_RESOURCE_USAGE_DCC_RENDERTARGET) },
++        FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_DilatedDepth", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DILATED_DEPTH, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    sharedResourceDescriptions->dilatedMotionVectors = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R16G16_FLOAT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, (FFX_API_RESOURCE_USAGE_RENDERTARGET | FFX_API_RESOURCE_USAGE_UAV | FFX_API_RESOURCE_USAGE_DCC_RENDERTARGET) },
++            FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_DilatedVelocity", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DILATED_MOTION_VECTORS, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
++    sharedResourceDescriptions->reconstructedPrevNearestDepth = { FFX_HEAP_TYPE_DEFAULT, { FFX_API_RESOURCE_TYPE_TEXTURE2D, FFX_API_SURFACE_FORMAT_R32_UINT, maxRenderSize->width, maxRenderSize->height, 1, 1, FFX_API_RESOURCE_FLAGS_NONE, (FFX_API_RESOURCE_USAGE_UAV) },
++            FFX_API_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_ReconstructedPrevNearestDepth", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
+ }
+ 
+ static FfxErrorCode frameinterpolationCreate(FfxFrameInterpolationContext_Private* context, const FfxFrameInterpolationContextDescription* contextDescription)
+@@ -414,7 +455,7 @@
+ 
+     // Check version info - make sure we are linked with the right backend version
+     FfxVersionNumber version = context->contextDescription.backendInterface.fpGetSDKVersion(&context->contextDescription.backendInterface);
+-    FFX_RETURN_ON_ERROR(version == FFX_SDK_MAKE_VERSION(1, 1, 4), FFX_ERROR_INVALID_VERSION);
++    FFX_RETURN_ON_ERROR(version == FFX_SDK_MAKE_VERSION(2, 0, 0), FFX_ERROR_INVALID_VERSION);
+ 
+     // Create the context.
+     FfxErrorCode errorCode = context->contextDescription.backendInterface.fpCreateBackendContext(&context->contextDescription.backendInterface, FFX_EFFECT_FRAMEINTERPOLATION, nullptr, &context->effectContextId);
+@@ -439,71 +480,32 @@
+     context->constants.interpolationRectSize[0] = contextDescription->displaySize.width;
+     context->constants.interpolationRectSize[1] = contextDescription->displaySize.height;
+ 
+-    // generate the data for the LUT.
+-    const uint32_t lanczos2LutWidth = 128;
+-    int16_t lanczos2Weights[lanczos2LutWidth] = { };
+-
+-    for (uint32_t currentLanczosWidthIndex = 0; currentLanczosWidthIndex < lanczos2LutWidth; currentLanczosWidthIndex++) {
+-
+-        const float x = 2.0f * currentLanczosWidthIndex / float(lanczos2LutWidth - 1);
+-        const float y = lanczos2(x);
+-        lanczos2Weights[currentLanczosWidthIndex] = int16_t(roundf(y * 32767.0f));
+-    }
+-
+-    uint8_t defaultDistortionFieldData[2] = { 0, 0 };
+-    uint32_t atomicInitData[2] = { 0, 0 };
+-    float defaultExposure[] = { 0.0f, 0.0f };
+-    const FfxResourceType texture1dResourceType = (context->contextDescription.flags & FFX_FRAMEINTERPOLATION_ENABLE_TEXTURE1D_USAGE) ? FFX_RESOURCE_TYPE_TEXTURE1D : FFX_RESOURCE_TYPE_TEXTURE2D;
+-
+-    // declare internal resources needed
+-    const FfxInternalResourceDescription internalSurfaceDesc[] = {
+-
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME, L"FI_ReconstructedDepthInterpolatedFrame",  FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R32_UINT, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,      FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_X,             L"FI_GameMotionVectorFieldX",               FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV, 
+-            FFX_SURFACE_FORMAT_R32_UINT, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,      FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_Y,             L"FI_GameMotionVectorFieldY",               FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R32_UINT, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,      FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_PYRAMID,                     L"FI_InpaintingPyramid",                    FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R16G16B16A16_FLOAT, contextDescription->displaySize.width / 2, contextDescription->displaySize.height / 2, 0, FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS,                               L"FI_Counters",                             FFX_RESOURCE_TYPE_BUFFER, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_UNKNOWN, 8, 4, 1, FFX_RESOURCE_FLAGS_NONE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}}, // structured buffer contraining 2 UINT values
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X,     L"FI_OpticalFlowMotionVectorFieldX",        FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R32_UINT, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,      FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y,     L"FI_OpticalFlowMotionVectorFieldY",        FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R32_UINT, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,      FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_PREVIOUS_INTERPOLATION_SOURCE,          L"FI_PreviousInterpolationSouce",           FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            contextDescription->previousInterpolationSourceFormat, contextDescription->displaySize.width, contextDescription->displaySize.height, 1, FFX_RESOURCE_FLAGS_NONE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_MASK,                        L"FI_InpaintingMask",                       FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV,
+-            FFX_SURFACE_FORMAT_R8_UNORM, contextDescription->displaySize.width, contextDescription->displaySize.height, 1,          FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DISOCCLUSION_MASK,                      L"FI_DisocclusionMask",                     FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_UAV, 
+-            FFX_SURFACE_FORMAT_R8G8_UNORM, contextDescription->maxRenderSize.width, contextDescription->maxRenderSize.height, 1,    FFX_RESOURCE_FLAGS_ALIASABLE, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED}},
+-        {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DEFAULT_DISTORTION_FIELD, L"FI_DefaultDistortionField", FFX_RESOURCE_TYPE_TEXTURE2D, FFX_RESOURCE_USAGE_READ_ONLY,
+-            FFX_SURFACE_FORMAT_R8G8_UNORM, 1, 1, 1, FFX_RESOURCE_FLAGS_NONE, FfxResourceInitData::FfxResourceInitBuffer(sizeof(defaultDistortionFieldData), defaultDistortionFieldData) },
+-
++    FfxFrameInterpolationInternalResourceDescriptions frameInterpolationInternalResourceDescs = {};
++    getInternalResourceDescriptions(&contextDescription->maxRenderSize, &contextDescription->displaySize, contextDescription->previousInterpolationSourceFormat, &frameInterpolationInternalResourceDescs);
++
++    // Array of pointers to each resource description member
++    const FfxCreateResourceDescription* resources[] = {
++        &frameInterpolationInternalResourceDescs.reconstructedDepthInterpolatedFrame,
++        &frameInterpolationInternalResourceDescs.gameMotionVectorFieldX,
++        &frameInterpolationInternalResourceDescs.gameMotionVectorFieldY,
++        &frameInterpolationInternalResourceDescs.inpaintingPyramid,
++        &frameInterpolationInternalResourceDescs.counters,
++        &frameInterpolationInternalResourceDescs.opticalFlowMotionVectorFieldX,
++        &frameInterpolationInternalResourceDescs.opticalFlowMotionVectorFieldY,
++        &frameInterpolationInternalResourceDescs.previousInterpolationSource,
++        &frameInterpolationInternalResourceDescs.inpaintingMask,
++        &frameInterpolationInternalResourceDescs.disocclusionMask,
++        &frameInterpolationInternalResourceDescs.defaultDistortionField,
+     };
+ 
+     // clear the SRV resources to NULL.
+     memset(context->srvResources, 0, sizeof(context->srvResources));
+ 
+-    for (int32_t currentSurfaceIndex = 0; currentSurfaceIndex < FFX_ARRAY_ELEMENTS(internalSurfaceDesc); ++currentSurfaceIndex) {
+-
+-        const FfxInternalResourceDescription* currentSurfaceDescription = &internalSurfaceDesc[currentSurfaceIndex];
+-        const FfxResourceDescription          resourceDescription       = {currentSurfaceDescription->type,
+-                                                                           currentSurfaceDescription->format,
+-                                                                           currentSurfaceDescription->width,
+-                                                                           currentSurfaceDescription->height,
+-                                                                           1,
+-                                                                           currentSurfaceDescription->mipCount,
+-                                                                           currentSurfaceDescription->flags,
+-                                                                           currentSurfaceDescription->usage};
+-        FfxResourceStates initialState = FFX_RESOURCE_STATE_UNORDERED_ACCESS;
+-        if (currentSurfaceDescription->usage == FFX_RESOURCE_USAGE_READ_ONLY) initialState = FFX_RESOURCE_STATE_COMPUTE_READ;
+-        if (currentSurfaceDescription->usage == FFX_RESOURCE_USAGE_RENDERTARGET) initialState = FFX_RESOURCE_STATE_RENDER_TARGET;
+-
+-        const FfxCreateResourceDescription createResourceDescription = { FFX_HEAP_TYPE_DEFAULT, resourceDescription, initialState, currentSurfaceDescription->name, currentSurfaceDescription->id, currentSurfaceDescription->initData };
+-
+-        FFX_VALIDATE(context->contextDescription.backendInterface.fpCreateResource(&context->contextDescription.backendInterface, &createResourceDescription, context->effectContextId, &context->srvResources[currentSurfaceDescription->id]));
++    const size_t resourceCount = sizeof(resources) / sizeof(resources[0]);
++    for (size_t i = 0; i < resourceCount; ++i)
++    {
++        const FfxCreateResourceDescription* createResourceDescription = resources[i];
++        FFX_VALIDATE(context->contextDescription.backendInterface.fpCreateResource(&context->contextDescription.backendInterface, createResourceDescription, context->effectContextId, &context->srvResources[createResourceDescription->id]));
+     }
+ 
+     // copy resources to uavResrouces list
+@@ -639,23 +641,20 @@
+     context->contextDescription.backendInterface.fpScheduleGpuJob(&context->contextDescription.backendInterface, &dispatchJob);
+ }
+ 
+-FFX_API FfxErrorCode ffxFrameInterpolationGetSharedResourceDescriptions(FfxFrameInterpolationContext* context, FfxFrameInterpolationSharedResourceDescriptions* SharedResources)
++
++FFX_API FfxErrorCode ffxFrameInterpolationGetSharedResourceDescriptions(FfxFrameInterpolationContext* context, FfxFrameInterpolationSharedResourceDescriptions* sharedResources)
+ {
+     FFX_RETURN_ON_ERROR(
+         context,
+         FFX_ERROR_INVALID_POINTER);
+     FFX_RETURN_ON_ERROR(
+-        SharedResources,
++        sharedResources,
+         FFX_ERROR_INVALID_POINTER);
+ 
+     FfxFrameInterpolationContext_Private* contextPrivate = (FfxFrameInterpolationContext_Private*)(context);
+-    SharedResources->dilatedDepth = { FFX_HEAP_TYPE_DEFAULT, { FFX_RESOURCE_TYPE_TEXTURE2D, FFX_SURFACE_FORMAT_R32_FLOAT, contextPrivate->contextDescription.maxRenderSize.width, contextPrivate->contextDescription.maxRenderSize.height, 1, 1, FFX_RESOURCE_FLAGS_NONE, (FfxResourceUsage)(FFX_RESOURCE_USAGE_RENDERTARGET | FFX_RESOURCE_USAGE_UAV | FFX_RESOURCE_USAGE_DCC_RENDERTARGET) },
+-        FFX_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_DilatedDepth", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DILATED_DEPTH, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
+-    SharedResources->dilatedMotionVectors = { FFX_HEAP_TYPE_DEFAULT, { FFX_RESOURCE_TYPE_TEXTURE2D, FFX_SURFACE_FORMAT_R16G16_FLOAT, contextPrivate->contextDescription.maxRenderSize.width, contextPrivate->contextDescription.maxRenderSize.height, 1, 1, FFX_RESOURCE_FLAGS_NONE, (FfxResourceUsage)(FFX_RESOURCE_USAGE_RENDERTARGET | FFX_RESOURCE_USAGE_UAV | FFX_RESOURCE_USAGE_DCC_RENDERTARGET) },
+-            FFX_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_DilatedVelocity", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DILATED_MOTION_VECTORS, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
+-    SharedResources->reconstructedPrevNearestDepth = { FFX_HEAP_TYPE_DEFAULT, { FFX_RESOURCE_TYPE_TEXTURE2D, FFX_SURFACE_FORMAT_R32_UINT, contextPrivate->contextDescription.maxRenderSize.width, contextPrivate->contextDescription.maxRenderSize.height, 1, 1, FFX_RESOURCE_FLAGS_NONE, (FfxResourceUsage)(FFX_RESOURCE_USAGE_UAV) },
+-            FFX_RESOURCE_STATE_UNORDERED_ACCESS, L"FISHARED_ReconstructedPrevNearestDepth", FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_PREVIOUS_FRAME, {FFX_RESOURCE_INIT_DATA_TYPE_UNINITIALIZED} };
+-
++
++    getSharedResourceDescriptions(&contextPrivate->contextDescription.maxRenderSize, &contextPrivate->contextDescription.displaySize, sharedResources);
++  
+     return FFX_OK;
+ }
+ 
+@@ -694,7 +693,7 @@
+     return errorCode;
+ }
+ 
+-FFX_API FfxErrorCode ffxFrameInterpolationContextGetGpuMemoryUsage(FfxFrameInterpolationContext* context, FfxEffectMemoryUsage* vramUsage)
++FFX_API FfxErrorCode ffxFrameInterpolationContextGetGpuMemoryUsage(FfxFrameInterpolationContext* context, FfxApiEffectMemoryUsage* vramUsage)
+ {
+     FFX_RETURN_ON_ERROR(context, FFX_ERROR_INVALID_POINTER);
+     FFX_RETURN_ON_ERROR(vramUsage, FFX_ERROR_INVALID_POINTER);
+@@ -709,7 +708,7 @@
+     return FFX_OK;
+ }
+ 
+-FFX_API FfxErrorCode ffxSharedContextGetGpuMemoryUsage(FfxInterface* backendInterfaceShared, FfxEffectMemoryUsage* vramUsage)
++FFX_API FfxErrorCode ffxSharedContextGetGpuMemoryUsage(FfxInterface* backendInterfaceShared, FfxApiEffectMemoryUsage* vramUsage)
+ {
+     FFX_RETURN_ON_ERROR(backendInterfaceShared, FFX_ERROR_INVALID_POINTER);
+     FFX_RETURN_ON_ERROR(vramUsage, FFX_ERROR_INVALID_POINTER);
+@@ -718,6 +717,64 @@
+         backendInterfaceShared, 0, vramUsage);
+     FFX_RETURN_ON_ERROR(errorCode == FFX_OK, errorCode);
+ 
++    return FFX_OK;
++}
++
++FFX_API FfxErrorCode ffxFrameInterpolationGetGpuMemoryUsage(FfxDevice device, FfxApiDimensions2D* maxRenderSize, FfxApiDimensions2D* displaySize, FfxApiSurfaceFormat previousInterpolationSourceFormat, FfxApiEffectMemoryUsage* pVramUsage)
++{
++    FfxFrameInterpolationInternalResourceDescriptions frameInterpolationInternalResourceDescs = {};
++    getInternalResourceDescriptions(maxRenderSize, displaySize, previousInterpolationSourceFormat, &frameInterpolationInternalResourceDescs);
++
++    // Array of pointers to each resource description member
++    const FfxCreateResourceDescription* resources[] = {
++        &frameInterpolationInternalResourceDescs.reconstructedDepthInterpolatedFrame,
++        &frameInterpolationInternalResourceDescs.gameMotionVectorFieldX,
++        &frameInterpolationInternalResourceDescs.gameMotionVectorFieldY,
++        &frameInterpolationInternalResourceDescs.inpaintingPyramid,
++        &frameInterpolationInternalResourceDescs.counters,
++        &frameInterpolationInternalResourceDescs.opticalFlowMotionVectorFieldX,
++        &frameInterpolationInternalResourceDescs.opticalFlowMotionVectorFieldY,
++        &frameInterpolationInternalResourceDescs.previousInterpolationSource,
++        &frameInterpolationInternalResourceDescs.inpaintingMask,
++        &frameInterpolationInternalResourceDescs.disocclusionMask,
++        &frameInterpolationInternalResourceDescs.defaultDistortionField,
++    };
++
++    uint64_t      size = 0;
++    size_t resourceCount = sizeof(resources) / sizeof(resources[0]);
++    for (size_t i = 0; i < resourceCount; ++i)
++    {
++#ifdef FFX_BACKEND_DX12
++        FFX_VALIDATE(ffxGetResourceSizeFromDescriptionDX12(device, resources[i], &size));
++#endif // FFX_BACKEND_DX12
++        pVramUsage->totalUsageInBytes += size;
++        if (resources[i]->resourceDescription.flags & FFX_API_RESOURCE_FLAGS_ALIASABLE)
++        {
++            pVramUsage->aliasableUsageInBytes += size;
++        }
++    }
++
++    FfxFrameInterpolationSharedResourceDescriptions fiSharedResourceDescs = {};
++    getSharedResourceDescriptions(maxRenderSize, displaySize, &fiSharedResourceDescs);
++
++    const FfxCreateResourceDescription* sharedResources[] = {
++        &fiSharedResourceDescs.dilatedDepth,
++        &fiSharedResourceDescs.dilatedMotionVectors,
++        &fiSharedResourceDescs.reconstructedPrevNearestDepth,
++    };
++    size_t sharedResourceCount = sizeof(sharedResources) / sizeof(sharedResources[0]);
++
++    for (size_t i = 0; i < sharedResourceCount; ++i)
++    {
++#ifdef FFX_BACKEND_DX12
++        FFX_VALIDATE(ffxGetResourceSizeFromDescriptionDX12(device, sharedResources[i], &size));
++#endif // FFX_BACKEND_DX12
++        pVramUsage->totalUsageInBytes += 2 * size; //ffx_provider_framegeneration.cpp calls fpCreateResource() twice per sharedResource
++        if (sharedResources[i]->resourceDescription.flags & FFX_API_RESOURCE_FLAGS_ALIASABLE)
++        {
++            pVramUsage->aliasableUsageInBytes += 2 * size;
++        }
++    }
+     return FFX_OK;
+ }
+ 
+@@ -798,7 +855,7 @@
+     
+ }
+ 
+-FFX_API bool ffxFrameInterpolationResourceIsNull(FfxResource resource)
++FFX_API bool ffxFrameInterpolationResourceIsNull(FfxApiResource resource)
+ {
+     return resource.resource == NULL;
+ }
+@@ -1213,32 +1270,32 @@
+         struct FfxInternalResourceStates
+         {
+             FfxUInt32 id;
+-            FfxResourceUsage usage;
++            FfxApiResourceUsage usage;
+         };
+         const FfxInternalResourceStates internalSurfaceDesc[] = {
+ 
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME, FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_X,             FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_Y,             FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_PYRAMID,                     FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS,                               FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X,     FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y,     FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_PREVIOUS_INTERPOLATION_SOURCE,          FFX_RESOURCE_USAGE_UAV},
+-            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DISOCCLUSION_MASK,                      FFX_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_RECONSTRUCTED_DEPTH_INTERPOLATED_FRAME, FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_X,             FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_GAME_MOTION_VECTOR_FIELD_Y,             FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_INPAINTING_PYRAMID,                     FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS,                               FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_X,     FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_OPTICAL_FLOW_MOTION_VECTOR_FIELD_Y,     FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_PREVIOUS_INTERPOLATION_SOURCE,          FFX_API_RESOURCE_USAGE_UAV},
++            {FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_DISOCCLUSION_MASK,                      FFX_API_RESOURCE_USAGE_UAV},
+         };
+ 
+         for (int32_t currentSurfaceIndex = 0; currentSurfaceIndex < FFX_ARRAY_ELEMENTS(internalSurfaceDesc); ++currentSurfaceIndex) {
+ 
+             const FfxInternalResourceStates* currentSurfaceDescription = &internalSurfaceDesc[currentSurfaceIndex];
+-            FfxResourceStates initialState = FFX_RESOURCE_STATE_UNORDERED_ACCESS;
+-            if (currentSurfaceDescription->usage == FFX_RESOURCE_USAGE_READ_ONLY) initialState = FFX_RESOURCE_STATE_COMPUTE_READ;
+-            if (currentSurfaceDescription->usage == FFX_RESOURCE_USAGE_RENDERTARGET) initialState = FFX_RESOURCE_STATE_RENDER_TARGET;
++            FfxApiResourceState initialState = FFX_API_RESOURCE_STATE_UNORDERED_ACCESS;
++            if (currentSurfaceDescription->usage == FFX_API_RESOURCE_USAGE_READ_ONLY) initialState = FFX_API_RESOURCE_STATE_COMPUTE_READ;
++            if (currentSurfaceDescription->usage == FFX_API_RESOURCE_USAGE_RENDERTARGET) initialState = FFX_API_RESOURCE_STATE_RENDER_TARGET;
+ 
+             FfxGpuJobDescription barrier = {FFX_GPU_JOB_BARRIER};
+             barrier.barrierDescriptor.resource = contextPrivate->srvResources[currentSurfaceDescription->id];
+             barrier.barrierDescriptor.subResourceID = 0;
+-            barrier.barrierDescriptor.newState = (currentSurfaceDescription->id == FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS) ? FFX_RESOURCE_STATE_COPY_DEST : initialState;
++            barrier.barrierDescriptor.newState = (currentSurfaceDescription->id == FFX_FRAMEINTERPOLATION_RESOURCE_IDENTIFIER_COUNTERS) ? FFX_API_RESOURCE_STATE_COPY_DEST : initialState;
+             barrier.barrierDescriptor.barrierType = FFX_BARRIER_TYPE_TRANSITION;
+             contextPrivate->contextDescription.backendInterface.fpScheduleGpuJob(&contextPrivate->contextDescription.backendInterface, &barrier);
+         }
+@@ -1253,13 +1310,10 @@
+     return FFX_OK;
+ }
+ 
+-FFX_API FfxVersionNumber ffxFrameInterpolationGetEffectVersion()
+-{
+-    return FFX_SDK_MAKE_VERSION(FFX_FRAMEINTERPOLATION_VERSION_MAJOR, FFX_FRAMEINTERPOLATION_VERSION_MINOR, FFX_FRAMEINTERPOLATION_VERSION_PATCH);
+-}
+-
+ FFX_API FfxErrorCode ffxFrameInterpolationSetGlobalDebugMessage(ffxMessageCallback fpMessage, uint32_t debugLevel)
+ {
+     ffxSetPrintMessageCallback(fpMessage, debugLevel);
+     return FFX_OK;
+ }
++
++#pragma warning(pop)

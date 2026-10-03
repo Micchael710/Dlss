@@ -1,0 +1,9 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/api/PresentationBackendType.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/api/PresentationBackendType.java
+@@ -3,6 +3,5 @@
+ public enum PresentationBackendType {
+     OPENGL,
+     VULKAN,
+-    /// CURRENTLY NOT IMPLEMENTED
+     D3D12
+ }

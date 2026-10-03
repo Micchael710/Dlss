@@ -1,0 +1,10 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/opengl/texture/GlImportableTexture2D.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/opengl/texture/GlImportableTexture2D.java
+@@ -35,7 +35,6 @@
+ 
+     public GlImportableTexture2D(VulkanTexture sourceTexture) {
+         super(sourceTexture.getTextureDescription());
+-        this.configureMipmap();
+         this.sourceTexture = sourceTexture;
+         initializeTexture();
+     }

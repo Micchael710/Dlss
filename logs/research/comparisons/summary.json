@@ -1,0 +1,107 @@
+{
+  "all_downloaded_hashes_verified": true,
+  "comparisons": [
+    {
+      "file": "public-api-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 42
+    },
+    {
+      "file": "public-api-v2.0.0-to-v2.1.0.diff",
+      "identical": false,
+      "diff_lines": 216
+    },
+    {
+      "file": "provider-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 289
+    },
+    {
+      "file": "provider-v2.0.0-to-v2.1.0.diff",
+      "identical": false,
+      "diff_lines": 531
+    },
+    {
+      "file": "dispatch-api-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 246
+    },
+    {
+      "file": "dispatch-api-v2.0.0-to-v2.1.0.diff",
+      "identical": false,
+      "diff_lines": 26
+    },
+    {
+      "file": "dispatch-implementation-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 492
+    },
+    {
+      "file": "dispatch-implementation-v2.0.0-to-v2.1.0.diff",
+      "identical": false,
+      "diff_lines": 195
+    },
+    {
+      "file": "shader-ffx_frameinterpolation.h-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 10
+    },
+    {
+      "file": "shader-ffx_frameinterpolation.h-v2.0.0-to-v2.1.0.diff",
+      "identical": true,
+      "diff_lines": 0
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_callbacks_hlsl.h-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 395
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_callbacks_hlsl.h-v2.0.0-to-v2.1.0.diff",
+      "identical": true,
+      "diff_lines": 0
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_game_motion_vector_field.h-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 10
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_game_motion_vector_field.h-v2.0.0-to-v2.1.0.diff",
+      "identical": true,
+      "diff_lines": 0
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_optical_flow_vector_field.h-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 10
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_optical_flow_vector_field.h-v2.0.0-to-v2.1.0.diff",
+      "identical": true,
+      "diff_lines": 0
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_reconstruct_previous_depth.h-fsr-1.1.4-to-v2.0.0.diff",
+      "identical": false,
+      "diff_lines": 10
+    },
+    {
+      "file": "shader-ffx_frameinterpolation_reconstruct_previous_depth.h-v2.0.0-to-v2.1.0.diff",
+      "identical": true,
+      "diff_lines": 0
+    }
+  ],
+  "later_vulkan_inventory": [
+    {
+      "tag": "v2.0.0",
+      "tree_complete": true,
+      "framegeneration_vulkan_paths": []
+    },
+    {
+      "tag": "v2.1.0",
+      "tree_complete": true,
+      "framegeneration_vulkan_paths": []
+    }
+  ]
+}

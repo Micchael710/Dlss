@@ -1,0 +1,22 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/upscale/SRApiAlgorithm.java
++++ friend/common/src/main/java/io/homo/superresolution/common/upscale/SRApiAlgorithm.java
+@@ -35,7 +35,7 @@
+ 
+     protected abstract void dispatchSRApiContext(
+             VulkanCommandBuffer commandBuffer,
+-            FrameResourcesSet frameResourcesSet
++            InFlightFrameResourcesSet inFlightFrameResourcesSet
+     );
+ 
+     @Override
+@@ -57,8 +57,8 @@
+     @Override
+     protected final void dispatchVulkanUpscale(
+             VulkanCommandBuffer commandBuffer,
+-            FrameResourcesSet frameResourcesSet
++            InFlightFrameResourcesSet inFlightFrameResourcesSet
+     ) {
+-        dispatchSRApiContext(commandBuffer, frameResourcesSet);
++        dispatchSRApiContext(commandBuffer, inFlightFrameResourcesSet);
+     }
+ }

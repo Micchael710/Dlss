@@ -1,0 +1,109 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatUpscaleDispatcher.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatUpscaleDispatcher.java
+@@ -26,11 +26,8 @@
+ import io.homo.superresolution.api.InputResourceSet;
+ import io.homo.superresolution.api.InputResourceType;
+ import io.homo.superresolution.api.SuperResolutionAPI;
+-import io.homo.superresolution.api.interop.InteropInputDispatch;
+-import io.homo.superresolution.api.interop.InteropResourceContext;
+ import io.homo.superresolution.api.event.AlgorithmDispatchEvent;
+ import io.homo.superresolution.api.event.AlgorithmDispatchFinishEvent;
+-import io.homo.superresolution.api.interop.InteropResourceType;
+ import io.homo.superresolution.api.registry.AlgorithmDescription;
+ import io.homo.superresolution.common.SuperResolution;
+ import io.homo.superresolution.common.config.SuperResolutionConfig;
+@@ -66,20 +63,8 @@
+ import java.util.Set;
+ 
+ import static io.homo.superresolution.common.upscale.AlgorithmManager.param;
+-import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
+-import static org.lwjgl.opengl.GL43.glCopyImageSubData;
+ 
+ public class IrisShaderCompatUpscaleDispatcher {
+-    private static InteropResourceContext interopResourceContext = InteropResourceContext.empty();
+-
+-    public static InteropResourceContext getInteropResourceContext() {
+-        return interopResourceContext;
+-    }
+-
+-    public static void clearInteropResourceContext() {
+-        interopResourceContext = InteropResourceContext.empty();
+-    }
+-
+     public static Map<String, Object> debugInfo = new HashMap<>();
+ 
+     public static ShaderCompatTextureInfo colorTexture;
+@@ -174,6 +159,9 @@
+                                                        boolean depthPreProcessed,
+                                                        boolean motionVectorsPreProcessed) {
+         ITexture motionVectorsInput = getAlgorithmTexture(motionVectorsTexture, motionVectorsPreProcessed);
++        if (motionVectorsInput == null && AlgorithmManager.getMotionVectorsFrameBuffer() != null) {
++            motionVectorsInput = AlgorithmManager.getMotionVectorsFrameBuffer().getTexture(FrameBufferAttachmentType.Color);
++        }
+         InputResourceSet resources = InputResourceSet.create()
+                 .with(InputResourceType.Color, getAlgorithmTexture(colorTexture, colorPreProcessed))
+                 .with(InputResourceType.Depth, getAlgorithmTexture(depthTexture, depthPreProcessed))
+@@ -286,7 +274,6 @@
+     }
+ 
+     public static void reset(){
+-        clearInteropResourceContext();
+         if (colorTexture != null) {
+             colorTexture.destroy();
+         }
+@@ -325,7 +312,9 @@
+     }
+ 
+     public static void dispatchUpscale(ICompositeRendererAccessor compositeRenderer, NamedCompositePass pass) {
+-        ShaderPipelineDiagnostics.state("BEFORE_SR");
++        if (io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         SuperResolution.resizeAlgorithmIfChanged(
+                 RenderHandlerManager.getScreenWidth(),
+                 RenderHandlerManager.getScreenHeight()
+@@ -502,12 +491,6 @@
+         }
+ 
+         float preExposure = resolvePreExposure(currentConfig.preExposure);
+-        ShaderPipelineDiagnostics.texture("color", colorTexture == null ? null : colorTexture.getSourceTexture());
+-        ShaderPipelineDiagnostics.texture("depth", depthTexture == null ? null : depthTexture.getSourceTexture());
+-        ShaderPipelineDiagnostics.texture("motion_vectors", motionVectorsTexture == null ? null : motionVectorsTexture.getSourceTexture());
+-        ShaderPipelineDiagnostics.texture("algorithm_color", getAlgorithmTexture(colorTexture, needsPreProcessColor));
+-        ShaderPipelineDiagnostics.texture("algorithm_depth", getAlgorithmTexture(depthTexture, needsPreProcessDepth));
+-        ShaderPipelineDiagnostics.texture("algorithm_motion_vectors", getAlgorithmTexture(motionVectorsTexture, needsPreProcessMotionVectors));
+         if (processor != null && processor.needsAdaptPreExposure(shaderCompatData, algorithm, description)) {
+             preExposure = processor.adaptPreExposureForAlgorithm(preExposure, algorithm, shaderCompatData, description);
+         }
+@@ -523,6 +506,7 @@
+         升采样阶段开始
+          */
+         AlgorithmManager.update();
++        // MotionVectorsGenerator 已被弃用
+         Vector2f rawJitter = getJitterOffset();
+         Vector2f adaptedJitter = (processor != null && processor.needsAdaptJitter(shaderCompatData, algorithm, description))
+                 ? processor.adaptJitterForAlgorithm(rawJitter, algorithm, shaderCompatData, description)
+@@ -536,7 +520,6 @@
+                 needsPreProcessDepth,
+                 needsPreProcessMotionVectors
+         );
+-        interopResourceContext = InteropResourceContext.fromInputs(dispatchResource.resources());
+         if (SuperResolution.currentAlgorithm != null) {
+             SuperResolutionAPI.EVENT_BUS.post(
+                     new AlgorithmDispatchEvent(
+@@ -577,8 +560,6 @@
+                                     false
+                             ));
+                     ITexture sourceTexture = outFbo.getTexture(FrameBufferAttachmentType.Color);
+-                    ShaderPipelineDiagnostics.texture("SR_output", sourceTexture);
+-                    ShaderPipelineDiagnostics.texture("autotex3/output_target", targetTexture);
+                     if (targetTexture != null && sourceTexture != null) {
+                         if (
+                                 targetTexture.getTextureFormat() != sourceTexture.getTextureFormat()
+@@ -617,6 +598,5 @@
+             GlDebug.popGroup();
+         }
+         PerformanceTracker.pop("Upscale");
+-        ShaderPipelineDiagnostics.state("AFTER_SR");
+     }
+ }

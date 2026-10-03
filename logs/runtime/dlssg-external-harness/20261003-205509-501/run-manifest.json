@@ -1,0 +1,64 @@
+﻿{
+    "run_id":  "20261003-205509-501",
+    "utc":  "2026-10-03T20:55:09.5429484Z",
+    "api":  "Vulkan",
+    "count":  1,
+    "index":  1,
+    "community_component":  {
+                                "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-205509-501\\component\\dlssg_sm86.dll",
+                                "sha256":  "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+                                "file_version":  null,
+                                "signature_status":  "UnknownError",
+                                "signer":  "CN=DLSSG for SM86 (self-signed)"
+                            },
+    "component_repository":  "sdli1995/dlssg_for_sm86",
+    "component_commit":  "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+    "component_release":  "0.3.5",
+    "stock_runtime":  {
+                          "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-205509-501/stock-runtime/nvngx_dlssg.dll",
+                          "sha256":  "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+                          "file_version":  "310,9,1,0",
+                          "signature_status":  "Valid",
+                          "signer":  "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+                      },
+    "executable":  {
+                       "path":  "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+                       "sha256":  "25d9753a02ebbfb48cd2c5a1d09cc2ac36239b1df1b7586d21f11d3106d92742",
+                       "file_version":  null,
+                       "signature_status":  "NotSigned",
+                       "signer":  null
+                   },
+    "automatic_downloads":  0,
+    "private_abi_calls":  0,
+    "capability_overrides":  0,
+    "optiscaler_loaded":  false,
+    "minecraft_launched":  false,
+    "driver_profile_changes_requested":  false,
+    "stock_reference":  "logs/runtime/ngx-stock-probe/20261003-141624/result.json",
+    "supported_scope":  "One adapted worker, Vulkan x2, no automatic retry or D3D12",
+    "coordinator_exit_code":  1,
+    "completed_utc":  "2026-10-03T20:55:14.2509985Z",
+    "effective_module_files":  [
+                                   {
+                                       "path":  "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\_nvngx.dll",
+                                       "sha256":  "177604c12e78b49fec5e15c25b056e9618d0c57f54fbd549f24e5f568c976b26",
+                                       "file_version":  "32.0.15.9649",
+                                       "signature_status":  "Valid",
+                                       "signer":  "CN=Microsoft Windows Hardware Compatibility Publisher, O=Microsoft Corporation, L=Redmond, S=Washington, C=US"
+                                   },
+                                   {
+                                       "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-205509-501\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\nvngx_dlssg.dll",
+                                       "sha256":  "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+                                       "file_version":  "310,9,1,0",
+                                       "signature_status":  "Valid",
+                                       "signer":  "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+                                   },
+                                   {
+                                       "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-205509-501\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\sm86_backend.dll",
+                                       "sha256":  "1aebf8f306fbaede18c98b372da9c70a1bbdb1bd35327f7f85c2969085a619a1",
+                                       "file_version":  null,
+                                       "signature_status":  "NotSigned",
+                                       "signer":  null
+                                   }
+                               ]
+}

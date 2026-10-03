@@ -1,0 +1,448 @@
+{
+  "repo": "Nukem9/dlssg-to-fsr3",
+  "commit": "0e253f63c3c66ee7582406bfa3dec698df7ab2c1",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "LICENSE.md",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/LICENSE.md",
+      "sha256": "5546ad8e1dd114ed3772a1b530d530593ef3eea748f91837120767944e22259b"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/README.md",
+      "sha256": "af92259a61ba46c7dcb61d179a060da5e3edd752321856b2e4031304773ce97d"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/LICENSE.txt",
+      "sha256": "82cf74fc23885107c7f69249ac3f1dac55898ff68320eb2c753984cae6b2d78a"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/docs/license.md",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/docs/license.md",
+      "sha256": "24574816bc396473a2082ba50aef02640502395b7cdaca49ce3fafe4bf6447fc"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/ffx-api/include/ffx_api/vk/ffx_api_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/ffx-api/include/ffx_api/vk/ffx_api_vk.h",
+      "sha256": "a50a8d5ff5689a10a6ce378f2df5569fd880c89ec46e8356aaf35eb40512edd9"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/ffx-api/include/ffx_api/vk/ffx_api_vk.hpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/ffx-api/include/ffx_api/vk/ffx_api_vk.hpp",
+      "sha256": "b4eab5ed043de7590c786c1904eba7064449ee8a8c9e302eb6363ccc7035172e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.cpp",
+      "sha256": "b9e0332f438deafab06ea6d7649773c664489e0f9efd9633e56658bd257b7831"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.h",
+      "sha256": "92ec246cfee93d2ec0fe55ee24564f62cfc962ebb557ffca8085e548c4e84141"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/inc/core/backend_implementations/backend_interface_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/inc/core/backend_implementations/backend_interface_vk.h",
+      "sha256": "b7faec1e7a7ad1a8803892e84f63763b155bb888afc3e3478bd0f1e51fbf942e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/AGS/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/AGS/LICENSE.txt",
+      "sha256": "82cf74fc23885107c7f69249ac3f1dac55898ff68320eb2c753984cae6b2d78a"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/acs/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/acs/LICENSE.txt",
+      "sha256": "82cf74fc23885107c7f69249ac3f1dac55898ff68320eb2c753984cae6b2d78a"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-LLVM.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-LLVM.txt",
+      "sha256": "b2551288a0381a79527d63c1590ae8bac98de4dafa1afd0702625d6e82524b85"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-MIT.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-MIT.txt",
+      "sha256": "fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-MS.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/dxc/LICENSE-MS.txt",
+      "sha256": "e249948c6c7b0007e90638ad749d0e89c84634dcc8c28436a52b8b2dbce4a31e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/imgui/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/imgui/LICENSE.txt",
+      "sha256": "0ebf8feb061536bdebd7c6a365b64808ae3479048b1c44113e19037680c5f2be"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/json/License.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/json/License.txt",
+      "sha256": "5a248d27d2a1bdf74025331b72a0f6ed925706b7df1188ab790641bfb40763db"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/memoryallocator/license.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/memoryallocator/license.txt",
+      "sha256": "486a9dd834a8838f2cb240865dfe38722bc2a55cfaa15c4e5eefc9fcee514808"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/vectormath/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/libs/vectormath/LICENSE.txt",
+      "sha256": "380f0cb713b729330619c80c3692f0f2cd0c3778f0a46a2db4227c48c75ee132"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/core/backend_implementations/backend_interface_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/core/backend_implementations/backend_interface_vk.cpp",
+      "sha256": "58057892f5ae60c78598198445b5533773c78760d56e0be12e0614abb8bfed66"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/buffer_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/buffer_vk.cpp",
+      "sha256": "0cb0a742f371b9863b08ea98eaba2a42be9717fdbe200f953d5870cf6e1122bc"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/buffer_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/buffer_vk.h",
+      "sha256": "916670e1f18bf6335c33816dcfd0095b11c0be147a1c0c869ae6c667a6c3211b"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/commandlist_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/commandlist_vk.cpp",
+      "sha256": "4899120670b580ce3dab21ec33b90aa2e6c16e4fabe154ca9bf6b2430af8ffe8"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/commandlist_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/commandlist_vk.h",
+      "sha256": "cce6aa82f6cf145a51c843d13e8fc38b6185203156511e492f31f23e83cb8f44"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/copyresource_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/copyresource_vk.cpp",
+      "sha256": "c6053669fdac2a4fa53d10384ec76de1a685298695a2c6fba22f4dd4881cdd38"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/copyresource_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/copyresource_vk.h",
+      "sha256": "f21bf8aa3844463025034bdc60d0292b2c23e17d83e3a8b5e8c19eb18fac42ff"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/device_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/device_vk.cpp",
+      "sha256": "345db8c18a288448ef3c3fd22d6e9b548bc92130dc55dee45043f8c9f9b13a59"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/device_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/device_vk.h",
+      "sha256": "ace9aa15c3ab5d9d7b6e0e8bc9c3ff1bb39e5804de22f198e1feba99131f9993"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/dynamicbufferpool_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/dynamicbufferpool_vk.cpp",
+      "sha256": "6de7353cb348a4553bf1029985a278c75d9156271ba6bc7c455fcbae36bd260d"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/dynamicbufferpool_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/dynamicbufferpool_vk.h",
+      "sha256": "fc8cd9396178a83fba2df55631b2e3d4c6e4f58e6353a51f1ed02dc7e0466d9e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/gpuresource_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/gpuresource_vk.cpp",
+      "sha256": "9bc49b91655a73acdb2aa064bd604882af300268463ab1f196201349123fa450"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/gpuresource_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/gpuresource_vk.h",
+      "sha256": "7e1e8b05f7ea4b4c1e3c42739f53c38cb9d58ac331ca9696bebef32e29edad76"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/indirectworkload_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/indirectworkload_vk.cpp",
+      "sha256": "df02bd8c31a827edd70f6cb29dde0efe52ae5d9b442460eaffaf5c3289d1548e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/indirectworkload_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/indirectworkload_vk.h",
+      "sha256": "319c8be018d417f67293dacee93522e4ca2eea392e106df194da551f27e63f65"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/parameterset_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/parameterset_vk.cpp",
+      "sha256": "85ba5ec6d2b86eb46cfdc231d31819c8e8d7261c0dfbb05b11d0370bbc8a3faf"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/parameterset_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/parameterset_vk.h",
+      "sha256": "e9409ae2ffc337156a5c6a3780e22a20c9c0416e20d2eb51ef3d837e8129040f"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelinedesc_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelinedesc_vk.cpp",
+      "sha256": "fcbec21b7b7ea1940bdafd7227442450023200749e21417f5fd18f5acecf7a2e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelinedesc_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelinedesc_vk.h",
+      "sha256": "060d84161a16eaf98f3539168814bfbc254377ed5039401299b9193109435183"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelineobject_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelineobject_vk.cpp",
+      "sha256": "5002fcfa55a3412ff6e7895e8948a5e8708d4015eb8c28f5b4ac30f663a0f5ed"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelineobject_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/pipelineobject_vk.h",
+      "sha256": "b5473b49b0350985d842285a22bc9b627121b76e4f631a261fe619cbb46a4c29"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/profiler_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/profiler_vk.cpp",
+      "sha256": "090a40c6fa489db2b6b9c7b90454c3f2325317d29ae2029ba74e6a9d07d12c91"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/profiler_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/profiler_vk.h",
+      "sha256": "810dbe104bc4475cf3c46701702690443025bebaa278f0d40a2da82504398174"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceview_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceview_vk.cpp",
+      "sha256": "1f641fcfdc12e76af2b6a4de6907a08e5911efc14fc597428b375c9cae6993e7"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceview_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceview_vk.h",
+      "sha256": "d815736497483013dab6a8d96656a1ee2cf94fa4c8c3da085bb4136493c23810"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceviewallocator_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceviewallocator_vk.cpp",
+      "sha256": "5f97c4ee033c91190ab0f5d4ebe75bc622de33b43ce191cc4a9437c94abbffa1"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceviewallocator_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/resourceviewallocator_vk.h",
+      "sha256": "d2b328d69a5113347970406353508b434fed5fdef567916a8253cd645a97a0e6"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignature_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignature_vk.cpp",
+      "sha256": "3f5a8efbcacf18aa621ce68ebd061a3620aeb30b51d99beb3dce871ad28929aa"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignature_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignature_vk.h",
+      "sha256": "27e9848713b7138ec2d80b4f150483bff8a64f53c2296207cb20d9769c3f0697"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignaturedesc_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignaturedesc_vk.cpp",
+      "sha256": "09c51317474a35f492f7800c9bff413ea6a57009529215b4c693b9d22d515957"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignaturedesc_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rootsignaturedesc_vk.h",
+      "sha256": "3e60fa2184b54eb1ef2e28a1f6e36328c45e0bd3f5ae82ebe80ad5a88cf49a0f"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rtresources_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rtresources_vk.cpp",
+      "sha256": "11c731344385be87feb0586b8014561d18eda322b4e1366bcc30ce6373d041b8"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rtresources_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/rtresources_vk.h",
+      "sha256": "c6d343c07e66eef747cb5e79417be8d9943c1d4d4911c0b01007f99690642bde"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/sampler_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/sampler_vk.cpp",
+      "sha256": "8184ca0a83d4fca751ffc458ac279031d3d7defc5b47775b4519adf323a8b2c5"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/sampler_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/sampler_vk.h",
+      "sha256": "534cb16e20fb99aaf9a2670b40ae424feb771d7f4acff4cfd4c506e5e2f96c7c"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/swapchain_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/swapchain_vk.cpp",
+      "sha256": "8bbc456555cfd9d2e0846ade54248f7e5cbf8636204ba36dfbfa6cfb0bc25eed"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/swapchain_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/swapchain_vk.h",
+      "sha256": "4abb027738adde22929d641228ca7de5124a7b473bdccb57f6d76922652a2b62"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/texture_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/texture_vk.cpp",
+      "sha256": "9af09c99b3614aaa78f3b18224785aa92e4e7a51b30fb6e49259c2c9fa593181"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/texture_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/texture_vk.h",
+      "sha256": "ed5f03626bb3e605e58ff07c1b118556ca62511b9b32cd7fe89cab5ef648dda0"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/uploadheap_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/uploadheap_vk.cpp",
+      "sha256": "61c4f91353341d37815ef98f711b0fda61afd2403f2ce65eed488768bffafe85"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/uploadheap_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/framework/cauldron/framework/src/render/vk/uploadheap_vk.h",
+      "sha256": "b3cafae9107ca45fd5e380fe5ff53bd56a1dd94d7aceacd3b41c998def65e652"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/LICENSE.txt",
+      "sha256": "82cf74fc23885107c7f69249ac3f1dac55898ff68320eb2c753984cae6b2d78a"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/include/FidelityFX/host/backends/dx12/license.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/include/FidelityFX/host/backends/dx12/license.txt",
+      "sha256": "19eadab1b941e9b7d0e72c83f47e747ffb6f1097b9b91320156300e024181ef7"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/include/FidelityFX/host/backends/vk/ffx_vk.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/include/FidelityFX/host/backends/vk/ffx_vk.h",
+      "sha256": "75343f8508cfa609bd79a7deddf2df572f0ff876ead8b5ddd1bd9c46f96f1459"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/src/backends/vk/ffx_vk.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/src/backends/vk/ffx_vk.cpp",
+      "sha256": "fdc8a5ffa799a576962fefbe361a84e5fcab5fb8cc7cc0cc981c8db1c7558f38"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/MD5/LICENSE",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/MD5/LICENSE",
+      "sha256": "ac50ceee3acfd77b25f0862a5015d976238536677549008f63d09db1a55b97c0"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/SPIRV-Reflect/LICENSE",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/SPIRV-Reflect/LICENSE",
+      "sha256": "c71d239df91726fc519c6eb72d318ec65820627232b2f796219e87dcf35d0ab4"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-LLVM.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-LLVM.txt",
+      "sha256": "b2551288a0381a79527d63c1590ae8bac98de4dafa1afd0702625d6e82524b85"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-MIT.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-MIT.txt",
+      "sha256": "fd532481d828e13a0b13ccb598e02338a3617740675a862ee6bdc1541b68e93d"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-MS.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/dxc/LICENSE-MS.txt",
+      "sha256": "e249948c6c7b0007e90638ad749d0e89c84634dcc8c28436a52b8b2dbce4a31e"
+    },
+    {
+      "path": "dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/tiny-process-library/LICENSE",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/dependencies/FidelityFX-SDK/sdk/tools/ffx_shader_compiler/libs/tiny-process-library/LICENSE",
+      "sha256": "2aefa40fa7e1c0fab18fbad5b15b02406eea1399d3cca42cc1012b65b4a56f74"
+    },
+    {
+      "path": "resources/binary_dist_license.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/resources/binary_dist_license.txt",
+      "sha256": "ca31bfef986b62825cd4275d26472bfe1c04719f3b76bcbc26ad8c6443790976"
+    },
+    {
+      "path": "resources/dlssg_to_fsr3.ini",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/resources/dlssg_to_fsr3.ini",
+      "sha256": "14f77347aceaa13771b013cf65bf358a359fd2e8981148d94c3e1b13d56bad9d"
+    },
+    {
+      "path": "resources/read_me_dlsstweaks.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/resources/read_me_dlsstweaks.txt",
+      "sha256": "239cecef9012676c57e46d3096c4628e8cae6f67ac103afe65a2a38782eac512"
+    },
+    {
+      "path": "resources/read_me_nvngx.txt",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/resources/read_me_nvngx.txt",
+      "sha256": "8eaf4bd327cc1c4482365c5c286ad0ee805d9819d0eb62d5d2fe620fad531048"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGX.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGX.h",
+      "sha256": "1374971c0a23f1d7f037cd20d716d06250b17cb8d4dbbeb7783103976264e1e7"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGXCuda.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGXCuda.cpp",
+      "sha256": "b1bd4d5de92fa75ced4dda0da42d3b884c76d07af2b7107c2ac1b6d4feab7425"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGXDirectX11.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGXDirectX11.cpp",
+      "sha256": "86e71751bfdd2bdbecc2ca9a48eb69773d9a67abadf3afba6c9701fcabf14377"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGXDirectX12.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGXDirectX12.cpp",
+      "sha256": "27c2865d38477a8aca1a696bbf431332662d24589d1960e037bdd3f37686e061"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGXExports.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGXExports.cpp",
+      "sha256": "2e5bc30673000a1c3f9416c8d644e1f0091e4fd5851b699fe647d83b49eb1d82"
+    },
+    {
+      "path": "source/maindll/NGX/NvNGXVulkan.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/NGX/NvNGXVulkan.cpp",
+      "sha256": "adf637843fe2d58797065596114bd59d9b3397a79b6e47def2afc718d455615a"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGX.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGX.cpp",
+      "sha256": "d46efa0376ded0b231ad625b8cbbcf9360028227b582ccfaac13bf9f5af6c2c6"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGX.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGX.h",
+      "sha256": "e9cc0cfeab1eed157b3b8b7fe4b7763788b92a9e290e06e7630f2e21c7362d70"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGXCuda.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGXCuda.cpp",
+      "sha256": "5eed7fda0844cb112216e18f9a563fd3ca3d0269bc02b07f9410d426223a3245"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGXDirectX11.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGXDirectX11.cpp",
+      "sha256": "9cd910430d1f5d5804b3a9d83f459d7329e756381c4c4b9ca83785856b4a8407"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGXDirectX12.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGXDirectX12.cpp",
+      "sha256": "433a7b1a613fbe6be0924be9c1b38eab8419f9630bf4f7f3f16ba1046dab51b7"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGXExports.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGXExports.cpp",
+      "sha256": "f6c596b5cfd5f45d01eb3f5fb6a03988c595e6b03f94855255dd3d3b83342f65"
+    },
+    {
+      "path": "source/wrapper_dt/NGX/NvNGXVulkan.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/wrapper_dt/NGX/NvNGXVulkan.cpp",
+      "sha256": "1cc8bfa7d0ed35856032468ee51b9d58354a0e456fcfaed6efb7654b9fd5d269"
+    },
+    {
+      "path": "source/maindll/FFFrameInterpolatorVK.cpp",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/FFFrameInterpolatorVK.cpp",
+      "sha256": "bac46880bbe9b9fe148f74f329ca61c9e99c64ca50fb6104989f70fecda74380"
+    },
+    {
+      "path": "source/maindll/FFFrameInterpolatorVK.h",
+      "url": "https://raw.githubusercontent.com/Nukem9/dlssg-to-fsr3/0e253f63c3c66ee7582406bfa3dec698df7ab2c1/source/maindll/FFFrameInterpolatorVK.h",
+      "sha256": "d6acf67b9ec96ced85da2bc6c8d7e826bb9ee44c468d08399613d37384a314a3"
+    }
+  ],
+  "binary_downloads": 0
+}

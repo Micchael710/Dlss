@@ -1,0 +1,27 @@
+Starting a Gradle Daemon, 1 busy Daemon could not be reused, use --status for details
+❇️ Wisteria target: Minecraft 1.21.1 (1.21.1)
+❇️ loader neoforge
+
+> Configure project :common
+e: file:///D:/ProjectDllsss/wisteria/common/build.gradle.kts:104:65: Passing value as a vararg is allowed only inside a parenthesized argument list.
+
+FAILURE: Build failed with an exception.
+
+* Where:
+Build file 'D:\ProjectDllsss\wisteria\common\build.gradle.kts' line: 104
+
+* What went wrong:
+Script compilation error:
+
+  Line 104:         from(bridge, effects, sdkRoot.resolve("manifest.json")) { into("natives/windows-x64") }
+                                                                            ^ Passing value as a vararg is allowed only inside a parenthesized argument list.
+
+1 error
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 51s

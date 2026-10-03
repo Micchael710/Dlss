@@ -1,0 +1,42 @@
+--- fsr-1.1.4
++++ v2.0.0
+@@ -1,6 +1,6 @@
+ // This file is part of the FidelityFX SDK.
+ //
+-// Copyright (C) 2024 Advanced Micro Devices, Inc.
++// Copyright (C) 2025 Advanced Micro Devices, Inc.
+ // 
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files(the "Software"), to deal
+@@ -22,8 +22,8 @@
+ 
+ #pragma once
+ 
+-#include "ffx_api.h"
+-#include "ffx_api_types.h"
++#include "../../api/include/ffx_api.h"
++#include "ffx_framegeneration_api_types.h"
+ 
+ #define FFX_API_EFFECT_ID_FRAMEGENERATION 0x00020000u
+ 
+@@ -185,6 +185,20 @@
+     float                  cameraForward[3];    ///< The camera forward normalized vector in world space.
+ };
+ 
++#define FFX_API_QUERY_DESC_TYPE_FRAMEGENERATION_GPU_MEMORY_USAGE_V2 0x0002000bu
++struct ffxQueryDescFrameGenerationGetGPUMemoryUsageV2
++{
++    ffxQueryDescHeader header;
++    void* device;                               ///< For DX12: pointer to ID3D12Device. For VK, pointer to VkDevice. App needs to fill out before Query() call.
++    struct FfxApiDimensions2D  maxRenderSize;   ///< App needs to fill out before Query() call.
++    struct FfxApiDimensions2D  displaySize;     ///< App needs to fill out before Query() call.
++    uint32_t createFlags;                       ///< A combination of zero or more values from FfxApiCreateContextFramegenerationFlags.
++    uint32_t dispatchFlags;                     ///< A combination of zero or more values from FfxApiDispatchFrameGenerationFlags.
++    uint32_t backBufferFormat;                  ///< The surface format for the backbuffer. One of the values from FfxApiSurfaceFormat. App needs to fill out before Query() call.
++    uint32_t hudlessBackBufferFormat;           ///< The surface format for HUDLessColor if used. Otherwise set value to FFX_API_SURFACE_FORMAT_UNKNOWN(0). App needs to fill out before Query() call.
++    struct FfxApiEffectMemoryUsage* gpuMemoryUsageFrameGeneration; ///< Output values by Query() call.
++};
++
+ #if defined(__cplusplus)
+ } // extern "C"
+ #endif

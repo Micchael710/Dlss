@@ -1,0 +1,37 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/capture/FrameResourceLifecycle.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/capture/FrameResourceLifecycle.java
+@@ -21,26 +21,6 @@
+ import java.util.concurrent.atomic.AtomicReference;
+ 
+ final class FrameResourceLifecycle {
+-    private final Object submissionMonitor = new Object();
+-
+-    /** Producer backpressure: ownership is not released until an actual submission is published. */
+-    void awaitSubmissionForReuse(java.util.function.BooleanSupplier failed) {
+-        long deadline = System.nanoTime() + java.util.concurrent.TimeUnit.SECONDS.toNanos(5);
+-        synchronized (submissionMonitor) {
+-            while (state() != FrameResourceState.SUBMITTED && state() != FrameResourceState.REUSABLE) {
+-                if (failed.getAsBoolean()) throw new IllegalStateException("Capture ownership recovery failed");
+-                var current = state();
+-                if (current != FrameResourceState.QUEUED && current != FrameResourceState.DISPATCHING
+-                        && current != FrameResourceState.SEALED) throw invalidTransition(current, FrameResourceState.REUSABLE);
+-                long remaining = deadline - System.nanoTime();
+-                if (remaining <= 0) throw new IllegalStateException("Timed out awaiting capture submission, state=" + current);
+-                try { submissionMonitor.wait(Math.max(1, Math.min(50, remaining / 1_000_000))); }
+-                catch (InterruptedException interrupted) {
+-                    Thread.currentThread().interrupt(); throw new IllegalStateException("Capture producer interrupted", interrupted);
+-                }
+-            }
+-        }
+-    }
+     private final AtomicReference<FrameResourceState> state =
+             new AtomicReference<>(FrameResourceState.REUSABLE);
+ 
+@@ -84,7 +64,6 @@
+                 throw invalidTransition(current, FrameResourceState.SUBMITTED);
+             }
+             if (state.compareAndSet(current, FrameResourceState.SUBMITTED)) {
+-                synchronized (submissionMonitor) { submissionMonitor.notifyAll(); }
+                 return;
+             }
+         }

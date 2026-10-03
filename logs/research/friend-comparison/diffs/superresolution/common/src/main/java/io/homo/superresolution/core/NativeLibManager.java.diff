@@ -1,0 +1,44 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/NativeLibManager.java
++++ friend/common/src/main/java/io/homo/superresolution/core/NativeLibManager.java
+@@ -22,6 +22,7 @@
+ import io.homo.superresolution.api.platform.OperatingSystemType;
+ import io.homo.superresolution.api.platform.SystemArchitecture;
+ import io.homo.superresolution.common.config.SuperResolutionConfig;
++import io.homo.superresolution.common.framegeneration.FrameGenerationDescriptions;
+ import io.homo.superresolution.common.presentation.PresentationBackendManager;
+ import io.homo.superresolution.core.utils.MessageBox;
+ import org.slf4j.Logger;
+@@ -70,9 +71,9 @@
+     static {
+         OperatingSystem operatingSystem = new OperatingSystem();
+         if (operatingSystem.type == OperatingSystemType.WINDOWS && operatingSystem.arch == SystemArchitecture.X86_64) {
+-            // Generic Vulkan presentation uses LWJGL directly. Require this bridge only
+-            // when startup actually selects the Streamline interposer (FG/Reflex).
+-            boolean shouldLoad = PresentationBackendManager.shouldInitializeStreamline();
++            boolean shouldExtract = PresentationBackendManager.isVulkanPresentationRequested() && SuperResolutionConfig.CURRENT_OS_TYPE == OperatingSystemType.WINDOWS;
++            boolean shouldLoad = FrameGenerationDescriptions.mayUseStreamline(
++                    SuperResolutionConfig.getFrameGenerationProvider());
+             LIB_SUPER_RESOLUTION = new NativeLib(
+                     "SuperResolution",
+                     true,
+@@ -107,7 +108,7 @@
+             LIB_SUPER_RESOLUTION_STREAMLINE = new NativeLib(
+                     "SuperResolutionStreamline",
+                     shouldLoad,
+-                    shouldLoad
++                    shouldExtract
+             );
+ 
+             libs.add(LIB_SUPER_RESOLUTION);
+@@ -353,6 +354,11 @@
+ 
+         try (InputStream in = classLoader.getResourceAsStream(resourceName)) {
+             if (in == null) {
++                if (Files.exists(targetPath) && Files.isRegularFile(targetPath)) {
++                    library.extractedPath = targetPath;
++                    LOGGER.info("{} not found in classpath resources, but already exists at {}; using existing library", library.fileName, targetPath);
++                    return true;
++                }
+                 if (library.required) {
+                     LOGGER.error("Failed to extract required dependency {}: resource not found", sourcePath);
+                 } else {

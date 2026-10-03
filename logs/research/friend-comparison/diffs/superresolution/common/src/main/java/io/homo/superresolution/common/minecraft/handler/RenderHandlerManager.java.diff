@@ -1,0 +1,94 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/minecraft/handler/RenderHandlerManager.java
++++ friend/common/src/main/java/io/homo/superresolution/common/minecraft/handler/RenderHandlerManager.java
+@@ -23,6 +23,7 @@
+ import io.homo.superresolution.api.SuperResolutionAPI;
+ import io.homo.superresolution.api.event.LevelRenderEndEvent;
+ import io.homo.superresolution.api.event.LevelRenderStartEvent;
++import io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat;
+ import io.homo.superresolution.common.SuperResolution;
+ import io.homo.superresolution.common.config.SuperResolutionConfig;
+ import io.homo.superresolution.common.minecraft.CallType;
+@@ -47,6 +48,7 @@
+ public class RenderHandlerManager {
+     private static boolean isRenderingWorld;
+     private static boolean shouldApplyScale;
++    private static boolean worldDebugGroupPushed;
+     private static Minecraft minecraft;
+     private static IMinecraftRenderHandler handler;
+     private static String handlerProviderId;
+@@ -98,6 +100,7 @@
+         handler = null;
+         handlerProviderId = null;
+         shouldApplyScale = false;
++        worldDebugGroupPushed = false;
+         if (provider == null) {
+             return;
+         }
+@@ -128,7 +131,7 @@
+     }
+ 
+     public static void onRenderWorldBegin(CallType type) {
+-        if (uiOnlyB3DVulkan) {
++        if (uiOnlyB3DVulkan || ImmersivePortalsCompat.isRenderingPortal()) {
+             return;
+         }
+         updateHandler();
+@@ -143,20 +146,21 @@
+         }
+ 
+         GlDebug.pushGroup(74108435, "MinecraftLevelRender");
++        worldDebugGroupPushed = true;
+         shouldApplyScale = true;
+         SuperResolutionAPI.EVENT_BUS.post(new LevelRenderStartEvent());
+         handler.onRenderWorldBegin(type);
+     }
+ 
+     public static void onRenderWorldEnd(CallType type) {
+-        if (uiOnlyB3DVulkan) {
++        if (uiOnlyB3DVulkan || ImmersivePortalsCompat.isRenderingPortal()) {
+             return;
+         }
+         if (type == CallType.LEVEL_RENDERER) {
+             isRenderingWorld = false;
+         }
+         if (handler == null) {
+-            GlDebug.popGroup();
++            worldDebugGroupPushed = false;
+             return;
+         }
+         if (checkRenderWorldCallPos(type)) {
+@@ -164,11 +168,14 @@
+             SuperResolutionAPI.EVENT_BUS.post(new LevelRenderEndEvent());
+             shouldApplyScale = false;
+         }
+-        GlDebug.popGroup();
++        if (worldDebugGroupPushed) {
++            GlDebug.popGroup();
++            worldDebugGroupPushed = false;
++        }
+     }
+ 
+     public static void onRenderHandBegin() {
+-        if (uiOnlyB3DVulkan) {
++        if (uiOnlyB3DVulkan || ImmersivePortalsCompat.isRenderingPortal()) {
+             return;
+         }
+         if (checkRenderHandCallPos() && handler != null) {
+@@ -177,7 +184,7 @@
+     }
+ 
+     public static void onRenderHandEnd() {
+-        if (uiOnlyB3DVulkan) {
++        if (uiOnlyB3DVulkan || ImmersivePortalsCompat.isRenderingPortal()) {
+             return;
+         }
+         if (checkRenderHandCallPos() && handler != null) {
+@@ -186,7 +193,7 @@
+     }
+ 
+     public static void onProcessPostChain(PostChain postChain) {
+-        if (uiOnlyB3DVulkan) {
++        if (uiOnlyB3DVulkan || ImmersivePortalsCompat.isRenderingPortal()) {
+             return;
+         }
+         updateHandler();

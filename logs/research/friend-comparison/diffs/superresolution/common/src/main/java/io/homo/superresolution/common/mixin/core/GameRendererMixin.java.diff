@@ -1,0 +1,109 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/core/GameRendererMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/core/GameRendererMixin.java
+@@ -27,6 +27,7 @@
+ import io.homo.superresolution.common.workmode.SRWorkModeManager;
+ import io.homo.superresolution.core.streamline.Streamline;
+ import org.spongepowered.asm.mixin.injection.Redirect;
++import io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat;
+ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+ 
+ import net.minecraft.client.Minecraft;
+@@ -35,20 +36,13 @@
+ import org.spongepowered.asm.mixin.injection.At;
+ import org.spongepowered.asm.mixin.injection.Inject;
+ 
+-#if MC_VER > MC_1_21_8
+-#if MC_VER >= MC_26_3
+-import com.mojang.renderpearl.api.commands.CommandEncoder;
+-import com.mojang.renderpearl.api.textures.GpuTexture;
+-#else
+-import com.mojang.blaze3d.systems.CommandEncoder;
+-import com.mojang.blaze3d.textures.GpuTexture;
+-#endif
+-#endif
+-
+ @Mixin(GameRenderer.class)
+ public abstract class GameRendererMixin {
+     @Inject(at = @At(value = "HEAD"), method = "renderLevel", cancellable = true)
+     private void onRenderWorldBegin(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         if (Minecraft.getInstance().level != null) {
+             PerformanceTracker.push("Level Render");
+             RenderHandlerManager.onRenderWorldBegin(CallType.GAME_RENDERER);
+@@ -56,23 +50,10 @@
+     }
+ 
+     #if MC_VER > MC_1_21_8
+-    @Redirect(at = @At(value = "INVOKE", target =
+-            #if MC_VER >= MC_26_3
+-            "Lcom/mojang/renderpearl/api/commands/CommandEncoder;clearDepthTexture(Lcom/mojang/renderpearl/api/textures/GpuTexture;D)V"
+-            #else
+-            "Lcom/mojang/blaze3d/systems/CommandEncoder;clearDepthTexture(Lcom/mojang/blaze3d/textures/GpuTexture;D)V"
+-            #endif
+-    ),
+-            method =
+-                    #if MC_VER >= MC_26_3
+-                    "render()V"
+-                    #else
+-                    "renderLevel"
+-                    #endif
+-    )
++    @Redirect(at = @At(value = "INVOKE", target = "Lcom/mojang/blaze3d/systems/CommandEncoder;clearDepthTexture(Lcom/mojang/blaze3d/textures/GpuTexture;D)V"), method = "renderLevel")
+     private void cancelDepthClear(
+-            CommandEncoder commandEncoder,
+-            GpuTexture gpuTexture,
++            com.mojang.blaze3d.systems.CommandEncoder commandEncoder,
++            com.mojang.blaze3d.textures.GpuTexture gpuTexture,
+             double depth
+     ) {
+         //这里必需取消深度清除，不然后面捕获不到深度
+@@ -91,6 +72,9 @@
+ 
+     @Inject(at = @At(value = "RETURN"), method = "renderLevel")
+     private void onRenderWorldEnd(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         if (Minecraft.getInstance().level != null) {
+             RenderTarget renderTarget = MinecraftUtils.getMainRenderTarget();
+             RenderHandlerManager.onRenderWorldEnd(CallType.GAME_RENDERER);
+@@ -115,6 +99,9 @@
+ 
+     @Inject(at = @At(value = "HEAD"), method = "render", cancellable = true)
+     private void onRenderBegin(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         //#if MC_VER < MC_1_20_6
+         if (io.homo.superresolution.common.minecraft.MinecraftWindow.getWindowSourceWidth() < 1 || io.homo.superresolution.common.minecraft.MinecraftWindow.getWindowSourceHeight() < 1) {
+             ci.cancel();
+@@ -125,11 +112,17 @@
+ 
+     @Inject(at = @At(value = "RETURN"), method = "render")
+     private void onRenderEnd(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         PerformanceTracker.pop("Main Render");
+     }
+ 
+     @Inject(at = @At(value = "HEAD"), method = "renderItemInHand")
+     private void onRenderHandBegin(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         if (Minecraft.getInstance().level != null) {
+             RenderHandlerManager.onRenderHandBegin();
+         }
+@@ -138,6 +131,9 @@
+ 
+     @Inject(at = @At(value = "RETURN"), method = "renderItemInHand")
+     private void onRenderHandEnd(CallbackInfo ci) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         if (Minecraft.getInstance().level != null) {
+             RenderHandlerManager.onRenderHandEnd();
+         }

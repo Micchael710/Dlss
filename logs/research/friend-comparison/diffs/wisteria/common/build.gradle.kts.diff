@@ -1,0 +1,56 @@
+--- ours/common/build.gradle.kts
++++ friend/common/build.gradle.kts
+@@ -64,7 +64,14 @@
+     from(streamlineBinDir) { include(streamlineLibraries) }
+     into(streamlineResourceDir)
+ 
++    onlyIf {
++        streamlineBinDir.isDirectory && streamlineLibraries.all { streamlineBinDir.resolve(it).isFile }
++    }
++
+     doFirst {
++        if (!streamlineBinDir.isDirectory || !streamlineLibraries.all { streamlineBinDir.resolve(it).isFile }) {
++            return@doFirst
++        }
+         val missing = streamlineLibraries.filterNot { streamlineBinDir.resolve(it).isFile }
+         if (missing.isNotEmpty()) {
+             throw GradleException(
+@@ -77,31 +84,16 @@
+     // StreamlineNativeExtractor cannot list a directory inside a jar, so the names travel
+     // with the DLLs. The sizes let it skip files it has already written.
+     doLast {
+-        streamlineResourceDir.file("index.txt").asFile.writeText(
+-            streamlineLibraries.joinToString("\n", postfix = "\n") {
+-                "$it ${streamlineBinDir.resolve(it).length()}"
+-            }
+-        )
++        if (streamlineBinDir.isDirectory && streamlineLibraries.all { streamlineBinDir.resolve(it).isFile }) {
++            streamlineResourceDir.file("index.txt").asFile.writeText(
++                streamlineLibraries.joinToString("\n", postfix = "\n") {
++                    "$it ${streamlineBinDir.resolve(it).length()}"
++                }
++            )
++        }
+     }
+ }
+ 
+ tasks.named<ProcessResources>("processResources") {
+     dependsOn(syncStreamlineLibraries)
+ }
+-
+-// Explicit, independently built FSR JNI bridge. Ordinary upstream builds keep it unavailable.
+-val fsrNativeDir = providers.gradleProperty("fsr_native_dir")
+-if (fsrNativeDir.isPresent) {
+-    val sdkRoot = rootProject.file(providers.gradleProperty("fsr_sdk_dir").get())
+-    tasks.named<ProcessResources>("processResources") {
+-        val nativeFolder = rootProject.file(fsrNativeDir.get())
+-        val bridge = nativeFolder.resolve("wisteria_fsr_bridge.dll")
+-        val effects = sdkRoot.resolve("ffx-api/bin/amd_fidelityfx_vk.dll")
+-        inputs.files(bridge, effects, sdkRoot.resolve("manifest.json"))
+-        doFirst {
+-            require(bridge.isFile && effects.isFile) { "FSR bridge/effects missing: compile the explicit native target first" }
+-        }
+-        from(files(bridge, effects, sdkRoot.resolve("manifest.json"))) { into("natives/windows-x64") }
+-        from(sdkRoot.resolve("sdk/LICENSE.txt")) { into("licenses/amd-fidelityfx-1.1.4") }
+-    }
+-}

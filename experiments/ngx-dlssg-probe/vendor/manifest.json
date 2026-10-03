@@ -1,0 +1,23 @@
+[
+  {
+    "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s.lib",
+    "url": "https://raw.githubusercontent.com/NVIDIA/DLSS/374959484e79a640feaba44c93ac8cfb0a03f5b5/lib/Windows_x86_64/x64/nvsdk_ngx_s.lib",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "bytes": 3782558,
+    "sha256": "4e5d355086d2bc11e1a0842457d2519ea528ee1f3e112c45679a84960c07dff3"
+  },
+  {
+    "path": "lib/Windows_x86_64/rel/nvngx_dlssg.dll",
+    "url": "https://raw.githubusercontent.com/NVIDIA/DLSS/374959484e79a640feaba44c93ac8cfb0a03f5b5/lib/Windows_x86_64/rel/nvngx_dlssg.dll",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "bytes": 7460976,
+    "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82"
+  },
+  {
+    "path": "LICENSE.txt",
+    "url": "https://raw.githubusercontent.com/NVIDIA/DLSS/374959484e79a640feaba44c93ac8cfb0a03f5b5/LICENSE.txt",
+    "commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "bytes": 26620,
+    "sha256": "d4216e39ebef5f9b50a6712ebb37beeb5379862a67733a9999c651f21592aaf0"
+  }
+]

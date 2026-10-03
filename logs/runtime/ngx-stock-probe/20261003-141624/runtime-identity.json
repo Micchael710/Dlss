@@ -1,0 +1,12 @@
+﻿{
+    "scenario":  "stock",
+    "runtime_path":  "D:\\ProjectDllsss\\experiments\\ngx-dlssg-probe\\build\\nvngx_dlssg.dll",
+    "runtime_version":  "310,9,1,0",
+    "runtime_sha256":  "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+    "runtime_signature":  "Valid",
+    "runtime_signer":  "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US",
+    "source_commit":  "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+    "probe_sha256":  "8fb8b7adca15f6525c153280415843f8f125ed5d217adfa9d3020a5110a81848",
+    "captured_at_utc":  "2026-10-03T18:16:24.1173975Z",
+    "sm86_adapted_probe":  "NOT RUN â€” reproducible Vulkan backend unavailable"
+}

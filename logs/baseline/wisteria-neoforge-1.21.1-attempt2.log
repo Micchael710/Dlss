@@ -1,0 +1,33 @@
+Downloading https://services.gradle.org/distributions/gradle-9.4.0-bin.zip
+.............10%.............20%.............30%.............40%.............50%.............60%..............70%.............80%.............90%.............100%
+
+Welcome to Gradle 9.4.0!
+
+Here are the highlights of this release:
+ - Java 26 support
+ - Non-class-based JVM tests
+ - Enhanced console progress bar
+
+For more details see https://docs.gradle.org/9.4.0/release-notes.html
+
+Starting a Gradle Daemon (subsequent builds will be faster)
+❇️ Wisteria target: Minecraft 1.21.1 (1.21.1)
+❇️ loader fabric
+❇️ loader neoforge
+
+> Configure project :fabric
+Fabric Loom: 1.16.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Using of the official minecraft mappings is at your own risk!
+Please make sure to read and understand the following license:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+# (c) 2020 Microsoft Corporation. These mappings are provided "as-is" and you bear the risk of using them. You may copy and use the mappings for development purposes, but you may not redistribute the mappings complete and unmodified. Microsoft makes no warranties, express or implied, with respect to the mappings provided here.  Use and modification of this document or the source code (in any form) of Minecraft: Java Edition is governed by the Minecraft End User License Agreement available at https://account.mojang.com/documents/minecraft_eula.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Failed to parse fabric.mod.json: D:\ProjectDllsss\wisteria\fabric\src\main\resources\fabric.mod.json
+
+Cannot remap lambda$init$2 because it does not exist in any of the targets [net/minecraft/class_429]
+Cannot remap getRenderLayers because it does not exist in any of the targets [net/minecraft/class_4696]
+Cannot remap iterateVisibleBlockEntities because it does not exist in any of the targets [net/minecraft/class_761]
+
+> Configure project :fabric
+:remapping sources

@@ -1,0 +1,50 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisTextureResolver.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisTextureResolver.java
+@@ -57,7 +57,7 @@
+         return new GlOnlyNameTexture(
+                 () -> {
+                     if (!isColorTextureName(name)){
+-                        int internalFormat = GlTextureInfoGetter.getSizedInternalFormat(GL_TEXTURE_2D,getIrisTextureByName(renderer, name, pass, useStageWritesToMain));
++                        int internalFormat = GlTextureInfoGetter.getInternalFormat(GL_TEXTURE_2D,getIrisTextureByName(renderer, name, pass, useStageWritesToMain));
+                         return TextureFormat.fromGl(internalFormat);
+                     }
+                     InternalTextureFormat irisFormat = getIrisColorTextureByName(renderer, name, pass, useStageWritesToMain).getInternalFormat();
+@@ -194,35 +194,17 @@
+     }
+     #else
+     private static int getDepthTexId(ICompositeRendererAccessor renderer) {
+-        return ((
+-                #if MC_VER >= MC_26_3
+-                com.mojang.renderpearl.backend.opengl.GlTexture
+-                #else
+-                com.mojang.blaze3d.opengl.GlTexture
+-                #endif
+-                ) (renderer)
++        return ((com.mojang.blaze3d.opengl.GlTexture) (renderer)
+                 .getRenderTargets().getDepthTexture()).glId();
+     }
+ 
+     private static int getNoHandDepthTexId(ICompositeRendererAccessor renderer) {
+-        return ((
+-                #if MC_VER >= MC_26_3
+-                com.mojang.renderpearl.backend.opengl.GlTexture
+-                #else
+-                com.mojang.blaze3d.opengl.GlTexture
+-                #endif
+-                ) (renderer)
++        return ((com.mojang.blaze3d.opengl.GlTexture) (renderer)
+                 .getRenderTargets().getDepthTextureNoHand()).glId();
+     }
+ 
+     private static int getNoTranslucentDepthTexId(ICompositeRendererAccessor renderer) {
+-        return ((
+-                #if MC_VER >= MC_26_3
+-                com.mojang.renderpearl.backend.opengl.GlTexture
+-                #else
+-                com.mojang.blaze3d.opengl.GlTexture
+-                #endif
+-                ) (renderer)
++        return ((com.mojang.blaze3d.opengl.GlTexture) (renderer)
+                 .getRenderTargets().getDepthTextureNoTranslucents()).glId();
+     }
+     #endif

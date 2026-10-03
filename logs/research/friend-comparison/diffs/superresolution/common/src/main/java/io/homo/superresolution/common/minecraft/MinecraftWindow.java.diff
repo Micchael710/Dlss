@@ -1,0 +1,23 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/minecraft/MinecraftWindow.java
++++ friend/common/src/main/java/io/homo/superresolution/common/minecraft/MinecraftWindow.java
+@@ -68,12 +68,6 @@
+     }
+ 
+     public static int[] getWindowSourceSize() {
+-        #if MC_VER >= MC_26_1_2
+-        return new int[]{
+-                getWindowWidth(),
+-                getWindowHeight()
+-        };
+-        #else
+         int[] sizeX = new int[]{1};
+         int[] sizeY = new int[]{1};
+         if (hasWindow()) {
+@@ -83,7 +77,6 @@
+                 sizeX[0],
+                 sizeY[0]
+         };
+-        #endif
+     }
+ 
+     public static int getWindowSourceWidth() {

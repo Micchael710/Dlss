@@ -1,0 +1,60 @@
+--- ours/native/cpp/SRNativeMain/src/sr_api.cpp
++++ friend/native/cpp/SRNativeMain/src/sr_api.cpp
+@@ -88,10 +88,10 @@
+     const SRLoadedProviderLibrary &library,
+     uint64_t providerId) {
+     return std::find(
+-               library.pendingCloseProviderIds.begin(),
+-               library.pendingCloseProviderIds.end(),
+-               providerId
+-           ) != library.pendingCloseProviderIds.end();
++        library.pendingCloseProviderIds.begin(),
++        library.pendingCloseProviderIds.end(),
++        providerId
++    ) != library.pendingCloseProviderIds.end();
+ }
+ 
+ static void srCloseProviderLibraryHandles(
+@@ -161,7 +161,6 @@
+     }
+ 
+     SRProviderLibraryLoadGuard(const SRProviderLibraryLoadGuard &) = delete;
+-
+     SRProviderLibraryLoadGuard &operator=(const SRProviderLibraryLoadGuard &) = delete;
+ 
+     void finish() noexcept {
+@@ -209,7 +208,6 @@
+     }
+ 
+     SRProviderLibraryHandleGuard(const SRProviderLibraryHandleGuard &) = delete;
+-
+     SRProviderLibraryHandleGuard &operator=(const SRProviderLibraryHandleGuard &) = delete;
+ 
+     bool close() noexcept {
+@@ -259,7 +257,6 @@
+     }
+ 
+     SRProviderShutdownGuard(const SRProviderShutdownGuard &) = delete;
+-
+     SRProviderShutdownGuard &operator=(const SRProviderShutdownGuard &) = delete;
+ 
+     void finish() noexcept {
+@@ -292,7 +289,6 @@
+     }
+ 
+     SRProviderLibraryUnloadGuard(const SRProviderLibraryUnloadGuard &) = delete;
+-
+     SRProviderLibraryUnloadGuard &operator=(const SRProviderLibraryUnloadGuard &) = delete;
+ 
+     void finish() noexcept {
+@@ -938,8 +934,8 @@
+     g_providerCondition.notify_all();
+ 
+     return allSuccess && allLibrariesClosed
+-               ? SR_RETURN_CODE_OK
+-               : SR_RETURN_CODE_UNEXPECTED_ERROR;
++        ? SR_RETURN_CODE_OK
++        : SR_RETURN_CODE_UNEXPECTED_ERROR;
+ } catch (const std::bad_alloc &) {
+     return SR_RETURN_CODE_ERROR;
+ } catch (...) {

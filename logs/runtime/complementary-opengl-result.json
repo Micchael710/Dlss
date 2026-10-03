@@ -1,0 +1,19 @@
+{
+  "test": "Complementary OpenGL",
+  "status": "FAILED_VISUAL_GATE",
+  "pack_selected": true,
+  "pack_active": true,
+  "world_loaded": true,
+  "config_processed": "superresolution.v1.json (preferred over unversioned config)",
+  "binding_resolution_and_dispatch": "NOT_INDIVIDUALLY_VERIFIED_RUNTIME",
+  "visual_failure": "scene restricted to lower-left render-sized region; black top/right; HUD spans display",
+  "opengl_error": "1280 GL_INVALID_ENUM Internal format not supported (source call not identified)",
+  "resize": "NOT_RUN",
+  "fullscreen": "NOT_RUN",
+  "vulkan": "NOT_RUN",
+  "generated_frames": false,
+  "visually_validated": false,
+  "source_diagnostic_candidate": "composite7 conditional enablement versus BEFORE composite7 trigger; unproven runtime causality",
+  "crash": "NONE_OBSERVED_AT_SNAPSHOT",
+  "last_log_record": "[02Oct2026 16:53:29.440] [Render thread/INFO] [OpenGLDebug/]: OpenGL debug message: id=1280, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_ENUM error generated. Internal format not supported.'"
+}

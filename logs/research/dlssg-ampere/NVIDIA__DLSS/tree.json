@@ -1,0 +1,1095 @@
+{
+  "sha": "374959484e79a640feaba44c93ac8cfb0a03f5b5",
+  "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/374959484e79a640feaba44c93ac8cfb0a03f5b5",
+  "tree": [
+    {
+      "path": ".gitmodules",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "89a130bf8a852646db033edfe122b0f897df30e8",
+      "size": 121,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/89a130bf8a852646db033edfe122b0f897df30e8"
+    },
+    {
+      "path": "DLSS Donut and Sample Source_Pre-Release License (2July2019).pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aeb4b9e629c2e9f78d9bb27c4280f576ac93c504",
+      "size": 143706,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/aeb4b9e629c2e9f78d9bb27c4280f576ac93c504"
+    },
+    {
+      "path": "LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "80756566d773cdac55179c5ae16c4495df7f73b5",
+      "size": 26620,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/80756566d773cdac55179c5ae16c4495df7f73b5"
+    },
+    {
+      "path": "NVIDIAImageScaling",
+      "mode": "160000",
+      "type": "commit",
+      "sha": "35e13ba316c98eeecf16f37eae70ce88019911f6"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "53eabf65f9013d58bd280b7ffba9a41b37522905",
+      "size": 690,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/53eabf65f9013d58bd280b7ffba9a41b37522905"
+    },
+    {
+      "path": "doc",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "496c7d2e368c8d016d4e1ca9126b7dbb8d5fccc4",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/496c7d2e368c8d016d4e1ca9126b7dbb8d5fccc4"
+    },
+    {
+      "path": "doc/DLSS-FG Programming Guide.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f754b0fa418d71b73c331cfef7fe882926708473",
+      "size": 31554993,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/f754b0fa418d71b73c331cfef7fe882926708473"
+    },
+    {
+      "path": "doc/DLSS-RR Integration Guide.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "613b52dfa509233c8ba8f6cf33b62eedc3c6d33e",
+      "size": 622585,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/613b52dfa509233c8ba8f6cf33b62eedc3c6d33e"
+    },
+    {
+      "path": "doc/DLSS_Programming_Guide_Release.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2a7895c2692e6515900f6499d5228dd74987f81a",
+      "size": 6207258,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/2a7895c2692e6515900f6499d5228dd74987f81a"
+    },
+    {
+      "path": "doc/RTX Developer Localization Strings.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a41539222bf69ee3c7e1eeecd7df3cd6d90bf32a",
+      "size": 738854,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/a41539222bf69ee3c7e1eeecd7df3cd6d90bf32a"
+    },
+    {
+      "path": "doc/RTX UI Developer Guidelines Chinese Version.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95a0153bf216933c824b654d63905e8aaf8043fd",
+      "size": 1102608,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/95a0153bf216933c824b654d63905e8aaf8043fd"
+    },
+    {
+      "path": "doc/RTX UI Developer Guidelines.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d2fb411d890e8e8c8bc60495813ba07bc6e4c64a",
+      "size": 585023,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/d2fb411d890e8e8c8bc60495813ba07bc6e4c64a"
+    },
+    {
+      "path": "include",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "425bda46b80bb0d8ab8c0ade1279335906e42dea",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/425bda46b80bb0d8ab8c0ade1279335906e42dea"
+    },
+    {
+      "path": "include/nvsdk_ngx.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ae6b49174049eed69cc377b2fffd3c901651f764",
+      "size": 40289,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/ae6b49174049eed69cc377b2fffd3c901651f764"
+    },
+    {
+      "path": "include/nvsdk_ngx_defs.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "807fa2475e90214f6846b9b4840be92e7bd66b5b",
+      "size": 44313,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/807fa2475e90214f6846b9b4840be92e7bd66b5b"
+    },
+    {
+      "path": "include/nvsdk_ngx_defs_dlssd.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8b73e3f347fab4f315443869ad57eeeb61168d7f",
+      "size": 14693,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/8b73e3f347fab4f315443869ad57eeeb61168d7f"
+    },
+    {
+      "path": "include/nvsdk_ngx_defs_dlssg.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3337ad5e8b2221bc914069b4171c2bc6461e2eed",
+      "size": 22885,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/3337ad5e8b2221bc914069b4171c2bc6461e2eed"
+    },
+    {
+      "path": "include/nvsdk_ngx_defs_vk.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f02503e1ce90e5320053ca10883883ae71100136",
+      "size": 3196,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/f02503e1ce90e5320053ca10883883ae71100136"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e6a0f2581e1586240821afa7523a65a75654e847",
+      "size": 5317,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e6a0f2581e1586240821afa7523a65a75654e847"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_cuda.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "251ba9d5fcf0800bbc3fbb5e8870c61739c6d98a",
+      "size": 3593,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/251ba9d5fcf0800bbc3fbb5e8870c61739c6d98a"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_d3d.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "664f99d95d3f8375304dc558ec601a66635ade7b",
+      "size": 31976,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/664f99d95d3f8375304dc558ec601a66635ade7b"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssd.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "479c949ade46e1fcbef05f5e49ba8f5e6b359a03",
+      "size": 732,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/479c949ade46e1fcbef05f5e49ba8f5e6b359a03"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssd_cuda.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cebba04f16e581bafe3d94d46b865f9b55e37147",
+      "size": 29175,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/cebba04f16e581bafe3d94d46b865f9b55e37147"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssd_d3d.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4e9c30f036be43bfe51c91e8a5d6a24bc218bfeb",
+      "size": 72668,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/4e9c30f036be43bfe51c91e8a5d6a24bc218bfeb"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssd_vk.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fda1bbb62ba1b5b60010cf3949cef6fad61d2a2",
+      "size": 38337,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/2fda1bbb62ba1b5b60010cf3949cef6fad61d2a2"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssg.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "45d7815ae1c0b79aa2fff88d543e6c5e22ebb8cf",
+      "size": 732,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/45d7815ae1c0b79aa2fff88d543e6c5e22ebb8cf"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssg_d3d.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "351245357a197aefb8c16189703ccc7656ded261",
+      "size": 17445,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/351245357a197aefb8c16189703ccc7656ded261"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_dlssg_vk.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9db4ff7de4209495adceb56ab1c759d868200418",
+      "size": 17077,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/9db4ff7de4209495adceb56ab1c759d868200418"
+    },
+    {
+      "path": "include/nvsdk_ngx_helpers_vk.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "664ac5302ea62cb57cd03a3779cbe2fc0a418397",
+      "size": 19720,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/664ac5302ea62cb57cd03a3779cbe2fc0a418397"
+    },
+    {
+      "path": "include/nvsdk_ngx_loader.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "13756a449673327b08dfc9e6715937636de4ca48",
+      "size": 13252,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/13756a449673327b08dfc9e6715937636de4ca48"
+    },
+    {
+      "path": "include/nvsdk_ngx_params.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "014d9f4adec600ea3677947b7f98258da9f9c7fc",
+      "size": 7744,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/014d9f4adec600ea3677947b7f98258da9f9c7fc"
+    },
+    {
+      "path": "include/nvsdk_ngx_params_dlssd.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6950ed305ba4d2eba1a2eab3c6463fec9ce10e6d",
+      "size": 1199,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6950ed305ba4d2eba1a2eab3c6463fec9ce10e6d"
+    },
+    {
+      "path": "include/nvsdk_ngx_params_dlssg.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69c6715e28456380a92e658a482d243f6c96b43e",
+      "size": 6137,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/69c6715e28456380a92e658a482d243f6c96b43e"
+    },
+    {
+      "path": "include/nvsdk_ngx_standalone_common.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e765305ff16f92714269410a76c2bac3ffdb76f8",
+      "size": 12985,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e765305ff16f92714269410a76c2bac3ffdb76f8"
+    },
+    {
+      "path": "include/nvsdk_ngx_standalone_cuda.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98c248bbac9ec263564ae5fe7735db4a6afac1c5",
+      "size": 10906,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/98c248bbac9ec263564ae5fe7735db4a6afac1c5"
+    },
+    {
+      "path": "include/nvsdk_ngx_vk.h",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70d895409132b68eff0d6027fb1ea2552d8c749b",
+      "size": 38382,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/70d895409132b68eff0d6027fb1ea2552d8c749b"
+    },
+    {
+      "path": "lib",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "7e7f96b71fb7d333bec0410ba40e9aaa6c6d506b",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/7e7f96b71fb7d333bec0410ba40e9aaa6c6d506b"
+    },
+    {
+      "path": "lib/Linux_aarch64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ba1df10b06434e662ce839e4a64a35f90eb79b3f",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/ba1df10b06434e662ce839e4a64a35f90eb79b3f"
+    },
+    {
+      "path": "lib/Linux_aarch64/dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4909098c1d667284882e56836ca029f5fbbe3906",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/4909098c1d667284882e56836ca029f5fbbe3906"
+    },
+    {
+      "path": "lib/Linux_aarch64/dev/libnvidia-ngx-dlss.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "19fe26bd4c25dc7acde0342200695f76429aa12e",
+      "size": 60590544,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/19fe26bd4c25dc7acde0342200695f76429aa12e"
+    },
+    {
+      "path": "lib/Linux_aarch64/dev/libnvidia-ngx-dlssd.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "6ee5fa89da5bd0af6eafc489a4f050f6f0b03ce9",
+      "size": 49115408,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6ee5fa89da5bd0af6eafc489a4f050f6f0b03ce9"
+    },
+    {
+      "path": "lib/Linux_aarch64/dev/libnvidia-ngx-dlssg.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "2ff57d1f8bd236304ab69e12ec0636dbfa18ffc2",
+      "size": 7219152,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/2ff57d1f8bd236304ab69e12ec0636dbfa18ffc2"
+    },
+    {
+      "path": "lib/Linux_aarch64/libnvsdk_ngx.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d25f879eb35891407943ea34e3626a34d4642297",
+      "size": 84938,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/d25f879eb35891407943ea34e3626a34d4642297"
+    },
+    {
+      "path": "lib/Linux_aarch64/rel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "1e8bba59284a5fe0585306fdd3bb116499bd22ec",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/1e8bba59284a5fe0585306fdd3bb116499bd22ec"
+    },
+    {
+      "path": "lib/Linux_aarch64/rel/libnvidia-ngx-dlss.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "f6da8d4dca1be009dece481c239c58ba35c02e9b",
+      "size": 59336544,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/f6da8d4dca1be009dece481c239c58ba35c02e9b"
+    },
+    {
+      "path": "lib/Linux_aarch64/rel/libnvidia-ngx-dlssd.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "07911c2509e1beb0035f62fd004c2b31ee20351d",
+      "size": 48115280,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/07911c2509e1beb0035f62fd004c2b31ee20351d"
+    },
+    {
+      "path": "lib/Linux_aarch64/rel/libnvidia-ngx-dlssg.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "358fec4b29105efc1e0877a0e4140267f567b393",
+      "size": 7219152,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/358fec4b29105efc1e0877a0e4140267f567b393"
+    },
+    {
+      "path": "lib/Linux_x86_64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "62454a1bb2bd1e115895a99777a8aece8e6e5564",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/62454a1bb2bd1e115895a99777a8aece8e6e5564"
+    },
+    {
+      "path": "lib/Linux_x86_64/dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "46b4abc8b6f1e0cc8159cd62c3f8ae13652b124b",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/46b4abc8b6f1e0cc8159cd62c3f8ae13652b124b"
+    },
+    {
+      "path": "lib/Linux_x86_64/dev/libnvidia-ngx-dlss.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "8a0c2c2ecc68016518889072bfb985c4e18559f3",
+      "size": 60610320,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/8a0c2c2ecc68016518889072bfb985c4e18559f3"
+    },
+    {
+      "path": "lib/Linux_x86_64/dev/libnvidia-ngx-dlssd.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "82506f9a54d87f862968a95b7e94366d26e3d44b",
+      "size": 49150616,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/82506f9a54d87f862968a95b7e94366d26e3d44b"
+    },
+    {
+      "path": "lib/Linux_x86_64/dev/libnvidia-ngx-dlssg.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "ab465fd65a9d0d36c03d4ad6f0a86bdba5dfb91a",
+      "size": 7346176,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/ab465fd65a9d0d36c03d4ad6f0a86bdba5dfb91a"
+    },
+    {
+      "path": "lib/Linux_x86_64/libnvsdk_ngx.a",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8bb2a900d59e3d82d186f35384ec114fb6c49d1",
+      "size": 89002,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/d8bb2a900d59e3d82d186f35384ec114fb6c49d1"
+    },
+    {
+      "path": "lib/Linux_x86_64/rel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "03d40761ddf9e34bfc00e03b55a40ed4e5a1ae99",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/03d40761ddf9e34bfc00e03b55a40ed4e5a1ae99"
+    },
+    {
+      "path": "lib/Linux_x86_64/rel/libnvidia-ngx-dlss.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "f6f030b96e652f1677dfe48cef2f2262522c8151",
+      "size": 59481944,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/f6f030b96e652f1677dfe48cef2f2262522c8151"
+    },
+    {
+      "path": "lib/Linux_x86_64/rel/libnvidia-ngx-dlssd.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "b163afb656276977ad1976389ee8250e89397a71",
+      "size": 48238232,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/b163afb656276977ad1976389ee8250e89397a71"
+    },
+    {
+      "path": "lib/Linux_x86_64/rel/libnvidia-ngx-dlssg.so.310.9.1",
+      "mode": "100755",
+      "type": "blob",
+      "sha": "5c2123d9c8fa5c7f6d3808528fc59dc1215b82f4",
+      "size": 7346176,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/5c2123d9c8fa5c7f6d3808528fc59dc1215b82f4"
+    },
+    {
+      "path": "lib/Windows_aarch64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fe9959572e5efd27edeae69b33079aefb0cf5ba9",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/fe9959572e5efd27edeae69b33079aefb0cf5ba9"
+    },
+    {
+      "path": "lib/Windows_aarch64/dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "63c2fd8c086193adb84f01a52703bad6bfca87aa",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/63c2fd8c086193adb84f01a52703bad6bfca87aa"
+    },
+    {
+      "path": "lib/Windows_aarch64/dev/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "75fbba57ca38064edca42a99e235249f31bde025",
+      "size": 59421808,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/75fbba57ca38064edca42a99e235249f31bde025"
+    },
+    {
+      "path": "lib/Windows_aarch64/dev/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a3c3aa3382ae57c562b0b3767e9440eac2e6e089",
+      "size": 93531248,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/a3c3aa3382ae57c562b0b3767e9440eac2e6e089"
+    },
+    {
+      "path": "lib/Windows_aarch64/dev/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "44c5a2f345a7c324078d2a844e2c42d80820e0f2",
+      "size": 7963760,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/44c5a2f345a7c324078d2a844e2c42d80820e0f2"
+    },
+    {
+      "path": "lib/Windows_aarch64/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "812e0ff297a1922ddaacbc4386b16375de29014f",
+      "size": 2988504,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/812e0ff297a1922ddaacbc4386b16375de29014f"
+    },
+    {
+      "path": "lib/Windows_aarch64/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9bdc4c95f388efb292b9c287669ba57df3d4f6d7",
+      "size": 3046936,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/9bdc4c95f388efb292b9c287669ba57df3d4f6d7"
+    },
+    {
+      "path": "lib/Windows_aarch64/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9554b6bd6913bf800129b9f3bf5a89da4009fe15",
+      "size": 2939338,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/9554b6bd6913bf800129b9f3bf5a89da4009fe15"
+    },
+    {
+      "path": "lib/Windows_aarch64/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5927e90ba022b66a56f5522b13a6f67be5cefabb",
+      "size": 2994402,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/5927e90ba022b66a56f5522b13a6f67be5cefabb"
+    },
+    {
+      "path": "lib/Windows_aarch64/rel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "88826437fe267fad507c363015179b19c3cdb95d",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/88826437fe267fad507c363015179b19c3cdb95d"
+    },
+    {
+      "path": "lib/Windows_aarch64/rel/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc45de90ecb8d7f846614d13cb407c53fa694512",
+      "size": 58971248,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/fc45de90ecb8d7f846614d13cb407c53fa694512"
+    },
+    {
+      "path": "lib/Windows_aarch64/rel/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "70dbb3a9f0b6b2ef7bb16c342c0d1d5f4c02b5fa",
+      "size": 48345712,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/70dbb3a9f0b6b2ef7bb16c342c0d1d5f4c02b5fa"
+    },
+    {
+      "path": "lib/Windows_aarch64/rel/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7cf8fe11c744aa97f92fe12de2095aae14e0f07",
+      "size": 7387248,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e7cf8fe11c744aa97f92fe12de2095aae14e0f07"
+    },
+    {
+      "path": "lib/Windows_arm64ec",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "784e2820ce91c583a42c8821e1dcd7dee06ba806",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/784e2820ce91c583a42c8821e1dcd7dee06ba806"
+    },
+    {
+      "path": "lib/Windows_arm64ec/dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a66bbbe62e7b93febc15b272a0f401c5345e6c11",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/a66bbbe62e7b93febc15b272a0f401c5345e6c11"
+    },
+    {
+      "path": "lib/Windows_arm64ec/dev/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "93d1a1f68dc1cfa89e408649f1b684d07e084bd8",
+      "size": 59524208,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/93d1a1f68dc1cfa89e408649f1b684d07e084bd8"
+    },
+    {
+      "path": "lib/Windows_arm64ec/dev/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc792bb09b87d1acee1f61d8fb88d5e0cac92581",
+      "size": 48917104,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/cc792bb09b87d1acee1f61d8fb88d5e0cac92581"
+    },
+    {
+      "path": "lib/Windows_arm64ec/dev/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ee20652ed7247115ab6293507a273b6350c89c52",
+      "size": 8038000,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/ee20652ed7247115ab6293507a273b6350c89c52"
+    },
+    {
+      "path": "lib/Windows_arm64ec/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f10d05e832ef02bf641ccb929973e6e78b5dcd0",
+      "size": 3227404,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/3f10d05e832ef02bf641ccb929973e6e78b5dcd0"
+    },
+    {
+      "path": "lib/Windows_arm64ec/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26dc69608acb261454ad76079d33dd53fac084b9",
+      "size": 3291576,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/26dc69608acb261454ad76079d33dd53fac084b9"
+    },
+    {
+      "path": "lib/Windows_arm64ec/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7f5c57ed01d30c9bafce65ea4f9f7a97eeb104d2",
+      "size": 3212532,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/7f5c57ed01d30c9bafce65ea4f9f7a97eeb104d2"
+    },
+    {
+      "path": "lib/Windows_arm64ec/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce464c1bbfe669d37f0f61b5312e0d5db17d5b1d",
+      "size": 3277726,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/ce464c1bbfe669d37f0f61b5312e0d5db17d5b1d"
+    },
+    {
+      "path": "lib/Windows_arm64ec/rel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0a62f3fa0c74ae2a8de23d5681e6c28e9131049f",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/0a62f3fa0c74ae2a8de23d5681e6c28e9131049f"
+    },
+    {
+      "path": "lib/Windows_arm64ec/rel/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "95504247e74302db5aed9d0e2951db6873c5bf29",
+      "size": 59071088,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/95504247e74302db5aed9d0e2951db6873c5bf29"
+    },
+    {
+      "path": "lib/Windows_arm64ec/rel/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e8ead29a6615a4ab8a07e560d32130ffb964f27d",
+      "size": 48432240,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e8ead29a6615a4ab8a07e560d32130ffb964f27d"
+    },
+    {
+      "path": "lib/Windows_arm64ec/rel/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "26f59255e9bac967e100181e86edb7dd2d4fda44",
+      "size": 7447152,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/26f59255e9bac967e100181e86edb7dd2d4fda44"
+    },
+    {
+      "path": "lib/Windows_x86_64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "75972d319b01eb9654b24811e1f1319aa5c0218f",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/75972d319b01eb9654b24811e1f1319aa5c0218f"
+    },
+    {
+      "path": "lib/Windows_x86_64/dev",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b56385e1d21fdf2364a99e81f2fd3e7a4dc0046e",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/b56385e1d21fdf2364a99e81f2fd3e7a4dc0046e"
+    },
+    {
+      "path": "lib/Windows_x86_64/dev/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "673099849a491619807ab6d47f03c643c80486e8",
+      "size": 59383920,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/673099849a491619807ab6d47f03c643c80486e8"
+    },
+    {
+      "path": "lib/Windows_x86_64/dev/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bfbdfb7ce11ab8e8772201058b4c9c6a6d6beeca",
+      "size": 93504624,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/bfbdfb7ce11ab8e8772201058b4c9c6a6d6beeca"
+    },
+    {
+      "path": "lib/Windows_x86_64/dev/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1b47c985529fb5d3861743a685d16ef380b7c5a6",
+      "size": 7997552,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/1b47c985529fb5d3861743a685d16ef380b7c5a6"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8db0d94384497de5d87347a6a816db58d9993bce",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/8db0d94384497de5d87347a6a816db58d9993bce"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5bed98b962454858e3e39a1168dafa983ebd618a",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/5bed98b962454858e3e39a1168dafa983ebd618a"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr/x64/nvsdk_ngx_khr_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bdda8dfd61d44f278413d6c741eaae1779f66ca2",
+      "size": 5222878,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/bdda8dfd61d44f278413d6c741eaae1779f66ca2"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr/x64/nvsdk_ngx_khr_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e445e9e7c75626cb6f0d9daf09b622e629ea4108",
+      "size": 5457036,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e445e9e7c75626cb6f0d9daf09b622e629ea4108"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr/x64/nvsdk_ngx_khr_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c97863e1073be9d1f510920b96d84e2bc6e6547",
+      "size": 4740774,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6c97863e1073be9d1f510920b96d84e2bc6e6547"
+    },
+    {
+      "path": "lib/Windows_x86_64/khr/x64/nvsdk_ngx_khr_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6afe4c4147dd55f9d546fbd3e21137ef9ce133d9",
+      "size": 4967560,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6afe4c4147dd55f9d546fbd3e21137ef9ce133d9"
+    },
+    {
+      "path": "lib/Windows_x86_64/rel",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b9a0e4a4f59c0b37e3a3750614fb1aa5fd82ddc0",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/b9a0e4a4f59c0b37e3a3750614fb1aa5fd82ddc0"
+    },
+    {
+      "path": "lib/Windows_x86_64/rel/nvngx_dlss.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "875981984f56e71b4fde6605484ef767dadf9910",
+      "size": 58956912,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/875981984f56e71b4fde6605484ef767dadf9910"
+    },
+    {
+      "path": "lib/Windows_x86_64/rel/nvngx_dlssd.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9c3c1cbe2ef1c78fd68db5a778d72382040e677",
+      "size": 48343664,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/a9c3c1cbe2ef1c78fd68db5a778d72382040e677"
+    },
+    {
+      "path": "lib/Windows_x86_64/rel/nvngx_dlssg.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f43cac176a0fc8168d2baf5b7ec4eff63cd12975",
+      "size": 7460976,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/f43cac176a0fc8168d2baf5b7ec4eff63cd12975"
+    },
+    {
+      "path": "lib/Windows_x86_64/uwp",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "76effe473650c932b1861757389157071ecf0278",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/76effe473650c932b1861757389157071ecf0278"
+    },
+    {
+      "path": "lib/Windows_x86_64/uwp/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "6bd28ddca09057870195eb60a2eefa62b170a6a6",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/6bd28ddca09057870195eb60a2eefa62b170a6a6"
+    },
+    {
+      "path": "lib/Windows_x86_64/uwp/x64/nvsdk_ngx_uwp_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d0ca6d5a4d52ef1b21c3b028b75d919b68a0bc0e",
+      "size": 3952018,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/d0ca6d5a4d52ef1b21c3b028b75d919b68a0bc0e"
+    },
+    {
+      "path": "lib/Windows_x86_64/uwp/x64/nvsdk_ngx_uwp_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c6b41caee9c7b16cc3b30661698853cc5d04cc9c",
+      "size": 4141256,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/c6b41caee9c7b16cc3b30661698853cc5d04cc9c"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "686ade2d14ae1807057076ba9cb7d5a11e4b6cf7",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/686ade2d14ae1807057076ba9cb7d5a11e4b6cf7"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dca492fb50fdc3a3a0967e32e5809184460d17ef",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/dca492fb50fdc3a3a0967e32e5809184460d17ef"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010/x64/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c55a5ddae0f207cb127f95dca4e3fa74efa0c27f",
+      "size": 3598096,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/c55a5ddae0f207cb127f95dca4e3fa74efa0c27f"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010/x64/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f1d4c7a128267c27659835658f203c31f16e567",
+      "size": 3693918,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/9f1d4c7a128267c27659835658f203c31f16e567"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010/x64/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e04b74168373964478227837377e87de9c3ba60c",
+      "size": 3573218,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e04b74168373964478227837377e87de9c3ba60c"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2010/x64/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4324c47f3cc89baa20fb48c0c41b80e753e63397",
+      "size": 3665770,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/4324c47f3cc89baa20fb48c0c41b80e753e63397"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a2b5d1e13ff16e037b885b6a24bddc99b82f035b",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/a2b5d1e13ff16e037b885b6a24bddc99b82f035b"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "31aa2aec984ebbc0c113259876e97432627ef48d",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/31aa2aec984ebbc0c113259876e97432627ef48d"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012/x64/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "72207849daf6fc55d4e07da219b63c24922aff41",
+      "size": 4115796,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/72207849daf6fc55d4e07da219b63c24922aff41"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012/x64/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c57850c001caaa55b14fba42eccb745ec86965da",
+      "size": 4299846,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/c57850c001caaa55b14fba42eccb745ec86965da"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012/x64/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21606eb13f905a1149b7a59a8a5c87de02ba0e18",
+      "size": 3917316,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/21606eb13f905a1149b7a59a8a5c87de02ba0e18"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2012/x64/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e77f61fd57265eb5913e1a3d0610e87d8655ff9c",
+      "size": 4105038,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e77f61fd57265eb5913e1a3d0610e87d8655ff9c"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "531d2a63ed40505f447313e7387c5e03965cdacc",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/531d2a63ed40505f447313e7387c5e03965cdacc"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9a1e44ec2a69641dc089ab54098ec686632b5684",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/9a1e44ec2a69641dc089ab54098ec686632b5684"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013/x64/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e2ebdf6ac2732ab4d418f28c79b1591672c2aab",
+      "size": 4152264,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/1e2ebdf6ac2732ab4d418f28c79b1591672c2aab"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013/x64/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7524011a063d63f1ce45b6b47afc755386bfea44",
+      "size": 4353234,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/7524011a063d63f1ce45b6b47afc755386bfea44"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013/x64/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d167cbf790727a94f200956d37036cd40c16e92a",
+      "size": 3953604,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/d167cbf790727a94f200956d37036cd40c16e92a"
+    },
+    {
+      "path": "lib/Windows_x86_64/vs2013/x64/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b7322c8e2a8fcac79b719f26f57f8753dec0962",
+      "size": 4158428,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/2b7322c8e2a8fcac79b719f26f57f8753dec0962"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d4ada5bf6cf109c6bb08b639ef457d74bb9202ae",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/d4ada5bf6cf109c6bb08b639ef457d74bb9202ae"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_d.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ddf9dbcb4961d2948982177ab7db73fce7a4d40",
+      "size": 4090730,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6ddf9dbcb4961d2948982177ab7db73fce7a4d40"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_d_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04c664553652ead566f8b6df858b639acb341cf4",
+      "size": 4266608,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/04c664553652ead566f8b6df858b639acb341cf4"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_d_dbg_iterator0.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e7b10004389e4c179611266d1a58626647fe9450",
+      "size": 4111272,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/e7b10004389e4c179611266d1a58626647fe9450"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_d_dbg_iterator1.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7ba83bb305b9c29aa4c66ae20064ddb242789903",
+      "size": 4206370,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/7ba83bb305b9c29aa4c66ae20064ddb242789903"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_d_iterator1.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd167ef74567cc150a957a4f1227de1c8c876358",
+      "size": 4185028,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/fd167ef74567cc150a957a4f1227de1c8c876358"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fcd9adc26d111e7013be555d27a4cf60e5753eb5",
+      "size": 3782558,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/fcd9adc26d111e7013be555d27a4cf60e5753eb5"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s_dbg.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f73215a02142f3db9cc337d5e6868f02601f976",
+      "size": 3949484,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/3f73215a02142f3db9cc337d5e6868f02601f976"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s_dbg_iterator0.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3e244953e1df99f7bfdf5bf1b9340c75194cc566",
+      "size": 3803914,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/3e244953e1df99f7bfdf5bf1b9340c75194cc566"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s_dbg_iterator1.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b79c005ee6adc004fa54a7c596882ef3b0cdefb2",
+      "size": 3893350,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/b79c005ee6adc004fa54a7c596882ef3b0cdefb2"
+    },
+    {
+      "path": "lib/Windows_x86_64/x64/nvsdk_ngx_s_iterator1.lib",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "56ce0723d0087365d9eb7fb0f6e04d3c72e92574",
+      "size": 3872156,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/56ce0723d0087365d9eb7fb0f6e04d3c72e92574"
+    },
+    {
+      "path": "utils",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "863592f72cc6bd5618bcfcf28eaa9540f35f31ba",
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/trees/863592f72cc6bd5618bcfcf28eaa9540f35f31ba"
+    },
+    {
+      "path": "utils/DLSS_Debug_Jitter_Configs.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "587f39c521dd577aaa9dc5c8287a74ce9b651062",
+      "size": 1716,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/587f39c521dd577aaa9dc5c8287a74ce9b651062"
+    },
+    {
+      "path": "utils/ngx_driver_onscreenindicator.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8d5d0b1a744441c7b012385b6392fc044c306f4b",
+      "size": 288,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/8d5d0b1a744441c7b012385b6392fc044c306f4b"
+    },
+    {
+      "path": "utils/ngx_driver_onscreenindicator_off.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1a8c1262432f96062de3ea9d935626892142c8a6",
+      "size": 288,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/1a8c1262432f96062de3ea9d935626892142c8a6"
+    },
+    {
+      "path": "utils/ngx_log_off.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "21ab19fff96c848d4e50688bdf9cbff3551f1e21",
+      "size": 270,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/21ab19fff96c848d4e50688bdf9cbff3551f1e21"
+    },
+    {
+      "path": "utils/ngx_log_on.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b99fb96f19294fb4778f16c5378597bb2618ec12",
+      "size": 270,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/b99fb96f19294fb4778f16c5378597bb2618ec12"
+    },
+    {
+      "path": "utils/ngx_log_verbose.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2d779298dce7718958a42ecf8301760a27b8050e",
+      "size": 270,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/2d779298dce7718958a42ecf8301760a27b8050e"
+    },
+    {
+      "path": "utils/ngx_log_window_off.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6e9666e6b5b1f0e3cfbf9d55addcc8dc73b6c948",
+      "size": 294,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/6e9666e6b5b1f0e3cfbf9d55addcc8dc73b6c948"
+    },
+    {
+      "path": "utils/ngx_log_window_on.reg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85f352ed8ee37f2abae961a1e4509a7e49f62515",
+      "size": 294,
+      "url": "https://api.github.com/repos/NVIDIA/DLSS/git/blobs/85f352ed8ee37f2abae961a1e4509a7e49f62515"
+    }
+  ],
+  "truncated": false
+}

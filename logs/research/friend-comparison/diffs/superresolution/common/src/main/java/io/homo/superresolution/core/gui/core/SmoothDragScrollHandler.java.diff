@@ -1,0 +1,36 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/gui/core/SmoothDragScrollHandler.java
++++ friend/common/src/main/java/io/homo/superresolution/core/gui/core/SmoothDragScrollHandler.java
+@@ -95,8 +95,6 @@
+         targetOffset.add(delta);
+         applyBoundsToTarget();
+         restartAnimation();
+-
+-        notifyOffset();
+     }
+ 
+     @Override
+@@ -135,8 +133,6 @@
+         animationStartOffset.set(offset);
+         elapsedMillis = 0.0f;
+         animating = false;
+-
+-        notifyOffset();
+     }
+ 
+     @Override
+@@ -176,7 +172,6 @@
+         } else if (offsetChanged && !animating) {
+             animationStartOffset.set(offset);
+         }
+-        notifyOffset();
+     }
+ 
+     private void restartAnimation() {
+@@ -192,7 +187,6 @@
+         animationStartOffset.set(offset);
+         elapsedMillis = 0.0f;
+         animating = true;
+-        notifyOffset();
+     }
+ 
+     private void applyBoundsToTarget() {

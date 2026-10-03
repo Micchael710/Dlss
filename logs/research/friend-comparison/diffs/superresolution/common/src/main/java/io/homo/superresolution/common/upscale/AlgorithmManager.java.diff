@@ -1,0 +1,44 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/upscale/AlgorithmManager.java
++++ friend/common/src/main/java/io/homo/superresolution/common/upscale/AlgorithmManager.java
+@@ -38,6 +38,14 @@
+ public class AlgorithmManager {
+     public static AlgorithmParam param = new AlgorithmParam();
+ 
++    /**
++     * @deprecated MotionVectorsGenerator 已被弃用
++     */
++    @Deprecated
++    public static GlFrameBuffer getMotionVectorsFrameBuffer() {
++        return null;
++    }
++
+     public static void destroy() {
+ 
+     }
+@@ -59,13 +67,6 @@
+                 : SuperResolutionConfig.getUpscaleAlgorithm();
+         if (!supportsJitter(type)) {
+             return 0;
+-        }
+-
+-        if (SuperResolution.algorithmDescription.equals(AlgorithmDescriptions.DLSSRR)){
+-            return Math.max(Fsr2Utils.ffxFsr2GetJitterPhaseCount(
+-                    RenderHandlerManager.getRenderWidth(),
+-                    RenderHandlerManager.getScreenWidth()),32
+-            );
+         }
+         return Fsr2Utils.ffxFsr2GetJitterPhaseCount(
+                 RenderHandlerManager.getRenderWidth(),
+@@ -228,7 +229,11 @@
+                         .with(InputResourceType.Depth, depth)
+                         .with(
+                                 InputResourceType.MotionVectors,
+-                                motionVectors
++                                motionVectors == null ?
++                                        getMotionVectorsFrameBuffer() == null ?
++                                                null :
++                                                getMotionVectorsFrameBuffer().getTexture(FrameBufferAttachmentType.Color) :
++                                        motionVectors
+                         )
+         );
+     }

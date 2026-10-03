@@ -1,0 +1,53 @@
+{
+  "repo": "thierbig/bg3fgvk",
+  "commit": "66082e6f691fba1c48e319b688a25fa5ae196e56",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/LICENSE",
+      "sha256": "bf89230aad7cebb30a4b064bfcd26d4285e7c239394d4d2f56d579dc2b04f53a"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/README.md",
+      "sha256": "7b6a362734526f0c9a8aa3b920abd79b0316cf348d9b99d4a6bedb9d6599836c"
+    },
+    {
+      "path": "docs/DLSS5.md",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/docs/DLSS5.md",
+      "sha256": "9baa4c67b11e1c8c8954f142b566c5d79415b163990deecd9ecae7d3292921f6"
+    },
+    {
+      "path": "redist/STREAMLINE-LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/redist/STREAMLINE-LICENSE.txt",
+      "sha256": "7b6f23e7d6f3ad6292f9308d2b42cdc3d82ae4e9b2abb55f230279d83bedd43d"
+    },
+    {
+      "path": "src/inputs.cpp",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/src/inputs.cpp",
+      "sha256": "abb4d1a963a2f60302e514f2fa9be920a892d3dd2ad099c1c12192dceec659c8"
+    },
+    {
+      "path": "src/slboot.cpp",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/src/slboot.cpp",
+      "sha256": "34fdb8e8c3f372dc035fc86b4d1eb5f65bfb84866776361d662983573328b310"
+    },
+    {
+      "path": "src/slboot.h",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/src/slboot.h",
+      "sha256": "37f6e0c5e8fb8a3340e213521feb36f88c6ddaee94c1b2af5f10d8f4d145e242"
+    },
+    {
+      "path": "src/vkhooks.cpp",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/src/vkhooks.cpp",
+      "sha256": "34fd4f886b569a8a2ddcd738d1e238a5f4e71194043b8c29de96756fda85fb13"
+    },
+    {
+      "path": "src/vkhooks.h",
+      "url": "https://raw.githubusercontent.com/thierbig/bg3fgvk/66082e6f691fba1c48e319b688a25fa5ae196e56/src/vkhooks.h",
+      "sha256": "0300c83cdaa053c76dee62ae132d204333f5979f4720b44711568bb4fc939f4b"
+    }
+  ],
+  "binary_downloads": 0
+}

@@ -1,0 +1,89 @@
+[
+  {
+    "path": "D:\\ProjectDlssmiAmigo\\build_jars\\super_resolution-neoforge-1.21..1.21.1-0.9.1-alpha.2+dev.79a5f53.opengl.jar",
+    "bytes": 40964884,
+    "sha256": "33c8334f3640735952bdf6a07262ec3ebca133861efccd80a7a49d171ae52d27",
+    "native_libraries": [
+      {
+        "path": "lib/libSuperResolution+linux64+release.so",
+        "bytes": 8917104,
+        "sha256": "4120524d4816c34451a9614f0dc7ebf7c4f7f5d0b1e58bfcaab5b2a3646f4d2f"
+      },
+      {
+        "path": "lib/libSuperResolution+win64+release.dll",
+        "bytes": 6128640,
+        "sha256": "28ffa1fda5d19e14db80c4269c2f190d5a35c22998d7cea3b2e99c923317c22a"
+      },
+      {
+        "path": "lib/libSuperResolutionD3D12+win64+release.dll",
+        "bytes": 181760,
+        "sha256": "5215b8bcb3829e076a05bf2336767f6703b0a17556653546f61bf2de6fa8b0b9"
+      },
+      {
+        "path": "lib/libSuperResolutionD3D12Interop+win64+release.dll",
+        "bytes": 181760,
+        "sha256": "5215b8bcb3829e076a05bf2336767f6703b0a17556653546f61bf2de6fa8b0b9"
+      },
+      {
+        "path": "lib/libSuperResolutionFSR+linux64+release.so",
+        "bytes": 7995808,
+        "sha256": "24a86f4d0cb9e55852098c345d70fb0877d644a8da7807f470689c80317b765d"
+      },
+      {
+        "path": "lib/libSuperResolutionFSR+win64+release.dll",
+        "bytes": 8311296,
+        "sha256": "fdbdfdb74f2f7ad12fbf2f6ff70d57ef5a1d7b78f3a350ff6e61b41c5b8f7aaf"
+      },
+      {
+        "path": "lib/libSuperResolutionFSR4+win64+release.dll",
+        "bytes": 131584,
+        "sha256": "bc058af985ef0f10e6a558aceb6ad41d69cab39592157b00eff0530bb74cd3a4"
+      },
+      {
+        "path": "lib/libSuperResolutionNGX+linux64+release.so",
+        "bytes": 100688,
+        "sha256": "8f957dee7f7a342302c62257556ebc22b6187c3f4ae550af3ca73e5d883fbccc"
+      },
+      {
+        "path": "lib/libSuperResolutionNGX+win64+release.dll",
+        "bytes": 593920,
+        "sha256": "e82432d7444ac7312d63f9402c3e531541c07d797c0080518f5c64681112b5b9"
+      },
+      {
+        "path": "lib/libSuperResolutionStreamline+win64+release.dll",
+        "bytes": 218624,
+        "sha256": "51e0f23c51f5c3cf18fbd12d4cce8f61a04276c2d6873fac4e461ecd33f05a9a"
+      },
+      {
+        "path": "lib/libSuperResolutionXeSS+win64+release.dll",
+        "bytes": 130560,
+        "sha256": "a415da404657761a99188d67dfb7ba84cce5fd729ce00a295c1eea33eb56bd0c"
+      }
+    ],
+    "own_classes": 1347,
+    "class_major_counts": {
+      "65": 1347
+    }
+  },
+  {
+    "path": "D:\\ProjectDlssmiAmigo\\build_jars\\wisteria-neoforge-1.21.1-0.1.0-alpha.1+1.21.1.jar",
+    "bytes": 109873,
+    "sha256": "21233412951a6d063ed20f7f7906307b74eb4fbfcef2874236d8c42412252457",
+    "native_libraries": [
+      {
+        "path": "natives/WisteriaNative.dll",
+        "bytes": 37376,
+        "sha256": "1fc4fc2168f9bd25cd9f626aaaad9772038f9da14335314ac682ed9d29a63ec4"
+      },
+      {
+        "path": "natives/libWisteriaNative.so",
+        "bytes": 44272,
+        "sha256": "def5236c2d4cc35f298ca158c96bd3fc820e871777cdf44d941e65aa5d765d46"
+      }
+    ],
+    "own_classes": 31,
+    "class_major_counts": {
+      "65": 31
+    }
+  }
+]

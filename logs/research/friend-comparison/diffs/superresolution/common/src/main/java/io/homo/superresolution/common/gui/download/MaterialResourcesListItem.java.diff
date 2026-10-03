@@ -1,0 +1,39 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/gui/download/MaterialResourcesListItem.java
++++ friend/common/src/main/java/io/homo/superresolution/common/gui/download/MaterialResourcesListItem.java
+@@ -44,11 +44,10 @@
+ import io.homo.superresolution.core.utils.Color;
+ import io.homo.superresolution.common.SuperResolution;
+ import io.homo.superresolution.core.utils.DirectoryEnsurer;
+-import io.homo.superresolution.core.utils.FileDialogUtil;
+ import io.homo.superresolution.thirdparty.yoga.appliedenergistics.yoga.*;
+ import io.homo.superresolution.thirdparty.yoga.appliedenergistics.yoga.style.StyleSizeLength;
+-import net.minecraft.client.Minecraft;
+ import org.joml.Vector2f;
++import org.lwjgl.util.tinyfd.TinyFileDialogs;
+ 
+ import java.nio.file.Files;
+ import java.nio.file.Path;
+@@ -341,19 +340,10 @@
+     }
+ 
+     private void onSelectFileButtonClicked() {
+-        FileDialogUtil.fileSelectDialog(
+-                        FileDialogUtil.DialogType.OPEN,
+-                        Text.translatable("superresolution.screen.download.dialog.select_file_title").getString(),
+-                        null,
+-                        null
+-                )
+-                .thenAccept(result -> Minecraft.getInstance().execute(() ->
+-                        result.ifPresent(path -> copyFileToTarget(path.toString()))
+-                ))
+-                .exceptionally(throwable -> {
+-                    SuperResolution.LOGGER.error("Failed to open file selection dialog", throwable);
+-                    return null;
+-                });
++        String selected = TinyFileDialogs.tinyfd_openFileDialog(Text.translatable("superresolution.screen.download.dialog.select_file_title").getString(), null, null, null, false);
++        if (selected != null && !selected.isEmpty()) {
++            copyFileToTarget(selected);
++        }
+     }
+ 
+     private void copyFileToTarget(String sourcePath) {

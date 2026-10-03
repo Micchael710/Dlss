@@ -1,0 +1,132 @@
+{
+  "sdk": "1.1.4",
+  "archive_sha256": "0216556bfb0e243cec30004a2a98d38f4e3f7406cb7938e3c1b85c758e95d952",
+  "research_only": true,
+  "files": [
+    {
+      "path": "docs/techniques/frame-interpolation.md",
+      "sha256": "bcd60f086fae49799b5539c2ad5e37830f13db309239936e975abca832ca42bd",
+      "bytes": 18328
+    },
+    {
+      "path": "docs/techniques/frame-interpolation-swap-chain.md",
+      "sha256": "ee48c29d9c17ad09592bbadcd4b1f675798affc4cb742219856e87f3538318e9",
+      "bytes": 12831
+    },
+    {
+      "path": "ffx-api/include/ffx_api/ffx_framegeneration.h",
+      "sha256": "344936dccf49267d4421d1d74dc6db617d0a83c5a9f5991841325e812a38f127",
+      "bytes": 13847
+    },
+    {
+      "path": "ffx-api/src/ffx_provider_framegeneration.cpp",
+      "sha256": "f0e8dda9af646539e7e4239517d9473a08c764e3551c5e8a089623fb94364a08",
+      "bytes": 32348
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation.h",
+      "sha256": "9b9280a86a00850e2930fd6e19442d2984aa36964dd22a077a328a573f7b4830",
+      "bytes": 8181
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_callbacks_glsl.h",
+      "sha256": "e1e132729a80fe8e812c83d527056a17d62e7d815a79511465bfd1b0f8483095",
+      "bytes": 29229
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_common.h",
+      "sha256": "3e0e8a8109e4ba19441216e1400d52370a37ab7a1520029d5456368df24a22cb",
+      "bytes": 16208
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_callbacks_hlsl.h",
+      "sha256": "001340a5c8e7873d830846474b340ab920b73eb981b1ee855de05b60c24cd6ac",
+      "bytes": 31916
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_compute_game_vector_field_inpainting_pyramid.h",
+      "sha256": "78b97b96fda75b0aa7c84dde5594eb63883e43c39dc098b8d05c648674a4b16e",
+      "bytes": 4079
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_debug_view.h",
+      "sha256": "2ea6e00a345968b50e5aa89f4dbd2c1037eebb97066d9b322de6ed0afa024558",
+      "bytes": 6143
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_disocclusion_mask.h",
+      "sha256": "5e7fe2cb7a60e838c6f0d2e009db2dfa5e09b2c2813e62726795cfb983bf0ea5",
+      "bytes": 7366
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_game_motion_vector_field.h",
+      "sha256": "8f998e6c2a71e70bf54dc02db63cd64df6131ee6508b5dde702cce5320d467b4",
+      "bytes": 6801
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_inpainting.h",
+      "sha256": "42cc6f6b11f98d4c2a827834da9707c43f5bc817f190aeb3b1a071c5b8ca1149",
+      "bytes": 5282
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_optical_flow_vector_field.h",
+      "sha256": "950e5736eb49d0886f9c5703fa0bccea1210c8834170243f29b3d8a07cd1a8c3",
+      "bytes": 5304
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_compute_inpainting_pyramid.h",
+      "sha256": "dd29e6171180b949342585bdfe70f8f8aec631058b19773432150f48da73d45b",
+      "bytes": 4062
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_reconstruct_dilated_velocity_and_previous_depth.h",
+      "sha256": "80a8cc026cc9352185ffb7366fbc275f3957b1fef2e1fdf9345509e1188c5ff4",
+      "bytes": 4783
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_reconstruct_previous_depth.h",
+      "sha256": "64bdc3e1b6e5278955c1ef66ed65918e11e05b1452d7411c6601ea7bd77edbcc",
+      "bytes": 3002
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_resources.h",
+      "sha256": "aa9daea4d768cdc014de54bd42890673ffdef2d7d8cf796c986c2b873ad98ac9",
+      "bytes": 6643
+    },
+    {
+      "path": "sdk/include/FidelityFX/gpu/frameinterpolation/ffx_frameinterpolation_setup.h",
+      "sha256": "b8c785a0b09a8f148f12a19ca928f5a8178e82429c1f32e176ef300ae5e87493",
+      "bytes": 2057
+    },
+    {
+      "path": "sdk/include/FidelityFX/host/ffx_frameinterpolation.h",
+      "sha256": "6851204a5f5fcbb83c9aafa0830859d9e8dacbb028d3e50f8e52e3ce5ca97bbd",
+      "bytes": 19760
+    },
+    {
+      "path": "sdk/include/FidelityFX/host/ffx_fsr3.h",
+      "sha256": "de42c62316d63475bc2bb3c75831b4a7cf094d85450f3b39d764534038306d72",
+      "bytes": 32483
+    },
+    {
+      "path": "sdk/src/backends/vk/FrameInterpolationSwapchain/FrameInterpolationSwapchainVK.cpp",
+      "sha256": "304dbc09949cb68a3708611a17d9ace5e2131116c8865e5777ad6146f637739f",
+      "bytes": 143034
+    },
+    {
+      "path": "sdk/src/components/frameinterpolation/ffx_frameinterpolation.cpp",
+      "sha256": "a0d322d4753cbf7f174fe945a18aef536c23ec4447a7e127de2fa3f5bbb75969",
+      "bytes": 78954
+    },
+    {
+      "path": "sdk/src/components/frameinterpolation/ffx_frameinterpolation_private.h",
+      "sha256": "e14534f233c2f824361f303fe9df82a2959dc871a482c064601cda5cc009f150",
+      "bytes": 6223
+    },
+    {
+      "path": "sdk/src/components/fsr3/ffx_fsr3.cpp",
+      "sha256": "a49d460bc3812f5944571013fcf3df70517ad814f63647bbf45d0647e9cf32b4",
+      "bytes": 32888
+    }
+  ]
+}

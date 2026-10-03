@@ -1,0 +1,146 @@
+{
+  "repo": "ShyVortex/dlss-unlocked",
+  "commit": "0798222ff1852574d8987a6fab12955174776371",
+  "files": [
+    {
+      "path": ".github/FUNDING.yml",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/FUNDING.yml",
+      "sha256": "e71619da07459f7744ae96934d75a1db368c74aad362ac26f0542605c152e651",
+      "git_blob": "fb5e3bd17ad0ac90925d6bdd7741eb1d4fa17dff"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/ISSUE_TEMPLATE/bug_report.yml",
+      "sha256": "19edcee3128cd7972fa58512dc29c33ddafb4c2c5338294cbc9f568f2714e1f0",
+      "git_blob": "079ea1fa8016c0068840e4b78c54938855899f0d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/ISSUE_TEMPLATE/config.yml",
+      "sha256": "a916ada9e8a7ebeeb971cad9f7b1655cfe330c48c7051303fc53c51e7c161913",
+      "git_blob": "58bbe77624c50f1a8fd4a174eb4a1c3072870569"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/ISSUE_TEMPLATE/feature_request.yml",
+      "sha256": "651bd910fa0a26805078e4d8e5346e817607521f2ea3c50f7464e6cdc171b1ac",
+      "git_blob": "03ea5ef1b9db9defc839be1338ec74106fcc85a1"
+    },
+    {
+      "path": ".github/workflows/README.md",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/workflows/README.md",
+      "sha256": "801bdef37c85ace3edc2ce622fa8bed93a01e60fb8fbf5925acce2ae493a4d90",
+      "git_blob": "1ccf778e8d69202ce82b985d6ac247aad95c1204"
+    },
+    {
+      "path": ".github/workflows/build-installer.yml",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/.github/workflows/build-installer.yml",
+      "sha256": "76f52b1cd905e901dc5898a506fb12454ee7122c6cb5a2c3c21efb516545d991",
+      "git_blob": "58c7f5676d3a7df2e7545e718e44def404d1095c"
+    },
+    {
+      "path": "DLLSG mod/READ ME.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/DLLSG%20mod/READ%20ME.txt",
+      "sha256": "da9d071290f57a4428c5af4a94dd782b3e16ac5ae2ac7a80481204148fc23196",
+      "git_blob": "8a2f21d1a136d5f02ae92fbf60593edcc81aa97d"
+    },
+    {
+      "path": "DLLSG mod/dlssg_to_fsr3.ini",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/DLLSG%20mod/dlssg_to_fsr3.ini",
+      "sha256": "30bd3c459e4db2159db0fd5f22d42a049153bab86ece7fad2febef145181ecbf",
+      "git_blob": "c90f1f857827554da9f5882e8cce61b38df90e3f"
+    },
+    {
+      "path": "DLSS unlocked.iss",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/DLSS%20unlocked.iss",
+      "sha256": "a054ef30ca4b591e55bd593891979ddcd840740f9a6e1dd9da1c0ab9883430b3",
+      "git_blob": "ff7ee612d471997fd295093e3f279dfae5a33fc1"
+    },
+    {
+      "path": "Dll version/nvngx.ini",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Dll%20version/nvngx.ini",
+      "sha256": "cf4f79fef83fff9ce119b0cb69fb25ccb1a0f8ffabd70a1f469d4bb7287080c0",
+      "git_blob": "58925054494eb293d07892f457c262b4b6caaa87"
+    },
+    {
+      "path": "LICENSE",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/LICENSE",
+      "sha256": "2939dfade42e0a7aaba2384a458b2d176abf3d563377711eef4f4c6077931505",
+      "git_blob": "2b48d31881d9c6acbd59d7bb8909e1ab659fcbc2"
+    },
+    {
+      "path": "License (DLSS unlocked).txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/License%20%28DLSS%20unlocked%29.txt",
+      "sha256": "45118f53232cb67bea9d46ee3b01c8885d5917030beca354e60ec78d876041b5",
+      "git_blob": "0c30f4b988f4d48c952a9bcbaba70ca561d7567c"
+    },
+    {
+      "path": "Licenses/AMD_FidelityFX_LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/AMD_FidelityFX_LICENSE.txt",
+      "sha256": "513d913eeef8b480684ca128e6a57b07e3f326f862041744a180e9062689efb2",
+      "git_blob": "1255dd991a59e0ba3bc0996ae881edfe9b3097c4"
+    },
+    {
+      "path": "Licenses/DISCLAIMER.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/DISCLAIMER.txt",
+      "sha256": "92312de9dd3d605183470e825e7c8fc6face8c2ad3457760db5f608ec51bfef8",
+      "git_blob": "bcc1cb713b312890cc3f06d72593a73158645591"
+    },
+    {
+      "path": "Licenses/DLSSG_to_FSR3_LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/DLSSG_to_FSR3_LICENSE.txt",
+      "sha256": "e6f1d12e0233beea7ac9bcbc312e2ae04b0f0d0bece16b1c0460ca1bccd26422",
+      "git_blob": "256ce18180a888da09a2aa71e8d104d23f557feb"
+    },
+    {
+      "path": "Licenses/Intel_XeSS_LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/Intel_XeSS_LICENSE.txt",
+      "sha256": "e15ca2a10f34d836cfff59922c35dd9277ae8068353abb588c851f9d16d4737d",
+      "git_blob": "e49c64eb9ca168577eaf21a914b9a88e2333547f"
+    },
+    {
+      "path": "Licenses/NVIDIA_Streamline_LICENSE.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/NVIDIA_Streamline_LICENSE.txt",
+      "sha256": "1c87629517d8ff95faacedc7ae5884039de3331a49c5e072f7c1f3a577b8b4c8",
+      "git_blob": "0a4ca3b35699d6cfa578bdaa1002ea1274b458ad"
+    },
+    {
+      "path": "Licenses/dlssg_sm86_THIRD_PARTY_NOTICES.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Licenses/dlssg_sm86_THIRD_PARTY_NOTICES.txt",
+      "sha256": "689f743ccf99644abd2992e62e6562b00d0bc07ec508153d3a51f7270e5cc5ee",
+      "git_blob": "3f68bae2ea9f9e6cabdd3cd2a739ffd4c2d29131"
+    },
+    {
+      "path": "Output/here the setup bin will be stored.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Output/here%20the%20setup%20bin%20will%20be%20stored.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "git_blob": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/README.md",
+      "sha256": "766da5cdc2be52fe1e58dcef25b8f0ada0c8bb23a117ddabfb689a473853cd85",
+      "git_blob": "e74c572065c0f1d4967ae1eb29225c45e9138e45"
+    },
+    {
+      "path": "SM86/ReShade.ini",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/SM86/ReShade.ini",
+      "sha256": "01c7d4df64278097aa2724f904991dbe432ba9f1299b179f5210ec75b528b39a",
+      "git_blob": "d15fd0770b570ea4d9b1c3dd5781d5fd3152ae76"
+    },
+    {
+      "path": "Troubleshooting.txt",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/Troubleshooting.txt",
+      "sha256": "4669e7cf3b392c4046a9ba57cebb53f36fe02ac9baf9e6bd1b6a13b3f43b1dc8",
+      "git_blob": "03beed79682867f0edfe391b787801913363d7c1"
+    },
+    {
+      "path": "build-optiscaler.ps1",
+      "url": "https://raw.githubusercontent.com/ShyVortex/dlss-unlocked/0798222ff1852574d8987a6fab12955174776371/build-optiscaler.ps1",
+      "sha256": "970f20c1f0915f1c3ad09ae7674f10e9acc7a2c6c9e8c1585c6ad9b0b7cd9dc5",
+      "git_blob": "0ea3e00894c4d46cee8dc36fdac8485139270132"
+    }
+  ],
+  "binary_downloads": 0,
+  "tree_truncated": false
+}

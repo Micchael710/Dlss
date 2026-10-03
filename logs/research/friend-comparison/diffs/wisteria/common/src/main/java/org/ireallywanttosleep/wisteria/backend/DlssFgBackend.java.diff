@@ -1,0 +1,12 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/backend/DlssFgBackend.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/backend/DlssFgBackend.java
+@@ -53,6 +53,8 @@
+     }
+ 
+     public static void save(DlssFgBackend backend) {
+-        SuperResolutionConfig.setFrameGenerationBackend(backend.configId);
++        SuperResolutionConfig.setFrameGenerationBackend(
++                backend == null ? AUTO.configId : backend.configId
++        );
+     }
+ }

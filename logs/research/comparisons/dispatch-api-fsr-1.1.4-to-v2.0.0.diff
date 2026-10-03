@@ -1,0 +1,246 @@
+--- fsr-1.1.4
++++ v2.0.0
+@@ -1,6 +1,6 @@
+ // This file is part of the FidelityFX SDK.
+ //
+-// Copyright (C) 2024 Advanced Micro Devices, Inc.
++// Copyright (C) 2025 Advanced Micro Devices, Inc.
+ // 
+ // Permission is hereby granted, free of charge, to any person obtaining a copy
+ // of this software and associated documentation files(the "Software"), to deal
+@@ -25,12 +25,12 @@
+ #pragma once
+ 
+ // Include the interface for the backend of the Frameinterpolation API.
+-#include <FidelityFX/host/ffx_interface.h>
++#include "../../../api/internal/ffx_interface.h"
+ 
+ /// FidelityFX Frameinterpolation major version.
+ ///
+ /// @ingroup FRAMEINTERPOLATIONFRAMEINTERPOLATION
+-#define FFX_FRAMEINTERPOLATION_VERSION_MAJOR      (1)
++#define FFX_FRAMEINTERPOLATION_VERSION_MAJOR      (3)
+ 
+ /// FidelityFX Frameinterpolation minor version.
+ ///
+@@ -40,7 +40,7 @@
+ /// FidelityFX Frameinterpolation patch version.
+ ///
+ /// @ingroup FRAMEINTERPOLATIONFRAMEINTERPOLATION
+-#define FFX_FRAMEINTERPOLATION_VERSION_PATCH      (3)
++#define FFX_FRAMEINTERPOLATION_VERSION_PATCH      (5)
+ 
+ /// FidelityFX Frame Interpolation context count
+ ///
+@@ -116,12 +116,31 @@
+ /// @ingroup FRAMEINTERPOLATION
+ typedef struct FfxFrameInterpolationContextDescription {
+     uint32_t                        flags;                             ///< A collection of <c><i>FfxFrameInterpolationInitializationFlagBits</i></c>.
+-    FfxDimensions2D                 maxRenderSize;                     ///< The maximum size that rendering will be performed at.
+-    FfxDimensions2D                 displaySize;                       ///< The size of the presentation resolution
+-    FfxSurfaceFormat                backBufferFormat;                  ///< the format of the backbuffer
+-    FfxSurfaceFormat                previousInterpolationSourceFormat; ///< the format of the texture that will store the interpolation source for the next frame. Can be different than the backbuffer one, especially when using hudless
++    FfxApiDimensions2D              maxRenderSize;                     ///< The maximum size that rendering will be performed at.
++    FfxApiDimensions2D              displaySize;                       ///< The size of the presentation resolution
++    FfxApiSurfaceFormat             backBufferFormat;                  ///< the format of the backbuffer
++    FfxApiSurfaceFormat             previousInterpolationSourceFormat; ///< the format of the texture that will store the interpolation source for the next frame. Can be different than the backbuffer one, especially when using hudless
+     FfxInterface                    backendInterface;                  ///< A set of pointers to the backend implementation for FidelityFX SDK
+ } FfxFrameInterpolationContextDescription;
++
++/// A structure encapsulating the resource descriptions for internal resources for this effect.
++///
++/// @ingroup FRAMEINTERPOLATION
++typedef struct FfxFrameInterpolationInternalResourceDescriptions
++{
++    FfxCreateResourceDescription    reconstructedDepthInterpolatedFrame;   ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>reconstructedDepthInterpolatedFrame</i></c> internal resource.
++    FfxCreateResourceDescription    gameMotionVectorFieldX;                ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>gameMotionVectorFieldX</i></c> internal resource.
++    FfxCreateResourceDescription    gameMotionVectorFieldY;                ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>gameMotionVectorFieldY</i></c> internal resource.
++    FfxCreateResourceDescription    inpaintingPyramid;                     ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>inpaintingPyramid</i></c> internal resource.
++    FfxCreateResourceDescription    counters;                              ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>counters</i></c> internal resource.
++    FfxCreateResourceDescription    opticalFlowMotionVectorFieldX;         ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>opticalFlowMotionVectorFieldX</i></c> internal resource.
++    FfxCreateResourceDescription    opticalFlowMotionVectorFieldY;         ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>opticalFlowMotionVectorFieldY</i></c> internal resource.
++    FfxCreateResourceDescription    previousInterpolationSource;           ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>previousInterpolationSource</i></c> internal resource.
++    FfxCreateResourceDescription    inpaintingMask;                        ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>inpaintingMask</i></c> internal resource.
++    FfxCreateResourceDescription    disocclusionMask;                      ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>disocclusionMask</i></c> internal resource.
++    FfxCreateResourceDescription    defaultDistortionField;                ///< The <c><i>FfxCreateResourceDescription</i></c> for allocating the <c><i>defaultDistortionField</i></c> internal resource.
++
++} FfxFrameInterpolationInternalResourceDescriptions;
+ 
+ /// A structure encapsulating the resource descriptions for shared resources for this effect.
+ ///
+@@ -197,19 +216,68 @@
+ /// @ingroup FRAMEINTERPOLATION
+ FFX_API FfxErrorCode ffxFrameInterpolationContextCreate(FfxFrameInterpolationContext* context, FfxFrameInterpolationContextDescription* contextDescription);
+ 
+-FFX_API FfxErrorCode ffxFrameInterpolationContextGetGpuMemoryUsage(FfxFrameInterpolationContext* pContext, FfxEffectMemoryUsage* vramUsage);
+-
+-FFX_API FfxErrorCode ffxFrameInterpolationGetSharedResourceDescriptions(FfxFrameInterpolationContext* pContext, FfxFrameInterpolationSharedResourceDescriptions* SharedResources);
+-
+-FFX_API FfxErrorCode ffxSharedContextGetGpuMemoryUsage(FfxInterface* backendInterfaceShared, FfxEffectMemoryUsage* vramUsage);
++/// Get GPU memory usage of the FidelityFX Frame Interpolation context.
++///
++/// @param [in]  pContext                A pointer to a <c><i>FfxInterface</i></c> structure.
++/// @param [out] pVramUsage              A pointer to a <c><i>FfxApiEffectMemoryUsage</i></c> structure.
++///
++/// @retval
++/// FFX_OK                              The operation completed successfully.
++/// @retval
++/// FFX_ERROR_CODE_NULL_POINTER         The operation failed because either <c><i>context</i></c> or <c><i>vramUsage</i></c> were <c><i>NULL</i></c>.
++///
++/// @ingroup ffxFrameInterpolation
++FFX_API FfxErrorCode ffxFrameInterpolationContextGetGpuMemoryUsage(FfxFrameInterpolationContext* pContext, FfxApiEffectMemoryUsage* vramUsage);
++
++/// Provides the descriptions for shared resources that must be allocated for this effect.
++///
++/// @param [in] context                    A pointer to a <c><i>FfxFrameInterpolationContext</i></c> structure.
++/// @param [out] sharedResources           A pointer to a <c><i>FfxFrameInterpolationSharedResourceDescriptions</i></c> to populate.
++///
++/// @returns
++/// FFX_OK                                The operation completed successfully.
++/// @returns
++/// Anything else                         The operation failed.
++///
++/// @ingroup ffxFrameInterpolation
++FFX_API FfxErrorCode ffxFrameInterpolationGetSharedResourceDescriptions(FfxFrameInterpolationContext* pContext, FfxFrameInterpolationSharedResourceDescriptions* sharedResources);
++
++/// Get GPU memory usage of the FidelityFX Frame Interpolation's Shared context.
++///
++/// @param [in]  pContext                A pointer to a <c><i>FfxInterface</i></c> structure.
++/// @param [out] pVramUsage              A pointer to a <c><i>FfxApiEffectMemoryUsage</i></c> structure.
++///
++/// @retval
++/// FFX_OK                              The operation completed successfully.
++/// @retval
++/// FFX_ERROR_CODE_NULL_POINTER         The operation failed because either <c><i>context</i></c> or <c><i>vramUsage</i></c> were <c><i>NULL</i></c>.
++///
++/// @ingroup ffxFrameInterpolation
++FFX_API FfxErrorCode ffxSharedContextGetGpuMemoryUsage(FfxInterface* backendInterfaceShared, FfxApiEffectMemoryUsage* vramUsage);
++
++/// Get GPU memory usage of the FidelityFX Frame Interpolation.
++///
++/// @param [in]  device                  A <c><i>FfxDevice</i></c>.
++/// @param [in]  maxRenderSize           A pointer to a <c><i>FfxApiDimensions2D</i></c> structure.
++/// @param [in]  displaySize             A pointer to a <c><i>FfxApiDimensions2D</i></c> structure.
++/// @param [in]  previousInterpolationSourceFormat  A pointer to a <c><i>FfxApiSurfaceFormat</i></c> structure.
++/// @param [out] pVramUsage              A pointer to a <c><i>FfxApiEffectMemoryUsage</i></c> structure.
++///
++/// @retval
++/// FFX_OK                              The operation completed successfully.
++/// @retval
++/// FFX_ERROR_CODE_NULL_POINTER         The operation failed because either <c><i>context</i></c> or <c><i>vramUsage</i></c> were <c><i>NULL</i></c>.
++///
++/// @ingroup ffxFrameInterpolation
++FFX_API FfxErrorCode ffxFrameInterpolationGetGpuMemoryUsage(FfxDevice device, FfxApiDimensions2D* maxRenderSize, FfxApiDimensions2D* displaySize, FfxApiSurfaceFormat previousInterpolationSourceFormat, FfxApiEffectMemoryUsage* pVramUsage);
+ 
+ typedef struct FfxFrameInterpolationPrepareDescription
+ {
+     uint32_t            flags;                      ///< combination of FfxFrameInterpolationDispatchFlags
+     FfxCommandList      commandList;                ///< The <c><i>FfxCommandList</i></c> to record frame interpolation commands into.
+-    FfxDimensions2D     renderSize;                 ///< The dimensions used to render game content, dilatedDepth, dilatedMotionVectors are expected to be of ths size.
+-    FfxFloatCoords2D    jitterOffset;               ///< The subpixel jitter offset applied to the camera.     jitter;
+-    FfxFloatCoords2D    motionVectorScale;          ///< The scale factor to apply to motion vectors.     motionVectorScale;
++    FfxApiDimensions2D     renderSize;                 ///< The dimensions used to render game content, dilatedDepth, dilatedMotionVectors are expected to be of ths size.
++    FfxApiFloatCoords2D    jitterOffset;               ///< The subpixel jitter offset applied to the camera.     jitter;
++    FfxApiFloatCoords2D    motionVectorScale;          ///< The scale factor to apply to motion vectors.     motionVectorScale;
+ 
+     float               frameTimeDelta;
+     float               cameraNear;
+@@ -217,19 +285,18 @@
+     float               viewSpaceToMetersFactor;
+     float               cameraFovAngleVertical;
+ 
+-    FfxResource         depth;                      ///< The depth buffer data
+-    FfxResource         motionVectors;              ///< The motion vector data
++    FfxApiResource         depth;                      ///< The depth buffer data
++    FfxApiResource         motionVectors;              ///< The motion vector data
+     uint64_t            frameID;
+ 
+-    FfxResource         dilatedDepth;                       ///< The dilated depth buffer data
+-    FfxResource         dilatedMotionVectors;               ///< The dilated motion vector data
+-    FfxResource         reconstructedPrevDepth;             ///< The reconstructed depth buffer data
++    FfxApiResource         dilatedDepth;                       ///< The dilated depth buffer data
++    FfxApiResource         dilatedMotionVectors;               ///< The dilated motion vector data
++    FfxApiResource         reconstructedPrevDepth;             ///< The reconstructed depth buffer data
+ 
+     FfxFloat32x3        cameraPosition;             ///< The camera position in world space
+     FfxFloat32x3        cameraUp;                   ///< The camera up normalized vector in world space.
+     FfxFloat32x3        cameraRight;                ///< The camera right normalized vector in world space.
+     FfxFloat32x3        cameraForward;              ///< The camera forward normalized vector in world space.
+-
+ } FfxFrameInterpolationPrepareDescription;
+ 
+ FFX_API FfxErrorCode ffxFrameInterpolationPrepare(FfxFrameInterpolationContext* context, const FfxFrameInterpolationPrepareDescription* params);
+@@ -248,18 +315,18 @@
+ 
+     uint32_t                            flags;                              ///< combination of FfxFrameInterpolationDispatchFlags
+     FfxCommandList                      commandList;                        ///< The <c><i>FfxCommandList</i></c> to record frame interpolation commands into.
+-    FfxDimensions2D                     displaySize;                        ///< The destination output dimensions
+-    FfxDimensions2D                     renderSize;                         ///< The dimensions used to render game content, dilatedDepth, dilatedMotionVectors are expected to be of ths size.
+-    FfxResource                         currentBackBuffer;                  ///< The current presentation color, if currentBackBuffer_HUDLess is not used, this will be used as interpolation source data.
+-    FfxResource                         currentBackBuffer_HUDLess;          ///< The current presentation color without HUD content, when use it will be used as interpolation source data.
+-    FfxResource                         output;                             ///< The output resource where to store the interpolated result.
+-
+-    FfxRect2D                           interpolationRect;                  ///< The area of the backbuffer that should be used for interpolation in case only a part of the screen is used e.g. due to movie bars
+-
+-    FfxResource                         opticalFlowVector;                  ///< The optical flow motion vectors (see example computation in the FfxOpticalFlow effect)
+-    FfxResource                         opticalFlowSceneChangeDetection;    ///< The optical flow scene change detection data
+-    FfxDimensions2D                     opticalFlowBufferSize;              ///< The optical flow motion vector resource dimensions
+-    FfxFloatCoords2D                    opticalFlowScale;                   ///< The optical flow motion vector scale factor, used to scale resoure values into [0.0,1.0] range.
++    FfxApiDimensions2D                     displaySize;                        ///< The destination output dimensions
++    FfxApiDimensions2D                     renderSize;                         ///< The dimensions used to render game content, dilatedDepth, dilatedMotionVectors are expected to be of ths size.
++    FfxApiResource                         currentBackBuffer;                  ///< The current presentation color, if currentBackBuffer_HUDLess is not used, this will be used as interpolation source data.
++    FfxApiResource                         currentBackBuffer_HUDLess;          ///< The current presentation color without HUD content, when use it will be used as interpolation source data.
++    FfxApiResource                         output;                             ///< The output resource where to store the interpolated result.
++
++    FfxApiRect2D                           interpolationRect;                  ///< The area of the backbuffer that should be used for interpolation in case only a part of the screen is used e.g. due to movie bars
++
++    FfxApiResource                         opticalFlowVector;                  ///< The optical flow motion vectors (see example computation in the FfxOpticalFlow effect)
++    FfxApiResource                         opticalFlowSceneChangeDetection;    ///< The optical flow scene change detection data
++    FfxApiDimensions2D                     opticalFlowBufferSize;              ///< The optical flow motion vector resource dimensions
++    FfxApiFloatCoords2D                    opticalFlowScale;                   ///< The optical flow motion vector scale factor, used to scale resoure values into [0.0,1.0] range.
+     int                                 opticalFlowBlockSize;               ///< The optical flow block dimension size
+ 
+     float                               cameraNear;                         ///< The distance to the near plane of the camera.
+@@ -270,15 +337,15 @@
+     float                               frameTimeDelta;                     ///< The time elapsed since the last frame (expressed in milliseconds).
+     bool                                reset;                              ///< A boolean value which when set to true, indicates the camera has moved discontinuously.
+ 
+-    FfxBackbufferTransferFunction       backBufferTransferFunction;         ///< The transfer function use to convert interpolation source color data to linear RGB.
++    FfxApiBackbufferTransferFunction       backBufferTransferFunction;         ///< The transfer function use to convert interpolation source color data to linear RGB.
+     float                               minMaxLuminance[2];                 ///< Min and max luminance values, used when converting HDR colors to linear RGB
+     uint64_t                            frameID;                            ///< Identifier used to select internal resources when async support is enabled. Must increment by exactly one (1) for each frame. Any non-exactly-one difference will reset the frame generation logic.
+ 
+-    FfxResource                         dilatedDepth;                       ///< The dilated depth buffer data
+-    FfxResource                         dilatedMotionVectors;               ///< The dilated motion vector data
+-    FfxResource                         reconstructedPrevDepth;             ///< The reconstructed depth buffer data
+-
+-    FfxResource                         distortionField;                    ///< A resource containing distortion offset data used when distortion post effects are enabled.
++    FfxApiResource                         dilatedDepth;                       ///< The dilated depth buffer data
++    FfxApiResource                         dilatedMotionVectors;               ///< The dilated motion vector data
++    FfxApiResource                         reconstructedPrevDepth;             ///< The reconstructed depth buffer data
++
++    FfxApiResource                         distortionField;                    ///< A resource containing distortion offset data used when distortion post effects are enabled.
+ } FfxFrameInterpolationDispatchDescription;
+ 
+ FFX_API FfxErrorCode ffxFrameInterpolationDispatch(FfxFrameInterpolationContext* context, const FfxFrameInterpolationDispatchDescription* params);
+@@ -295,13 +362,13 @@
+ /// @ingroup FRAMEINTERPOLATION
+ FFX_API FfxErrorCode ffxFrameInterpolationContextDestroy(FfxFrameInterpolationContext* context);
+ 
+-/// Queries the effect version number.
+-///
+-/// @returns
+-/// The SDK version the effect was built with.
+-///
+-/// @ingroup FRAMEINTERPOLATION
+-FFX_API FfxVersionNumber ffxFrameInterpolationGetEffectVersion();
++/// Set global debug message settings
++///
++/// @retval
++/// FFX_OK                              The operation completed successfully.
++///
++/// @ingroup FRAMEINTERPOLATION
++FFX_API FfxErrorCode ffxFrameInterpolationSetGlobalDebugMessage(ffxMessageCallback fpMessage, uint32_t debugLevel);
+ 
+ /// Set global debug message settings
+ ///

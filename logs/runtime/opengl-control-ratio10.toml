@@ -1,0 +1,67 @@
+theme_color = "#78DC77"
+capture_mode = "A"
+upscale_ratio = 1.0
+compat_shader_compiler = false
+theme = "Light"
+enable_iris_extension = false
+sharpness = 0.55
+enable_unstable_incompatible_shader_support = false
+enable_upscale = true
+flip_vk_gl_interop_resources_y = false
+inject_post_chain_blacklist = []
+ui_scale = 1.0
+upscale_algo = "fsr1"
+theme_scheme_variant = "FIDELITY"
+theme_contrast_level = 0.0
+pause_game_on_gui = false
+internal_texture_format = "AUTO"
+auto_hide_shaderpack_disabled_algorithms = false
+
+[presentation]
+	backend = "OPENGL"
+
+[experiment]
+	enable_experimental_algorithms = false
+	enable_dlss_ray_reconstruction = false
+
+[debug]
+	skip_init_vulkan = true
+	enable_render_doc = false
+	enable_debug = false
+	enable_present_indicator = false
+	enable_imgui = false
+	debug_dump_shader = false
+	enable_detailed_profiling = false
+
+[optiscaler]
+	dll_path = ""
+	enabled = false
+
+	[special.fsr]
+		version = "V2"
+
+	[special.dlssrr]
+		render_preset = "D"
+
+	[special.dlss]
+		render_preset = "K"
+
+	[special.sgsr2]
+		variant = "CS_2"
+
+	[special.fsr1]
+		fp16 = true
+
+	[special.fsr2]
+		fp16 = true
+
+[frame_generation]
+	mode = "OFF"
+	provider = "superresolution:auto"
+	backend = "superresolution:auto"
+
+[low_latency]
+	mode = "superresolution:none"
+
+	[low_latency.nv_reflex]
+		mode = "OFF"

@@ -1,0 +1,190 @@
+Microsoft (R) COFF/PE Dumper Version 14.51.36244.0
+Copyright (C) Microsoft Corporation.  All rights reserved.
+
+
+Dump of file superresolution\native\cpp\output\bin\libSuperResolution+win64+release.dll
+
+File Type: DLL
+
+  Section contains the following exports for libSuperResolution+win64+release.dll
+
+    00000000 characteristics
+    FFFFFFFF time date stamp
+        0.00 version
+           1 ordinal base
+         161 number of functions
+         161 number of names
+
+    ordinal hint RVA      name
+
+          1    0 00013F40 Java_io_homo_superresolution_core_SuperResolutionNative_NsrCreateParams
+          2    1 00013F90 Java_io_homo_superresolution_core_SuperResolutionNative_NsrCreateUpscaleContext
+          3    2 00014470 Java_io_homo_superresolution_core_SuperResolutionNative_NsrDestroyParams
+          4    3 000144B0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrDestroyUpscaleContext
+          5    4 00014500 Java_io_homo_superresolution_core_SuperResolutionNative_NsrDestroyUpscaleProvider
+          6    5 00014530 Java_io_homo_superresolution_core_SuperResolutionNative_NsrDispatchUpscale
+          7    6 00014AC0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrFindParam
+          8    7 00014B50 Java_io_homo_superresolution_core_SuperResolutionNative_NsrGetUpscaleProvider
+          9    8 00014C00 Java_io_homo_superresolution_core_SuperResolutionNative_NsrInitUpscaleContext
+         10    9 00014C20 Java_io_homo_superresolution_core_SuperResolutionNative_NsrLoadUpscaleProvidersFromLibrary
+         11    A 00014D90 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetName
+         12    B 00014DB0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsBool
+         13    C 00014DD0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsDouble
+         14    D 00014DF0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsFloat
+         15    E 00014E10 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsInt32
+         16    F 00014E30 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsPointer
+         17   10 00014E50 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsString
+         18   11 00014E80 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueAsUint32
+         19   12 00014EA0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamGetValueType
+         20   13 00014EC0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetBool
+         21   14 00014F60 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetDouble
+         22   15 00015000 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetFloat
+         23   16 000150A0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetInt32
+         24   17 00015140 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetPointer
+         25   18 000151D0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetString
+         26   19 000152C0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsGetUint32
+         27   1A 00015360 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetBool
+         28   1B 000153F0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetDouble
+         29   1C 00015480 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetFloat
+         30   1D 00015510 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetInt32
+         31   1E 000155A0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetPointer
+         32   1F 00015630 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetString
+         33   20 00015730 Java_io_homo_superresolution_core_SuperResolutionNative_NsrParamsSetUint32
+         34   21 000157C0 Java_io_homo_superresolution_core_SuperResolutionNative_NsrQueryUpscaleContext
+         35   22 00015930 Java_io_homo_superresolution_core_SuperResolutionNative_NsrShutdown
+         36   23 00015940 Java_io_homo_superresolution_core_SuperResolutionNative_NsrUnloadUpscaleProviders
+         37   24 00009040 Java_io_homo_superresolution_core_SuperResolutionNative_compileShaderToSpirv
+         38   25 00009410 Java_io_homo_superresolution_core_SuperResolutionNative_destroyGlslang
+         39   26 00009450 Java_io_homo_superresolution_core_SuperResolutionNative_freeDirectBuffer
+         40   27 00009480 Java_io_homo_superresolution_core_SuperResolutionNative_getVersionInfo
+         41   28 00009420 Java_io_homo_superresolution_core_SuperResolutionNative_initGlslang
+         42   29 00025480 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGColor_nDelete
+         43   2A 00025490 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGColor_nGetNanoVGColorA
+         44   2B 000254A0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGColor_nGetNanoVGColorB
+         45   2C 000254B0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGColor_nGetNanoVGColorG
+         46   2D 000254C0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGColor_nGetNanoVGColorR
+         47   2E 000254D0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_createContext
+         48   2F 000254F0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nAddFallbackFont
+         49   30 000255C0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nAddFallbackFontId
+         50   31 000255D0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nArc
+         51   32 00025610 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nArcTo
+         52   33 00025650 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nBeginFrame
+         53   34 00025670 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nBeginPath
+         54   35 00025680 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nBezierTo
+         55   36 000256D0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nBoxGradient
+         56   37 000257A0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCancelFrame
+         57   38 000257B0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCircle
+         58   39 000257D0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nClosePath
+         59   3A 000257E0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nColorRGBA
+         60   3B 00025840 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nColorRGBAf
+         61   3C 000254D0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateContextEx
+         62   3D 000258B0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateFont
+         63   3E 00025980 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateFontAtIndex
+         64   3F 00025A60 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateFontMem
+         65   40 00025B90 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateFontMemAtIndex
+         66   41 00025CD0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCreateImageFromHandle
+         67   42 00025D00 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nCurrentTransform
+         68   43 00025D80 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nDeleteContext
+         69   44 00025DA0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nDeleteImage
+         70   45 00025DC0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nEllipse
+         71   46 00025DF0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nEndFrame
+         72   47 00025E00 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFill
+         73   48 00025E10 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFillColor
+         74   49 00025E30 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFillPaint
+         75   4A 00025E80 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFindFont
+         76   4B 00025F10 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontBlur
+         77   4C 00025F20 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontFace
+         78   4D 00025FA0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontFaceId
+         79   4E 00025FB0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontGetVariationAxis
+         80   4F 000260A0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontSetVariationAxis
+         81   50 00026100 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nFontSize
+         82   51 00026110 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nGlobalAlpha
+         83   52 00026120 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nGlobalCompositeBlendFunc
+         84   53 00026130 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nGlobalCompositeBlendFuncSeparate
+         85   54 00026150 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nGlobalCompositeOperation
+         86   55 00026160 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nImagePattern
+         87   56 00026210 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nIntersectScissor
+         88   57 00026240 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nLineCap
+         89   58 00026250 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nLineJoin
+         90   59 00026260 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nLineStyle
+         91   5A 00026270 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nLineTo
+         92   5B 00026290 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nLinearGradient
+         93   5C 00026330 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nMiterLimit
+         94   5D 00026340 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nMoveTo
+         95   5E 00026360 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nPathWinding
+         96   5F 00026370 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nQuadTo
+         97   60 000263A0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRadialGradient
+         98   61 00026440 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRect
+         99   62 00026470 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nReset
+        100   63 00026480 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nResetFallbackFonts
+        101   64 00026500 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nResetFallbackFontsId
+        102   65 00026510 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nResetScissor
+        103   66 00026520 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nResetTransform
+        104   67 00026530 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRestore
+        105   68 00026540 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRotate
+        106   69 00026550 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRoundedRect
+        107   6A 00026590 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRoundedRectComplex
+        108   6B 00026610 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRoundedRectEllipse
+        109   6C 00026660 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nRoundedRectVarying
+        110   6D 000266E0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nSave
+        111   6E 000266F0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nScale
+        112   6F 00026710 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nScissor
+        113   70 00026740 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nShapeAntiAlias
+        114   71 00026750 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nSkewX
+        115   72 00026760 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nSkewY
+        116   73 00026770 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nStroke
+        117   74 00026780 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nStrokeColor
+        118   75 000267A0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nStrokePaint
+        119   76 000267F0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nStrokeWidth
+        120   77 00026800 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nText
+        121   78 000268B0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextAlign
+        122   79 000268C0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextBounds
+        123   7A 00026A00 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextBox
+        124   7B 00026AC0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextBoxBounds
+        125   7C 00026BD0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextBreakLines
+        126   7D 00026E00 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextGlyphPositions
+        127   7E 00027000 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextLetterSpacing
+        128   7F 00027010 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextLineHeight
+        129   80 00027020 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextMeasureStateVersion
+        130   81 00027030 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTextMetrics
+        131   82 000270E0 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTransform
+        132   83 00027130 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGContext_nTranslate
+        133   84 00027150 Java_io_homo_superresolution_thirdparty_nanovg_NanoVGPaint_nDelete
+        134   85 00007AD0 _superFastModelToEntityVertexSerializer
+        135   86 0000FF20 srCreateUpscaleContext
+        136   87 000100F0 srDestroyExtraParams
+        137   88 00010170 srDestroyUpscaleContext
+        138   89 000101C0 srDispatchUpscale
+        139   8A 000101E0 srFindParam
+        140   8B 00010250 srGetUpscaleProvider
+        141   8C 00010380 srInitUpscaleContext
+        142   8D 000103A0 srLoadUpscaleProvidersFromLibrary
+        143   8E 00010B80 srParamsGetBool
+        144   8F 00010C00 srParamsGetDouble
+        145   90 00010C90 srParamsGetFloat
+        146   91 00010D10 srParamsGetInt32
+        147   92 00010D90 srParamsGetPointer
+        148   93 00010E00 srParamsGetString
+        149   94 00010E80 srParamsGetUint32
+        150   95 00010F00 srParamsSetBool
+        151   96 00010F90 srParamsSetDouble
+        152   97 00011020 srParamsSetFloat
+        153   98 000110B0 srParamsSetInt32
+        154   99 00011140 srParamsSetPointer
+        155   9A 000111D0 srParamsSetString
+        156   9B 00011290 srParamsSetUint32
+        157   9C 00011320 srQueryUpscaleContext
+        158   9D 00011340 srShutdown
+        159   9E 000114C0 srTextureFormatToGlFormat
+        160   9F 000115D0 srTextureFormatToVkFormat
+        161   A0 00011740 srUnloadUpscaleProviders
+
+  Summary
+
+       23000 .data
+        1000 .fptable
+       25000 .pdata
+      164000 .rdata
+        8000 .reloc
+        1000 .rsrc
+      43C000 .text

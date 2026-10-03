@@ -1,0 +1,22 @@
+[
+  {
+    "Name": "AMD Radeon(TM) Graphics",
+    "DriverVersion": "31.0.21924.61"
+  },
+  {
+    "Name": "LuminonCore IDDCX Adapter",
+    "DriverVersion": "1.0.2018.1204"
+  },
+  {
+    "Name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+    "DriverVersion": "32.0.15.9649"
+  },
+  {
+    "Name": "DisplayLink USB Device",
+    "DriverVersion": "11.5.6380.0"
+  },
+  {
+    "Name": "DisplayLink USB Device",
+    "DriverVersion": "11.5.6380.0"
+  }
+]

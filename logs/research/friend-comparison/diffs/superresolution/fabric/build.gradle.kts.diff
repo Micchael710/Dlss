@@ -1,0 +1,80 @@
+--- ours/fabric/build.gradle.kts
++++ friend/fabric/build.gradle.kts
+@@ -4,7 +4,7 @@
+ 
+ plugins {
+     id("multiloader-loader")
+-    id("net.fabricmc.fabric-loom-remap") version "1.18.2"
++    id("net.fabricmc.fabric-loom-remap") version "1.16.3"
+ }
+ 
+ @Suppress("UNCHECKED_CAST")
+@@ -206,23 +206,24 @@
+     }
+     runs {
+         named("client") {
+-            jvmArguments.add("-XX:+CreateMinidumpOnCrash")
+-
+-            jvmArguments.add("--enable-preview")
+-            jvmArguments.add("--enable-native-access=ALL-UNNAMED")
+-
+-            jvmArguments.add("-Dmixin.debug.export=true")
++            vmArg("-XX:+CreateMinidumpOnCrash")
++
++            vmArg("--enable-preview")
++            vmArg("--enable-native-access=ALL-UNNAMED")
++
++            vmArg("-Dmixin.debug.export=true")
+ 
+             // We force set the lwjgl version to versionConfig.common.lwjglVersion
+             // Sodium will check the lwjgl version,ensure it equals the lwjgl version of corresponding Minecraft version
+             // We must disable the check,otherwise sodium will crash the game.
+-            jvmArguments.add("-Dsodium.checks.issue2561=false")
++            vmArg("-Dsodium.checks.issue2561=false")
+ 
+             // Only effective in 1.21.5+
+-            programArguments.add("--graphicsBackend=opengl")
+-            programArguments.add("--renderDebugLabels=true")
+-
+-            runDirectory.set(File("../runs/fabric"))
++            programArg("--graphicsBackend=opengl")
++            programArg("--renderDebugLabels=true")
++
++            ideConfigGenerated(true)
++            runDir("../runs/fabric")
+         }
+     }
+ }
+@@ -235,24 +236,10 @@
+     versionConfig.common.fabricVersionRange.joinToString(prefix = "[", postfix = "]") { "\"$it\"" }
+ }
+ 
+-// The velocity extension is versioned because Iris and Minecraft change its rendering APIs.
+-// The common jar only contains the selected version's mixin config, so keep this reference
+-// conditional — Fabric loader fails hard on a mixin config that is absent from the jar.
+-val irisVelocityExtMixinEntry = if (
+-    versionConfig.common.minecraftVersion.startsWith("26.1")
+-        || versionConfig.common.minecraftVersion == "26.2"
+-        || versionConfig.common.minecraftVersion == "26.3"
+-) {
+-    ",\n        \"super_resolution.iris_velocity_ext.mixins.json\""
+-} else {
+-    ""
+-}
+-
+ tasks.named<ProcessResources>("processResources") {
+     inputs.property("version", fabricModVersion)
+     inputs.property("javaVersion", fabricJavaVersion)
+     inputs.property("versionRange", fabricVersionRange)
+-    inputs.property("irisVelocityExtMixin", irisVelocityExtMixinEntry)
+     filesMatching("fabric.mod.json") {
+         expand(
+             mapOf(
+@@ -263,7 +250,6 @@
+         )
+         filter { line: String ->
+             line.replace("\"{versionRange}\"", fabricVersionRange)
+-                .replace("{irisVelocityExtMixin}", irisVelocityExtMixinEntry)
+         }
+     }
+     if (gradle.extensions.extraProperties.properties["isUseDebugLib"] as? Boolean == true){

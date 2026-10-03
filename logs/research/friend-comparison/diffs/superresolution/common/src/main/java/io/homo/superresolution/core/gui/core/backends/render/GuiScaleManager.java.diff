@@ -1,0 +1,27 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/gui/core/backends/render/GuiScaleManager.java
++++ friend/common/src/main/java/io/homo/superresolution/core/gui/core/backends/render/GuiScaleManager.java
+@@ -30,7 +30,7 @@
+     private float dpiScale = 1.0f;
+     private float userScale = 1.0f;
+     private boolean autoScale = true;
+-    private float minScale = 0.3f;
++    private float minScale = 0.5f;
+     private float maxScale = 4.0f;
+ 
+     private GuiScaleManager() {
+@@ -60,14 +60,13 @@
+         return guiScale;
+     }
+ 
+-
+     public void setGuiScale(float scale) {
+         this.autoScale = false;
+         this.guiScale = Math.max(minScale, Math.min(maxScale, scale));
+     }
+ 
+     public float dpiScale() {
+-        return dpiScale * 1.5f * Math.max(this.userScale,1.0f);
++        return dpiScale;
+     }
+ 
+     public void setDpiScale(float dpi) {

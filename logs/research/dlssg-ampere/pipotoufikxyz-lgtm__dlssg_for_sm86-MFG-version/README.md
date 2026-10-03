@@ -1,0 +1,74 @@
+
+                                                            
+                                                            
+  
+
+  - DLSSG MODIFED VERSION
+
+                                                          
+ ----------------------------------------------- -----------------------------------------------
+
+
+  **NEW RELEASE 2.8.4**
+
+
+-------------------------------------------------------------
+
+
+UPDATE: **WORKS BOTH ON 20 SERIES AND 30 SERIES. no need to install two different managers anymore.**
+
+**Picture quality (PSNR, higher is better) went from 29.70 to 30.30 dB.**
+
+New update:
+
+| Crop | Fix20 wrong pixels | Fix21 wrong pixels |
+| :--- | :---: | :---: |
+| Roofs / chimney | 2,275 | 320 (-86%) |
+| Ground | 355 | 81 |
+| HUD over clouds | 7,892 | 6,681 |
+| Building edge | 5,373 | 5,013 |
+| Other buildings | 1,372 | 1,118 |
+| **Total** | **17,267** | **13,213** |
+
+
+<img width="1905" height="983" alt="image" src="https://github.com/user-attachments/assets/585c3841-f802-4174-aaf5-a3f8d3f98011" />
+
+
+
+-------------------------------------------------------------
+
+To Activate it: activate it through Nvidia Profile Inspector
+
+
+**To Use Nvidia profile inspector:**
+
+**-Open NVIDIA Profile Inspector on your computer.**
+
+**-Locate Smooth Motion**
+
+**-Enable it and Save**
+
+**FOR DOWNLOADS CHECK RELEASES**
+
+--------------------------------------------------------------------------
+
+**DLSSG INSTALL FOR 3000S SERIES:**
+
+<img width="1516" height="493" alt="image" src="https://github.com/user-attachments/assets/5b754f4d-e8d0-4c87-bc09-1c3114fc08a9" />
+
+1. Fully exit the game. Back up any existing mod proxy and INI outside the game folder.
+2. Copy this package's `version.dll` and `dlssg_sm86.ini` beside the actual rendering EXE.
+   If that DLL name is occupied, choose ONE original-name DLL from `altnative` that
+   the game loads. Preserve other mods and the game's original DLSSG files. 
+3. Start the game, enable frame generation, and select X6 if supported.
+
+-------------------------------------------------------------
+
+**DLSSG INSTALL FOR 2000S SERIES:**
+
+  Same Steps As 3000s series's install
+
+  -------------------------------------------------------------
+
+
+Credits: sdii1995 for dlssg.

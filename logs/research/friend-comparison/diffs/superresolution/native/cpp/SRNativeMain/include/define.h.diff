@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeMain/include/define.h
++++ friend/native/cpp/SRNativeMain/include/define.h
+@@ -8,4 +8,4 @@
+ 
+ #ifndef SRLIB_VERSION
+ #define SRLIB_VERSION "NO-DEFINED"
+-#endif
++#endif

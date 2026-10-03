@@ -1,0 +1,139 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/backend/WisteriaFrameGeneration.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/backend/WisteriaFrameGeneration.java
+@@ -2,11 +2,11 @@
+ 
+ import io.homo.superresolution.api.SuperResolutionAPI;
+ import io.homo.superresolution.api.event.FrameGenerationRegisterEvent;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationDescription;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationExecutionModel;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationGroups;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationRegistry;
+-import io.homo.superresolution.api.registry.lowlatency.LowLatencyBinding;
++import io.homo.superresolution.api.registry.FrameGenerationDescription;
++import io.homo.superresolution.api.registry.FrameGenerationExecutionModel;
++import io.homo.superresolution.api.registry.FrameGenerationGroups;
++import io.homo.superresolution.api.registry.FrameGenerationRegistry;
++import io.homo.superresolution.api.registry.LowLatencyBinding;
+ import io.homo.superresolution.api.utils.Requirement;
+ import io.homo.superresolution.common.config.ConfigSpecType;
+ import io.homo.superresolution.common.config.special.SpecialConfigDescription;
+@@ -15,6 +15,10 @@
+ import org.ireallywanttosleep.wisteria.Wisteria;
+ 
+ import java.util.Optional;
++import io.homo.superresolution.api.registry.BackendGroup;
++import io.homo.superresolution.common.presentation.vulkan.VulkanPresentationFeature;
++import org.ireallywanttosleep.wisteria.backend.fsr.FsrFgBackend;
++import org.ireallywanttosleep.wisteria.backend.fsr.FsrFrameGenerationBackend;
+ 
+ /**
+  * Registers Wisteria's frame generation backends with Super Resolution.
+@@ -24,15 +28,23 @@
+  * is early enough. The listener is added once; SR only posts the event when it builds its
+  * own registry.
+  * <p>
+- * Both backends implement DLSS Frame Generation, so both join
+- * {@link FrameGenerationGroups#DLSS_FG}: the user picks the algorithm, and SR's negotiator
+- * picks whichever backend is usable according to priority.
++ * Backends implement DLSS and FSR Frame Generation, joining their respective groups.
+  */
+ public final class WisteriaFrameGeneration {
+     /** DLSS-G through the Streamline interposer, which presents the generated frames itself. */
+     public static final String STREAMLINE_ID = "wisteria:streamline";
+     /** Cross-platform raw NVNGX DLSS-G, the backend that makes frame generation work on Linux. */
+     public static final String NGX_ID = "wisteria:ngx";
++
++    /** AMD FSR Frame Generation group. */
++    public static final BackendGroup FSR_FG = BackendGroup.of(
++            "wisteria:fsr_fg",
++            Component.translatable("wisteria.algorithm.frame_generation.fsr")
++    );
++    /** Universal FSR 3.1 Frame Generation backend. */
++    public static final String FSR_ID = "wisteria:fsr";
++    public static final String FSR_VULKAN_ID = "wisteria:fsr_vulkan";
++    public static final String FSR_D3D12_ID = "wisteria:fsr_d3d12";
+ 
+     private WisteriaFrameGeneration() {
+     }
+@@ -54,16 +66,25 @@
+                 .setRequiresRestartGame(true);
+     }
+ 
++    private static SpecialConfigDescription<FsrFgBackend> fsrFgBackendOption() {
++        return SpecialConfigDescription.of(
++                        "fsr_fg_backend",
++                        ConfigSpecType.ENUM,
++                        FsrFgBackend.AUTO
++                )
++                .setName(Component.translatable("wisteria.screen.config.special.fsr_fg.backend.name"))
++                .setTooltip(Component.translatable("wisteria.screen.config.special.fsr_fg.backend.tooltip"))
++                .setClazz(FsrFgBackend.class)
++                .setValueNameSupplier(backend ->
++                        Optional.of(Component.translatable(backend.translationKey())))
++                .setValueSupplier(FsrFgBackend::fromConfig)
++                .setItemEnableRequirement(FsrFgBackend::isAvailable)
++                .setSaveConsumer(FsrFgBackend::save)
++                .setRequiresRestartGame(true);
++    }
++
+     public static void register() {
+         SuperResolutionAPI.EVENT_BUS.addListener(FrameGenerationRegisterEvent.class, event -> {
+-            FrameGenerationRegistry.register(FrameGenerationDescription.builder()
+-                    .id("wisteria:fsr_fg").displayName(Component.literal("AMD FSR Frame Generation"))
+-                    .automatic().group(io.homo.superresolution.api.registry.BackendGroup.of("wisteria:fsr_fg", Component.literal("AMD FSR Frame Generation"))).build());
+-            FrameGenerationRegistry.register(FrameGenerationDescription.builder()
+-                    .id("wisteria:fsr").displayName(Component.literal("FSR 3.1.4"))
+-                    .group(io.homo.superresolution.api.registry.BackendGroup.of("wisteria:fsr_fg", Component.literal("AMD FSR Frame Generation"))).priority(150)
+-                    .executionModel(FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC)
+-                    .providerFactory(org.ireallywanttosleep.wisteria.fsr.FsrFrameGenerationBackend::new).build());
+             FrameGenerationRegistry.register(
+                     FrameGenerationDescription.builder()
+                             .id(NGX_ID)
+@@ -85,11 +106,11 @@
+                             .displayName(Component.literal("Streamline"))
+                             .group(FrameGenerationGroups.DLSS_FG)
+                             .priority(100)
+-                            .executionModel(FrameGenerationExecutionModel.EXTERNAL_INTERPOSER)
+                             .requirement(Requirement.nothing().isTrue(
+                                     () -> Streamline.isSupportedPlatform()
+                                             && Streamline.isNativeAvailable()
+                                             && Streamline.isInitialized()
++                                            && VulkanPresentationFeature.shouldInitializeStreamline()
+                             ))
+                             // DLSS-G paces its presents off Reflex, and the interposer only
+                             // sees the markers when Reflex also runs through Streamline.
+@@ -98,7 +119,33 @@
+                             .providerFactory(StreamlineFrameGenerationBackend::new)
+                             .build()
+             );
+-            Wisteria.LOGGER.info("Registered frame generation backends {} and {}", STREAMLINE_ID, NGX_ID);
++
++            // Register FSR Frame Generation group representative if not already registered
++            if (!FrameGenerationRegistry.isRegistered(FSR_FG.getId())) {
++                FrameGenerationRegistry.register(
++                        FrameGenerationDescription.builder()
++                                .id(FSR_FG.getId())
++                                .displayName(FSR_FG.getDisplayName())
++                                .automatic()
++                                .group(FSR_FG)
++                                .build()
++                );
++            }
++
++            // Register universal AMD FSR 3.1 Frame Generation backend
++            FrameGenerationRegistry.register(
++                    FrameGenerationDescription.builder()
++                            .id(FSR_ID)
++                            .displayName(Component.literal("FSR 3.1"))
++                            .group(FSR_FG)
++                            .priority(150)
++                            .executionModel(FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC)
++                            .addOptionDescription(fsrFgBackendOption())
++                            .providerFactory(FsrFrameGenerationBackend::new)
++                            .build()
++            );
++
++            Wisteria.LOGGER.info("Registered frame generation backends {}, {} and {}", STREAMLINE_ID, NGX_ID, FSR_ID);
+         });
+     }
+ }

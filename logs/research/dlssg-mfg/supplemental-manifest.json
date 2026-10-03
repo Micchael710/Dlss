@@ -1,0 +1,22 @@
+[
+  {
+    "path": "Streamline-changelog.txt",
+    "url": "https://raw.githubusercontent.com/NVIDIA-RTX/Streamline/2122257e0fce486f91b385aa63b9a09b0a34b363/changelog.txt",
+    "sha256": "8e16fd900d9e9c1e697a945376f09d2f0512ae048ee4063e091503c668090ae9"
+  },
+  {
+    "path": "Streamline-2.11.1-release.json",
+    "url": "https://api.github.com/repos/NVIDIA-RTX/Streamline/releases/tags/v2.11.1",
+    "sha256": "da74bafd8c7b7f0b64679b6a517f79f0714e728f7b1009ed9d8443074171fafa"
+  },
+  {
+    "path": "SM86-issue-518.json",
+    "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/issues/518",
+    "sha256": "3b8050d322305105a8d017672087b29c071f7cb782faf766ee771e80b74b1f3c"
+  },
+  {
+    "path": "SM86-discussion-546.html",
+    "url": "https://github.com/sdli1995/dlssg_for_sm86/discussions/546",
+    "sha256": "b5a54502ee0356657e950069959f6b9267b6872b4f7dcc48b43dcac93049f631"
+  }
+]

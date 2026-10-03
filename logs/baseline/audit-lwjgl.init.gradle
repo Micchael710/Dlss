@@ -1,0 +1,23 @@
+// Read-only audit: resolves artifacts through the configured repositories and reports classifiers.
+gradle.projectsEvaluated {
+    [':common', ':neoforge'].each { path ->
+        def p = gradle.rootProject.findProject(path)
+        if (p != null) {
+            p.tasks.register('auditLwjglNativeArtifacts') {
+                doLast {
+                    def config = p.configurations.getByName('neoFormRuntimeDependenciesRuntimeClasspath')
+                    def artifacts = config.resolvedConfiguration.resolvedArtifacts.findAll {
+                        it.moduleVersion.id.group == 'org.lwjgl'
+                    }
+                    artifacts.sort { it.file.name }.each { artifact ->
+                        println("LWJGL_ARTIFACT ${path} ${artifact.moduleVersion.id} classifier=${artifact.classifier} file=${artifact.file.name}")
+                    }
+                    assert artifacts.any { it.name == 'lwjgl' && it.classifier == 'natives-windows' && it.moduleVersion.id.version == '3.3.4' }
+                    assert artifacts.any { it.name == 'lwjgl' && it.classifier == null && it.moduleVersion.id.version == '3.3.4' }
+                    assert !artifacts.any { it.classifier in ['natives-windows-x86', 'natives-windows-arm64'] }
+                    println("LWJGL_AUDIT_OK ${path}")
+                }
+            }
+        }
+    }
+}

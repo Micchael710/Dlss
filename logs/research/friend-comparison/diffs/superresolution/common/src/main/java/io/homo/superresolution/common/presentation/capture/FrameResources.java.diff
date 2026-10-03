@@ -1,0 +1,104 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/presentation/capture/FrameResources.java
++++ friend/common/src/main/java/io/homo/superresolution/common/presentation/capture/FrameResources.java
+@@ -48,7 +48,6 @@
+     private volatile long fence;
+     private volatile long generation;
+     private volatile int logicalFrameIndex;
+-    private volatile io.homo.superresolution.api.registry.framegeneration.RealFrameMetadata metadata;
+     private volatile boolean unrecoverable;
+     private volatile long dlssGInputCompletionSemaphore;
+     private volatile long dlssGInputCompletionValue;
+@@ -80,7 +79,6 @@
+         awaitReusable();
+         generation = newGeneration;
+         logicalFrameIndex = newLogicalFrameIndex;
+-        metadata = null;
+         finalColor.beginFrame();
+         hudlessColor.beginFrame();
+         depth.beginFrame();
+@@ -91,7 +89,6 @@
+         clearDlssGInputCompletion();
+         resetBorrowedInputReleaseSubmission();
+         lifecycle.beginRecording();
+-        traceLifecycle();
+     }
+ 
+     void copyFinalColor(ITexture source) {
+@@ -141,18 +138,7 @@
+     }
+ 
+     void seal() {
+-        metadata = io.homo.superresolution.common.framegeneration.constants.FGConstantsFeature.getMetadata(logicalFrameIndex);
+-        if (metadata != null && finalColor.isValid()) {
+-            metadata = metadata.withColor(new io.homo.superresolution.api.registry.framegeneration.RealFrameMetadata.Color(
+-                    finalColor.vkTexture().getTextureFormat().name(), irisOutputColorSpace(), null, null,
+-                    "Iris output color space; HDR luminance unavailable"));
+-            if (Boolean.getBoolean("sr.baselineDiagnostics") && metadata.monotonicFrameId() <= 5) {
+-                io.homo.superresolution.common.SuperResolution.LOGGER.info("SR_FG_INPUT sealed metadata={} final={} hudless={} depth={} mv={}",
+-                        metadata, hasFinalColor(), hasHudlessColor(), hasDepth(), hasMotionVector());
+-            }
+-        }
+         lifecycle.seal();
+-        traceLifecycle();
+     }
+ 
+     void discardEmptyRecording() {
+@@ -164,12 +150,10 @@
+ 
+     public void markQueued() {
+         lifecycle.markQueued();
+-        traceLifecycle();
+     }
+ 
+     public void markDispatching() {
+         lifecycle.markDispatching();
+-        traceLifecycle();
+     }
+ 
+     public void markSubmitted(VulkanCommandBuffer commandBuffer, long submittedFence) {
+@@ -193,7 +177,6 @@
+         depth.markSubmitted();
+         motionVector.markSubmitted();
+         lifecycle.markSubmitted();
+-        traceLifecycle();
+         publishBorrowedInputReleaseSubmission();
+     }
+ 
+@@ -253,19 +236,6 @@
+     public int logicalFrameIndex() {
+         return logicalFrameIndex;
+     }
+-    void awaitSubmissionForReuse() { lifecycle.awaitSubmissionForReuse(() -> unrecoverable); }
+-
+-    public io.homo.superresolution.api.registry.framegeneration.RealFrameMetadata metadata() { return metadata; }
+-
+-    private static String irisOutputColorSpace() {
+-        // Iris is optional. Read its declared output space rather than infer transfer from texture format.
+-        try {
+-            return String.valueOf(Class.forName("net.irisshaders.iris.gui.option.IrisVideoSettings")
+-                    .getField("colorSpace").get(null));
+-        } catch (ReflectiveOperationException | LinkageError exception) {
+-            return "UNKNOWN";
+-        }
+-    }
+ 
+     public boolean hasFinalColor() {
+         return finalColor.isValid();
+@@ -397,17 +367,6 @@
+         submittedCommandBufferGeneration = 0L;
+         fence = 0L;
+         lifecycle.markReusable();
+-        traceLifecycle();
+-    }
+-
+-    private void traceLifecycle() {
+-        if (Boolean.getBoolean("sr.baselineDiagnostics") && index == 0 && generation <= 12) {
+-            io.homo.superresolution.common.SuperResolution.LOGGER.info(
+-                    "SR_INTEROP slot={} generation={} frame={} state={} fence={} ready={} release={}",
+-                    index, generation, logicalFrameIndex, lifecycle.state(), fence,
+-                    java.util.Arrays.toString(readySemaphores()),
+-                    java.util.Arrays.toString(releaseSemaphores()));
+-        }
+     }
+     public void setDlssGInputCompletion(long semaphore, long value) {
+         if (!isSubmitted() || semaphore == 0L || value <= 0L) {

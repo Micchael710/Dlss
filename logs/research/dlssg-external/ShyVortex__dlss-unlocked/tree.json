@@ -1,0 +1,350 @@
+{
+  "sha": "0798222ff1852574d8987a6fab12955174776371",
+  "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/0798222ff1852574d8987a6fab12955174776371",
+  "tree": [
+    {
+      "path": ".github",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "98a28251d8b83485ebe84bde0cedfd3498bf3ead",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/98a28251d8b83485ebe84bde0cedfd3498bf3ead"
+    },
+    {
+      "path": ".github/FUNDING.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fb5e3bd17ad0ac90925d6bdd7741eb1d4fa17dff",
+      "size": 892,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/fb5e3bd17ad0ac90925d6bdd7741eb1d4fa17dff"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b0b01069e3f5b1916067f8f6145f5a37d78578b7",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/b0b01069e3f5b1916067f8f6145f5a37d78578b7"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "079ea1fa8016c0068840e4b78c54938855899f0d",
+      "size": 5769,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/079ea1fa8016c0068840e4b78c54938855899f0d"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/config.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58bbe77624c50f1a8fd4a174eb4a1c3072870569",
+      "size": 210,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/58bbe77624c50f1a8fd4a174eb4a1c3072870569"
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03ea5ef1b9db9defc839be1338ec74106fcc85a1",
+      "size": 1391,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/03ea5ef1b9db9defc839be1338ec74106fcc85a1"
+    },
+    {
+      "path": ".github/workflows",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "fd3d3b165e5649a8ae9e1ce8915fdd2e90f34e7a",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/fd3d3b165e5649a8ae9e1ce8915fdd2e90f34e7a"
+    },
+    {
+      "path": ".github/workflows/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1ccf778e8d69202ce82b985d6ac247aad95c1204",
+      "size": 3457,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/1ccf778e8d69202ce82b985d6ac247aad95c1204"
+    },
+    {
+      "path": ".github/workflows/build-installer.yml",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58c7f5676d3a7df2e7545e718e44def404d1095c",
+      "size": 80754,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/58c7f5676d3a7df2e7545e718e44def404d1095c"
+    },
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "908dbd13c5999dee7cb65263458151f61761d0cf",
+      "size": 1387,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/908dbd13c5999dee7cb65263458151f61761d0cf"
+    },
+    {
+      "path": "DLLSG mod",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "79a705a23972cefa6cb84319a9a6773fee1bc2c7",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/79a705a23972cefa6cb84319a9a6773fee1bc2c7"
+    },
+    {
+      "path": "DLLSG mod/READ ME.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a2f21d1a136d5f02ae92fbf60593edcc81aa97d",
+      "size": 1122,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/8a2f21d1a136d5f02ae92fbf60593edcc81aa97d"
+    },
+    {
+      "path": "DLLSG mod/dlssg_to_fsr3.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c90f1f857827554da9f5882e8cce61b38df90e3f",
+      "size": 235,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/c90f1f857827554da9f5882e8cce61b38df90e3f"
+    },
+    {
+      "path": "DLLSG mod/dlssg_to_fsr3_amd_is_better.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c2995ebc3152fcd5b9659ef5e85d864a13c90d4",
+      "size": 3038208,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/4c2995ebc3152fcd5b9659ef5e85d864a13c90d4"
+    },
+    {
+      "path": "DLLSG mod/nvngx.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "009df097a0d1de7d1b6d7f57f9edff36e48ffd46",
+      "size": 189952,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/009df097a0d1de7d1b6d7f57f9edff36e48ffd46"
+    },
+    {
+      "path": "DLSS Unlocked Intro.rtf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "197e85d69ff9caa953278cb342ac235f96527f77",
+      "size": 65787,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/197e85d69ff9caa953278cb342ac235f96527f77"
+    },
+    {
+      "path": "DLSS for NVIDIA - License.rtf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2bb52824a130ac30e34e0cff45184ee374e36869",
+      "size": 3496,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/2bb52824a130ac30e34e0cff45184ee374e36869"
+    },
+    {
+      "path": "DLSS unlocked.iss",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ff7ee612d471997fd295093e3f279dfae5a33fc1",
+      "size": 13612,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/ff7ee612d471997fd295093e3f279dfae5a33fc1"
+    },
+    {
+      "path": "Dll version",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8bc52b1ed411163c31b522dd972c6bcef6fd6105",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/8bc52b1ed411163c31b522dd972c6bcef6fd6105"
+    },
+    {
+      "path": "Dll version/dlss-enabler.asi",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5779bc2d752d6e971015604f2a954f23ffed0fd6",
+      "size": 30712320,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/5779bc2d752d6e971015604f2a954f23ffed0fd6"
+    },
+    {
+      "path": "Dll version/dlss-unlocked.log",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f799e8765d3da95c929b350e19b69544065d9a6c",
+      "size": 131,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/f799e8765d3da95c929b350e19b69544065d9a6c"
+    },
+    {
+      "path": "Dll version/nvngx.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58925054494eb293d07892f457c262b4b6caaa87",
+      "size": 14246,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/58925054494eb293d07892f457c262b4b6caaa87"
+    },
+    {
+      "path": "LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b48d31881d9c6acbd59d7bb8909e1ab659fcbc2",
+      "size": 1075,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/2b48d31881d9c6acbd59d7bb8909e1ab659fcbc2"
+    },
+    {
+      "path": "License (DLSS unlocked).txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c30f4b988f4d48c952a9bcbaba70ca561d7567c",
+      "size": 5073,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/0c30f4b988f4d48c952a9bcbaba70ca561d7567c"
+    },
+    {
+      "path": "Licenses",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2419aa7f4d1fe39c75d1c9855bb53cde6383e5ad",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/2419aa7f4d1fe39c75d1c9855bb53cde6383e5ad"
+    },
+    {
+      "path": "Licenses/AMD_FidelityFX_LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1255dd991a59e0ba3bc0996ae881edfe9b3097c4",
+      "size": 1084,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/1255dd991a59e0ba3bc0996ae881edfe9b3097c4"
+    },
+    {
+      "path": "Licenses/DISCLAIMER.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bcc1cb713b312890cc3f06d72593a73158645591",
+      "size": 4997,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/bcc1cb713b312890cc3f06d72593a73158645591"
+    },
+    {
+      "path": "Licenses/DLSSG_to_FSR3_LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "256ce18180a888da09a2aa71e8d104d23f557feb",
+      "size": 6800,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/256ce18180a888da09a2aa71e8d104d23f557feb"
+    },
+    {
+      "path": "Licenses/Intel_XeSS_LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e49c64eb9ca168577eaf21a914b9a88e2333547f",
+      "size": 4167,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/e49c64eb9ca168577eaf21a914b9a88e2333547f"
+    },
+    {
+      "path": "Licenses/NVIDIA_Streamline_LICENSE.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0a4ca3b35699d6cfa578bdaa1002ea1274b458ad",
+      "size": 1124,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/0a4ca3b35699d6cfa578bdaa1002ea1274b458ad"
+    },
+    {
+      "path": "Licenses/dlssg_sm86_THIRD_PARTY_NOTICES.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f68bae2ea9f9e6cabdd3cd2a739ffd4c2d29131",
+      "size": 2863,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/3f68bae2ea9f9e6cabdd3cd2a739ffd4c2d29131"
+    },
+    {
+      "path": "NVIDIA Environment",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "5f0de5c1c1d3c19b932cc2f836c82148afd33b56",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/5f0de5c1c1d3c19b932cc2f836c82148afd33b56"
+    },
+    {
+      "path": "NVIDIA Environment/dlss-finder.bin",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c54c3b9aca47a0b38f505b2ef9076305b610896e",
+      "size": 83456,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/c54c3b9aca47a0b38f505b2ef9076305b610896e"
+    },
+    {
+      "path": "NVIDIA Environment/dxgi.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5475a27b88b41aac6f5e0e4b7d8448150af34d01",
+      "size": 73728,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/5475a27b88b41aac6f5e0e4b7d8448150af34d01"
+    },
+    {
+      "path": "NVIDIA Environment/nvapi64-proxy.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3ef63dda5a49a120d516fa356654160bda4f6856",
+      "size": 1310734,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/3ef63dda5a49a120d516fa356654160bda4f6856"
+    },
+    {
+      "path": "Output",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "287664d4536e487dd48e114a22bc7d7ad5615b80",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/287664d4536e487dd48e114a22bc7d7ad5615b80"
+    },
+    {
+      "path": "Output/here the setup bin will be stored.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e69de29bb2d1d6434b8b29ae775ad8c2e48c5391",
+      "size": 0,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/e69de29bb2d1d6434b8b29ae775ad8c2e48c5391"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e74c572065c0f1d4967ae1eb29225c45e9138e45",
+      "size": 9882,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/e74c572065c0f1d4967ae1eb29225c45e9138e45"
+    },
+    {
+      "path": "SM86",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c3a01f7cdc4f32fc4c053aab841f94a5311202a6",
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/trees/c3a01f7cdc4f32fc4c053aab841f94a5311202a6"
+    },
+    {
+      "path": "SM86/ReShade.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d15fd0770b570ea4d9b1c3dd5781d5fd3152ae76",
+      "size": 465,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/d15fd0770b570ea4d9b1c3dd5781d5fd3152ae76"
+    },
+    {
+      "path": "SM86/smooth-motion.asi",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6ac3ccd4e09d1b4edfbc55cc4866e4b927c10901",
+      "size": 79872,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/6ac3ccd4e09d1b4edfbc55cc4866e4b927c10901"
+    },
+    {
+      "path": "Troubleshooting.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "03beed79682867f0edfe391b787801913363d7c1",
+      "size": 6476,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/03beed79682867f0edfe391b787801913363d7c1"
+    },
+    {
+      "path": "build-optiscaler.ps1",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0ea3e00894c4d46cee8dc36fdac8485139270132",
+      "size": 29125,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/0ea3e00894c4d46cee8dc36fdac8485139270132"
+    },
+    {
+      "path": "thumbnail.jpeg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "42a1dd018340064f57c0f6cb55bde50edc71a970",
+      "size": 2163457,
+      "url": "https://api.github.com/repos/ShyVortex/dlss-unlocked/git/blobs/42a1dd018340064f57c0f6cb55bde50edc71a970"
+    }
+  ],
+  "truncated": false
+}

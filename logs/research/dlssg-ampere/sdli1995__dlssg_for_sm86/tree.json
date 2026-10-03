@@ -1,0 +1,412 @@
+{
+  "sha": "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+  "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+  "tree": [
+    {
+      "path": "310.1",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "486a06a5ab7fbf3540ac3c2232a84e4e472e8147",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/486a06a5ab7fbf3540ac3c2232a84e4e472e8147"
+    },
+    {
+      "path": "310.1/.DS_Store",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "11e9d80a6a5b1b94b2769c72ebf6b0e794cac940",
+      "size": 6148,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/11e9d80a6a5b1b94b2769c72ebf6b0e794cac940"
+    },
+    {
+      "path": "310.1/alternatives",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "b6845ed8515772559d5e3106ceedbd9929586648",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/b6845ed8515772559d5e3106ceedbd9929586648"
+    },
+    {
+      "path": "310.1/alternatives/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "347d7bd7e480cd890475a136eb577436b3e66ece",
+      "size": 2234,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/347d7bd7e480cd890475a136eb577436b3e66ece"
+    },
+    {
+      "path": "310.1/alternatives/d3d12.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5ff8aade6f1aa50cb8fb4c7e16a9ada83e04ae52",
+      "size": 27995424,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/5ff8aade6f1aa50cb8fb4c7e16a9ada83e04ae52"
+    },
+    {
+      "path": "310.1/alternatives/dbghelp.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2807a03584a59aa70a8b7a5e8af522f9b469069a",
+      "size": 28013344,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/2807a03584a59aa70a8b7a5e8af522f9b469069a"
+    },
+    {
+      "path": "310.1/alternatives/dinput8.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "63bf13bca7af88eaeef8b6c938d21212f2aa6533",
+      "size": 27994912,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/63bf13bca7af88eaeef8b6c938d21212f2aa6533"
+    },
+    {
+      "path": "310.1/alternatives/dxgi.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f35a4a829ab0489db700ea7db9cb23bf6180b610",
+      "size": 27995424,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/f35a4a829ab0489db700ea7db9cb23bf6180b610"
+    },
+    {
+      "path": "310.1/alternatives/winmm.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3037153d3e852020e2b21db8c48b4ccf71b0a9b9",
+      "size": 28006688,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/3037153d3e852020e2b21db8c48b4ccf71b0a9b9"
+    },
+    {
+      "path": "310.1/version.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f360242f177affd48b6e9fda26da2c4faab60104",
+      "size": 27995424,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/f360242f177affd48b6e9fda26da2c4faab60104"
+    },
+    {
+      "path": "README.en.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25bb99a489b6f8ddf487be27fc46189a17fd4215",
+      "size": 14818,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/25bb99a489b6f8ddf487be27fc46189a17fd4215"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e2086957fc03e6e6a833e44b82cde11b5850693",
+      "size": 13484,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/8e2086957fc03e6e6a833e44b82cde11b5850693"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "125de4126918c8d93774dd5f54dff29ed08dea30",
+      "size": 3349,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/125de4126918c8d93774dd5f54dff29ed08dea30"
+    },
+    {
+      "path": "alternatives",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "ffa99c6e0e33e153e1dd96eaec2540fea3f4826e",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/ffa99c6e0e33e153e1dd96eaec2540fea3f4826e"
+    },
+    {
+      "path": "alternatives/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "347d7bd7e480cd890475a136eb577436b3e66ece",
+      "size": 2234,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/347d7bd7e480cd890475a136eb577436b3e66ece"
+    },
+    {
+      "path": "alternatives/d3d12.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1867a81e7841a8b10b42ac9930a41f081d2b851d",
+      "size": 30021920,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/1867a81e7841a8b10b42ac9930a41f081d2b851d"
+    },
+    {
+      "path": "alternatives/dbghelp.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0eff053d2c6a6d24788926f18d425823d2e7b6cf",
+      "size": 30039840,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/0eff053d2c6a6d24788926f18d425823d2e7b6cf"
+    },
+    {
+      "path": "alternatives/dinput8.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "289fcf3219199fb38ad5d9b163ef337f24026d23",
+      "size": 30021408,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/289fcf3219199fb38ad5d9b163ef337f24026d23"
+    },
+    {
+      "path": "alternatives/dxgi.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ef9640b5c41fecd016b394d2adad0ab1e48f4553",
+      "size": 30021920,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/ef9640b5c41fecd016b394d2adad0ab1e48f4553"
+    },
+    {
+      "path": "alternatives/winmm.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "91151d196d7ede5959693f791630ed03fc194607",
+      "size": 30033184,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/91151d196d7ede5959693f791630ed03fc194607"
+    },
+    {
+      "path": "archive",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "dfa070b1e81fd8bb44031db63ce0d16d06fc6a37",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/dfa070b1e81fd8bb44031db63ce0d16d06fc6a37"
+    },
+    {
+      "path": "archive/.DS_Store",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c3bd20e13916358a1d70a527c49f568e278112f",
+      "size": 8196,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/0c3bd20e13916358a1d70a527c49f568e278112f"
+    },
+    {
+      "path": "archive/0.1.0",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "55ede44e325c59fe5f7c0e01f234f7022bd51df0",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/55ede44e325c59fe5f7c0e01f234f7022bd51df0"
+    },
+    {
+      "path": "archive/0.1.0/README.en.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ea8312265ea7aaa41724fddf6011fb8c90b71dc",
+      "size": 11756,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/2ea8312265ea7aaa41724fddf6011fb8c90b71dc"
+    },
+    {
+      "path": "archive/0.1.0/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "147eee3daa3fb6b96c207a6e8839eabe04c8167b",
+      "size": 11564,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/147eee3daa3fb6b96c207a6e8839eabe04c8167b"
+    },
+    {
+      "path": "archive/0.1.0/THIRD_PARTY_NOTICES.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5463da38b9b96004de93fea251b82399d2dbc79d",
+      "size": 2081,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/5463da38b9b96004de93fea251b82399d2dbc79d"
+    },
+    {
+      "path": "archive/0.1.0/dlssg_sm86.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dc1cdeea47449a6e24096bd30eb0cbe68148f657",
+      "size": 1459,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/dc1cdeea47449a6e24096bd30eb0cbe68148f657"
+    },
+    {
+      "path": "archive/0.1.0/version.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2fd84cc35dcab16fa7a58321d6b4e1b4141145c3",
+      "size": 10522624,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/2fd84cc35dcab16fa7a58321d6b4e1b4141145c3"
+    },
+    {
+      "path": "archive/0.2.4",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "cbfee4e0a7a457322a89843aa5d607e3950c6bc6",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/cbfee4e0a7a457322a89843aa5d607e3950c6bc6"
+    },
+    {
+      "path": "archive/0.2.4/.DS_Store",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce625eabc46f3d942a6222cba2dd9d83064f3001",
+      "size": 8196,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/ce625eabc46f3d942a6222cba2dd9d83064f3001"
+    },
+    {
+      "path": "archive/0.2.4/README.en.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cbe331afde28d6e51b448cdbe5d946d199612240",
+      "size": 15545,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/cbe331afde28d6e51b448cdbe5d946d199612240"
+    },
+    {
+      "path": "archive/0.2.4/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c3444a0f22937949150799285d0bf5f3a39b96c3",
+      "size": 13831,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/c3444a0f22937949150799285d0bf5f3a39b96c3"
+    },
+    {
+      "path": "archive/0.2.4/THIRD_PARTY_NOTICES.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f68bae2ea9f9e6cabdd3cd2a739ffd4c2d29131",
+      "size": 2863,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/3f68bae2ea9f9e6cabdd3cd2a739ffd4c2d29131"
+    },
+    {
+      "path": "archive/0.2.4/altnative",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "2790fb5b75dbaf9ef7a28ca08fc0c49aa7cf2669",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/2790fb5b75dbaf9ef7a28ca08fc0c49aa7cf2669"
+    },
+    {
+      "path": "archive/0.2.4/altnative/dinput8.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a00546c88e01531943a6e7953283fffc0e5d3919",
+      "size": 15666496,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/a00546c88e01531943a6e7953283fffc0e5d3919"
+    },
+    {
+      "path": "archive/0.2.4/altnative/dxgi.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6291c9bd3929ca4c72291015c9fe8d20d8e715bd",
+      "size": 15668032,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/6291c9bd3929ca4c72291015c9fe8d20d8e715bd"
+    },
+    {
+      "path": "archive/0.2.4/altnative/winhttp.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bda9e642f3ffaf58b4dd9c630d7fc5d85e957112",
+      "size": 15674176,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/bda9e642f3ffaf58b4dd9c630d7fc5d85e957112"
+    },
+    {
+      "path": "archive/0.2.4/altnative/winmm.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7166b7feef012399e578a741ed54423665d85b74",
+      "size": 15678272,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/7166b7feef012399e578a741ed54423665d85b74"
+    },
+    {
+      "path": "archive/0.2.4/config",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "3a7b922b2404b1a9730ad357a6f39f07e230ed96",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/3a7b922b2404b1a9730ad357a6f39f07e230ed96"
+    },
+    {
+      "path": "archive/0.2.4/config/presets",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "0180383f73ef9f9889e679ba6315154c5733bb1f",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/0180383f73ef9f9889e679ba6315154c5733bb1f"
+    },
+    {
+      "path": "archive/0.2.4/config/presets/sm86-default.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f79dc0eee5f7267b1ecdf19dbee50074dcfc8f59",
+      "size": 208,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/f79dc0eee5f7267b1ecdf19dbee50074dcfc8f59"
+    },
+    {
+      "path": "archive/0.2.4/config/presets/sm86-performance.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cec805f86656c8685dd20b8552cde2456bc56d80",
+      "size": 269,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/cec805f86656c8685dd20b8552cde2456bc56d80"
+    },
+    {
+      "path": "archive/0.2.4/dlssg_sm86.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f68878e557c6be4babf678d16efabe93fd3492c0",
+      "size": 581,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/f68878e557c6be4babf678d16efabe93fd3492c0"
+    },
+    {
+      "path": "archive/0.2.4/docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "c056759a1a1ab8ff9e1a46cfba85d6c24974282e",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/c056759a1a1ab8ff9e1a46cfba85d6c24974282e"
+    },
+    {
+      "path": "archive/0.2.4/docs/NATIVE_INI.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e3e35f5146cee7e44b7fa80925cc90ac8c74d12a",
+      "size": 3555,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/e3e35f5146cee7e44b7fa80925cc90ac8c74d12a"
+    },
+    {
+      "path": "archive/0.2.4/docs/ROADMAP.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eb25218ba83274ba50f70085d7bc2f34e7db750a",
+      "size": 975,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/eb25218ba83274ba50f70085d7bc2f34e7db750a"
+    },
+    {
+      "path": "archive/0.2.4/version.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "50c04d7f4bf26e0419432cc2ae02588c4a303a23",
+      "size": 15667520,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/50c04d7f4bf26e0419432cc2ae02588c4a303a23"
+    },
+    {
+      "path": "dlssg_sm86.ini",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c97d64f2239b7d511f7d0a36c16e149dd3329f6",
+      "size": 3548,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/2c97d64f2239b7d511f7d0a36c16e149dd3329f6"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "a083df578ac244f3ab45595dccad90ee9634c14b",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/trees/a083df578ac244f3ab45595dccad90ee9634c14b"
+    },
+    {
+      "path": "docs/INSTALL.en.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8554bfcb9219f417bbcfce2453c9ebe1f2d23cd1",
+      "size": 56227,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/8554bfcb9219f417bbcfce2453c9ebe1f2d23cd1"
+    },
+    {
+      "path": "docs/INSTALL.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "409e68306b212454d73d424279e85f6887b60239",
+      "size": 52529,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/409e68306b212454d73d424279e85f6887b60239"
+    },
+    {
+      "path": "version.dll",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "efd92261f2b74e0a0fb927d74bce7a1c0c2413f7",
+      "size": 30021920,
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/git/blobs/efd92261f2b74e0a0fb927d74bce7a1c0c2413f7"
+    }
+  ],
+  "truncated": false
+}

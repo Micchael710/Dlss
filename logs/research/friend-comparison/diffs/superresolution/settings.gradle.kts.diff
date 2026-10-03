@@ -1,0 +1,18 @@
+--- ours/settings.gradle.kts
++++ friend/settings.gradle.kts
+@@ -81,15 +81,9 @@
+     println("Current Minecraft version: $minecraftVersion")
+ 
+     val platforms = commonConfig["platforms"] as? List<*> ?: emptyList<Any?>()
+-    // Allow a loader-specific baseline without configuring unrelated loaders.
+-    val requestedLoader = providers.gradleProperty("loader").orNull
+-    if (requestedLoader != null && platforms.none { it?.toString() == requestedLoader }) {
+-        throw GradleException("Unsupported loader '$requestedLoader' for $minecraftVersion")
+-    }
+     for (loader in platforms) {
+         val loaderName = loader?.toString()?.trim().orEmpty()
+         if (loaderName.isBlank()) continue
+-        if (requestedLoader != null && loaderName != requestedLoader) continue
+         println("Enabled loader: $loaderName")
+         include(loaderName)
+         if (loaderName == "fabric") {

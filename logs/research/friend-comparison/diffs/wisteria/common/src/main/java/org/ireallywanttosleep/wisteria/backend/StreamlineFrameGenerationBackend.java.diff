@@ -1,0 +1,96 @@
+--- ours/common/src/main/java/org/ireallywanttosleep/wisteria/backend/StreamlineFrameGenerationBackend.java
++++ friend/common/src/main/java/org/ireallywanttosleep/wisteria/backend/StreamlineFrameGenerationBackend.java
+@@ -10,27 +10,24 @@
+ 
+ package org.ireallywanttosleep.wisteria.backend;
+ 
+-import io.homo.superresolution.api.registry.framegeneration.ExternalFrameGenerationDispatchInput;
+-import io.homo.superresolution.api.registry.framegeneration.ExternalFrameGenerationDispatchResult;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationExecutionModel;
+-import io.homo.superresolution.api.registry.framegeneration.FrameGenerationProvider;
+-import io.homo.superresolution.api.registry.lowlatency.LowLatencyGroups;
++import io.homo.superresolution.api.registry.FrameGenerationProvider;
++import io.homo.superresolution.api.registry.LowLatencyGroups;
+ import io.homo.superresolution.common.config.SuperResolutionConfig;
+ import io.homo.superresolution.common.framegeneration.FrameGenerationMode;
++import io.homo.superresolution.common.framegeneration.FramePresentPlan;
++import io.homo.superresolution.common.framegeneration.constants.FGConstants;
+ import io.homo.superresolution.common.lowlatency.nv.NVIDIAReflexMode;
+ import io.homo.superresolution.common.presentation.capture.FrameResources;
++import io.homo.superresolution.core.streamline.Streamline;
++import io.homo.superresolution.core.streamline.StreamlineTypes;
+ 
+ /**
+  * Streamline (sl.dlss_g) backend, Windows-only. Wraps
+  * {@link StreamlineFrameGenerationAdapter}; the Streamline interposer produces and
+- * presents the interpolated frames itself.
++ * presents the interpolated frames itself, so the plan carries no frames for the
++ * swapchain.
+  */
+ public final class StreamlineFrameGenerationBackend implements FrameGenerationProvider {
+-
+-    @Override
+-    public FrameGenerationExecutionModel executionModel() {
+-        return FrameGenerationExecutionModel.EXTERNAL_INTERPOSER;
+-    }
+ 
+     @Override
+     public void initialize() {
+@@ -59,7 +56,7 @@
+     }
+ 
+     @Override
+-    public boolean isDependenciesSatisfied() {
++    public boolean dependenciesSatisfied() {
+         // Streamline DLSS-G requires Reflex to drive its present pacing. The pairing with
+         // the Streamline Reflex backend is the negotiator's job (see the lowLatencyBinding
+         // in WisteriaFrameGeneration); what is left to check here is that Reflex is not
+@@ -69,18 +66,40 @@
+     }
+ 
+     @Override
+-    public ExternalFrameGenerationDispatchResult prepareExternalFrame(
+-            ExternalFrameGenerationDispatchInput input
++    public FramePresentPlan prepareFrame(
++            FrameResources frameResources,
++            FGConstants constants,
++            FrameGenerationMode mode,
++            int colorWidth,
++            int colorHeight,
++            int colorFormat,
++            int backBufferCount,
++            long commandBuffer
+     ) {
+-        return StreamlineFrameGenerationAdapter.prepareExternalFrame(input);
++        StreamlineTypes.FrameToken token = Streamline.currentFrame();
++        if (token == null
++                || token.nativeHandle == 0L
++                || token.frameIndex != frameResources.logicalFrameIndex()) {
++            StreamlineFrameGenerationAdapter.disable();
++            return FramePresentPlan.none();
++        }
++        boolean prepared = StreamlineFrameGenerationAdapter.prepareFrame(
++                frameResources,
++                constants,
++                token,
++                mode,
++                colorWidth,
++                colorHeight,
++                colorFormat,
++                backBufferCount,
++                commandBuffer
++        );
++        return prepared ? FramePresentPlan.externallyPresented() : FramePresentPlan.none();
+     }
+ 
+     @Override
+-    public void finishExternalFrame(
+-            FrameResources frameResources,
+-            ExternalFrameGenerationDispatchResult result
+-    ) {
+-        StreamlineFrameGenerationAdapter.finishExternalFrame(frameResources, result);
++    public void finishPresent(FrameResources frameResources, boolean frameGenerationActive) {
++        StreamlineFrameGenerationAdapter.finishPresent(frameResources, frameGenerationActive);
+     }
+ 
+     @Override

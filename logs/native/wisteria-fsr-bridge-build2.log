@@ -1,0 +1,5 @@
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/ProjectDllsss/wisteria/native/build/fsr-windows-x64
+[1/2] Building CXX object CMakeFiles\wisteria_fsr_bridge.dir\bridge.cpp.obj
+[2/2] Linking CXX shared library wisteria_fsr_bridge.dll

@@ -1,0 +1,50 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatEventHandler.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatEventHandler.java
+@@ -23,7 +23,6 @@
+ import io.homo.superresolution.api.SuperResolutionAPI;
+ import io.homo.superresolution.api.registry.AlgorithmDescription;
+ import io.homo.superresolution.common.SuperResolution;
+-import io.homo.superresolution.common.config.SuperResolutionConfig;
+ import io.homo.superresolution.common.minecraft.handler.shadercompat.SRShaderCompatData;
+ import io.homo.superresolution.common.minecraft.handler.shadercompat.UniformRegistrar;
+ import io.homo.superresolution.common.minecraft.handler.shadercompat.SRCompatProcessor;
+@@ -44,8 +43,8 @@
+     }
+ 
+     private static void onCompositeRendererRenderAfter(IrisCompositePassRenderingEvent.AfterPassRender event) {
+-        ShaderPipelineDiagnostics.state("AFTER_PASS:" + event.getPassName());
+-        if (!IrisShaderCompatUtils.shouldApplySuperResolutionChanges()) {
++        if (io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat.isRenderingPortal()
++                || !IrisShaderCompatUtils.shouldApplySuperResolutionChanges()) {
+             return;
+         }
+         if (event.getCompositeRenderer() == null) {
+@@ -91,8 +90,8 @@
+     }
+ 
+     private static void onCompositeRendererRenderBefore(IrisCompositePassRenderingEvent.BeforePassRender event) {
+-        ShaderPipelineDiagnostics.state("BEFORE_PASS:" + event.getPassName());
+-        if (!IrisShaderCompatUtils.shouldApplySuperResolutionChanges()) {
++        if (io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat.isRenderingPortal()
++                || !IrisShaderCompatUtils.shouldApplySuperResolutionChanges()) {
+             return;
+         }
+         if (event.getCompositeRenderer() == null) {
+@@ -148,16 +147,7 @@
+     }
+ 
+     private static void onMacroRegistration(MacroRegistrationEvent event) {
+-        if (SuperResolutionConfig.isIrisExtensionEnabledAtStartup()){
+-            event.registerMacro(
+-                    "SR_IRIS_EXT_ENABLED",
+-                    "1"
+-            );
+-            event.registerMacro(
+-                    "SR_IRIS_EXT_VELOCITY",
+-                    "1"
+-            );
+-        }
++
+         SRShaderCompatData config = IrisShaderCompatUtils.getCurrentShaderPackConfig().orElse(null);
+         if (config == null) return;
+         AbstractAlgorithm algorithm = SuperResolutionAPI.getCurrentAlgorithm();

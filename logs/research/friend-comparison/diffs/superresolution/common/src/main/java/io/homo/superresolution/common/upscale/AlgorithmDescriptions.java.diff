@@ -1,0 +1,12 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/upscale/AlgorithmDescriptions.java
++++ friend/common/src/main/java/io/homo/superresolution/common/upscale/AlgorithmDescriptions.java
+@@ -155,7 +155,9 @@
+                                             SystemArchitecture.X86_64,
+                                             OperatingSystemType.WINDOWS))
+                                     .requiredGlExtension("GL_EXT_memory_object")
++                                    .requiredGlExtension("GL_EXT_memory_object_win32")
+                                     .requiredGlExtension("GL_EXT_semaphore")
++                                    .requiredGlExtension("GL_EXT_semaphore_win32")
+                                     .glMajorVersion(4)
+                                     .glMinorVersion(6)
+                                     .isTrue(NativeLibManager::d3d12Available)

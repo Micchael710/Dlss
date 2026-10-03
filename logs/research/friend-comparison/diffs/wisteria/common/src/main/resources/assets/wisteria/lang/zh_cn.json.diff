@@ -1,0 +1,17 @@
+--- ours/common/src/main/resources/assets/wisteria/lang/zh_cn.json
++++ friend/common/src/main/resources/assets/wisteria/lang/zh_cn.json
+@@ -1,7 +1,13 @@
+ {
++  "wisteria.algorithm.frame_generation.fsr": "AMD FSR 帧生成",
+   "wisteria.screen.config.special.dlss_fg.backend.name": "DLSS-FG帧生成后端",
+   "wisteria.screen.config.special.dlss_fg.backend.tooltip": "选择DLSS-FG使用的帧生成后端。自动模式优先Streamline 。Streamline 仅支持Windows。更改此选项后需要重启游戏。",
+   "wisteria.screen.config.special.dlss_fg.backend.auto": "自动",
+   "wisteria.screen.config.special.dlss_fg.backend.streamline": "Streamline",
+-  "wisteria.screen.config.special.dlss_fg.backend.ngx": "NVNGX"
++  "wisteria.screen.config.special.dlss_fg.backend.ngx": "NVNGX",
++  "wisteria.screen.config.special.fsr_fg.backend.name": "FSR 帧生成后端",
++  "wisteria.screen.config.special.fsr_fg.backend.tooltip": "选择FSR帧生成使用的后端。更改此选项后需要重启游戏。",
++  "wisteria.screen.config.special.fsr_fg.backend.auto": "自动",
++  "wisteria.screen.config.special.fsr_fg.backend.vulkan": "Vulkan (原生计算)",
++  "wisteria.screen.config.special.fsr_fg.backend.d3d12": "Direct3D 12 (D3D12)"
+ }

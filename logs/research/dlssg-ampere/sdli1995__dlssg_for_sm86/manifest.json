@@ -1,0 +1,108 @@
+{
+  "repo": "sdli1995/dlssg_for_sm86",
+  "commit": "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+  "tree_truncated": false,
+  "files": [
+    {
+      "path": "310.1/alternatives/README.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/310.1/alternatives/README.md",
+      "sha256": "2cbfaa5dc8b47c042c487534273714460eb259f00bbad49d06aa6941ce08dbfb"
+    },
+    {
+      "path": "README.en.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/README.en.md",
+      "sha256": "ff56347f50b3ff14d2fa8f3d35aac24c97a415758d72eb6f418d43e57730d1a9"
+    },
+    {
+      "path": "README.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/README.md",
+      "sha256": "b0dd100acc69f4908bdaa135f97eb15da474c6ed89d74dfccc2481fbe5771b9c"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.txt",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/THIRD_PARTY_NOTICES.txt",
+      "sha256": "ac3b44ab30a4235edd18feca1ab4f802d57c8d3d0ee4878dc77b81a6b127155f"
+    },
+    {
+      "path": "alternatives/README.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/alternatives/README.md",
+      "sha256": "2cbfaa5dc8b47c042c487534273714460eb259f00bbad49d06aa6941ce08dbfb"
+    },
+    {
+      "path": "archive/0.1.0/README.en.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.1.0/README.en.md",
+      "sha256": "101282be1e64ffc98554d9c77813aba91f81af941cade9526aaa171a104c82de"
+    },
+    {
+      "path": "archive/0.1.0/README.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.1.0/README.md",
+      "sha256": "454eb6ac6e84a119ae0f53b6a67b83e4cbb3ac748fcf9fcfaa065cd7f22a3893"
+    },
+    {
+      "path": "archive/0.1.0/THIRD_PARTY_NOTICES.txt",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.1.0/THIRD_PARTY_NOTICES.txt",
+      "sha256": "71435db5b43c8d5846a1897e1d7dc4e09bb225f4d94abe6a25f7cf6935b92470"
+    },
+    {
+      "path": "archive/0.1.0/dlssg_sm86.ini",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.1.0/dlssg_sm86.ini",
+      "sha256": "77a698310818b90039b72c61331cb50e7fc6692eff220ca9eb14c494998c96b8"
+    },
+    {
+      "path": "archive/0.2.4/README.en.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/README.en.md",
+      "sha256": "d01d4828ca1cbd8bc1dc0d9df0d2ea4099ce63dfa6dbb2075573b354ff49feec"
+    },
+    {
+      "path": "archive/0.2.4/README.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/README.md",
+      "sha256": "b052c66b4f6b0f3493a5c8f39272c0b1361abf44b58d4d1405fd37b7064a7403"
+    },
+    {
+      "path": "archive/0.2.4/THIRD_PARTY_NOTICES.txt",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/THIRD_PARTY_NOTICES.txt",
+      "sha256": "689f743ccf99644abd2992e62e6562b00d0bc07ec508153d3a51f7270e5cc5ee"
+    },
+    {
+      "path": "archive/0.2.4/config/presets/sm86-default.ini",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/config/presets/sm86-default.ini",
+      "sha256": "ddf1e36d952c9fe1626b3321957c49f2268a562fcc9e707de6a61d66be9be32e"
+    },
+    {
+      "path": "archive/0.2.4/config/presets/sm86-performance.ini",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/config/presets/sm86-performance.ini",
+      "sha256": "0a5cbc9940f699618c09d538f057f5598c0daab62cff58827e5644bbabcfec3a"
+    },
+    {
+      "path": "archive/0.2.4/dlssg_sm86.ini",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/dlssg_sm86.ini",
+      "sha256": "fd7f0722194e6e8d8c085327d9826effb411925a69a5e7549d70eff26a9f18b5"
+    },
+    {
+      "path": "archive/0.2.4/docs/NATIVE_INI.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/docs/NATIVE_INI.md",
+      "sha256": "3063fe6b4701c07c60ce32bc5a4552b7fa6e6c0c1bcf6238f178c0879037b805"
+    },
+    {
+      "path": "archive/0.2.4/docs/ROADMAP.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/archive/0.2.4/docs/ROADMAP.md",
+      "sha256": "18f13e89649ea1c8e76113ce3c338b0d280ecd67effb0b2ccb41a5fa8a86bb9d"
+    },
+    {
+      "path": "dlssg_sm86.ini",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/dlssg_sm86.ini",
+      "sha256": "2616857ee29ec61e33c8b52e1b50f4c93cb5339adbb13b73f0ae71a722427a43"
+    },
+    {
+      "path": "docs/INSTALL.en.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/docs/INSTALL.en.md",
+      "sha256": "7320384843f69b0018aa1a4c3ecb3474fa64e1abce8dfeb9dd6623658c590099"
+    },
+    {
+      "path": "docs/INSTALL.md",
+      "url": "https://raw.githubusercontent.com/sdli1995/dlssg_for_sm86/9621db573e07ed54f50c15bbb585ed9a7bdfac28/docs/INSTALL.md",
+      "sha256": "bf1b428a90187ee02472c6469b1f69751333d9dbb32c733bde4cd76f4064d786"
+    }
+  ],
+  "binary_downloads": 0
+}

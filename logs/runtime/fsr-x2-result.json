@@ -1,0 +1,26 @@
+{
+  "AMD_FSR_3_1_4_CONTEXT": "PASS",
+  "AMD_FSR_FG_GENERATED_FRAME": "PASS",
+  "AMD_FSR_FG_X2": "PASS",
+  "generatedFrames": 4912,
+  "realFrames": 4912,
+  "generated_nonreset": 4911,
+  "firstRealFrameId": 1,
+  "lastRealFrameId": 4912,
+  "real_render_fps": 70.0043239180606,
+  "presented_fps": 140.23491133598836,
+  "window_seconds": 70.0467516,
+  "fg_gpu_ms_last_rolling_256": 0.6596385,
+  "gpu_time_scope": "Vulkan timestamps: prepare + FG dispatch + real copy + resource barriers",
+  "pair_order": "previous REAL -> GENERATED(current interval, interpolation .5) -> current REAL",
+  "generated_present_counter": 4912,
+  "all_dispatch_submit_completion_order_checks": "PASS",
+  "new_errors": 0,
+  "visual": "Brief observed world: complete scene, aligned HUD, no black/corrupted frame or abnormal flicker observed",
+  "scope": "854x480 display, 502x282 render, SR1.7, Complementary, Vulkan, wisteria:fsr X2, OptiScaler OFF",
+  "limits": "Not a stress test; no x3..x6, HDR luminance or full object/deformation motion quality validation",
+  "evidence": [
+    "fsr-x2-pass.log",
+    "fsr-x2-world.jpg"
+  ]
+}

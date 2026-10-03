@@ -1,0 +1,18 @@
+{
+  "gl_vk_interop": "PASS",
+  "phase_c": "CLOSED",
+  "world": "New Worldsdfsdf",
+  "shader": "Complementary-SuperResolution-Wisteria.zip",
+  "sr_ratio": 1.7,
+  "presentation": "VULKAN",
+  "fg": "OFF",
+  "visual": "brief inspection: complete scene, aligned HUD, no black/corruption/abnormal flicker observed",
+  "new_sync_errors": 0,
+  "crash": false,
+  "screenshot": "phase-c-generic-vulkan-world.jpg",
+  "log": "phase-c-generic-vulkan-world.log",
+  "jar_sha256": "2003c3d0588650a009dde3ae31f5bab8e282ad674e78a66057d3de2711ae1c3a",
+  "amd_context": "PENDING",
+  "generated_frames": 0,
+  "limits": "No stress test; async QUEUED/DISPATCHING lifecycle remains to validate with the provider. Current FG-OFF route records SEALED→SUBMITTED→REUSABLE."
+}

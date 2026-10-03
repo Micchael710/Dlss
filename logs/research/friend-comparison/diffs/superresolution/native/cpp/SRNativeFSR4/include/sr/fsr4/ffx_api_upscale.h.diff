@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR4/include/sr/fsr4/ffx_api_upscale.h
++++ friend/native/cpp/SRNativeFSR4/include/sr/fsr4/ffx_api_upscale.h
+@@ -17,4 +17,4 @@
+ 
+     #ifdef __cplusplus
+ }
+-#endif
++#endif

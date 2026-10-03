@@ -1,0 +1,72 @@
+[
+  {
+    "name": "0.3.5",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.5",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.5",
+    "commit": {
+      "sha": "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/9621db573e07ed54f50c15bbb585ed9a7bdfac28"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjU"
+  },
+  {
+    "name": "0.3.4",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.4",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.4",
+    "commit": {
+      "sha": "196fcb61ef414992a6bef2d237ff609aab09f0d9",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/196fcb61ef414992a6bef2d237ff609aab09f0d9"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjQ"
+  },
+  {
+    "name": "0.3.3",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.3",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.3",
+    "commit": {
+      "sha": "5e79459c2d521f8c3276ce9ee02342c0e2686982",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/5e79459c2d521f8c3276ce9ee02342c0e2686982"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjM"
+  },
+  {
+    "name": "0.3.2",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.2",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.2",
+    "commit": {
+      "sha": "126d0f768f2293dad6f0da9d3b8fd6961ed88bdc",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/126d0f768f2293dad6f0da9d3b8fd6961ed88bdc"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjI"
+  },
+  {
+    "name": "0.3.1",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.1",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.1",
+    "commit": {
+      "sha": "117faf5c70333b34160f5d21d01c222261cc5af1",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/117faf5c70333b34160f5d21d01c222261cc5af1"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjE"
+  },
+  {
+    "name": "0.3.0",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.3.0",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.3.0",
+    "commit": {
+      "sha": "7880d3d8aa0382f32c5b428639ebbdc3da47aabd",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/7880d3d8aa0382f32c5b428639ebbdc3da47aabd"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4zLjA"
+  },
+  {
+    "name": "0.1.0",
+    "zipball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/zipball/refs/tags/0.1.0",
+    "tarball_url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/tarball/refs/tags/0.1.0",
+    "commit": {
+      "sha": "a4760d4a49d6c791bba88f24378a56c0dd1c57b0",
+      "url": "https://api.github.com/repos/sdli1995/dlssg_for_sm86/commits/a4760d4a49d6c791bba88f24378a56c0dd1c57b0"
+    },
+    "node_id": "REF_kwDOURaORq9yZWZzL3RhZ3MvMC4xLjA"
+  }
+]

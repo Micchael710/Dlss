@@ -1,0 +1,17 @@
+--- ours/common/src/main/resources/assets/wisteria/lang/en_us.json
++++ friend/common/src/main/resources/assets/wisteria/lang/en_us.json
+@@ -1,7 +1,13 @@
+ {
++  "wisteria.algorithm.frame_generation.fsr": "AMD FSR Frame Generation",
+   "wisteria.screen.config.special.dlss_fg.backend.name": "DLSS-FG Frame Generation Backend",
+   "wisteria.screen.config.special.dlss_fg.backend.tooltip": "Select the DLSS-FG backend. Auto follows the registered backend priority. Streamline is Windows-only. Changing this option requires a game restart.",
+   "wisteria.screen.config.special.dlss_fg.backend.auto": "Auto",
+   "wisteria.screen.config.special.dlss_fg.backend.streamline": "Streamline",
+-  "wisteria.screen.config.special.dlss_fg.backend.ngx": "NVNGX"
++  "wisteria.screen.config.special.dlss_fg.backend.ngx": "NVNGX",
++  "wisteria.screen.config.special.fsr_fg.backend.name": "FSR Frame Generation Backend",
++  "wisteria.screen.config.special.fsr_fg.backend.tooltip": "Select the FSR Frame Generation backend. Auto follows the optimal backend for the active presentation pipeline. Changing this option requires a game restart.",
++  "wisteria.screen.config.special.fsr_fg.backend.auto": "Auto",
++  "wisteria.screen.config.special.fsr_fg.backend.vulkan": "Vulkan (Native Compute)",
++  "wisteria.screen.config.special.fsr_fg.backend.d3d12": "Direct3D 12 (D3D12)"
+ }

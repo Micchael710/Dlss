@@ -1,0 +1,44 @@
+# Gradle and IDE output
+.gradle/
+**/build/
+**/out/
+.idea/
+*.iml
+.vscode/
+
+# Compiled binaries and object files
+*.exe
+*.dll
+*.lib
+*.obj
+*.pdb
+*.bin
+*.class
+*.cfr
+*.jar
+**/*.jar
+*.zip
+**/*.zip
+
+
+
+# Local runtime/test data
+run/
+crash-reports/
+
+# Reference binaries and native artifacts are intentionally not versioned
+reference/
+builds/
+buildsdemiamigo/
+
+# Third party and components with proprietary or community binaries
+logs/research/dlssg-ampere/deep/components/
+logs/runtime/dlssg-external-harness/**/component/
+logs/runtime/dlssg-external-harness/**/stock-runtime/
+logs/runtime/dlssg-external-harness/**/bundle-cache/
+experiments/ngx-dlssg-probe/vendor/*.dll
+experiments/ngx-dlssg-probe/vendor/*.lib
+
+# Isolated baseline runtime generated data (keep launcher configuration)
+runtime-baseline/instance/
+

@@ -1,0 +1,20 @@
+--- ours/common/src/main/java/io/homo/superresolution/core/graphics/opengl/texture/GlTexture2D.java
++++ friend/common/src/main/java/io/homo/superresolution/core/graphics/opengl/texture/GlTexture2D.java
+@@ -99,11 +99,6 @@
+ 
+     protected void allocateTextureStorage() {
+         int levels = description.getMipmapSettings().isEnabled() ? (currentMipmapLevel + 1) : 1;
+-        if (Boolean.getBoolean("sr.baselineDiagnostics")) {
+-            io.homo.superresolution.common.SuperResolution.LOGGER.info(
+-                    "SR_DIAG glTextureStorage2D texture={} levels={} internalFormat={} size={}x{} label={}",
+-                    this.id, levels, Integer.toHexString(description.getFormat().gl()), width, height, getDebugLabel());
+-        }
+         Gl.DSA.textureStorage2D(this.id, levels, description.getFormat().gl(), width, height);
+     }
+ 
+@@ -239,4 +234,4 @@
+         this.id = -1;
+ 
+     }
+-}
++}

@@ -1,0 +1,32 @@
+{
+  "complementary_opengl": "PASS",
+  "phase_a": "CLOSED",
+  "vulkan_initialization": "PASS",
+  "presentation_backend": "OPENGL",
+  "skip_init_vulkan": false,
+  "device_selection": "upstream UUID and driver UUID match: NVIDIA RTX 3050 Ti Laptop GPU",
+  "queue_family": 0,
+  "main_index": 0,
+  "fg_index": 1,
+  "present_index": 2,
+  "external_memory_win32": true,
+  "external_semaphore_win32": true,
+  "timeline_semaphore": true,
+  "synchronization2": true,
+  "gl_vk_interop": "BLOCKED_PREFLIGHT_MISSING_REQUIRED_NATIVE",
+  "interop_runtime_attempted": false,
+  "fg_inputs_validation": "PENDING_PHASE_C",
+  "missing_required_native": "libSuperResolutionStreamline+win64+release.dll",
+  "dlls_in_unchanged_jar": [
+    "lib/libSuperResolution+win64+release.dll"
+  ],
+  "jar_sha256": "a0a345486e59968dde0b60812e63e1420223ca12e07d758b2af281cfd72691b9",
+  "rebuilt": false,
+  "amd_dispatch": false,
+  "generated_frames": false,
+  "limits": [
+    "Vulkan API/driver numeric versions and logical device handle are not logged",
+    "No external-image format/usage support test, export/import or semaphore round trip yet",
+    "SDK not configured: VULKAN_SDK unset and usual C:/VulkanSDK, D:/VulkanSDK absent"
+  ]
+}

@@ -1,0 +1,5 @@
+Exception in thread "main" java.lang.RuntimeException: Could not create parent directory for lock file C:\.gradle\wrapper\dists\gradle-9.7.1-bin\1w1c7tv4s851m17nbqdsro2tv\gradle-9.7.1-bin.zip.lck
+	at org.gradle.wrapper.ExclusiveFileAccessManager.access(ExclusiveFileAccessManager.java:43)
+	at org.gradle.wrapper.Install.createDist(Install.java:68)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:102)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:66)

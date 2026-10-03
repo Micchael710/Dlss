@@ -1,0 +1,35 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/GlTextureInfoGetter.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/GlTextureInfoGetter.java
+@@ -23,32 +23,6 @@
+ import static org.lwjgl.opengl.GL11.*;
+ 
+ class GlTextureInfoGetter {
+-    public static int getLevelParameter(int target, int name, int parameter) {
+-        int previous = glGetInteger(target == GL_TEXTURE_2D ? GL_TEXTURE_BINDING_2D : GL_TEXTURE_BINDING_1D);
+-        glBindTexture(target, name);
+-        try {
+-            return glGetTexLevelParameteri(target, 0, parameter);
+-        } finally {
+-            glBindTexture(target, previous);
+-        }
+-    }
+-
+-    /** Resolve legacy unsized depth storage from its actual component precision. */
+-    public static int getSizedInternalFormat(int target, int name) {
+-        int format = getInternalFormat(target, name);
+-        if (format != GL_DEPTH_COMPONENT) return format;
+-        int bits = getLevelParameter(target, name, org.lwjgl.opengl.GL14.GL_TEXTURE_DEPTH_SIZE);
+-        int type = getLevelParameter(target, name, org.lwjgl.opengl.GL30.GL_TEXTURE_DEPTH_TYPE);
+-        int sized = switch (bits) {
+-            case 16 -> org.lwjgl.opengl.GL14.GL_DEPTH_COMPONENT16;
+-            case 24 -> org.lwjgl.opengl.GL14.GL_DEPTH_COMPONENT24;
+-            case 32 -> type == GL_FLOAT ? org.lwjgl.opengl.GL30.GL_DEPTH_COMPONENT32F
+-                    : org.lwjgl.opengl.GL14.GL_DEPTH_COMPONENT32;
+-            default -> throw new IllegalArgumentException("Unsupported unsized depth precision: " + bits);
+-        };
+-        return sized;
+-    }
+-
+     public static int getInternalFormat(int target, int name) {
+         int prevTex = glGetInteger(target == GL11.GL_TEXTURE_2D ? GL_TEXTURE_BINDING_2D : GL_TEXTURE_BINDING_1D);
+         glBindTexture(target, name);

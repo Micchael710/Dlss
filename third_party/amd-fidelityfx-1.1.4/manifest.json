@@ -1,0 +1,145 @@
+{
+  "origin": "https://github.com/GPUOpen-LibrariesAndSDKs/FidelityFX-SDK/releases/download/v1.1.4/FidelityFX-SDK-v1.1.4.zip",
+  "tag": "v1.1.4",
+  "sdk": "1.1.4",
+  "fsr_target": "3.1.4",
+  "archive_sha256": "0216556bfb0e243cec30004a2a98d38f4e3f7406cb7938e3c1b85c758e95d952",
+  "files": {
+    "ffx-api/include/ffx_api/ffx_api.hpp": {
+      "sha256": "42470189c0241feca12eed959cf90ade15806bb9ecc578b65f8c20ca9365c34d",
+      "bytes": 4999
+    },
+    "ffx-api/bin/amd_fidelityfx_vk.dll": {
+      "sha256": "c84ca40421ff5594edfc6553cb89a2d07982b0cadb1a66beb989b2cdedd39197",
+      "bytes": 9320960
+    },
+    "ffx-api/include/ffx_api/dx12/ffx_api_dx12.h": {
+      "sha256": "215804fba316acb81d2c463b6bbce36c53cc63465c15b8c9858554c8111fae24",
+      "bytes": 13073
+    },
+    "ffx-api/include/ffx_api/ffx_api_loader.h": {
+      "sha256": "7be51b7bf1e640b84c0c7f22a9db50a6816debce3755b51224e56c89501659c3",
+      "bytes": 2022
+    },
+    "ffx-api/include/ffx_api/ffx_api.h": {
+      "sha256": "408b4203545e8299ed188fbb1d9ddfe0932b73ea6e8b14fe10edcf1f45771561",
+      "bytes": 7623
+    },
+    "ffx-api/include/ffx_api/ffx_upscale.h": {
+      "sha256": "1155bcdcea9c10e6a95507bc9422ca062a853ac84250f0b09a637a66836b3ac1",
+      "bytes": 13946
+    },
+    "ffx-api/include/ffx_api/ffx_framegeneration.hpp": {
+      "sha256": "30225b7c0596cff734b7c1fc5217d5ac39ccc629bcccb3bcdeeadbcac317fbcd",
+      "bytes": 3872
+    },
+    "ffx-api/include/ffx_api/dx12/ffx_api_dx12.hpp": {
+      "sha256": "ab1cef2b97d2e3fb3294ed59d1e26ecf45d4d0483aa001ced37e7ddbd1be9dd6",
+      "bytes": 4676
+    },
+    "ffx-api/include/ffx_api/ffx_api_types.h": {
+      "sha256": "dee2782813d22047c068e0fb27d1347324f8ce79d280a4672848b3b294cb12fe",
+      "bytes": 14748
+    },
+    "ffx-api/include/ffx_api/vk/ffx_api_vk.h": {
+      "sha256": "a50a8d5ff5689a10a6ce378f2df5569fd880c89ec46e8356aaf35eb40512edd9",
+      "bytes": 15949
+    },
+    "ffx-api/include/ffx_api/ffx_framegeneration.h": {
+      "sha256": "344936dccf49267d4421d1d74dc6db617d0a83c5a9f5991841325e812a38f127",
+      "bytes": 13847
+    },
+    "ffx-api/include/ffx_api/vk/ffx_api_vk.hpp": {
+      "sha256": "b4eab5ed043de7590c786c1904eba7064449ee8a8c9e302eb6363ccc7035172e",
+      "bytes": 4451
+    },
+    "ffx-api/src/backends.cpp": {
+      "sha256": "877d505a1c2b624c56434c4705c341ff78c0c27493c9a26b0ee01c89b2e5e0b8",
+      "bytes": 5184
+    },
+    "ffx-api/include/ffx_api/ffx_upscale.hpp": {
+      "sha256": "6451754c2539a7e991429a7bd8365bb848f51abebad1982715f345989cc0a234",
+      "bytes": 3729
+    },
+    "ffx-api/src/dx12/ffx_provider_framegenerationswapchain_dx12.cpp": {
+      "sha256": "7197f7b769c3649b2868938c5af33ddcb8840b94fd044a4d503850054aa14cfd",
+      "bytes": 8333
+    },
+    "ffx-api/src/ffx_provider_framegeneration.h": {
+      "sha256": "cffe5f18dbfbd5e4955fb7b294c513dd4ccf1619a5e92d5636cb133aa81c6fda",
+      "bytes": 2147
+    },
+    "ffx-api/src/backends.h": {
+      "sha256": "b93c7c41d33e68e50f8bac708780cb42ac9ec53297b15facdf86c7af1f2e7621",
+      "bytes": 1800
+    },
+    "ffx-api/src/ffx_api.cpp": {
+      "sha256": "95c78f444c31cbeb277ec96417132eaa5f1d6720f685f716b4d50662e742dfb8",
+      "bytes": 4917
+    },
+    "ffx-api/src/ffx_provider.cpp": {
+      "sha256": "d391e49656109902978351d9e3920f6d96c3ee4e12e0c98c42cba2f85b4b9ab9",
+      "bytes": 8077
+    },
+    "ffx-api/src/ffx_provider_framegeneration.cpp": {
+      "sha256": "f0e8dda9af646539e7e4239517d9473a08c764e3551c5e8a089623fb94364a08",
+      "bytes": 32348
+    },
+    "ffx-api/src/dx12/ffx_provider_framegenerationswapchain_dx12.h": {
+      "sha256": "aff67518e43815e5afdc3bd079417df7114ecccdec61970daaae5187f170a757",
+      "bytes": 2257
+    },
+    "ffx-api/src/ffx_provider_fsr2.cpp": {
+      "sha256": "2053f1130dffd935d470d96577bcd169fded358adfff1dad1cb1e2972af91f90",
+      "bytes": 13329
+    },
+    "ffx-api/src/ffx_provider.h": {
+      "sha256": "22adce3eda551c1cc9ed7ad83fe82d6028c80ceabac73686acecb0f0d9700f6b",
+      "bytes": 5214
+    },
+    "ffx-api/src/ffx_provider_external.h": {
+      "sha256": "f6e33a6dc357fe00515f7ea73a0b347743719aed9b63db4ce162bdf491526280",
+      "bytes": 3348
+    },
+    "ffx-api/src/ffx_provider_fsr2.h": {
+      "sha256": "6e143e2fac9020a287ef5f9f7fddf0d5acfe718f6adca34070cb8fdc5c4eb4f3",
+      "bytes": 2108
+    },
+    "ffx-api/src/ffx_provider_fsr3upscale.cpp": {
+      "sha256": "fed6c5669e2b684f84259b55229b16872ba7a090ef9a656409bfe15430ffd5b8",
+      "bytes": 18186
+    },
+    "ffx-api/src/ffx_provider_fsr3upscale.h": {
+      "sha256": "3369566775ddf786c232a13ce49fdfaccc7af445f42571a6b5569ec5dbbd1722",
+      "bytes": 2139
+    },
+    "ffx-api/src/resource/resource.h": {
+      "sha256": "34f8646284565a3dab30339677fa96c3b8c556554a28e127f71a2506adcad051",
+      "bytes": 391
+    },
+    "ffx-api/src/validation.cpp": {
+      "sha256": "1479ceef4d30e15b61a3f25c52fe4f7f1485664f9ca90ca4ae1403f323443430",
+      "bytes": 6624
+    },
+    "ffx-api/src/validation.h": {
+      "sha256": "a12e1a62a87597eb47b2aa86d289de61a9a32eb62a63d6c8943f9ff3cacb167a",
+      "bytes": 1612
+    },
+    "ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.cpp": {
+      "sha256": "04fde205afbfe98ff78159411519bcd0c8c3d6079ccb06489998a1fcf79c5c6e",
+      "bytes": 12107
+    },
+    "ffx-api/src/resource/ffx_api_dll.rc": {
+      "sha256": "27f67173f5c62b185369d0981c33f9266b803517b00453f87c5194ad736c826d",
+      "bytes": 5664
+    },
+    "ffx-api/src/vk/ffx_provider_framegenerationswapchain_vk.h": {
+      "sha256": "92ec246cfee93d2ec0fe55ee24564f62cfc962ebb557ffca8085e548c4e84141",
+      "bytes": 2198
+    },
+    "sdk/LICENSE.txt": {
+      "sha256": "c93d509cd69d50698796c9c3274247352736ef122a3197ace2010f0978e21aa6",
+      "bytes": 1136
+    }
+  }
+}

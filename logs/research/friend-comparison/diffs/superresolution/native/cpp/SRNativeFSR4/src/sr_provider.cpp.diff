@@ -1,0 +1,8 @@
+--- ours/native/cpp/SRNativeFSR4/src/sr_provider.cpp
++++ friend/native/cpp/SRNativeFSR4/src/sr_provider.cpp
+@@ -27,4 +27,4 @@
+         *outCount = PROVIDER_COUNT;
+         return (SRReturnCode) SR_RETURN_CODE_OK;
+     }
+-}
++}

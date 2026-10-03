@@ -1,0 +1,12 @@
+--- ours/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatUtils.java
++++ friend/common/src/shadercompat/java/io/homo/superresolution/shadercompat/IrisShaderCompatUtils.java
+@@ -75,6 +75,9 @@
+     }
+ 
+     public static boolean shouldApplySuperResolutionChanges() {
++        if (io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat.isRenderingPortal()) {
++            return false;
++        }
+         return (IrisApi.getInstance().isShaderPackInUse() || ShaderCompatHandler.irisHasShaderPack()) && getCurrentShaderPack().isPresent() &&
+                 ((IrisSRCompatShaderPack) getCurrentShaderPack().get()).superresolution$isSupportsSuperResolution()
+                 && getCurrentConfig().isPresent()

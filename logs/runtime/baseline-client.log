@@ -1,0 +1,143 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :createMinecraftArtifacts UP-TO-DATE
+> Task :compileJava NO-SOURCE
+> Task :processResources NO-SOURCE
+> Task :classes UP-TO-DATE
+> Task :downloadAssets UP-TO-DATE
+> Task :writeClientLegacyClasspath UP-TO-DATE
+> Task :prepareClientRun UP-TO-DATE
+
+> Task :runClient
+WARN StatusConsoleListener Advanced terminal features are not available in this environment
+[15:55:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.219, --assetIndex, 17, --assetsDir, C:\\Users\\micha\\.gradle\\caches\\neoformruntime\\assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.219, --fml.neoFormVersion, 20240808.144430]
+[15:55:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Eclipse Adoptium OpenJDK 64-Bit Server VM 21.0.12.1+1-LTS
+[15:55:03] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 21.0.12.1 by Eclipse Adoptium; OS Windows 11 arch amd64 version 10.0
+[15:55:03] [main/INFO] [ne.ne.fm.lo.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because splash screen is disabled
+[15:55:03] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/<USER_HOME>/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23122!/ Service=ModLauncher Env=CLIENT
+[15:55:04] [main/INFO] [ne.ne.fm.lo.mo.lo.JarInJarDependencyLocator/]: Found 14 dependencies adding them to mods collection
+[15:55:04] [main/INFO] [ne.ne.fm.lo.mo.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Architectury 13.0.6 (architectury)
+		Forgified Fabric API Base 0.4.42+d1308ded19 (fabric_api_base)
+		Forgified Fabric BlockView API (v2) 1.0.10+9afaaf8c19 (fabric_block_view_api_v2)
+		Forgified Fabric Renderer API (v1) 3.4.0+acb05a3919 (fabric_renderer_api_v1)
+		Forgified Fabric Rendering Data Attachment (v1) 0.3.48+73761d2e19 (fabric_rendering_data_attachment_v1)
+		Iris 1.8.8+mc1.21.1 (iris)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.219 (neoforge)
+		Sodium 0.6.13+mc1.21.1 (sodium)
+		Super Resolution 0.9.2-alpha.1+dev.e365f5b3.opengl (super_resolution)
+		Wisteria 0.1.0-alpha.1+1.21.1 (wisteria)
+[15:55:05] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[15:55:05] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[15:55:05] [main/INFO] [cp.mo.mo.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.219, --gameDir, ., --assetsDir, <USER_HOME>\.gradle\caches\neoformruntime\assets, --assetIndex, 17]
+[15:55:05] [main/WARN] [SodiumConfig/]: Mod 'super_resolution' attempted to override option 'mixin.features.render.gui.debug', which doesn't exist, ignoring
+[15:55:06] [main/INFO] [Sodium/]: Loaded configuration file for Sodium: 43 options available, 2 override(s) found
+[15:55:06] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.fantastic.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.vertexformat.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for iris-batched-entity-rendering.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.compat.sodium.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.hack.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution_irisapi.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.shadercompat.mixins.json could not be read. If this is a development environment you can ignore this message
+[15:55:06] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.FogRendererMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[15:55:06] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.ClientLevelMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[15:55:06] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.LevelRendererMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[15:55:06] [main/WARN] [Sodium/]: Force-disabling mixin 'workarounds.context_creation.WindowMixin' as rule 'mixin.workarounds' (added by mods [super_resolution]) disables it and children
+[15:55:06] [main/WARN] [Sodium/]: Force-disabling mixin 'workarounds.event_loop.RenderSystemMixin' as rule 'mixin.workarounds' (added by mods [super_resolution]) disables it and children
+[15:55:06] [main/WARN] [mixin/]: Error loading class: com/portingdeadmods/cable_facades/events/GameClientEvents$2 (java.lang.ClassNotFoundException: com.portingdeadmods.cable_facades.events.GameClientEvents$2)
+[15:55:06] [main/WARN] [mixin/]: Error loading class: com/direwolf20/justdirethings/client/renderers/OurRenderTypes (java.lang.ClassNotFoundException: com.direwolf20.justdirethings.client.renderers.OurRenderTypes)
+[15:55:06] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/entity/RenderFlame (java.lang.ClassNotFoundException: mekanism.client.render.entity.RenderFlame)
+[15:55:06] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/armor/MekaSuitArmor (java.lang.ClassNotFoundException: mekanism.client.render.armor.MekaSuitArmor)
+[15:55:06] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/lib/effect/BillboardingEffectRenderer (java.lang.ClassNotFoundException: mekanism.client.render.lib.effect.BillboardingEffectRenderer)
+[15:55:06] [main/WARN] [mixin/]: Error loading class: blusunrize/immersiveengineering/client/utils/IEGLShaders (java.lang.ClassNotFoundException: blusunrize.immersiveengineering.client.utils.IEGLShaders)
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.iris.GlFramebufferMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.reesessodiumoptions.TabFrameMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.simpleclouds.DefaultPipelineMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.simpleclouds.ShaderSupportPipelineMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.sodium.SodiumOptionsGUIMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.sodiumoptionsapi.SodiumOptionsTabFrameMixin
+[15:55:06] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.iris.DHCompatInternalMixin
+[15:55:07] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[15:55:09] [Datafixer Bootstrap/INFO] [mojang/DataFixerBuilder]: 229 Datafixer optimizations took 609 milliseconds
+[15:55:09] [main/WARN] [os.dr.wi.pe.PerfmonDisabled/]: Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[15:55:15] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[15:55:15] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[15:55:15] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[15:55:15] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[15:55:15] [main/WARN] [minecraft/Commands]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[LWJGL] Version: 3.3.4+7
+	 OS: Windows 11 v10.0
+	JRE: Windows amd64 21.0.12.1
+	JVM: OpenJDK 64-Bit Server VM v21.0.12.1+1-LTS by Eclipse Adoptium
+[LWJGL] Loading JNI library: lwjgl
+	Module: org.lwjgl
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl.dll
+[LWJGL] Loading library: jemalloc
+	Module: org.lwjgl.jemalloc
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\jemalloc.dll
+[LWJGL] MemoryUtil allocator: JEmallocAllocator
+[15:55:16] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/D:/ProjectDllsss/runtime-baseline/build/moddev/artifacts/neoforge-21.1.219.jar%23172!/assets/.mcassetsroot' uses unexpected schema
+[15:55:16] [Render thread/WARN] [minecraft/VanillaPackResourcesBuilder]: Assets URL 'union:/D:/ProjectDllsss/runtime-baseline/build/moddev/artifacts/neoforge-21.1.219.jar%23172!/data/.mcassetsroot' uses unexpected schema
+[15:55:16] [Render thread/INFO] [mojang/YggdrasilAuthenticationService]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[LWJGL] Loading library: glfw
+	Module: org.lwjgl.glfw
+[15:55:16] [Render thread/INFO] [minecraft/Minecraft]: Setting user: Dev
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\glfw.dll
+[15:55:16] [Render thread/INFO] [minecraft/Minecraft]: Backend library: LWJGL version 3.3.4+7
+[LWJGL] Java 9 check intrinsics enabled
+[LWJGL] Closure Registry: simple
+[15:55:17] [Render thread/INFO] [SuperResolution/GraphicsCapabilities/]: Added supported OpenGL version 4.6
+[15:55:17] [Render thread/INFO] [SuperResolution/GraphicsCapabilities/]: Highest supported OpenGL version 4.6
+[15:55:17] [Render thread/INFO] [SRConfigAPI/]: Config file not found, creating new default at: D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution\config.toml
+[LWJGL] Loading JNI library: lwjgl_opengl
+	Module: org.lwjgl.opengl
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_opengl.dll
+[LWJGL] Loading library: opengl32
+	Module: org.lwjgl.opengl
+	opengl32.dll not found in org.lwjgl.librarypath=<USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\opengl32.dll
+[15:55:17] [ForkJoinPool.commonPool-worker-2/WARN] [Iris/]: [Iris Update Check] This version doesn't have an update index, skipping.
+[LWJGL] Java 10 multiplyHigh enabled
+[LWJGL] Loading JNI library: lwjgl_stb
+	Module: org.lwjgl.stb
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_stb.dll
+[LWJGL] Java 9 text decoding enabled
+[15:55:19] [Render thread/INFO] [Iris/]: Debug functionality is disabled.
+[15:55:19] [Render thread/INFO] [Iris/]: OpenGL 4.5 detected, enabling DSA.
+[15:55:19] [Render thread/INFO] [Iris/]: Shaders are disabled because no valid shaderpack is selected
+[15:55:19] [modloading-worker-0/INFO] [Wisteria/]: Wisteria initializing
+[15:55:19] [modloading-worker-0/INFO] [ne.ne.ne.co.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.219, for MC 1.21.1
+[LWJGL] Loading library: OpenAL
+	Module: org.lwjgl.openal
+	Extracting: /<USER_HOME>/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-openal/3.3.4/c4de8af803aacda71044418095a71cd63b569a15/lwjgl-openal-3.3.4-natives-windows.jar%23160!/windows/x64/org/lwjgl/openal/OpenAL.dll
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\OpenAL.dll
+[15:55:21] [Render thread/INFO] [Iris/]: Hardware information:
+[15:55:21] [Render thread/INFO] [Iris/]: CPU: 12x AMD Ryzen 5 5600H with Radeon Graphics 
+[15:55:21] [Render thread/INFO] [Iris/]: GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2 (Supports OpenGL 4.6.0 NVIDIA 596.49)
+[15:55:21] [Render thread/INFO] [Iris/]: OS: Windows 11 (10.0)
+[15:55:21] [Render thread/INFO] [ne.ne.ne.ga.GameTestHooks/]: Enabled Gametest Namespaces: []
+[15:55:22] [Render thread/INFO] [SuperResolution/NativeLib/]: Extracting native dependencies
+[15:55:22] [Render thread/ERROR] [SuperResolution/NativeLib/]: Failed to extract required dependency lib\libSuperResolution+win64+release.dll: resource not found
+[15:55:22] [Render thread/ERROR] [SuperResolution/NativeLib/]: Failed to extract required dependency libSuperResolution+win64+release.dll
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionD3D12+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionD3D12+win64+release.dll; skipping it
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionFSR+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionFSR+win64+release.dll; skipping it
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionFSR4+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionFSR4+win64+release.dll; skipping it
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionXeSS+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionXeSS+win64+release.dll; skipping it
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionNGX+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionNGX+win64+release.dll; skipping it
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionStreamline+win64+release.dll: resource not found
+[15:55:22] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionStreamline+win64+release.dll; skipping it
+[15:55:22] [Render thread/ERROR] [SuperResolution/NativeLib/]: Required dependency extraction failed: libSuperResolution+win64+release.dll
+[LWJGL] Loading JNI library: lwjgl_tinyfd
+	Module: org.lwjgl.tinyfd
+	Loaded from org.lwjgl.librarypath: <USER_HOME>\AppData\Local\Temp\lwjgl_TEST_USER\3.3.4+7\x64\lwjgl_tinyfd.dll

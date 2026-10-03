@@ -1,0 +1,31 @@
+--- ours/common/src/main/java/io/homo/superresolution/common/mixin/presentation/v26_1_x/VulkanPresentationMinecraftCaptureMixin.java
++++ friend/common/src/main/java/io/homo/superresolution/common/mixin/presentation/v26_1_x/VulkanPresentationMinecraftCaptureMixin.java
+@@ -20,6 +20,7 @@
+ 
+ #if MC_VER >= MC_26_1 && MC_VER < MC_26_2
+ import com.mojang.blaze3d.pipeline.RenderTarget;
++import io.homo.superresolution.common.compat.immersiveportals.ImmersivePortalsCompat;
+ import io.homo.superresolution.common.presentation.PresentationBackendManager;
+ import net.minecraft.client.DeltaTracker;
+ import net.minecraft.client.Minecraft;
+@@ -43,6 +44,9 @@
+     private void super_resolution$renderAndPresent(
+             boolean advanceGameTime, CallbackInfo ci
+     ) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            return;
++        }
+         if (PresentationBackendManager.isVulkanPresentationRequested()) {
+             PresentationBackendManager.endMinecraftFrame();
+         }
+@@ -56,6 +60,10 @@
+             )
+     )
+     private void super_resolution$skipOpenGlBlit(RenderTarget target) {
++        if (ImmersivePortalsCompat.isRenderingPortal()) {
++            target.blitToScreen();
++            return;
++        }
+         if (!PresentationBackendManager.isVulkanPresentationRequested()) {
+             target.blitToScreen();
+         }
