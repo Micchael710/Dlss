@@ -1,0 +1,13 @@
+{
+  "build": "PASS",
+  "cpu_tests": "PASS",
+  "gpu_runs_before_this_preflight": 0,
+  "source_sha256": {
+    "experiments/dlssg-external-harness/harness.cpp": "33d14b8880330e53bcf4ae140f0b72099dc53a46cea36f790cd766a7bd1a9dea",
+    "experiments/dlssg-external-harness/d3d12_worker.inc": "eb46c4cee116a47006ababb344d1646da7b0620ccb830421a4c9408fed460c0a",
+    "experiments/dlssg-external-harness/session_setup.inc": "00f85e30af494412259ab26297c591b32703a4b15131d3db0b73b735f2d1579e"
+  },
+  "compiled_executable_sha256": "b64b08d9e005190d22025dc72c9fa49214c67a2a7973b0f83f2e5273ed3cdea2",
+  "component_sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+  "runtime_sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82"
+}

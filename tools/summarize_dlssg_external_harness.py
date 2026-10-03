@@ -4,7 +4,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from dlssg_log_evidence import classify_vulkan_callback
+from dlssg_log_evidence import classify_vulkan_callback, empty_kernel_diagnostic
 
 out = Path(sys.argv[1]).resolve()
 review_only = '--review' in sys.argv[2:]
@@ -61,6 +61,8 @@ else:
     result['backend_install_observation'] = 'NOT_OBSERVED' if not records else 'LOGGED_NO_CONFIRMED_ACTIVE_INSTALL'
 
 kernels = [(item, ref) for item, ref in records if event(item) == 'kernel_create']
+result['diagnostic_kernel_evidence'] = [ref for item, ref in kernels if empty_kernel_diagnostic(item)]
+kernels = [(item, ref) for item, ref in kernels if not empty_kernel_diagnostic(item)]
 result['kernel_evidence'] = [ref for _, ref in kernels]
 result[prefix + '_kernel_create'] = 'NOT_OBSERVED'
 feature_attempted = worker.get(prefix + '_createfeature', 'NOT_RUN') != 'NOT_RUN'
@@ -138,6 +140,8 @@ for label in ('A', 'B', 'G1', 'sentinel'):
 result['canonical_readback_sha256'] = hashes
 
 pass_conditions = {
+    'external_loader': worker.get('external_loader_ready') == 'LOADED',
+    'backend_active': bool(install_status and active_install),
     'fixture_roundtrip': worker.get('fixture_readback_valid') is True,
     'ngx_init': worker.get('ngx_init') == 'PASS',
     'create': worker.get(prefix + '_createfeature') == 'PASS',
@@ -158,6 +162,10 @@ pass_conditions = {
 result['pass_conditions'] = pass_conditions
 result['dlssg_sm86_' + prefix + '_x2'] = 'PASS' if all(pass_conditions.values()) else 'FAIL'
 result['generated_count_confirmed'] = 1 if all(pass_conditions.values()) else 0
+if api == 'D3D12' and all(pass_conditions.values()):
+    result['need_d3d12_sidecar'] = 'YES_FOR_FUTURE_VULKAN_INTEGRATION'
+    result['sidecar_architecture_justified'] = True
+    result['sidecar_reason'] = 'D3D12 offscreen x2 validated; design GPU shared resources/fences next, no bridge implemented'
 result['capabilities_are_generation_proof'] = False
 observed_modules = worker.get('modules_final') or worker.get('modules_after_create') or worker.get('modules_after_ngx_init', [])
 result['effective_runtime_candidates'] = [p for p in observed_modules

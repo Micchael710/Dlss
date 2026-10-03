@@ -2,6 +2,16 @@
 import re
 
 
+def empty_kernel_diagnostic(item):
+    """No image, entry or shader: retain as diagnostic, not named FG kernel proof.
+
+    Backend feature IDs are local IDs, not NVSDK_NGX_Feature enum values.
+    No interpretation of private status codes is made here.
+    """
+    return (item.get('bytes') == 0 and item.get('entry') == '' and
+            item.get('routed') is False and item.get('shader') == '0x0')
+
+
 def classify_vulkan_callback(lines, file):
     architecture = []
     failures = []

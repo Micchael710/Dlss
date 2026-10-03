@@ -1,0 +1,417 @@
+{"timestamp_ns":64491250062800,"pid":1402248,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-222208-087\\component\\dlssg_sm86.dll"}
+{"timestamp_ns":64491263414100,"pid":1402248,"type":"external_load_complete","detail":"00007FFCAB880000"}
+{"timestamp_ns":64491308715700,"pid":1402248,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":64491308959700,"pid":1402248,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":64491308986800,"pid":1402248,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":64491309006500,"pid":1402248,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 luid=4c29010000000000"}
+{"timestamp_ns":64491572386600,"pid":1402248,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":64491619311200,"pid":1402248,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":64491619367800,"pid":1402248,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":64491620688300,"pid":1402248,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":64491620725600,"pid":1402248,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":64491620763300,"pid":1402248,"type":"d3d12_result","detail":"CreateFence=0x00000000"}
+{"timestamp_ns":64493628642600,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493629933700,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493629968700,"pid":1402248,"type":"resource","detail":"A resource=000002317F8111A0 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493629988000,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493630830400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493630861500,"pid":1402248,"type":"resource","detail":"B resource=0000023108436080 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493630880700,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493631624600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493631650800,"pid":1402248,"type":"resource","detail":"G1 resource=0000023108EB6080 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493631667600,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493632358800,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493632386900,"pid":1402248,"type":"resource","detail":"warmup resource=00000231089D8040 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493632409000,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493633308600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493633338600,"pid":1402248,"type":"resource","detail":"depth resource=000002317F599BE0 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493633362200,"pid":1402248,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":64493634393800,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":64493634423700,"pid":1402248,"type":"resource","detail":"motion resource=000002317F59A820 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":64493649904100,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493649995800,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64493651374000,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493651487200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493662516300,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493665285400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493665328500,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=1 commandList=000002317F38A160"}
+{"timestamp_ns":64493665347300,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493670393400,"pid":1402248,"type":"completion","detail":"fixture upload value=1"}
+{"timestamp_ns":64493679415000,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493679482300,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64493679938400,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493680027100,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493682589500,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493682953100,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493682976500,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=2 commandList=000002317F38A160"}
+{"timestamp_ns":64493682997500,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493689327500,"pid":1402248,"type":"completion","detail":"fixture upload value=2"}
+{"timestamp_ns":64493696601100,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493696663300,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64493697097800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493697198500,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493699162800,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493699556100,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493699578200,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=3 commandList=000002317F38A160"}
+{"timestamp_ns":64493699595400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493705842900,"pid":1402248,"type":"completion","detail":"fixture upload value=3"}
+{"timestamp_ns":64493713420700,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493713496700,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64493714143800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493714238000,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493716300900,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493716559900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493716578100,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=4 commandList=000002317F38A160"}
+{"timestamp_ns":64493716595900,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493723289800,"pid":1402248,"type":"completion","detail":"fixture upload value=4"}
+{"timestamp_ns":64493735376200,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493735450300,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64493736395900,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493736495500,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493738567200,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493738864900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493738891800,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=5 commandList=000002317F38A160"}
+{"timestamp_ns":64493738910400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493745203300,"pid":1402248,"type":"completion","detail":"fixture upload value=5"}
+{"timestamp_ns":64493751420900,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493751584600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493751677300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493753814200,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493754166600,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493754184800,"pid":1402248,"type":"submit","detail":"A readback fenceValue=6 commandList=000002317F38A160"}
+{"timestamp_ns":64493754200800,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493759721500,"pid":1402248,"type":"completion","detail":"A readback value=6"}
+{"timestamp_ns":64493763591600,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64493821473500,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493821539100,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493821633400,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493823538000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493823809600,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493823829300,"pid":1402248,"type":"submit","detail":"B readback fenceValue=7 commandList=000002317F38A160"}
+{"timestamp_ns":64493823852900,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493829471700,"pid":1402248,"type":"completion","detail":"B readback value=7"}
+{"timestamp_ns":64493833984300,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64493882347500,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493882388800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493882448900,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493884226900,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493884480700,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493884499700,"pid":1402248,"type":"submit","detail":"depth readback fenceValue=8 commandList=000002317F38A160"}
+{"timestamp_ns":64493884517700,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493889267700,"pid":1402248,"type":"completion","detail":"depth readback value=8"}
+{"timestamp_ns":64493893509200,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64493903200100,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493903257600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493903344300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493905965500,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493906162300,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493906180500,"pid":1402248,"type":"submit","detail":"motion readback fenceValue=9 commandList=000002317F38A160"}
+{"timestamp_ns":64493906298400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493913523600,"pid":1402248,"type":"completion","detail":"motion readback value=9"}
+{"timestamp_ns":64493921230600,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64493934501900,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64493934552200,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64493934647300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64493937149100,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64493937352400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64493937370900,"pid":1402248,"type":"submit","detail":"sentinel readback fenceValue=10 commandList=000002317F38A160"}
+{"timestamp_ns":64493937389000,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64493942931600,"pid":1402248,"type":"completion","detail":"sentinel readback value=10"}
+{"timestamp_ns":64493947828200,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64494007812600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494007911800,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494007928700,"pid":1402248,"type":"create_begin","detail":"000002317F38A160"}
+{"timestamp_ns":64494180774300,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494180875100,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494180898000,"pid":1402248,"type":"submit","detail":"CreateFeature fenceValue=11 commandList=000002317F38A160"}
+{"timestamp_ns":64494180929500,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494188209200,"pid":1402248,"type":"completion","detail":"CreateFeature value=11"}
+{"timestamp_ns":64494202880000,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494213185300,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494213417000,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494214110600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494214199100,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494216210100,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494225375800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494225428700,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=12 commandList=000002317F38A160"}
+{"timestamp_ns":64494225453400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494232696000,"pid":1402248,"type":"completion","detail":"fixture upload value=12"}
+{"timestamp_ns":64494244216500,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494244277800,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494245081300,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494245217200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494247773300,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494247983700,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494248013100,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=13 commandList=000002317F38A160"}
+{"timestamp_ns":64494248034400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494254103500,"pid":1402248,"type":"completion","detail":"fixture upload value=13"}
+{"timestamp_ns":64494272917600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494272981100,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494274019400,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494274136100,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494276096600,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494276479900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494276511700,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=14 commandList=000002317F38A160"}
+{"timestamp_ns":64494276533400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494284264600,"pid":1402248,"type":"completion","detail":"fixture upload value=14"}
+{"timestamp_ns":64494293340800,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494293422800,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494293918100,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494294010700,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494297431400,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494297711400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494297737100,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=15 commandList=000002317F38A160"}
+{"timestamp_ns":64494297755200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494304870000,"pid":1402248,"type":"completion","detail":"fixture upload value=15"}
+{"timestamp_ns":64494308585600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494308645000,"pid":1402248,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":64494308679700,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494308781700,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494311176100,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494311396300,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494311413500,"pid":1402248,"type":"submit","detail":"disable sentinel upload fenceValue=16 commandList=000002317F38A160"}
+{"timestamp_ns":64494311435200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494317346100,"pid":1402248,"type":"completion","detail":"disable sentinel upload value=16"}
+{"timestamp_ns":64494320210800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494320364300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494322037400,"pid":1402248,"type":"evaluate_begin","detail":"realFrameId=0 count=1 index=1 reset=true timestamp_ms=0.000000 deltaMs=16.666667 outputSlot=0 resource=0000023108EB6080"}
+{"timestamp_ns":64494359790800,"pid":1402248,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":64494364598200,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494367030300,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494367066100,"pid":1402248,"type":"submit","detail":"warmup fenceValue=17 commandList=000002317F38A160"}
+{"timestamp_ns":64494367083200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494373410600,"pid":1402248,"type":"completion","detail":"warmup value=17"}
+{"timestamp_ns":64494385911300,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494385983700,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494386394300,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494386575000,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494388082300,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494388383300,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494388402800,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=18 commandList=000002317F38A160"}
+{"timestamp_ns":64494388421600,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494393364500,"pid":1402248,"type":"completion","detail":"fixture upload value=18"}
+{"timestamp_ns":64494409652400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494409705700,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494410127700,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494410198400,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494412180400,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494412425400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494412445200,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=19 commandList=000002317F38A160"}
+{"timestamp_ns":64494412467100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494417701200,"pid":1402248,"type":"completion","detail":"fixture upload value=19"}
+{"timestamp_ns":64494433077300,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494433137000,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494433971300,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494434052700,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494435652000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494435871600,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494435893900,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=20 commandList=000002317F38A160"}
+{"timestamp_ns":64494435912000,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494442307900,"pid":1402248,"type":"completion","detail":"fixture upload value=20"}
+{"timestamp_ns":64494449692100,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494449749900,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494450206100,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494450299800,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494452287900,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494452847800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494452971000,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=21 commandList=000002317F38A160"}
+{"timestamp_ns":64494453010600,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494458761200,"pid":1402248,"type":"completion","detail":"fixture upload value=21"}
+{"timestamp_ns":64494462899300,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494462950500,"pid":1402248,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":64494462980900,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494463068500,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494465205000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494465535700,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494465558800,"pid":1402248,"type":"submit","detail":"disable sentinel upload fenceValue=22 commandList=000002317F38A160"}
+{"timestamp_ns":64494465582200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494470863200,"pid":1402248,"type":"completion","detail":"disable sentinel upload value=22"}
+{"timestamp_ns":64494474159500,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494474360600,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494475918800,"pid":1402248,"type":"evaluate_begin","detail":"realFrameId=1 count=1 index=1 reset=false timestamp_ms=16.666667 deltaMs=16.666667 outputSlot=0 resource=0000023108EB6080"}
+{"timestamp_ns":64494481213200,"pid":1402248,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":64494485581700,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494485984900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494486002600,"pid":1402248,"type":"submit","detail":"warmup fenceValue=23 commandList=000002317F38A160"}
+{"timestamp_ns":64494486020100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494494525800,"pid":1402248,"type":"completion","detail":"warmup value=23"}
+{"timestamp_ns":64494508660400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494508732100,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494509202500,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494509371400,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494511245400,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494511482300,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494511497900,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=24 commandList=000002317F38A160"}
+{"timestamp_ns":64494511513900,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494516393100,"pid":1402248,"type":"completion","detail":"fixture upload value=24"}
+{"timestamp_ns":64494534129000,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494534194200,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494534746500,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494534838300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494536796500,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494537070800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494537091500,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=25 commandList=000002317F38A160"}
+{"timestamp_ns":64494537121600,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494543166800,"pid":1402248,"type":"completion","detail":"fixture upload value=25"}
+{"timestamp_ns":64494573930200,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494573993400,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494574849600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494574933700,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494576386500,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494576609000,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494576628600,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=26 commandList=000002317F38A160"}
+{"timestamp_ns":64494576649800,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494582746300,"pid":1402248,"type":"completion","detail":"fixture upload value=26"}
+{"timestamp_ns":64494595410000,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494595471800,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494595877300,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494595961200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494597774700,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494598005800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494598024400,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=27 commandList=000002317F38A160"}
+{"timestamp_ns":64494598044200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494603604100,"pid":1402248,"type":"completion","detail":"fixture upload value=27"}
+{"timestamp_ns":64494607219700,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494607267300,"pid":1402248,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":64494607292800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494607361400,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494608890600,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494609196400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494609214000,"pid":1402248,"type":"submit","detail":"disable sentinel upload fenceValue=28 commandList=000002317F38A160"}
+{"timestamp_ns":64494609234500,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494613805200,"pid":1402248,"type":"completion","detail":"disable sentinel upload value=28"}
+{"timestamp_ns":64494617191100,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494617300900,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494619207900,"pid":1402248,"type":"evaluate_begin","detail":"realFrameId=2 count=1 index=1 reset=false timestamp_ms=33.333334 deltaMs=16.666667 outputSlot=0 resource=0000023108EB6080"}
+{"timestamp_ns":64494623375400,"pid":1402248,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":64494627854800,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494628269700,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494628292800,"pid":1402248,"type":"submit","detail":"warmup fenceValue=29 commandList=000002317F38A160"}
+{"timestamp_ns":64494628368100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494637571400,"pid":1402248,"type":"completion","detail":"warmup value=29"}
+{"timestamp_ns":64494649370000,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494649444200,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494649962400,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494650130500,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494651896600,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494652176900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494652192600,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=30 commandList=000002317F38A160"}
+{"timestamp_ns":64494652209100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494671478300,"pid":1402248,"type":"completion","detail":"fixture upload value=30"}
+{"timestamp_ns":64494687814400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494687879300,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494688633900,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494688712200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494690785600,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494691029900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494691045000,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=31 commandList=000002317F38A160"}
+{"timestamp_ns":64494691062500,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494697279500,"pid":1402248,"type":"completion","detail":"fixture upload value=31"}
+{"timestamp_ns":64494705197100,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494705249000,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494705739600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494705831300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494707653700,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494707871800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494707887200,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=32 commandList=000002317F38A160"}
+{"timestamp_ns":64494707910500,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494713706600,"pid":1402248,"type":"completion","detail":"fixture upload value=32"}
+{"timestamp_ns":64494717350400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494717417700,"pid":1402248,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":64494717447100,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494717530800,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494719026200,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494719231500,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494719246700,"pid":1402248,"type":"submit","detail":"disable sentinel upload fenceValue=33 commandList=000002317F38A160"}
+{"timestamp_ns":64494719271300,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494729898700,"pid":1402248,"type":"completion","detail":"disable sentinel upload value=33"}
+{"timestamp_ns":64494733664600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494733776200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494735385500,"pid":1402248,"type":"evaluate_begin","detail":"realFrameId=3 count=1 index=1 reset=false timestamp_ms=50.000001 deltaMs=16.666667 outputSlot=0 resource=0000023108EB6080"}
+{"timestamp_ns":64494738524400,"pid":1402248,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":64494743241400,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494743590000,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494743606500,"pid":1402248,"type":"submit","detail":"warmup fenceValue=34 commandList=000002317F38A160"}
+{"timestamp_ns":64494743623400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494753765200,"pid":1402248,"type":"completion","detail":"warmup value=34"}
+{"timestamp_ns":64494769508600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494769571700,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494770049000,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494770212200,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494771936500,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494772239700,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494772261200,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=35 commandList=000002317F38A160"}
+{"timestamp_ns":64494772278900,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494778450500,"pid":1402248,"type":"completion","detail":"fixture upload value=35"}
+{"timestamp_ns":64494795649400,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494795712300,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494796654300,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494796766300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494798559300,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494798760600,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494798781000,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=36 commandList=000002317F38A160"}
+{"timestamp_ns":64494798801300,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494804808300,"pid":1402248,"type":"completion","detail":"fixture upload value=36"}
+{"timestamp_ns":64494816934700,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494817058500,"pid":1402248,"type":"d3d12_result","detail":"upload Map=0x00000000"}
+{"timestamp_ns":64494817638800,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494817788300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494819566100,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494819840100,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494819861700,"pid":1402248,"type":"submit","detail":"fixture upload fenceValue=37 commandList=000002317F38A160"}
+{"timestamp_ns":64494819881400,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494825814100,"pid":1402248,"type":"completion","detail":"fixture upload value=37"}
+{"timestamp_ns":64494829677900,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494829744000,"pid":1402248,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":64494829778700,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494829889800,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494838415900,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494838630800,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494838649600,"pid":1402248,"type":"submit","detail":"disable sentinel upload fenceValue=38 commandList=000002317F38A160"}
+{"timestamp_ns":64494838672600,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494843523800,"pid":1402248,"type":"completion","detail":"disable sentinel upload value=38"}
+{"timestamp_ns":64494846794500,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494846900900,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494848421500,"pid":1402248,"type":"evaluate_begin","detail":"realFrameId=4 count=1 index=1 reset=false timestamp_ms=66.666668 deltaMs=16.666667 outputSlot=0 resource=0000023108EB6080"}
+{"timestamp_ns":64494852006900,"pid":1402248,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":64494856653000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494857057000,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494857077100,"pid":1402248,"type":"submit","detail":"x2 target fenceValue=39 commandList=000002317F38A160"}
+{"timestamp_ns":64494857095200,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494872818900,"pid":1402248,"type":"completion","detail":"x2 target value=39"}
+{"timestamp_ns":64494888929600,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494888984600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494889143000,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494890799800,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494891120400,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494891140300,"pid":1402248,"type":"submit","detail":"disable readback fenceValue=40 commandList=000002317F38A160"}
+{"timestamp_ns":64494891160300,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494895786600,"pid":1402248,"type":"completion","detail":"disable readback value=40"}
+{"timestamp_ns":64494899151400,"pid":1402248,"type":"d3d12_result","detail":"disable readback Map=0x00000000"}
+{"timestamp_ns":64494902560200,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494902616700,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494902701700,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494904566100,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494904823900,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494904845300,"pid":1402248,"type":"submit","detail":"G1 readback fenceValue=41 commandList=000002317F38A160"}
+{"timestamp_ns":64494904865100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494910675700,"pid":1402248,"type":"completion","detail":"G1 readback value=41"}
+{"timestamp_ns":64494915801100,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64494986800200,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64494986846900,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64494986948300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64494988866000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64494989152000,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64494989172700,"pid":1402248,"type":"submit","detail":"A_after readback fenceValue=42 commandList=000002317F38A160"}
+{"timestamp_ns":64494989192100,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64494994646100,"pid":1402248,"type":"completion","detail":"A_after readback value=42"}
+{"timestamp_ns":64494999368000,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}
+{"timestamp_ns":64495052762900,"pid":1402248,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":64495052849600,"pid":1402248,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":64495052972300,"pid":1402248,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":64495054837000,"pid":1402248,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":64495055090100,"pid":1402248,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":64495055108700,"pid":1402248,"type":"submit","detail":"B_after readback fenceValue=43 commandList=000002317F38A160"}
+{"timestamp_ns":64495055177600,"pid":1402248,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":64495061269900,"pid":1402248,"type":"completion","detail":"B_after readback value=43"}
+{"timestamp_ns":64495065835700,"pid":1402248,"type":"d3d12_result","detail":"readback Map=0x00000000"}

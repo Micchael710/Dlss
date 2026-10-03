@@ -35,6 +35,9 @@ logs/research/dlssg-ampere/deep/components/
 logs/runtime/dlssg-external-harness/**/component/
 logs/runtime/dlssg-external-harness/**/stock-runtime/
 logs/runtime/dlssg-external-harness/**/bundle-cache/
+# Local fixture previews; publish only textual evidence and hashes for new runs.
+logs/runtime/dlssg-external-harness/**/*.png
+logs/runtime/dlssg-external-harness/**/*.ppm
 experiments/ngx-dlssg-probe/vendor/*.dll
 experiments/ngx-dlssg-probe/vendor/*.lib
 

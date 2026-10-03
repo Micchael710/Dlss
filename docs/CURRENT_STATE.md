@@ -1,4 +1,20 @@
-## Estado vigente — Vulkan revisado y D3D12 offscreen intentado, 2026-10-03
+## Estado vigente — D3D12 DLSS-G SM86 x2 offscreen PASS, 2026-10-03
+
+Una sola ejecución nueva20261003-222208-087, RTX3050Ti LUID4c29010000000000,
+driver596.49, sdli0.3.5/runtime310.9.1 identificados. Loader/backend/NGXInit/
+fixture/CreateFeature/Evaluate/completion/output temporal PASS. G1 distinto
+A/B/sentinel; generated_count_confirmed1. Device removedfalse/reason0,
+validation_errors0. Capabilities available1/max1 no son prueba de FG.
+Kernels reales PASS_OBSERVED; diagnósticos vacíos separados en reviewed-result,
+result.json original conservado. Recorder CPU tests PASS; sin otra prueba GPU.
+DIRECT_VULKAN_X2=FAIL_AT_KERNEL_CREATION histórico; VULKAN_RETESTED=NO.
+SIDECAR_ARCHITECTURE_JUSTIFIED=YES para diseño futuro GPU shared memory/fences
+Vulkan↔D3D12, sin traducción completa ni RAM roundtrip. Bridge NOT_IMPLEMENTED.
+No Minecraft, x3–x6 ni modificación AMD/SR/Wisteria/PresentWorker/baseline.
+Detalle [DLSSG_D3D12_X2_RESULT.md](DLSSG_D3D12_X2_RESULT.md).
+Fase terminada: evidencia/documentación, commit/push autorizado usuario y parar.
+
+## Estado histórico — Vulkan revisado y D3D12 offscreen intentado, 2026-10-03
 
 HARNESS BUILD=PASS; loader=LOADED; backend=OBSERVED ACTIVE; NGX Vulkan Init=PASS.
 Run Vulkan20261003-205509-501 preservado: ARCH_GATE=PASS (0x170>=0x170), fixturePASS.

@@ -394,3 +394,23 @@ no se afirma que ya se hayan desconectado completamente.
 - .gitignore mejorado para caches/transitorios y wrapper JAR local designorado upstream.
   Commit/push sólo fuentes/documentos/evidencia al repositorio del usuario.
 - D3D12 x2 pendiente de demostrar; sidecar únicamente justificado para evaluación.
+
+## 2026-10-03 — única prueba posterior al fix, D3D12 x2 offscreen PASS
+
+- Base aacc6d26d5eb85e363d7bd4c946d2cda641dbbc0, main limpio al comenzar.
+- Preflight: consulta pública final device removal y gates loader/backend añadidos
+  por omisiones concretas; generación/recorder/arquitectura intactos. Build y CPU
+  self-tests PASS, lock/recovery incluido, nuevo provenance CPU conservado.
+- Único run20261003-222208-087: fixture/Create/Evaluate count1-index1/completion
+  fence39/output temporal PASS. G1 b5261cc3c32720a2e4178611c9cb25d5cb964e4b554eeb6b449ec311f7993a3e,
+  distinto A/B/sentinel, centro intermedio, generated_count_confirmed1.
+- Device removedfalse/0, validation_errors0, worker exit0. Capabilities available/
+  max1 reportadas potencialmente intervenidas, nunca prueba de generación.
+- Clasificador CPU corregido separando seis diagnósticos vacíos y kernels reales:
+  PASS_OBSERVED. Result original conservado, reviewed-result separado. IDs backend
+  y enum NGX no equivalentes; regression test PASS; ninguna repetición GPU.
+- Vulkan histórico no repetido; AMD/SR/Wisteria hashes intactos. No Minecraft,
+  sidecar/interop nuevo, Dzn, ABI privada, cambios globales ni MFG superior x2.
+- Diseño futuro de recursos/fences compartidos Vulkan↔D3D12 justificado; latencia
+  por etapa pendiente, sin promesa zero latency. Parada tras documentación y
+  push main sólo al repositorio autorizado del usuario.

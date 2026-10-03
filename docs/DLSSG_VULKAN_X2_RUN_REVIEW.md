@@ -134,3 +134,17 @@ No ABI privada, parche NVIDIA, extracción de kernels, perfiles/DRS ni binarios
 en commit. SIDECAR_ARCHITECTURE_JUSTIFIED=NO: falta D3D12 x2 real.
 Siguiente fase requiere autorizar nueva prueba D3D12 tras corrección de evidencia;
 no transporte ni x3–x6. Esta fase se detiene conservando ambos runs.
+
+## Continuación autorizada — D3D12 offscreen x2 PASS, run20261003-222208-087
+
+Una única ejecución posterior al fix, sin repetir Vulkan. Loader/backend activos,
+NGXInit/fixture/Create/Evaluate/completion/output temporal PASS. G1 != A/B/
+sentinel, generated1; device removedfalse/0 y cero errores D3D12. Kernels SM86
+reales PASS_OBSERVED, incluyendo Kernel_BlendCandidatesFused. Seis diagnósticos
+vacíos conservados aparte; ID backend1 no equivale al enum público NGX11.
+Reducer original mezclaba contextos: result.json intacto, reviewed-result nuevo.
+DIRECT_VULKAN_X2=FAIL_AT_KERNEL_CREATION permanece. D3D12_OFFSCREEN_X2=PASS.
+SIDECAR_ARCHITECTURE_JUSTIFIED=YES para diseño futuro de memoria/fences GPU
+compartidos; sin traducción completa ni CPU roundtrip. Bridge no implementado,
+sin Minecraft/MFG>x2. Baseline AMD intacta. Parada aquí.
+Detalles [DLSSG_D3D12_X2_RESULT.md](DLSSG_D3D12_X2_RESULT.md).
