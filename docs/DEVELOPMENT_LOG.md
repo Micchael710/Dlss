@@ -452,3 +452,42 @@ no se afirma que ya se hayan desconectado completamente.
 - Baselines AMD/SR/Wisteria SHA256 intactos. No DLSS-G, Minecraft, PresentWorker,
   Dzn, ruta export Vulkan, HEAP fallback ni x3–x6. Docs/evidencia textual,
   commit/push usuario y parada antes de conectar recursos FG.
+
+## 2026-10-03 — Vulkan → D3D12 DLSS-G → Vulkan x2 end-to-end PASS
+
+- Base main/GitHub bd25bef3ea065b291a743837c140abfd77997bff, sin cambios iniciales.
+  Nuevo harness aislado; reutiliza helpers públicos, fixture/reducer, loader y
+  session D3D12 cerrados, sin editar sus sources ni ejecutar rutas históricas.
+- Build Release x64/MT PASS. CPU reducer temporal/cámara/depth/checkpoint/intersección
+  PASS; reducer de evidencia rechaza capabilities-only, kernels ausentes, duplicados,
+  handoffs erróneos, CPU transporte y device loss. Un ajuste CPU antes de GPU;
+  ninguna prueba GPU antes de pasar todos los checks.
+- Única ejecución principal 20261003-233010-719, worker0/timeoutfalse. RTX3050Ti
+  UUID01895b66d1ca454d88788dd21fdef638/LUID4c29010000000000, driver596.49.
+- A/B/Depth/MV/G1 creados D3D12 DEFAULT/SHARED/UAV, importados Vulkan optimal
+  dedicated D3D12_RESOURCE, formatos RGBA8/R32/RG32 históricos, resolution1280x720.
+  Query exacta individual features5; memory bits3&2=2/type1 DEVICE_LOCAL, import/bind0.
+- Fixture fuente CPU subida a Vulkan permitida por encargo §11, Vulkan GPU escribe
+  allocations compartidas. NGX usa esos ID3D12Resource, Vulkan lee mismo G1.
+  No GPU→RAM→GPU, segunda allocation de transporte, Dzn o traducción Vulkan.
+- Fence D3D12 shared import timeline permanente. Intervalos0..4: señales impares
+  inputs/pares completion; target9→9/10→10 GPU. No CPU wait entre APIs. Waits
+  terminales tras consumidor Vulkan sólo para reciclar buffers/allocator/validación.
+- Loader sdli0.3.5, runtime efectivo310.9.1 SHA ff6e90eb… idénticos al PASS previo.
+  Public NGX Init/Create/Evaluate0x1, feature handle válido; 64 kernels reales
+  PASS_OBSERVED, diagnósticos vacíos separados. Reported Available1/Max1 no prueba FG.
+- Warmup0..3, reset sólo0, target4/count1/index1. G1 hashb5261cc3… distinto de
+  A/B/sentinel; inputs exactos, disable0, centroid451.408675, MAE0.298147,
+  backgroundBad0, generated_count_confirmed1. Reducer y preview G1 PASS.
+- GPU scopes Vulkan input3.873824ms, DLSSG3.958784ms, Vulkan consumer/readbacks
+  3.357536ms. Handoffs individuales UNKNOWN sin calibración común. TotalCPU
+  5308.8086ms incluye setup/warmup/logging/validación, no latencia Minecraft.
+- D3D12 debug errores0, warning1328 de initial state de buffer diagnóstico;
+  Vulkan debug-utils0 y Khronos validation ausente. No device lost/removal/reason0.
+  Readbacks CPU terminales9: seis contenidos, flag y dos scopes timestamps.
+- VULKAN_DLSSG_D3D12_VULKAN_X2=PASS; DLSSG_VULKAN_SIDECAR_END_TO_END=PASS;
+  MINECRAFT_INTEGRATION_READY=YES_FOR_NEXT_PHASE limitado al harness sintético.
+- Baselines AMD/SR/Wisteria hashes antes/después intactos. No `.minecraft` real,
+  retest Vulkan NGX, tests aislados, Wisteria/PresentWorker/ring fix, driver/DRS,
+  OptiScaler, Streamline ni x3–x6. Evidencia textual/JSON y source propio,
+  commit/push sólo origin del usuario y parada antes de integración Minecraft.

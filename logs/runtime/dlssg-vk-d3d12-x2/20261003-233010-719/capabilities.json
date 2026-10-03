@@ -1,0 +1,13 @@
+{
+  "provenance": "REPORTED_POTENTIALLY_HOOKED",
+  "generation_proof": false,
+  "adapted_reported_available": 1,
+  "adapted_reported_available_getter_result": "0x00000001",
+  "adapted_reported_feature_init_result": 1,
+  "adapted_reported_feature_init_result_getter_result": "0x00000001",
+  "adapted_reported_max": 1,
+  "adapted_reported_max_getter_result": "0x00000001",
+  "adapted_reported_needs_updated_driver": 0,
+  "adapted_reported_needs_updated_driver_getter_result": "0x00000001",
+  "capability_query_result": "0x00000001"
+}

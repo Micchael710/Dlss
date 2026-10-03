@@ -1,0 +1,1 @@
+{"width":1280,"height":720,"A_frame":3,"B_frame":4,"warmup_frames":4,"translation_pixels":16,"mvec_convention":"current_to_previous_NDC","camera":"historical D3D12 PASS positive-Y projection","jitter":[0,0],"count":1,"index":1,"fixture_source":"CPU generated -> Vulkan upload (allowed fixture initialization); shared allocation written by Vulkan GPU","transport_CPU_copies":0}

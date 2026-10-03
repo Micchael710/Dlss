@@ -1,0 +1,454 @@
+{"timestamp_ns":68574254995300,"pid":1636432,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\runtime\\dlssg-vk-d3d12-x2\\20261003-233010-719\\component\\dlssg_sm86.dll"}
+{"timestamp_ns":68574268508200,"pid":1636432,"type":"external_load_complete","detail":"00007FFCAB880000"}
+{"timestamp_ns":68574308596700,"pid":1636432,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":68574308779500,"pid":1636432,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":68574308814700,"pid":1636432,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":68574308839400,"pid":1636432,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 luid=4c29010000000000"}
+{"timestamp_ns":68574662824100,"pid":1636432,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":68574716965800,"pid":1636432,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":68574717025600,"pid":1636432,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":68574718360900,"pid":1636432,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":68574718394000,"pid":1636432,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":68574718428700,"pid":1636432,"type":"d3d12_result","detail":"CreateFence=0x00000000"}
+{"timestamp_ns":68576966784900,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68576975705500,"pid":1636432,"type":"vulkan_result","detail":"layer count=0"}
+{"timestamp_ns":68576980740700,"pid":1636432,"type":"vulkan_result","detail":"layers=0"}
+{"timestamp_ns":68577104195800,"pid":1636432,"type":"vulkan_result","detail":"instance extension count=0"}
+{"timestamp_ns":68577110040000,"pid":1636432,"type":"vulkan_result","detail":"instance extensions=0"}
+{"timestamp_ns":68577192131200,"pid":1636432,"type":"vulkan_result","detail":"instance create=0"}
+{"timestamp_ns":68577192210000,"pid":1636432,"type":"vulkan_result","detail":"debug messenger=0"}
+{"timestamp_ns":68577199685500,"pid":1636432,"type":"vulkan_result","detail":"GPU count=0"}
+{"timestamp_ns":68577209795400,"pid":1636432,"type":"vulkan_result","detail":"GPUs=0"}
+{"timestamp_ns":68577240743700,"pid":1636432,"type":"vulkan_result","detail":"device extension count=0"}
+{"timestamp_ns":68577240825900,"pid":1636432,"type":"vulkan_result","detail":"device extensions=0"}
+{"timestamp_ns":68577797741300,"pid":1636432,"type":"vulkan_result","detail":"device create=0"}
+{"timestamp_ns":68577797803800,"pid":1636432,"type":"vulkan_result","detail":"pool create=0"}
+{"timestamp_ns":68577797907800,"pid":1636432,"type":"vulkan_result","detail":"command allocation=0"}
+{"timestamp_ns":68577798050400,"pid":1636432,"type":"vulkan_result","detail":"terminal fence=0"}
+{"timestamp_ns":68577798077700,"pid":1636432,"type":"vulkan_result","detail":"timestamp pool=0"}
+{"timestamp_ns":68577803479500,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68577803519900,"pid":1636432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":68577804524400,"pid":1636432,"type":"d3d12_result","detail":"shared DEFAULT UAV texture=0x00000000"}
+{"timestamp_ns":68577804592800,"pid":1636432,"type":"d3d12_result","detail":"resource shared handle=0x00000000"}
+{"timestamp_ns":68577809459400,"pid":1636432,"type":"stage","detail":"IMPORT"}
+{"timestamp_ns":68577810932700,"pid":1636432,"type":"vulkan_result","detail":"exact external image format=0"}
+{"timestamp_ns":68577811005200,"pid":1636432,"type":"vulkan_result","detail":"external image create=0"}
+{"timestamp_ns":68577811178900,"pid":1636432,"type":"vulkan_result","detail":"handle memory bits=0"}
+{"timestamp_ns":68577828355600,"pid":1636432,"type":"vulkan_result","detail":"dedicated resource import=0"}
+{"timestamp_ns":68577831344400,"pid":1636432,"type":"stage","detail":"BIND"}
+{"timestamp_ns":68577833060200,"pid":1636432,"type":"vulkan_result","detail":"bind imported memory=0"}
+{"timestamp_ns":68577838683600,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68577838756300,"pid":1636432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":68577839693000,"pid":1636432,"type":"d3d12_result","detail":"shared DEFAULT UAV texture=0x00000000"}
+{"timestamp_ns":68577839750400,"pid":1636432,"type":"d3d12_result","detail":"resource shared handle=0x00000000"}
+{"timestamp_ns":68577844340800,"pid":1636432,"type":"stage","detail":"IMPORT"}
+{"timestamp_ns":68577845699900,"pid":1636432,"type":"vulkan_result","detail":"exact external image format=0"}
+{"timestamp_ns":68577845746100,"pid":1636432,"type":"vulkan_result","detail":"external image create=0"}
+{"timestamp_ns":68577845858300,"pid":1636432,"type":"vulkan_result","detail":"handle memory bits=0"}
+{"timestamp_ns":68577862155500,"pid":1636432,"type":"vulkan_result","detail":"dedicated resource import=0"}
+{"timestamp_ns":68577865113400,"pid":1636432,"type":"stage","detail":"BIND"}
+{"timestamp_ns":68577866552100,"pid":1636432,"type":"vulkan_result","detail":"bind imported memory=0"}
+{"timestamp_ns":68577872024200,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68577872070100,"pid":1636432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":68577872995400,"pid":1636432,"type":"d3d12_result","detail":"shared DEFAULT UAV texture=0x00000000"}
+{"timestamp_ns":68577873081100,"pid":1636432,"type":"d3d12_result","detail":"resource shared handle=0x00000000"}
+{"timestamp_ns":68577877579500,"pid":1636432,"type":"stage","detail":"IMPORT"}
+{"timestamp_ns":68577879071500,"pid":1636432,"type":"vulkan_result","detail":"exact external image format=0"}
+{"timestamp_ns":68577879127600,"pid":1636432,"type":"vulkan_result","detail":"external image create=0"}
+{"timestamp_ns":68577879244800,"pid":1636432,"type":"vulkan_result","detail":"handle memory bits=0"}
+{"timestamp_ns":68577890392900,"pid":1636432,"type":"vulkan_result","detail":"dedicated resource import=0"}
+{"timestamp_ns":68577893459100,"pid":1636432,"type":"stage","detail":"BIND"}
+{"timestamp_ns":68577895037000,"pid":1636432,"type":"vulkan_result","detail":"bind imported memory=0"}
+{"timestamp_ns":68577900453800,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68577900528300,"pid":1636432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":68577901785100,"pid":1636432,"type":"d3d12_result","detail":"shared DEFAULT UAV texture=0x00000000"}
+{"timestamp_ns":68577901860100,"pid":1636432,"type":"d3d12_result","detail":"resource shared handle=0x00000000"}
+{"timestamp_ns":68577906353300,"pid":1636432,"type":"stage","detail":"IMPORT"}
+{"timestamp_ns":68577907822500,"pid":1636432,"type":"vulkan_result","detail":"exact external image format=0"}
+{"timestamp_ns":68577907865000,"pid":1636432,"type":"vulkan_result","detail":"external image create=0"}
+{"timestamp_ns":68577907982500,"pid":1636432,"type":"vulkan_result","detail":"handle memory bits=0"}
+{"timestamp_ns":68577920084600,"pid":1636432,"type":"vulkan_result","detail":"dedicated resource import=0"}
+{"timestamp_ns":68577924096900,"pid":1636432,"type":"stage","detail":"BIND"}
+{"timestamp_ns":68577925849400,"pid":1636432,"type":"vulkan_result","detail":"bind imported memory=0"}
+{"timestamp_ns":68577931823600,"pid":1636432,"type":"stage","detail":"RESOURCE_CREATION"}
+{"timestamp_ns":68577931872800,"pid":1636432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":68577932743900,"pid":1636432,"type":"d3d12_result","detail":"shared DEFAULT UAV texture=0x00000000"}
+{"timestamp_ns":68577932797800,"pid":1636432,"type":"d3d12_result","detail":"resource shared handle=0x00000000"}
+{"timestamp_ns":68577938660800,"pid":1636432,"type":"stage","detail":"IMPORT"}
+{"timestamp_ns":68577940261100,"pid":1636432,"type":"vulkan_result","detail":"exact external image format=0"}
+{"timestamp_ns":68577940308700,"pid":1636432,"type":"vulkan_result","detail":"external image create=0"}
+{"timestamp_ns":68577940416800,"pid":1636432,"type":"vulkan_result","detail":"handle memory bits=0"}
+{"timestamp_ns":68577952540000,"pid":1636432,"type":"vulkan_result","detail":"dedicated resource import=0"}
+{"timestamp_ns":68577955874100,"pid":1636432,"type":"stage","detail":"BIND"}
+{"timestamp_ns":68577957447500,"pid":1636432,"type":"vulkan_result","detail":"bind imported memory=0"}
+{"timestamp_ns":68577964970700,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68577966640600,"pid":1636432,"type":"d3d12_result","detail":"shared fence create=0x00000000"}
+{"timestamp_ns":68577966686600,"pid":1636432,"type":"d3d12_result","detail":"fence shared handle=0x00000000"}
+{"timestamp_ns":68577966714600,"pid":1636432,"type":"vulkan_result","detail":"timeline create=0"}
+{"timestamp_ns":68577966759300,"pid":1636432,"type":"vulkan_result","detail":"permanent fence import=0"}
+{"timestamp_ns":68577976514900,"pid":1636432,"type":"stage","detail":"FEATURE_CREATION"}
+{"timestamp_ns":68577979202200,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68577979336500,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578154000500,"pid":1636432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":68578154133300,"pid":1636432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":68578154152400,"pid":1636432,"type":"submit","detail":"CreateFeature fenceValue=1 commandList=000001D7FE5221A0"}
+{"timestamp_ns":68578154174100,"pid":1636432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":68578159093600,"pid":1636432,"type":"completion","detail":"CreateFeature value=1"}
+{"timestamp_ns":68578165113200,"pid":1636432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":68578165566200,"pid":1636432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":68578165618300,"pid":1636432,"type":"d3d12_result","detail":"disable metadata upload=0x00000000"}
+{"timestamp_ns":68578169469900,"pid":1636432,"type":"d3d12_result","detail":"timestamp heap=0x00000000"}
+{"timestamp_ns":68578169519000,"pid":1636432,"type":"d3d12_result","detail":"timestamp frequency=0x00000000"}
+{"timestamp_ns":68578170201800,"pid":1636432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":68578170246800,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578170445000,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578170462800,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578170475700,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578171131200,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578171157800,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578171171800,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578171764300,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578171786400,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578171799100,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578172441900,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578172467000,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578172481600,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578173055900,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578173079000,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578173093200,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578173757300,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578173789600,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578173804000,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578174458200,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578174482400,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578174494000,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578175649200,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578175684600,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578175699000,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578177076200,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578177123700,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578177136700,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578177703100,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578177727900,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578177740000,"pid":1636432,"type":"vulkan_result","detail":"vkCreateBuffer=0"}
+{"timestamp_ns":68578178397500,"pid":1636432,"type":"vulkan_result","detail":"vkAllocateMemory buffer=0"}
+{"timestamp_ns":68578178419300,"pid":1636432,"type":"vulkan_result","detail":"vkBindBufferMemory=0"}
+{"timestamp_ns":68578180467400,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578197201100,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578197689200,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578198134800,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578198514400,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578199399000,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578199907200,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578200730800,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578200850900,"pid":1636432,"type":"vulkan_barrier","detail":"A old=0 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=4096"}
+{"timestamp_ns":68578200921700,"pid":1636432,"type":"vulkan_barrier","detail":"B old=0 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=4096"}
+{"timestamp_ns":68578200944200,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=0 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=4096"}
+{"timestamp_ns":68578200963000,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=0 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=4096"}
+{"timestamp_ns":68578200979600,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=0 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=4096"}
+{"timestamp_ns":68578200996200,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578201031000,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578201055200,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578201071700,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578201085700,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578201257900,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578201461400,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578201479000,"pid":1636432,"type":"vulkan_submit","detail":"wait=0 signal=1 terminal=false"}
+{"timestamp_ns":68578203786100,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68578204010400,"pid":1636432,"type":"d3d12_result","detail":"D3D12 wait Vulkan input-ready=0x00000000"}
+{"timestamp_ns":68578204032200,"pid":1636432,"type":"d3d12_wait","detail":"ready=1"}
+{"timestamp_ns":68578204070700,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578204156800,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578206206000,"pid":1636432,"type":"stage","detail":"RESOURCE_STATE"}
+{"timestamp_ns":68578211476100,"pid":1636432,"type":"d3d12_barrier","detail":"A 0 -> 64"}
+{"timestamp_ns":68578211564400,"pid":1636432,"type":"d3d12_barrier","detail":"B 0 -> 64"}
+{"timestamp_ns":68578211593200,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 0 -> 64"}
+{"timestamp_ns":68578211609600,"pid":1636432,"type":"d3d12_barrier","detail":"MV 0 -> 64"}
+{"timestamp_ns":68578211622600,"pid":1636432,"type":"d3d12_barrier","detail":"G1 0 -> 8"}
+{"timestamp_ns":68578219566900,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578219630200,"pid":1636432,"type":"evaluate_begin","detail":"realFrameId=0 count=1 index=1 reset=true timestamp_ms=0.000000 deltaMs=16.666667 outputSlot=0 D3D12=000001D7C6B2C940 VkImage=000001D7C6B2D5A0"}
+{"timestamp_ns":68578258766600,"pid":1636432,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":68578260520000,"pid":1636432,"type":"d3d12_barrier","detail":"A 64 -> COMMON"}
+{"timestamp_ns":68578260551000,"pid":1636432,"type":"d3d12_barrier","detail":"B 64 -> COMMON"}
+{"timestamp_ns":68578260563100,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 64 -> COMMON"}
+{"timestamp_ns":68578260573500,"pid":1636432,"type":"d3d12_barrier","detail":"MV 64 -> COMMON"}
+{"timestamp_ns":68578260583400,"pid":1636432,"type":"d3d12_barrier","detail":"G1 8 -> COMMON"}
+{"timestamp_ns":68578262023300,"pid":1636432,"type":"stage","detail":"D3D12_GPU_COMPLETION"}
+{"timestamp_ns":68578262165800,"pid":1636432,"type":"d3d12_result","detail":"Evaluate command close=0x00000000"}
+{"timestamp_ns":68578271908800,"pid":1636432,"type":"d3d12_result","detail":"shared DLSSG completion signal=0x00000000"}
+{"timestamp_ns":68578271947800,"pid":1636432,"type":"d3d12_submit","detail":"realFrameId=0 completeSignal=2"}
+{"timestamp_ns":68578273723300,"pid":1636432,"type":"stage","detail":"SYNC_D3D12_TO_VK"}
+{"timestamp_ns":68578273750900,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578273787000,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578273809200,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578273824200,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578273838900,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578273854800,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578273870400,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578273892700,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578273906200,"pid":1636432,"type":"vulkan_result","detail":"terminal fence reset=0"}
+{"timestamp_ns":68578274000800,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578274020800,"pid":1636432,"type":"vulkan_submit","detail":"wait=2 signal=0 terminal=true"}
+{"timestamp_ns":68578274228400,"pid":1636432,"type":"vulkan_result","detail":"Vulkan consumer terminal completion=0"}
+{"timestamp_ns":68578277571900,"pid":1636432,"type":"terminal_completion","detail":"CPU waits only AFTER Vulkan consumer; allocator reuse/validation, not cross-API handoff ordering"}
+{"timestamp_ns":68578277617500,"pid":1636432,"type":"interval_complete","detail":"realFrameId=0 sharedFence=2"}
+{"timestamp_ns":68578282608900,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578299241600,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578299661200,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578300134000,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578300425400,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578300923300,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578301223300,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578301239400,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578301256500,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578301274100,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578301285300,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578301295400,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578301305300,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578301315500,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578301323500,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578301331500,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578301339300,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578301347000,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578301359700,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578301421500,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578301434400,"pid":1636432,"type":"vulkan_submit","detail":"wait=0 signal=3 terminal=false"}
+{"timestamp_ns":68578303145500,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68578303205200,"pid":1636432,"type":"d3d12_result","detail":"D3D12 wait Vulkan input-ready=0x00000000"}
+{"timestamp_ns":68578303217300,"pid":1636432,"type":"d3d12_wait","detail":"ready=3"}
+{"timestamp_ns":68578303239900,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578303440000,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578304987600,"pid":1636432,"type":"stage","detail":"RESOURCE_STATE"}
+{"timestamp_ns":68578305080100,"pid":1636432,"type":"d3d12_barrier","detail":"A 0 -> 64"}
+{"timestamp_ns":68578305113200,"pid":1636432,"type":"d3d12_barrier","detail":"B 0 -> 64"}
+{"timestamp_ns":68578305131700,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 0 -> 64"}
+{"timestamp_ns":68578305156000,"pid":1636432,"type":"d3d12_barrier","detail":"MV 0 -> 64"}
+{"timestamp_ns":68578305175200,"pid":1636432,"type":"d3d12_barrier","detail":"G1 0 -> 8"}
+{"timestamp_ns":68578307056500,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578307103700,"pid":1636432,"type":"evaluate_begin","detail":"realFrameId=1 count=1 index=1 reset=false timestamp_ms=16.666667 deltaMs=16.666667 outputSlot=0 D3D12=000001D7C6B2C940 VkImage=000001D7C6B2D5A0"}
+{"timestamp_ns":68578313045100,"pid":1636432,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":68578315075300,"pid":1636432,"type":"d3d12_barrier","detail":"A 64 -> COMMON"}
+{"timestamp_ns":68578315147500,"pid":1636432,"type":"d3d12_barrier","detail":"B 64 -> COMMON"}
+{"timestamp_ns":68578315164700,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 64 -> COMMON"}
+{"timestamp_ns":68578315180100,"pid":1636432,"type":"d3d12_barrier","detail":"MV 64 -> COMMON"}
+{"timestamp_ns":68578315193200,"pid":1636432,"type":"d3d12_barrier","detail":"G1 8 -> COMMON"}
+{"timestamp_ns":68578316784000,"pid":1636432,"type":"stage","detail":"D3D12_GPU_COMPLETION"}
+{"timestamp_ns":68578316868200,"pid":1636432,"type":"d3d12_result","detail":"Evaluate command close=0x00000000"}
+{"timestamp_ns":68578317335300,"pid":1636432,"type":"d3d12_result","detail":"shared DLSSG completion signal=0x00000000"}
+{"timestamp_ns":68578317352300,"pid":1636432,"type":"d3d12_submit","detail":"realFrameId=1 completeSignal=4"}
+{"timestamp_ns":68578319275000,"pid":1636432,"type":"stage","detail":"SYNC_D3D12_TO_VK"}
+{"timestamp_ns":68578319331800,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578319357200,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578319385700,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578319406800,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578319425200,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578319442300,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578319459200,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578319484300,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578319499600,"pid":1636432,"type":"vulkan_result","detail":"terminal fence reset=0"}
+{"timestamp_ns":68578319638900,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578319657000,"pid":1636432,"type":"vulkan_submit","detail":"wait=4 signal=0 terminal=true"}
+{"timestamp_ns":68578321867200,"pid":1636432,"type":"vulkan_result","detail":"Vulkan consumer terminal completion=0"}
+{"timestamp_ns":68578325266700,"pid":1636432,"type":"terminal_completion","detail":"CPU waits only AFTER Vulkan consumer; allocator reuse/validation, not cross-API handoff ordering"}
+{"timestamp_ns":68578325406500,"pid":1636432,"type":"interval_complete","detail":"realFrameId=1 sharedFence=4"}
+{"timestamp_ns":68578330044900,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578343889500,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578344241200,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578344589200,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578344842000,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578345335300,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578345617100,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578345643000,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578345662300,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578345680400,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578345690500,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578345700500,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578345711100,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578345732500,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578345740600,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578345748500,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578345756100,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578345763700,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578345776400,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578345842300,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578345857000,"pid":1636432,"type":"vulkan_submit","detail":"wait=0 signal=5 terminal=false"}
+{"timestamp_ns":68578347900100,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68578348122100,"pid":1636432,"type":"d3d12_result","detail":"D3D12 wait Vulkan input-ready=0x00000000"}
+{"timestamp_ns":68578348143500,"pid":1636432,"type":"d3d12_wait","detail":"ready=5"}
+{"timestamp_ns":68578348180400,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578348396000,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578350455600,"pid":1636432,"type":"stage","detail":"RESOURCE_STATE"}
+{"timestamp_ns":68578350517400,"pid":1636432,"type":"d3d12_barrier","detail":"A 0 -> 64"}
+{"timestamp_ns":68578350534900,"pid":1636432,"type":"d3d12_barrier","detail":"B 0 -> 64"}
+{"timestamp_ns":68578350551700,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 0 -> 64"}
+{"timestamp_ns":68578350570200,"pid":1636432,"type":"d3d12_barrier","detail":"MV 0 -> 64"}
+{"timestamp_ns":68578350590500,"pid":1636432,"type":"d3d12_barrier","detail":"G1 0 -> 8"}
+{"timestamp_ns":68578352299300,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578352336900,"pid":1636432,"type":"evaluate_begin","detail":"realFrameId=2 count=1 index=1 reset=false timestamp_ms=33.333334 deltaMs=16.666667 outputSlot=0 D3D12=000001D7C6B2C940 VkImage=000001D7C6B2D5A0"}
+{"timestamp_ns":68578357147600,"pid":1636432,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":68578358983000,"pid":1636432,"type":"d3d12_barrier","detail":"A 64 -> COMMON"}
+{"timestamp_ns":68578359019000,"pid":1636432,"type":"d3d12_barrier","detail":"B 64 -> COMMON"}
+{"timestamp_ns":68578359033100,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 64 -> COMMON"}
+{"timestamp_ns":68578359044800,"pid":1636432,"type":"d3d12_barrier","detail":"MV 64 -> COMMON"}
+{"timestamp_ns":68578359056600,"pid":1636432,"type":"d3d12_barrier","detail":"G1 8 -> COMMON"}
+{"timestamp_ns":68578361198200,"pid":1636432,"type":"stage","detail":"D3D12_GPU_COMPLETION"}
+{"timestamp_ns":68578361301700,"pid":1636432,"type":"d3d12_result","detail":"Evaluate command close=0x00000000"}
+{"timestamp_ns":68578361746100,"pid":1636432,"type":"d3d12_result","detail":"shared DLSSG completion signal=0x00000000"}
+{"timestamp_ns":68578361764100,"pid":1636432,"type":"d3d12_submit","detail":"realFrameId=2 completeSignal=6"}
+{"timestamp_ns":68578364508400,"pid":1636432,"type":"stage","detail":"SYNC_D3D12_TO_VK"}
+{"timestamp_ns":68578364564400,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578364585500,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578364609300,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578364627000,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578364641000,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578364666900,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578364681500,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578364703700,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578364714600,"pid":1636432,"type":"vulkan_result","detail":"terminal fence reset=0"}
+{"timestamp_ns":68578364794500,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578364808800,"pid":1636432,"type":"vulkan_submit","detail":"wait=6 signal=0 terminal=true"}
+{"timestamp_ns":68578366126300,"pid":1636432,"type":"vulkan_result","detail":"Vulkan consumer terminal completion=0"}
+{"timestamp_ns":68578378591900,"pid":1636432,"type":"terminal_completion","detail":"CPU waits only AFTER Vulkan consumer; allocator reuse/validation, not cross-API handoff ordering"}
+{"timestamp_ns":68578378628000,"pid":1636432,"type":"interval_complete","detail":"realFrameId=2 sharedFence=6"}
+{"timestamp_ns":68578384360300,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578400892600,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578401314700,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578401779900,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578402219000,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578402936500,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578403363700,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578403397200,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578403429600,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578403462100,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578403484500,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578403505200,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578403557100,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578403600300,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578403635600,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578403650300,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578403660400,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578403674400,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578403698200,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578403774100,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578403783000,"pid":1636432,"type":"vulkan_submit","detail":"wait=0 signal=7 terminal=false"}
+{"timestamp_ns":68578405719200,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68578405808600,"pid":1636432,"type":"d3d12_result","detail":"D3D12 wait Vulkan input-ready=0x00000000"}
+{"timestamp_ns":68578405827800,"pid":1636432,"type":"d3d12_wait","detail":"ready=7"}
+{"timestamp_ns":68578405862900,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578406035500,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578407715000,"pid":1636432,"type":"stage","detail":"RESOURCE_STATE"}
+{"timestamp_ns":68578407772300,"pid":1636432,"type":"d3d12_barrier","detail":"A 0 -> 64"}
+{"timestamp_ns":68578407791200,"pid":1636432,"type":"d3d12_barrier","detail":"B 0 -> 64"}
+{"timestamp_ns":68578407808800,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 0 -> 64"}
+{"timestamp_ns":68578407826100,"pid":1636432,"type":"d3d12_barrier","detail":"MV 0 -> 64"}
+{"timestamp_ns":68578407842700,"pid":1636432,"type":"d3d12_barrier","detail":"G1 0 -> 8"}
+{"timestamp_ns":68578409920900,"pid":1636432,"type":"stage","detail":"WARMUP"}
+{"timestamp_ns":68578410083100,"pid":1636432,"type":"evaluate_begin","detail":"realFrameId=3 count=1 index=1 reset=false timestamp_ms=50.000001 deltaMs=16.666667 outputSlot=0 D3D12=000001D7C6B2C940 VkImage=000001D7C6B2D5A0"}
+{"timestamp_ns":68578413690000,"pid":1636432,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":68578415817100,"pid":1636432,"type":"d3d12_barrier","detail":"A 64 -> COMMON"}
+{"timestamp_ns":68578415859700,"pid":1636432,"type":"d3d12_barrier","detail":"B 64 -> COMMON"}
+{"timestamp_ns":68578415875800,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 64 -> COMMON"}
+{"timestamp_ns":68578415890300,"pid":1636432,"type":"d3d12_barrier","detail":"MV 64 -> COMMON"}
+{"timestamp_ns":68578415902100,"pid":1636432,"type":"d3d12_barrier","detail":"G1 8 -> COMMON"}
+{"timestamp_ns":68578419971000,"pid":1636432,"type":"stage","detail":"D3D12_GPU_COMPLETION"}
+{"timestamp_ns":68578420086700,"pid":1636432,"type":"d3d12_result","detail":"Evaluate command close=0x00000000"}
+{"timestamp_ns":68578420533900,"pid":1636432,"type":"d3d12_result","detail":"shared DLSSG completion signal=0x00000000"}
+{"timestamp_ns":68578420554700,"pid":1636432,"type":"d3d12_submit","detail":"realFrameId=3 completeSignal=8"}
+{"timestamp_ns":68578422387600,"pid":1636432,"type":"stage","detail":"SYNC_D3D12_TO_VK"}
+{"timestamp_ns":68578422542500,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578422569100,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578422594100,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578422612500,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578422625800,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578422647300,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578422662900,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578422684800,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578422695500,"pid":1636432,"type":"vulkan_result","detail":"terminal fence reset=0"}
+{"timestamp_ns":68578422784100,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578422794700,"pid":1636432,"type":"vulkan_submit","detail":"wait=8 signal=0 terminal=true"}
+{"timestamp_ns":68578424923600,"pid":1636432,"type":"vulkan_result","detail":"Vulkan consumer terminal completion=0"}
+{"timestamp_ns":68578428414500,"pid":1636432,"type":"terminal_completion","detail":"CPU waits only AFTER Vulkan consumer; allocator reuse/validation, not cross-API handoff ordering"}
+{"timestamp_ns":68578428450400,"pid":1636432,"type":"interval_complete","detail":"realFrameId=3 sharedFence=8"}
+{"timestamp_ns":68578433342900,"pid":1636432,"type":"stage","detail":"VULKAN_INPUT_WRITE"}
+{"timestamp_ns":68578449851400,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578450255800,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578450741300,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578451135700,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578451928800,"pid":1636432,"type":"vulkan_result","detail":"map upload=0"}
+{"timestamp_ns":68578452330700,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578452364500,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578452393500,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578452429100,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578452452400,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578452474500,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578452495700,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=4096"}
+{"timestamp_ns":68578452516100,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578452551900,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578452569400,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578452584000,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578452597600,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578452610200,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=0 dstFamily=4294967294 srcAccess=98304 dstAccess=0"}
+{"timestamp_ns":68578452633600,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578452729200,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578452748100,"pid":1636432,"type":"vulkan_submit","detail":"wait=0 signal=9 terminal=false"}
+{"timestamp_ns":68578454965500,"pid":1636432,"type":"stage","detail":"SYNC_VK_TO_D3D12"}
+{"timestamp_ns":68578455035800,"pid":1636432,"type":"d3d12_result","detail":"D3D12 wait Vulkan input-ready=0x00000000"}
+{"timestamp_ns":68578455051300,"pid":1636432,"type":"d3d12_wait","detail":"ready=9"}
+{"timestamp_ns":68578458669500,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578458859000,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578460940200,"pid":1636432,"type":"stage","detail":"RESOURCE_STATE"}
+{"timestamp_ns":68578461031100,"pid":1636432,"type":"d3d12_barrier","detail":"A 0 -> 64"}
+{"timestamp_ns":68578461052900,"pid":1636432,"type":"d3d12_barrier","detail":"B 0 -> 64"}
+{"timestamp_ns":68578461071100,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 0 -> 64"}
+{"timestamp_ns":68578461087800,"pid":1636432,"type":"d3d12_barrier","detail":"MV 0 -> 64"}
+{"timestamp_ns":68578461103000,"pid":1636432,"type":"d3d12_barrier","detail":"G1 0 -> 8"}
+{"timestamp_ns":68578462806500,"pid":1636432,"type":"stage","detail":"EVALUATE"}
+{"timestamp_ns":68578462844200,"pid":1636432,"type":"evaluate_begin","detail":"realFrameId=4 count=1 index=1 reset=false timestamp_ms=66.666668 deltaMs=16.666667 outputSlot=0 D3D12=000001D7C6B2C940 VkImage=000001D7C6B2D5A0"}
+{"timestamp_ns":68578466986000,"pid":1636432,"type":"evaluate_result","detail":"0x00000001"}
+{"timestamp_ns":68578469257400,"pid":1636432,"type":"d3d12_barrier","detail":"A 64 -> COMMON"}
+{"timestamp_ns":68578469297700,"pid":1636432,"type":"d3d12_barrier","detail":"B 64 -> COMMON"}
+{"timestamp_ns":68578469313100,"pid":1636432,"type":"d3d12_barrier","detail":"DEPTH 64 -> COMMON"}
+{"timestamp_ns":68578469328100,"pid":1636432,"type":"d3d12_barrier","detail":"MV 64 -> COMMON"}
+{"timestamp_ns":68578469342300,"pid":1636432,"type":"d3d12_barrier","detail":"G1 8 -> COMMON"}
+{"timestamp_ns":68578472001500,"pid":1636432,"type":"stage","detail":"D3D12_GPU_COMPLETION"}
+{"timestamp_ns":68578472121100,"pid":1636432,"type":"d3d12_result","detail":"Evaluate command close=0x00000000"}
+{"timestamp_ns":68578472542000,"pid":1636432,"type":"d3d12_result","detail":"shared DLSSG completion signal=0x00000000"}
+{"timestamp_ns":68578472560200,"pid":1636432,"type":"d3d12_submit","detail":"realFrameId=4 completeSignal=10"}
+{"timestamp_ns":68578482530900,"pid":1636432,"type":"stage","detail":"SYNC_D3D12_TO_VK"}
+{"timestamp_ns":68578482582100,"pid":1636432,"type":"vulkan_result","detail":"command reset=0"}
+{"timestamp_ns":68578482602900,"pid":1636432,"type":"vulkan_result","detail":"command begin=0"}
+{"timestamp_ns":68578482628700,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578482643900,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578482657300,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578482670800,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578482683800,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967294 dstFamily=0 srcAccess=0 dstAccess=6144"}
+{"timestamp_ns":68578482697300,"pid":1636432,"type":"vulkan_barrier","detail":"A old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578482726300,"pid":1636432,"type":"vulkan_barrier","detail":"B old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578482745600,"pid":1636432,"type":"vulkan_barrier","detail":"DEPTH old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578482769400,"pid":1636432,"type":"vulkan_barrier","detail":"MV old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578482790000,"pid":1636432,"type":"vulkan_barrier","detail":"G1 old=1 new=GENERAL srcFamily=4294967295 dstFamily=4294967295 srcAccess=98304 dstAccess=2048"}
+{"timestamp_ns":68578482820500,"pid":1636432,"type":"vulkan_result","detail":"command end=0"}
+{"timestamp_ns":68578482831900,"pid":1636432,"type":"vulkan_result","detail":"terminal fence reset=0"}
+{"timestamp_ns":68578482910400,"pid":1636432,"type":"vulkan_result","detail":"cross API queue submit=0"}
+{"timestamp_ns":68578482921500,"pid":1636432,"type":"vulkan_submit","detail":"wait=10 signal=0 terminal=true"}
+{"timestamp_ns":68578486558600,"pid":1636432,"type":"vulkan_result","detail":"Vulkan consumer terminal completion=0"}
+{"timestamp_ns":68578490580200,"pid":1636432,"type":"terminal_completion","detail":"CPU waits only AFTER Vulkan consumer; allocator reuse/validation, not cross-API handoff ordering"}
+{"timestamp_ns":68578490617700,"pid":1636432,"type":"interval_complete","detail":"realFrameId=4 sharedFence=10"}
+{"timestamp_ns":68578504939400,"pid":1636432,"type":"stage","detail":"G1_READBACK"}
+{"timestamp_ns":68578504970800,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578581173700,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578650972200,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578676270000,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578723215600,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578801239000,"pid":1636432,"type":"vulkan_result","detail":"map readback=0"}
+{"timestamp_ns":68578905626100,"pid":1636432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":68578905674100,"pid":1636432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":68578905808700,"pid":1636432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":68578907687100,"pid":1636432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":68578907990900,"pid":1636432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":68578908013900,"pid":1636432,"type":"submit","detail":"disable readback fenceValue=2 commandList=000001D7FE5221A0"}
+{"timestamp_ns":68578908033300,"pid":1636432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":68578914888600,"pid":1636432,"type":"completion","detail":"disable readback value=2"}
+{"timestamp_ns":68578920746300,"pid":1636432,"type":"d3d12_result","detail":"disable readback Map=0x00000000"}
+{"timestamp_ns":68578926230600,"pid":1636432,"type":"d3d12_result","detail":"DX timestamp readback=0x00000000"}
+{"timestamp_ns":68578961797000,"pid":1636432,"type":"stage","detail":"TEMPORAL_VALIDATION"}

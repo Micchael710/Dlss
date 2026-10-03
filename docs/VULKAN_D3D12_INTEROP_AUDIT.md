@@ -1,6 +1,32 @@
-# Vulkan/D3D12 — D3D12-owned import PASS, 2026-10-03
+# Vulkan/D3D12 — interop y DLSS-G x2 end-to-end PASS, 2026-10-03
 
-## Resultado vigente — una allocation, uso GPU bidireccional
+## Resultado vigente — Vulkan → DLSS-G D3D12 → Vulkan
+
+Run único `20261003-233010-719`, base `bd25bef3ea065b291a743837c140abfd77997bff`:
+**VULKAN_DLSSG_D3D12_VULKAN_X2=PASS**, **DLSSG_VULKAN_SIDECAR_END_TO_END=PASS**.
+Misma RTX3050Ti/UUID/LUID/driver596.49, sdli0.3.5 y runtime310.9.1. Se reúnen
+los dos PASS previos sin repetirlos por separado ni reintentar NGX Vulkan directo.
+
+Cinco textures1280x720 D3D12 DEFAULT/SHARED/UAV, importación D3D12_RESOURCE
+dedicada por recurso: A/B/G1RGBA8, depthR32, MVRG32; usage Vulkan transfer/sampled/
+storage15, features5, bits3&2/type1. Vulkan escribe fixture, D3D12 NGX x2 procesa
+esos mismos recursos y Vulkan lee el mismo VkImage G1. GPU handoffs timeline
+permanente, target signal/wait9/9 y10/10; estados/ownership explícitos. Transporte
+CPU0, readbacks terminales9 incluyendo flags/timestamps; waits CPU de reciclaje
+sólo después del consumidor Vulkan. No segunda texture de transporte ni Dzn.
+
+NGXInit/CreateFeature/64 kernels reales/warmup/Evaluate/completion/output temporal
+PASS. G1 distinto A/B/sentinel y temporalmente intermedio; input readbacks exactos.
+No device lost, D3D12 debug errores0, Vulkan debug-utils0 con validation layer
+ausente. DLSSG target GPU3.958784ms, Vulkan input3.873824ms/consumer3.357536ms;
+handoff individual UNKNOWN sin clock común. NO sumar clocks ni inferir FPS.
+
+`MINECRAFT_INTEGRATION_READY=YES_FOR_NEXT_PHASE` sólo habilita el diseño futuro de
+interfaz aislada Wisteria; no se integra aquí. AMD x2, Wisteria, PresentWorker,
+ring fix, GL/Vulkan y `.minecraft` real intactos. No MFG>x2.
+Detalle/alcance: [DLSSG_VULKAN_D3D12_X2_END_TO_END.md](DLSSG_VULKAN_D3D12_X2_END_TO_END.md).
+
+## Resultado histórico — una allocation, uso GPU bidireccional
 
 **D3D12_OWNED_VULKAN_INTEROP=PASS**, run único `20261003-230013-062`,
 base `df13071b6cfd02fcbd501fcae1d0d0a09ef99e1f`. D3D12 crea/exporta y Vulkan

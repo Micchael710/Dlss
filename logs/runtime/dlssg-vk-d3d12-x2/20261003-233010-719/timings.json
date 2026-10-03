@@ -1,0 +1,15 @@
+{
+  "d3d12_timestamp_frequency_hz": 1000000000,
+  "d3d12_to_vulkan_handoff_time_ms": null,
+  "dlssg_gpu_time_ms": 3.958784,
+  "dlssg_gpu_time_scope": "D3D12 target Evaluate only; bottom-of-pipe timestamps, local queue frequency",
+  "last_submit_wait_cpu_ms": 11.2124,
+  "timeline_external_features": 2,
+  "total_test_wallclock_ms": 5308.8086,
+  "vk_timestamp_query_result": 0,
+  "vulkan_g1_readback_gpu_time_ms": 3.357536,
+  "vulkan_input_gpu_time_ms": 3.873824,
+  "vulkan_timestamp_period_ns": 1.0,
+  "vulkan_timestamp_valid_bits": 64,
+  "vulkan_to_d3d12_handoff_time_ms": null
+}

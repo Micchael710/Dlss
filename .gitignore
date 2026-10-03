@@ -40,6 +40,11 @@ logs/runtime/dlssg-external-harness/**/*.png
 logs/runtime/dlssg-external-harness/**/*.ppm
 experiments/ngx-dlssg-probe/vendor/*.dll
 experiments/ngx-dlssg-probe/vendor/*.lib
+logs/runtime/dlssg-vk-d3d12-x2/**/component/
+logs/runtime/dlssg-vk-d3d12-x2/**/stock-runtime/
+logs/runtime/dlssg-vk-d3d12-x2/**/bundle-cache/
+logs/runtime/dlssg-vk-d3d12-x2/**/*.png
+logs/runtime/dlssg-vk-d3d12-x2/**/*.ppm
 
 # Isolated baseline runtime generated data (keep launcher configuration)
 runtime-baseline/instance/

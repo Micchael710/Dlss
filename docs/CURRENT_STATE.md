@@ -1,4 +1,26 @@
-## Estado vigente — D3D12-owned Vulkan interop PASS, 2026-10-03
+## Estado vigente — Vulkan → DLSS-G D3D12 → Vulkan x2 PASS, 2026-10-03
+
+Run único `20261003-233010-719`, base `bd25bef3ea065b291a743837c140abfd77997bff`.
+Build y CPU tests PASS antes de una sola ejecución GPU. RTX3050Ti UUID/LUID exactos,
+driver596.49, mismos sdli0.3.5/runtime310.9.1 y contrato x2 previamente validado.
+Cinco allocations D3D12 DEFAULT/SHARED/UAV importadas Vulkan, dedicadas, type1
+individual por bits3&2=2: A/B RGBA8, depthR32, MVRG32, G1RGBA8. Vulkan GPU escribe
+fixture, D3D12 NGX genera G1, Vulkan consume el mismo G1; transporte CPU0.
+Fence timeline permanente, GPU wait/signal target9→9/10→10, warmup0..3 coherente.
+NGXInit/CreateFeature/64 kernels reales/Evaluate/completion/readback temporal PASS;
+capabilities Available1/Max1 no son prueba. G1 distinto A/B/sentinel, centroid
+451.408675 y MAE0.298147. Generated_count_confirmed1. No device lost/removal,
+debug D3D12 errores0, Vulkan observados0 con Khronos layer ausente.
+GPU target inputs3.873824ms, DLSSG3.958784ms, readbacks3.357536ms; handoff UNKNOWN
+sin common-clock, wallclock5308.8086ms incluye setup/warmup/validación.
+VULKAN_DLSSG_D3D12_VULKAN_X2=PASS; DLSSG_VULKAN_SIDECAR_END_TO_END=PASS;
+MINECRAFT_INTEGRATION_READY=YES_FOR_NEXT_PHASE limitado al harness offscreen.
+Baselines AMD/SR/Wisteria hashes intactos. No retest de los gates aislados/Vulkan
+directo, Minecraft, Wisteria runtime, PresentWorker, Dzn, CPU bridge o x3–x6.
+Fase detenida tras evidencia/docs y commit/push autorizado al repositorio del usuario.
+Informe [DLSSG_VULKAN_D3D12_X2_END_TO_END.md](DLSSG_VULKAN_D3D12_X2_END_TO_END.md).
+
+## Estado histórico — D3D12-owned Vulkan interop PASS, 2026-10-03
 
 Run único20261003-230013-062: resource/fence creados por D3D12, Vulkan importa.
 D3D12_RESOURCE exacto RGBA8/256x256/RT, IMPORTABLE+DEDICATED_ONLY. Intersección

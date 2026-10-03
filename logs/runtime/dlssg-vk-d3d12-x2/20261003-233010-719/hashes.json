@@ -1,0 +1,38 @@
+{
+  "readbacks": {
+    "A": "9285dff3162262072b299c4cbe94b40e9e51280c27ef9f7e38a08abe730cc140",
+    "B": "4acff001b7f04ce1ce503314fbdd0dfadc6f2cf87d843dcf12365319bf387baa",
+    "depth": "7fea35808b0f7d554be9857f6a8e416b386e79d962c12987801e76e384477efc",
+    "motion": "3bb90bb24e18c2acd0bb61772f0c8725d629bda4bb2bf1c24c553c52a38eb895",
+    "sentinel": "80ebb6cf65541911010912a1a2d2d35cb683f935d1f0b15dc8748f84d473c586",
+    "G1": "b5261cc3c32720a2e4178611c9cb25d5cb964e4b554eeb6b449ec311f7993a3e"
+  },
+  "expected_fixture": {
+    "A": "9285dff3162262072b299c4cbe94b40e9e51280c27ef9f7e38a08abe730cc140",
+    "B": "4acff001b7f04ce1ce503314fbdd0dfadc6f2cf87d843dcf12365319bf387baa",
+    "sentinel": "80ebb6cf65541911010912a1a2d2d35cb683f935d1f0b15dc8748f84d473c586",
+    "depth": "7fea35808b0f7d554be9857f6a8e416b386e79d962c12987801e76e384477efc",
+    "motion": "3bb90bb24e18c2acd0bb61772f0c8725d629bda4bb2bf1c24c553c52a38eb895"
+  },
+  "executable": {
+    "path": "D:\\ProjectDllsss\\experiments\\dlssg-vk-d3d12-x2\\build\\dlssg_vk_d3d12_x2.exe",
+    "sha256": "2fddc30698aa2dcb50a2a1d07a5a10a6fd07399c5b539e8fa4c55dd629ad67e9",
+    "file_version": null,
+    "signature_status": "NotSigned",
+    "signer": null
+  },
+  "runtime": {
+    "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-vk-d3d12-x2\\20261003-233010-719/stock-runtime/nvngx_dlssg.dll",
+    "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+    "file_version": "310,9,1,0",
+    "signature_status": "Valid",
+    "signer": "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+  },
+  "external_component": {
+    "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-vk-d3d12-x2\\20261003-233010-719\\component\\dlssg_sm86.dll",
+    "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+    "file_version": null,
+    "signature_status": "UnknownError",
+    "signer": "CN=DLSSG for SM86 (self-signed)"
+  }
+}
