@@ -1,4 +1,18 @@
-## Estado vigente — D3D12 DLSS-G SM86 x2 offscreen PASS, 2026-10-03
+## Estado vigente — bridge cross-API detenido en capability, 2026-10-03
+
+Run20261003-223835-709, sólo probe Vulkan/D3D12, sin NGX/DLSS-G/Minecraft.
+SAME_GPU=PASS RTX3050Ti UUID/LUID exactos. RESOURCE features5/HEAP4/FENCE2:
+importables en Vulkan, no EXPORTABLE. Ruta literal Vulkan-native-export→D3D12
+no supera gate. CROSS_API_INTEROP=FAIL_CAPABILITY; shares/sync/roundtrip NOT_RUN.
+No otra variante automática. Import-only no prueba inviabilidad de todo bridge:
+allocation/fence D3D12 importados en Vulkan quedan como candidato sin probar.
+DLSSG_VULKAN_SIDECAR_PREREQUISITES=NOT_READY. DLSSG_SM86_D3D12_X2=PASS histórico
+intacto; no Vulkan DLSS-G retest. Debug D3D12 errores0, Vulkan observados0 con
+Khronos layer ausente. Baselines AMD/SR/Wisteria hashes conservados.
+No Wisteria/PresentWorker/bridge existente modificado ni MFG>x2. Parada.
+Informe [VULKAN_D3D12_INTEROP_AUDIT.md](VULKAN_D3D12_INTEROP_AUDIT.md).
+
+## Estado histórico — D3D12 DLSS-G SM86 x2 offscreen PASS, 2026-10-03
 
 Una sola ejecución nueva20261003-222208-087, RTX3050Ti LUID4c29010000000000,
 driver596.49, sdli0.3.5/runtime310.9.1 identificados. Loader/backend/NGXInit/

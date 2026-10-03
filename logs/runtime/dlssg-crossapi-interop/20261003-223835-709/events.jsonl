@@ -1,0 +1,23 @@
+{"steady_ns":65478313002300,"detail":"layer count VkResult=0"}
+{"steady_ns":65478316562400,"detail":"layers VkResult=0"}
+{"steady_ns":65478484659400,"detail":"extension count VkResult=0"}
+{"steady_ns":65478488462800,"detail":"extensions VkResult=0"}
+{"steady_ns":65478578687300,"detail":"CreateInstance VkResult=0"}
+{"steady_ns":65478578754000,"detail":"debug messenger VkResult=0"}
+{"steady_ns":65478582593300,"detail":"GPU count VkResult=0"}
+{"steady_ns":65478585877800,"detail":"GPUs VkResult=0"}
+{"steady_ns":65478586013500,"detail":"device extension count VkResult=0"}
+{"steady_ns":65478586044800,"detail":"device extensions VkResult=0"}
+{"steady_ns":65478590520700,"detail":"DXGI factory HRESULT=0"}
+{"steady_ns":65478590760600,"detail":"adapter enumerate HRESULT=0"}
+{"steady_ns":65478600251500,"detail":"adapter desc HRESULT=0"}
+{"steady_ns":65479637540400,"detail":"D3D12 device HRESULT=0"}
+{"steady_ns":65479637581800,"detail":"D3D12 format support HRESULT=0"}
+{"steady_ns":65479638005800,"detail":"D3D12 shared resource HRESULT=0"}
+{"steady_ns":65479638052000,"detail":"resource CreateSharedHandle HRESULT=0"}
+{"steady_ns":65479638347900,"detail":"resource OpenSharedHandle HRESULT=0"}
+{"steady_ns":65479638368500,"detail":"Resource handle application-owned; closed after OpenSharedHandle; both resource references live"}
+{"steady_ns":65479638430900,"detail":"shared fence HRESULT=0"}
+{"steady_ns":65479638475900,"detail":"fence CreateSharedHandle HRESULT=0"}
+{"steady_ns":65479638523400,"detail":"fence OpenSharedHandle HRESULT=0"}
+{"steady_ns":65479638951000,"detail":"CAPABILITY gate: literal Vulkan-export/D3D12-open route requires an exportable and importable D3D12 memory handle plus external fence support"}

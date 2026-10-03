@@ -1,0 +1,6 @@
+﻿{
+    "fence_share_creation":  "See result",
+    "vulkan_semaphore_import":  false,
+    "queue_work_submitted":  false,
+    "gpu_ordering_test":  "NOT_RUN"
+}

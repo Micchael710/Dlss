@@ -1,0 +1,13 @@
+{
+  "build": "PASS",
+  "compiler": "MSVC 19.51.36244",
+  "configuration": "Release x64 /MT",
+  "cpu_capability_regressions": "PASS",
+  "cpu_test_count": 3,
+  "source_and_executable_hash_match": "PASS",
+  "baseline_hash_verification": "PASS",
+  "gpu_work_dispatched": 0,
+  "native_worker_exit_code": null,
+  "native_exit_code_limit": "Start-Process wrapper returned null; original evidence preserved, no retry",
+  "cross_api_phase_reached": "A_CAPABILITY"
+}

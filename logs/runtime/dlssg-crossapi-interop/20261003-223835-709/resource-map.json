@@ -1,0 +1,12 @@
+﻿{
+    "phase":  "A",
+    "texture_size":  "256x256",
+    "d3d12_shared_committed_resource":  "See result",
+    "functional_shared_allocation":  false,
+    "cross_api_import_or_export_executed":  false,
+    "handles_creator":  "D3D12 CreateSharedHandle",
+    "handles_owner":  "application",
+    "handles_closed":  "after D3D12 OpenSharedHandle",
+    "cpu_transport_copies":  0,
+    "gpu_copies":  0
+}

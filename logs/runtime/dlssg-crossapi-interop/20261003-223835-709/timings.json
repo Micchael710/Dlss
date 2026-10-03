@@ -1,0 +1,10 @@
+﻿{
+    "method":  "CPU_WALL_CLOCK_PROBE_ONLY",
+    "probe_wall_ms":  2076.974,
+    "vulkan_work_ms":  null,
+    "d3d12_work_ms":  null,
+    "vulkan_to_d3d12_handoff_ms":  null,
+    "d3d12_to_vulkan_handoff_ms":  null,
+    "roundtrip_ms":  null,
+    "gpu_timestamp_comparison":  "NOT_RUN; no GPU dispatch in capability probe"
+}

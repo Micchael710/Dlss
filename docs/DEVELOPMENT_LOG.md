@@ -414,3 +414,19 @@ no se afirma que ya se hayan desconectado completamente.
 - Diseño futuro de recursos/fences compartidos Vulkan↔D3D12 justificado; latencia
   por etapa pendiente, sin promesa zero latency. Parada tras documentación y
   push main sólo al repositorio autorizado del usuario.
+
+## 2026-10-03 — probe cross-API, bloqueo CAPABILITY sin retry
+
+- Base4c3efe98882e68e7b93039f1d868ea07655b7424; nuevo módulo aislado sin NGX.
+- Build PASS, ejecución única Fase A20261003-223835-709. GPU Vulkan/DXGI UUID/
+  LUID exactos RTX3050Ti. Shared resource/fence D3D12 Create/Open success.
+- Vulkan RESOURCE features5 y HEAP4 importables, no exportables; FENCE2 import
+  only en query binario. Gate de exportación nativa Vulkan falla, fases B–E
+  NOT_RUN. No cinco variantes, no Dzn ni dispatch DLSS-G.
+- Import-only no demuestra bridge global imposible. Origen allocation/fence
+  D3D12 e importación Vulkan candidato futuro documentado, sin implementar.
+- Debug errors0; Khronos layer ausente, limitación explícita. Device removed0.
+  CPU wall2076.974ms sólo probe; tiempos GPU/handoff NOT_RUN, sin benchmark falso.
+- ExitCode wrapper null preservado; cache handle añadido para futuro, sin retry.
+- Baseline AMD/SR/Wisteria SHA256 intactos. No Minecraft, PresentWorker, Wisteria,
+  driver/perfiles o MFG>x2. Docs/evidencia textual commit/push usuario y parada.
