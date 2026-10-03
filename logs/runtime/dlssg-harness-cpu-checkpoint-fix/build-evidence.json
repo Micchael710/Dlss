@@ -1,0 +1,15 @@
+{
+  "build": "PASS",
+  "cpu_tests": "PASS",
+  "gpu_runs_after_checkpoint_fix": 0,
+  "compiler": "MSVC 19.51.36244",
+  "configuration": "Release x64 /MT",
+  "source_sha256": {
+    "experiments/dlssg-external-harness/harness.cpp": "33d14b8880330e53bcf4ae140f0b72099dc53a46cea36f790cd766a7bd1a9dea",
+    "experiments/dlssg-external-harness/d3d12_worker.inc": "3d4f020ba124d4fe62eda92122b160ff2bdf65b417685d6fbd5fe8c628016517",
+    "experiments/dlssg-external-harness/session_setup.inc": "00f85e30af494412259ab26297c591b32703a4b15131d3db0b73b735f2d1579e"
+  },
+  "compiled_executable_sha256": "eb55ef3f91bebe41f99c4987ca62ce015406aac1fd9e8ae0a80551fabc34c201",
+  "historical_vulkan_files_equal_base_commit_normalized_newlines": true,
+  "both_run_originals_preserved": true
+}

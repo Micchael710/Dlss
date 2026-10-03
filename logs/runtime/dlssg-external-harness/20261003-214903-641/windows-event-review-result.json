@@ -1,0 +1,10 @@
+{
+  "source": "Windows Application Error event 1000",
+  "window_utc": [
+    "2026-10-03T21:48:30Z",
+    "2026-10-03T21:51:00Z"
+  ],
+  "process_filter": "dlssg_external_harness",
+  "query_succeeded": true,
+  "matched_events": []
+}

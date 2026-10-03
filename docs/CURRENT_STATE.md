@@ -1,4 +1,26 @@
-## Estado vigente — harness externo diseñado, 2026-10-03
+## Estado vigente — Vulkan revisado y D3D12 offscreen intentado, 2026-10-03
+
+HARNESS BUILD=PASS; loader=LOADED; backend=OBSERVED ACTIVE; NGX Vulkan Init=PASS.
+Run Vulkan20261003-205509-501 preservado: ARCH_GATE=PASS (0x170>=0x170), fixturePASS.
+CREATEFEATURE=FAIL0xBAD00002, KERNEL_CREATE=FAIL_OBSERVED: Kernel_BlendCandidatesFused,
+vkCreateCuModuleNVX=-3 VK_ERROR_INITIALIZATION_FAILED. IF_FAIL_STAGE=kernel creation.
+Causa internaUNKNOWN; Evaluate/outputNOT_RUN, generated0. DIRECT_VULKAN_X2=
+FAIL_AT_KERNEL_CREATION sólo para RTX3050Ti/596.49/310.9.1/sdli0.3.5 del run.
+SECOND_VULKAN_RUN_PERFORMED=NO; no error público host que justifique otro intento.
+
+D3D12 offscreen implementado y compilado, una ejecución20261003-214903-641,
+LUID4c29010000000000, NGX_INIT=PASS, sin swapchain. Antes de fixture/Create/Evaluate:
+Evidence checkpoint failed; salida0xC0000409. Clasificación PRECONDITION/persistencia,
+no fallo demostrado FG. Kernel_create diagnósticos vacíos no son nuestra feature.
+DLSSG_SM86_D3D12_X2=FAIL de run incompleto; generación D3D12 aún sin demostrar.
+Recorder corregido/recompilado/test lock-recovery sóloCPU PASS. Ningún retryGPU.
+NEED_D3D12_SIDECAR=YES_FOR_EVALUATION; SIDECAR_ARCHITECTURE_JUSTIFIED=NO.
+AMD_FSR_FG_X2=PASS intacto, SHA256 baseline conservados. No Minecraft/sidecar/MFG
+ni modificación de mods/PresentWorker/interop/runtime-baseline. ABI privada fuera.
+Review [DLSSG_VULKAN_X2_RUN_REVIEW.md](DLSSG_VULKAN_X2_RUN_REVIEW.md).
+Resultados originales intactos; reviewed-result.json separados por run.
+
+## Estado anterior — harness externo diseñado, 2026-10-03
 
 Auditoría estática cerrada; ABI privada fuera del trabajo. Ninguna investigación adicional.
 Un harness aislado: coordinador + workers nuevos; primero NGX Vulkan offscreen.

@@ -47,12 +47,20 @@ static std::string sha(const Bytes& b){BCRYPT_ALG_HANDLE a{};BCRYPT_HASH_HANDLE 
 }
 static void ppm(const fs::path& p,const Bytes& rgba){std::ofstream f(p,std::ios::binary);f<<"P6\n"<<W<<' '<<H<<"\n255\n";for(size_t i=0;i<rgba.size();i+=4)f.write(reinterpret_cast<const char*>(rgba.data()+i),3);}
 struct EvidenceRecorder{
- fs::path out;std::map<std::string,std::string> data;std::ofstream events;std::ostringstream bootstrap;
+ fs::path out;std::map<std::string,std::string> data;std::ofstream events;std::ostringstream bootstrap;bool checkpointFailed=false;
  explicit EvidenceRecorder(fs::path p):out(p),events(p/"events.jsonl"){}
  void raw(std::string k,std::string v){data[k]=v;flush();}
  void str(std::string k,std::string v){raw(k,jsonQuote(v));}
  void event(std::string type,std::string detail){events<<"{\"timestamp_ns\":"<<std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count()<<",\"pid\":"<<GetCurrentProcessId()<<",\"type\":"<<jsonQuote(type)<<",\"detail\":"<<jsonQuote(detail)<<"}\n";events.flush();}
- void flush(){auto tmp=out/"worker-result.tmp";{std::ofstream f(tmp);f<<'{';bool first=true;for(auto& [k,v]:data){f<<(first?"":",")<<jsonQuote(k)<<':'<<v;first=false;}f<<bootstrap.str()<<"}\n";f.flush();}if(!MoveFileExW(tmp.c_str(),(out/"worker-result.json").c_str(),MOVEFILE_REPLACE_EXISTING|MOVEFILE_WRITE_THROUGH))throw std::runtime_error("Evidence checkpoint failed");}
+ void flush(){
+  auto serialize=[&](const fs::path& p){std::ofstream f(p);f<<'{';bool first=true;for(auto& [k,v]:data){f<<(first?"":",")<<jsonQuote(k)<<':'<<v;first=false;}f<<bootstrap.str()<<"}\n";f.flush();return bool(f);};
+  auto tmp=out/"worker-result.tmp";DWORD error=ERROR_WRITE_FAULT;
+  if(serialize(tmp))for(int attempt=0;attempt<5;++attempt){if(MoveFileExW(tmp.c_str(),(out/"worker-result.json").c_str(),MOVEFILE_REPLACE_EXISTING|MOVEFILE_WRITE_THROUGH))return;error=GetLastError();if(error!=ERROR_SHARING_VIOLATION&&error!=ERROR_ACCESS_DENIED)break;Sleep(5);}
+  // Evidence failures must not throw again while recording the original exception.
+  checkpointFailed=true;data["evidence_checkpoint_failed"]="true";data["evidence_checkpoint_win32_error"]=std::to_string(error);
+  std::ofstream(out/"evidence-io.log",std::ios::app)<<"checkpoint replacement failed Win32="<<error<<'\n';
+  serialize(out/"worker-recovery.json");
+ }
  void modules(std::string key){HMODULE ms[1024];DWORD n{};std::string list="[";if(EnumProcessModules(GetCurrentProcess(),ms,sizeof ms,&n)){for(DWORD i=0;i<std::min<DWORD>(n/sizeof(HMODULE),1024);++i){wchar_t p[32768];if(GetModuleFileNameExW(GetCurrentProcess(),ms[i],p,32768)){if(list.size()>1)list+=',';list+=jsonQuote(fs::path(p).string());}}}raw(key,list+"]");}
 };
 struct ExternalLoader{
@@ -156,7 +164,8 @@ static int selfTest(const fs::path& output){
  require(VerdictReducer::output(a,b,SyntheticFixture::color(3.5),sentinel,r),"coherent midpoint rejected");
  auto o=SyntheticFixture::options(false);for(int i=0;i<4;++i)for(int j=0;j<4;++j){float x=0;for(int k=0;k<4;++k)x+=o.cameraViewToClip[i][k]*o.clipToCameraView[k][j];require(std::abs(x-(i==j?1.f:0.f))<1e-4f,"camera inverse mismatch");}
  require(SyntheticFixture::depth(.1f)<1e-5f&&std::abs(SyntheticFixture::depth(100.f)-1.f)<1e-5f,"depth projection mismatch");
- r.str("self_test","PASS");r.raw("gpu_used","false");r.raw("community_loaded","false");std::cout<<"CPU verdict and camera tests PASS\n";return 0;
+ auto lockedDir=output/"locked-checkpoint";fs::create_directories(lockedDir);EvidenceRecorder locked(lockedDir);locked.str("before","valid");auto held=CreateFileW((lockedDir/"worker-result.json").c_str(),GENERIC_READ,FILE_SHARE_READ,nullptr,OPEN_EXISTING,FILE_ATTRIBUTE_NORMAL,nullptr);require(held!=INVALID_HANDLE_VALUE,"cannot establish checkpoint lock test");locked.str("while_locked","recovery");require(locked.checkpointFailed&&fs::exists(lockedDir/"worker-recovery.json"),"locked checkpoint did not preserve evidence");CloseHandle(held);locked.flush();
+ r.str("self_test","PASS");r.raw("gpu_used","false");r.raw("community_loaded","false");r.raw("checkpoint_lock_recovery_test","true");std::cout<<"CPU verdict, camera and locked-checkpoint tests PASS\n";return 0;
 }
 static int worker(fs::path output,fs::path dll,fs::path runtime){
  fs::create_directories(output);vendorLog.open(output/"ngx-callback.log");validationLog.open(output/"vulkan-validation.log");EvidenceRecorder r(output);r.str("scenario","adapted");r.raw("generated_count_confirmed","0");r.raw("device_lost","false");r.str("dlssg_sm86_vulkan_x2","NOT_RUN");for(auto k:{"ngx_init","vulkan_createfeature","vulkan_evaluate","gpu_completion","vulkan_output"})r.str(k,"NOT_RUN");r.str("vulkan_kernel_create","NOT_OBSERVED");r.str("cause_confidence","UNKNOWN");r.raw("adapted_original_available","null");r.raw("adapted_original_max","null");r.str("capability_provenance","REPORTED_POTENTIALLY_HOOKED");
@@ -177,5 +186,20 @@ static int worker(fs::path output,fs::path dll,fs::path runtime){
  try{if(!s.unsafe&&!s.deviceLost&&s.feature){NVSDK_NGX_VULKAN_ReleaseFeature(s.feature);s.feature=nullptr;}gpu.close();s.close();}catch(const std::exception& e){r.event("cleanup_error",e.what());}
  r.raw("validation_errors",std::to_string(validationErrors));r.modules("modules_final");r.flush();return exit;
 }
+#include "d3d12_worker.inc"
 static std::wstring winQuote(std::wstring s){std::wstring o=L"\"";unsigned slashes=0;for(wchar_t c:s){if(c==L'\\'){++slashes;continue;}if(c==L'"'){o.append(slashes*2+1,L'\\');o+=c;}else{o.append(slashes,L'\\');o+=c;}slashes=0;}o.append(slashes*2,L'\\');return o+L"\"";}
-int wmain(int argc,wchar_t** argv){SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);if(argc==3&&std::wstring(argv[1])==L"--self-test")return selfTest(fs::absolute(argv[2]));if(argc==5&&std::wstring(argv[1])==L"--worker")return worker(fs::absolute(argv[2]),fs::absolute(argv[3]),fs::absolute(argv[4]));if(argc!=4){std::cerr<<"Usage: dlssg_external_harness RUN_DIRECTORY IDENTIFIED_DLL STOCK_RUNTIME_DIRECTORY\n";return 2;}fs::path out=fs::absolute(argv[1]);fs::create_directories(out);wchar_t exe[32768];GetModuleFileNameW(nullptr,exe,32768);std::wstring command=winQuote(exe)+L" --worker "+winQuote(out.wstring())+L" "+winQuote(fs::absolute(argv[2]).wstring())+L" "+winQuote(fs::absolute(argv[3]).wstring());STARTUPINFOW si{};si.cb=sizeof si;PROCESS_INFORMATION pi{};if(!CreateProcessW(exe,command.data(),nullptr,nullptr,FALSE,CREATE_NO_WINDOW,nullptr,out.c_str(),&si,&pi)){std::ofstream(out/"coordinator.json")<<"{\"spawn_error\":"<<GetLastError()<<"}\n";return 2;}auto wait=WaitForSingleObject(pi.hProcess,180000);if(wait==WAIT_TIMEOUT){TerminateProcess(pi.hProcess,124);WaitForSingleObject(pi.hProcess,5000);}DWORD code=0;GetExitCodeProcess(pi.hProcess,&code);std::ofstream(out/"coordinator.json")<<"{\"worker_pid\":"<<pi.dwProcessId<<",\"worker_exit_code\":"<<code<<",\"timeout\":"<<(wait==WAIT_TIMEOUT?"true":"false")<<",\"attempts\":1,\"api\":\"Vulkan\"}\n";CloseHandle(pi.hThread);CloseHandle(pi.hProcess);return int(code);}
+int wmain(int argc,wchar_t** argv){
+ SetErrorMode(SEM_FAILCRITICALERRORS|SEM_NOGPFAULTERRORBOX);
+ if(argc==3&&std::wstring(argv[1])==L"--self-test")return selfTest(fs::absolute(argv[2]));
+ if(argc==5&&std::wstring(argv[1])==L"--worker")return worker(fs::absolute(argv[2]),fs::absolute(argv[3]),fs::absolute(argv[4]));
+ if(argc==6&&std::wstring(argv[1])==L"--worker"&&std::wstring(argv[5])==L"D3D12")return d3d12Worker(fs::absolute(argv[2]),fs::absolute(argv[3]),fs::absolute(argv[4]));
+ if(argc!=4&&argc!=5){std::cerr<<"Usage: dlssg_external_harness RUN_DIRECTORY IDENTIFIED_DLL STOCK_RUNTIME_DIRECTORY [D3D12]\n";return 2;}
+ bool d3d=argc==5&&std::wstring(argv[4])==L"D3D12";if(argc==5&&!d3d)return 2;
+ fs::path out=fs::absolute(argv[1]);fs::create_directories(out);wchar_t exe[32768];GetModuleFileNameW(nullptr,exe,32768);
+ std::wstring command=winQuote(exe)+L" --worker "+winQuote(out.wstring())+L" "+winQuote(fs::absolute(argv[2]).wstring())+L" "+winQuote(fs::absolute(argv[3]).wstring())+(d3d?L" D3D12":L"");
+ STARTUPINFOW si{};si.cb=sizeof si;PROCESS_INFORMATION pi{};
+ if(!CreateProcessW(exe,command.data(),nullptr,nullptr,FALSE,CREATE_NO_WINDOW,nullptr,out.c_str(),&si,&pi)){std::ofstream(out/"coordinator.json")<<"{\"spawn_error\":"<<GetLastError()<<"}\n";return 2;}
+ auto wait=WaitForSingleObject(pi.hProcess,180000);if(wait==WAIT_TIMEOUT){TerminateProcess(pi.hProcess,124);WaitForSingleObject(pi.hProcess,5000);}DWORD code=0;GetExitCodeProcess(pi.hProcess,&code);
+ std::ofstream(out/"coordinator.json")<<"{\"worker_pid\":"<<pi.dwProcessId<<",\"worker_exit_code\":"<<code<<",\"timeout\":"<<(wait==WAIT_TIMEOUT?"true":"false")<<",\"attempts\":1,\"api\":"<<jsonQuote(d3d?"D3D12":"Vulkan")<<"}\n";
+ CloseHandle(pi.hThread);CloseHandle(pi.hProcess);return int(code);
+}

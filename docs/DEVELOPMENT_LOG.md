@@ -369,3 +369,28 @@ no se afirma que ya se hayan desconectado completamente.
 - docs/DLSSG_EXTERNAL_HARNESS_DESIGN.md; todos los gates adaptados NOT_RUN.
   Sin implementación, binarios ejecutados, compilación, modificación AMD x2,
   driver/perfiles, Minecraft, push o PR.
+
+
+## 2026-10-03 — Recuperación GPT, revisión Vulkan y D3D12 offscreen
+
+- HEAD/base65528d3528a3ba97d8fa94b0b1b1d5557e13deb4, main/origin Micchael710/Dlss.
+  Sin reset/rebase. Diff funcionó con Git bundled; Git instalado fallaba.
+- Run20261003-205509-501 intacto: gate0x170>=0x170 PASS, fixturePASS; Create0xBAD00002.
+  Callback público confirma Kernel_BlendCandidatesFused / vkCreateCuModuleNVX=-3,
+  VK_ERROR_INITIALIZATION_FAILED. Kernel FAIL_OBSERVED, causa internaUNKNOWN.
+- Reducer diferencia NOT_OBSERVED/PASS_OBSERVED/FAIL_OBSERVED y emite reviews derivados.
+  No segundo Vulkan: warning Width/Height compatible con helper oficial; sin error
+  público host que explique rechazo. Sin ABI privada ni parche binario.
+- Variante D3D12 pública al mismo harness: LUID fijo, fixture/readback/fences/warmup4,
+  count1/index1, sin swapchain/Present. Compilada; única prueba20261003-214903-641.
+- Loader/backend activos, NGXInitPASS. Evidence checkpoint failed y exit0xC0000409
+  antes de fixture/Create/Evaluate. PRECONDITION/persistencia, no fallo FG probado.
+  Eventos kernel auxiliares vacíos no prueban creación de nuestra feature.
+- Recorder corregido (Win32/recovery/sin doble throw), compilación y tests CPU PASS,
+  incluido bloqueo deliberado de checkpoint. No retryGPU. Estado final device removed
+  UNKNOWN sin consulta final; no evidencia driver reset.
+- Docs/reviewed-result por run; originales preservados. Baseline SR/Wisteria/AMD bridge
+  hashes intactos. No Minecraft, runtime-baseline, perfiles, MFG ni sidecar.
+- .gitignore mejorado para caches/transitorios y wrapper JAR local designorado upstream.
+  Commit/push sólo fuentes/documentos/evidencia al repositorio del usuario.
+- D3D12 x2 pendiente de demostrar; sidecar únicamente justificado para evaluación.

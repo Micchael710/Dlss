@@ -30,7 +30,6 @@ crash-reports/
 reference/
 builds/
 buildsdemiamigo/
-
 # Third party and components with proprietary or community binaries
 logs/research/dlssg-ampere/deep/components/
 logs/runtime/dlssg-external-harness/**/component/
@@ -42,3 +41,12 @@ experiments/ngx-dlssg-probe/vendor/*.lib
 # Isolated baseline runtime generated data (keep launcher configuration)
 runtime-baseline/instance/
 
+# Python caches and transient evidence checkpoints (derived review is versioned)
+__pycache__/
+*.pyc
+*.tmp
+worker-recovery.json
+
+# Nested upstream rules unignore JARs; prune the local wrapper binary directory.
+# Already tracked wrapper scripts/properties remain tracked.
+superresolution/gradle/wrapper/

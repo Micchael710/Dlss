@@ -1,0 +1,617 @@
+{
+  "adapted_reported_available": 1,
+  "adapted_reported_available_getter_result": "0x00000001",
+  "adapted_reported_needs_updated_driver": 0,
+  "adapted_reported_needs_updated_driver_getter_result": "0x00000001",
+  "api": "D3D12",
+  "backend_install_observation": "OBSERVED_INSTALLED_ACTIVE_NOT_GENERATION_PROOF",
+  "capability_provenance": "REPORTED_POTENTIALLY_HOOKED",
+  "capability_query_result": "0x00000001",
+  "cause_confidence": "HIGH_HOST_EVIDENCE_ERROR_OBSERVED; original Win32 error and fast-fail subcode UNKNOWN",
+  "d3d12_createfeature": "NOT_RUN",
+  "d3d12_evaluate": "NOT_RUN",
+  "d3d12_kernel_create": "NOT_RUN",
+  "d3d12_output": "NOT_RUN",
+  "debug_layer_enabled": true,
+  "device_id": 9632,
+  "device_lost": false,
+  "device_luid": "4c29010000000000",
+  "device_removed": false,
+  "dlssg_sm86_d3d12_x2": "FAIL",
+  "external_dll_path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll",
+  "external_dll_sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+  "external_loader_ready": "LOADED",
+  "external_module": "00007FFCC0C70000",
+  "feature_level": "12_0",
+  "generated_count_confirmed": 0,
+  "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "gpu_completion": "NOT_RUN",
+  "if_fail_stage": "PRECONDITION",
+  "loader_win32_error": 0,
+  "modules_after_external": [
+    "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\d3d12.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dxgi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll",
+    "C:\\WINDOWS\\system32\\version.dll"
+  ],
+  "modules_after_ngx_init": [
+    "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\d3d12.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dxgi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll",
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll",
+    "C:\\WINDOWS\\system32\\version.dll",
+    "C:\\WINDOWS\\SYSTEM32\\D3D12Core.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\SYSTEM32\\DXGIDebug.dll",
+    "C:\\WINDOWS\\SYSTEM32\\D3D12SDKLayers.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dxcore.dll",
+    "C:\\WINDOWS\\SYSTEM32\\directxdatabasehelper.dll",
+    "C:\\WINDOWS\\SYSTEM32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvldumdx.dll",
+    "C:\\WINDOWS\\SYSTEM32\\msasn1.dll",
+    "C:\\WINDOWS\\SYSTEM32\\cryptnet.dll",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\SYSTEM32\\cryptbase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\wldp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\drvstore.dll",
+    "C:\\WINDOWS\\SYSTEM32\\devobj.dll",
+    "C:\\WINDOWS\\System32\\wintrust.dll",
+    "C:\\WINDOWS\\System32\\imagehlp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\CRYPTSP.dll",
+    "C:\\WINDOWS\\system32\\rsaenh.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvgpucomp64.dll",
+    "C:\\WINDOWS\\System32\\ole32.dll",
+    "C:\\WINDOWS\\System32\\SHELL32.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\NvMemMapStoragex.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\windows.storage.dll",
+    "C:\\WINDOWS\\System32\\SHCORE.dll",
+    "C:\\WINDOWS\\System32\\shlwapi.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvwgf2umx.dll",
+    "C:\\WINDOWS\\system32\\nvspcap64.dll",
+    "C:\\WINDOWS\\SYSTEM32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\ntmarta.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvppex.dll",
+    "C:\\WINDOWS\\SYSTEM32\\D3DSCache.dll",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\gpapi.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\_nvngx.dll",
+    "C:\\WINDOWS\\SYSTEM32\\nvapi64.dll",
+    "C:\\WINDOWS\\System32\\SETUPAPI.dll",
+    "C:\\WINDOWS\\System32\\OLEAUT32.dll",
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\nvngx_dlssg.dll",
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\sm86_backend.dll",
+    "C:\\WINDOWS\\SYSTEM32\\nvcuda.dll",
+    "C:\\WINDOWS\\system32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvcuda64.dll",
+    "C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af\\nvdxgdmal64.dll",
+    "C:\\Program Files\\NVIDIA Corporation\\NvTelemetry\\NvTelemetryAPI64.dll",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\Program Files\\NVIDIA Corporation\\NvTelemetry\\NvTelemetryBridge64.dll"
+  ],
+  "modules_before_external": [
+    "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\d3d12.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dxgi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\powrprof.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\SYSTEM32\\UMPDC.dll",
+    "C:\\WINDOWS\\System32\\bcryptprimitives.dll"
+  ],
+  "ngx_init": "PASS",
+  "ngx_init_result": "0x00000001",
+  "public_initializer": "NONE_SDLI_LOAD_CONTRACT",
+  "scenario": "adapted",
+  "vendor_id": 4318,
+  "run_directory": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641",
+  "requested_count": 1,
+  "requested_index": 1,
+  "coordinator": {
+    "worker_pid": 1279840,
+    "worker_exit_code": 3221226505,
+    "timeout": false,
+    "attempts": 1,
+    "api": "D3D12"
+  },
+  "stock_original_available": 0,
+  "stock_original_max": null,
+  "stock_getter_results": {
+    "available": {
+      "result": "0x00000001",
+      "value": 0
+    },
+    "feature_init_result": {
+      "result": "0x00000001",
+      "value": 3134193675,
+      "value_hex": "0xbad0000b"
+    },
+    "needs_updated_driver": {
+      "result": "0x00000001",
+      "value": 0
+    },
+    "multi_frame_count_max": {
+      "result": "0xbad00010",
+      "value": null
+    }
+  },
+  "stock_reference_reused_not_rerun": true,
+  "stock_gpu_driver_match": false,
+  "adapted_original_available": null,
+  "adapted_original_max": null,
+  "adapted_original_provenance": "NOT_OBSERVABLE_AFTER_EXTERNAL_LOAD",
+  "baseline_amd_modified": false,
+  "minecraft_launched": false,
+  "d3d12_launched": true,
+  "need_d3d12_sidecar": "YES_FOR_EVALUATION",
+  "sidecar_reason": "Vulkan gate justifies evaluating D3D12; this host failure leaves offscreen FG unproven",
+  "manifest": {
+    "run_id": "20261003-214903-641",
+    "utc": "2026-10-03T21:49:03.6810987Z",
+    "api": "D3D12",
+    "count": 1,
+    "index": 1,
+    "community_component": {
+      "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll",
+      "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+      "file_version": null,
+      "signature_status": "UnknownError",
+      "signer": "CN=DLSSG for SM86 (self-signed)"
+    },
+    "component_repository": "sdli1995/dlssg_for_sm86",
+    "component_commit": "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+    "component_release": "0.3.5",
+    "stock_runtime": {
+      "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641/stock-runtime/nvngx_dlssg.dll",
+      "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+      "file_version": "310,9,1,0",
+      "signature_status": "Valid",
+      "signer": "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+    },
+    "executable": {
+      "path": "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+      "sha256": "a565dd5eef4c4f2f3c96f91d7476a4ba2279fae83494ea5febd8b6f95ec3e347",
+      "file_version": null,
+      "signature_status": "NotSigned",
+      "signer": null
+    },
+    "automatic_downloads": 0,
+    "private_abi_calls": 0,
+    "capability_overrides": 0,
+    "optiscaler_loaded": false,
+    "minecraft_launched": false,
+    "driver_profile_changes_requested": false,
+    "stock_reference": "logs/runtime/ngx-stock-probe/20261003-141624/result.json",
+    "supported_scope": "One adapted worker, D3D12 offscreen x2, no automatic retry, no swapchain",
+    "coordinator_exit_code": -1073740791,
+    "completed_utc": "2026-10-03T21:49:07.5858155Z",
+    "effective_module_files": []
+  },
+  "backend_install_evidence": [
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\loader_1279840.jsonl",
+      "line": 4,
+      "raw": "{\"backend\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\bundle-cache\\\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\\\sm86_backend.dll\",\"event\":\"backend_install\",\"original_signed_module_handle\":true,\"pid\":1279840,\"requested\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\stock-runtime/nvngx_dlssg.dll\",\"runtime\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\bundle-cache\\\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\\\nvngx_dlssg.dll\",\"sha256\":\"ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82\",\"status\":0}"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\backend_1279840.jsonl",
+      "line": 3,
+      "raw": "{\"active\":true,\"actual_sm\":86,\"capture\":false,\"cubin_ptx_fallback\":true,\"event\":\"install\",\"executed_on_sm75_hardware\":false,\"executed_on_sm86_hardware\":true,\"flags\":10223624,\"force_cubin_fail\":false,\"force_plugin_frames\":false,\"gpu\":\"NVIDIA GeForce RTX 3050 Ti Laptop GPU\",\"hooks\":{\"arch_info\":\"0x1690\",\"create_ex\":\"0x21c0\",\"create_name\":\"0x20b0\",\"create_v2\":\"0x1fe0\",\"create_with_name\":\"0x22f0\",\"cu_chain\":\"0x2b40\",\"cu_function\":\"0x2a50\",\"cu_module\":\"0x2960\",\"device_field\":\"0x3b0\",\"evaluate\":[\"0x36ba0\",\"0x3718a\"],\"get_gpu\":\"0x1b6b0\",\"get_sm\":\"0x1b6c0\",\"launch\":\"0x2410\",\"min_arch\":\"0x13eb0\",\"populate\":[\"0x165d0\",\"0x16a11\"],\"preset_id_field\":\"0x64\",\"preset_select\":\"0x340e0\",\"requirements\":\"0x33a20\",\"uir_group\":\"0x50\",\"uir_param\":\"unhooked\",\"vptr\":\"0x99758\"},\"image\":\"cubin_sm86\",\"image_approx\":false,\"image_approx_mask\":0,\"image_approx_rows\":0,\"image_patch_rows\":3,\"image_patches\":false,\"kernel_image_requested\":\"auto\",\"kernels\":70,\"launch_chains\":false,\"max_generated_frames\":5,\"mfg_probe\":false,\"optimized_kernels\":false,\"optimized_knobs\":{\"chain_block0\":false,\"disable_fusions\":0,\"hardware_bilinear\":false,\"image_approx\":false,\"image_patches\":false,\"launch_chains\":false,\"optimized_kernels\":false,\"plain_variant\":0,\"skip_repeated_real_copy\":false},\"optimized_tier\":0,\"optimized_tier_name\":\"stock\",\"original_base\":\"0x7ffce4910000\",\"preset\":\"auto\",\"preset_pinned\":false,\"router\":\"sm86\",\"runtime_profile\":\"310.9.1.0\",\"runtime_sha256\":\"ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82\",\"selected_luid\":\"0x1294c\",\"size_of_image\":\"0x737000\",\"skip_repeated_real_copy\":false,\"sm75_family\":\"ignored\",\"snippet_version\":\"0x1360901\",\"target_sm\":86,\"turing_host\":false}"
+    }
+  ],
+  "kernel_evidence": [
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\backend_1279840.jsonl",
+      "line": 6,
+      "raw": "{\"actual_sm\":86,\"block\":[0,0,0],\"bytes\":0,\"entry\":\"\",\"event\":\"kernel_create\",\"fallback\":false,\"feature\":1,\"image\":\"original\",\"routed\":false,\"shader\":\"0x0\",\"source_rva\":\"0x1b6f0000\",\"status\":-14,\"thunk\":\"create_with_name\"}"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\backend_1279840.jsonl",
+      "line": 7,
+      "raw": "{\"actual_sm\":86,\"block\":[0,0,0],\"bytes\":0,\"entry\":\"\",\"event\":\"kernel_create\",\"fallback\":false,\"feature\":1,\"image\":\"original\",\"routed\":false,\"shader\":\"0x0\",\"source_rva\":\"0x1b6f0000\",\"status\":-14,\"thunk\":\"create_ex\"}"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\backend_1279840.jsonl",
+      "line": 8,
+      "raw": "{\"actual_sm\":86,\"block\":[0,0,0],\"bytes\":0,\"entry\":\"\",\"event\":\"kernel_create\",\"fallback\":false,\"feature\":1,\"image\":\"original\",\"routed\":false,\"shader\":\"0x0\",\"source_rva\":\"0x1b6f0000\",\"status\":-14,\"thunk\":\"cu_module\"}"
+    }
+  ],
+  "architecture_evidence": [
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 327,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 369,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170"
+    }
+  ],
+  "worker_abnormal_exit": true,
+  "failure_substage": "EVIDENCE_PERSISTENCE_DURING_CAPABILITY_QUERY",
+  "evidence_persistence_error": "Evidence checkpoint failed",
+  "temporary_checkpoint_sha256": "7555566479377fc2faafb2a88ea3f5e04299a55e2a262d9f4ff658295b4bf7fd",
+  "root_cause": "Host checkpoint replacement failed; exception handler tried the same failing checkpoint operation; no DLSSG CreateFeature call",
+  "gpu_device_removed_final": null,
+  "device_removed_observation": "Initial false is not proof of final state after abrupt process exit",
+  "dlssg_feature_kernel_create": "NOT_RUN",
+  "diagnostic_kernel_events_are_feature_creation_proof": false,
+  "canonical_readback_sha256": {
+    "A": null,
+    "B": null,
+    "G1": null,
+    "sentinel": null
+  },
+  "pass_conditions": {
+    "fixture_roundtrip": false,
+    "ngx_init": true,
+    "create": false,
+    "feature_handle": false,
+    "evaluate": false,
+    "submit": false,
+    "completion": false,
+    "no_device_lost": true,
+    "output_disable_false": false,
+    "temporal_content": false,
+    "output_hashes_distinct": false,
+    "output_readback": false,
+    "no_validation_error": false,
+    "evidence_integrity": true,
+    "worker_completed": false
+  },
+  "capabilities_are_generation_proof": false,
+  "effective_runtime_candidates": [
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\nvngx_dlssg.dll",
+    "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\sm86_backend.dll"
+  ],
+  "effective_runtime_file_hashes": [
+    {
+      "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\nvngx_dlssg.dll",
+      "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82"
+    },
+    {
+      "path": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\sm86_backend.dll",
+      "sha256": "1aebf8f306fbaede18c98b372da9c70a1bbdb1bd35327f7f85c2969085a619a1"
+    }
+  ],
+  "runtime_redirect_evidence": [
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\loader_1279840.jsonl",
+      "line": 5,
+      "raw": "{\"event\":\"runtime_redirect\",\"game_runtime_used\":false,\"mode\":\"bundled\",\"pid\":1279840,\"requested\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\stock-runtime/nvngx_dlssg.dll\",\"selected\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\bundle-cache\\\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\\\nvngx_dlssg.dll\"}"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\backend\\loader_1279840.jsonl",
+      "line": 6,
+      "raw": "{\"event\":\"runtime_redirect\",\"game_runtime_used\":false,\"mode\":\"bundled\",\"pid\":1279840,\"requested\":\"C:\\\\WINDOWS\\\\System32\\\\DriverStore\\\\FileRepository\\\\nvlti.inf_amd64_af02d12a5c2283af/nvngx_dlssg.dll\",\"selected\":\"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\dlssg-external-harness\\\\20261003-214903-641\\\\bundle-cache\\\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\\\nvngx_dlssg.dll\"}"
+    }
+  ],
+  "runtime_selection_log_evidence": [
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 227,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 229,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 241,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 243,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 249,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 251,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 257,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 259,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 265,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 267,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 273,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 275,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 281,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 283,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 289,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 291,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 297,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 299,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 305,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 307,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 313,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 315,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 321,
+      "raw": "[2026-10-03 17:49:05] [NGXLoadLibrary:34] Loaded NGXCore from path (D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\stock-runtime/nvngx_dlssg.dll)"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 323,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1509] Validating snippet D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\stock-runtime/nvngx_dlssg.dll"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 325,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1511] NGX CORE API version : 0x15, Snippet requires at least : 0x13"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 327,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 329,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1530] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 331,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1558] Driver version : 596.49, Snippet expects at least : 520.0"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 333,
+      "raw": "[2026-10-03 17:49:05] [NGXValidateSnippetMetaData:1585] Snippet version : 310.9.1, Embedded app Id : E658703 (0)"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 335,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 343,
+      "raw": "[2026-10-03 17:49:05] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 363,
+      "raw": "[2026-10-03 17:49:06] [NGXLoadLibrary:34] Loaded NGXCore from path (C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af/nvngx_dlssg.dll)"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 365,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1509] Validating snippet C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af/nvngx_dlssg.dll"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 367,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1511] NGX CORE API version : 0x15, Snippet requires at least : 0x13"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 369,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 371,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1530] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 373,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1558] Driver version : 596.49, Snippet expects at least : 520.0"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 375,
+      "raw": "[2026-10-03 17:49:06] [NGXValidateSnippetMetaData:1585] Snippet version : 310.9.1, Embedded app Id : E658703 (0)"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 377,
+      "raw": "[2026-10-03 17:49:06] [NGXSecureLoadFeature:1366] Found dlssg driver fallback snippet at C:\\WINDOWS\\System32\\DriverStore\\FileRepository\\nvlti.inf_amd64_af02d12a5c2283af"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 379,
+      "raw": "[2026-10-03 17:49:06] [NGXSecureLoadFeature:1445] app 876232C feature dlssg snippet: D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\stock-runtime/nvngx_dlssg.dll version: 310.9.1"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 387,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 389,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 395,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 397,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 403,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 405,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 411,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 413,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 419,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 421,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 427,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 429,
+      "raw": "[2026-10-03 17:49:06] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628"
+    },
+    {
+      "file": "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\ngx-callback.log",
+      "line": 439,
+      "raw": "[2026-10-03 17:49:06] [tid:1277592][NGXInitLog:226] Loaded from path \"D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7/nvngx_dlssg.dll\" by dlssg_external_harness.exe"
+    }
+  ],
+  "review_preserves_original_evidence": true,
+  "original_evidence_sha256": {
+    "result.json": "c328efb7bb96c0c05e8abc6497cdbcfde29be70861ff74f023f8b17661ba39c6",
+    "run-manifest.json": "4c70e1eb89d7557aa57903152a58d069fc448cf92871fcd6cac8fa766e766fee",
+    "events.jsonl": "d3a2cdf7d897fbc87713227e480f3f55e8f75dccedf52cc0314dcec1e4a323a2",
+    "ngx-callback.log": "945896fce646b20ca1d39161f9121f671c99d367a47a6e70bb8ad7e9391c7192",
+    "worker-result.json": "d8b8e5ea085f43c6a09fd2dc23e2bb16cd345ff78250d66834d64ad55b109501"
+  }
+}

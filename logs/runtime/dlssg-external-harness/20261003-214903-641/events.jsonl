@@ -1,0 +1,12 @@
+{"timestamp_ns":62506753939100,"pid":1279840,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll"}
+{"timestamp_ns":62506766135900,"pid":1279840,"type":"external_load_complete","detail":"00007FFCC0C70000"}
+{"timestamp_ns":62506813648300,"pid":1279840,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":62506813875200,"pid":1279840,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":62506813905800,"pid":1279840,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":62506813931900,"pid":1279840,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 luid=4c29010000000000"}
+{"timestamp_ns":62507137999800,"pid":1279840,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":62507173219700,"pid":1279840,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":62507173265100,"pid":1279840,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":62507175530000,"pid":1279840,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":62507175769200,"pid":1279840,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":62507175820000,"pid":1279840,"type":"d3d12_result","detail":"CreateFence=0x00000000"}

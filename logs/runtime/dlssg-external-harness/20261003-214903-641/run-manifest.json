@@ -1,0 +1,44 @@
+﻿{
+    "run_id":  "20261003-214903-641",
+    "utc":  "2026-10-03T21:49:03.6810987Z",
+    "api":  "D3D12",
+    "count":  1,
+    "index":  1,
+    "community_component":  {
+                                "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641\\component\\dlssg_sm86.dll",
+                                "sha256":  "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+                                "file_version":  null,
+                                "signature_status":  "UnknownError",
+                                "signer":  "CN=DLSSG for SM86 (self-signed)"
+                            },
+    "component_repository":  "sdli1995/dlssg_for_sm86",
+    "component_commit":  "9621db573e07ed54f50c15bbb585ed9a7bdfac28",
+    "component_release":  "0.3.5",
+    "stock_runtime":  {
+                          "path":  "D:\\ProjectDllsss\\logs\\runtime\\dlssg-external-harness\\20261003-214903-641/stock-runtime/nvngx_dlssg.dll",
+                          "sha256":  "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+                          "file_version":  "310,9,1,0",
+                          "signature_status":  "Valid",
+                          "signer":  "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US"
+                      },
+    "executable":  {
+                       "path":  "D:\\ProjectDllsss\\experiments\\dlssg-external-harness\\build\\dlssg_external_harness.exe",
+                       "sha256":  "a565dd5eef4c4f2f3c96f91d7476a4ba2279fae83494ea5febd8b6f95ec3e347",
+                       "file_version":  null,
+                       "signature_status":  "NotSigned",
+                       "signer":  null
+                   },
+    "automatic_downloads":  0,
+    "private_abi_calls":  0,
+    "capability_overrides":  0,
+    "optiscaler_loaded":  false,
+    "minecraft_launched":  false,
+    "driver_profile_changes_requested":  false,
+    "stock_reference":  "logs/runtime/ngx-stock-probe/20261003-141624/result.json",
+    "supported_scope":  "One adapted worker, D3D12 offscreen x2, no automatic retry, no swapchain",
+    "coordinator_exit_code":  -1073740791,
+    "completed_utc":  "2026-10-03T21:49:07.5858155Z",
+    "effective_module_files":  [
+
+                               ]
+}
