@@ -1,4 +1,20 @@
-## Estado vigente — bridge cross-API detenido en capability, 2026-10-03
+## Estado vigente — D3D12-owned Vulkan interop PASS, 2026-10-03
+
+Run único20261003-230013-062: resource/fence creados por D3D12, Vulkan importa.
+D3D12_RESOURCE exacto RGBA8/256x256/RT, IMPORTABLE+DEDICATED_ONLY. Intersección
+memoryTypeBits3&2=2, type1 DEVICE_LOCAL; allocation dedicada/bind PASS.
+Misma allocation: D3D12 clear rojo → Vulkan readback exacto; Vulkan clear azul
+→ D3D12 readback exacto. Transporte CPU0; readbacks de validación2.
+Fence D3D12 importado timeline permanente; signal/wait1,2,3,4,5 GPU ordenados.
+Sync ambos sentidos PASS. D3D12_OWNED_VULKAN_INTEROP=PASS; CROSS_API_INTEROP=PASS;
+DLSSG_VULKAN_SIDECAR_PREREQUISITES=PASS limitado a color/sync de este harness.
+D3D12 debug errores0; Vulkan observados0, Khronos validation ausente. No device
+lost/reason0. Sin rerun de DLSS-G/Vulkan export/HEAP; sin Minecraft/MFG>x2.
+Baseline AMD/SR/Wisteria hashes intactos, PresentWorker y bridge existente intactos.
+Fase detenida antes de conectar inputs/outputs DLSS-G.
+Informe [VULKAN_D3D12_INTEROP_AUDIT.md](VULKAN_D3D12_INTEROP_AUDIT.md).
+
+## Estado histórico — bridge cross-API detenido en capability, 2026-10-03
 
 Run20261003-223835-709, sólo probe Vulkan/D3D12, sin NGX/DLSS-G/Minecraft.
 SAME_GPU=PASS RTX3050Ti UUID/LUID exactos. RESOURCE features5/HEAP4/FENCE2:

@@ -1,0 +1,10 @@
+{
+  "cpu_harness_wall_ms": 1160.5751,
+  "method": "steady_clock CPU; includes devices, resource creation, logging, hashing, validation readback and cleanup",
+  "vulkan_gpu_ms": null,
+  "d3d12_gpu_ms": null,
+  "handoff_gpu_ms": null,
+  "gpu_timestamps_instrumented": false,
+  "cross_api_clocks_combined": false,
+  "is_bridge_latency_benchmark": false
+}

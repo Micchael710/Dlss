@@ -1,0 +1,14 @@
+{
+  "vulkan_A.bin": {
+    "expected_sha256": "b8b9b478324141d9331328a2150e74ec5feb266a743a51cab73d903247247ea4",
+    "actual_sha256": "b8b9b478324141d9331328a2150e74ec5feb266a743a51cab73d903247247ea4",
+    "bytes": 262144,
+    "exact_pixels_match": true
+  },
+  "d3d12_B.bin": {
+    "expected_sha256": "592222441a1005a084f94ce26ec7db665f43c10cc6c373e19544774cbdb0c5eb",
+    "actual_sha256": "592222441a1005a084f94ce26ec7db665f43c10cc6c373e19544774cbdb0c5eb",
+    "bytes": 262144,
+    "exact_pixels_match": true
+  }
+}

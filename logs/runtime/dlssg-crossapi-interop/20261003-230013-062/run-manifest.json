@@ -1,0 +1,29 @@
+﻿{
+    "run_id":  "20261003-230013-062",
+    "base_commit":  "df13071b6cfd02fcbd501fcae1d0d0a09ef99e1f",
+    "utc":  "2026-10-03T23:00:13.0749733Z",
+    "strategy":  "D3D12_OWNED_RESOURCE_VULKAN_IMPORT",
+    "width":  256,
+    "height":  256,
+    "format":  "RGBA8_UNORM",
+    "d3d12_flags":  "ALLOW_RENDER_TARGET",
+    "vulkan_usage":  "TRANSFER_SRC|TRANSFER_DST|COLOR_ATTACHMENT",
+    "memory_handle":  "D3D12_RESOURCE",
+    "sync":  "D3D12_FENCE imported TIMELINE",
+    "cpu_self_tests":  "PASS",
+    "automatic_retries":  0,
+    "dlssg_executed":  false,
+    "minecraft_launched":  false,
+    "vulkan_native_export_attempted":  false,
+    "d3d12_heap_attempted":  false,
+    "transport_cpu_copy_count":  0,
+    "exe_sha256":  "a26062536d3f08d3e84496e39cad79431912ecb02fd5eb272545d7f2b59aa12e",
+    "source_sha256":  {
+                          "experiments/dlssg-crossapi-interop/owned.cpp":  "dfd73700d21a25785b18ac4e40581f931dff718ac92e2b3fd1eaff5bab09021f",
+                          "experiments/dlssg-crossapi-interop/probe.cpp":  "8dcdf14d2baa16003adf1a55466fea6ce6152d3797b81b01035fd09cd3964c30",
+                          "experiments/dlssg-crossapi-interop/CMakeLists.txt":  "f604a9ffe0814e2984db20ea2c73d4e6798b6efa6a6246ce07156428a93cb9c2"
+                      },
+    "worker_exit_code":  0,
+    "worker_timeout":  false,
+    "completed_utc":  "2026-10-03T23:00:15.1006859Z"
+}

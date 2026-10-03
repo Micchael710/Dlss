@@ -7,3 +7,8 @@ target_compile_definitions(dlssg_crossapi_interop PRIVATE VK_NO_PROTOTYPES VK_US
 target_compile_options(dlssg_crossapi_interop PRIVATE /W4 /utf-8)
 target_include_directories(dlssg_crossapi_interop PRIVATE ../../superresolution/native/cpp/third_party)
 target_link_libraries(dlssg_crossapi_interop PRIVATE dxgi d3d12)
+add_executable(dlssg_d3d12_owned owned.cpp)
+target_compile_definitions(dlssg_d3d12_owned PRIVATE VK_NO_PROTOTYPES VK_USE_PLATFORM_WIN32_KHR NOMINMAX WIN32_LEAN_AND_MEAN)
+target_compile_options(dlssg_d3d12_owned PRIVATE /W4 /utf-8)
+target_include_directories(dlssg_d3d12_owned PRIVATE ../../superresolution/native/cpp/third_party)
+target_link_libraries(dlssg_d3d12_owned PRIVATE dxgi d3d12 bcrypt)

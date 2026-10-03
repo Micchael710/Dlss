@@ -1,0 +1,20 @@
+{
+  "resource": {
+    "creator": "D3D12 CreateSharedHandle",
+    "importer": "Vulkan vkAllocateMemory",
+    "import_consumes_handle": false,
+    "closer": "application",
+    "close_stage": "after successful vkAllocateMemory, before vkBindImageMemory",
+    "duplicate_handle_used": false,
+    "payload_references": "D3D12 resource + imported VkDeviceMemory"
+  },
+  "fence": {
+    "creator": "D3D12 CreateSharedHandle",
+    "importer": "vkImportSemaphoreWin32HandleKHR",
+    "import_consumes_handle": false,
+    "closer": "application",
+    "close_stage": "after successful permanent timeline import",
+    "duplicate_handle_used": false
+  },
+  "valid": true
+}

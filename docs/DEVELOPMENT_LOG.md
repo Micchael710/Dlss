@@ -430,3 +430,25 @@ no se afirma que ya se hayan desconectado completamente.
 - ExitCode wrapper null preservado; cache handle añadido para futuro, sin retry.
 - Baseline AMD/SR/Wisteria SHA256 intactos. No Minecraft, PresentWorker, Wisteria,
   driver/perfiles o MFG>x2. Docs/evidencia textual commit/push usuario y parada.
+
+## 2026-10-03 — inversión de ownership, interop GPU-only PASS
+
+- Base df13071b6cfd02fcbd501fcae1d0d0a09ef99e1f limpia. Nueva variante owned.cpp,
+  sin NGX/DLSS-G, mantiene probe histórico sin invocarlo. Build Release x64/MT
+  y CPU self-tests intersección/empty intersection/patrones PASS.
+- Run único20261003-230013-062. RTX3050Ti UUID/LUID exactos. D3D12 recurso DEFAULT
+  shared RGBA8/256x256/ALLOW_RENDER_TARGET, handle D3D12_RESOURCE importado Vulkan,
+  dedicated allocation obligatoria, memory type por bits3&2=2/type1. Import/bind PASS.
+- Clears GPU rojo D3D12 y azul Vulkan sobre la misma allocation; hashes completos
+  exactos en readbacks del consumidor. No upload CPU funcional ni segunda texture.
+- Fence D3D12 shared importado TIMELINE permanente, señales1..5; waits GPU entre
+  queues, CPU sólo terminal de cada fase para validar y decidir continuación.
+- Ambos sentidos y roundtrip PASS, transporte CPU0, validation readbacks2. Debug
+  D3D12 errores0; warning820 de clear sin optimized clear value preservado. Vulkan
+  Khronos ausente, debug-utils errores0; no device lost/removed. No benchmark GPU.
+- Handles aplicación cerrados tras import; payload references vivos hasta completion.
+  Protocol COMMON/GENERAL con ownership EXTERNAL y layouts transfer explícitos,
+  observado en esta configuración sin afirmar equivalencia universal entre APIs.
+- Baselines AMD/SR/Wisteria SHA256 intactos. No DLSS-G, Minecraft, PresentWorker,
+  Dzn, ruta export Vulkan, HEAP fallback ni x3–x6. Docs/evidencia textual,
+  commit/push usuario y parada antes de conectar recursos FG.

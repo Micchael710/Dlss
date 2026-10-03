@@ -1,0 +1,83 @@
+{"steady_ns":66775583479800,"detail":"stage CAPABILITY"}
+{"steady_ns":66775592528800,"detail":"layer count VkResult=0"}
+{"steady_ns":66775596504700,"detail":"layers VkResult=0"}
+{"steady_ns":66775760636700,"detail":"instance extension count VkResult=0"}
+{"steady_ns":66775765438600,"detail":"instance extensions VkResult=0"}
+{"steady_ns":66775874702400,"detail":"instance VkResult=0"}
+{"steady_ns":66775874803400,"detail":"debug messenger VkResult=0"}
+{"steady_ns":66775878335600,"detail":"GPU count VkResult=0"}
+{"steady_ns":66775881693600,"detail":"GPUs VkResult=0"}
+{"steady_ns":66775881849200,"detail":"device extension count VkResult=0"}
+{"steady_ns":66775881882900,"detail":"device extensions VkResult=0"}
+{"steady_ns":66775891395700,"detail":"exact import image format VkResult=0"}
+{"steady_ns":66776330491900,"detail":"Vulkan device VkResult=0"}
+{"steady_ns":66776335846000,"detail":"DXGI factory HRESULT=0"}
+{"steady_ns":66776336034100,"detail":"EnumAdapters HRESULT=0"}
+{"steady_ns":66776336055400,"detail":"GetDesc HRESULT=0"}
+{"steady_ns":66776606262400,"detail":"D3D12 device HRESULT=0"}
+{"steady_ns":66776606305200,"detail":"D3D12 format support HRESULT=0"}
+{"steady_ns":66776607159800,"detail":"stage D3D12_RESOURCE_CREATION"}
+{"steady_ns":66776608023400,"detail":"shared DEFAULT texture HRESULT=0"}
+{"steady_ns":66776614256700,"detail":"stage CREATE_SHARED_HANDLE"}
+{"steady_ns":66776614308500,"detail":"resource shared handle HRESULT=0"}
+{"steady_ns":66776614662700,"detail":"stage VK_EXTERNAL_IMAGE_CREATE"}
+{"steady_ns":66776614985800,"detail":"external image create VkResult=0"}
+{"steady_ns":66776623050500,"detail":"stage MEMORY_TYPE"}
+{"steady_ns":66776623166700,"detail":"import handle memory type bits VkResult=0"}
+{"steady_ns":66776623646400,"detail":"stage VK_IMPORT_MEMORY"}
+{"steady_ns":66776623812500,"detail":"dedicated import allocation VkResult=0"}
+{"steady_ns":66776623835600,"detail":"Resource HANDLE application closed after successful vkAllocateMemory; Vulkan and D3D12 payload references remain alive"}
+{"steady_ns":66776624163500,"detail":"stage VK_BIND_MEMORY"}
+{"steady_ns":66776624195200,"detail":"bind imported image VkResult=0"}
+{"steady_ns":66776633527500,"detail":"stage D3D12_TO_VULKAN_SYNC"}
+{"steady_ns":66776668332000,"detail":"direct queue HRESULT=0"}
+{"steady_ns":66776668387600,"detail":"command allocator HRESULT=0"}
+{"steady_ns":66776669402000,"detail":"command list HRESULT=0"}
+{"steady_ns":66776669434700,"detail":"command allocator HRESULT=0"}
+{"steady_ns":66776669748000,"detail":"command list HRESULT=0"}
+{"steady_ns":66776669843500,"detail":"shared fence HRESULT=0"}
+{"steady_ns":66776669868400,"detail":"fence handle HRESULT=0"}
+{"steady_ns":66776669894200,"detail":"timeline semaphore VkResult=0"}
+{"steady_ns":66776669917600,"detail":"permanent D3D12 fence import VkResult=0"}
+{"steady_ns":66776669931700,"detail":"command pool VkResult=0"}
+{"steady_ns":66776670007700,"detail":"command buffers VkResult=0"}
+{"steady_ns":66776670023800,"detail":"validation completion fence VkResult=0"}
+{"steady_ns":66776670032200,"detail":"Vulkan validation buffer VkResult=0"}
+{"steady_ns":66776670152800,"detail":"validation buffer memory VkResult=0"}
+{"steady_ns":66776670164100,"detail":"validation buffer bind VkResult=0"}
+{"steady_ns":66776670499100,"detail":"D3D12 validation buffer HRESULT=0"}
+{"steady_ns":66776670541800,"detail":"RTV heap HRESULT=0"}
+{"steady_ns":66776671012200,"detail":"stage D3D12_TO_VULKAN_SYNC"}
+{"steady_ns":66776671123300,"detail":"D3D12 transition 0 -> 4"}
+{"steady_ns":66776671999200,"detail":"D3D12 transition 4 -> 0"}
+{"steady_ns":66776672045300,"detail":"D3D12 clear list Close HRESULT=0"}
+{"steady_ns":66776673632500,"detail":"D3D12 signal1 HRESULT=0"}
+{"steady_ns":66776674014900,"detail":"Vulkan beginA VkResult=0"}
+{"steady_ns":66776674055900,"detail":"Vulkan acquire EXTERNAL/GENERAL -> local transfer"}
+{"steady_ns":66776674101900,"detail":"Vulkan release local transfer -> EXTERNAL/GENERAL"}
+{"steady_ns":66776674124000,"detail":"Vulkan endA VkResult=0"}
+{"steady_ns":66776674315300,"detail":"Vulkan cross API submit VkResult=0"}
+{"steady_ns":66776674333200,"detail":"Vulkan wait=1 signal=2"}
+{"steady_ns":66776674427300,"detail":"D3D12 return wait2 HRESULT=0"}
+{"steady_ns":66776674441800,"detail":"D3D12 release signal3 HRESULT=0"}
+{"steady_ns":66776674453400,"detail":"terminal phaseA fence event HRESULT=0"}
+{"steady_ns":66776674840400,"detail":"CPU terminal validation wait; not queue ordering"}
+{"steady_ns":66776679615000,"detail":"stage READBACK"}
+{"steady_ns":66776679646000,"detail":"validation mapA VkResult=0"}
+{"steady_ns":66776691314900,"detail":"stage VULKAN_TO_D3D12_SYNC"}
+{"steady_ns":66776691344300,"detail":"reset terminal validation fence VkResult=0"}
+{"steady_ns":66776691377700,"detail":"Vulkan beginB VkResult=0"}
+{"steady_ns":66776691394400,"detail":"Vulkan acquire EXTERNAL/GENERAL -> local transfer"}
+{"steady_ns":66776691976700,"detail":"Vulkan release local transfer -> EXTERNAL/GENERAL"}
+{"steady_ns":66776692011900,"detail":"Vulkan endB VkResult=0"}
+{"steady_ns":66776692142600,"detail":"Vulkan cross API submit VkResult=0"}
+{"steady_ns":66776692160300,"detail":"Vulkan wait=3 signal=4"}
+{"steady_ns":66776692403300,"detail":"D3D12 wait4 HRESULT=0"}
+{"steady_ns":66776692462200,"detail":"D3D12 transition 0 -> 2048"}
+{"steady_ns":66776692648300,"detail":"D3D12 transition 2048 -> 0"}
+{"steady_ns":66776692697500,"detail":"D3D12 readback list Close HRESULT=0"}
+{"steady_ns":66776692878100,"detail":"D3D12 completion signal5 HRESULT=0"}
+{"steady_ns":66776692891400,"detail":"terminal fence event HRESULT=0"}
+{"steady_ns":66776693122600,"detail":"CPU terminal validation wait; not queue ordering"}
+{"steady_ns":66776700525700,"detail":"stage READBACK"}
+{"steady_ns":66776700576700,"detail":"validation mapB HRESULT=0"}
