@@ -67,3 +67,11 @@ index1=0 and index2=4294967295 (UNKNOWN). One G1 was presented, G2 discarded.
 No pixel samples, no x3 content/temporal PASS, normal shutdown and device reason
 0x00000000. AMD nine classes and two DLLs match baseline byte-for-byte.
 The exact cause of the missing status remains unknown. See the run result.json.
+
+## Continued audit and single diagnostic run
+
+The next run20261004-144431-183 also closed normally with index2 UNKNOWN.
+See DLSSG_INDEX2_PIPELINE_AUDIT.md and its twenty checks. Distinct resource
+and status getter IDs, before/per-Evaluate/group-end GPU snapshots and actual
+callback fence values narrow the boundary without inventing an internal cause.
+No retry/x4/x5. Disable/UNKNOWN gating and AMD baseline remain intact.

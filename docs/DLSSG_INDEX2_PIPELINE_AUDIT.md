@@ -1,4 +1,4 @@
-# Index2 pipeline audit â€” 2026-10-04
+# Index2 pipeline audit — 2026-10-04
 
 Historical Java25 run closed: 20261004-045826-216. New instrumentation is not
 claimed as observed in that run. No root-cause fix is asserted.
@@ -107,3 +107,11 @@ ROOT_CAUSE=INDEX2_STATUS_RESOURCE_UNCHANGED; INTERNAL_REASON_UNDETERMINED
 No retries/x4/x5/multiplayer preparation. Pixel hashes/temporal validity cannot
 be measured because UNKNOWN stops generation before the bounded sample window.
 Full matched evidence: run index2-boundary-review.json.
+
+Closed normally at10:54:12 America/La_Paz; world all dimensions saved, Vulkan
+destroyed, BUILD SUCCESSFUL, no crash/device removed (reason0x00000000).
+Three completed provider groups, two status-eligible G1 outputs (pixel proof
+absent), one G1 presented and zero G2 presented. Global FPS not measured;
+startup provider presentation window is in timings.json. No cause of the
+reported visual cut is asserted. result-classification.json contains the exact
+failure label and all matched native parameter/status/fence evidence.
