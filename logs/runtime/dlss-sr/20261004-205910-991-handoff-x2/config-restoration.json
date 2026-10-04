@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "path": "runtime-baseline\\instance\\config\\super_resolution\\config.toml",
+  "snapshot_run": "20261004-205910-991-handoff-x2",
+  "before_sha256": "e12b0dbf68099924a8c490a87deb664841f92df1e24c7ded04e76b2db05c555e",
+  "snapshot_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+  "restored_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+  "real_minecraft_touched": false
+}

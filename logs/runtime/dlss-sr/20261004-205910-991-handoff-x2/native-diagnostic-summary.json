@@ -1,0 +1,14 @@
+{
+  "cleanup": "DRAINED; borrowed Vulkan device retained",
+  "create_result": "0x00000001",
+  "ngx_init": "PASS",
+  "ngx_shutdown": "0x00000001",
+  "device_removed": false,
+  "device_removed_reason": "0x00000000",
+  "per_frame_cpu_wait_between_apis": false,
+  "real_frames_completed": 200,
+  "real_frames_submitted": 200,
+  "generated_disable_flag_zero_count": 187,
+  "debug_layer_enabled": false,
+  "d3d12_debug_errors": 0
+}

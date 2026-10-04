@@ -41,6 +41,8 @@ public class GlDebugMixin {
         }
         StackTraceElement[] elements = SuperResolution.renderThread.getStackTrace();
         LOGGER.error("OpenGL Error!");
+        String release=io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.current();
+        if(release!=null)LOGGER.error("GL_RELEASE_CALLBACK {}",release);
 
         for (StackTraceElement element : elements) {
             LOGGER.error("    {}", element.toString());

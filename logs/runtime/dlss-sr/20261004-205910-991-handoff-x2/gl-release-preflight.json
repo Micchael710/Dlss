@@ -1,0 +1,15 @@
+{
+  "root": "unsubmitted external release forbidden by Khronos EXT_semaphore 4.2.3",
+  "jni_abi": 4,
+  "amd_hashes": "9 classes + 2 DLLs identical",
+  "gl_release_diagnostics": "exact post-call glGetError",
+  "amd_run": false,
+  "binary_reuse_rejections": 8,
+  "fg_interval_limit": 200,
+  "x3plus_run": false,
+  "cpu_gl_release_rejections": 12,
+  "standalone_rerun": false,
+  "borrowed_readiness_rejections": 13,
+  "status": "PASS",
+  "native_shutdown_markers": "enabled"
+}

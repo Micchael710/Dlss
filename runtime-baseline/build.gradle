@@ -59,6 +59,10 @@ neoForge {
             jvmArgument '-Dsr.baselineDiagnostics=true'
             if (providers.gradleProperty('dlssg_second_submit_diagnostics').isPresent())
                 jvmArgument '-Dsr.dlss.secondSubmitDiagnostics=true'
+            if (providers.gradleProperty('dlssg_gl_release_diagnostics').isPresent()) {
+                jvmArgument '-Dsr.dlss.glReleaseDiagnostics=true'
+                jvmArgument '-Dwisteria.dlssg.shortRunLimit=200'
+            }
             if (providers.gradleProperty('dlss_sr_run_dir').isPresent()) {
                 jvmArgument "-Dsr.dlss.runDir=${file(providers.gradleProperty('dlss_sr_run_dir').get()).absolutePath}"
             }

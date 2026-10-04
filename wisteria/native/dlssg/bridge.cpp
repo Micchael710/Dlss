@@ -525,21 +525,27 @@ struct Session {
         if(completedFrames%120==0)events.flush();
     }
     void closePool(Pool& p) {
+        event("shutdown_stage","DLSSG_POOL_BEGIN");
         for(auto& s:p.slots)if(s->leased)throw std::runtime_error("Cannot destroy leased pool");
-        if(p.feature){NVSDK_NGX_D3D12_ReleaseFeature(p.feature);p.feature=nullptr;}if(p.parameters){NVSDK_NGX_D3D12_DestroyParameters(p.parameters);p.parameters=nullptr;}
+        if(p.feature){event("shutdown_stage","DLSSG_FEATURE_RELEASE_BEGIN");auto r=NVSDK_NGX_D3D12_ReleaseFeature(p.feature);event("shutdown_stage","DLSSG_FEATURE_RELEASE_END result="+resultHex(r));if(!NVSDK_NGX_SUCCEED(r))throw std::runtime_error("DLSSG release failed; owner retained");p.feature=nullptr;}
+        if(p.parameters){event("shutdown_stage","DLSSG_PARAMETERS_DESTROY_BEGIN");auto r=NVSDK_NGX_D3D12_DestroyParameters(p.parameters);event("shutdown_stage","DLSSG_PARAMETERS_DESTROY_END result="+resultHex(r));if(!NVSDK_NGX_SUCCEED(r))throw std::runtime_error("DLSSG parameters destroy failed; owner retained");p.parameters=nullptr;}
+        event("shutdown_stage","DLSSG_CALLBACKS_AND_IMPORTS_BEGIN");
         for(auto& s:p.slots){if(s->completionWait){SetThreadpoolWait(s->completionWait,nullptr,nullptr);WaitForThreadpoolWaitCallbacks(s->completionWait,FALSE);CloseThreadpoolWait(s->completionWait);CloseHandle(s->completionEvent);}
             for(auto& im:s->images){if(im.view)fn<PFN_vkDestroyImageView>("vkDestroyImageView")(device,im.view,nullptr);if(im.image)fn<PFN_vkDestroyImage>("vkDestroyImage")(device,im.image,nullptr);if(im.memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,im.memory,nullptr);im.view={};im.image={};im.memory={};im.dx.resource.Reset();}s->generatedSamples.push_back(s->colorSample);for(auto& sampleValue:s->generatedSamples){auto sample=&sampleValue;if(sample->buffer)fn<PFN_vkDestroyBuffer>("vkDestroyBuffer")(device,sample->buffer,nullptr);if(sample->memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,sample->memory,nullptr);}if(s->inputs){fn<PFN_vkFreeCommandBuffers>("vkFreeCommandBuffers")(device,commandPool,1,&s->inputs);s->inputs={};}}
         p.slots.clear();
+        event("shutdown_stage","DLSSG_CALLBACKS_AND_IMPORTS_END");
         if(p.inputTiming){fn<PFN_vkDestroyQueryPool>("vkDestroyQueryPool")(device,p.inputTiming,nullptr);p.inputTiming={};}
+        event("shutdown_stage","DLSSG_POOL_END");
     }
     void close() {
         evidence.raw("real_frames_submitted",std::to_string(submittedFrames));evidence.raw("real_frames_completed",std::to_string(completedFrames));evidence.raw("generated_disable_flag_zero_count",std::to_string(generatedFrames));
         events.flush();dx.debugMessages();evidence.raw("d3d12_debug_errors",std::to_string(validationErrors));
         if(unsafe){evidence.str("cleanup","UNSAFE_GPU_RETAINED_UNTIL_PROCESS_EXIT");return;}
         for(auto& p:pools)closePool(*p);
-        if(timeline)fn<PFN_vkDestroySemaphore>("vkDestroySemaphore")(device,timeline,nullptr);
-        if(commandPool)fn<PFN_vkDestroyCommandPool>("vkDestroyCommandPool")(device,commandPool,nullptr);
-        dx.close();evidence.str("cleanup","DRAINED; borrowed Vulkan device retained");vendorLog.close();validationLog.close();
+        event("shutdown_stage","DLSSG_TIMELINE_BEGIN");if(timeline){fn<PFN_vkDestroySemaphore>("vkDestroySemaphore")(device,timeline,nullptr);timeline={};}event("shutdown_stage","DLSSG_TIMELINE_END");
+        event("shutdown_stage","DLSSG_COMMAND_POOL_BEGIN");if(commandPool){fn<PFN_vkDestroyCommandPool>("vkDestroyCommandPool")(device,commandPool,nullptr);commandPool={};}event("shutdown_stage","DLSSG_COMMAND_POOL_END");
+        event("shutdown_stage","DLSSG_NGX_D3D12_CLOSE_BEGIN");dx.close();event("shutdown_stage","DLSSG_NGX_D3D12_CLOSE_END");
+        evidence.str("cleanup","DRAINED; borrowed Vulkan device retained");vendorLog.close();validationLog.close();
     }
 };
 static fs::path path(JNIEnv* e,jstring s){const jchar* chars=e->GetStringChars(s,nullptr);fs::path p(std::wstring(reinterpret_cast<const wchar_t*>(chars),e->GetStringLength(s)));e->ReleaseStringChars(s,chars);return p;}

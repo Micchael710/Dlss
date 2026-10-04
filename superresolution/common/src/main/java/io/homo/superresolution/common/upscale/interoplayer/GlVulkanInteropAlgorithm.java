@@ -256,6 +256,11 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         if (!validateInputResources(dispatchResource.resources())) {
             return false;
         }
+        // Host submit notification gates reuse without a GPU query or CPU wait.
+        if(frameResourcesSet!=null&&!frameResourcesSet.releaseSubmissionAvailable()) {
+            FrameGeneration.invalidateHistory();
+            return frameResourcesSet.frameData!=null;
+        }
         InteropResourceLayout layout = resolveLayout(dispatchResource.resources());
         if (!layout.equals(builtLayout)) {
             rebuildResources(layout);
@@ -271,7 +276,7 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         //if (frameResourcesSet.commandBuffer != null) {
         //    frameResourcesSet.commandBuffer.waitForFence();
         //}
-        processInputResources(frameResourcesSet, dispatchResource, writer);
+        if(!processInputResources(frameResourcesSet, dispatchResource, writer))return frameResourcesSet.frameData!=null;
         signalInputTexturesReady(frameResourcesSet);
         publishCaptureInputs(frameResourcesSet, dispatchResource);
 
@@ -345,18 +350,26 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
     }
 
     private void awaitResourceUsers() {
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_CAPTURE_DRAIN_BEGIN");
         PresentationBackendManager.flushCapturedFrame();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_CAPTURE_DRAIN_END");
         if (frameResourcesSet != null) {
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_GL_RELEASE_BEGIN");
             frameResourcesSet.awaitCaptureRelease();
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_GL_RELEASE_END");
         }
         // Vulkan idle alone does not retire OpenGL readers of an unflipped shared output.
-        glFinish();
-        RenderSystems.vulkan().device().getMainQueue().waitIdle();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_GL_FINISH_BEGIN");glFinish();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_GL_FINISH_END");
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_VK_DRAIN_BEGIN");RenderSystems.vulkan().device().getMainQueue().waitIdle();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("INTEROP_VK_DRAIN_END");
+        if(frameResourcesSet!=null)frameResourcesSet.retireCaptureAfterTerminalDrain();
     }
 
-    private void processInputResources(FrameResourcesSet inFlight, DispatchResource dispatchResource,
+    private boolean processInputResources(FrameResourcesSet inFlight, DispatchResource dispatchResource,
                                        Consumer<InteropInputWriter> writer) {
         inFlight.awaitCaptureRelease();
+        if(!inFlight.releaseSubmissionAvailable())return false;
         String motionVectorPreprocessingFunction =
                 SRWorkModeManager.getCurrentState().motionVectorPreprocessingFunction();
         try (
@@ -406,6 +419,7 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         } finally {
             PerformanceTracker.pop(PerformanceTracker.GL_INPUT_CONVERT);
         }
+        return true;
     }
 
     private void signalInputTexturesReady(FrameResourcesSet inFlight) {
@@ -457,6 +471,13 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         boolean borrowedMotionVectors = hasMotionVectors && captureFrame.hasMotionVector();
         if (borrowedDepth || borrowedMotionVectors) {
             inFlight.captureInputsFrame = captureFrame;
+            inFlight.captureReleaseReady=null;inFlight.captureReleaseFailure=null;
+            if(borrowedDepth)inFlight.depthReleaseCycle.begin(captureFrame.index(),captureFrame.generation(),captureFrame.logicalFrameIndex());
+            if(borrowedMotionVectors)inFlight.motionReleaseCycle.begin(captureFrame.index(),captureFrame.generation(),captureFrame.logicalFrameIndex());
+            captureFrame.releaseSubmissionNotification().whenComplete((submitted,error)->{
+                if(error!=null)inFlight.captureReleaseFailure=error;
+                else inFlight.captureReleaseReady=submitted;
+            });
         }
         if (borrowedDepth) {
             inFlight.captureDepthPending = true;
@@ -604,6 +625,11 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         private boolean captureDepthPending;
         private boolean captureMotionPending;
         private FrameResources captureInputsFrame;
+        private volatile io.homo.superresolution.core.graphics.vulkan.GlReleaseContract.Submission captureReleaseReady;
+        private volatile Throwable captureReleaseFailure;
+        private boolean captureReleaseGlFailed;
+        private final io.homo.superresolution.core.graphics.vulkan.GlReleaseContract depthReleaseCycle = new io.homo.superresolution.core.graphics.vulkan.GlReleaseContract();
+        private final io.homo.superresolution.core.graphics.vulkan.GlReleaseContract motionReleaseCycle = new io.homo.superresolution.core.graphics.vulkan.GlReleaseContract();
 
         public FrameResourcesSet(boolean flipInteropResourcesY) {
             this.flipInteropResourcesY = flipInteropResourcesY;
@@ -756,28 +782,31 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
             }
             if (captureInputsFrame != null
                     && (captureDepthPending || captureMotionPending)) {
-                if (!captureInputsFrame.hasGpuOrderedBorrowedRelease())
-                    captureInputsFrame.awaitBorrowedInputReleaseSubmission();
+                if(!releaseSubmissionAvailable())return;
             }
             if (captureDepthPending && captureDepthRelease != null && openGl(Depth) != null) {
-                captureDepthRelease.waitVulkanSignal(
-                        new int[]{Math.toIntExact(openGl(Depth).handle())},
-                        new int[0],
-                        new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
-                );
+                int error=captureDepthRelease.waitBorrowedRelease(captureReleaseReady,"depth",depthReleaseCycle,
+                        Math.toIntExact(openGl(Depth).handle()),GL_LAYOUT_SHADER_READ_ONLY_EXT);
+                if(error!=0){captureReleaseGlFailed=true;return;}
                 captureDepthPending = false;
             }
             if (captureMotionPending && captureMotionRelease != null && openGl(MotionVectors) != null) {
-                captureMotionRelease.waitVulkanSignal(
-                        new int[]{Math.toIntExact(openGl(MotionVectors).handle())},
-                        new int[0],
-                        new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
-                );
+                int error=captureMotionRelease.waitBorrowedRelease(captureReleaseReady,"motion",motionReleaseCycle,
+                        Math.toIntExact(openGl(MotionVectors).handle()),GL_LAYOUT_SHADER_READ_ONLY_EXT);
+                if(error!=0){captureReleaseGlFailed=true;return;}
                 captureMotionPending = false;
             }
             if (!captureDepthPending && !captureMotionPending) {
                 captureInputsFrame = null;
             }
+        }
+        private boolean releaseSubmissionAvailable() {
+            if(captureReleaseFailure!=null)throw new IllegalStateException("Borrowed release producer failed",captureReleaseFailure);
+            return !captureReleaseGlFailed&&(!(captureDepthPending||captureMotionPending)||captureReleaseReady!=null);
+        }
+        private void retireCaptureAfterTerminalDrain() {
+            depthReleaseCycle.retiredAfterTerminalDrain();motionReleaseCycle.retiredAfterTerminalDrain();
+            captureDepthPending=captureMotionPending=false;captureInputsFrame=null;captureReleaseReady=null;
         }
     }
 }

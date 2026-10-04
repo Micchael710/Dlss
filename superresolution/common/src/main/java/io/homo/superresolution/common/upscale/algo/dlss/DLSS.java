@@ -209,7 +209,9 @@ public class DLSS extends GlVulkanInteropAlgorithm {
         for(var pending:diagnosticPending.entrySet())DlssSrDiagnostics.event("GPU_COMPLETION","evaluation",pending.getValue(),"source","resource drain before feature destruction");
         diagnosticPending.clear();
         if (ngxDlssFeature != null) {
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("DLSS_SR_FEATURE_RELEASE_BEGIN");
             int result = ngxDlssFeature.release();
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("DLSS_SR_FEATURE_RELEASE_END");
             if (!NgxConstants.succeeded(result)) {
                 SuperResolution.LOGGER.error("Failed to release the DLSS NGX feature. Result: {}", result);
                 throw new IllegalStateException("DLSS feature release failed; owner retained: " + Integer.toUnsignedString(result));
@@ -217,7 +219,9 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             ngxDlssFeature = null;
         }
         if (ngxParameters != null) {
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("DLSS_SR_PARAMETERS_DESTROY_BEGIN");
             int result = ngxParameters.destroy();
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("DLSS_SR_PARAMETERS_DESTROY_END");
             if (!NgxConstants.succeeded(result)) {
                 SuperResolution.LOGGER.error("Failed to destroy the DLSS NGX parameters. Result: {}", result);
                 throw new IllegalStateException("DLSS parameter destruction failed; owner retained: " + Integer.toUnsignedString(result));

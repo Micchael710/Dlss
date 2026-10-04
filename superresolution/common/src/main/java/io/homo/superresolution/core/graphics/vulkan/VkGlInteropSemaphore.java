@@ -31,6 +31,9 @@ public class VkGlInteropSemaphore {
     private final long glSemaphoreHandle;
     private final long semaphoreHandle;
     private final VulkanDevice device;
+    private static final java.util.concurrent.atomic.AtomicLong GENERATIONS=new java.util.concurrent.atomic.AtomicLong();
+    private final long generation=GENERATIONS.incrementAndGet();
+    private boolean destroyed;
 
     private VkGlInteropSemaphore(long vkSemaphoreHandle, long glSemaphoreHandle, long semaphoreHandle, VulkanDevice device) {
         this.vkSemaphoreHandle = vkSemaphoreHandle;
@@ -107,17 +110,25 @@ public class VkGlInteropSemaphore {
     }
 
     public void destroy() {
+        if(destroyed)return;
+        destroyed=true;
+        InteropReleaseDiagnostics.stage("SEMAPHORE_VK_DESTROY_BEGIN vk="+vkSemaphoreHandle+" gl="+glSemaphoreHandle+" generation="+generation);
         try {
             vkDestroySemaphore(
                     device.getVkDevice(),
                     vkSemaphoreHandle,
                     null
             );
+            InteropReleaseDiagnostics.stage("SEMAPHORE_VK_DESTROY_END vk="+vkSemaphoreHandle);
         } finally {
             try {
+                InteropReleaseDiagnostics.stage("SEMAPHORE_GL_DELETE_BEGIN gl="+glSemaphoreHandle);
                 glDeleteSemaphoresEXT((int) glSemaphoreHandle);
+                InteropReleaseDiagnostics.stage("SEMAPHORE_GL_DELETE_END gl="+glSemaphoreHandle);
             } finally {
+                InteropReleaseDiagnostics.stage("SEMAPHORE_HANDLE_CLOSE_BEGIN handle="+semaphoreHandle);
                 VulkanInterop.closeImportedExportedHandle(semaphoreHandle);
+                InteropReleaseDiagnostics.stage("SEMAPHORE_HANDLE_CLOSE_END handle="+semaphoreHandle);
             }
         }
     }
@@ -139,6 +150,29 @@ public class VkGlInteropSemaphore {
                 textures == null ? new int[]{} : textures,
                 srcLayouts == null ? new int[]{} : srcLayouts
         );
+    }
+
+    public int waitBorrowedRelease(GlReleaseContract.Submission submitted,String resource,
+                                   GlReleaseContract cycle,int texture,int layout) {
+        if(destroyed)throw new IllegalStateException("Release semaphore already destroyed");
+        int[] textures={texture},layouts={layout};cycle.validate(submitted,vkSemaphoreHandle,textures,layouts);
+        long expected=resource.equals("depth")?submitted.depthSemaphore():submitted.motionSemaphore();
+        if(vkSemaphoreHandle!=expected)throw new IllegalStateException("Release resource/direction mismatch");
+        boolean diagnostic=InteropReleaseDiagnostics.enabled();
+        boolean validSemaphore=!diagnostic||glIsSemaphoreEXT((int)glSemaphoreHandle);
+        boolean validTexture=!diagnostic||org.lwjgl.opengl.GL11.glIsTexture(texture);
+        long context=diagnostic?org.lwjgl.glfw.GLFW.glfwGetCurrentContext():0;
+        if(diagnostic&&(context==0||!validSemaphore||!validTexture||Thread.currentThread()!=io.homo.superresolution.common.SuperResolution.renderThread))throw new IllegalStateException("Invalid GL release context/object/thread");
+        int preError=org.lwjgl.opengl.GL11.glGetError();
+        String label="logicalFrame="+submitted.logicalFrame()+" realFrameId="+submitted.realFrameId()+" captureGeneration="+submitted.generation()+" slot="+submitted.slot()+" resource="+resource+" glSemaphore="+glSemaphoreHandle+" vkSemaphore="+vkSemaphoreHandle;
+        InteropReleaseDiagnostics.active(label);
+        int error;
+        try{glWaitSemaphoreEXT((int)glSemaphoreHandle,new int[0],textures,layouts);
+            error=org.lwjgl.opengl.GL11.glGetError(); // Must be the immediate next GL call.
+        }finally{InteropReleaseDiagnostics.clear();}
+        InteropReleaseDiagnostics.waitResult(submitted,resource,glSemaphoreHandle,vkSemaphoreHandle,generation,texture,layout,error,preError,cycle.previousWaitFrame(),validSemaphore,validTexture,context);
+        if(error==0)cycle.consumed(submitted);
+        return error;
     }
 
     public void signalVulkan() {

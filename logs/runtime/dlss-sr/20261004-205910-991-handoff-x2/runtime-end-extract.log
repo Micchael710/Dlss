@@ -1,0 +1,55 @@
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (DLAA) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (Quality) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (Balanced) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (Perf) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (UltraPerf) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxRayReconstruction::FillCreationParams::<lambda_5bd36971463f469fd81574f74f368df1>::operator ():1733] Info: (UltraQuality) Using Default Overriden Preset Preset_D
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (DLAA) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (Quality) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (Balanced) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (Perf) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (UltraPerf) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][NgxDltss::FillCreationParams::<lambda_cef418e50ae0bb979313c68b3f92b7fd>::operator ():2763] Info: (UltraQuality) Using App hint Preset K
+[2026-10-04 17:05:19] [tid:164624][AliasTensorContainer:192] Texture is too small to fit tensor buffer: 3538944 < 6291456
+[2026-10-04 17:05:19] [tid:164624][AliasTensorContainer:192] Texture is too small to fit tensor buffer: 3538944 < 4214784
+[2026-10-04 17:05:19] [tid:164624][PaddedWindowNetwork::CreatePaddedWindowNetwork:399] Container0Tensor: 5 MiB allocated
+[2026-10-04 17:05:19] [tid:164624][PaddedWindowNetwork::CreatePaddedWindowNetwork:403] Container1Tensor: 6 MiB allocated
+[2026-10-04 17:05:19] [tid:164624][PaddedWindowNetwork::CreatePaddedWindowNetwork:407] Container2Tensor: 4 MiB allocated
+[2026-10-04 17:01:53] [util::setLogFilename:284] Logging to requested file (D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution/nvsdk_ngx.log) enabled successfully
+[2026-10-04 17:01:53] [NGXSafeInitializeLog:150] App logging hooks successfully initialized
+[2026-10-04 17:01:53] [NGXLoadLibrary:332] error: failed to load NGXCore: 126 (C:\Program Files\Java\jdk-25.0.4\bin\_nvngx.dll)
+[2026-10-04 17:01:53] [NGXLoadLibrary:332] error: failed to load NGXCore: 126 (C:\Program Files\Java\jdk-25.0.4\bin\nvngx.dll)
+[2026-10-04 17:01:53] [NGXGetPathUsingQAI:153] Attempting to read from Parameters\NGXCore\NGXPath
+[2026-10-04 17:01:53] [NGXGetPathUsingQAI:177] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+[2026-10-04 17:01:54] [NGXLoadCoreLibrary:285] Loading C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\_nvngx.dll succeeded
+deepdvc, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlssd, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [NGXContextDenyListData::IsFeatureDenied:669] Feature truehdr, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [NGXContextDenyListData::IsFeatureDenied:669] Feature latewarp, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [NGXContextDenyListData::IsFeatureDenied:669] Feature vsr, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [NGXContextDenyListData::IsFeatureDenied:669] Feature fgx, denial value 0 for Cms ID 876232c
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:56] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+[2026-10-04 17:01:58] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:02:15] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:02:15] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:02:32] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:03:55] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:04:14] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:04:14] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:04:56] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+[2026-10-04 17:05:19] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+
+BUILD SUCCESSFUL in 5m 42s
+6 actionable tasks: 3 executed, 3 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

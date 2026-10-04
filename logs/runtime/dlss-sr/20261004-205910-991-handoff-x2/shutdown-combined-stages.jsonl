@@ -1,0 +1,598 @@
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146103961041400, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146103962776200, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146103964139400, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146103965077500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146103966107400, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146103971713300, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146103972899300, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146103974116300, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146103985540200, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146103986804500, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146103987646000, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146103988579200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420294222032 gl=1 generation=1", "timestamp_ns": 146104000718000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420294222032", "timestamp_ns": 146104001740900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=1", "timestamp_ns": 146104002529200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=1", "timestamp_ns": 146104003709400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8100", "timestamp_ns": 146104004728000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8100", "timestamp_ns": 146104005806400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420294223856 gl=2 generation=2", "timestamp_ns": 146104006727400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420294223856", "timestamp_ns": 146104007621900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=2", "timestamp_ns": 146104008621000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=2", "timestamp_ns": 146104009545100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8016", "timestamp_ns": 146104010325700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8016", "timestamp_ns": 146104011112400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420294224160 gl=3 generation=3", "timestamp_ns": 146104011828500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420294224160", "timestamp_ns": 146104012637700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=3", "timestamp_ns": 146104013611600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=3", "timestamp_ns": 146104014559200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7828", "timestamp_ns": 146104015306400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7828", "timestamp_ns": 146104016255900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422323257024 gl=4 generation=4", "timestamp_ns": 146104017076400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422323257024", "timestamp_ns": 146104017962900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=4", "timestamp_ns": 146104018664600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=4", "timestamp_ns": 146104019807100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8184", "timestamp_ns": 146104020503500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8184", "timestamp_ns": 146104021346400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422323257328 gl=5 generation=5", "timestamp_ns": 146104022039200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422323257328", "timestamp_ns": 146104022805600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=5", "timestamp_ns": 146104023488800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=5", "timestamp_ns": 146104024326500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7940", "timestamp_ns": 146104025057600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7940", "timestamp_ns": 146104026228200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420323102480 gl=6 generation=6", "timestamp_ns": 146104027010400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420323102480", "timestamp_ns": 146104027814200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=6", "timestamp_ns": 146104028666900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=6", "timestamp_ns": 146104029470800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8068", "timestamp_ns": 146104030230100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8068", "timestamp_ns": 146104031105700, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146104253964900, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146104254816500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146104255771400, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146104256598000, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146104257495400, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146104258781000, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146104259946800, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146104260873000, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146104261549400, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146104262298200, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146104262996900, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146104263672800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649889488 gl=1 generation=13", "timestamp_ns": 146104265003000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649889488", "timestamp_ns": 146104265916700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=1", "timestamp_ns": 146104266653300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=1", "timestamp_ns": 146104267441200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8100", "timestamp_ns": 146104268450900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8100", "timestamp_ns": 146104269485400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649891008 gl=2 generation=14", "timestamp_ns": 146104270308900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649891008", "timestamp_ns": 146104271193200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=2", "timestamp_ns": 146104272335600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=2", "timestamp_ns": 146104273253700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8976", "timestamp_ns": 146104274051900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8976", "timestamp_ns": 146104274847700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649887968 gl=3 generation=15", "timestamp_ns": 146104275712900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649887968", "timestamp_ns": 146104276507700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=3", "timestamp_ns": 146104277260200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=3", "timestamp_ns": 146104278156600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9092", "timestamp_ns": 146104278943400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9092", "timestamp_ns": 146104279672200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649889792 gl=4 generation=16", "timestamp_ns": 146104280469200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649889792", "timestamp_ns": 146104281339000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=4", "timestamp_ns": 146104282006100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=4", "timestamp_ns": 146104282825400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8956", "timestamp_ns": 146104283642600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8956", "timestamp_ns": 146104284458500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649888576 gl=5 generation=17", "timestamp_ns": 146104285177900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649888576", "timestamp_ns": 146104286034200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=5", "timestamp_ns": 146104286785200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=5", "timestamp_ns": 146104287665900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9020", "timestamp_ns": 146104288503900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9020", "timestamp_ns": 146104289461600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649889184 gl=6 generation=18", "timestamp_ns": 146104290317100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649889184", "timestamp_ns": 146104291112300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=6", "timestamp_ns": 146104291904600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=6", "timestamp_ns": 146104292647000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7208", "timestamp_ns": 146104293347100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7208", "timestamp_ns": 146104294299900, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146203859083500, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146203859897200, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146203860388600, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146203860728500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146203861068200, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146203861969000, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146203862383200, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146203862832600, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146203863481300, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146203863902100, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146203864271200, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146203864646400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649890096 gl=13 generation=19", "timestamp_ns": 146203866382000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649890096", "timestamp_ns": 146203866871900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146203867241000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146203867630200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7896", "timestamp_ns": 146203867988700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7896", "timestamp_ns": 146203868334700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649890400 gl=14 generation=20", "timestamp_ns": 146203868628300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649890400", "timestamp_ns": 146203868872600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146203869115200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146203869400800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7932", "timestamp_ns": 146203869702000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7932", "timestamp_ns": 146203870144100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649888880 gl=15 generation=21", "timestamp_ns": 146203870488200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649888880", "timestamp_ns": 146203870819800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146203871200500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146203871534900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8108", "timestamp_ns": 146203871854500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8108", "timestamp_ns": 146203872222400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649890704 gl=16 generation=22", "timestamp_ns": 146203872599500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649890704", "timestamp_ns": 146203872955500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146203873266600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146203873598300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7928", "timestamp_ns": 146203873944100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7928", "timestamp_ns": 146203874281200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649888272 gl=17 generation=23", "timestamp_ns": 146203874635700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649888272", "timestamp_ns": 146203874968600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146203875263400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146203875531100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=4172", "timestamp_ns": 146203875828200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=4172", "timestamp_ns": 146203876203900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424089332128 gl=18 generation=24", "timestamp_ns": 146203876548800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424089332128", "timestamp_ns": 146203876845500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146203877119500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146203877485900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8936", "timestamp_ns": 146203877802000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8936", "timestamp_ns": 146203878170700, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146222385350200, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146222385868800, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146222386135200, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146222386363100, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146222386599700, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146222401308800, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146222401932900, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146222402310500, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146222402668000, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146222402989400, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146222403231500, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146222403452700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295214528 gl=13 generation=37", "timestamp_ns": 146222404379600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295214528", "timestamp_ns": 146222404903800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146222405220900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146222405576000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9084", "timestamp_ns": 146222405820200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9084", "timestamp_ns": 146222406083400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295204800 gl=14 generation=38", "timestamp_ns": 146222406491600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295204800", "timestamp_ns": 146222406731500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146222406997800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146222407242800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9080", "timestamp_ns": 146222407497700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9080", "timestamp_ns": 146222407791100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295208752 gl=15 generation=39", "timestamp_ns": 146222408020300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295208752", "timestamp_ns": 146222408293900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146222408556600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146222408853300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=2240", "timestamp_ns": 146222409078400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=2240", "timestamp_ns": 146222409329100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295210272 gl=16 generation=40", "timestamp_ns": 146222409569500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295210272", "timestamp_ns": 146222409799000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146222410003700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146222410253600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8984", "timestamp_ns": 146222410462300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8984", "timestamp_ns": 146222410697700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295214832 gl=17 generation=41", "timestamp_ns": 146222410914700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295214832", "timestamp_ns": 146222411239400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146222411541900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146222411943200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=3508", "timestamp_ns": 146222412303900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=3508", "timestamp_ns": 146222412663700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2420295202976 gl=18 generation=42", "timestamp_ns": 146222413104500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2420295202976", "timestamp_ns": 146222413456900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146222413748900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146222414076300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10100", "timestamp_ns": 146222414353600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10100", "timestamp_ns": 146222414758400, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146222462403100, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146222462828600, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146222463096900, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146222463424900, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146222463725400, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146222464212600, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146222464514900, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146222464880500, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146222465193500, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146222465457300, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146222465699200, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146222465934000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424160073264 gl=13 generation=43", "timestamp_ns": 146222466471900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424160073264", "timestamp_ns": 146222466820700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146222467218000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146222467556500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=3508", "timestamp_ns": 146222467912400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=3508", "timestamp_ns": 146222468374200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424160075088 gl=14 generation=44", "timestamp_ns": 146222468767600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424160075088", "timestamp_ns": 146222469101300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146222469403500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146222469727100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=2684", "timestamp_ns": 146222470029700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=2684", "timestamp_ns": 146222470486000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424160074176 gl=15 generation=45", "timestamp_ns": 146222470861400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424160074176", "timestamp_ns": 146222471124900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146222471438400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146222471689100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10460", "timestamp_ns": 146222471959900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10460", "timestamp_ns": 146222472257100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424160073568 gl=16 generation=46", "timestamp_ns": 146222472523600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424160073568", "timestamp_ns": 146222472777100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146222473040900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146222473275400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=4172", "timestamp_ns": 146222473542400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=4172", "timestamp_ns": 146222473900500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479947184 gl=17 generation=47", "timestamp_ns": 146222474256500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479947184", "timestamp_ns": 146222474632100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146222474905100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146222475138200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10976", "timestamp_ns": 146222475359400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10976", "timestamp_ns": 146222475637700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479939584 gl=18 generation=48", "timestamp_ns": 146222475915700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479939584", "timestamp_ns": 146222476154600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146222476382900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146222476652900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8936", "timestamp_ns": 146222476915900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8936", "timestamp_ns": 146222477208300, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146264973291800, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146264973715300, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146264974035900, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146264974272900, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146264974505500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146264976419600, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146264976802300, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146264977152400, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146264977621300, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146264977951700, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146264978170900, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146264978425800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479947184 gl=13 generation=49", "timestamp_ns": 146264980593100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479947184", "timestamp_ns": 146264980994100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146264981258300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146264981554100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10788", "timestamp_ns": 146264981898800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10788", "timestamp_ns": 146264982349400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479937456 gl=14 generation=50", "timestamp_ns": 146264982701000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479937456", "timestamp_ns": 146264983029500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146264983324500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146264983687400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9176", "timestamp_ns": 146264983997700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9176", "timestamp_ns": 146264984346600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479939584 gl=15 generation=51", "timestamp_ns": 146264984712000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479939584", "timestamp_ns": 146264985078900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146264985377400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146264985606100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10232", "timestamp_ns": 146264985806500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10232", "timestamp_ns": 146264986048500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479937760 gl=16 generation=52", "timestamp_ns": 146264986258800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479937760", "timestamp_ns": 146264986529600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146264986734200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146264986970100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8016", "timestamp_ns": 146264987274600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8016", "timestamp_ns": 146264987532800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479940496 gl=17 generation=53", "timestamp_ns": 146264987824500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479940496", "timestamp_ns": 146264988080500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146264988376000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146264988637200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10188", "timestamp_ns": 146264988901800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10188", "timestamp_ns": 146264989211800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479941408 gl=18 generation=54", "timestamp_ns": 146264989486800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479941408", "timestamp_ns": 146264989739300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146264990062900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146264990386000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10204", "timestamp_ns": 146264990642400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10204", "timestamp_ns": 146264990931100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423899426336 gl=7 generation=7", "timestamp_ns": 146265047789900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423899426336", "timestamp_ns": 146265048326500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=7", "timestamp_ns": 146265048593500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=7", "timestamp_ns": 146265048908700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8300", "timestamp_ns": 146265049160200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8300", "timestamp_ns": 146265049430200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423899425424 gl=8 generation=8", "timestamp_ns": 146265049640100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423899425424", "timestamp_ns": 146265049880800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=8", "timestamp_ns": 146265050169500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=8", "timestamp_ns": 146265050534900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8204", "timestamp_ns": 146265050876700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8204", "timestamp_ns": 146265051249600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423890094160 gl=9 generation=9", "timestamp_ns": 146265083532900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423890094160", "timestamp_ns": 146265084182400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=9", "timestamp_ns": 146265084459400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=9", "timestamp_ns": 146265084752900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8580", "timestamp_ns": 146265085026200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8580", "timestamp_ns": 146265085382700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423890093856 gl=10 generation=10", "timestamp_ns": 146265085688300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423890093856", "timestamp_ns": 146265086119400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=10", "timestamp_ns": 146265086584900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=10", "timestamp_ns": 146265087188600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8584", "timestamp_ns": 146265087490200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8584", "timestamp_ns": 146265087821600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423890094768 gl=11 generation=11", "timestamp_ns": 146265152010700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423890094768", "timestamp_ns": 146265152396200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=11", "timestamp_ns": 146265152646400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=11", "timestamp_ns": 146265152914100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7160", "timestamp_ns": 146265153163200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7160", "timestamp_ns": 146265153399900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424081917696 gl=12 generation=12", "timestamp_ns": 146265153614800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424081917696", "timestamp_ns": 146265153826300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=12", "timestamp_ns": 146265154033700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=12", "timestamp_ns": 146265154256800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7144", "timestamp_ns": 146265154454300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7144", "timestamp_ns": 146265154677200, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146288304167300, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146288304674500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146288304920100, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146288305137800, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146288305337700, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146288307539100, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146288307774300, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146288308113900, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146288308541000, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146288308792300, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146288309153900, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146288309447800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655304256 gl=13 generation=55", "timestamp_ns": 146288311722200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655304256", "timestamp_ns": 146288312416300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146288312776500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146288313143000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10848", "timestamp_ns": 146288313530600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10848", "timestamp_ns": 146288313913000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655307296 gl=14 generation=56", "timestamp_ns": 146288314447900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655307296", "timestamp_ns": 146288314774900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146288315032400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146288315303900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10728", "timestamp_ns": 146288315641500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10728", "timestamp_ns": 146288316010900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655296048 gl=15 generation=57", "timestamp_ns": 146288316329900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655296048", "timestamp_ns": 146288316678000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146288317022000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146288317382700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10344", "timestamp_ns": 146288317728600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10344", "timestamp_ns": 146288318084000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655298480 gl=16 generation=58", "timestamp_ns": 146288318412200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655298480", "timestamp_ns": 146288318678900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146288318883800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146288319094400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10432", "timestamp_ns": 146288319418900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10432", "timestamp_ns": 146288319679200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655296352 gl=17 generation=59", "timestamp_ns": 146288319960600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655296352", "timestamp_ns": 146288320189100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146288320430700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146288320787600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10696", "timestamp_ns": 146288321112900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10696", "timestamp_ns": 146288321418600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655296960 gl=18 generation=60", "timestamp_ns": 146288321764000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655296960", "timestamp_ns": 146288322015700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146288322295200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146288322584800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10964", "timestamp_ns": 146288322914600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10964", "timestamp_ns": 146288323207000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655301824 gl=7 generation=61", "timestamp_ns": 146288376432500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655301824", "timestamp_ns": 146288376855200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=7", "timestamp_ns": 146288377141200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=7", "timestamp_ns": 146288377451500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=8300", "timestamp_ns": 146288377709000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=8300", "timestamp_ns": 146288378016200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655298784 gl=8 generation=62", "timestamp_ns": 146288378242000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655298784", "timestamp_ns": 146288378706800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=8", "timestamp_ns": 146288379017600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=8", "timestamp_ns": 146288379372100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=7932", "timestamp_ns": 146288379669400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=7932", "timestamp_ns": 146288379966100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422329434800 gl=9 generation=63", "timestamp_ns": 146288418940100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422329434800", "timestamp_ns": 146288419386800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=9", "timestamp_ns": 146288419699600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=9", "timestamp_ns": 146288420108900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10416", "timestamp_ns": 146288420532800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10416", "timestamp_ns": 146288420899600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422329422640 gl=10 generation=64", "timestamp_ns": 146288421299700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422329422640", "timestamp_ns": 146288421785700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=10", "timestamp_ns": 146288422116300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=10", "timestamp_ns": 146288422523500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10036", "timestamp_ns": 146288422913800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10036", "timestamp_ns": 146288423484400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422329422944 gl=11 generation=65", "timestamp_ns": 146288481522700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422329422944", "timestamp_ns": 146288482401400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=11", "timestamp_ns": 146288482805300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=11", "timestamp_ns": 146288483129400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10892", "timestamp_ns": 146288483428000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10892", "timestamp_ns": 146288483891800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2422329423552 gl=12 generation=66", "timestamp_ns": 146288484278700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2422329423552", "timestamp_ns": 146288484687800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=12", "timestamp_ns": 146288485044800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=12", "timestamp_ns": 146288485368200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10932", "timestamp_ns": 146288485662900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10932", "timestamp_ns": 146288485946900, "thread": "Render thread"}
+{"stage": "SHUTDOWN_01_FG_WORKERS_BEGIN", "timestamp_ns": 146333322209700, "thread": "Render thread"}
+{"stage": "DLSSG_POOL_BEGIN", "timestamp_ns": 146333328850200, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146333328869700, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_FEATURE_RELEASE_END result=0x00000001", "timestamp_ns": 146333396831500, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146333396857500, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_PARAMETERS_DESTROY_END result=0x00000001", "timestamp_ns": 146333396868000, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_CALLBACKS_AND_IMPORTS_BEGIN", "timestamp_ns": 146333396873700, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_CALLBACKS_AND_IMPORTS_END", "timestamp_ns": 146333407314700, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_POOL_END", "timestamp_ns": 146333407352900, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_TIMELINE_BEGIN", "timestamp_ns": 146333407360100, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_TIMELINE_END", "timestamp_ns": 146333407377500, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_COMMAND_POOL_BEGIN", "timestamp_ns": 146333407391800, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_COMMAND_POOL_END", "timestamp_ns": 146333407501500, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_NGX_D3D12_CLOSE_BEGIN", "timestamp_ns": 146333407510000, "thread": "FG_NATIVE"}
+{"stage": "DLSSG_NGX_D3D12_CLOSE_END", "timestamp_ns": 146333446276700, "thread": "FG_NATIVE"}
+{"stage": "SHUTDOWN_01_FG_WORKERS_END", "timestamp_ns": 146333465467100, "thread": "Render thread"}
+{"stage": "SHUTDOWN_02_PRESENT_DRAIN_BEGIN", "timestamp_ns": 146333466416800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868563088 gl=7 generation=73", "timestamp_ns": 146333502904700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868563088", "timestamp_ns": 146333503428300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=7", "timestamp_ns": 146333503756500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=7", "timestamp_ns": 146333504134500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10728", "timestamp_ns": 146333504424500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10728", "timestamp_ns": 146333504866900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868565216 gl=8 generation=74", "timestamp_ns": 146333505221500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868565216", "timestamp_ns": 146333505565400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=8", "timestamp_ns": 146333505903600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=8", "timestamp_ns": 146333506253000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10656", "timestamp_ns": 146333506574900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10656", "timestamp_ns": 146333507010900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424616558720 gl=3 generation=27", "timestamp_ns": 146333507613300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424616558720", "timestamp_ns": 146333508008100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=3", "timestamp_ns": 146333508292900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=3", "timestamp_ns": 146333508530100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10088", "timestamp_ns": 146333508755600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10088", "timestamp_ns": 146333509262200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424616558416 gl=4 generation=28", "timestamp_ns": 146333509560200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424616558416", "timestamp_ns": 146333509785700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=4", "timestamp_ns": 146333510157100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=4", "timestamp_ns": 146333510431500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10084", "timestamp_ns": 146333510790600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10084", "timestamp_ns": 146333511049700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649363232 gl=1 generation=25", "timestamp_ns": 146333511269000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649363232", "timestamp_ns": 146333511497300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=1", "timestamp_ns": 146333511743600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=1", "timestamp_ns": 146333512106300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10104", "timestamp_ns": 146333512405400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10104", "timestamp_ns": 146333512833200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424649359888 gl=2 generation=26", "timestamp_ns": 146333513215300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424649359888", "timestamp_ns": 146333513581000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=2", "timestamp_ns": 146333513876100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=2", "timestamp_ns": 146333514186100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10236", "timestamp_ns": 146333514475600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10236", "timestamp_ns": 146333514962600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479932896 gl=9 generation=75", "timestamp_ns": 146333516039900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479932896", "timestamp_ns": 146333516431100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=9", "timestamp_ns": 146333516786500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=9", "timestamp_ns": 146333517083000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10616", "timestamp_ns": 146333517296700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10616", "timestamp_ns": 146333517650000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479941408 gl=10 generation=76", "timestamp_ns": 146333517912100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479941408", "timestamp_ns": 146333518242900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=10", "timestamp_ns": 146333518480600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=10", "timestamp_ns": 146333518778400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10172", "timestamp_ns": 146333519078400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10172", "timestamp_ns": 146333519372700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655301520 gl=19 generation=31", "timestamp_ns": 146333519989400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655301520", "timestamp_ns": 146333520380900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=19", "timestamp_ns": 146333520719800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=19", "timestamp_ns": 146333520990500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10008", "timestamp_ns": 146333521276600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10008", "timestamp_ns": 146333521703200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655306080 gl=20 generation=32", "timestamp_ns": 146333522031700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655306080", "timestamp_ns": 146333522401800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=20", "timestamp_ns": 146333522859200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=20", "timestamp_ns": 146333523197100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9996", "timestamp_ns": 146333523518700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9996", "timestamp_ns": 146333523860900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655300912 gl=5 generation=29", "timestamp_ns": 146333524135100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655300912", "timestamp_ns": 146333524414300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=5", "timestamp_ns": 146333524640400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=5", "timestamp_ns": 146333524958200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10148", "timestamp_ns": 146333525192400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10148", "timestamp_ns": 146333525564700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424655301216 gl=6 generation=30", "timestamp_ns": 146333525869900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424655301216", "timestamp_ns": 146333526184400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=6", "timestamp_ns": 146333526429700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=6", "timestamp_ns": 146333526764400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10032", "timestamp_ns": 146333527047500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10032", "timestamp_ns": 146333527386800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424479934720 gl=11 generation=77", "timestamp_ns": 146333528200100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424479934720", "timestamp_ns": 146333528635500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=11", "timestamp_ns": 146333528983200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=11", "timestamp_ns": 146333529278400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10976", "timestamp_ns": 146333529680800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10976", "timestamp_ns": 146333530043400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423909244320 gl=12 generation=78", "timestamp_ns": 146333530401000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423909244320", "timestamp_ns": 146333530750200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=12", "timestamp_ns": 146333531017000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=12", "timestamp_ns": 146333531263100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10576", "timestamp_ns": 146333531597700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10576", "timestamp_ns": 146333531920800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424483077344 gl=23 generation=35", "timestamp_ns": 146333532387500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424483077344", "timestamp_ns": 146333532710200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=23", "timestamp_ns": 146333533010600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=23", "timestamp_ns": 146333533295800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9076", "timestamp_ns": 146333533575800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9076", "timestamp_ns": 146333533973200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424483074912 gl=24 generation=36", "timestamp_ns": 146333534248300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424483074912", "timestamp_ns": 146333534599900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=24", "timestamp_ns": 146333534999400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=24", "timestamp_ns": 146333535354600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=2256", "timestamp_ns": 146333535634800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=2256", "timestamp_ns": 146333535975300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424483080688 gl=21 generation=33", "timestamp_ns": 146333536235900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424483080688", "timestamp_ns": 146333536561600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=21", "timestamp_ns": 146333536857500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=21", "timestamp_ns": 146333537240100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=2232", "timestamp_ns": 146333537585600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=2232", "timestamp_ns": 146333537959300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2424483074608 gl=22 generation=34", "timestamp_ns": 146333538269700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2424483074608", "timestamp_ns": 146333538540200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=22", "timestamp_ns": 146333538813700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=22", "timestamp_ns": 146333539066600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=9948", "timestamp_ns": 146333539273800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=9948", "timestamp_ns": 146333539596600, "thread": "Render thread"}
+{"stage": "SHUTDOWN_02_PRESENT_DRAIN_END", "timestamp_ns": 146333539925300, "thread": "Render thread"}
+{"stage": "SHUTDOWN_03_LOW_LATENCY_BEGIN", "timestamp_ns": 146333540447600, "thread": "Render thread"}
+{"stage": "SHUTDOWN_03_LOW_LATENCY_END", "timestamp_ns": 146333540759500, "thread": "Render thread"}
+{"stage": "SHUTDOWN_04_CURRENT_ALGORITHM_BEGIN", "timestamp_ns": 146333541281100, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_BEGIN", "timestamp_ns": 146333541595100, "thread": "Render thread"}
+{"stage": "INTEROP_CAPTURE_DRAIN_END", "timestamp_ns": 146333541970500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_BEGIN", "timestamp_ns": 146333542183900, "thread": "Render thread"}
+{"stage": "INTEROP_GL_RELEASE_END", "timestamp_ns": 146333542448300, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_BEGIN", "timestamp_ns": 146333542737500, "thread": "Render thread"}
+{"stage": "INTEROP_GL_FINISH_END", "timestamp_ns": 146333543039800, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_BEGIN", "timestamp_ns": 146333543346400, "thread": "Render thread"}
+{"stage": "INTEROP_VK_DRAIN_END", "timestamp_ns": 146333543648900, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_BEGIN", "timestamp_ns": 146333544176200, "thread": "Render thread"}
+{"stage": "DLSS_SR_FEATURE_RELEASE_END", "timestamp_ns": 146333544532600, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_BEGIN", "timestamp_ns": 146333544781800, "thread": "Render thread"}
+{"stage": "DLSS_SR_PARAMETERS_DESTROY_END", "timestamp_ns": 146333545039500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868566736 gl=13 generation=67", "timestamp_ns": 146333545806700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868566736", "timestamp_ns": 146333546343800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=13", "timestamp_ns": 146333546665300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=13", "timestamp_ns": 146333546942300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10824", "timestamp_ns": 146333547229900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10824", "timestamp_ns": 146333547494700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868565824 gl=14 generation=68", "timestamp_ns": 146333547799200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868565824", "timestamp_ns": 146333548082700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=14", "timestamp_ns": 146333548379400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=14", "timestamp_ns": 146333548749700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10456", "timestamp_ns": 146333549259100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10456", "timestamp_ns": 146333549719400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868564000 gl=15 generation=69", "timestamp_ns": 146333550003300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868564000", "timestamp_ns": 146333550333300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=15", "timestamp_ns": 146333550592000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=15", "timestamp_ns": 146333551079800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10436", "timestamp_ns": 146333551440600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10436", "timestamp_ns": 146333551999800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868566432 gl=16 generation=70", "timestamp_ns": 146333552297300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868566432", "timestamp_ns": 146333552587900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=16", "timestamp_ns": 146333552801400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=16", "timestamp_ns": 146333553031000, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10792", "timestamp_ns": 146333553325800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10792", "timestamp_ns": 146333553635300, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868567648 gl=17 generation=71", "timestamp_ns": 146333553917400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868567648", "timestamp_ns": 146333554194200, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=17", "timestamp_ns": 146333554390500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=17", "timestamp_ns": 146333554694600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10748", "timestamp_ns": 146333554989600, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10748", "timestamp_ns": 146333555345800, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_BEGIN vk=2423868562784 gl=18 generation=72", "timestamp_ns": 146333555578500, "thread": "Render thread"}
+{"stage": "SEMAPHORE_VK_DESTROY_END vk=2423868562784", "timestamp_ns": 146333555850100, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_BEGIN gl=18", "timestamp_ns": 146333556094900, "thread": "Render thread"}
+{"stage": "SEMAPHORE_GL_DELETE_END gl=18", "timestamp_ns": 146333556312400, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_BEGIN handle=10644", "timestamp_ns": 146333556516700, "thread": "Render thread"}
+{"stage": "SEMAPHORE_HANDLE_CLOSE_END handle=10644", "timestamp_ns": 146333556759600, "thread": "Render thread"}
+{"stage": "SHUTDOWN_04_CURRENT_ALGORITHM_END", "timestamp_ns": 146333557000500, "thread": "Render thread"}
+{"stage": "SHUTDOWN_05_ALGORITHM_MANAGER_BEGIN", "timestamp_ns": 146333557432800, "thread": "Render thread"}
+{"stage": "SHUTDOWN_05_ALGORITHM_MANAGER_END", "timestamp_ns": 146333557678600, "thread": "Render thread"}
+{"stage": "SHUTDOWN_06_SRAPI_BEGIN", "timestamp_ns": 146333557923700, "thread": "Render thread"}
+{"stage": "SHUTDOWN_06_SRAPI_END", "timestamp_ns": 146333559810500, "thread": "Render thread"}
+{"stage": "SHUTDOWN_07_STREAMLINE_BEGIN", "timestamp_ns": 146333560504100, "thread": "Render thread"}
+{"stage": "SHUTDOWN_07_STREAMLINE_END", "timestamp_ns": 146333560856400, "thread": "Render thread"}
+{"stage": "SHUTDOWN_08_NGX_VULKAN_BEGIN", "timestamp_ns": 146333561366000, "thread": "Render thread"}
+{"stage": "SHUTDOWN_08_NGX_VULKAN_END", "timestamp_ns": 146333606837600, "thread": "Render thread"}
+{"stage": "SHUTDOWN_09_GL_WINDOW_BEGIN", "timestamp_ns": 146334841694200, "thread": "Render thread"}
+{"stage": "SHUTDOWN_09_GL_WINDOW_END", "timestamp_ns": 146334843025400, "thread": "Render thread"}
+{"stage": "SHUTDOWN_10_GRAPHICS_DEVICE_BEGIN", "timestamp_ns": 146334844175100, "thread": "Render thread"}
+{"stage": "SHUTDOWN_10_GRAPHICS_DEVICE_END", "timestamp_ns": 146335203118100, "thread": "Render thread"}

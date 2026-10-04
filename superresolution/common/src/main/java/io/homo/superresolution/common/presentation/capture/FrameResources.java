@@ -59,6 +59,7 @@ public final class FrameResources {
     private boolean borrowedReadinessClaimed;
     private VkGlInteropSemaphore slotDepthReady, slotMotionReady;
     private final BorrowedSemaphoreCycle borrowedCycle = new BorrowedSemaphoreCycle();
+    private java.util.concurrent.CompletableFuture<io.homo.superresolution.core.graphics.vulkan.GlReleaseContract.Submission> releaseSubmission = new java.util.concurrent.CompletableFuture<>();
 
     FrameResources(
             int index,
@@ -96,6 +97,7 @@ public final class FrameResources {
         resetBorrowedInputReleaseSubmission();
         borrowedReadiness = null;
         borrowedReadinessClaimed = false;
+        releaseSubmission = new java.util.concurrent.CompletableFuture<>();
         lifecycle.beginRecording();
         traceLifecycle();
     }
@@ -540,6 +542,9 @@ public final class FrameResources {
             if (borrowedInputReleaseRequired) {
                 borrowedInputReleaseSubmitted = true;
                 borrowedInputReleaseMonitor.notifyAll();
+                releaseSubmission.complete(new io.homo.superresolution.core.graphics.vulkan.GlReleaseContract.Submission(
+                        index,generation,logicalFrameIndex,metadata==null?0:metadata.monotonicFrameId(),
+                        submittedCommandBuffer.getNativeCommandBuffer().address(),fence,depth.releaseSemaphore(),motionVector.releaseSemaphore()));
             }
         }
     }
@@ -549,9 +554,12 @@ public final class FrameResources {
             if (borrowedInputReleaseRequired) {
                 borrowedInputReleaseFailed = true;
                 borrowedInputReleaseMonitor.notifyAll();
+                releaseSubmission.completeExceptionally(new IllegalStateException("Borrowed release submission failed"));
             }
         }
     }
+
+    public java.util.concurrent.CompletableFuture<io.homo.superresolution.core.graphics.vulkan.GlReleaseContract.Submission> releaseSubmissionNotification(){return releaseSubmission;}
 
     private static int addReadySemaphore(long[] semaphores, int count, FrameTextureResource resource) {
         if (!resource.isValid()) {

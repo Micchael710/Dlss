@@ -1,4 +1,18 @@
-## Estado vigente — handoff experimental llega a FG Create/Evaluate; combinación x2 FAIL por device lost
+## Estado vigente — DLSS SR + DLSS-G x2 PASS
+
+## 2026-10-04 — DLSS SR + DLSS-G x2 PASS; GL release and shutdown
+
+Single combined run `20261004-205910-991-handoff-x2`, Java25.0.4 / Minecraft1.21.1 / Neo21.1.219; start HEAD `5d0c95a3d7d586c090de5e9a35d58393e9f28aba`. FG stopped automatically at 200 dispatches. No runtime retry, standalone SR rerun, AMD execution or x3/x4/x5/x6.
+
+Observed: SR Evaluate/GPU completion 12559/12559, FG Create pools 1, Evaluate 200, completion callbacks 200, G1 presents 186; REAL → G1 → REAL True. Present events are worker submissions, not a scanout capture. Reset/discard guards remain; not every completed interval is presented.
+
+Exact GL release waits: 404, errors 0; first ten successful calls exported with immutable frame/slot/generation, distinct RELEASE semaphore, submitted Vulkan signal, valid imported objects/current render context and immediately post-call glGetError. Prior code could wait on RELEASE before its Vulkan signal was submitted, because SR readiness bypassed the release gate. [Khronos EXT_external_objects, section4.2.3](https://raw.githubusercontent.com/KhronosGroup/OpenGL-Registry/main/extensions/EXT/EXT_external_objects.txt) forbids this ordering. The new host submission notification defers capture/source reuse without blocking when release is not yet submitted, preserves the previous SR output, and only consumes a matching release once. No new hot-path CPU API wait/idle, CPU frame transport or second presenter; existing capture-ring backpressure remains. CPU transport count0 is confirmed by copy-event counters; the no-new-wait/sole-presenter claims also rely on source audit, not an API trace.
+
+Flushed cleanup markers cover workers/presentation, FG pools/features/parameters/callbacks/imports, timeline/command pool, SR feature/parameters, NGX, GL interop and Vulkan. User closed normally: client/Gradle exit 0/0, last completed `SHUTDOWN_10_GRAPHICS_DEVICE_END`, failed stage `NONE`. Device lost False; 0xC0000409 reproduced False. Existing terminal drain is retained; imported semaphores have idempotent destruction. The earlier native crash's underlying cause remains UNKNOWN; this run establishes successful teardown after the release-contract correction and ownership guards, not historical fault attribution.
+
+C++/JNI ABI4, SR NeoForge and Wisteria builds PASS. CPU release-contract test rejects12 unsafe cases; prior readiness13 and binary-cycle8 tests PASS. AMD9 classes+2DLL hashes unchanged. Configuration restored byte-for-byte `ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462`. Historical MFG x3 and previous runtime evidence retained. Text evidence in `logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/runtime-result.json`, `runtime-samples.jsonl`, exact GL waits and combined shutdown markers; raw telemetry/binary samples remain local.
+
+## Estado anterior — handoff experimental llega a FG Create/Evaluate; combinación x2 FAIL por device lost
 
 ## 2026-10-04 — second-submit diagnostic, combined outcome FAIL
 

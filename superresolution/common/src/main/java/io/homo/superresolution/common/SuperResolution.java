@@ -729,25 +729,27 @@ public final class SuperResolution implements Destroyable {
         isInit = false;
         isRenderingInitialized = false;
         graphicsBackendDestroyed = false;
-        FrameGeneration.shutdown();
-        PresentationBackendManager.shutdown();
-        LowLatency.shutdown();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_01_FG_WORKERS",FrameGeneration::shutdown);
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_02_PRESENT_DRAIN",PresentationBackendManager::shutdown);
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_03_LOW_LATENCY",LowLatency::shutdown);
         if (currentAlgorithm != null) {
-            currentAlgorithm.destroy();
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_04_CURRENT_ALGORITHM",currentAlgorithm::destroy);
             currentAlgorithm = null;
         }
         throwAlgorithmFailure(retryRetainedAlgorithmOwners(null));
         if (!B3DVulkanBridge.isB3DVulkanBackend()) {
-            AlgorithmManager.destroy();
+            io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_05_ALGORITHM_MANAGER",AlgorithmManager::destroy);
         }
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("SHUTDOWN_06_SRAPI_BEGIN");
         SRReturnCode shutdownCode = SuperResolutionNativeAPI.srShutdown();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.stage("SHUTDOWN_06_SRAPI_END");
         if (shutdownCode != SRReturnCode.OK) {
             throw new IllegalStateException(
                     "SRAPI shutdown failed and retained provider owners for retry: " +
                             shutdownCode);
         }
-        Streamline.shutdown();
-        NgxInitializer.shutdown();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_07_STREAMLINE",Streamline::shutdown);
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_08_NGX_VULKAN",NgxInitializer::shutdown);
         io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("FEATURES_RETIRED", "phase", "DLSS/NGX retired before graphics backend");
         // In Vulkan-presentation (interop) mode the hidden OpenGL context and the Vulkan
         // device are torn down later, in destroyGraphicsBackend() at Minecraft.destroy()
@@ -774,8 +776,8 @@ public final class SuperResolution implements Destroyable {
         }
         throwAlgorithmFailure(algorithmFailure);
         // GLFW must destroy the hidden OpenGL context before the Vulkan driver is torn down.
-        PresentationWindowState.destroyRenderWindow();
-        RenderSystems.destroy();
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_09_GL_WINDOW",PresentationWindowState::destroyRenderWindow);
+        io.homo.superresolution.core.graphics.vulkan.InteropReleaseDiagnostics.run("SHUTDOWN_10_GRAPHICS_DEVICE",RenderSystems::destroy);
         graphicsBackendDestroyed = true;
         io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("GRAPHICS_BACKEND_DESTROYED", "completed", true);
     }

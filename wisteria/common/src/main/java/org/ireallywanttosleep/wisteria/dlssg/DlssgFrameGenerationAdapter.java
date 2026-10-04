@@ -72,6 +72,8 @@ final class DlssgFrameGenerationAdapter {
         }catch(Exception e){throw new IllegalStateException("DLSS-G session initialization failed",e);}
     }
     FrameGenerationDispatchResult dispatch(FrameGenerationDispatchInput input){
+        int shortLimit=Integer.getInteger("wisteria.dlssg.shortRunLimit",0);
+        if(shortLimit>0&&dispatched>=shortLimit){if(healthy)event("SHORT_RUN_COMPLETE dispatches="+dispatched);healthy=false;}
         requireOwner();if(diagnosticCapture.limitReached(dispatched)){healthy=false;event("DIAGNOSTIC_LIMIT dispatches="+dispatched+" presentationValidityUnchanged=true");}
         if(!healthy)return FrameGenerationDispatchResult.failed("DLSS-G experiment latched unavailable; no retry");
         Slot slot=null;
