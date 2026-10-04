@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — local Streamline x2 control blocked at DLL startup; no second run
+
+From `b95963cb15f4d86bebf62d233387e6acbdd6096f`, disabled invasive diagnostics and restored c981457 renderer with generated-count argument1/2. Build PASS; RUN1 count1 launched outside filesystem sandbox using normal user CreateProcessW, with child creation disabled solely to prevent OTA. Exit `0xC0000142 STATUS_DLL_INIT_FAILED`, empty harness/stderr, before SL/device/Present. Exact DLL/cause unknown; child-policy contribution cannot be excluded. Neither conditional RUN2 branch reached, so STOP after one invocation. This does not classify the SL Present path as working/broken. INI restored exactly; no baseline changes. [Result](../logs/research/streamline-mfg-x3/20261004-local-control/result.json).
+
 ## 2026-10-04 — sole verbose Present diagnostic blocked before device creation
 
 From `34f6434a3fa3a85d9cf39c56d6d620a9ce7a1422`, instrumentation-only build PASS. One restricted-sandbox execution: D3D12 debug layer YES, DXGI queue unavailable; SL verbose log/callback records first error `weakly_canonical: Access is denied` for the runtime plugin directory, then JSON null/number error and exit `0xC0000005` inside slInit. Device/InfoQueue/Present never reached; original invalid-call cause remains UNKNOWN. No fix/retry; INI restored byte-identically, binaries and baselines unchanged. [Diagnostic evidence](../logs/research/streamline-mfg-x3/20261004-present-debug/result.json).
