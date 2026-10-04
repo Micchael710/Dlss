@@ -107,3 +107,6 @@ logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/frame-sequence.log
 logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/dlss-sr-events.jsonl
 logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/ngx.log
 logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/worker-result.json
+
+# Authorized local SDK/proxy capability runtime; publish hashes and text only.
+experiments/streamline-mfg-capability/runtime/

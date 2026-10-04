@@ -1,0 +1,15 @@
+[General]
+Enabled=1
+[FrameGeneration]
+Optimized=0
+MaxGeneratedFrames=4
+[Compatibility]
+Router=SM86
+KernelImage=Auto
+SpoofArchToGame=0
+[Logging]
+Level=3
+Directory=D:\ProjectDllsss\logs\research\streamline-mfg-capability\20261004-sdk212\backend
+[Runtime]
+Mode=Bundled
+CacheDirectory=D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\bundle-cache

@@ -1,0 +1,95 @@
+{
+  "status": "BLOCKED_FEATURE_SUPPORT",
+  "github_start_head": "a136e68a9fc7fcef2443ae9c95e25df706389188",
+  "streamline_package": "2.12.0",
+  "runtime_version": "2.12.0.17026aaf3",
+  "gpu_name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "vendor_id": "4318",
+  "device_id": "9632",
+  "adapter_luid": "4c29010000000000",
+  "historical_luid_matches": true,
+  "sm86_component_version": "0.3.5",
+  "sm86_proxy_loaded": "YES",
+  "sm86_proxy_active": "NOT_DEMONSTRATED_FOR_STREAMLINE",
+  "streamline_reported_architecture": "0x170",
+  "sm86_config_max_generated_frames": 4,
+  "sm86_config_spoof_arch_to_game": 0,
+  "config_ceiling_not_runtime_capability": true,
+  "streamline_init_result": "0",
+  "feature_support_result": 6,
+  "feature_support_result_name": "eErrorNoSupportedAdapterFound",
+  "dlssg_feature_supported": false,
+  "dlssg_get_state_result": "NOT_CALLED",
+  "dlssg_status": "NOT_QUERIED",
+  "num_frames_to_generate_max": null,
+  "max_value_source": "NONE_GETSTATE_NOT_REACHED",
+  "set_options": {
+    "1": "NOT_CALLED",
+    "2": "NOT_CALLED",
+    "3": "NOT_CALLED",
+    "4": "NOT_CALLED"
+  },
+  "capability": {
+    "x2": "UNKNOWN",
+    "x3": "UNKNOWN",
+    "x4": "UNKNOWN",
+    "x5": "UNKNOWN"
+  },
+  "process_exit_code": 1,
+  "streamline_shutdown_result": "0",
+  "if_fail_stage": "FEATURE_SUPPORT",
+  "root_cause": "Public feature query rejected adapter; SL DLSS-G plugin hardware mask 0x0 and unloaded as unsupported. Why the loaded SM86 proxy did not establish support is UNKNOWN.",
+  "cause_confidence": "HIGH_FOR_FEATURE_GATE;SM86_UNDERLYING_CAUSE_UNKNOWN",
+  "attempts": 1,
+  "loaded_staged_dll_hashes": [
+    {
+      "name": "sl.interposer.dll",
+      "archive_entry": "bin/x64/sl.interposer.dll",
+      "sha256": "2a79db6857ae8c75bbd871a9489c48bc6a39f7fcc88b9b02afd53d0376cbec66",
+      "pe_machine": "0x8664",
+      "observed_loaded": true
+    },
+    {
+      "name": "sl.common.dll",
+      "archive_entry": "bin/x64/sl.common.dll",
+      "sha256": "c57930ef5a8a3fe9be85efdf71a61d8107c1148e8a6aed456464547128f7f4ae",
+      "pe_machine": "0x8664",
+      "observed_loaded": true
+    },
+    {
+      "name": "sl.dlss_g.dll",
+      "archive_entry": "bin/x64/sl.dlss_g.dll",
+      "sha256": "1fec3f8fdfc59d78c4445c276c1a0fb798bf251985f348597dc2b44d0c995e52",
+      "pe_machine": "0x8664",
+      "observed_loaded": true
+    },
+    {
+      "name": "sl.reflex.dll",
+      "archive_entry": "bin/x64/sl.reflex.dll",
+      "sha256": "7e6e4ccc4b561bd449fb0da90709d9b96b08c3f6f4697362caaa359e72a58a67",
+      "pe_machine": "0x8664",
+      "observed_loaded": true
+    },
+    {
+      "name": "sl.pcl.dll",
+      "archive_entry": "bin/x64/sl.pcl.dll",
+      "sha256": "699ab461e64e95189a7fe6a21c79ad237cf56b60ea748cb6c840cd5431ba91d1",
+      "pe_machine": "0x8664",
+      "observed_loaded": true
+    },
+    {
+      "name": "component/version.dll",
+      "version": "0.3.5",
+      "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+      "observed_loaded": true
+    }
+  ],
+  "minecraft_executed": false,
+  "present_calls": 0,
+  "generated_frames_tested": false,
+  "x2_baseline_modified": false,
+  "presentworker_modified": false,
+  "amd_baseline_modified": false,
+  "cpu_frame_transport_introduced": false,
+  "data_hardcoded_or_fabricated": false
+}

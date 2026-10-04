@@ -1,0 +1,5 @@
+-- Configuring done (0.1s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/ProjectDllsss/builds/experimental/streamline-mfg-capability
+[1/2] Building CXX object CMakeFiles\streamline_mfg_capability.dir\main.cpp.obj
+[2/2] Linking CXX executable streamline_mfg_capability.exe

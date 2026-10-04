@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — Streamline SDK2.12 actual query stops at feature support
+
+Start `a136e68a9fc7fcef2443ae9c95e25df706389188`. User-provided SDK2.12.0 staged locally; one isolated harness run. Init0; correct RTX3050Ti/LUID; feature support6 `eErrorNoSupportedAdapterFound`. GetState max/options NOT_QUERIED. SM86 loaded, effect on Streamline NOT_DEMONSTRATED. SL shutdown0/clientexit1. No retry/Minecraft or baseline modifications. [Runtime evidence and hashes](DLSSG_STREAMLINE_CAPABILITY.md). Direct SR+x2 PASS remains preserved.
+
 ## 2026-10-04 — isolated Streamline capability harness blocked before Init
 
 Start `38786a2a553ed089fc811c7698b9c4b2e946dfa9`. Harness C++ build PASS; sole invocation exits2 at missing `sl.interposer.dll` preflight. Both workspaces lack Streamline runtime DLLs/package; SM86 remains unloaded. GetState maximum/support/options NOT_QUERIED. No download/retry/Minecraft or baseline code/config/binary change. Direct SR+x2 PASS preserved. [Capability evidence](DLSSG_STREAMLINE_CAPABILITY.md).

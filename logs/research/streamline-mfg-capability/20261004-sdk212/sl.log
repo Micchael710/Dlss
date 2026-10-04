@@ -1,0 +1,69 @@
+[streamline][info]log.cpp:131[logva] Log file D:\ProjectDllsss\logs\research\streamline-mfg-capability\20261004-sdk212\sl.log opened on 04.10.2026 at 18-14-43
+[18-14-43][streamline][info][tid:1577320][0s:005ms:694us]pluginManager.cpp:423[setHostSDKVersion] Streamline v2.12.0.17026aaf3 - built on Mon Jun 22 13:03:05 2026 - host SDK v2.12.0
+[18-14-44][streamline][info][tid:1577320][1s:006ms:476us]pluginManager.cpp:538[findPlugins] Looking for plugins in D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime ...
+[18-14-44][streamline][info][tid:1577320][1s:006ms:817us]pluginManager.cpp:1024[loadPlugins] eLoadDownloadedPlugins flag not passed to preferences, OTA'd plugins will not be loaded!
+[18-14-45][streamline][info][tid:1577320][1s:340ms:948us]plugin.cpp:94[isAppDenylisted] Plugin path: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\
+[18-14-45][streamline][info][tid:1577320][1s:356ms:463us]plugin.cpp:110[isAppDenylisted] Plugin is not from OTA - denylist does not apply
+[18-14-45][streamline][info][tid:1577320][1s:356ms:615us]commonInterface.cpp:168[getSystemCaps] Enumerating up to 8 adapters but only one of them can be used to create a device - no mGPU support in this SDK
+[18-14-45][streamline][info][tid:1577320][1s:523ms:294us]commonInterface.cpp:290[getSystemCaps] >-----------------------------------------
+[18-14-45][streamline][info][tid:1577320][1s:523ms:451us]commonInterface.cpp:293[getSystemCaps] NVIDIA driver 596.49
+[18-14-45][streamline][info][tid:1577320][1s:574ms:996us]commonInterface.cpp:318[getSystemCaps] Adapter 0 architecture 0x170 implementation 0x7 revision 0xa1 - bit 0x1 - LUID 0.76108
+[18-14-45][streamline][info][tid:1577320][1s:575ms:116us]commonInterface.cpp:324[getSystemCaps] -----------------------------------------<
+[18-14-45][streamline][info][tid:1577320][1s:578ms:672us]commonEntry.cpp:1944[getOSVersionAndUpdateTimerResolution] Changed high resolution timer resolution to 5000 [100 ns units].
+[18-14-45][streamline][info][tid:1577320][1s:578ms:791us]commonEntry.cpp:2023[updateEmbeddedJSON] Detected Windows OS version 10.0.26200
+[18-14-45][streamline][info][tid:1577320][1s:578ms:842us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.common' - version 2.12.0.17026aaf3 PRODUCTION - id 4294967295 - priority 0 - adapter mask 0xf - interposer 'no'
+[18-14-47][streamline][error][tid:1577320][3s:363ms:742us]commonEntry.cpp:992[getNGXFeatureRequirements] ngxResult failed 0xbad00005
+[18-14-47][streamline][warn][tid:1577320][3s:364ms:353us]dlss_gEntry.cpp:142[updateEmbeddedJSON] Failed to obtain DLSS-G min spec requirements from NGX, using SL defaults
+[18-14-47][streamline][warn][tid:1577320][3s:364ms:557us]dlss_gEntry.cpp:344[updateEmbeddedJSON] Disabling DLSS-G since it is not supported on current hardware
+[18-14-47][streamline][info][tid:1577320][3s:364ms:610us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.dlss_g' - version 2.12.0.17026aaf3 PRODUCTION - id 1000 - priority 1000 - adapter mask 0x0 - interposer 'no'
+[18-14-47][streamline][info][tid:1577320][3s:410ms:534us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.pcl' - version 2.12.0.17026aaf3 PRODUCTION - id 4 - priority 2 - adapter mask 0xf - interposer 'no'
+[18-14-47][streamline][info][tid:1577320][3s:453ms:979us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.reflex' - version 2.12.0.17026aaf3 PRODUCTION - id 3 - priority 100 - adapter mask 0xf - interposer 'no'
+[18-14-47][streamline][warn][tid:1577320][3s:454ms:133us]pluginManager.cpp:1059[loadPlugins] Ignoring plugin 'sl.dlss_g' since it is not supported on this platform
+[18-14-47][streamline][info][tid:1577320][3s:454ms:839us]pluginManager.cpp:1159[loadPlugins] Plugin execution order based on priority:
+[18-14-47][streamline][info][tid:1577320][3s:454ms:937us]pluginManager.cpp:1162[loadPlugins] P0 - sl.common
+[18-14-47][streamline][info][tid:1577320][3s:455ms:029us]pluginManager.cpp:1162[loadPlugins] P2 - sl.pcl
+[18-14-47][streamline][info][tid:1577320][3s:455ms:082us]pluginManager.cpp:1162[loadPlugins] P100 - sl.reflex
+[18-14-48][streamline][info][tid:1577320][4s:526ms:787us]pluginManager.cpp:1362[initializePlugins] Initializing plugins - api 0.0.1 - application ID 100721531
+[18-14-48][streamline][info][tid:1577320][4s:528ms:576us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.common:slSetData:0x0
+[18-14-48][streamline][info][tid:1577320][4s:528ms:704us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.common:slGetData:0x0
+[18-14-48][streamline][info][tid:1577320][4s:528ms:749us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.common:slAllocateResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:528ms:790us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.common:slFreeResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:528ms:834us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.common:slEvaluateFeature:0x7ffd7a62a010
+[18-14-48][streamline][info][tid:1577320][4s:528ms:871us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.common:slSetTag:0x7ffd7a628af0
+[18-14-48][streamline][info][tid:1577320][4s:529ms:033us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.common:slSetTagForFrame:0x7ffd7a628c60
+[18-14-48][streamline][info][tid:1577320][4s:529ms:095us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.common:slSetConsts:0x7ffd7a629af0
+[18-14-48][streamline][info][tid:1577320][4s:532ms:020us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkPresent:before - skipped
+[18-14-48][streamline][info][tid:1577320][4s:532ms:385us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkAfterPresent:after - skipped
+[18-14-48][streamline][info][tid:1577320][4s:532ms:657us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindPipeline:after - skipped
+[18-14-48][streamline][info][tid:1577320][4s:533ms:074us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindDescriptorSets:after - skipped
+[18-14-48][streamline][info][tid:1577320][4s:533ms:772us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkBeginCommandBuffer:after - skipped
+[18-14-48][streamline][info][tid:1577320][4s:534ms:036us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChain:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:111us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForHwnd:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:166us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForCoreWindow:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:222us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookResizeSwapChainPre:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:277us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:332us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookAfterPresent:after - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:455us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent1:before - OK
+[18-14-48][streamline][info][tid:1577320][4s:534ms:543us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.pcl:slSetData:0x7ffd825bb6c0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:593us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.pcl:slGetData:0x7ffd825bb6d0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:642us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.pcl:slAllocateResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:688us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.pcl:slFreeResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:729us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.pcl:slEvaluateFeature:0x0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:771us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.pcl:slSetTag:0x0
+[18-14-48][streamline][info][tid:1577320][4s:534ms:824us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.pcl:slSetTagForFrame:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:082us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.pcl:slSetConsts:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:159us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.pcl' has no registered hooks
+[18-14-48][streamline][info][tid:1577320][4s:535ms:215us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.reflex:slSetData:0x7ffd8255b7f0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:264us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.reflex:slGetData:0x7ffd8255c150
+[18-14-48][streamline][info][tid:1577320][4s:535ms:310us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.reflex:slAllocateResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:354us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.reflex:slFreeResources:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:518us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.reflex:slEvaluateFeature:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:583us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.reflex:slSetTag:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:628us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.reflex:slSetTagForFrame:0x0
+[18-14-48][streamline][info][tid:1577320][4s:535ms:667us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.reflex:slSetConsts:0x0
+[18-14-48][streamline][info][tid:1577320][4s:536ms:274us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.reflex' has no registered hooks
+[18-14-48][streamline][info][tid:1577320][4s:536ms:348us]pluginManager.cpp:1171[unloadPlugins] Unloading all plugins ...
+[18-14-48][streamline][info][tid:1577320][4s:536ms:400us]plugin.cpp:344[onShutdown] Shutting down plugin sl.reflex
+[18-14-48][streamline][info][tid:1577320][4s:536ms:438us]plugin.cpp:344[onShutdown] Shutting down plugin sl.pcl
+[18-14-48][streamline][info][tid:1577320][4s:537ms:187us]plugin.cpp:344[onShutdown] Shutting down plugin sl.common
+[18-14-48][streamline][info][tid:1577320][4s:542ms:707us]generic.cpp:327[shutdown] Delayed destroy resource list count 0

@@ -1,5 +1,6 @@
 // Public Streamline capability/options only. No rendering, Present, Vulkan or NGX-direct.
 #include <windows.h>
+#include <tlhelp32.h>
 #include <d3d12.h>
 #include <dxgi1_6.h>
 #include <wrl/client.h>
@@ -12,6 +13,13 @@
 using Microsoft::WRL::ComPtr;
 namespace fs=std::filesystem;
 static const char* stage="PREFLIGHT";
+static void loadedModules() {
+    auto snapshot=CreateToolhelp32Snapshot(TH32CS_SNAPMODULE,GetCurrentProcessId());
+    if(snapshot==INVALID_HANDLE_VALUE)return;
+    MODULEENTRY32W entry{};entry.dwSize=sizeof(entry);
+    if(Module32FirstW(snapshot,&entry))do{std::wcout<<L"LOADED_MODULE="<<entry.szExePath<<std::endl;}while(Module32NextW(snapshot,&entry));
+    CloseHandle(snapshot);
+}
 template<class T> T* api(HMODULE module,const char* name) {
     auto fn=reinterpret_cast<T*>(GetProcAddress(module,name));
     if(!fn)throw std::runtime_error(std::string("Missing public export ")+name);
@@ -31,10 +39,11 @@ int wmain(int argc,wchar_t** argv) {
     // Runtime directory must contain unmodified, pre-staged authorized components.
     // Never search PATH, download, fabricate support, or generate proxy configuration.
     try {
-        if(argc!=2)throw std::runtime_error("Usage: executable absolute-runtime-directory");
+        if(argc!=3)throw std::runtime_error("Usage: executable absolute-runtime-directory absolute-log-directory");
         fs::path dir=fs::absolute(argv[1]);
+        fs::path logDir=fs::absolute(argv[2]);
         std::cout<<"STREAMLINE_HEADER_VERSION="<<SL_VERSION_MAJOR<<'.'<<SL_VERSION_MINOR<<'.'<<SL_VERSION_PATCH<<std::endl;
-        for(const auto* name:{L"sl.interposer.dll",L"sl.common.dll",L"sl.dlss_g.dll",L"version.dll"}) {
+        for(const auto* name:{L"sl.interposer.dll",L"sl.common.dll",L"sl.dlss_g.dll",L"sl.reflex.dll",L"nvngx_dlssg.dll",L"component/version.dll"}) {
             if(!fs::is_regular_file(dir/name)) {
                 std::wcout<<L"MISSING_COMPONENT="<<name<<std::endl;
                 std::cout<<"SM86_PROXY_LOADED=NO\nSM86_PROXY_ACTIVE=NO\nFAIL_STAGE=MISSING_AUTHORIZED_RUNTIME_BINARIES"<<std::endl;
@@ -45,7 +54,8 @@ int wmain(int argc,wchar_t** argv) {
         auto cookie=AddDllDirectory(dir.c_str());
         if(!cookie)throw std::runtime_error("Runtime directory registration failed");
         stage="SM86_LOAD";
-        proxy=LoadLibraryExW((dir/L"version.dll").c_str(),nullptr,LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR|LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);
+        // Reuse ExternalLoader's proven absolute LoadLibraryW + adjacent INI layout.
+        proxy=LoadLibraryW((dir/L"component/version.dll").c_str());
         std::cout<<"SM86_PROXY_LOADED="<<(proxy?"YES":"NO")<<std::endl;
         if(!proxy)throw std::runtime_error("SM86 LoadLibrary failed");
         // Loaded is not proof that interception was applied: keep these separate.
@@ -59,7 +69,7 @@ int wmain(int argc,wchar_t** argv) {
         auto getFunction=api<PFun_slGetFeatureFunction>(interposer,"slGetFeatureFunction");
         const wchar_t* pluginPath=dir.c_str();sl::Feature features[]={sl::kFeatureDLSS_G,sl::kFeatureReflex};
         sl::Preferences pref{};pref.pathsToPlugins=&pluginPath;pref.numPathsToPlugins=1;
-        pref.pathToLogsAndData=pluginPath;pref.featuresToLoad=features;pref.numFeaturesToLoad=2;
+        pref.pathToLogsAndData=logDir.c_str();pref.featuresToLoad=features;pref.numFeaturesToLoad=2;
         pref.flags=sl::PreferenceFlags::eDisableCLStateTracking|sl::PreferenceFlags::eUseManualHooking;
         pref.engine=sl::EngineType::eCustom;pref.engineVersion="capability-only-1";pref.renderAPI=sl::RenderAPI::eD3D12;
         stage="STREAMLINE_INIT";result("STREAMLINE_INIT_RESULT",init(pref,sl::kSDKVersion));initialized=true;
@@ -97,12 +107,13 @@ int wmain(int argc,wchar_t** argv) {
             auto key=std::string("SET_OPTIONS_")+std::to_string(n)+"_RESULT";
             result(key.c_str(),setOptions(viewport,options));
         }
-        stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);
+        loadedModules();stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);
         std::cout<<"FAIL_STAGE=NONE\nFRAME_GENERATION_TESTED=NO"<<std::endl;
         // OS unload after shutdown and device release; no private cleanup or binary modifications.
         return 0;
     } catch(const std::exception& e) {
         std::cout<<"FAIL_STAGE="<<stage<<"\nERROR="<<e.what()<<"\nWIN32_ERROR="<<GetLastError()<<std::endl;
+        loadedModules();
         if(initialized && shutdown){auto close=shutdown();std::cout<<"STREAMLINE_SHUTDOWN_RESULT="<<unsigned(close)<<std::endl;}
         return 1;
     }
