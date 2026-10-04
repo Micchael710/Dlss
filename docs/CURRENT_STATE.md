@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — first Present static comparison; STOP without new runtime
+
+From `c98145713a621bde4091081592b376aacf053f77`, compared official sample v2.12.0 and local SDK guides/interposer. Correct DIRECT queue, paired flags0/Present(0,0), proxy routing and final PRESENT transition; no proven invalid contract. Conditional tearing differs from the sample but is not a confirmed cause. `ROOT_CAUSE=UNKNOWN_AFTER_STATIC_COMPARISON`; no code fix/build/runtime or config change, as requested. Previous x3 failure remains unresolved; baseline preserved. [Static comparison and candidates](DLSSG_STREAMLINE_PRESENT_STATIC.md).
+
 ## 2026-10-04 — isolated Streamline x3 runtime FAIL at first Present
 
 From `7bd9578f3d28596e3b020f4a5216e796a23635cd`, one D3D12/proxy-swapchain standalone run, count2 only. Init/support/SetOptions2/swapchain PASS; first Present0x887a0001 `DXGI_ERROR_INVALID_CALL`. Create1/Evaluate0; real successful Present0; G1/G2 unproven. Device removed0, no crash; shutdown0/process1, INI restored exactly. No retry or Minecraft/baseline changes. Historical max4/options capability remains proven. [Runtime evidence](DLSSG_STREAMLINE_X3_RUNTIME.md).

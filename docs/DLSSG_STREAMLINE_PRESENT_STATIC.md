@@ -1,0 +1,31 @@
+# First Present static comparison — 2026-10-04
+
+Start `c98145713a621bde4091081592b376aacf053f77`, main clean. **ROOT_CAUSE=UNKNOWN_AFTER_STATIC_COMPARISON. No renderer edit, build or runtime invocation.** The user's stop rule applies because no specific invalid contract was demonstrated. Previous first Present failure remains unresolved; x3 runtime is not validated.
+
+The supplied SDK ZIP contains the 2.12.0 guides and interposer sources, but no sample application. Its README links the separate official sample. Compared only sample tag **v2.12.0**, commit `dd6e1803b97e5b3f218f5776d85f09e4c386c34f`: [DX12 manager](https://github.com/NVIDIA-RTX/Streamline_Sample/blob/dd6e1803b97e5b3f218f5776d85f09e4c386c34f/donut/src/app/dx12/DeviceManager_DX12.cpp), [DX12 override](https://github.com/NVIDIA-RTX/Streamline_Sample/blob/dd6e1803b97e5b3f218f5776d85f09e4c386c34f/src/DeviceManagerOverride/DeviceManagerOverride_DX12.cpp), and [SL wrapper](https://github.com/NVIDIA-RTX/Streamline_Sample/blob/dd6e1803b97e5b3f218f5776d85f09e4c386c34f/src/SLWrapper.cpp). Downloaded only those three source files to ignored build storage. No other sample version was used for comparison.
+
+## Exact existing order
+
+Load SM86 and SL interposer → slInit(manual hooking, frame tags) → native enumeration factory → RTX adapter → native D3D12 device → slSetD3DDevice(native) → upgrade device once → create DIRECT queue through device proxy → create valid HWND → native presentation factory → upgrade factory once → CreateSwapChainForHwnd(queue, HWND) → QueryInterface IDXGISwapChain3 → GetBuffer/create resources → Reflex/options2 → token/constants/markers → render current indexed buffer and close/execute command list → tag depth/motion → Present-start marker → proxy Present(0,0). The enumeration factory is not used for swapchain creation. The application retains the returned proxy through QueryInterface; it does not separately upgrade the swapchain.
+
+## Contract comparison
+
+| Check | Existing standalone | Official evidence / conclusion |
+|---|---|---|
+| D3D12 swapchain argument | Same valid DIRECT ID3D12CommandQueue used for ExecuteCommandLists | Sample DX12 manager line413 and override line294 pass m_GraphicsQueue. [Microsoft API](https://learn.microsoft.com/en-us/windows/win32/api/dxgi1_2/nf-dxgi1_2-idxgifactory2-createswapchainforhwnd) requires a direct queue, not ID3D12Device. Matches. |
+| Swapchain | 1280x720 RGBA8_UNORM, sample count1, 2 buffers, FLIP_DISCARD, flags0, windowed/null fullscreen descriptor | Sample lines366–413 uses configurable buffers, FLIP_DISCARD and non-sRGB swapchain format. These existing values do not establish an invalid descriptor; creation succeeded. |
+| Present | SyncInterval0, Flags0, IDXGISwapChain3::Present | Sample lines594–605 uses interval0/1 and conditional tearing. [Microsoft Present API](https://learn.microsoft.com/en-us/windows/win32/api/dxgi/nf-dxgi-idxgiswapchain-present) permits interval0. No application ALLOW_TEARING flag exists to mismatch creation flags. |
+| Tearing difference | Neither queried nor enabled | Sample lines393–402 queries IDXGIFactory5 and enables swapchain tearing only on success; line602 pairs present tearing with support/windowed/vsync-off. This is a concrete policy difference, **not a demonstrated invalid-call cause**. Actual support UNKNOWN; do not hardcode or run a support probe. |
+| Proxies | Device/factory upgraded once; swapchain returned by proxy factory; no native/proxy swapchain mixing | SDK ManualHooking sections2–4 require intercepted queue creation and proxy factory/swapchain calls. SDK dxgiFactory.cpp:331 and d3d12Device.cpp:423 show queue hook/proxy creation and setupSwapchainProxy. Factory/device upgrades succeeded, proxy Present hook entered in prior log. No evidence of premature interface release or double upgrade. |
+| Queue / command list | DIRECT, same queue, closed list executed before Present | Sample override lines197–203 uses DIRECT queue. Its NodeMask1 differs from our default0; no demonstrated invalid mask on this single adapter. No reason to edit it speculatively. |
+| Backbuffer | GetCurrentBackBufferIndex selects matching buffer; PRESENT→RT→PRESENT transition; close then submit | Existing draw path explicitly transitions current buffer to PRESENT. Actual GPU validation was not captured in prior run; static correctness is not a runtime validation claim. |
+| Tags | Depth/motion eValidUntilPresent, explicit shader-resource states; scene has no UI | SDK DLSS_G sections5.1/5.2 require depth/motion, intercept backbuffer automatically, recommend eValidUntilPresent. Prior optional backbuffer extent warning explicitly resets extent to full size; no established cause. Inputs unchanged. |
+| Error origin | PFunPresentBefore failure, Create1, Evaluate0 | SDK dxgiSwapchain.cpp:242–255 returns a failed before-hook HRESULT before its native Present fallback. Thus the evidence locates the rejection inside a before hook; it does not identify its failing nested operation. |
+
+## Unresolved candidates, not findings
+
+1. Internal DLSS-G Present-before initialization/validation after successful Create and before Evaluate rejects an object or parameter. Strongest localization, but the proprietary hook implementation and exact rejected operation are absent from the public SDK source/log.
+2. Native/proxy object identity or internal fake-buffer/queue association at the SL–SM86 boundary. Public proxy routing matches the guide; this candidate needs internal diagnostic evidence, not another arbitrary interface upgrade.
+3. Internal presentation flags on the plugin-owned swapchain/queue, including tearing policy. The sample's conditional tearing differs, but application Present(0,0)/flags0 has no proven mismatch. Native flags used inside the failing hook are unknown.
+
+No candidate is a confirmed root cause. STOP without fix/retry. Config SHA256 remains `5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8`, identical to the restored baseline; SpoofArchToGame was not changed this iteration. No Minecraft, x4/x5, PresentWorker, stable x2, SR, AMD, or direct-NGX x3 execution/change. Historical runtime counters remain Create1/Evaluate0/successful Present0, clean failure shutdown/process1; these are not new measurements.
