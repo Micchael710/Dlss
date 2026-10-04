@@ -1,0 +1,8 @@
+{
+  "child_process_policy": "NONE",
+  "requested_generated_count": 1,
+  "execution_mode": "NORMAL_LOCAL",
+  "executable_sha256": "e15507439f8c56b93559261531133adbec008e9e93f017694d4879637feabc24",
+  "attempts": 1,
+  "runtime_binary_hashes_unchanged": true
+}
