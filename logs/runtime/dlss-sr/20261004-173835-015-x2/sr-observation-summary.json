@@ -1,0 +1,389 @@
+{
+  "run_id": "20261004-173835-015-x2",
+  "counts": {
+    "RUNTIME": 1,
+    "VULKAN_INIT_RESULT": 1,
+    "VULKAN_PREREQUISITE": 3,
+    "GL_VK_INTEROP_READY": 5,
+    "NATIVE_LOAD": 1,
+    "NGX_INIT": 1,
+    "FEATURE_REQUIREMENTS": 1,
+    "CAPABILITY": 5,
+    "CREATE_INPUTS": 5,
+    "CREATE_FEATURE": 5,
+    "CREATE_COMPLETION": 5,
+    "EVALUATE": 10492,
+    "OUTPUT_QUEUED": 10492,
+    "GPU_COMPLETION": 10492,
+    "Color": 3,
+    "OutputColor": 3,
+    "SELECTOR_CAPABILITY": 1,
+    "SHUTDOWN_BEGIN": 1,
+    "NGX_SHUTDOWN": 1,
+    "FEATURES_RETIRED": 1,
+    "GRAPHICS_BACKEND_DESTROYED": 1
+  },
+  "first_gates": [
+    {
+      "type": "RUNTIME",
+      "timestamp_ns": 133962378886700,
+      "java": "25.0.4",
+      "javaHome": "C:\\Program Files\\Java\\jdk-25.0.4",
+      "pid": "739396"
+    },
+    {
+      "type": "VULKAN_INIT_RESULT",
+      "timestamp_ns": 133962379383000,
+      "requested": "true",
+      "vulkanNull": "false",
+      "deviceReady": "true"
+    },
+    {
+      "type": "VULKAN_PREREQUISITE",
+      "timestamp_ns": 133968929153900,
+      "vulkanNull": "false",
+      "deviceReady": "true",
+      "glInteropReady": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 133968978442400,
+      "ready": "true",
+      "color": "2082049374336",
+      "depth": "2082049377312",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2082049378800"
+    },
+    {
+      "type": "NATIVE_LOAD",
+      "timestamp_ns": 133968987106700,
+      "loaded": "true",
+      "path": "D:\\ProjectDllsss\\runtime-baseline\\instance\\.\\config\\super_resolution\\libraries\\libSuperResolutionNGX+win64+release.dll"
+    },
+    {
+      "type": "NGX_INIT",
+      "timestamp_ns": 133971355495700,
+      "result": "1",
+      "device": "2081997959072"
+    },
+    {
+      "type": "FEATURE_REQUIREMENTS",
+      "timestamp_ns": 133971416960100,
+      "feature": "1",
+      "result": "1",
+      "supportMask": "0"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 133971418559300,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_INPUTS",
+      "timestamp_ns": 133971424994000,
+      "renderWidth": "495",
+      "renderHeight": "278",
+      "outputWidth": "854",
+      "outputHeight": "480",
+      "flags": "67",
+      "perfQualityValue": "1",
+      "hdr": "true",
+      "autoExposure": "true",
+      "motionJittered": "false",
+      "depthInverted": "false"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 133971557956900,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "CREATE_COMPLETION",
+      "timestamp_ns": 133971563928300,
+      "completed": "true"
+    },
+    {
+      "type": "VULKAN_PREREQUISITE",
+      "timestamp_ns": 133984592411700,
+      "vulkanNull": "false",
+      "deviceReady": "true",
+      "glInteropReady": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 133984597528500,
+      "ready": "true",
+      "color": "2082049374336",
+      "depth": "2082049378800",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2082049377312"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 133984598016600,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_INPUTS",
+      "timestamp_ns": 133984598320200,
+      "renderWidth": "495",
+      "renderHeight": "278",
+      "outputWidth": "854",
+      "outputHeight": "480",
+      "flags": "67",
+      "perfQualityValue": "1",
+      "hdr": "true",
+      "autoExposure": "true",
+      "motionJittered": "false",
+      "depthInverted": "false"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 133984682328900,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "CREATE_COMPLETION",
+      "timestamp_ns": 133984684295200,
+      "completed": "true"
+    },
+    {
+      "type": "VULKAN_PREREQUISITE",
+      "timestamp_ns": 133984705998600,
+      "vulkanNull": "false",
+      "deviceReady": "true",
+      "glInteropReady": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 133984709961200,
+      "ready": "true",
+      "color": "2082084339024",
+      "depth": "2082074472720",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2081024042624"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 133984710334700,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_INPUTS",
+      "timestamp_ns": 133984710678600,
+      "renderWidth": "495",
+      "renderHeight": "278",
+      "outputWidth": "854",
+      "outputHeight": "480",
+      "flags": "67",
+      "perfQualityValue": "1",
+      "hdr": "true",
+      "autoExposure": "true",
+      "motionJittered": "false",
+      "depthInverted": "false"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 133984811670100,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "CREATE_COMPLETION",
+      "timestamp_ns": 133984814419000,
+      "completed": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 134030209961400,
+      "ready": "true",
+      "color": "2080987028752",
+      "depth": "2081024042624",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2082084339024"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 134030210206700,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_INPUTS",
+      "timestamp_ns": 134030210433800,
+      "renderWidth": "1113",
+      "renderHeight": "585",
+      "outputWidth": "1920",
+      "outputHeight": "1009",
+      "flags": "67",
+      "perfQualityValue": "1",
+      "hdr": "true",
+      "autoExposure": "true",
+      "motionJittered": "false",
+      "depthInverted": "false"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 134030253834800,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "CREATE_COMPLETION",
+      "timestamp_ns": 134030255557800,
+      "completed": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 134092215247400,
+      "ready": "true",
+      "color": "2085007495040",
+      "depth": "2085007502480",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2085007509920"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 134092215395000,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_INPUTS",
+      "timestamp_ns": 134092215536500,
+      "renderWidth": "495",
+      "renderHeight": "278",
+      "outputWidth": "854",
+      "outputHeight": "480",
+      "flags": "67",
+      "perfQualityValue": "1",
+      "hdr": "true",
+      "autoExposure": "true",
+      "motionJittered": "false",
+      "depthInverted": "false"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 134092260509400,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "CREATE_COMPLETION",
+      "timestamp_ns": 134092262181700,
+      "completed": "true"
+    }
+  ],
+  "last_evaluate": {
+    "type": "EVALUATE",
+    "timestamp_ns": 134164315558100,
+    "evaluation": "10492",
+    "result": "1",
+    "outputVkImage": "2085007509920",
+    "inputVkImage": "2085007495040",
+    "renderWidth": "495",
+    "renderHeight": "278",
+    "outputWidth": "854",
+    "outputHeight": "480",
+    "jitterX": "0.28125",
+    "jitterY": "0.0925926",
+    "mvScaleX": "495.0",
+    "mvScaleY": "278.0",
+    "reset": "0",
+    "preExposure": "1.0"
+  },
+  "shutdown": [
+    {
+      "type": "SHUTDOWN_BEGIN",
+      "timestamp_ns": 134164319129200,
+      "phase": "feature owners before graphics backend"
+    },
+    {
+      "type": "NGX_SHUTDOWN",
+      "timestamp_ns": 134164473138500,
+      "result": "1"
+    },
+    {
+      "type": "FEATURES_RETIRED",
+      "timestamp_ns": 134164473176500,
+      "phase": "DLSS/NGX retired before graphics backend"
+    },
+    {
+      "type": "GRAPHICS_BACKEND_DESTROYED",
+      "timestamp_ns": 134166556976300,
+      "completed": "true"
+    }
+  ],
+  "samples": [
+    {
+      "evaluation": "30",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "a447e43c9c10aac77bfcd37626b2adaa4486264dcad078f180dd56fdd24bb13f",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 203.30566614623993,
+      "output_vs_nearest_input_mae": 1.3180018865469685
+    },
+    {
+      "evaluation": "31",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "9ef5e60467e759f76c89908d9fe5277ae9b71b616347c09224486c83cd8ec555",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 203.30726483216236,
+      "output_vs_nearest_input_mae": 1.6476271792870154
+    },
+    {
+      "evaluation": "32",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "c4f68fd553968ff3b1891200f247df3e290940e003e3f88403977459393a1c4f",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 203.30853499869895,
+      "output_vs_nearest_input_mae": 1.3470677205308352
+    }
+  ]
+}

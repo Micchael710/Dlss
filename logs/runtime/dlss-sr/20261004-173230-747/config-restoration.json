@@ -1,0 +1,9 @@
+{
+  "status": "PASS",
+  "path": "runtime-baseline\\instance\\config\\super_resolution\\config.toml",
+  "snapshot_run": "20261004-173230-747",
+  "before_sha256": "5cb9e45afdd25f599995c3d2d03865a08213f8a675bf12024a36592ac8c885bf",
+  "snapshot_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+  "restored_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+  "real_minecraft_touched": false
+}

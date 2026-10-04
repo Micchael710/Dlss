@@ -1,0 +1,6 @@
+-- 生成NGX模块
+-- Configuring done (1.7s)
+-- Generating done (0.2s)
+-- Build files have been written to: D:/ProjectDllsss/builds/experimental/dlss-sr/native
+[1/2] Building CXX object CMakeFiles\SR_NGX_LIB.dir\src\ngx_jni.cpp.obj
+[2/2] Linking CXX shared library libSuperResolutionNGX+win64+release.dll

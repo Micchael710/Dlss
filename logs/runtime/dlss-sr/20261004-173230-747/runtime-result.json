@@ -1,0 +1,70 @@
+{
+  "run_id": "20261004-173230-747",
+  "status": "PASS",
+  "gates": "Vulkan/interop/native/NGX/capability/Create/Evaluate/completion/output/composite/viewport/shutdown PASS",
+  "evaluate_count": 4421,
+  "gpu_completion_count": 4421,
+  "output_vk_image": "1968400148752",
+  "output_gl_texture": 93,
+  "composite_target_gl_texture": 66,
+  "composite_viewport": [
+    0,
+    0,
+    854,
+    480
+  ],
+  "user_visual_response": "lista to full-screen/HUD/no-black-regions check",
+  "bounded_readback_samples": [
+    {
+      "evaluation": "30",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "6af6267a3a02ebcbc8c4f7699ddf15b5157dc341afb5573f9f9acc7905cf9b45",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 185.6408965977101,
+      "output_vs_nearest_input_mae": 3.3134448998178505
+    },
+    {
+      "evaluation": "31",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "609c7ec83aec239bf7c28dedc1a2b0efd1e7e0a0eabf3d6237ef79186d329394",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 185.6325161007026,
+      "output_vs_nearest_input_mae": 4.0525549700754615
+    },
+    {
+      "evaluation": "32",
+      "input_size": [
+        495,
+        278
+      ],
+      "output_size": [
+        854,
+        480
+      ],
+      "output_sha256": "5807a9c3502b5bfc9d1c592c73d8b2986b2600c6b7971d3fd9a29cf00d1fa808",
+      "black_fraction": 0.0,
+      "output_mean_rgb": 185.55001057116837,
+      "output_vs_nearest_input_mae": 3.4716733346344
+    }
+  ],
+  "process_exit_code": 0,
+  "normal_shutdown": true,
+  "crash": false,
+  "device_lost": false,
+  "shutdown_0xc0000409_reproduced": false,
+  "prior_shutdown_cause": "UNKNOWN; guards corrected, nonreproduction does not prove historical cause"
+}

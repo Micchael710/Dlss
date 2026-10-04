@@ -61,6 +61,10 @@ public class RenderSystems {
         opengl = new GlRenderSystem();
         opengl.initRenderSystem();
         initVulkan();
+        io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("VULKAN_INIT_RESULT",
+                "requested", io.homo.superresolution.common.upscale.algo.dlss.DlssSrPrerequisites.shouldInitializeVulkan(
+                        SuperResolutionConfig.isSkipInitVulkan(), SuperResolutionConfig.UPSCALE_ALGO.get()),
+                "vulkanNull", vulkan == null, "deviceReady", vulkan != null && vulkan.device() != null);
     }
 
 
@@ -168,7 +172,11 @@ public class RenderSystems {
     }
 
     private static void initVulkan() {
-        if (SuperResolutionConfig.isSkipInitVulkan()) {
+        if (vulkan != null) {
+            return;
+        }
+        if (!io.homo.superresolution.common.upscale.algo.dlss.DlssSrPrerequisites.shouldInitializeVulkan(
+                SuperResolutionConfig.isSkipInitVulkan(), SuperResolutionConfig.UPSCALE_ALGO.get())) {
             return;
         }
 

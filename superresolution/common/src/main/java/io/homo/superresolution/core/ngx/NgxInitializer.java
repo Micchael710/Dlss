@@ -37,6 +37,8 @@ public final class NgxInitializer {
     private static boolean bindingLoaded;
     private static boolean initialized;
     private static long initializedDevice;
+    private static long failedDevice;
+    private static Boolean superSamplingAvailable;
     private static final Map<Integer, Boolean> featureSupport = new HashMap<>();
     private static long supportCheckedDevice;
 
@@ -48,7 +50,7 @@ public final class NgxInitializer {
     }
 
     public static boolean initializeIfSupported(int feature) {
-        if (!isBindingAvailable() || !RenderSystems.isSupportVulkan()) {
+        if (!RenderSystems.isSupportVulkan() || !isBindingAvailable()) {
             return false;
         }
 
@@ -59,6 +61,7 @@ public final class NgxInitializer {
 
         synchronized (INIT_LOCK) {
             long deviceHandle = vulkanDevice.getVkDevice().address();
+            if (failedDevice == deviceHandle) return false;
             if (initialized
                     && initializedDevice == deviceHandle
                     && supportCheckedDevice == deviceHandle
@@ -77,7 +80,8 @@ public final class NgxInitializer {
                             () -> initializeForDevice(vulkanDevice, createFeatureInfo())
                     );
                 } catch (RuntimeException e) {
-                    shutdownLocked(true);
+                    shutdownLocked();
+                    failedDevice = deviceHandle;
                     SuperResolution.LOGGER.info(
                             "Skipping NGX initialization because the current GPU could not initialize feature {}",
                             feature,
@@ -126,7 +130,27 @@ public final class NgxInitializer {
 
     public static void shutdown() {
         synchronized (INIT_LOCK) {
-            shutdownLocked(false);
+            shutdownLocked();
+        }
+    }
+
+    public static boolean isSuperSamplingAvailable() {
+        if (!initializeIfSupported()) return false;
+        synchronized (INIT_LOCK) {
+            if (superSamplingAvailable != null) return superSamplingAvailable;
+            try (NgxParameters parameters = new NgxParameters()) {
+                int result = NgxVulkan.getCapabilityParameters(parameters);
+                requireSuccess("NVSDK_NGX_VULKAN_GetCapabilityParameters", result);
+                int[] available = {0};
+                result = parameters.getInt("SuperSampling.Available", available);
+                DlssSrDiagnostics.event("SELECTOR_CAPABILITY", "result", Integer.toUnsignedString(result), "available", available[0]);
+                requireSuccess("SuperSampling.Available", result);
+                superSamplingAvailable = available[0] != 0;
+            } catch (RuntimeException e) {
+                SuperResolution.LOGGER.error("DLSS selector capability query failed", e);
+                superSamplingAvailable = false;
+            }
+            return superSamplingAvailable;
         }
     }
 
@@ -198,7 +222,7 @@ public final class NgxInitializer {
             return;
         }
         if (initialized) {
-            shutdownLocked(false);
+            shutdownLocked();
         }
 
         int result = NgxVulkan.initWithProjectId(
@@ -214,8 +238,8 @@ public final class NgxInitializer {
                 featureInfo,
                 NgxConstants.VERSION_API
         );
-        requireSuccess("NVSDK_NGX_VULKAN_Init_with_ProjectID", result);
         DlssSrDiagnostics.event("NGX_INIT","result",Integer.toUnsignedString(result),"device",deviceHandle);
+        requireSuccess("NVSDK_NGX_VULKAN_Init_with_ProjectID", result);
         initialized = true;
         initializedDevice = deviceHandle;
     }
@@ -241,15 +265,17 @@ public final class NgxInitializer {
         }
     }
 
-    private static void shutdownLocked(boolean force) {
-        if (bindingLoaded && (initialized || force)) {
+    private static void shutdownLocked() {
+        if (bindingLoaded && initialized) {
             int shutdownResult = NgxVulkan.shutdown();
+            DlssSrDiagnostics.event("NGX_SHUTDOWN", "result", Integer.toUnsignedString(shutdownResult));
             if (!NgxConstants.succeeded(shutdownResult)) {
                 SuperResolution.LOGGER.warn("Failed to shut down NGX. Result: {}", shutdownResult);
             }
         }
         initialized = false;
         initializedDevice = 0L;
+        superSamplingAvailable = null;
         featureSupport.clear();
         supportCheckedDevice = 0L;
     }

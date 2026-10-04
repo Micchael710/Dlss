@@ -725,6 +725,7 @@ public final class SuperResolution implements Destroyable {
     }
 
     public void destroy() {
+        io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("SHUTDOWN_BEGIN", "phase", "feature owners before graphics backend");
         isInit = false;
         isRenderingInitialized = false;
         graphicsBackendDestroyed = false;
@@ -747,13 +748,15 @@ public final class SuperResolution implements Destroyable {
         }
         Streamline.shutdown();
         NgxInitializer.shutdown();
+        io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("FEATURES_RETIRED", "phase", "DLSS/NGX retired before graphics backend");
         // In Vulkan-presentation (interop) mode the hidden OpenGL context and the Vulkan
         // device are torn down later, in destroyGraphicsBackend() at Minecraft.destroy()
         // TAIL, so Minecraft's own shutdown rendering (the disconnect progress screen and
         // GL resource cleanup) still has a current GL context. Destroying them here left
         // that rendering without a context and aborted the JVM on exit. Without the
         // interop presentation there is no shared context to protect, so tear down now.
-        if (!PresentationBackendManager.isVulkanPresentationRequested()) {
+        if (!PresentationBackendManager.isVulkanPresentationRequested()
+                && PresentationWindowState.renderHandle() == 0) {
             destroyGraphicsBackend();
         }
     }
@@ -774,5 +777,6 @@ public final class SuperResolution implements Destroyable {
         PresentationWindowState.destroyRenderWindow();
         RenderSystems.destroy();
         graphicsBackendDestroyed = true;
+        io.homo.superresolution.core.ngx.DlssSrDiagnostics.event("GRAPHICS_BACKEND_DESTROYED", "completed", true);
     }
 }

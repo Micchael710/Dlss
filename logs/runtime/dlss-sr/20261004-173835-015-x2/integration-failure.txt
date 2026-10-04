@@ -1,0 +1,2 @@
+stage=INPUT_MAPPING
+java.lang.IllegalStateException: Borrowed Vulkan-upscaler inputs need an audited queue join; use the unchanged owned-capture baseline

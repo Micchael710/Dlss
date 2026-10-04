@@ -1,0 +1,42 @@
+{
+  "run_id": "20261004-173835-015-x2",
+  "status": "FAIL",
+  "fail_stage": "INPUT_MAPPING_BEFORE_FG_CREATE_EVALUATE",
+  "fail_result": "Borrowed Vulkan-upscaler inputs need an audited queue join; use the unchanged owned-capture baseline",
+  "root_cause": "Existing DlssgFrameGenerationAdapter rejects frame.hasBorrowedAlgorithmInputs(); Vulkan DLSS supplies borrowed render depth/motion; audited queue join absent",
+  "cause_confidence": "HIGH_EXPLICIT_ADAPTER_GUARD_AND_INTEGRATION_FAILURE",
+  "sr_evaluate_count": 10492,
+  "sr_completion_count": 10492,
+  "fg_evaluate_count": 0,
+  "fg_generated_present_count": 0,
+  "requested_count": 1,
+  "active_sr_provider": "dlss",
+  "fg_provider": "wisteria:dlssg initially negotiated; later fg=null",
+  "pipeline_order": "DLSS SR upscaled output -> composite7 onward -> display HUDless/final capture -> FG sidecar -> PresentWorker; FG blocked before work",
+  "render_size": [
+    495,
+    278
+  ],
+  "display_size": [
+    854,
+    480
+  ],
+  "fg_input_color_expected": [
+    854,
+    480
+  ],
+  "fg_depth_motion_expected": [
+    495,
+    278
+  ],
+  "fg_input_sizes_executed": "NOT_OBSERVED_NO_FG_EVALUATE",
+  "process_exit_code": 0,
+  "normal_shutdown": true,
+  "crash": false,
+  "device_lost": false,
+  "automatic_retry": false,
+  "normal_shutdown_0xc0000409_reproduced": false,
+  "secondary_warning": "FGConstantsBuilder cameraViewToClip not invertible; not the demonstrated cause of provider disable",
+  "fg_create_count": 0,
+  "fg_native_clean_exit": true
+}

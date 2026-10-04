@@ -18,6 +18,7 @@ namespace {
     JavaVM *g_javaVm = nullptr;
     jobject g_logCallback = nullptr;
     jmethodID g_logMethod = nullptr;
+    VkDevice g_initializedDevice = VK_NULL_HANDLE;
 
     struct FeatureCommonInfoStorage {
         std::vector<std::wstring> paths;
@@ -368,12 +369,15 @@ extern "C" {
         jobject featureInfo,
         jint sdkVersion
     ) {
+        if (!instance || !physicalDevice || !device || !getInstanceProcAddr || !getDeviceProcAddr) {
+            return kInvalidParameter;
+        }
         FeatureCommonInfoStorage featureInfoStorage;
         fillFeatureCommonInfo(env, featureInfo, featureInfoStorage, true);
         std::string projectIdValue = toUtf8(env, projectId);
         std::string engineVersionValue = toUtf8(env, engineVersion);
         std::wstring appPathValue = toWide(env, applicationDataPath);
-        return NVSDK_NGX_VULKAN_Init_with_ProjectID(
+        jint result = NVSDK_NGX_VULKAN_Init_with_ProjectID(
             projectIdValue.c_str(),
             static_cast<NVSDK_NGX_EngineType>(engineType),
             engineVersionValue.c_str(),
@@ -386,10 +390,21 @@ extern "C" {
             featureInfo ? &featureInfoStorage.info : nullptr,
             static_cast<NVSDK_NGX_Version>(sdkVersion)
         );
+        if (NVSDK_NGX_SUCCEED(result)) {
+            g_initializedDevice = reinterpret_cast<VkDevice>(device);
+        } else if (g_logCallback) {
+            env->DeleteGlobalRef(g_logCallback);
+            g_logCallback = nullptr;
+            g_logMethod = nullptr;
+        }
+        return result;
     }
 
     JNIEXPORT jint JNICALL Java_io_homo_superresolution_core_ngx_NgxNative_nShutdown(JNIEnv *env, jclass) {
-        jint result = NVSDK_NGX_VULKAN_Shutdown1(VK_NULL_HANDLE);
+        if (g_initializedDevice == VK_NULL_HANDLE) return NVSDK_NGX_Result_Success;
+        jint result = NVSDK_NGX_VULKAN_Shutdown1(g_initializedDevice);
+        if (NVSDK_NGX_FAILED(result)) return result;
+        g_initializedDevice = VK_NULL_HANDLE;
         if (g_logCallback) {
             env->DeleteGlobalRef(g_logCallback);
             g_logCallback = nullptr;

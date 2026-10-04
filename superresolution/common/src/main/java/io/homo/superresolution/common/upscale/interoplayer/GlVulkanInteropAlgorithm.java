@@ -166,6 +166,9 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
     }
 
     private void createResources(InteropResourceLayout layout) {
+        if (RenderSystems.vulkan() == null || RenderSystems.vulkan().device() == null) {
+            throw new IllegalStateException("Vulkan interop requires an initialized Vulkan device");
+        }
         VulkanDevice vkDevice = RenderSystems.vulkan().device();
         vkDevice.getMainQueue().waitIdle();
         frameResourcesSet = new FrameResourcesSet(flipInteropResourcesY);
@@ -178,8 +181,8 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
     }
 
     private void destroyResources() {
-        RenderSystems.vulkan().device().getMainQueue().waitIdle();
         if (frameResourcesSet != null) {
+            RenderSystems.vulkan().device().getMainQueue().waitIdle();
             frameResourcesSet.destroy();
             frameResourcesSet = null;
         }
@@ -195,6 +198,7 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         this.initDesc = Objects.requireNonNull(desc);
         destroyed = false;
         invalidateHistory();
+        validatePrerequisites();
         createResources(resolveLayout(null));
         onInteropResourcesCreated();
         initialized = true;
@@ -210,12 +214,13 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         if (destroyed) {
             return;
         }
-        awaitResourceUsers();
-        commandBufferRing.destroy();
-        onBeforeInteropResourcesDestroyed();
-        destroyResources();
+        InteropTeardown.release(frameResourcesSet != null, this::awaitResourceUsers,
+                commandBufferRing::destroy, this::onBeforeInteropResourcesDestroyed, this::destroyResources);
         destroyed = true;
         initialized = false;
+    }
+
+    protected void validatePrerequisites() {
     }
 
     @Override

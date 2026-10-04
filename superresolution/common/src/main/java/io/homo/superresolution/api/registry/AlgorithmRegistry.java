@@ -55,6 +55,11 @@ public class AlgorithmRegistry {
                 algorithmSupportCache.put(algorithmDescription.getCodeName(), supported);
             }
         }
-        return algorithmSupportCache.get(algorithmDescription.getCodeName());
+        boolean supported = algorithmSupportCache.get(algorithmDescription.getCodeName());
+        if (supported && "dlss".equals(algorithmDescription.getCodeName())) {
+            // Runtime prerequisites must not be frozen in the platform-requirement cache.
+            return io.homo.superresolution.common.upscale.algo.dlss.DLSS.isAvailable();
+        }
+        return supported;
     }
 }

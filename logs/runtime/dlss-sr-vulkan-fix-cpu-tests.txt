@@ -1,0 +1,4 @@
+Observed Java25.0.4 tests, compiled with --release21 against common build classes.
+PASS CPU: existing DLSS preset ratios, rounded dimensions, invalid extent rejection; no GPU capability simulation
+PASS CPU prerequisite policy + no-resource teardown + created-resource cleanup order + retained-owner failure; no GPU simulation claimed
+PASS ACTUAL JNI LOAD: shutdown before Init, null Vulkan Init rejected, shutdown after rejected Init, null Create rejected, empty handle double-close; GPU init/create/evaluate=NOT_RUN; result=3134193669

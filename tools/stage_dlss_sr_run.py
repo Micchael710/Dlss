@@ -9,7 +9,7 @@ base=root/'builds/experimental/dlss-sr';base.mkdir(exist_ok=True)
 old=root/'builds/experimental/dlssg-x2/superresolution-dlssg-x2-candidate.jar'
 source=max((root/'superresolution/neoforge/build/libs').glob('*.opengl.jar'),key=lambda p:p.stat().st_mtime)
 native=root/'builds/experimental/dlss-sr/native/libSuperResolutionNGX+win64+release.dll'
-target=base/'superresolution-dlss-sr-candidate.jar'
+target=base/('superresolution-dlss-sr-'+sha(source)[:12]+'.jar')
 reuse=target.exists()
 with zipfile.ZipFile(old) as previous,zipfile.ZipFile(source) as new,zipfile.ZipFile(target,'r' if reuse else 'w',zipfile.ZIP_DEFLATED) as dest:
     for i in new.infolist():
@@ -41,6 +41,8 @@ text=original.decode('utf-8').replace('\r\n','\n').replace('\r','');text,n=re.su
 text,n=re.subn(r'(?m)^upscale_ratio = [^\r\n]+\r?$', 'upscale_ratio = 1.724',text);assert n==1
 text,n=re.subn(r'(\[frame_generation\][\s\S]*?mode = )"[^"]+"',r'\1"OFF"',text,count=1);assert n==1
 text,n=re.subn(r'(\[presentation\][\s\S]*?backend = )"[^"]+"',r'\1"VULKAN"',text,count=1);assert n==1
+text,n=re.subn(r'(?m)^(\s*skip_init_vulkan = )\w+$',r'\1false',text);assert n==1
+text,n=re.subn(r'(?m)^(\s*enable_debug = )\w+$',r'\1false',text);assert n==1
 config.write_bytes(text.encode('utf-8'))
 vendor=base/'official-runtime/nvngx_dlss.dll';libraries=root/'runtime-baseline/instance/config/super_resolution/libraries';libraries.mkdir(exist_ok=True)
 existing=libraries/vendor.name

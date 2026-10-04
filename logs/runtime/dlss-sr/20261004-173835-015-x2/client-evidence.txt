@@ -1,0 +1,53 @@
+[13:39:26] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.0.4+7-LTS-189
+[13:40:04] [Render thread/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=wisteria:dlssg, lowLatency=null
+[13:40:16] [Render thread/INFO] [SuperResolution/]: Initializing algorithm NVIDIA DLSS
+[13:40:51] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:40:51] [Render thread/WARN] [SuperResolution/]: Failed to build DLSS-G constants
+java.lang.IllegalArgumentException: cameraViewToClip is not invertible
+[13:40:52] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:40:52] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:40:52] [Render thread/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=null, lowLatency=null
+[13:41:01] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:02] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:02] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:11] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:12] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:12] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:21] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:22] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:22] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:31] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:32] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:32] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:42] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:42] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:42] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:52] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 1.113E+3  5.850E+2) display=( 1.920E+3  1.009E+3) region-1=( 1.113E+3  5.850E+2) region-2=( 1.920E+3  1.009E+3) viewport=[0,0,1920,1009] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:41:52] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:41:52] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=1920x1009 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:03] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:04] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:04] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:13] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:14] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:14] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:24] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:24] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:24] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:34] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:34] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:34] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:44] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:44] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:44] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:54] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:42:54] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:42:54] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:43:04] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:43:04] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:43:04] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:43:14] [Render thread/INFO] [SuperResolution/]: SR_DIAG BEFORE_PASS:composite7 render=( 4.950E+2  2.780E+2) display=( 8.540E+2  4.800E+2) region-1=( 4.950E+2  2.780E+2) region-2=( 8.540E+2  4.800E+2) viewport=[0,0,854,480] scissor=[0,128,854,256]/false drawFbo=18 readFbo=18 drawBuffer=36064 readBuffer=36064 drawStatus=8cd5
+[13:43:14] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture SR_output id=93 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:43:14] [Render thread/INFO] [SuperResolution/]: SR_DIAG texture autotex3/output_target id=68 size=854x480 format=RGBA16F target/type=Texture2D glInternalFormat=881a
+[13:43:16] [Render thread/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=null, lowLatency=null
+BUILD SUCCESSFUL in 4m 13s

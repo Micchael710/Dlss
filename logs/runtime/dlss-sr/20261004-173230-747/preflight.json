@@ -1,0 +1,12 @@
+{
+  "toml_parse": "PASS",
+  "sr": "dlss",
+  "fg": "OFF",
+  "presentation": "VULKAN",
+  "skip_init_vulkan": false,
+  "native_build": "PASS",
+  "java_build": "PASS",
+  "cpu_jni_failure_path": "PASS",
+  "amd_integrity": "9 classes/2DLL unchanged; no GPU rerun",
+  "wisteria": "unchanged previously built candidate"
+}

@@ -1,4 +1,26 @@
-## Estado vigente — binding DLSS SR construido; runtime FAIL antes de NGX
+## Estado vigente — DLSS SR standalone PASS; combinación x2 FAIL antes de FG Evaluate
+
+Iteración desde eaca5f48dfd47b217cec84d5d2350aeec3d3e052. La selección
+startup dlss resuelve Vulkan aunque skip_init_vulkan sea true; FSR/OpenGL
+conserva su política. Gate explícito de device/GL interop, disponibilidad
+NGX real en selector, teardown sin acceder a recursos no creados y JNI
+Shutdown sólo tras Init exitoso. Código0 en las dos sesiones de esta fase.
+Build C++/Java y tests CPU/JNI mínimos PASS. AMD9 clases/2DLL hashes intactos.
+Standalone20261004-173230-747: Java25.0.4, FG OFF, Init/capability/Create
+result1, handle válido, Evaluate4421/completion4421, render495x278,
+output854x480 usado como SR_output93 -> autotex3 target66 -> composite7
+viewport854x480. Tres readbacks sin píxel RGB negro, imágenes distintas
+y diferentes de input nearest; mundo completo. Cierre0 sin device lost.
+Combinado20261004-173835-015-x2: SR Evaluate10492/completion10492, pero
+adaptador FG bloqueó INPUT_MAPPING: inputs prestados por upscaler Vulkan
+requieren queue join validado. FG Create0/Evaluate0/generated presents0;
+combinación FAIL. También hubo advertencia de matriz no invertible, que no
+es la causa demostrada de disable. STOP sin retry. Cierre0, config restaurado.
+El 0xC0000409 histórico NO se reprodujo; su causa exacta sigue UNKNOWN.
+MFG/AMD/implementación DLSS-G x2 histórica intactas. No x3/x4/x5 nuevos.
+Detalles y evidencia: docs/DLSS_SUPER_RESOLUTION_INTEGRATION.md.
+
+## Estado anterior preservado — fallo antes de NGX
 
 Inicio5da09874956956b04a5f413999a5c4217235c6a2. No MFG nuevo.
 La opción existente dlss usa NGX Vulkan. El native faltaba en el JAR;

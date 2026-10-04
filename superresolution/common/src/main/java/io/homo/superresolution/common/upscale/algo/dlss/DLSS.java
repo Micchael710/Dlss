@@ -41,6 +41,31 @@ public class DLSS extends GlVulkanInteropAlgorithm {
     private NgxParameters ngxParameters;
     private final java.util.Map<VulkanCommandBuffer,Integer> diagnosticPending=new java.util.IdentityHashMap<>();
     private int evaluated,diagnosticSamples;
+    private static boolean initializationFailed;
+
+    private static boolean vulkanReady() {
+        return RenderSystems.vulkan() != null && RenderSystems.vulkan().device() != null
+                && RenderSystems.vulkan().device().getVkDevice().address() != 0;
+    }
+
+    private static boolean glInteropReady() {
+        var caps = org.lwjgl.opengl.GL.getCapabilities();
+        return caps.GL_EXT_memory_object && caps.GL_EXT_memory_object_win32
+                && caps.GL_EXT_semaphore && caps.GL_EXT_semaphore_win32;
+    }
+
+    public static boolean isAvailable() {
+        return !initializationFailed && vulkanReady() && glInteropReady() && NgxInitializer.isSuperSamplingAvailable();
+    }
+
+    @Override
+    protected void validatePrerequisites() {
+        if (initializationFailed) throw new IllegalStateException("DLSS initialization failed earlier; automatic retry blocked");
+        boolean vk = vulkanReady(), gl = glInteropReady();
+        DlssSrDiagnostics.event("VULKAN_PREREQUISITE", "vulkanNull", RenderSystems.vulkan() == null,
+                "deviceReady", vk, "glInteropReady", gl);
+        DlssSrPrerequisites.requireReady(vk, gl);
+    }
 
     private static void closeResource(NgxResourceVK resource) {
         if (resource != null) {
@@ -72,8 +97,19 @@ public class DLSS extends GlVulkanInteropAlgorithm {
 
     @Override
     protected void onInteropResourcesCreated() {
-        recreateNgxContext(initDesc);
-        createNgxDispatchResources();
+        try {
+            DlssSrDiagnostics.event("GL_VK_INTEROP_READY", "ready", true,
+                    "color", frameResourcesSet.vulkan(Color).handle(), "depth", frameResourcesSet.vulkan(Depth).handle(),
+                    "depthFormat", frameResourcesSet.vulkan(Depth).getTextureFormat(),
+                    "motionFormat", frameResourcesSet.vulkan(MotionVectors).getTextureFormat(),
+                    "output", frameResourcesSet.vulkan(OutputColor).handle());
+            recreateNgxContext(initDesc);
+            createNgxDispatchResources();
+        } catch (RuntimeException | Error failure) {
+            initializationFailed = true;
+            DlssSrDiagnostics.event("INITIALIZATION_FAILURE", "error", failure.toString());
+            throw failure;
+        }
     }
 
     @Override
@@ -122,8 +158,8 @@ public class DLSS extends GlVulkanInteropAlgorithm {
                     createParams
             );
             commandBuffer.end();
+        DlssSrDiagnostics.event("CREATE_FEATURE","result",Integer.toUnsignedString(createResult),"handleValid",feature.isValid());
             requireNgxSuccess("NGX_VULKAN_CREATE_DLSS_EXT", createResult);
-            DlssSrDiagnostics.event("CREATE_FEATURE","result",Integer.toUnsignedString(createResult),"handleValid",feature.isValid());
             if(!feature.isValid())throw new IllegalStateException("NGX CreateFeature returned no valid DLSS handle");
 
             vulkanDevice.submitCommandBuffer(commandBuffer);
@@ -176,6 +212,7 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             int result = ngxDlssFeature.release();
             if (!NgxConstants.succeeded(result)) {
                 SuperResolution.LOGGER.error("Failed to release the DLSS NGX feature. Result: {}", result);
+                throw new IllegalStateException("DLSS feature release failed; owner retained: " + Integer.toUnsignedString(result));
             }
             ngxDlssFeature = null;
         }
@@ -183,6 +220,7 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             int result = ngxParameters.destroy();
             if (!NgxConstants.succeeded(result)) {
                 SuperResolution.LOGGER.error("Failed to destroy the DLSS NGX parameters. Result: {}", result);
+                throw new IllegalStateException("DLSS parameter destruction failed; owner retained: " + Integer.toUnsignedString(result));
             }
             ngxParameters = null;
         }
@@ -273,6 +311,7 @@ public class DLSS extends GlVulkanInteropAlgorithm {
     private void destroyNgxDispatchResources() {
         if (ngxDispatchResource != null){
             ngxDispatchResource.close();
+            ngxDispatchResource = null;
         }
     }
 
