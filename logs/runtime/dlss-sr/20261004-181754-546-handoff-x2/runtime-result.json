@@ -1,0 +1,310 @@
+{
+  "run_id": "20261004-181754-546-handoff-x2",
+  "status": "FAIL",
+  "sr_counts": {
+    "RUNTIME": 1,
+    "VULKAN_INIT_RESULT": 1,
+    "VULKAN_PREREQUISITE": 3,
+    "GL_VK_INTEROP_READY": 3,
+    "NATIVE_LOAD": 1,
+    "NGX_INIT": 1,
+    "FEATURE_REQUIREMENTS": 1,
+    "CAPABILITY": 3,
+    "CREATE_INPUTS": 3,
+    "CREATE_FEATURE": 3,
+    "CREATE_COMPLETION": 3,
+    "EVALUATE": 4,
+    "OUTPUT_QUEUED": 4
+  },
+  "native_fg_counts": {
+    "resource_pool": 25,
+    "slot_state": 3,
+    "borrowed_copy_recorded": 4,
+    "evaluate_begin": 2,
+    "evaluate_parameters": 2,
+    "evaluate": 2,
+    "vulkan_d3d12_submit": 1,
+    "borrowed_copy_submit": 1
+  },
+  "java_fg_counts": {
+    "SESSION": 1,
+    "POOL_CREATE": 1,
+    "POOL_LEASE": 2,
+    "BORROWED_QUEUE_JOIN": 2,
+    "PREPARED": 2,
+    "OUTPUT_READY": 1,
+    "SUBMITTED": 1,
+    "VULKAN_CONSUMER_SUBMIT": 1,
+    "DISCARD": 1,
+    "PRESENT": 1
+  },
+  "first_failure": {
+    "stage": "GPU_SUBMISSION",
+    "error": "java.lang.IllegalStateException: input queue submit VkResult=-4",
+    "line": 1421
+  },
+  "secondary_failures": [
+    {
+      "stage": "ABORT_AFTER_GPU_SUBMISSION",
+      "error": "java.lang.IllegalStateException: Retain native pool until safe terminal drain",
+      "line": 1442
+    }
+  ],
+  "integration_failure_file_is_secondary": "stage=ABORT_AFTER_GPU_SUBMISSION\njava.lang.IllegalStateException: Retain native pool until safe terminal drain\n",
+  "fg_create_count": 1,
+  "native_create_result": "0x00000001",
+  "fg_evaluate_count": 2,
+  "fg_completion_callback_count": 1,
+  "fg_retirement_completion_count": 0,
+  "fg_generated_present_count": 0,
+  "fg_real_present_count": 1,
+  "input_copy_records": [
+    {
+      "timestamp_ns": 136451721111300,
+      "type": "borrowed_copy_recorded",
+      "detail": "realFrameId=1 resource=depth source=2952963527680 destination=2956805655520 sourceFormat=100 destinationFormat=100 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+    },
+    {
+      "timestamp_ns": 136451721194200,
+      "type": "borrowed_copy_recorded",
+      "detail": "realFrameId=1 resource=motion source=2952963538096 destination=2956805643616 sourceFormat=83 destinationFormat=103 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+    },
+    {
+      "timestamp_ns": 136451760021300,
+      "type": "borrowed_copy_recorded",
+      "detail": "realFrameId=2 resource=depth source=2952963527680 destination=2952957230560 sourceFormat=100 destinationFormat=100 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2617 captureGeneration=2750 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971817104 producerSubmission=1 producerFence=2956995643440 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+    },
+    {
+      "timestamp_ns": 136451760068300,
+      "type": "borrowed_copy_recorded",
+      "detail": "realFrameId=2 resource=motion source=2952963538096 destination=2952957239488 sourceFormat=83 destinationFormat=103 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2617 captureGeneration=2750 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971817104 producerSubmission=1 producerFence=2956995643440 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+    }
+  ],
+  "input_copy_submissions": [
+    {
+      "timestamp_ns": 136451749939100,
+      "type": "borrowed_copy_submit",
+      "detail": "realFrameId=1 copyCommand=2956763908064 copyCompleteValue=1 fgCompleteValue=2 consumerQueue=2953834146192 consumerFamily=0 waits=PRODUCER_BINARY cpuWait=false logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+    }
+  ],
+  "input_copy_retirement_completions": [],
+  "completion_snapshots": [
+    {
+      "timestamp_ns": 136451752322800,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=1 count=1 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2956805654032",
+      "fields": {
+        "realFrameId": "1",
+        "previousRealFrameId": "0",
+        "index": "1",
+        "count": "1",
+        "rawStatus": "1",
+        "status": "DISABLED",
+        "disable": "1",
+        "reset": "true",
+        "epoch": "1",
+        "completion": "2",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "false",
+        "VkImage": "2956805654032"
+      }
+    }
+  ],
+  "readiness_receipts": [
+    {
+      "timestamp_ns": 136451719897400,
+      "type": "BORROWED_QUEUE_JOIN",
+      "detail": "BORROWED_QUEUE_JOIN realFrameId=1 logicalFrame=2616 captureGeneration=2749 producer=Submission[device=2953838796992, queue=2953834132176, family=0, index=0, command=2952971830960, generation=1, fence=2957204802624] depth=Source[image=2952963527680, format=100, width=495, height=278, layout=5, ready=2956992840864] motion=Source[image=2952963538096, format=83, width=495, height=278, layout=5, ready=2956992839040] consumerFamily=0 consumerIndex=1 depthDestination=2956805655520 motionDestination=2956805643616 cpuWait=false",
+      "fields": {
+        "realFrameId": "1",
+        "logicalFrame": "2616",
+        "captureGeneration": "2749",
+        "producer": "Submission[device=2953838796992,",
+        "queue": "2953834132176,",
+        "family": "0,",
+        "index": "0,",
+        "command": "2952971830960,",
+        "generation": "1,",
+        "fence": "2957204802624]",
+        "depth": "Source[image=2952963527680,",
+        "format": "83,",
+        "width": "495,",
+        "height": "278,",
+        "layout": "5,",
+        "ready": "2956992839040]",
+        "motion": "Source[image=2952963538096,",
+        "consumerFamily": "0",
+        "consumerIndex": "1",
+        "depthDestination": "2956805655520",
+        "motionDestination": "2956805643616",
+        "cpuWait": "false"
+      }
+    },
+    {
+      "timestamp_ns": 136451759574400,
+      "type": "BORROWED_QUEUE_JOIN",
+      "detail": "BORROWED_QUEUE_JOIN realFrameId=2 logicalFrame=2617 captureGeneration=2750 producer=Submission[device=2953838796992, queue=2953834132176, family=0, index=0, command=2952971817104, generation=1, fence=2956995643440] depth=Source[image=2952963527680, format=100, width=495, height=278, layout=5, ready=2956992840864] motion=Source[image=2952963538096, format=83, width=495, height=278, layout=5, ready=2956992839040] consumerFamily=0 consumerIndex=1 depthDestination=2952957230560 motionDestination=2952957239488 cpuWait=false",
+      "fields": {
+        "realFrameId": "2",
+        "logicalFrame": "2617",
+        "captureGeneration": "2750",
+        "producer": "Submission[device=2953838796992,",
+        "queue": "2953834132176,",
+        "family": "0,",
+        "index": "0,",
+        "command": "2952971817104,",
+        "generation": "1,",
+        "fence": "2956995643440]",
+        "depth": "Source[image=2952963527680,",
+        "format": "83,",
+        "width": "495,",
+        "height": "278,",
+        "layout": "5,",
+        "ready": "2956992839040]",
+        "motion": "Source[image=2952963538096,",
+        "consumerFamily": "0",
+        "consumerIndex": "1",
+        "depthDestination": "2952957230560",
+        "motionDestination": "2952957239488",
+        "cpuWait": "false"
+      }
+    }
+  ],
+  "sr_pre_world_gates": [
+    {
+      "type": "VULKAN_INIT_RESULT",
+      "timestamp_ns": 136359744340800,
+      "requested": "true",
+      "vulkanNull": "false",
+      "deviceReady": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 136366557538700,
+      "ready": "true",
+      "color": "2953763008144",
+      "depth": "2953763030464",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2953763033440"
+    },
+    {
+      "type": "NGX_INIT",
+      "timestamp_ns": 136369091151100,
+      "result": "1",
+      "device": "2953838796992"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 136369152877900,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 136369295047800,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 136383198100600,
+      "ready": "true",
+      "color": "2956849685072",
+      "depth": "2956849686560",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2952963533632"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 136383198578000,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 136383287228900,
+      "result": "1",
+      "handleValid": "true"
+    },
+    {
+      "type": "GL_VK_INTEROP_READY",
+      "timestamp_ns": 136383295843800,
+      "ready": "true",
+      "color": "2952963536608",
+      "depth": "2952963527680",
+      "depthFormat": "R32F",
+      "motionFormat": "RG16F",
+      "output": "2952963539584"
+    },
+    {
+      "type": "CAPABILITY",
+      "timestamp_ns": 136383296260800,
+      "queryResult": "1",
+      "availableQuery": "1",
+      "available": "1",
+      "initQuery": "1",
+      "initResult": "1"
+    },
+    {
+      "type": "CREATE_FEATURE",
+      "timestamp_ns": 136383400234700,
+      "result": "1",
+      "handleValid": "true"
+    }
+  ],
+  "pre_world_queue_join": "CPU_CONTRACT_CONFIGURED;GPU_JOIN_NOT_YET_OBSERVED_BEFORE_WORLD",
+  "matrix_evidence": [
+    "[14:21:23] [Render thread/WARN] [SuperResolution/]: DLSSG_MATRIX_EVIDENCE logicalFrame=2615 render=495x278 display=854x480 projection=[Infinity, 0.0, 0.0, 0.0, 0.0, Infinity, 0.0, 0.0, 0.0, 0.0, -1.0001302, -1.0, 0.0, 0.0, -0.10000651, 0.0] previousProjection=[1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 1.0] modelView=[-0.24616921, 0.39653665, -0.8843977, 0.0, 0.0, 0.9124775, 0.40912676, 0.0, 0.9692268, 0.1007144, -0.22462389, 0.0, 0.0, -0.0, 0.0, 1.0] jitter=( 3.125E-2 -4.259E-1) resetHistory=true"
+  ],
+  "matrix_warning": true,
+  "matrix_primary_fail_stage": false,
+  "source_layout_evidence": "GL external signal declares SHADER_READ_ONLY; native copies record 5->6->5; post-NGX layout correctness NOT GPU-validated",
+  "device_lost": true,
+  "root_cause": "Second FG Vulkan input queue submission returned VK_ERROR_DEVICE_LOST after first interval reached D3D12 completion; underlying GPU fault/ordering/layout cause UNPROVEN",
+  "cause_confidence": "HIGH_FOR_OBSERVED_GATE;UNDERLYING_GPU_CAUSE_UNKNOWN",
+  "normal_shutdown": false,
+  "managed_java_crash": true,
+  "minecraft_process_exit_code": -1,
+  "gradle_exit_code": 1,
+  "historical_native_crash_0xc0000409_reproduced": false,
+  "sr_shutdown_events": [],
+  "config_restoration": {
+    "status": "PASS",
+    "path": "runtime-baseline\\instance\\config\\super_resolution\\config.toml",
+    "snapshot_run": "20261004-181754-546-handoff-x2",
+    "before_sha256": "5cb9e45afdd25f599995c3d2d03865a08213f8a675bf12024a36592ac8c885bf",
+    "snapshot_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+    "restored_sha256": "ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462",
+    "real_minecraft_touched": false
+  },
+  "amd_hashes": {
+    "org/ireallywanttosleep/wisteria/fsr/FidelityFxBridge.class": "6566b5bb0d8cc31cc2f06332ab83ac1cc2d963cb0c89d7ec1b871d04bc498a8a",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter$1.class": "091d1c0d3383bcdf2e155945f5a24997d3cd2a228e9cfec8cbb52f57d40b7e68",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter$Key.class": "14d10e288a25a8bf669a27de8d798f74d60e1778e227d6bc83cff2453b04cfa7",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter.class": "2eb29f95b051c9a73293f1ed18848706fd4bdb4996adc77f947d156733a235a2",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationBackend.class": "595c6d071d60432203c7dadcc055790d50a920e5d6ce6e4261d49c995f6536d6",
+    "org/ireallywanttosleep/wisteria/fsr/FsrInputSnapshot.class": "decedc93b1b07b22cf64f536a6d0af2da4289337810441cb0ec5fd1045e85177",
+    "org/ireallywanttosleep/wisteria/fsr/FsrOutputPool$Slot.class": "4e384722befb30ee03a5b0724f700f94283faa9d82dabc16365693d96c9aa689",
+    "org/ireallywanttosleep/wisteria/fsr/FsrOutputPool.class": "0d0ba69570ae1493dce315e3a55328069c7810069566877e02f0391bf0dc0c21",
+    "org/ireallywanttosleep/wisteria/fsr/FsrSession.class": "b9304f806788788648fa8e51d5531cab63e2acaeca1e09798c24cd55d73980b1",
+    "natives/windows-x64/wisteria_fsr_bridge.dll": "b0388beb885271fafa59e788bb4f9c2ce7d508ae4ecb11879b113a7f0d043f7b",
+    "natives/windows-x64/amd_fidelityfx_vk.dll": "c84ca40421ff5594edfc6553cb89a2d07982b0cadb1a66beb989b2cdedd39197"
+  },
+  "amd_9_classes_2_dlls_identical": true,
+  "rerun": false,
+  "standalone_rerun": false,
+  "requested_count": 1,
+  "visual": "NOT_VALIDATED_BECAUSE_DEVICE_LOST_EARLY;USER_CONFIRMED_WORLD_ENTRY_ONLY",
+  "gpu_fixture": "NOT_RUN;existing harness does not cover the GL/SR borrowed producer; no new GPU investigation",
+  "cpu_transport_copy_count": 0,
+  "per_frame_cpu_wait_in_new_queue_join": false,
+  "existing_vulkan_reuse_waits": "Command/capture rings retain their existing bounded Vulkan fence backpressure; no new cross-API host wait"
+}

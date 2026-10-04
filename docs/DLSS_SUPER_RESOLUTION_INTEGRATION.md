@@ -1,5 +1,19 @@
 # Integración NVIDIA DLSS Super Resolution
 
+## Handoff combinado — 2026-10-04, posterior a b3dd23c
+
+Standalone PASS histórico no repetido. Una única prueba SR+DLSS-G x2
+`20261004-181754-546-handoff-x2` alcanza FG Create1/Evaluate2, pero falla
+con VK_ERROR_DEVICE_LOST en el segundo submission input del consumer.
+SR Evaluate4/outputQueued4; no events de completion SR antes del crash.
+No G1 presentado, combinación FAIL y shutdown no normal. La implementación
+de receipt/señal post-SR y copia persistente supera INPUT_MAPPING, pero
+NO se declara segura/validada en GPU. Post-NGX layout efectivo y causa del
+device lost quedan UNPROVEN. Se mantiene matrix guard; advertencia inicial
+Infinity no bloqueó los siguientes dos Evaluate. No retry ni investigación
+MFG/AMD. Config restaurado byte-for-byte. Contrato y evidencia detallados
+en [DLSS_SR_DLSSG_X2_INTEROP.md](DLSS_SR_DLSSG_X2_INTEROP.md).
+
 ## Iteración Vulkan y teardown — 2026-10-04
 
 Desde eaca5f4 limpio. La opción existente dlss activa la infraestructura Vulkan existente durante init global, incluso con skip_init_vulkan=true; init es idempotente y no cambia el caso FSR/OpenGL con skip. Switching a DLSS con Vulkan ausente queda unavailable por gate real, sin init tardío ni device duplicado. El selector revisa device, extensiones GL de memoria/semaphore Win32 y disponibilidad real NGX fuera del cache de requisitos de plataforma. El provider comprueba estos prerequisitos antes de crear recursos.

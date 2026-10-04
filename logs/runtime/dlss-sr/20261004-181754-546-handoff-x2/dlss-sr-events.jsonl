@@ -1,0 +1,31 @@
+{"type":"RUNTIME","timestamp_ns":136359743723900,"java":"25.0.4","javaHome":"C:\\Program Files\\Java\\jdk-25.0.4","pid":"1570776"}
+{"type":"VULKAN_INIT_RESULT","timestamp_ns":136359744340800,"requested":"true","vulkanNull":"false","deviceReady":"true"}
+{"type":"VULKAN_PREREQUISITE","timestamp_ns":136366500905200,"vulkanNull":"false","deviceReady":"true","glInteropReady":"true"}
+{"type":"GL_VK_INTEROP_READY","timestamp_ns":136366557538700,"ready":"true","color":"2953763008144","depth":"2953763030464","depthFormat":"R32F","motionFormat":"RG16F","output":"2953763033440"}
+{"type":"NATIVE_LOAD","timestamp_ns":136366566502700,"loaded":"true","path":"D:\\ProjectDllsss\\runtime-baseline\\instance\\.\\config\\super_resolution\\libraries\\libSuperResolutionNGX+win64+release.dll"}
+{"type":"NGX_INIT","timestamp_ns":136369091151100,"result":"1","device":"2953838796992"}
+{"type":"FEATURE_REQUIREMENTS","timestamp_ns":136369151179300,"feature":"1","result":"1","supportMask":"0"}
+{"type":"CAPABILITY","timestamp_ns":136369152877900,"queryResult":"1","availableQuery":"1","available":"1","initQuery":"1","initResult":"1"}
+{"type":"CREATE_INPUTS","timestamp_ns":136369160553200,"renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","flags":"67","perfQualityValue":"1","hdr":"true","autoExposure":"true","motionJittered":"false","depthInverted":"false"}
+{"type":"CREATE_FEATURE","timestamp_ns":136369295047800,"result":"1","handleValid":"true"}
+{"type":"CREATE_COMPLETION","timestamp_ns":136369301426300,"completed":"true"}
+{"type":"VULKAN_PREREQUISITE","timestamp_ns":136383193356800,"vulkanNull":"false","deviceReady":"true","glInteropReady":"true"}
+{"type":"GL_VK_INTEROP_READY","timestamp_ns":136383198100600,"ready":"true","color":"2956849685072","depth":"2956849686560","depthFormat":"R32F","motionFormat":"RG16F","output":"2952963533632"}
+{"type":"CAPABILITY","timestamp_ns":136383198578000,"queryResult":"1","availableQuery":"1","available":"1","initQuery":"1","initResult":"1"}
+{"type":"CREATE_INPUTS","timestamp_ns":136383198973000,"renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","flags":"67","perfQualityValue":"1","hdr":"true","autoExposure":"true","motionJittered":"false","depthInverted":"false"}
+{"type":"CREATE_FEATURE","timestamp_ns":136383287228900,"result":"1","handleValid":"true"}
+{"type":"CREATE_COMPLETION","timestamp_ns":136383289258500,"completed":"true"}
+{"type":"VULKAN_PREREQUISITE","timestamp_ns":136383290731300,"vulkanNull":"false","deviceReady":"true","glInteropReady":"true"}
+{"type":"GL_VK_INTEROP_READY","timestamp_ns":136383295843800,"ready":"true","color":"2952963536608","depth":"2952963527680","depthFormat":"R32F","motionFormat":"RG16F","output":"2952963539584"}
+{"type":"CAPABILITY","timestamp_ns":136383296260800,"queryResult":"1","availableQuery":"1","available":"1","initQuery":"1","initResult":"1"}
+{"type":"CREATE_INPUTS","timestamp_ns":136383296657400,"renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","flags":"67","perfQualityValue":"1","hdr":"true","autoExposure":"true","motionJittered":"false","depthInverted":"false"}
+{"type":"CREATE_FEATURE","timestamp_ns":136383400234700,"result":"1","handleValid":"true"}
+{"type":"CREATE_COMPLETION","timestamp_ns":136383402274900,"completed":"true"}
+{"type":"EVALUATE","timestamp_ns":136451250556300,"evaluation":"1","result":"1","outputVkImage":"2952963539584","inputVkImage":"2952963536608","renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","jitterX":"0.03125","jitterY":"-0.4259259","mvScaleX":"495.0","mvScaleY":"278.0","reset":"1","preExposure":"1.0"}
+{"type":"OUTPUT_QUEUED","timestamp_ns":136451253128300,"evaluation":"1","outputVkImage":"2952963539584","outputGlTexture":"93","transport":"Vulkan signal -> OpenGL GPU semaphore wait -> existing output framebuffer"}
+{"type":"EVALUATE","timestamp_ns":136451441373500,"evaluation":"2","result":"1","outputVkImage":"2952963539584","inputVkImage":"2952963536608","renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","jitterX":"-0.21875","jitterY":"0.4259259","mvScaleX":"495.0","mvScaleY":"278.0","reset":"0","preExposure":"1.0"}
+{"type":"OUTPUT_QUEUED","timestamp_ns":136451442510700,"evaluation":"2","outputVkImage":"2952963539584","outputGlTexture":"93","transport":"Vulkan signal -> OpenGL GPU semaphore wait -> existing output framebuffer"}
+{"type":"EVALUATE","timestamp_ns":136451551449700,"evaluation":"3","result":"1","outputVkImage":"2952963539584","inputVkImage":"2952963536608","renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","jitterX":"0.28125","jitterY":"0.0925926","mvScaleX":"495.0","mvScaleY":"278.0","reset":"0","preExposure":"1.0"}
+{"type":"OUTPUT_QUEUED","timestamp_ns":136451552014400,"evaluation":"3","outputVkImage":"2952963539584","outputGlTexture":"93","transport":"Vulkan signal -> OpenGL GPU semaphore wait -> existing output framebuffer"}
+{"type":"EVALUATE","timestamp_ns":136451604001300,"evaluation":"4","result":"1","outputVkImage":"2952963539584","inputVkImage":"2952963536608","renderWidth":"495","renderHeight":"278","outputWidth":"854","outputHeight":"480","jitterX":"-0.34375","jitterY":"-0.24074078","mvScaleX":"495.0","mvScaleY":"278.0","reset":"0","preExposure":"1.0"}
+{"type":"OUTPUT_QUEUED","timestamp_ns":136451604576400,"evaluation":"4","outputVkImage":"2952963539584","outputGlTexture":"93","transport":"Vulkan signal -> OpenGL GPU semaphore wait -> existing output framebuffer"}

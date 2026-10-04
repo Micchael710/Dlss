@@ -1,0 +1,2 @@
+stage=ABORT_AFTER_GPU_SUBMISSION
+java.lang.IllegalStateException: Retain native pool until safe terminal drain

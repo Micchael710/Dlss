@@ -669,3 +669,28 @@ Usuario aportó captura: render de mundo reducido a esquina inferior izquierda y
 Desde eaca5f4 limpio. Policy startup DLSS resuelve Vulkan, selector usa prerequisitos/NGX reales; gate antes de resources. Teardown sólo de owners creados, Shutdown JNI device válido sólo tras Init exitoso; contexto oculto retenido hasta cierre. Builds/tests CPU/JNI PASS, AMD hashes intactos sin rerun. Standalone20261004-173230-747 PASS: Evaluate4421/completion4421, output854x480 usado por composite7, readbacks acotados no negros, usuario lista, cierre0. Combinado único20261004-173835-015-x2 FAIL: cameraViewToClip no invertible al construir constantes; FG Evaluate0/present G1=0, SR10492/completion10492, cierre0. STOP sin retry; origen de proyección pendiente. Config restaurada por hash. 0xC0000409 histórico no reproducido, causa histórica UNKNOWN. MFG evidencia y código x2 preservados. Ver DLSS_SUPER_RESOLUTION_INTEGRATION.md y nuevos runtime-result.json.
 
 Corrección de causa combinada al completar evidencia: integration-failure.txt y DLSSG_EXPERIMENT_FAIL demuestran INPUT_MAPPING. El adaptador existente rechaza hasBorrowedAlgorithmInputs porque requiere queue join auditado. Native FG summary Create0/Evaluate0, clean exit. La matriz no invertible fue advertencia adicional, no causa demostrada del disable. Guard intacto; STOP sin retry. Próximo bloqueo de combinación: sincronización de inputs prestados, sin modificar MFG.
+# 2026-10-04 — borrowed SR depth/motion -> DLSS-G x2, STOP en device lost
+
+Desde b3dd23c limpio. Se reutilizó el pool D3D12/Vulkan y shared fence de
+DLSS-G: señal binary en el submission SR, receipt inmutable del productor,
+guard de frame/generación/device/queues/layout/lifetime, blit GPU a inputs
+FG-owned persistentes y restauración del source. ABI3 evita mezclar el
+nuevo payload con el bridge anterior. La ruta borrowed usa GL server waits
+en lugar de rendezvous CPU; el fence Vulkan de output ya cubre el timeline
+D3D12, sin segundo host wait. Backpressure Vulkan existente permanece.
+Guard de matriz intacto; sólo se añadió evidencia completa de la advertencia.
+
+C++/JNI, SR y Wisteria PASS. CPU13 rechazos; JNI load real ABI3 sin NGX/GPU.
+Primer build Java configuró Fabric indebidamente y falló: se corrigió con
+`-Ploader=neoforge`; no hubo retry de Minecraft. Wisteria conserva el
+empaquetado DLSS-G histórico, sin sync de Streamline; esa ruta no se usa.
+AMD9 clases/2DLL hashes idénticos al baseline. Fixture GPU no ejecutado:
+el harness existente no cubre el productor GL/SR, sin ampliar investigación.
+
+Único run20261004-181754-546-handoff-x2: Create1/Evaluate2 SUCCESS, un
+callback completion2/status1 RESET, un REAL/ningún G1. Segundo input
+queue submit=-4, device lost; STOP. El archivo integration-failure.txt
+fue sobrescrito por ABORT_AFTER_GPU_SUBMISSION secundario; runtime-result.json
+retiene GPU_SUBMISSION como primer fallo según launcher.log:1421.
+Crash Java de slot unrecoverable, exit cliente-1/Gradle1; shutdown normal
+no demostrado. Config restaurado exactamente. No standalone ni x3+ ni AMD.

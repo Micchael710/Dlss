@@ -1,4 +1,29 @@
-## Estado vigente — DLSS SR standalone PASS; combinación x2 FAIL antes de FG Evaluate
+## Estado vigente — handoff experimental llega a FG Create/Evaluate; combinación x2 FAIL por device lost
+
+Inicio b3dd23c0f0b28a9e494ea0aac61fb51209179f63, main limpio. Una sola
+ejecución combinada: `20261004-181754-546-handoff-x2`, Java25.0.4,
+MC1.21.1/Neo21.1.219, SR495x278/display854x480, count1/index1.
+Build C++/JNI ABI3, SR Java21 y Wisteria PASS; contrato CPU rechaza13
+casos inseguros. AMD9 clases/2DLL byte-identical, sin ejecución AMD.
+La señal depth/motion ahora pertenece al submission SR real, después de
+su último uso Vulkan. Receipt de frame/generación/device/queue/command/fence
+obligatorio; native exige los semáforos en el wait del consumer. Family0,
+producer index0 -> FG index1. Blit GPU a pool FG persistente, depthR32F y
+motionRG16F->RG32F; source registra5->6->5. Esto NO es handoff GPU validado:
+hay device lost y no se prueba el layout efectivo que deja NGX.
+FG Create1, Evaluate2 SUCCESS; primer callback completion2/status1 RESET,
+un REAL presentado, G1 presentado0. Segundo input vkQueueSubmit falla -4
+(VK_ERROR_DEVICE_LOST). STOP sin retry. SR Evaluate4, completion events0.
+El guard de lifetime impide reutilizar un slot unrecoverable y termina en
+crash Java; cliente exit-1/Gradle1, cierre normal NO. No 0xC0000409 observado.
+Causa del gate demostrada; causa subyacente GPU/ordering/layout UNKNOWN.
+Advertencia de proyección Infinity en frame2615 preservada sin fallback;
+frames siguientes sí llegan a FG, por lo que no es el gate primario.
+Config restaurado byte-for-byte SHA256 ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462.
+DLSS SR standalone sigue PASS histórico y NO se repitió. MFG x3 evidencia
+intacta; x3/x4/x5/x6 no ejecutados. Detalles en DLSS_SR_DLSSG_X2_INTEROP.md.
+
+## Estado anterior preservado — DLSS SR standalone PASS; combinación x2 FAIL antes de FG Evaluate
 
 Iteración desde eaca5f48dfd47b217cec84d5d2350aeec3d3e052. La selección
 startup dlss resuelve Vulkan aunque skip_init_vulkan sea true; FSR/OpenGL

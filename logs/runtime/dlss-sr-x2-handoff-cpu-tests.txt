@@ -1,0 +1,2 @@
+PASS borrowed GPU handoff CPU contract: accepted exact readiness; 13 unsafe cases rejected; reset freshness, independent destination, source lifetime/layout preserved; no CPU wait API
+PASS ACTUAL JNI LOAD ABI=3; NGX/feature/evaluate NOT_RUN
