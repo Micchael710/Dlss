@@ -200,3 +200,12 @@ AMD_FSR_FG_X2=PASS histórico intacto; PresentWorker, ring fix y bridge GL/Vulka
 existente intactos. No `.minecraft` real, runtimes de juego ni distribución de
 binarios comunitarios/NVIDIA modificados. Publicación sólo al origin autorizado
 `https://github.com/Micchael710/Dlss.git`, sin PR/force push/upstream.
+
+## Continuación a Wisteria — candidato preparado
+
+Nueva implementación experimental wisteria:dlssg con device/NGX/pool persistentes,
+GPU handoffs sin CPU wait entre APIs y leases compatibles con PresentWorker.
+Shadow conserva sólo presentación real; readbacks G1 diagnósticos se ejecutan
+sobre la VkImage importada. Builds Java21/C++ y CPU contract/JNI tests PASS;
+Minecraft shadow y x2 presentados aún NOT_RUN. El PASS end-to-end anterior no se
+extrapola a inputs de Minecraft. Baseline AMD íntegra, sin rerun de este harness.

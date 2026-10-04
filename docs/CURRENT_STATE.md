@@ -1,4 +1,23 @@
-## Estado vigente — Vulkan → DLSS-G D3D12 → Vulkan x2 PASS, 2026-10-03
+## Estado vigente — candidato Wisteria DLSS-G preparado; Minecraft pendiente
+
+Continuación desde `29deca27b6d4a4401699c83be4258a0fa02f10ab`. Auditoría del pipeline
+real escrita antes de cambiar Wisteria en CURRENT_REAL_PIPELINE.md. Provider
+experimental `wisteria:dlssg`, APPLICATION_MANAGED_ASYNC, default OFF y shadow por
+defecto. Sesión D3D12/NGX y pool D3D12-owned de ocho slots persistentes, cuatro
+copias GPU de inputs, G1 importado directo, fence timeline compartida permanente.
+Nueva submission plan consume readiness una vez; espera GPU Vulkan->D3D12->Vulkan,
+sin espera CPU por frame entre APIs. PresentWorker conserva adquisición/presentación.
+
+C++/JNI, Java21, empaquetado y tests CPU de cámara/depth/motion/matrices/immutabilidad/
+ABI propia PASS. Nueve clases AMD y DLLs AMD incluidas idénticas a la baseline.
+JARs candidatos separados de builds/baseline; hashes en
+logs/runtime/dlssg-integration-artifact-manifest.json. Sólo captura owned del perfil
+OpenGL FSR1 en esta primera integración; inputs borrowed requieren join adicional.
+No creación/Evaluate NGX, GPU run, shadow Minecraft o presentación G1 nuevos aún.
+Siguiente: un único shadow run; presentación sólo si esa evidencia pasa. Sin retest
+de gates cerrados, DLSS SR, OptiScaler, x3–x6 ni modificación de .minecraft real.
+
+## Estado anterior — Vulkan → DLSS-G D3D12 → Vulkan x2 PASS, 2026-10-03
 
 Run único `20261003-233010-719`, base `bd25bef3ea065b291a743837c140abfd77997bff`.
 Build y CPU tests PASS antes de una sola ejecución GPU. RTX3050Ti UUID/LUID exactos,

@@ -139,6 +139,7 @@ final class PresentWorker {
     }
 
     private void presentBatch(PresentImageBatch batch, boolean waited) {
+        long queueDelayNs = Math.max(0L, System.nanoTime() - batch.publicationNs());
         List<PreparedImage> prepared = new ArrayList<>(batch.imageCount());
         List<FrameGenerationDispatchCompletion> completions = new ArrayList<>();
         boolean captureReleased = batch.captureReleasedByGeneration();
@@ -255,6 +256,8 @@ final class PresentWorker {
                             }
                         }
                         presentTrace.complete("complete", "presented=true");
+                        if (batch.output() != null) batch.output().onPresented(image.image.displayIndex(),
+                                image.image.kind() == PresentImage.Kind.GENERATED, System.nanoTime(), queueDelayNs);
                     } catch (Throwable throwable) {
                         presentTrace.complete(
                                 "failed",

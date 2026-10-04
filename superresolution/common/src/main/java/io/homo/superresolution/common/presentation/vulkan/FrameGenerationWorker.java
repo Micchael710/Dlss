@@ -271,6 +271,7 @@ final class FrameGenerationWorker {
         FrameGenerationDispatchResult result = null;
         long[] handoffs = new long[0];
         int submittedCount = 0;
+        io.homo.superresolution.api.registry.framegeneration.FrameGenerationSubmissionPlan submissionPlan = null;
         VulkanTimestampProfiler profiler = device.timestampProfiler();
         int timestampSlot = -1;
         try {
@@ -349,6 +350,13 @@ final class FrameGenerationWorker {
             FrameGenerationDispatchCompletion[] completions =
                     new FrameGenerationDispatchCompletion[handoffs.length];
             long[] inputWaits = work.frameResources().readySemaphores();
+            submissionPlan = result.output().submissionPlan();
+            long[] inputWaitValues = null;
+            if (submissionPlan != null) {
+                var wait = submissionPlan.submitInputs();
+                inputWaits = new long[]{wait.semaphore()};
+                inputWaitValues = new long[]{wait.value()};
+            }
             long[] captureSignals = result.realOutput() != null
                     ? work.frameResources().releaseSemaphores()
                     : new long[0];
@@ -371,8 +379,12 @@ final class FrameGenerationWorker {
                         signals[cursor++] = handoffs[handoffs.length - 1];
                         System.arraycopy(captureSignals, 0, signals, cursor, captureSignals.length);
                     }
-                    lastFence = submitProviderWork(buffers.get(index), waits, stages, signals);
+                    lastFence = inputWaitValues == null || index != 0
+                            ? submitProviderWork(buffers.get(index), waits, stages, signals)
+                            : device.submitCommandBuffer(device.requireFgQueue(), buffers.get(index),
+                                    waits, stages, signals, inputWaitValues);
                     submittedCount++;
+                    result.output().onOutputSubmitted(buffers.get(index).getNativeCommandBuffer().address(), lastFence);
                     if ("wisteria:fsr".equals(providerId)) {
                         var metadata = work.frameResources().metadata();
                         SuperResolution.LOGGER.info("FSR_VULKAN_SUBMIT realFrameId={} generatedSlot={} commandBuffer={} fence={} waits={} signals={}",
@@ -399,7 +411,7 @@ final class FrameGenerationWorker {
             }
             return batch;
         } catch (Throwable throwable) {
-            if (submittedCount > 0) {
+            if (submittedCount > 0 || (submissionPlan != null && submissionPlan.inputsSubmitted())) {
                 work.frameResources().markUnrecoverable();
                 abortDispatch(result, buffers, handoffs, submittedCount);
                 throw throwable;

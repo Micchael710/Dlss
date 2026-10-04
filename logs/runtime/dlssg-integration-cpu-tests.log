@@ -1,0 +1,1 @@
+PASS: perspective near/far, camera inverse, DX Y convention, borrowed/owned motion, pixel jitter, immutable constants, reset matrices, new JNI ABI/linkage. GPU/community module not initialized.

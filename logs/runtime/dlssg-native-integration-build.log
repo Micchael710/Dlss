@@ -1,0 +1,6 @@
+-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/ProjectDllsss/wisteria/native/build/dlssg-windows-x64
+[1/2] Building CXX object CMakeFiles\wisteria_dlssg_bridge.dir\bridge.cpp.obj
+D:\ProjectDllsss\wisteria\native\dlssg\../../../experiments/dlssg-external-harness/harness.cpp(122): warning C4389: '!=': signed/unsigned mismatch
+[2/2] Linking CXX shared library wisteria_dlssg_bridge.dll

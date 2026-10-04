@@ -318,6 +318,9 @@ public final class FrameResources {
         return motionVector.vkTexture();
     }
 
+    /** Borrowed algorithm inputs obey its Y convention; owned capture inputs are always flipped. */
+    public boolean hasBorrowedAlgorithmInputs() { return borrowedInputReleaseRequired; }
+
     public GlImportableTexture2D finalColorGlTexture() {
         return finalColor.glTexture();
     }

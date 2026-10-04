@@ -54,6 +54,13 @@ __pycache__/
 *.pyc
 *.tmp
 worker-recovery.json
+logs/runtime/minecraft-dlssg-x2/**/component/
+logs/runtime/minecraft-dlssg-x2/**/stock-runtime/
+logs/runtime/minecraft-dlssg-x2/**/bundle-cache/
+logs/runtime/minecraft-dlssg-x2/**/native/
+logs/runtime/minecraft-dlssg-x2/**/*.png
+logs/runtime/minecraft-dlssg-x2/**/*.ppm
+logs/runtime/minecraft-dlssg-x2/**/*.jpg
 
 # Nested upstream rules unignore JARs; prune the local wrapper binary directory.
 # Already tracked wrapper scripts/properties remain tracked.

@@ -491,3 +491,33 @@ no se afirma que ya se hayan desconectado completamente.
   retest Vulkan NGX, tests aislados, Wisteria/PresentWorker/ring fix, driver/DRS,
   OptiScaler, Streamline ni x3–x6. Evidencia textual/JSON y source propio,
   commit/push sólo origin del usuario y parada antes de integración Minecraft.
+
+## 2026-10-03 — provider DLSS-G experimental persistente, antes de shadow
+
+- Base 29deca27b6d4a4401699c83be4258a0fa02f10ab. Pipeline real auditado antes de
+  modificar Wisteria: captura, snapshots, queues, output leases, PresentWorker,
+  presupuesto de ocho slots conservador, extents y convenciones de motion/depth.
+- Nuevo wisteria:dlssg / wisteria:dlssg_fg, APPLICATION_MANAGED_ASYNC, default OFF,
+  shadow experimental por defecto y sin fallback automático AMD. JNI propio
+  empaquetado; sdli0.3.5/runtime310.9.1 sólo staging local con hashes identificados,
+  contrato público loader/INI y ningún export privado/componente comunitario en Git.
+- Sesión D3D12/NGX persistente, D3D12-owned shared pool keyed, handles importados
+  una vez, GPU copies4, output transport0, CPU image transport0. Fence timeline
+  D3D12 permanente y GPU wait/signal entre APIs; setup wait acotado, no wait CPU
+  por frame entre APIs. New optional submission plan/default-null mantiene AMD.
+- G1/real son wrappers no propietarios de VkImages nativas; output fence cubre
+  D3D12 completion y lease se recicla sólo después de presentación y generación.
+  Resize/discontinuity/real gap invalidan historia; pools antiguos se drenan.
+- C++/JNI Release x64 y candidatos Java21 PASS. Tests CPU cámara/depth/matrices/
+  motion/jitter/inmutabilidad y ABI/linkage JNI PASS, sin GPU ni DLL comunitaria.
+  Candidate hashes en dlssg-integration-artifact-manifest.json.
+- Baseline SR/Wisteria/AMD native SHA256 idénticos; nueve clases AMD y sus dos DLL
+  empaquetadas byte-for-byte iguales. Candidatos separados en builds/experimental.
+- Diagnóstico acotado lee G1 desde el consumidor Vulkan. No pixel readback por
+  frame; small output-disable flag/timestamps son metadata. Present callback sólo
+  observa requests y queue delay, no cambia ownership/pacing. No display-latency
+  claim sin baseline/control comparable.
+- Minecraft shadow NOT_RUN; presentación generada NOT_RUN. Sin nuevos tests de
+  gates cerrados, directo Vulkan NGX, DLSS SR, x3–x6, OptiScaler o .minecraft real.
+  Primera integración acepta owned capture del perfil OpenGL FSR1; borrowed
+  Vulkan-upscaler inputs requieren un join auditado antes de cambiar layouts.

@@ -50,6 +50,8 @@ import org.lwjgl.vulkan.VkInstance;
 import org.lwjgl.vulkan.VkLatencySubmissionPresentIdNV;
 import org.lwjgl.vulkan.VkPhysicalDevice;
 import org.lwjgl.vulkan.VkSubmitInfo;
+import org.lwjgl.vulkan.VkTimelineSemaphoreSubmitInfo;
+import org.lwjgl.vulkan.VK12;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -396,6 +398,17 @@ public class VulkanDevice implements IDevice {
             int[] waitDstStageMask,
             long[] signalSemaphores
     ) {
+        return submitCommandBuffer(queue, commandBuffer, waitSemaphores, waitDstStageMask,
+                signalSemaphores, (long[]) null);
+    }
+
+    /** Optional timeline waits; all signals in this overload remain binary handoffs. */
+    public long submitCommandBuffer(
+            VulkanQueue queue, VulkanCommandBuffer commandBuffer, long[] waitSemaphores,
+            int[] waitDstStageMask, long[] signalSemaphores, long[] waitValues
+    ) {
+        if (waitValues != null && (waitSemaphores == null || waitValues.length != waitSemaphores.length))
+            throw new IllegalArgumentException("Timeline wait values do not match semaphores");
         validateQueueSubmission(queue, commandBuffer);
         if ((waitSemaphores == null) != (waitDstStageMask == null)) {
             throw new IllegalArgumentException(
@@ -413,6 +426,15 @@ public class VulkanDevice implements IDevice {
                 VkSubmitInfo submitInfo = VkSubmitInfo.calloc(stack)
                         .sType(VK_STRUCTURE_TYPE_SUBMIT_INFO)
                         .pCommandBuffers(stack.pointers(commandBuffer.getNativeCommandBuffer().address()));
+
+                if (waitValues != null) {
+                    VkTimelineSemaphoreSubmitInfo timeline = VkTimelineSemaphoreSubmitInfo.calloc(stack)
+                            .sType(VK12.VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO)
+                            .pWaitSemaphoreValues(stack.longs(waitValues));
+                    if (signalSemaphores != null && signalSemaphores.length > 0)
+                        timeline.pSignalSemaphoreValues(stack.longs(new long[signalSemaphores.length]));
+                    submitInfo.pNext(timeline.address());
+                }
 
                 if (waitSemaphores != null && waitSemaphores.length > 0) {
                     submitInfo.waitSemaphoreCount(waitSemaphores.length);

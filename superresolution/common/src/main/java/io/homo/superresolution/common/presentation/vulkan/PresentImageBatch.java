@@ -28,6 +28,8 @@ import java.util.List;
 
 /** Atomically published display sources, generated images first and the real image last. */
 final class PresentImageBatch {
+    private final long publicationNs = System.nanoTime();
+    long publicationNs() { return publicationNs; }
     private final FrameGenerationWork work;
     private final io.homo.superresolution.api.registry.framegeneration.RealFrameMetadata metadata;
     private final long batchId;

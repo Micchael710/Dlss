@@ -37,8 +37,8 @@ configurations.configureEach {
     }
 }
 dependencies {
-    runtimeOnly files('../builds/baseline/super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.f0e41bf8.opengl-fg-backpressure.jar')
-    runtimeOnly files('../builds/baseline/wisteria-neoforge-1.21.1-0.1.0-alpha.1+1.21.1-fsr-backpressure.jar')
+    runtimeOnly files(providers.gradleProperty('candidate_sr_jar').orElse('../builds/baseline/super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.f0e41bf8.opengl-fg-backpressure.jar').get())
+    runtimeOnly files(providers.gradleProperty('candidate_wisteria_jar').orElse('../builds/baseline/wisteria-neoforge-1.21.1-0.1.0-alpha.1+1.21.1-fsr-backpressure.jar').get())
     runtimeOnly 'maven.modrinth:iris:1.8.8+1.21.1-neoforge-neoforge,1.21.1'
     runtimeOnly 'maven.modrinth:sodium:mc1.21.1-0.6.13-neoforge-neoforge,1.21.1'
     runtimeOnly 'dev.architectury:architectury-neoforge:13.0.6'
@@ -56,6 +56,16 @@ neoForge {
             jvmArgument "-XX:ErrorFile=${file('../logs/runtime/hs_err_pid%p.log').absolutePath}"
             jvmArgument '-Dorg.lwjgl.util.Debug=true'
             jvmArgument '-Dsr.baselineDiagnostics=true'
+            if (providers.gradleProperty('dlssg_run_dir').isPresent()) {
+                def experimentMode = providers.gradleProperty('dlssg_mode').orElse('shadow').get()
+                if (!(experimentMode in ['shadow', 'presentation'])) throw new GradleException('Unknown DLSS-G experiment mode')
+                def experimentDir = file(providers.gradleProperty('dlssg_run_dir').get()).absolutePath
+                jvmArgument '-Dwisteria.dlssg.enabled=true'
+                jvmArgument "-Dwisteria.dlssg.mode=${experimentMode}"
+                jvmArgument "-Dwisteria.dlssg.runDir=${experimentDir}"
+                jvmArgument "-Dwisteria.dlssg.externalDll=${file(experimentDir + '/component/version.dll').absolutePath}"
+                jvmArgument "-Dwisteria.dlssg.runtimeDir=${file(experimentDir + '/stock-runtime').absolutePath}"
+            }
         }
     }
 }

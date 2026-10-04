@@ -35,6 +35,13 @@ public interface FrameGenerationProviderOutput extends AutoCloseable {
 
     boolean isReleased();
 
+    /** Existing providers record all their work in the worker command buffers. */
+    default @Nullable FrameGenerationSubmissionPlan submissionPlan() { return null; }
+
+    /** Observation only, called after the present request; this is not a display timestamp. */
+    default void onPresented(long displayIndex, boolean generated, long requestNs, long queueDelayNs) {}
+    default void onOutputSubmitted(long commandBuffer, long fence) {}
+
     default void abort() {
         release();
     }

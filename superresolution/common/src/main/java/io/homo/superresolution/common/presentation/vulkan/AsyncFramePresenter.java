@@ -31,11 +31,17 @@ import io.homo.superresolution.core.graphics.vulkan.VulkanLowLatency;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.BooleanSupplier;
 
-final class AsyncFramePresenter implements AutoCloseable {
+public final class AsyncFramePresenter implements AutoCloseable {
     static final int GENERATION_QUEUE_CAPACITY = CaptureFrameRing.MAX_IN_FLIGHT_FRAMES - 1;
     static final int MAX_GENERATED_FRAMES = 5;
     static final int MAX_PRESENTS_PER_BATCH = MAX_GENERATED_FRAMES + 1;
     static final int PRESENTATION_QUEUE_CAPACITY = MAX_PRESENTS_PER_BATCH;
+    /** Queue image budget, one present-in-flight batch and one dispatch-in-flight batch. */
+    public static int maximumLiveProviderLeases(int generatedCount) {
+        if (generatedCount < 0 || generatedCount > MAX_GENERATED_FRAMES)
+            throw new IllegalArgumentException("Invalid generated count");
+        return PRESENTATION_QUEUE_CAPACITY / (generatedCount + 1) + 2;
+    }
     private static final long THREAD_JOIN_TIMEOUT_NANOS = 2_000_000_000L;
 
     final Object stateLock = new Object();

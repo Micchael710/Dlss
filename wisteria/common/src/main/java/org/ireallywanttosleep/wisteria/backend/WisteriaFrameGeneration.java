@@ -56,6 +56,16 @@ public final class WisteriaFrameGeneration {
 
     public static void register() {
         SuperResolutionAPI.EVENT_BUS.addListener(FrameGenerationRegisterEvent.class, event -> {
+            if (Boolean.getBoolean("wisteria.dlssg.enabled")) {
+                var group = io.homo.superresolution.api.registry.BackendGroup.of("wisteria:dlssg_fg",
+                        Component.literal("NVIDIA DLSS-G SM86 (local experiment)"));
+                FrameGenerationRegistry.register(FrameGenerationDescription.builder().id("wisteria:dlssg_fg")
+                        .displayName(group.getDisplayName()).automatic().group(group).build());
+                FrameGenerationRegistry.register(FrameGenerationDescription.builder().id("wisteria:dlssg")
+                        .displayName(Component.literal("DLSS-G D3D12 / Vulkan x2 experiment"))
+                        .group(group).priority(250).executionModel(FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC)
+                        .providerFactory(org.ireallywanttosleep.wisteria.dlssg.DlssgFrameGenerationBackend::new).build());
+            }
             FrameGenerationRegistry.register(FrameGenerationDescription.builder()
                     .id("wisteria:fsr_fg").displayName(Component.literal("AMD FSR Frame Generation"))
                     .automatic().group(io.homo.superresolution.api.registry.BackendGroup.of("wisteria:fsr_fg", Component.literal("AMD FSR Frame Generation"))).build());

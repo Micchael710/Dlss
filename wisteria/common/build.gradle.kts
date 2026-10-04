@@ -90,6 +90,16 @@ tasks.named<ProcessResources>("processResources") {
 }
 
 // Explicit, independently built FSR JNI bridge. Ordinary upstream builds keep it unavailable.
+val dlssgNativeDir = providers.gradleProperty("dlssg_native_dir")
+if (dlssgNativeDir.isPresent) {
+    tasks.named<ProcessResources>("processResources") {
+        val bridge = rootProject.file(dlssgNativeDir.get()).resolve("wisteria_dlssg_bridge.dll")
+        doFirst { require(bridge.isFile) { "Experimental DLSS-G bridge missing" } }
+        from(bridge) { into("natives/windows-x64") }
+        // Community module/model/runtime are local launcher inputs, never packaged here.
+    }
+}
+
 val fsrNativeDir = providers.gradleProperty("fsr_native_dir")
 if (fsrNativeDir.isPresent) {
     val sdkRoot = rootProject.file(providers.gradleProperty("fsr_sdk_dir").get())

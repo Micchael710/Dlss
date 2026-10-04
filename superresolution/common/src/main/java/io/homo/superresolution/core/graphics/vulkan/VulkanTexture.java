@@ -41,6 +41,7 @@ public class VulkanTexture implements ITexture, VulkanLayoutTracked {
     private final boolean isExternal;
     private final long memoryHandle;
     private final boolean exportable;
+    private boolean borrowedNativeImage;
     private long exportedHandle = -1;
     private long image;
     private long imageMemory;
@@ -84,6 +85,30 @@ public class VulkanTexture implements ITexture, VulkanLayoutTracked {
             createImageView(stack);
             updateDebugLabels();
         }
+    }
+
+    /** Native pool owns image/view/memory; this wrapper participates only in layout tracking. */
+    public static VulkanTexture wrapBorrowedImage(VulkanDevice device, TextureDescription description,
+                                                  long image, long view, long memory, int layout) {
+        if (image == 0 || view == 0 || memory == 0) throw new IllegalArgumentException("Missing native image");
+        return new VulkanTexture(device, description, image, view, memory, layout);
+    }
+
+    private VulkanTexture(VulkanDevice device, TextureDescription description,
+                          long image, long view, long memory, int layout) {
+        this.device = device;
+        this.allocator = device.getMemoryAllocator();
+        this.description = description;
+        this.width = description.getWidth();
+        this.height = description.getHeight();
+        this.isExternal = true;
+        this.memoryHandle = -1;
+        this.exportable = false;
+        this.borrowedNativeImage = true;
+        this.image = image;
+        this.imageView = view;
+        this.imageMemory = memory;
+        setCurrentLayout(layout);
     }
 
     private String debugBaseLabel() {
@@ -329,6 +354,7 @@ public class VulkanTexture implements ITexture, VulkanLayoutTracked {
 
     @Override
     public void destroy() {
+        if (borrowedNativeImage) throw new IllegalStateException("Native pool owns this image");
         long imageViewToDestroy = imageView;
         long imageToDestroy = image;
         long allocationToDestroy = vmaAllocation;

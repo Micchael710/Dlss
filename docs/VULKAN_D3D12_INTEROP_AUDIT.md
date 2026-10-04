@@ -212,3 +212,13 @@ resource-map/sync-map/hashes/timings. Originales preservados. Tests CPU del gate
 y verificación SHA256 AMD/SR/Wisteria PASS. No modificación de esas baselines,
 PresentWorker/ring/GL-Vulkan, driver/perfiles, Wisteria ni MFG>x2.
 Fase detenida tras documentación y commit/push al repositorio del usuario.
+
+## Integración Wisteria posterior — candidato, sin runtime PASS todavía
+
+El contrato compartido se aplica ahora a un device Vulkan prestado por Wisteria,
+con pool D3D12-owned persistente de ocho slots y dos submissions Vulkan separadas
+por Evaluate D3D12. Imports/handles sólo en creación de pool. Inputs reales necesitan
+cuatro GPU blits; G1 se leasea directamente. Runtime JNI y CPU tests compilan/pasan;
+la prueba Minecraft aún no se ejecutó. CURRENT_REAL_PIPELINE.md y
+WISTERIA_DLSSG_X2_INTEGRATION.md documentan la adaptación y sus límites.
+Los PASS de este documento siguen siendo del harness aislado, no de Minecraft.
