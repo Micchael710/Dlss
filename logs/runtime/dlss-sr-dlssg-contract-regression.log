@@ -1,0 +1,1 @@
+PASS: independent count1..4 status, disable1, immutable flags, sentinel UNKNOWN/discard, index bounds, wrong interval/fence/count, reset and synchronous 1-output compatibility

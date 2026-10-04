@@ -241,6 +241,12 @@ dependencies {
 }
 
 tasks.named<ProcessResources>("processResources") {
+    providers.gradleProperty("sr_ngx_native_dir").orNull?.let { ngxDir ->
+        from(file(ngxDir)) {
+            include("libSuperResolutionNGX+win64+release.dll")
+            into("lib")
+        }
+    }
     val neoModVersion = project.version.toString()
     val neoVersionRange = versionConfig.common.neoforgeVersionRange.toString()
 

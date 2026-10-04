@@ -1,0 +1,8 @@
+{
+  "status": "CONFIG_PARSE_FAILURE_BEFORE_DLSS",
+  "root_cause": "Windows newline translation duplicated CR in prepared TOML",
+  "actual_sr": "fsr1",
+  "actual_presentation": "OPENGL",
+  "dlss_attempted": false,
+  "corrected_preparation_authorized_by_user_continue": true
+}

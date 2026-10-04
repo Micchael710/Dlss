@@ -1,4 +1,30 @@
-## Estado vigente — G2 produce imagen; presentación x3 bloqueada, 2026-10-04
+## Estado vigente — binding DLSS SR construido; runtime FAIL antes de NGX
+
+Inicio5da09874956956b04a5f413999a5c4217235c6a2. No MFG nuevo.
+La opción existente dlss usa NGX Vulkan. El native faltaba en el JAR;
+SR_NGX=OFF y SDK submodule vacío. Ahora SR_NGX_LIB se construye aislado,
+se empaqueta la DLL propia y se usa runtime SR oficial NVIDIA firmado.
+No sidecar SR D3D12, no segundo presenter, no FSR bajo nombre DLSS.
+Capability/handle se comprueban realmente; no retry automático ni output
+silencioso cuando Evaluate/context falla. Presets existentes se mapean a NGX.
+Build Java21/native/JNI load y testsCPU pasaron. AMD9clases/2DLL y clases
+FG/presentation idénticas. Arranque `20261004-162909-911` descartó el TOML
+por CR duplicado en el preparador; seleccionó defaults FSR1/OPENGL. No
+alcanzó DLSS y no cuenta como evidencia de su runtime. Cliente cerrado.
+Preparador corregido: normalización de CR y escritura de bytes, presentación
+VULKAN explícita. TOML validado antes del arranque `20261004-170642-750`:
+Java25.0.4, DLSS Balanced ratio1.724, FG OFF. Runtime FAIL: debug
+skip_init_vulkan=true dejó RenderSystems.vulkan() null; la opción DLSS
+intentó crear recursos y falló antes de NGX. Evaluate/completion=0.
+Mundo/HUD visibles según usuario, sin output DLSS demostrado. Cierre pedido
+normalmente, pero proceso terminó NTSTATUS0xC0000409. STOP: no resize,
+no combinación x2, no otro intento. Próximo trabajo: corregir prerequisito
+Vulkan y disponibilidad del selector, y diagnosticar cierre sin atribuirlo
+a NGX. Native/build no equivalen a backend validado en Minecraft.
+Detalles: DLSS_SUPER_RESOLUTION_INTEGRATION.md. No lanzar segunda sesión
+ni combinación antes de cerrar esta prueba con evidencia completa.
+
+## Estado preservado — G2 produce imagen; presentación x3 bloqueada, 2026-10-04
 
 HEAD inicial de esta fase: 91c8292b560b4e87bd3a8d4a9fac7ab45880e201.
 Diagnóstico único `20261004-151654-208`, Java25.0.4, count2/indices1,2.
@@ -634,3 +660,7 @@ Siguiente: auditar inputs y capturar metadata inmutable; implementar wisteria:fs
 y nuevo bridge JNI usando exclusivamente la API Vulkan1.1.4, primer x2 y detener.
 Sin push/PR/DH/SSRD ni modificación de .minecraft real. Las secciones debajo son
 históricas y el anterior bloqueo de Streamline ya se resolvió.
+
+Corrección visual de esta fase: captura del usuario muestra mundo sólo en
+rectángulo inferior izquierdo y áreas negras arriba/derecha. Calidad visual
+FAIL; no se acepta mundo visible como salida válida de DLSS.

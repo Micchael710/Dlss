@@ -151,6 +151,7 @@ public final class NgxInitializer {
                 requirements
         );
         requireSuccess("NVSDK_NGX_VULKAN_GetFeatureRequirements", result);
+        DlssSrDiagnostics.event("FEATURE_REQUIREMENTS","feature",feature,"result",Integer.toUnsignedString(result),"supportMask",requirements.featureSupported);
         return requirements;
     }
 
@@ -214,6 +215,7 @@ public final class NgxInitializer {
                 NgxConstants.VERSION_API
         );
         requireSuccess("NVSDK_NGX_VULKAN_Init_with_ProjectID", result);
+        DlssSrDiagnostics.event("NGX_INIT","result",Integer.toUnsignedString(result),"device",deviceHandle);
         initialized = true;
         initializedDevice = deviceHandle;
     }
@@ -230,8 +232,11 @@ public final class NgxInitializer {
                             .toString()
             );
             bindingLoaded = true;
+            DlssSrDiagnostics.event("NATIVE_LOAD","loaded",true,"path",NativeLibManager.LIB_SUPER_RESOLUTION_NGX.getTargetPath(SuperResolutionConstants.NATIVE_LIBRARIES_DIR.getPath()));
             return true;
         } catch (UnsatisfiedLinkError e) {
+            SuperResolution.LOGGER.error("NGX binding could not be loaded",e);
+            DlssSrDiagnostics.event("NATIVE_LOAD","loaded",false,"error",e.toString());
             return false;
         }
     }

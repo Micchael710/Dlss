@@ -57,6 +57,9 @@ neoForge {
             jvmArgument "-XX:ErrorFile=${file('../logs/runtime/hs_err_pid%p.log').absolutePath}"
             jvmArgument '-Dorg.lwjgl.util.Debug=true'
             jvmArgument '-Dsr.baselineDiagnostics=true'
+            if (providers.gradleProperty('dlss_sr_run_dir').isPresent()) {
+                jvmArgument "-Dsr.dlss.runDir=${file(providers.gradleProperty('dlss_sr_run_dir').get()).absolutePath}"
+            }
             if (providers.gradleProperty('dlssg_run_dir').isPresent()) {
                 def experimentMode = providers.gradleProperty('dlssg_mode').orElse('shadow').get()
                 if (!(experimentMode in ['shadow', 'presentation'])) throw new GradleException('Unknown DLSS-G experiment mode')

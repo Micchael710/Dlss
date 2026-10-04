@@ -93,6 +93,9 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
     protected void onBeforeInteropResourcesDestroyed() {
     }
 
+    protected void onUpscaleOutputQueued(FrameResourcesSet resources) {
+    }
+
     protected List<InteropResourceRequirement> getInteropResourceRequirements() {
         return List.of(
                 InteropResourceRequirement.input(
@@ -299,6 +302,7 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
                 new int[]{GL_LAYOUT_GENERAL_EXT}
         );
         flipOutputIfEnabled(frameResourcesSet);
+        onUpscaleOutputQueued(frameResourcesSet);
         return true;
     }
 

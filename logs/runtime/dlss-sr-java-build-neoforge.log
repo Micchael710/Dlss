@@ -1,0 +1,66 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Graphics API: OpenGL
+Current Minecraft version: 1.21.1
+Enabled loader: neoforge
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders UP-TO-DATE
+> Task :buildSrc:extractPluginRequests NO-SOURCE
+> Task :buildSrc:generatePluginAdapters NO-SOURCE
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins UP-TO-DATE
+> Task :buildSrc:compilePluginsBlocks UP-TO-DATE
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors UP-TO-DATE
+> Task :buildSrc:generateScriptPluginAdapters UP-TO-DATE
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy UP-TO-DATE
+> Task :buildSrc:compileGroovyPlugins NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+> Task :common:createMinecraftArtifacts FAILED
+> Task :neoforge:createMinecraftArtifacts FAILED
+
+[Incubating] Problems report is available at: file:///D:/ProjectDllsss/superresolution/build/reports/problems/problems-report.html
+
+FAILURE: Build completed with 2 failures.
+
+1: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':common:createMinecraftArtifacts' (registered in build file 'common\build.gradle.kts').
+> Error while evaluating property 'artifactManifestEntries' of task ':common:createMinecraftArtifacts'.
+   > Could not resolve all artifacts for configuration ':common:neoFormRuntimeDependenciesRuntimeClasspath'.
+      > Could not download lwjgl-3.3.4-natives-windows-x86.jar (org.lwjgl:lwjgl:3.3.4): No cached version available for offline mode
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+2: Task failed with an exception.
+-----------
+* What went wrong:
+Execution failed for task ':neoforge:createMinecraftArtifacts' (registered in build file 'neoforge\build.gradle.kts').
+> Error while evaluating property 'artifactManifestEntries' of task ':neoforge:createMinecraftArtifacts'.
+   > Could not resolve all artifacts for configuration ':neoforge:neoFormRuntimeDependenciesRuntimeClasspath'.
+      > Could not download lwjgl-3.3.4-natives-windows-x86.jar (org.lwjgl:lwjgl:3.3.4): No cached version available for offline mode
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+==============================================================================
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD FAILED in 8s
+12 actionable tasks: 2 executed, 10 up-to-date

@@ -1,0 +1,12 @@
+[13:07:38] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.0.4+7-LTS-189
+[13:07:38] [main/INFO] [cp.mo.mo.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 25.0.4 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[13:08:04] [Render thread/INFO] [SuperResolution/NativeLib/]: libSuperResolutionNGX+win64+release.dll already exists with a matching checksum; skipping extraction
+[13:08:05] [Render thread/ERROR] [SuperResolution/]: Failed to initialize algorithm NVIDIA DLSS:
+java.lang.NullPointerException: Cannot invoke "io.homo.superresolution.core.graphics.vulkan.VkRenderSystem.device()" because the return value of "io.homo.superresolution.core.RenderSystems.vulkan()" is null
+	Suppressed: java.lang.NullPointerException: Cannot invoke "io.homo.superresolution.core.graphics.vulkan.VkRenderSystem.device()" because the return value of "io.homo.superresolution.core.RenderSystems.vulkan()" is null
+java.lang.NullPointerException: Cannot invoke "io.homo.superresolution.core.graphics.vulkan.VkRenderSystem.device()" because the return value of "io.homo.superresolution.core.RenderSystems.vulkan()" is null
+java.lang.NullPointerException: Cannot invoke "io.homo.superresolution.core.graphics.vulkan.VkRenderSystem.device()" because the return value of "io.homo.superresolution.core.RenderSystems.vulkan()" is null
+[13:09:43] [Server thread/INFO] [minecraft/MinecraftServer]: Saving worlds
+[13:09:44] [Server thread/INFO] [minecraft/MinecraftServer]: ThreadedAnvilChunkStorage: All dimensions are saved
+> Process 'command 'C:\Program Files\Java\jdk-25.0.4\bin\java.exe'' finished with non-zero exit value -1073740791 (NTSTATUS 0xC0000409)
+BUILD FAILED in 2m 38s

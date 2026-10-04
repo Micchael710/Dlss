@@ -1,0 +1,30 @@
+{
+  "run_id": "20261004-162909-911",
+  "attempt_limit": 1,
+  "status": "PREPARED_NOT_LAUNCHED",
+  "sr": "dlss",
+  "fg": "OFF",
+  "ratio": 1.724,
+  "sr_jar": "builds\\experimental\\dlss-sr\\superresolution-dlss-sr-candidate.jar",
+  "sr_sha256": "539f4b44b61192f7b4f8c93666111641319ca0c24b8d503e84dff3d56a1441fe",
+  "wisteria_sha256": "bb8021b39c5a15e0781d0859d187fcf32e13adc5e83edb86df40b922dfb4ec17",
+  "own_native_sha256": "d471331c34a695b958ed1d797c066ea4e95ddfd5b0996575ad41332536d33652",
+  "own_native_resource": "lib/libSuperResolutionNGX+win64+release.dll",
+  "official_runtime": {
+    "bytes": 58956912,
+    "version": "310,9,1,0",
+    "source": "https://raw.githubusercontent.com/NVIDIA/DLSS/374959484e79a640feaba44c93ac8cfb0a03f5b5/lib/Windows_x86_64/rel/nvngx_dlss.dll",
+    "signer": "CN=NVIDIA Corporation, OU=1005bk6, O=NVIDIA Corporation, L=Santa Clara, S=California, C=US",
+    "sha256": "3975567B8943C53ACCE397F2B72380092F84F162D00B0D2C7D08A1025C563983",
+    "signature_status": "Valid",
+    "official_commit": "374959484e79a640feaba44c93ac8cfb0a03f5b5"
+  },
+  "protected_amd_9_classes_2_dlls_identical": true,
+  "fg_presentation_bytecode_unchanged": true,
+  "previous_mfg_sr_jar_sha256": "dab4218545c560b7ba242560fac53e1fb93ad62c2127e8d227a5bade77cc2e65",
+  "source": "superresolution\\neoforge\\build\\libs\\super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.5da0987.opengl.jar",
+  "required_runtime_java": "25.0.4",
+  "bytecode_target": 21,
+  "original_config_sha256": "7b95a9c521796760bc932f3c1b136d8b8a241c00d4111c3f7cc5f19afbde26e2",
+  "test_config_sha256": "ed4180dd3360bea198bffc0d448c1ea0b50cd244d9b8d070fe3251a7663653ae"
+}

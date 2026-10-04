@@ -640,3 +640,27 @@ UNKNOWN. No evidencia para atribuir el problema a Java21 ni para certificar
 MFG o descartarlo en Java25. Stop x3; x4/x5 NOT_RUN; AMD hashes intactos.
 Se preservan logs, resultado y reviewer offline conservador. No se tocan ABI
 privada, drivers, .minecraft real, DLSS SR ni AMD.
+
+## 2026-10-04 — DLSS Super Resolution: binding y packaging reales
+
+Inicio HEAD5da0987 limpio. Auditoría de opción dlss existente: implementación
+NGX Vulkan completa en gran parte, pero SR_NGX=OFF y DLL JNI ausente del JAR.
+Log previo de extracción y carga real Java25 confirman recurso faltante.
+Se habilitó build aislado SR_NGX_LIB con SDK público local, se incorporó su
+DLL al JAR NeoForge experimental y se descargó runtime oficial firmado de
+NVIDIA/DLSS commit374959484e79a640feaba44c93ac8cfb0a03f5b5 (310.9.1).
+No se publica runtime propietario. Se agregaron comprobación capability,
+handle válido, errores explícitos y diagnóstico de completions/output;
+se eliminó retry automático de inicialización. Presets UI existentes mapeados
+a enums NGX públicos. Build/CPU/JNI pasaron; AMD9clases/2DLL y clases FG y
+presentación byte-identical. MFG histórico preservado, sin x3/x4/x5 nuevo.
+Una prueba Minecraft DLSS+FG OFF iniciada `20261004-162909-911`; standalone
+PASS aún pendiente de mundo/output/completion/exit. No combinación x2 hasta
+que esta prueba pase. Ver DLSS_SUPER_RESOLUTION_INTEGRATION.md para inputs,
+convenciones, hashes, limitaciones y evidencias de errores/build.
+
+Corrección posterior: el arranque 20261004-162909-911 no ejecutó DLSS. El preparador duplicó CR al escribir TOML; NightConfig regeneró defaults FSR1/OPENGL. Evidencia conservada, no PASS ni fallo GPU DLSS. Tras cierre del cliente y petición de continuar, preparador corregido, presentación Vulkan explícita y preflight TOML válido. Prueba efectiva 20261004-170642-750 iniciada; resultado pendiente.
+
+Resultado final 20261004-170642-750: FAIL antes de NGX. skip_init_vulkan=true conservado del config regenerado impidió RenderSystems.vulkan; createResources produjo NullPointerException. Evaluate/completion=0, output no demostrado. Usuario confirmó mundo/HUD y cierre normal solicitado; proceso salió NTSTATUS0xC0000409 tras guardar mundo. Causa inmediata de inicialización alta confianza; causa de fallo nativo de cierre pendiente. STOP: no resize/combinado/retry. Binding/packaging/build pasan, backend Minecraft NO validado. Disponibilidad del selector y prerequisito Vulkan quedan pendientes.
+
+Usuario aportó captura: render de mundo reducido a esquina inferior izquierda y áreas negras extensas, HUD más ancho. Visual FAIL confirmado; no output DLSS ni PASS. Corrección explícita de la observación preliminar de terreno/HUD visibles.

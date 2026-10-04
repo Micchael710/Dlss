@@ -1,0 +1,7 @@
+{
+  "toml_parse": "PASS",
+  "sr": "dlss",
+  "fg": "OFF",
+  "presentation": "VULKAN",
+  "setup_correction": "CRLF normalized and explicit byte write"
+}

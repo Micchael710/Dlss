@@ -1,0 +1,19 @@
+-- The C compiler identification is MSVC 19.51.36244.0
+-- The CXX compiler identification is MSVC 19.51.36244.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: D:/Programs File2/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: D:/Programs File2/Microsoft Visual Studio/18/Community/VC/Tools/MSVC/14.51.36231/bin/Hostx64/x64/cl.exe - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found JNI: C:/Program Files/Java/jdk-25.0.4/include  found components: AWT JVM
+-- 生成NGX模块
+-- Configuring done (3.5s)
+-- Generating done (0.0s)
+-- Build files have been written to: D:/ProjectDllsss/builds/experimental/dlss-sr/native
+[1/2] Building CXX object CMakeFiles\SR_NGX_LIB.dir\src\ngx_jni.cpp.obj
+[2/2] Linking CXX shared library libSuperResolutionNGX+win64+release.dll

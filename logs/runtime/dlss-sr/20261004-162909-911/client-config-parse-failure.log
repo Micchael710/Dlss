@@ -1,0 +1,364 @@
+[04Oct2026 12:58:06.208] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher running: args [--launchTarget, forgeclientdev, --version, 21.1.219, --assetIndex, 17, --assetsDir, C:\\Users\\micha\\.gradle\\caches\\neoformruntime\\assets, --gameDir, ., --fml.fmlVersion, 4.0.42, --fml.mcVersion, 1.21.1, --fml.neoForgeVersion, 21.1.219, --fml.neoFormVersion, 20240808.144430]
+[04Oct2026 12:58:06.217] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: JVM identified as Oracle Corporation Java HotSpot(TM) 64-Bit Server VM 25.0.4+7-LTS-189
+[04Oct2026 12:58:06.223] [main/INFO] [cpw.mods.modlauncher.Launcher/MODLAUNCHER]: ModLauncher 11.0.5+main.901c6ea8 starting: java version 25.0.4 by Oracle Corporation; OS Windows 11 arch amd64 version 10.0
+[04Oct2026 12:58:06.556] [main/INFO] [net.neoforged.fml.loading.ImmediateWindowHandler/]: ImmediateWindowProvider not loading because splash screen is disabled
+[04Oct2026 12:58:06.660] [main/INFO] [mixin/]: SpongePowered MIXIN Subsystem Version=0.8.7 Source=union:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/net.fabricmc/sponge-mixin/0.15.2+mixin.0.8.7/2af2f021d8e02a0220dc27a7a72b4666d66d44ca/sponge-mixin-0.15.2+mixin.0.8.7.jar%23122!/ Service=ModLauncher Env=CLIENT
+[04Oct2026 12:58:08.277] [main/INFO] [net.neoforged.fml.loading.moddiscovery.locators.JarInJarDependencyLocator/]: Found 14 dependencies adding them to mods collection
+[04Oct2026 12:58:08.282] [main/INFO] [net.neoforged.fml.loading.moddiscovery.ModDiscoverer/]: 
+     Mod List:
+		Name Version (Mod Id)
+
+		Architectury 13.0.6 (architectury)
+		Forgified Fabric API Base 0.4.42+d1308ded19 (fabric_api_base)
+		Forgified Fabric BlockView API (v2) 1.0.10+9afaaf8c19 (fabric_block_view_api_v2)
+		Forgified Fabric Renderer API (v1) 3.4.0+acb05a3919 (fabric_renderer_api_v1)
+		Forgified Fabric Rendering Data Attachment (v1) 0.3.48+73761d2e19 (fabric_rendering_data_attachment_v1)
+		Iris 1.8.8+mc1.21.1 (iris)
+		Minecraft 1.21.1 (minecraft)
+		NeoForge 21.1.219 (neoforge)
+		Sodium 0.6.13+mc1.21.1 (sodium)
+		Super Resolution 0.9.2-alpha.1+dev.5da0987.opengl (super_resolution)
+		Wisteria 0.1.0-alpha.1+1.21.1 (wisteria)
+[04Oct2026 12:58:10.895] [main/INFO] [mixin/]: Compatibility level set to JAVA_17
+[04Oct2026 12:58:10.930] [main/INFO] [mixin/]: Compatibility level set to JAVA_21
+[04Oct2026 12:58:10.954] [main/INFO] [cpw.mods.modlauncher.LaunchServiceHandler/MODLAUNCHER]: Launching target 'forgeclientdev' with arguments [--version, 21.1.219, --gameDir, ., --assetsDir, C:\Users\micha\.gradle\caches\neoformruntime\assets, --assetIndex, 17]
+[04Oct2026 12:58:11.213] [main/WARN] [SodiumConfig/]: Mod 'super_resolution' attempted to override option 'mixin.features.render.gui.debug', which doesn't exist, ignoring
+[04Oct2026 12:58:11.217] [main/INFO] [Sodium/]: Loaded configuration file for Sodium: 43 options available, 2 override(s) found
+[04Oct2026 12:58:11.220] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.221] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.fantastic.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.223] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.vertexformat.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.225] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for iris-batched-entity-rendering.mixins.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.226] [main/WARN] [mixin/]: Reference map 'iris.refmap.json' for mixins.iris.compat.sodium.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.235] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.mixins.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.238] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.hack.mixins.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.248] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution_irisapi.mixins.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.251] [main/WARN] [mixin/]: Reference map 'super_resolution.refmap.json' for super_resolution.shadercompat.mixins.json could not be read. If this is a development environment you can ignore this message
+[04Oct2026 12:58:11.602] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.FogRendererMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[04Oct2026 12:58:11.604] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.ClientLevelMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[04Oct2026 12:58:11.605] [main/WARN] [Sodium/]: Force-disabling mixin 'features.render.world.sky.LevelRendererMixin' as rule 'mixin.features.render.world.sky' (added by mods [iris]) disables it and children
+[04Oct2026 12:58:11.621] [main/WARN] [Sodium/]: Force-disabling mixin 'workarounds.context_creation.WindowMixin' as rule 'mixin.workarounds' (added by mods [super_resolution]) disables it and children
+[04Oct2026 12:58:11.624] [main/WARN] [Sodium/]: Force-disabling mixin 'workarounds.event_loop.RenderSystemMixin' as rule 'mixin.workarounds' (added by mods [super_resolution]) disables it and children
+[04Oct2026 12:58:12.387] [main/WARN] [mixin/]: Error loading class: com/portingdeadmods/cable_facades/events/GameClientEvents$2 (java.lang.ClassNotFoundException: com.portingdeadmods.cable_facades.events.GameClientEvents$2)
+[04Oct2026 12:58:12.391] [main/WARN] [mixin/]: Error loading class: com/direwolf20/justdirethings/client/renderers/OurRenderTypes (java.lang.ClassNotFoundException: com.direwolf20.justdirethings.client.renderers.OurRenderTypes)
+[04Oct2026 12:58:12.393] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/entity/RenderFlame (java.lang.ClassNotFoundException: mekanism.client.render.entity.RenderFlame)
+[04Oct2026 12:58:12.395] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/armor/MekaSuitArmor (java.lang.ClassNotFoundException: mekanism.client.render.armor.MekaSuitArmor)
+[04Oct2026 12:58:12.397] [main/WARN] [mixin/]: Error loading class: mekanism/client/render/lib/effect/BillboardingEffectRenderer (java.lang.ClassNotFoundException: mekanism.client.render.lib.effect.BillboardingEffectRenderer)
+[04Oct2026 12:58:12.404] [main/WARN] [mixin/]: Error loading class: blusunrize/immersiveengineering/client/utils/IEGLShaders (java.lang.ClassNotFoundException: blusunrize.immersiveengineering.client.utils.IEGLShaders)
+[04Oct2026 12:58:12.471] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.iris.GlFramebufferMixin
+[04Oct2026 12:58:12.474] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.reesessodiumoptions.TabFrameMixin
+[04Oct2026 12:58:12.479] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.simpleclouds.DefaultPipelineMixin
+[04Oct2026 12:58:12.483] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.simpleclouds.ShaderSupportPipelineMixin
+[04Oct2026 12:58:12.485] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.sodium.SodiumOptionsGUIMixin
+[04Oct2026 12:58:12.488] [main/INFO] [SuperResolution-Mixin/]: Disabled mixin io.homo.superresolution.neoforge.mixin.compat.sodiumoptionsapi.SodiumOptionsTabFrameMixin
+[04Oct2026 12:58:12.491] [main/INFO] [SuperResolution-Mixin/]: Enabled mixin io.homo.superresolution.neoforge.mixin.compat.iris.DHCompatInternalMixin
+[04Oct2026 12:58:13.282] [main/INFO] [MixinExtras|Service/]: Initializing MixinExtras via com.llamalad7.mixinextras.service.MixinExtrasServiceImpl(version=0.5.0).
+[04Oct2026 12:58:15.848] [Datafixer Bootstrap/INFO] [com.mojang.datafixers.DataFixerBuilder/]: 229 Datafixer optimizations took 734 milliseconds
+[04Oct2026 12:58:15.909] [main/WARN] [oshi.driver.windows.perfmon.PerfmonDisabled/]: Invalid registry value type detected for PerfOS counters. Should be REG_DWORD. Ignoring: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\PerfOS\Performance\Disable Performance Counters.
+[04Oct2026 12:58:28.239] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04Oct2026 12:58:28.252] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, location] and [teleport, targets] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04Oct2026 12:58:28.268] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, destination] and [teleport, targets] with inputs: [Player, 0123, @e, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04Oct2026 12:58:28.279] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets] and [teleport, destination] with inputs: [Player, 0123, dd12be42-52a9-4a91-a8a1-11c01849e498]
+[04Oct2026 12:58:28.291] [main/WARN] [net.minecraft.commands.Commands/]: Ambiguity between arguments [teleport, targets, location] and [teleport, targets, destination] with inputs: [0.1 -0.5 .9, 0 0 0]
+[04Oct2026 12:58:29.110] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/ProjectDllsss/runtime-baseline/build/moddev/artifacts/neoforge-21.1.219.jar%23172!/assets/.mcassetsroot' uses unexpected schema
+[04Oct2026 12:58:29.110] [Render thread/WARN] [net.minecraft.server.packs.VanillaPackResourcesBuilder/]: Assets URL 'union:/D:/ProjectDllsss/runtime-baseline/build/moddev/artifacts/neoforge-21.1.219.jar%23172!/data/.mcassetsroot' uses unexpected schema
+[04Oct2026 12:58:29.167] [Render thread/INFO] [com.mojang.authlib.yggdrasil.YggdrasilAuthenticationService/]: Environment: Environment[sessionHost=https://sessionserver.mojang.com, servicesHost=https://api.minecraftservices.com, name=PROD]
+[04Oct2026 12:58:29.190] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Setting user: Dev
+[04Oct2026 12:58:29.465] [Render thread/INFO] [net.minecraft.client.Minecraft/]: Backend library: LWJGL version 3.3.4+7
+[04Oct2026 12:58:31.201] [ForkJoinPool.commonPool-worker-9/WARN] [Iris/]: [Iris Update Check] This version doesn't have an update index, skipping.
+[04Oct2026 12:58:31.556] [Render thread/INFO] [SuperResolution/GraphicsCapabilities/]: Added supported OpenGL version 4.6
+[04Oct2026 12:58:31.558] [Render thread/INFO] [SuperResolution/GraphicsCapabilities/]: Highest supported OpenGL version 4.6
+[04Oct2026 12:58:31.723] [Render thread/ERROR] [SRConfigAPI/]: Config is corrupted or unreadable, regenerating defaults.
+com.electronwill.nightconfig.core.io.ParsingException: Invalid control character in comment: Primary color for the interface theme
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TomlParser.lambda$setComment$0(TomlParser.java:259) ~[toml-3.8.3.jar%2391!/:?]
+	at java.base/java.lang.StringLatin1$CharsSpliterator.forEachRemaining(StringLatin1.java:811) ~[?:?]
+	at java.base/java.util.stream.IntPipeline$Head.forEach(IntPipeline.java:619) ~[?:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TomlParser.setComment(TomlParser.java:254) ~[toml-3.8.3.jar%2391!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TomlParser.setComment(TomlParser.java:283) ~[toml-3.8.3.jar%2391!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TableParser.parseNormal(TableParser.java:86) ~[toml-3.8.3.jar%2391!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TomlParser.parse(TomlParser.java:61) ~[toml-3.8.3.jar%2391!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.toml@3.8.3/com.electronwill.nightconfig.toml.TomlParser.parse(TomlParser.java:53) ~[toml-3.8.3.jar%2391!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.io.ConfigParser.parse(ConfigParser.java:130) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.io.ConfigParser.parse(ConfigParser.java:254) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.file.SyncFileConfig.lambda$load$1(SyncFileConfig.java:89) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.concurrent.ConcurrentCommentedConfig.lambda$bulkCommentedUpdate$1(ConcurrentCommentedConfig.java:144) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.concurrent.SynchronizedConfig.bulkCommentedUpdate(SynchronizedConfig.java:189) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.concurrent.ConcurrentCommentedConfig.bulkCommentedUpdate(ConcurrentCommentedConfig.java:143) ~[core-3.8.3.jar%2390!/:?]
+	at MC-BOOTSTRAP/com.electronwill.nightconfig.core@3.8.3/com.electronwill.nightconfig.core.file.SyncFileConfig.load(SyncFileConfig.java:88) ~[core-3.8.3.jar%2390!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.api.config.ModConfigSpec.load(ModConfigSpec.java:82) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.api.config.ModConfigSpecBuilder.build(ModConfigSpecBuilder.java:838) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.common.config.SuperResolutionConfig.<clinit>(SuperResolutionConfig.java:378) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.common.presentation.PresentationBackendManager.backend(PresentationBackendManager.java:25) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.common.presentation.PresentationBackendManager.type(PresentationBackendManager.java:33) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.5da0987.opengl/io.homo.superresolution.common.presentation.PresentationBackendManager.isVulkanPresentationRequested(PresentationBackendManager.java:37) [superresolution-dlss-sr-candidate.jar%23175!/:?]
+	at TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.platform.Window.handler$zla000$super_resolution$redirectWindow(Window.java:2596) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.platform.Window.<init>(Window.java:88) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.VirtualScreen.newWindow(VirtualScreen.java:23) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.<init>(Minecraft.java:467) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:214) [neoforge-21.1.219.jar%23172!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.5.jar%23112!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[04Oct2026 12:58:32.976] [Render thread/INFO] [Iris/]: Debug functionality is disabled.
+[04Oct2026 12:58:32.982] [Render thread/INFO] [Iris/]: OpenGL 4.5 detected, enabling DSA.
+[04Oct2026 12:58:33.115] [Render thread/INFO] [SuperResolution/]: Loading shader-pack interface configuration: superresolution.v1.json
+[04Oct2026 12:58:33.177] [Render thread/INFO] [SuperResolution/]: Shader pack shaders supports super resolution
+[04Oct2026 12:58:33.739] [Render thread/INFO] [Iris/]: Profile: HIGH (+0 options changed by user)
+[04Oct2026 12:58:35.393] [Render thread/INFO] [Iris/]: Using shaderpack: Complementary-SuperResolution-Wisteria.zip
+[04Oct2026 12:58:35.554] [modloading-worker-0/INFO] [Wisteria/]: Wisteria initializing
+[04Oct2026 12:58:35.570] [modloading-worker-0/INFO] [net.neoforged.neoforge.common.NeoForgeMod/NEOFORGE-MOD]: NeoForge mod loading, version 21.1.219, for MC 1.21.1
+[04Oct2026 12:58:37.860] [Render thread/INFO] [Iris/]: Hardware information:
+[04Oct2026 12:58:37.861] [Render thread/INFO] [Iris/]: CPU: 12x AMD Ryzen 5 5600H with Radeon Graphics 
+[04Oct2026 12:58:37.861] [Render thread/INFO] [Iris/]: GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU/PCIe/SSE2 (Supports OpenGL 4.6.0 NVIDIA 596.49)
+[04Oct2026 12:58:37.861] [Render thread/INFO] [Iris/]: OS: Windows 11 (10.0)
+[04Oct2026 12:58:38.216] [Render thread/INFO] [net.neoforged.neoforge.gametest.GameTestHooks/]: Enabled Gametest Namespaces: []
+[04Oct2026 12:58:38.643] [Render thread/INFO] [SuperResolution/NativeLib/]: Extracting native dependencies
+[04Oct2026 12:58:38.749] [Render thread/INFO] [SuperResolution/NativeLib/]: libSuperResolution+win64+release.dll already exists with a matching checksum; skipping extraction
+[04Oct2026 12:58:38.750] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionD3D12+win64+release.dll: resource not found
+[04Oct2026 12:58:38.751] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionD3D12+win64+release.dll; skipping it
+[04Oct2026 12:58:38.752] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionFSR+win64+release.dll: resource not found
+[04Oct2026 12:58:38.752] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionFSR+win64+release.dll; skipping it
+[04Oct2026 12:58:38.753] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionFSR4+win64+release.dll: resource not found
+[04Oct2026 12:58:38.754] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionFSR4+win64+release.dll; skipping it
+[04Oct2026 12:58:38.755] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionXeSS+win64+release.dll: resource not found
+[04Oct2026 12:58:38.755] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionXeSS+win64+release.dll; skipping it
+[04Oct2026 12:58:38.777] [Render thread/INFO] [SuperResolution/NativeLib/]: Extracted libSuperResolutionNGX+win64+release.dll
+[04Oct2026 12:58:38.779] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency lib\libSuperResolutionStreamline+win64+release.dll: resource not found
+[04Oct2026 12:58:38.779] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to extract optional dependency libSuperResolutionStreamline+win64+release.dll; skipping it
+[04Oct2026 12:58:38.779] [Render thread/INFO] [SuperResolution/NativeLib/]: Skipped optional dependencies: libSuperResolutionD3D12+win64+release.dll, libSuperResolutionFSR+win64+release.dll, libSuperResolutionFSR4+win64+release.dll, libSuperResolutionXeSS+win64+release.dll, libSuperResolutionStreamline+win64+release.dll
+[04Oct2026 12:58:38.782] [Render thread/INFO] [SuperResolution/NativeLib/]: Native dependencies extracted to D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution\libraries
+[04Oct2026 12:58:38.783] [Render thread/INFO] [SuperResolution/NativeLib/]: Loading native dependency: D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution\libraries\libSuperResolution+win64+release.dll
+[04Oct2026 12:58:38.794] [Render thread/INFO] [SuperResolution/NativeLib/]: Loading native dependency: D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution\libraries\libSuperResolutionD3D12+win64+release.dll
+[04Oct2026 12:58:38.796] [Render thread/WARN] [SuperResolution/NativeLib/]: Failed to load optional dependency libSuperResolutionD3D12+win64+release.dll; skipping it: Can't load library: D:\ProjectDllsss\runtime-baseline\instance\.\config\super_resolution\libraries\libSuperResolutionD3D12+win64+release.dll
+[04Oct2026 12:58:38.831] [Render thread/INFO] [SuperResolution/]: GPU vendor: Nvidia
+[04Oct2026 12:58:38.831] [Render thread/INFO] [SuperResolution/]: OpenGL version: 4.6
+[04Oct2026 12:58:38.838] [Render thread/INFO] [SuperResolution/]: DSA is supported; using GL45OrEXTDirectStateAccessImpl
+[04Oct2026 12:58:39.037] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=10 levels=1 internalFormat=8229 size=512x512 label=NanoVGImage-1
+[04Oct2026 12:58:39.043] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=11 levels=1 internalFormat=8c3a size=854x480 label=ITexture{id=11format=R11G11B10Fwidth=854height=480}
+[04Oct2026 12:58:39.044] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=12 levels=1 internalFormat=88f0 size=854x480 label=ITexture{id=12format=DEPTH24_STENCIL8width=854height=480}
+[04Oct2026 12:58:39.571] [Render thread/INFO] [Wisteria/]: Registered frame generation backends wisteria:streamline and wisteria:ngx
+[04Oct2026 12:58:39.609] [Render thread/INFO] [SuperResolution/]: Loading shader-pack interface configuration: superresolution.v1.json
+[04Oct2026 12:58:39.619] [Render thread/INFO] [SuperResolution/]: Shader pack shaders supports super resolution
+[04Oct2026 12:58:39.751] [Render thread/INFO] [Iris/]: Profile: HIGH (+0 options changed by user)
+[04Oct2026 12:58:40.519] [Render thread/INFO] [Iris/]: Using shaderpack: Complementary-SuperResolution-Wisteria.zip
+[04Oct2026 12:58:40.560] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_EASU with the compatibility shader compiler
+[04Oct2026 12:58:40.906] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_RCAS with the compatibility shader compiler
+[04Oct2026 12:58:41.011] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=13 levels=1 internalFormat=881a size=854x480 label=Fsr1TempTexture
+[04Oct2026 12:58:41.012] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=14 levels=1 internalFormat=881a size=854x480 label=Fsr1OutputTexture
+[04Oct2026 12:58:41.019] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_EASU with the compatibility shader compiler
+[04Oct2026 12:58:41.109] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_RCAS with the compatibility shader compiler
+[04Oct2026 12:58:41.226] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=13 levels=1 internalFormat=881a size=854x480 label=Fsr1TempTexture
+[04Oct2026 12:58:41.227] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=14 levels=1 internalFormat=881a size=854x480 label=Fsr1OutputTexture
+[04Oct2026 12:58:41.251] [Render thread/INFO] [net.minecraft.server.packs.resources.ReloadableResourceManager/]: Reloading ResourceManager: vanilla, mod_resources, mod/sodium, mod/fabric_rendering_data_attachment_v1, mod/iris, mod/super_resolution, mod/wisteria, mod/fabric_renderer_api_v1, mod/fabric_api_base, mod/architectury, mod/neoforge, mod/fabric_block_view_api_v2
+[04Oct2026 12:58:41.483] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_EASU with the compatibility shader compiler
+[04Oct2026 12:58:41.532] [Worker-Main-4/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_all_no_pua-15.1.05.hex, loading
+[04Oct2026 12:58:41.551] [Worker-Main-6/INFO] [net.minecraft.client.gui.font.providers.UnihexProvider/]: Found unifont_jp_patch-15.1.05.hex, loading
+[04Oct2026 12:58:41.589] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_RCAS with the compatibility shader compiler
+[04Oct2026 12:58:41.684] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=13 levels=1 internalFormat=881a size=854x480 label=Fsr1TempTexture
+[04Oct2026 12:58:41.685] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=14 levels=1 internalFormat=881a size=854x480 label=Fsr1OutputTexture
+[04Oct2026 12:58:41.712] [Render thread/INFO] [Wisteria/]: Registered low latency backend wisteria:reflex_streamline
+[04Oct2026 12:58:43.638] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:item.goat_horn.play
+[04Oct2026 12:58:43.638] [Render thread/WARN] [net.minecraft.client.sounds.SoundEngine/]: Missing sound for event: minecraft:entity.goat.screaming.horn_break
+[04Oct2026 12:58:44.507] [Render thread/INFO] [com.mojang.blaze3d.audio.Library/]: OpenAL initialized on device OpenAL Soft on Altavoces (Realtek(R) Audio)
+[04Oct2026 12:58:44.508] [Render thread/INFO] [net.minecraft.client.sounds.SoundEngine/SOUNDS]: Sound engine started
+[04Oct2026 12:58:44.684] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x4 minecraft:textures/atlas/blocks.png-atlas
+[04Oct2026 12:58:44.741] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/signs.png-atlas
+[04Oct2026 12:58:44.742] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/banner_patterns.png-atlas
+[04Oct2026 12:58:44.744] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x512x4 minecraft:textures/atlas/shield_patterns.png-atlas
+[04Oct2026 12:58:44.745] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x1024x4 minecraft:textures/atlas/armor_trims.png-atlas
+[04Oct2026 12:58:44.755] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 128x64x4 minecraft:textures/atlas/decorated_pot.png-atlas
+[04Oct2026 12:58:44.756] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x256x4 minecraft:textures/atlas/chest.png-atlas
+[04Oct2026 12:58:44.757] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/shulker_boxes.png-atlas
+[04Oct2026 12:58:44.758] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x4 minecraft:textures/atlas/beds.png-atlas
+[04Oct2026 12:58:45.042] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/particles.png-atlas
+[04Oct2026 12:58:45.045] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 512x256x0 minecraft:textures/atlas/paintings.png-atlas
+[04Oct2026 12:58:45.046] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 256x128x0 minecraft:textures/atlas/mob_effects.png-atlas
+[04Oct2026 12:58:45.047] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 64x64x0 minecraft:textures/atlas/map_decorations.png-atlas
+[04Oct2026 12:58:45.047] [Render thread/INFO] [net.minecraft.client.renderer.texture.TextureAtlas/]: Created: 1024x512x0 minecraft:textures/atlas/gui.png-atlas
+[04Oct2026 12:58:45.076] [Render thread/WARN] [net.minecraft.client.renderer.ShaderInstance/]: Shader rendertype_entity_translucent_emissive could not find sampler named Sampler2 in the specified shader program.
+[04Oct2026 12:58:45.143] [Render thread/INFO] [net.neoforged.neoforge.client.entity.animation.json.AnimationLoader/]: Loaded 0 entity animations
+[04Oct2026 12:58:45.169] [Render thread/INFO] [Iris/]: Creating pipeline for dimension minecraft:overworld
+[04Oct2026 12:58:45.251] [Render thread/WARN] [Iris/]: Failed to resolve uniform inPaleGarden, reason: Unknown variable: BIOME_PALE_GARDEN ( = FunctionCall{smooth {[Number{55}, FunctionCall{if {[FunctionCall{in {[Id{biome}, Id{BIOME_PALE_GARDEN}]} }, Number{1}, Number{0}]} }, Number{15}, Number{15}]} })
+java.lang.RuntimeException: Unknown variable: BIOME_PALE_GARDEN
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:225) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:127) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpression(ExpressionResolver.java:50) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms.<init>(CustomUniforms.java:60) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:332) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:343) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.IrisRenderingPipeline.<init>(IrisRenderingPipeline.java:282) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.createPipeline(Iris.java:616) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.PipelineManager.preparePipeline(PipelineManager.java:33) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.onLoadingComplete(Iris.java:150) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.handler$zfl000$iris$firstInit(TitleScreen.java:525) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.init(TitleScreen.java:157) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.Screen.init(Screen.java:317) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.setScreen(Minecraft.java:1057) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$buildInitialScreens$9(Minecraft.java:664) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onGameLoadFinished(Minecraft.java:650) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onResourceLoadFinished(Minecraft.java:641) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$7(Minecraft.java:629) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.Util.ifElse(Util.java:513) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$8(Minecraft.java:623) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.LoadingOverlay.render(LoadingOverlay.java:139) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:1081) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1195) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230) [neoforge-21.1.219.jar%23172!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.5.jar%23112!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[04Oct2026 12:58:45.257] [Render thread/WARN] [Iris/]: Failed to resolve uniform inSulfurCaves, reason: Unknown variable: BIOME_SULFUR_CAVES ( = FunctionCall{smooth {[Number{56}, FunctionCall{if {[FunctionCall{in {[Id{biome}, Id{BIOME_SULFUR_CAVES}]} }, Number{1}, Number{0}]} }, Number{15}, Number{15}]} })
+java.lang.RuntimeException: Unknown variable: BIOME_SULFUR_CAVES
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:225) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:127) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:140) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpression(ExpressionResolver.java:50) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms.<init>(CustomUniforms.java:60) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:332) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:343) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.IrisRenderingPipeline.<init>(IrisRenderingPipeline.java:282) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.createPipeline(Iris.java:616) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.PipelineManager.preparePipeline(PipelineManager.java:33) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.onLoadingComplete(Iris.java:150) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.handler$zfl000$iris$firstInit(TitleScreen.java:525) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.init(TitleScreen.java:157) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.Screen.init(Screen.java:317) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.setScreen(Minecraft.java:1057) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$buildInitialScreens$9(Minecraft.java:664) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onGameLoadFinished(Minecraft.java:650) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onResourceLoadFinished(Minecraft.java:641) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$7(Minecraft.java:629) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.Util.ifElse(Util.java:513) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$8(Minecraft.java:623) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.LoadingOverlay.render(LoadingOverlay.java:139) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:1081) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1195) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230) [neoforge-21.1.219.jar%23172!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.5.jar%23112!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[04Oct2026 12:58:45.261] [Render thread/WARN] [Iris/]: Failed to resolve uniform endFlashFactor0, reason: Unknown variable: endFlashIntensity ( = BinaryExpr{ {FunctionCall{min {[Id{endFlashIntensity}, Number{0.5}]} }} multiply{0} {Number{2.0}} })
+java.lang.RuntimeException: Unknown variable: endFlashIntensity
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:225) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:111) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:196) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpressionInternal(ExpressionResolver.java:81) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveCallExpression(ExpressionResolver.java:111) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpressionInternal(ExpressionResolver.java:192) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/kroppeb.stareval.resolver.ExpressionResolver.resolveExpression(ExpressionResolver.java:50) ~[iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms.<init>(CustomUniforms.java:60) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:332) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.uniforms.custom.CustomUniforms$Builder.build(CustomUniforms.java:343) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.IrisRenderingPipeline.<init>(IrisRenderingPipeline.java:282) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.createPipeline(Iris.java:616) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.PipelineManager.preparePipeline(PipelineManager.java:33) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.Iris.onLoadingComplete(Iris.java:150) [iris-1.8.8+1.21.1-neoforge-neoforge,1.21.1.jar%23177!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.handler$zfl000$iris$firstInit(TitleScreen.java:525) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.TitleScreen.init(TitleScreen.java:157) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.Screen.init(Screen.java:317) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.setScreen(Minecraft.java:1057) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$buildInitialScreens$9(Minecraft.java:664) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onGameLoadFinished(Minecraft.java:650) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.onResourceLoadFinished(Minecraft.java:641) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$7(Minecraft.java:629) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.Util.ifElse(Util.java:513) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.lambda$new$8(Minecraft.java:623) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.gui.screens.LoadingOverlay.render(LoadingOverlay.java:139) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:1081) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1195) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807) [neoforge-21.1.219.jar%23172!/:?]
+	at TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230) [neoforge-21.1.219.jar%23172!/:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118) [loader-4.0.42.jar%23130!/:4.0]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:71) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.run(Launcher.java:103) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.Launcher.main(Launcher.java:74) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:26) [modlauncher-11.0.5.jar%23112!/:?]
+	at MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.BootstrapLaunchConsumer.accept(BootstrapLaunchConsumer.java:23) [modlauncher-11.0.5.jar%23112!/:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.run(BootstrapLauncher.java:210) [bootstraplauncher-2.0.2.jar:?]
+	at cpw.mods.bootstraplauncher@2.0.2/cpw.mods.bootstraplauncher.BootstrapLauncher.main(BootstrapLauncher.java:69) [bootstraplauncher-2.0.2.jar:?]
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104) ~[?:?]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565) ~[?:?]
+	at net.neoforged.devlaunch.Main.main(Main.java:57) [DevLaunch-1.0.2.jar:?]
+[04Oct2026 12:58:45.273] [Render thread/WARN] [Iris/]: The following uniforms won't work, either because they are broken, or reference a broken uniform: 
+endFlashFactor1, endFlashIntensityM
+[04Oct2026 12:58:48.051] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_EASU with the compatibility shader compiler
+[04Oct2026 12:58:48.126] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_RCAS with the compatibility shader compiler
+[04Oct2026 12:58:48.188] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=13 levels=1 internalFormat=881a size=854x480 label=Fsr1TempTexture
+[04Oct2026 12:58:48.189] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=14 levels=1 internalFormat=881a size=854x480 label=Fsr1OutputTexture
+[04Oct2026 12:58:48.192] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_EASU with the compatibility shader compiler
+[04Oct2026 12:58:48.255] [Render thread/INFO] [SuperResolution/ShaderCompiler/]: Compiling shader FSR1_RCAS with the compatibility shader compiler
+[04Oct2026 12:58:48.319] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=85 levels=1 internalFormat=881a size=854x480 label=Fsr1TempTexture
+[04Oct2026 12:58:48.321] [Render thread/INFO] [SuperResolution/]: SR_DIAG glTextureStorage2D texture=86 levels=1 internalFormat=881a size=854x480 label=Fsr1OutputTexture
+[04Oct2026 12:58:48.324] [Render thread/INFO] [SuperResolution/]: Initializing algorithm AMD FidelityFX Super Resolution 1
+[04Oct2026 12:58:48.342] [Render thread/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=null, lowLatency=null

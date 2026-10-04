@@ -79,3 +79,9 @@ logs/runtime/minecraft-dlssg-x*/**/original-test-config.toml
 logs/runtime/minecraft-dlssg-x*/**/*.local.toml
 logs/runtime/minecraft-dlssg-x*/**/launcher-pid.txt
 logs/runtime/minecraft-dlssg-x*/**/worker-result.json
+
+# DLSS SR local proprietary/runtime and diagnostic image data.
+logs/runtime/dlss-sr/**/*.dll
+logs/runtime/dlss-sr/**/*.bin
+logs/runtime/dlss-sr/**/*.png
+logs/runtime/dlss-sr/20261004-170642-750/launcher.log

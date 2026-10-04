@@ -39,6 +39,8 @@ public class DLSS extends GlVulkanInteropAlgorithm {
     private NgxDispatchResources ngxDispatchResource;
     private NgxFeature ngxDlssFeature;
     private NgxParameters ngxParameters;
+    private final java.util.Map<VulkanCommandBuffer,Integer> diagnosticPending=new java.util.IdentityHashMap<>();
+    private int evaluated,diagnosticSamples;
 
     private static void closeResource(NgxResourceVK resource) {
         if (resource != null) {
@@ -83,15 +85,18 @@ public class DLSS extends GlVulkanInteropAlgorithm {
     private void recreateNgxContext(InitializationDescription desc) {
         VulkanDevice vulkanDevice = RenderSystems.vulkan().device();
         if (!NgxInitializer.initializeIfSupported()) {
-            NgxInitializer.shutdown();
-            if (!NgxInitializer.initializeIfSupported()) {
-                throw new IllegalStateException("NGX is unavailable for the current GPU");
-            }
+            throw new IllegalStateException("NGX is unavailable for the current GPU; no automatic retry");
         }
 
         NgxParameters parameters = new NgxParameters();
         int parametersResult = NgxVulkan.getCapabilityParameters(parameters);
         requireNgxSuccess("NVSDK_NGX_VULKAN_GetCapabilityParameters", parametersResult);
+        int[] available={0},initResult={0};
+        int availableQuery=parameters.getInt("SuperSampling.Available",available);
+        int initQuery=parameters.getInt("SuperSampling.FeatureInitResult",initResult);
+        DlssSrDiagnostics.event("CAPABILITY","queryResult",Integer.toUnsignedString(parametersResult),"availableQuery",Integer.toUnsignedString(availableQuery),"available",available[0],"initQuery",Integer.toUnsignedString(initQuery),"initResult",Integer.toUnsignedString(initResult[0]));
+        requireNgxSuccess("SuperSampling.Available",availableQuery);
+        if(available[0]==0){parameters.close();throw new IllegalStateException("NGX SuperSampling is unavailable");}
 
         NgxFeature feature = new NgxFeature();
         VulkanCommandBuffer commandBuffer = vulkanDevice.createCommandBuffer();
@@ -103,7 +108,9 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             createParams.feature.height = RenderHandlerManager.getRenderHeight();
             createParams.feature.targetWidth = RenderHandlerManager.getScreenWidth();
             createParams.feature.targetHeight = RenderHandlerManager.getScreenHeight();
+            createParams.feature.perfQualityValue=DlssSrContract.perfQuality(createParams.feature.width,createParams.feature.targetWidth);
             createParams.featureCreateFlags = createNgxFeatureFlags(desc);
+            DlssSrDiagnostics.event("CREATE_INPUTS","renderWidth",createParams.feature.width,"renderHeight",createParams.feature.height,"outputWidth",createParams.feature.targetWidth,"outputHeight",createParams.feature.targetHeight,"flags",createParams.featureCreateFlags,"perfQualityValue",createParams.feature.perfQualityValue,"hdr",desc.isHdrInput(),"autoExposure",desc.isAutoExposure(),"motionJittered",desc.isMotionJittered(),"depthInverted",desc.isDepthInverted());
 
             commandBuffer.begin();
             int createResult = NgxVulkan.createDLSS(
@@ -116,9 +123,12 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             );
             commandBuffer.end();
             requireNgxSuccess("NGX_VULKAN_CREATE_DLSS_EXT", createResult);
+            DlssSrDiagnostics.event("CREATE_FEATURE","result",Integer.toUnsignedString(createResult),"handleValid",feature.isValid());
+            if(!feature.isValid())throw new IllegalStateException("NGX CreateFeature returned no valid DLSS handle");
 
             vulkanDevice.submitCommandBuffer(commandBuffer);
             commandBuffer.waitForFence();
+            DlssSrDiagnostics.event("CREATE_COMPLETION","completed",true);
 
             ngxParameters = parameters;
             ngxDlssFeature = feature;
@@ -159,6 +169,9 @@ public class DLSS extends GlVulkanInteropAlgorithm {
     }
 
     private void destroyNgxContext() {
+        // Base destroy/rebuild has drained resource users before this hook.
+        for(var pending:diagnosticPending.entrySet())DlssSrDiagnostics.event("GPU_COMPLETION","evaluation",pending.getValue(),"source","resource drain before feature destruction");
+        diagnosticPending.clear();
         if (ngxDlssFeature != null) {
             int result = ngxDlssFeature.release();
             if (!NgxConstants.succeeded(result)) {
@@ -179,13 +192,16 @@ public class DLSS extends GlVulkanInteropAlgorithm {
             VulkanCommandBuffer commandBuffer,
             FrameResourcesSet frameResourcesSet
     ) {
+        // acquire() waited this reusable command buffer's previous fence before recording.
+        Integer completed=diagnosticPending.remove(commandBuffer);
+        if(completed!=null)DlssSrDiagnostics.event("GPU_COMPLETION","evaluation",completed,"source","command ring acquire fence wait");
         if (ngxDlssFeature == null || ngxParameters == null) {
-            return;
+            throw new IllegalStateException("DLSS context is unavailable; output not produced");
         }
 
         NgxDispatchResources dispatchResources = ngxDispatchResource;
         if (dispatchResources == null) {
-            return;
+            throw new IllegalStateException("DLSS resources are unavailable; output not produced");
         }
 
         NgxVKDLSSEvalParams evalParams = dispatchResources.evalParams;
@@ -220,6 +236,27 @@ public class DLSS extends GlVulkanInteropAlgorithm {
         }
         if (!NgxConstants.succeeded(evaluateResult)) {
             SuperResolution.LOGGER.error("NGX DLSS evaluation failed. Result: {}", evaluateResult);
+            DlssSrDiagnostics.event("EVALUATE_FAILURE","result",Integer.toUnsignedString(evaluateResult));
+            throw new IllegalStateException("NGX DLSS evaluation failed: "+Integer.toUnsignedString(evaluateResult));
+        }
+        evaluated++;
+        if(DlssSrDiagnostics.enabled())diagnosticPending.put(commandBuffer,evaluated);
+        DlssSrDiagnostics.event("EVALUATE","evaluation",evaluated,"result",Integer.toUnsignedString(evaluateResult),"outputVkImage",frameResourcesSet.vulkan(OutputColor).handle(),"inputVkImage",frameResourcesSet.vulkan(Color).handle(),"renderWidth",evalParams.renderSubrectDimensions.width,"renderHeight",evalParams.renderSubrectDimensions.height,"outputWidth",frameResourcesSet.vulkan(OutputColor).getWidth(),"outputHeight",frameResourcesSet.vulkan(OutputColor).getHeight(),"jitterX",evalParams.jitterOffsetX,"jitterY",evalParams.jitterOffsetY,"mvScaleX",evalParams.motionVectorScaleX,"mvScaleY",evalParams.motionVectorScaleY,"reset",evalParams.reset,"preExposure",evalParams.preExposure);
+    }
+
+    @Override
+    protected void onUpscaleOutputQueued(FrameResourcesSet resources){
+        DlssSrDiagnostics.event("OUTPUT_QUEUED","evaluation",evaluated,"outputVkImage",resources.vulkan(OutputColor).handle(),"outputGlTexture",getOutputTextureId(),"transport","Vulkan signal -> OpenGL GPU semaphore wait -> existing output framebuffer");
+        if(DlssSrDiagnostics.enabled()&&evaluated>=30&&diagnosticSamples<3){
+            diagnosticSamples++;
+            for(var type:new io.homo.superresolution.api.interop.InteropResourceType[]{Color,OutputColor}){
+                var texture=resources.openGl(type);int bytes=Math.multiplyExact(Math.multiplyExact(texture.getWidth(),texture.getHeight()),4);
+                var buffer=org.lwjgl.system.MemoryUtil.memAlloc(bytes);
+                try{org.lwjgl.opengl.GL45.glGetTextureImage((int)texture.handle(),0,org.lwjgl.opengl.GL11.GL_RGBA,org.lwjgl.opengl.GL11.GL_UNSIGNED_BYTE,buffer);
+                    byte[] data=new byte[bytes];buffer.get(data);String name="sr-sample-"+evaluated+"-"+type+".bin";DlssSrDiagnostics.save(name,data);
+                    DlssSrDiagnostics.event("IMAGE_SAMPLE","evaluation",evaluated,"type",type,"width",texture.getWidth(),"height",texture.getHeight(),"file",name,"readback","bounded diagnostic only; GL wait ordered after NGX Vulkan submission");
+                }finally{org.lwjgl.system.MemoryUtil.memFree(buffer);}
+            }
         }
     }
 

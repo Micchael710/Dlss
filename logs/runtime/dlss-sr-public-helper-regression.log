@@ -1,0 +1,1 @@
+PASS CPU MOCK: public helper count1..4, API index=slot+1, distinct output/status binding, same real input; no GPU generation asserted
