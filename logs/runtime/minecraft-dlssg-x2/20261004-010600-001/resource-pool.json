@@ -1,0 +1,9 @@
+{
+  "status": "NOT_CREATED",
+  "designed_slot_bound": 8,
+  "bound_source": "PRESENTATION_QUEUE_CAPACITY/(0+1)+2",
+  "actual_slots": 0,
+  "shared_resource_handles_created": 0,
+  "per_frame_handle_imports": 0,
+  "reason": "D3D12 device creation failed before pool/feature setup"
+}

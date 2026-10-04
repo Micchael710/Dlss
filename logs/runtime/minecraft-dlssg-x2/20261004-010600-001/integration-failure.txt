@@ -1,0 +1,2 @@
+stage=SESSION_INIT
+java.lang.IllegalStateException: DLSS-G session initialization failed

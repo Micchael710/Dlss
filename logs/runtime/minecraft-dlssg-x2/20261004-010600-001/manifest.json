@@ -1,0 +1,32 @@
+{
+  "run_id": "20261004-010600-001",
+  "mode": "shadow",
+  "attempt_limit": 1,
+  "status": "PREPARED_NOT_LAUNCHED",
+  "project_base": "29deca27b6d4a4401699c83be4258a0fa02f10ab",
+  "artifacts": {
+    "superresolution": {
+      "path": "builds\\experimental\\dlssg-x2\\superresolution-dlssg-x2-candidate.jar",
+      "sha256": "11575418ba744d171ce6cb488c76d0e895a94d7786267afe5d8c7c1eae3ea0fd",
+      "java21_classes": 1387,
+      "bytes": 32334874
+    },
+    "wisteria": {
+      "path": "builds\\experimental\\dlssg-x2\\wisteria-dlssg-x2-candidate.jar",
+      "sha256": "7c447825deafeac15dad762e25a502dd3389087b5bbdcfea4246d03e436de22c",
+      "java21_classes": 40,
+      "bytes": 3103598
+    }
+  },
+  "original_test_config_sha256": "834981a0d32679bfd99b567150179a9d279ab0780d81949c6297f94c3493f0ee",
+  "test_config_sha256": "f6e0321b03a57b0c251bd5c031c919eccfc82be0771becf72256d76b68706fc0",
+  "component_sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+  "runtime_sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+  "profile": "Minecraft1.21.1 / NeoForge21.1.219 / Java21 / Complementary / SR1.7 / OpenGLFSR1 / VulkanPresent / OptiScalerOFF",
+  "presentation_generated_enabled": false,
+  "cpu_frame_transport": false,
+  "runtime_path": "runtime-baseline/instance",
+  "gpu_uuid": "01895b66d1ca454d88788dd21fdef638",
+  "gpu_luid": "4c29010000000000",
+  "driver": "596.49"
+}

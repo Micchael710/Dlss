@@ -521,3 +521,30 @@ no se afirma que ya se hayan desconectado completamente.
   gates cerrados, directo Vulkan NGX, DLSS SR, x3–x6, OptiScaler o .minecraft real.
   Primera integración acepta owned capture del perfil OpenGL FSR1; borrowed
   Vulkan-upscaler inputs requieren un join auditado antes de cambiar layouts.
+
+## 2026-10-03 — single Minecraft DLSS-G shadow closed FAIL
+
+Implementation milestone 621546f compiled/packaged/CPU ABI/metadata checks passed.
+Single runtime-baseline shadow 20261004-010600-001 opened Minecraft1.21.1,
+NeoForge21.1.219, preserved world/Complementary/SR1.7/OpenGLFSR1/Vulkan/OptiScalerOFF.
+Actual final/HUDless/depthR32F/motionRGBA16F and immutable camera metadata observed.
+Own JNI and public sdli0.3.5 loader loaded; UUID/LUID/driver match historical GPU.
+
+First eligible job failed SESSION_INIT/D3D12_CREATE_DEVICE: HRESULT0x887A0007
+DXGI_ERROR_DEVICE_RESET. NGX Init/CreateFeature/kernel/Evaluate/pool/sync not reached.
+Accepted DLSS-G jobs0/generated0; init failures1; Evaluate failures0 means NOT_REACHED.
+Provider latched unhealthy, FG=null, no automatic retry/AMD fallback. Minecraft stayed
+alive; orderly close saved all dimensions and destroyed Vulkan. No presentation run.
+
+Static hypothesis: reused standalone initializer activates process-wide D3D12 debug
+layer late. Microsoft requires activation before device creation; a previous D3D12
+device is not proven by loaded modules, so hypothesis medium confidence only.
+Failing stage/HRESULT confirmed. No post-failure runtime fix/build/GPU rerun applied.
+Next: separate embedded initializer from standalone debug bootstrap, then review
+before a new authorized bounded runtime attempt. No private ABI or driver changes.
+
+Original isolated config restored byte-for-byte. Three baseline SHA256s unchanged;
+AMD candidate Java/native bytes identical. Earlier offscreen/AMD PASS gates preserved.
+Evidence result/run-manifest/events/provider/capture/pool/sync/timing/error text saved
+under logs/runtime/minecraft-dlssg-x2/20261004-010600-001. Binaries/UI screenshot/world
+stay local/ignored. Higher MFG/DLSS SR/direct Vulkan NGX not tested. Stop at failed gate.

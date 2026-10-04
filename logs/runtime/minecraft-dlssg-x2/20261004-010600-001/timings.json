@@ -1,0 +1,8 @@
+{
+  "status": "NOT_MEASURED",
+  "input_vulkan_gpu_copy_ms": null,
+  "dlssg_gpu_ms": null,
+  "queue_delay_ms": null,
+  "added_display_latency_ms": null,
+  "reason": "No DLSS-G submission or generated output in this attempt"
+}

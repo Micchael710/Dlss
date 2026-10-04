@@ -1,4 +1,32 @@
-## Estado vigente — candidato Wisteria DLSS-G preparado; Minecraft pendiente
+## Estado vigente — único shadow Minecraft FAIL; detenerse sin retry
+
+Run `20261004-010600-001` (UTC; 2026-10-03 local), implementación `621546f`.
+Minecraft1.21.1/NeoForge21.1.219 abrió el mismo mundo con Complementary, SR1.7,
+OpenGL FSR1, Vulkan presentation y OptiScaler OFF. Captura real confirma color,
+HUDless, depthR32F, motionRGBA16F y metadata inmutable. JNI propio y loader público
+sdli0.3.5 cargaron; GPU UUID/LUID y driver596.49 coinciden con la baseline.
+
+`SESSION_INIT/D3D12_CREATE_DEVICE` falló con `0x887A0007` (`DXGI_ERROR_DEVICE_RESET`)
+antes de NGX Init, CreateFeature, kernel creation, pool o Evaluate. G1=0. Provider
+quedó unhealthy sin retry, negociación FG=null, sin cambiar silenciosamente a AMD.
+Cliente continuó mostrando mundo/GUI y cerró guardando todas las dimensiones,
+destruyendo Vulkan y finalizando launcher BUILD SUCCESSFUL. Eso no es PASS de FG.
+
+Hipótesis de causa: el helper del harness standalone activa EnableDebugLayer durante
+la inicialización tardía del provider en un proceso gráfico ya activo. Microsoft
+documenta que activarla tras crear un dispositivo D3D12 lo retira. La activación
+tardía está verificada en fuente; existencia de un dispositivo D3D12 previo y causa
+última del reset siguen sin demostrarse. No se aplicó corrección ni segundo ensayo.
+
+`MINECRAFT_DLSSG_SHADOW_X2=FAIL`; presentación `NOT_RUN_SHADOW_GATE_FAILED`.
+Tres gates offscreen y AMD x2 conservan sus PASS históricos; NO se repitieron.
+Hashes baseline/JARs/nativo AMD siguen idénticos. Config aislada restaurada al SHA
+original. No .minecraft real, x3–x6, DLSS SR, Dzn, nuevos presenters o perfiles.
+Evidencia: `logs/runtime/minecraft-dlssg-x2/20261004-010600-001/result.json`.
+Siguiente fase: separar bootstrap debug standalone de inicialización embebida;
+revisar evidencia antes de autorizar otro ensayo acotado. Provider default OFF.
+
+## Hito anterior de esta fase — candidato Wisteria DLSS-G preparado
 
 Continuación desde `29deca27b6d4a4401699c83be4258a0fa02f10ab`. Auditoría del pipeline
 real escrita antes de cambiar Wisteria en CURRENT_REAL_PIPELINE.md. Provider
@@ -13,8 +41,8 @@ ABI propia PASS. Nueve clases AMD y DLLs AMD incluidas idénticas a la baseline.
 JARs candidatos separados de builds/baseline; hashes en
 logs/runtime/dlssg-integration-artifact-manifest.json. Sólo captura owned del perfil
 OpenGL FSR1 en esta primera integración; inputs borrowed requieren join adicional.
-No creación/Evaluate NGX, GPU run, shadow Minecraft o presentación G1 nuevos aún.
-Siguiente: un único shadow run; presentación sólo si esa evidencia pasa. Sin retest
+En ese hito aún no existía ejecución Minecraft del candidato. El único shadow
+posterior falló según el estado vigente de arriba. Sin retest
 de gates cerrados, DLSS SR, OptiScaler, x3–x6 ni modificación de .minecraft real.
 
 ## Estado anterior — Vulkan → DLSS-G D3D12 → Vulkan x2 PASS, 2026-10-03

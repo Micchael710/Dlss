@@ -1,0 +1,25 @@
+{
+  "backend_install_observation": "NOT_YET_OBSERVED",
+  "debug_layer_enabled": true,
+  "device_id": 9632,
+  "device_luid": "4c29010000000000",
+  "external_dll_path": "D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\minecraft-dlssg-x2\\\\20261004-010600-001\\\\component\\\\version.dll",
+  "external_dll_sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+  "external_loader_ready": "LOADED",
+  "external_module": "00007FFCC2460000",
+  "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "if_fail_stage": "PRECONDITION",
+  "loader_win32_error": 0,
+  "public_initializer": "NONE_SDLI_LOAD_CONTRACT",
+  "vendor_id": 4318,
+  "graphics_modules_before_external": [
+    "nvoglv64.dll",
+    "dxgi.dll",
+    "nvwgf2umx.dll",
+    "RTSSVkLayer64.dll",
+    "graphics-hook64.dll",
+    "d3d12.dll",
+    "D3D12Core.dll"
+  ],
+  "module_presence_proves_prior_device": false
+}

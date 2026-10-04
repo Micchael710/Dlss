@@ -61,6 +61,9 @@ logs/runtime/minecraft-dlssg-x2/**/native/
 logs/runtime/minecraft-dlssg-x2/**/*.png
 logs/runtime/minecraft-dlssg-x2/**/*.ppm
 logs/runtime/minecraft-dlssg-x2/**/*.jpg
+logs/runtime/minecraft-dlssg-x2/**/original-test-config.toml
+logs/runtime/minecraft-dlssg-x2/**/launcher-pid.txt
+logs/runtime/minecraft-dlssg-x2/**/worker-result.json
 
 # Nested upstream rules unignore JARs; prune the local wrapper binary directory.
 # Already tracked wrapper scripts/properties remain tracked.

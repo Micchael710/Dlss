@@ -209,3 +209,16 @@ Shadow conserva sólo presentación real; readbacks G1 diagnósticos se ejecutan
 sobre la VkImage importada. Builds Java21/C++ y CPU contract/JNI tests PASS;
 Minecraft shadow y x2 presentados aún NOT_RUN. El PASS end-to-end anterior no se
 extrapola a inputs de Minecraft. Baseline AMD íntegra, sin rerun de este harness.
+
+## Minecraft integration shadow — failed before NGX, no presentation attempt
+
+Run20261004-010600-001, candidate milestone621546f. Real Minecraft inputs captured;
+own JNI and external public loader pass. D3D12CreateDevice fails0x887A0007 during
+SESSION_INIT. NGX Init/CreateFeature/kernels/Evaluate/G1 not reached. Generated0.
+Historical offscreen VULKAN_DLSSG_D3D12_VULKAN_X2=PASS remains distinct from
+MINECRAFT_DLSSG_SHADOW_X2=FAIL. MINECRAFT_DLSSG_X2_PRESENTATION=NOT_RUN_SHADOW_GATE_FAILED.
+One attempt, no automatic retry/fix/second GPU run, no x3–x6. World saved/normal shutdown,
+isolated config restored, baseline hashes unchanged. All timing/visual FG quality and
+frame-order claims stay NOT_MEASURED/NOT_TESTED. Suspected late EnableDebugLayer is
+medium-confidence hypothesis, not confirmed private backend failure. See integration
+document and logs/runtime/minecraft-dlssg-x2/20261004-010600-001/result.json.

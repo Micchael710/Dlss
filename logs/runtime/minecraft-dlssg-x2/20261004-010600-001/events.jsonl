@@ -1,0 +1,7 @@
+{"timestamp_ns":74472270590900,"pid":1962152,"type":"external_load_begin","detail":"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\minecraft-dlssg-x2\\\\20261004-010600-001\\\\component\\\\version.dll"}
+{"timestamp_ns":74472309431600,"pid":1962152,"type":"external_load_complete","detail":"00007FFCC2460000"}
+{"timestamp_ns":74472322882500,"pid":1962152,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":74472323149700,"pid":1962152,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":74472323175600,"pid":1962152,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":74472323204500,"pid":1962152,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 luid=4c29010000000000"}
+{"timestamp_ns":74472343542900,"pid":1962152,"type":"d3d12_result","detail":"D3D12CreateDevice=0x887a0007"}

@@ -222,3 +222,18 @@ cuatro GPU blits; G1 se leasea directamente. Runtime JNI y CPU tests compilan/pa
 la prueba Minecraft aún no se ejecutó. CURRENT_REAL_PIPELINE.md y
 WISTERIA_DLSSG_X2_INTEGRATION.md documentan la adaptación y sus límites.
 Los PASS de este documento siguen siendo del harness aislado, no de Minecraft.
+
+## Minecraft shadow integration — 2026-10-03, closed FAIL
+
+Single run 20261004-010600-001: same GPU selected, JNI/public loader pass, but
+D3D12CreateDevice returns0x887A0007 DXGI_ERROR_DEVICE_RESET. Persistent shared pool,
+resource/fence imports and cross-API submits not reached. This does not invalidate
+or repeat the closed standalone interop PASS; it prevents claiming Minecraft PASS.
+
+Native embedded session reused standalone EnableDebugLayer during first Minecraft
+job. Late enable is a plausible device-reset cause per Microsoft's public contract;
+prior D3D12 device remains unproven. No debug-layer correction or retry applied.
+Resource-pool/lifetime/resize behavior is implemented but runtime-unvalidated.
+Per-frame GPU copies/waits are designed, executed transport copies0 in failed run.
+Provider disabled cleanly; no D3D12 Present/new swapchain/provider vkQueuePresent.
+See WISTERIA_DLSSG_X2_INTEGRATION.md and the run result for confidence/next step.

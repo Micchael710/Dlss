@@ -1,0 +1,4 @@
+[21:08:30] [SR-FrameGeneration-FG/ERROR] [Wisteria/]: DLSSG_EXPERIMENT_FAIL stage=SESSION_INIT (no retry)
+Caused by: java.lang.IllegalStateException: D3D12CreateDevice 0x887a0007
+[21:08:30] [SR-FrameGeneration-FG/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=null, lowLatency=null
+[21:11:07] [Render thread/INFO] [SuperResolution/]: Frame generation backend negotiation: fg=null, lowLatency=null

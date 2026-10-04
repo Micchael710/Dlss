@@ -1,0 +1,1 @@
+{"stage": "SESSION_INIT/D3D12_CREATE_DEVICE", "api": "D3D12CreateDevice", "hresult": "0x887A0007", "symbolic": "DXGI_ERROR_DEVICE_RESET", "retry_count": 0, "ngx_init_reached": false, "source": "events.jsonl"}
