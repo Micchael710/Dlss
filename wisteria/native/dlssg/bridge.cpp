@@ -30,7 +30,7 @@ struct VkSample {
     VkBuffer buffer{}; VkDeviceMemory memory{}; size_t size{}; bool coherent=false;
 };
 struct Slot {
-    // color, HUDless, depth, motion, G1. All handles are imported once.
+    // color, HUDless, depth, motion, followed by N independent generated images.
     std::vector<Image> images;
     VkCommandBuffer inputs{};
     ComPtr<ID3D12CommandAllocator> allocator;
@@ -109,7 +109,7 @@ struct Session {
     void event(const char* type, const std::string& detail) {
         events<<"{\"timestamp_ns\":"<<std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count()
               <<",\"type\":"<<jsonQuote(type)<<",\"detail\":"<<jsonQuote(detail)<<"}\n";
-        // Stream buffering is intentional; no per-frame checkpoint replacement or sleep.
+        events.flush(); // Retain the short failing run; no checkpoint replacement or fence wait.
     }
     Session(fs::path out, fs::path dll, fs::path runtime,unsigned count):evidence(out),dx(evidence,runtime),events(out/"provider-events.jsonl") {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
@@ -329,7 +329,7 @@ struct Session {
         s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2);
         NVSDK_NGX_Parameter_SetULL(p.parameters,NVSDK_NGX_DLSSG_Parameter_BackbufferFrameID,frameId);
         auto code=NGX_D3D12_EVALUATE_DLSSG(s.commands.Get(),p.feature,p.parameters,&ep,&opts);
-        event("evaluate", "realFrameId="+std::to_string(frameId)+" deltaMs="+std::to_string(delta)+" reset="+std::to_string(reset)+" count="+std::to_string(p.generatedCount)+" index="+std::to_string(k+1)+" result="+resultHex(code)+" VkImage="+handleText(s.images[4+k].image)+" ready="+std::to_string(s.ready)+" done="+std::to_string(s.done));
+        event("evaluate", "realFrameId="+std::to_string(frameId)+" deltaMs="+std::to_string(delta)+" reset="+std::to_string(reset)+" evaluateReset="+std::to_string(bool(opts.reset))+" count="+std::to_string(p.generatedCount)+" index="+std::to_string(k+1)+" result="+resultHex(code)+" VkImage="+handleText(s.images[4+k].image)+" ready="+std::to_string(s.ready)+" done="+std::to_string(s.done));
         if(!NVSDK_NGX_SUCCEED(code)){p.failed=true;throw std::runtime_error("NGX Evaluate "+resultHex(code));}
         s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2+1);s.commands->ResolveQueryData(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2,2,s.timingReadback.Get(),k*16);
         for(auto& im:s.images)dxBarrier(s,im,D3D12_RESOURCE_STATE_COMMON);
@@ -411,6 +411,30 @@ using namespace integration;
 #define JNI_METHOD(name) Java_org_ireallywanttosleep_wisteria_dlssg_DlssgBridge_##name
 extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 2;}
 extern "C" JNIEXPORT jint JNICALL JNI_METHOD(reportedMax)(JNIEnv*,jclass,jlong h){return session(h).reportedMax;}
+extern "C" JNIEXPORT jintArray JNICALL JNI_METHOD(probeCapabilities)(JNIEnv* e,jclass,jstring out,jstring dll,jstring runtime,jint count){
+    try {
+        auto directory=path(e,out);fs::create_directories(directory);auto rt=path(e,runtime);
+        if(sha(readFile(rt/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")throw std::runtime_error("Runtime SHA256 mismatch");
+        vendorLog.open(directory/"ngx.log");validationLog.open(directory/"d3d12-debug.log");
+        EvidenceRecorder recorder(directory);ExternalLoader loader;D3D12NgxSession dx(recorder,rt);
+        try {
+            loader.start(recorder,path(e,dll),count);dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
+            NVSDK_NGX_Parameter* caps{};auto q=NVSDK_NGX_D3D12_GetCapabilityParameters(&caps);
+            if(!NVSDK_NGX_SUCCEED(q)||!caps)throw std::runtime_error("Preflight capability query failed");
+            unsigned available{},maximum{};
+            auto a=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_Parameter_FrameGeneration_Available,&available);
+            auto m=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_DLSSG_Parameter_MultiFrameCountMax,&maximum);
+            NVSDK_NGX_D3D12_DestroyParameters(caps);
+            recorder.raw("raw_reported_multiframecountmax",std::to_string(maximum));
+            recorder.str("raw_max_getter_result",resultHex(m));
+            recorder.str("capability_provenance","public NGX query after external loader; may be hooked; no feature or Evaluate");
+            recorder.raw("createfeature_calls","0");recorder.raw("evaluate_calls","0");
+            dx.close();vendorLog.close();validationLog.close();
+            jint values[]={jint(available),jint(maximum),jint(a),jint(m)};
+            auto array=e->NewIntArray(4);e->SetIntArrayRegion(array,0,4,values);return array;
+        } catch(...) {dx.close();vendorLog.close();validationLog.close();throw;}
+    } catch(const std::exception& ex){error(e,ex);return nullptr;}
+}
 extern "C" JNIEXPORT jlong JNICALL JNI_METHOD(create)(JNIEnv* e,jclass,jlong i,jlong p,jlong d,jlong q,jint family,jlong proc,jstring out,jstring dll,jstring runtime,jint count){
     Session* s{};try{s=new Session(path(e,out),path(e,dll),path(e,runtime),count);s->borrow(reinterpret_cast<VkInstance>(i),reinterpret_cast<VkPhysicalDevice>(p),reinterpret_cast<VkDevice>(d),reinterpret_cast<VkQueue>(q),family,reinterpret_cast<PFN_vkGetInstanceProcAddr>(proc));return reinterpret_cast<jlong>(s);}catch(const std::exception& ex){if(s){s->unsafe=true;s->evidence.str("integration_error",ex.what());}error(e,ex);return 0;}
 }

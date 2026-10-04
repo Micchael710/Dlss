@@ -29,6 +29,8 @@ final class DlssgBridge {
     }
     static native int abi();
     static native int reportedMax(long session);
+    /** Isolated preflight: public NGX init/query only, no feature or Evaluate. */
+    static native int[] probeCapabilities(String out,String dll,String runtime,int requestedMax);
     static native long create(long instance,long physical,long device,long queue,int family,long gipa,
                               String out,String dll,String runtime,int requestedMax);
     static native long createPool(long session,int w,int h,int rw,int rh,int slots,int count);

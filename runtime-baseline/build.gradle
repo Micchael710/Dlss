@@ -93,6 +93,14 @@ tasks.register('auditRuntimeJava') {
         }
         println "MINECRAFT_RUNTIME_JAVA ${launcher.metadata.languageVersion}"
         println "MINECRAFT_RUNTIME_EXECUTABLE ${launcher.executablePath.asFile.absolutePath}"
+        println "GRADLE_JAVA_VERSION ${System.getProperty('java.version')}"
+        println "GRADLE_JAVA_HOME ${System.getProperty('java.home')}"
+        def versionProcess = new ProcessBuilder(launcher.executablePath.asFile.absolutePath, '--version').redirectErrorStream(true).start()
+        def versionOutput = versionProcess.inputStream.text
+        if (versionProcess.waitFor() != 0 || !versionOutput.contains('25.0.4')) {
+            throw new GradleException('runClient executable must be Java 25.0.4')
+        }
+        println versionOutput.trim()
         println 'MOD_BYTECODE_TARGET 21 (prebuilt external artifacts)'
     }
 }

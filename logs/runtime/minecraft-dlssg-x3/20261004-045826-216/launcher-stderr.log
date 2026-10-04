@@ -1,0 +1,87 @@
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by cpw.mods.jarhandling.impl.SecureJarVerifier$UnsafeAccessor (file:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/cpw.mods/securejarhandler/3.0.8/c0ef95cecd8699a0449053ac7d9c160748d902cd/securejarhandler-3.0.8.jar)
+WARNING: Please consider reporting this to the maintainers of class cpw.mods.jarhandling.impl.SecureJarVerifier$UnsafeAccessor
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by com.sun.jna.Native in module com.sun.jna (union:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/net.java.dev.jna/jna/5.14.0/67bf3eaea4f0718cb376a181a629e5f88fa1c9dd/jna-5.14.0.jar%23124!/)
+WARNING: Use --enable-native-access=com.sun.jna to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[LWJGL] Version: 3.3.4+7
+	 OS: Windows 11 v10.0
+	JRE: Windows amd64 25.0.4
+	JVM: Java HotSpot(TM) 64-Bit Server VM v25.0.4+7-LTS-189 by Oracle Corporation
+[LWJGL] Loading JNI library: lwjgl
+	Module: org.lwjgl
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.system.Library$$Lambda/0x0000000085d18660 in module org.lwjgl (union:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl/3.3.4/b86c3e4832426e8a6b466013b7cb34b40e9ce956/lwjgl-3.3.4.jar%23167!/)
+WARNING: Use --enable-native-access=org.lwjgl to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl.dll
+[LWJGL] Loading library: jemalloc
+	Module: org.lwjgl.jemalloc
+[LWJGL] [ThreadLocalUtil] Unsupported JNI version detected, this may result in a crash. Please inform LWJGL developers.
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\jemalloc.dll
+[LWJGL] MemoryUtil allocator: JEmallocAllocator
+[LWJGL] Loading library: glfw
+	Module: org.lwjgl.glfw
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\glfw.dll
+[LWJGL] Java 9 check intrinsics enabled
+[LWJGL] Closure Registry: simple
+[LWJGL] Loading JNI library: lwjgl_opengl
+	Module: org.lwjgl.opengl
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.opengl.GL$$Lambda/0x0000000085e2d7e8 in module org.lwjgl.opengl (union:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-opengl/3.3.4/2852ac7d9f6fc71349f1ce28e2708ff1977f18af/lwjgl-opengl-3.3.4.jar%23161!/)
+WARNING: Use --enable-native-access=org.lwjgl.opengl to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_opengl.dll
+[LWJGL] Loading library: opengl32
+	Module: org.lwjgl.opengl
+	opengl32.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\opengl32.dll
+[LWJGL] Java 10 multiplyHigh enabled
+[LWJGL] Loading JNI library: lwjgl_stb
+	Module: org.lwjgl.stb
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.stb.LibSTB$$Lambda/0x0000000085e3e890 in module org.lwjgl.stb (union:/C:/Users/micha/.gradle/caches/modules-2/files-2.1/org.lwjgl/lwjgl-stb/3.3.3/25dd6161988d7e65f71d5065c99902402ee32746/lwjgl-stb-3.3.3.jar%23164!/)
+WARNING: Use --enable-native-access=org.lwjgl.stb to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_stb.dll
+[LWJGL] Java 9 text decoding enabled
+[LWJGL] Loading library: OpenAL
+	Module: org.lwjgl.openal
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\OpenAL.dll
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by io.homo.superresolution.core.NativeLibManager in module super_resolution (union:/D:/ProjectDllsss/builds/experimental/dlssg-x2/superresolution-dlssg-x2-candidate.jar%23175!/)
+WARNING: Use --enable-native-access=super_resolution to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[LWJGL] Loading library: vulkan-1
+	Module: org.lwjgl.vulkan
+	vulkan-1.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\vulkan-1.dll
+[LWJGL] Loading library: vulkan-1
+	Module: org.lwjgl.vulkan
+	vulkan-1.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\vulkan-1.dll
+[LWJGL] Loading library: user32
+	Module: org.lwjgl
+	user32.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\System32\USER32.dll
+[LWJGL] Loading JNI library: lwjgl_vma
+	Module: org.lwjgl.vma
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.lwjgl.util.vma.LibVma$$Lambda/0x0000000086113428 in module org.lwjgl.vma (union:/D:/ProjectDllsss/builds/experimental/dlssg-x2/superresolution-dlssg-x2-candidate.jar%23175_/META-INF/jarjar/lwjgl-vma-3.3.4-merged.jar%23225!/)
+WARNING: Use --enable-native-access=org.lwjgl.vma to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_vma.dll
+[LWJGL] Java 16 memcpy enabled
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.ireallywanttosleep.wisteria.dlssg.DlssgBridge in module wisteria (union:/D:/ProjectDllsss/builds/experimental/dlssg-x2/wisteria-dlssg-x2-candidate.jar%23176!/)
+WARNING: Use --enable-native-access=wisteria to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+

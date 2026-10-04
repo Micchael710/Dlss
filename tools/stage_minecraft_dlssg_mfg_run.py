@@ -29,12 +29,14 @@ for key,value in [('provider','wisteria:dlssg_fg'),('backend','wisteria:dlssg'),
     text,n=re.subn(r'(\[frame_generation\][\s\S]*?'+key+r' = )"[^"]+"',lambda m:m[1]+'"'+value+'"',text,count=1);assert n==1
 config.write_bytes(text.encode('utf-8'))
 head=subprocess.check_output(['C:/Users/micha/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git/cmd/git.exe','rev-parse','HEAD'],cwd=ROOT,text=True).strip()
+source_paths=list((ROOT/'wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg').glob('*.java'))+[ROOT/'wisteria/native/dlssg/bridge.cpp',ROOT/'runtime-baseline/build.gradle']
+source_sha256={p.relative_to(ROOT).as_posix():sha(p) for p in source_paths}
 manifest=dict(run_id=runid,mode='presentation',requested_count=count,requested_indices=list(range(1,count+1)),external_requested_max=count,
              raw_reported_max=None,capability_provenance='pending actual public NGX query after external loader; may be hooked',
              attempt_limit=1,status='PREPARED_NOT_LAUNCHED',implementation_commit=head,artifacts=artifact['artifacts'],baseline_sha256=artifact['baseline_sha256'],
              original_test_config_sha256=hashlib.sha256(old).hexdigest(),test_config_sha256=sha(config),component_sha256=sha(component),runtime_sha256=sha(runtime),
              profile='Minecraft1.21.1 / NeoForge21.1.219 / Java25 / Complementary / FSR1 ratio1.7 / VulkanPresent / OptiScalerOFF',
-             required_runtime_java=25,mod_bytecode_target=21,actual_runtime_java=None,
+             required_runtime_java='25.0.4',mod_bytecode_target=21,actual_runtime_java=None,source_sha256=source_sha256,
              pool_formula='floor(6/(requested_count+1))+2; candidate image weight retained even for reset/disabled group',pool_slots=6//(count+1)+2,outputs_per_slot=count,
              samples='at most 3 intervals; start after non-reset camera motion; CPU readback diagnostic only')
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

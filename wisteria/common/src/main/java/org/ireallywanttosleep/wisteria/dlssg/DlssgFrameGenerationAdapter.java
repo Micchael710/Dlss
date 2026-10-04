@@ -20,6 +20,7 @@ final class DlssgFrameGenerationAdapter {
     private Pool current;
     private final List<Pool> pools=new ArrayList<>();
     private PrintWriter events;
+    private PrintWriter jsonEvents;
     private int dispatched,samples;
     private volatile int reportedMax;
     private final int requestedMax=Integer.getInteger("wisteria.dlssg.requestedCount",1);
@@ -35,11 +36,27 @@ final class DlssgFrameGenerationAdapter {
         }catch(Exception ignored){}
     }
     private void requireOwner(){if(owner==null)owner=Thread.currentThread();if(owner!=Thread.currentThread())throw new IllegalStateException("DLSS-G accessed outside FG worker");}
-    private synchronized void event(String message){if(events!=null){events.println(System.nanoTime()+" "+message);if(message.startsWith("RETIRED")&&dispatched%120==0)events.flush();}}
+    private synchronized void event(String message){if(events!=null){
+        long now=System.nanoTime();events.println(now+" "+message);
+        var record=new LinkedHashMap<String,Object>();record.put("timestamp_ns",now);
+        record.put("type",message.split(" ",2)[0]);record.put("detail",message);
+        var fields=new LinkedHashMap<String,String>();
+        var matcher=java.util.regex.Pattern.compile("(\\w+)=([^\\s;]+)").matcher(message);
+        while(matcher.find())fields.put(matcher.group(1),matcher.group(2));record.put("fields",fields);
+        if(jsonEvents!=null)jsonEvents.println(new com.google.gson.Gson().toJson(record));
+    }}
     private void initialize(VulkanDevice device){
         if(session!=0)return;
         try{Path out=Path.of(System.getProperty("wisteria.dlssg.runDir")).toAbsolutePath();
-            Files.createDirectories(out);events=new PrintWriter(Files.newBufferedWriter(out.resolve("frame-sequence.log")));
+            Files.createDirectories(out);
+            var runtime=new LinkedHashMap<String,Object>();
+            runtime.put("java_version",System.getProperty("java.version"));runtime.put("java_home",System.getProperty("java.home"));
+            runtime.put("java_runtime_version",System.getProperty("java.runtime.version"));runtime.put("pid",ProcessHandle.current().pid());
+            runtime.put("process_command",ProcessHandle.current().info().command().orElse("UNKNOWN"));
+            Files.writeString(out.resolve("runtime-jvm.json"),new com.google.gson.GsonBuilder().setPrettyPrinting().create().toJson(runtime));
+            if(!"25.0.4".equals(System.getProperty("java.version")))throw new IllegalStateException("Controlled experiment requires Minecraft Java25.0.4");
+            events=new PrintWriter(Files.newBufferedWriter(out.resolve("frame-sequence.log")),true);
+            jsonEvents=new PrintWriter(Files.newBufferedWriter(out.resolve("frame-sequence.jsonl")),true);
             session=DlssgBridge.create(device.getVkInstance().address(),device.getPhysicalDevice().address(),device.getVkDevice().address(),
                 device.requireFgQueue().getQueue().address(),device.requireFgQueue().getQueueFamilyIndex(),
                 VK.getFunctionProvider().getFunctionAddress("vkGetInstanceProcAddr"),out.toString(),
@@ -114,7 +131,9 @@ final class DlssgFrameGenerationAdapter {
     private final class Pool{
         final Key key;final long nativePool;final Slot[] slots;boolean retired,closed;
         Pool(VulkanDevice device,Key k){key=k;int count=AsyncFramePresenter.maximumLiveProviderLeases(k.count);nativePool=DlssgBridge.createPool(session,k.w,k.h,k.rw,k.rh,count,k.count);slots=new Slot[count];for(int i=0;i<count;i++)slots[i]=new Slot(this,i,device);}
-        Slot acquire(){for(Slot s:slots)if(!s.leased){s.leased=true;return s;}throw new IllegalStateException("Derived shared-pool capacity exhausted; no CPU stall or reuse");}
+        Slot acquire(){for(Slot s:slots)if(!s.leased){s.leased=true;
+            event("POOL_LEASE slot="+s.index+" inFlight="+Arrays.stream(slots).filter(x->x.leased).count()+" capacity="+slots.length);return s;}
+            event("POOL_EXHAUSTION capacity="+slots.length);throw new IllegalStateException("Derived shared-pool capacity exhausted; no CPU stall or reuse");}
     }
     private final class Slot{
         final Pool pool;final int index;final VulkanTexture real;final List<VulkanTexture> generated;boolean leased;
@@ -133,7 +152,11 @@ final class DlssgFrameGenerationAdapter {
         Lease(Slot s,VulkanDevice d,long[] ready,long[] wait,long id,long epoch,boolean reset,boolean shadow){
             slot=s;device=d;captureReady=ready.clone();this.wait=wait.clone();this.id=id;this.epoch=epoch;this.reset=reset;
             status=new DlssgOutputStatus(id,wait[1],s.generated.size(),reset||shadow,flags->{
-                for(int k=0;k<flags.length;k++)event("OUTPUT_READY realFrameId="+id+" previousRealFrameId="+(id-1)+" index="+(k+1)+" count="+flags.length+" disable="+flags[k]+" reset="+reset+" epoch="+epoch+" completion="+wait[1]+" presentable="+(flags[k]==0&&!reset&&!shadow)+" VkImage="+slot.generated.get(k).handle());
+                for(int k=0;k<flags.length;k++){
+                    String state=flags[k]==0?"ENABLED":flags[k]==1?"DISABLED":"UNKNOWN";
+                    event("OUTPUT_READY realFrameId="+id+" previousRealFrameId="+(id-1)+" index="+(k+1)+" count="+flags.length+" rawStatus="+Integer.toUnsignedString(flags[k])+" status="+state+" disable="+flags[k]+" reset="+reset+" epoch="+epoch+" completion="+wait[1]+" completionScope=GROUP_ORDERED_COMMAND_LIST presentable="+(flags[k]==0&&!reset&&!shadow)+" VkImage="+slot.generated.get(k).handle());
+                    if("UNKNOWN".equals(state))fail("OUTPUT_STATUS_NOT_CONFIRMED_INDEX_"+(k+1),new IllegalStateException("STATUS_NOT_WRITTEN_OR_UNCONSUMED raw="+Integer.toUnsignedString(flags[k])+" realFrameId="+id));
+                }
             });
         }
         public List<VulkanTexture> generatedOutputs(){return slot.generated;}
@@ -176,5 +199,6 @@ final class DlssgFrameGenerationAdapter {
     }
     void close(){requireOwner();if(session!=0){try{DlssgBridge.close(session);session=0;}catch(Throwable e){fail("TEARDOWN",e);}}
         if(events!=null){events.flush();events.close();events=null;}
+        if(jsonEvents!=null){jsonEvents.flush();jsonEvents.close();jsonEvents=null;}
         if(session==0){pools.clear();current=null;lastId=lastEpoch=-1;invalidHistory=true;owner=null;}}
 }

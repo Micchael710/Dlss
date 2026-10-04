@@ -1,0 +1,41 @@
+Derived from provider-events.jsonl
+image=00000268DAEA5F50 memory=00000268DB8BC860 D3D12=00000268D1F22A20 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=000002690218E360 memory=00000268178DC760 D3D12=00000268D1F1FA50 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=0000026902190640 memory=00000268DA8415E0 D3D12=00000268D1F2C320 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=000002690218E930 memory=00000268DA8417C0 D3D12=0000026901E91C70 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=000002690218FAA0 memory=00000268DA841F40 D3D12=0000026901E912E0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=0000026902190C10 memory=00000268DA8419A0 D3D12=0000026901E92600 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F4E20 memory=00000268D19137B0 D3D12=0000026901E92F90 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F6560 memory=00000268D1914110 D3D12=0000026901E8FFC0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F6B30 memory=00000268D19142F0 D3D12=0000026901E95F60 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=00000268175F3CB0 memory=00000268D1914890 D3D12=0000026901E94C40 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=0000026818D2C5E0 memory=00000268DA4DC500 D3D12=0000026901E955D0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=0000026818D2D750 memory=00000268DA4DCC80 D3D12=0000026901E968F0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F7CA0 memory=00000268D1915970 D3D12=0000026901E97280 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F4280 memory=00000268D19155B0 D3D12=0000026901E942B0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268175F8E10 memory=00000268D1915790 D3D12=0000026901E9A250 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=00000268175F8270 memory=0000026816197920 D3D12=0000026901E98F30 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=000002690218D7C0 memory=00000268DA841220 D3D12=0000026901E998C0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=000002690218DD90 memory=00000268DA841B80 D3D12=0000026901E9ABE0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268F587A090 memory=00000269018B3050 D3D12=0000026901E9B570 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268F587A660 memory=00000269018B2510 D3D12=0000026901E985A0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268F587AC30 memory=00000269018B2C90 D3D12=0000026901E9C890 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=00000268F5878950 memory=00000269018B28D0 D3D12=0000026901E9D220 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true
+image=00000268F587B200 memory=00000269018B26F0 D3D12=0000026901E9DBB0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+image=00000268F58794F0 memory=0000026901DF4430 D3D12=0000026901E9E540 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true
+realFrameId=1 state=FILLING
+realFrameId=1 deltaMs=0.000000 reset=1 evaluateReset=1 count=2 index=1 result=0x00000001 VkImage=000002690218FAA0 ready=1 done=2
+realFrameId=1 deltaMs=0.000000 reset=1 evaluateReset=0 count=2 index=2 result=0x00000001 VkImage=0000026902190C10 ready=1 done=2
+realFrameId=1 ready=1 completion=2 cpuWait=false
+realFrameId=1 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait
+realFrameId=2 state=FILLING
+realFrameId=2 deltaMs=294.250600 reset=0 evaluateReset=0 count=2 index=1 result=0x00000001 VkImage=0000026818D2C5E0 ready=3 done=4
+realFrameId=2 deltaMs=294.250600 reset=0 evaluateReset=0 count=2 index=2 result=0x00000001 VkImage=0000026818D2D750 ready=3 done=4
+realFrameId=2 ready=3 completion=4 cpuWait=false
+realFrameId=2 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait
+realFrameId=1 index=1 count=2 done=2 DLSSG_GPU_ms=1.041408 INPUT_GPU_COPY_ms=0.146464 disable=1 generatedFrames=0
+realFrameId=1 index=2 count=2 done=2 DLSSG_GPU_ms=0.020480 INPUT_GPU_COPY_ms=0.146464 disable=1 generatedFrames=0
+realFrameId=1 state=FREE
+realFrameId=2 index=1 count=2 done=4 DLSSG_GPU_ms=5.731328 INPUT_GPU_COPY_ms=0.104960 disable=0 generatedFrames=1
+realFrameId=2 index=2 count=2 done=4 DLSSG_GPU_ms=4.478976 INPUT_GPU_COPY_ms=0.104960 disable=-1 generatedFrames=1
+realFrameId=2 state=FREE

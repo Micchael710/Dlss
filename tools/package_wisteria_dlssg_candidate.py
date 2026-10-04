@@ -30,6 +30,7 @@ for label,source,baseline in [('superresolution',sr,srbase),('wisteria',w,wbase)
             for n in ['natives/windows-x64/wisteria_fsr_bridge.dll','natives/windows-x64/amd_fidelityfx_vk.dll']:
                 assert src.read(n)==old.read(n),'AMD native changed: '+n
             assert 'natives/windows-x64/wisteria_dlssg_bridge.dll' in names
+            assert src.read('natives/windows-x64/wisteria_dlssg_bridge.dll')==(ROOT/'wisteria/native/build/dlssg-windows-x64/wisteria_dlssg_bridge.dll').read_bytes(),'Stale own JNI DLL in JAR'
             assert not any('sm86_backend' in n or n.endswith('/version.dll') for n in names)
             manifest['amd_classes_unchanged']=len(fsr)
     with zipfile.ZipFile(target) as z:

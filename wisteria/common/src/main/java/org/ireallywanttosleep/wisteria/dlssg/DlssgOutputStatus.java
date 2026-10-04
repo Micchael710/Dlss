@@ -20,12 +20,13 @@ final class DlssgOutputStatus {
         if(id!=realId||done!=completionValue||values.length!=count){
             ready.completeExceptionally(new IllegalStateException("Completion belongs to another interval/output group"));return;
         }
-        for(int value:values)if(value<0){ready.completeExceptionally(new IllegalStateException("GPU disable metadata unavailable"));return;}
         flags=values.clone();
         try{observer.accept(flags.clone());ready.complete(null);}
         catch(Throwable e){ready.completeExceptionally(e);}
     }
     CompletableFuture<Void> readiness(){return ready;}
     int flag(int index){if(!ready.isDone())throw new IllegalStateException("Output validity not resolved");ready.getNow(null);return flags[index];}
+    /** A written API disable flag is 0 or 1. Sentinel/other values remain UNKNOWN. */
+    String state(int index){int value=flag(index);return value==0?"ENABLED":value==1?"DISABLED":"UNKNOWN";}
     boolean presentable(int index){return !suppress&&flag(index)==0;}
 }

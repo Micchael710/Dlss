@@ -1,0 +1,47 @@
+[LWJGL] Version: 3.3.4+7
+	 OS: Windows 11 v10.0
+	JRE: Windows amd64 21.0.12.1
+	JVM: OpenJDK 64-Bit Server VM v21.0.12.1+1-LTS by Eclipse Adoptium
+[LWJGL] Loading JNI library: lwjgl
+	Module: org.lwjgl
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl.dll
+[LWJGL] Loading library: jemalloc
+	Module: org.lwjgl.jemalloc
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\jemalloc.dll
+[LWJGL] MemoryUtil allocator: JEmallocAllocator
+[LWJGL] Loading library: glfw
+	Module: org.lwjgl.glfw
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\glfw.dll
+[LWJGL] Java 9 check intrinsics enabled
+[LWJGL] Closure Registry: simple
+[LWJGL] Loading JNI library: lwjgl_opengl
+	Module: org.lwjgl.opengl
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_opengl.dll
+[LWJGL] Loading library: opengl32
+	Module: org.lwjgl.opengl
+	opengl32.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\opengl32.dll
+[LWJGL] Java 10 multiplyHigh enabled
+[LWJGL] Loading JNI library: lwjgl_stb
+	Module: org.lwjgl.stb
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_stb.dll
+[LWJGL] Java 9 text decoding enabled
+[LWJGL] Loading library: OpenAL
+	Module: org.lwjgl.openal
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\OpenAL.dll
+[LWJGL] Loading library: vulkan-1
+	Module: org.lwjgl.vulkan
+	vulkan-1.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\vulkan-1.dll
+[LWJGL] Loading library: vulkan-1
+	Module: org.lwjgl.vulkan
+	vulkan-1.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\SYSTEM32\vulkan-1.dll
+[LWJGL] Loading library: user32
+	Module: org.lwjgl
+	user32.dll not found in org.lwjgl.librarypath=C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64
+	Loaded from system paths: C:\WINDOWS\System32\USER32.dll
+[LWJGL] Loading JNI library: lwjgl_vma
+	Module: org.lwjgl.vma
+	Loaded from org.lwjgl.librarypath: C:\Users\micha\AppData\Local\Temp\lwjgl_micha\3.3.4+7\x64\lwjgl_vma.dll
+[LWJGL] Java 16 memcpy enabled

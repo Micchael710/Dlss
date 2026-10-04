@@ -1,0 +1,145 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Graphics API: OpenGL
+Current Minecraft version: 1.21.1
+Enabled loader: neoforge
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders UP-TO-DATE
+> Task :buildSrc:extractPluginRequests NO-SOURCE
+> Task :buildSrc:generatePluginAdapters NO-SOURCE
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins UP-TO-DATE
+> Task :buildSrc:compilePluginsBlocks UP-TO-DATE
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors UP-TO-DATE
+> Task :buildSrc:generateScriptPluginAdapters UP-TO-DATE
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy UP-TO-DATE
+> Task :buildSrc:compileGroovyPlugins NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+
+> Configure project :
+Minecraft native dependency profile: windows-x64 (LWJGL versions unchanged)
+
+> Task :neoforge:createMinecraftArtifacts
+Loaded 129 artifacts from D:\ProjectDllsss\superresolution\neoforge\build\tmp\createMinecraftArtifacts\nfrt_artifact_manifest.properties
+*** Started working on downloadJson
+ DONE  Completed downloadJson in 0.04s
+*** Started working on downloadClient
+*** Started working on downloadServer
+*** Started working on downloadClientMappings
+ DONE  Completed downloadClientMappings in 0.07s
+ DONE  Completed downloadClient in 0.07s
+ DONE  Completed downloadServer in 0.07s
+*** Started working on mergeMappings
+Waiting for lock on mergeMappings_2100ae7c755bb34ac4545c9eeec4a90c42ad48c4.
+*** Started working on stripClient
+Waiting for lock on stripClient_2d7e78755d8b28f5d42c07f6d2b44b7f333acb44.
+*** Started working on extractServer
+Waiting for lock on extractServer_3708c41639d60b56739a2bf9df29858932d3099a.
+> Task :common:createMinecraftArtifacts
+Loaded 91 artifacts from D:\ProjectDllsss\superresolution\common\build\tmp\createMinecraftArtifacts\nfrt_artifact_manifest.properties
+*** Started working on downloadJson
+ DONE  Completed downloadJson in 0.03s
+*** Started working on downloadServer
+*** Started working on downloadClientMappings
+*** Started working on downloadClient
+ DONE  Completed downloadServer in 0.05s
+ DONE  Completed downloadClient in 0.05s
+ DONE  Completed downloadClientMappings in 0.05s
+*** Started working on mergeMappings
+ REUSE Used cache of mergeMappings in 0.01s
+*** Started working on stripClient
+ REUSE Used cache of stripClient in 0.00s
+*** Started working on extractServer
+ REUSE Used cache of extractServer in 0.00s
+*** Started working on stripServer
+ REUSE Used cache of stripServer in 0.00s
+*** Started working on merge
+ REUSE Used cache of merge in 0.00s
+*** Started working on rename
+ REUSE Used cache of rename in 0.00s
+*** Started working on decompile
+ REUSE Used cache of decompile in 0.00s
+*** Started working on inject
+ REUSE Used cache of inject in 0.00s
+*** Started working on patch
+ REUSE Used cache of patch in 0.00s
+*** Started working on transformSources
+ REUSE Used cache of transformSources in 0.00s
+*** Started working on recompile
+ REUSE Used cache of recompile in 0.00s
+*** Started working on mergeWithSources
+ REUSE Used cache of mergeWithSources in 0.00s
+Total runtime: 1.79s
+
+
+> Task :common:compileSharedJava UP-TO-DATE
+> Task :common:processSharedResources NO-SOURCE
+> Task :common:sharedClasses UP-TO-DATE
+> Task :common:compileIrisapiJava UP-TO-DATE
+> Task :common:compileMaterialJava UP-TO-DATE
+> Task :common:processIrisapiResources UP-TO-DATE
+> Task :common:irisapiClasses UP-TO-DATE
+> Task :common:processMaterialResources NO-SOURCE
+> Task :common:materialClasses UP-TO-DATE
+> Task :common:compileJava UP-TO-DATE
+> Task :common:processResources UP-TO-DATE
+> Task :common:classes UP-TO-DATE
+> Task :common:compileTestJava UP-TO-DATE
+> Task :common:processTestResources NO-SOURCE
+> Task :common:testClasses UP-TO-DATE
+> Task :common:test UP-TO-DATE
+
+> Task :neoforge:createMinecraftArtifacts
+
+ REUSE Used cache of mergeMappings in 1.01s
+ REUSE Used cache of stripClient in 1.00s
+ REUSE Used cache of extractServer in 1.00s
+*** Started working on stripServer
+ REUSE Used cache of stripServer in 0.00s
+*** Started working on merge
+ REUSE Used cache of merge in 0.00s
+*** Started working on rename
+ REUSE Used cache of rename in 0.00s
+*** Started working on decompile
+ REUSE Used cache of decompile in 0.00s
+*** Started working on inject
+ REUSE Used cache of inject in 0.00s
+*** Started working on patch
+ REUSE Used cache of patch in 0.00s
+*** Started working on applyNeoforgePatches
+ REUSE Used cache of applyNeoforgePatches in 0.00s
+*** Started working on transformSources
+ REUSE Used cache of transformSources in 0.00s
+*** Started working on recompile
+ REUSE Used cache of recompile in 0.00s
+*** Started working on sourcesWithNeoForge
+ REUSE Used cache of sourcesWithNeoForge in 0.00s
+*** Started working on compiledWithNeoForge
+ REUSE Used cache of compiledWithNeoForge in 0.00s
+*** Started working on sourcesAndCompiledWithNeoForge
+ REUSE Used cache of sourcesAndCompiledWithNeoForge in 0.00s
+Total runtime: 2.98s
+
+
+> Task :neoforge:mergeVmaNatives UP-TO-DATE
+> Task :neoforge:compileJava UP-TO-DATE
+> Task :neoforge:processResources
+> Task :neoforge:classes
+> Task :neoforge:jarJar
+> Task :neoforge:jar
+
+[Incubating] Problems report is available at: file:///D:/ProjectDllsss/superresolution/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 23s
+25 actionable tasks: 5 executed, 20 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

@@ -1,0 +1,143 @@
+{
+  "MINECRAFT_DLSSG_X3": "FAIL",
+  "run_id": "20261004-045826-216",
+  "Minecraft_process_java": {
+    "java_version": "25.0.4",
+    "java_home": "C:\\Program Files\\Java\\jdk-25.0.4",
+    "java_runtime_version": "25.0.4+7-LTS-189",
+    "pid": 2666744,
+    "process_command": "C:\\Program Files\\Java\\jdk-25.0.4\\bin\\java.exe"
+  },
+  "external_requested_max": 2,
+  "raw_reported_max": 2,
+  "capability_provenance": "public NGX query after external loader; may be hooked; not proof of execution",
+  "capability_hardcoded": false,
+  "NGX_INIT": "PASS",
+  "CREATEFEATURE": "PASS",
+  "named_kernel_create_events": 64,
+  "kernel_create_success": true,
+  "requested_count": 2,
+  "evaluate_success_by_index": {
+    "1": 2,
+    "2": 2
+  },
+  "completion_by_index": {
+    "1": 2,
+    "2": 2
+  },
+  "status_by_index": {
+    "1": [
+      {
+        "realFrameId": "1",
+        "raw_unsigned": "1",
+        "state": "DISABLED"
+      },
+      {
+        "realFrameId": "2",
+        "raw_unsigned": "0",
+        "state": "ENABLED"
+      }
+    ],
+    "2": [
+      {
+        "realFrameId": "1",
+        "raw_unsigned": "1",
+        "state": "DISABLED"
+      },
+      {
+        "realFrameId": "2",
+        "raw_unsigned": "4294967295",
+        "state": "UNKNOWN"
+      }
+    ]
+  },
+  "real_completed_groups": 2,
+  "flag_eligible_completed_outputs": 1,
+  "presented_generated": 1,
+  "provider_batch_presented_total": 3,
+  "metrics": {
+    "scope": "provider-owned batches only, startup window; real-only fallback without provider output excluded",
+    "duration_seconds": 0.1567245,
+    "real_presented": 2,
+    "generated_presented": 1,
+    "total_presented": 3,
+    "real_presented_fps": 12.761246646184867,
+    "generated_presented_fps": 6.380623323092434,
+    "presented_fps": 19.141869969277302,
+    "steady_state_fps": "NOT_MEASURED",
+    "late_generated": 1,
+    "late_scope": "accepted request after host pacing deadline, not scanout",
+    "valid_unpresented_keys": [],
+    "duplicate_generated_keys": 0,
+    "gpu_ms": [
+      {
+        "realFrameId": "1",
+        "index": "1",
+        "count": "2",
+        "done": "2",
+        "DLSSG_GPU_ms": "1.041408",
+        "INPUT_GPU_COPY_ms": "0.146464",
+        "disable": "1",
+        "generatedFrames": "0"
+      },
+      {
+        "realFrameId": "1",
+        "index": "2",
+        "count": "2",
+        "done": "2",
+        "DLSSG_GPU_ms": "0.020480",
+        "INPUT_GPU_COPY_ms": "0.146464",
+        "disable": "1",
+        "generatedFrames": "0"
+      },
+      {
+        "realFrameId": "2",
+        "index": "1",
+        "count": "2",
+        "done": "4",
+        "DLSSG_GPU_ms": "5.731328",
+        "INPUT_GPU_COPY_ms": "0.104960",
+        "disable": "0",
+        "generatedFrames": "1"
+      },
+      {
+        "realFrameId": "2",
+        "index": "2",
+        "count": "2",
+        "done": "4",
+        "DLSSG_GPU_ms": "4.478976",
+        "INPUT_GPU_COPY_ms": "0.104960",
+        "disable": "-1",
+        "generatedFrames": "1"
+      }
+    ]
+  },
+  "generation_count_scope": "completed Evaluate success + written disable0 + non-reset + matching nonzero resource; no pixel proof",
+  "bounded_readbacks": 0,
+  "output_content": "NOT_MEASURED",
+  "temporal_order": "UNKNOWN",
+  "x3_complete_present_order": "NOT_OBSERVED",
+  "invalid_generated_presentations": 0,
+  "normal_shutdown": true,
+  "crash": false,
+  "device_removed": false,
+  "device_removed_reason": "0x00000000",
+  "if_fail_stage": "OUTPUT_STATUS_NOT_CONFIRMED",
+  "if_fail_index": 2,
+  "if_fail_status": "4294967295",
+  "ROOT_CAUSE": "SENTINEL_REMAINED_UNWRITTEN_OR_UNCONSUMED; exact cause UNKNOWN",
+  "CAUSE_CONFIDENCE": "HIGH_OBSERVATION; UNKNOWN_ROOT_CAUSE",
+  "AMD_BASELINE_MODIFIED": false,
+  "x4": "NOT_RUN",
+  "x5": "NOT_RUN",
+  "x6": "NOT_RUN",
+  "source_sha256": {
+    "wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg/DlssgBridge.java": "af1cc4fc878b0df9fca396d5735fc0af4ab0294744e59429422838d63480109a",
+    "wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg/DlssgFrameGenerationAdapter.java": "e729c5cdd75ccf1f43d8453353ee0fa44b49a924980057c837f00e31f7985755",
+    "wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg/DlssgFrameGenerationBackend.java": "12286d3d29dfde99ae931bc0753f66e0f7fdd626d3ecbff818c9e42ab0bbf168",
+    "wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg/DlssgMetadata.java": "99700b8b740745f034f73392a6716b6b663d9d329093515a7bfd771f9f5e90f3",
+    "wisteria/common/src/main/java/org/ireallywanttosleep/wisteria/dlssg/DlssgOutputStatus.java": "b81d11521975a2a2161dc7195aac314e5836b3140b72eadac68edf21c66b0ebc",
+    "wisteria/native/dlssg/bridge.cpp": "de24cf09991d83c296c647b938c844153737cc03f0bee2b5811d33e3cec6c260",
+    "runtime-baseline/build.gradle": "2f7d28b9ec087944e62b03df42710391dfbb416f4e66bb6aecfd95ca1b2cc9f8"
+  }
+}

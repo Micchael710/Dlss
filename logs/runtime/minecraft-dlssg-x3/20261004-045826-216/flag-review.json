@@ -1,0 +1,119 @@
+{
+  "outputs": [
+    {
+      "timestamp_ns": 88548862207000,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=1 count=2 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2650030013088",
+      "fields": {
+        "realFrameId": "1",
+        "previousRealFrameId": "0",
+        "index": "1",
+        "count": "2",
+        "rawStatus": "1",
+        "status": "DISABLED",
+        "disable": "1",
+        "reset": "true",
+        "epoch": "1",
+        "completion": "2",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "false",
+        "VkImage": "2650030013088"
+      },
+      "source": "frame-sequence.jsonl",
+      "line": 6
+    },
+    {
+      "timestamp_ns": 88548863137800,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=2 count=2 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2650030017552",
+      "fields": {
+        "realFrameId": "1",
+        "previousRealFrameId": "0",
+        "index": "2",
+        "count": "2",
+        "rawStatus": "1",
+        "status": "DISABLED",
+        "disable": "1",
+        "reset": "true",
+        "epoch": "1",
+        "completion": "2",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "false",
+        "VkImage": "2650030017552"
+      },
+      "source": "frame-sequence.jsonl",
+      "line": 7
+    },
+    {
+      "timestamp_ns": 88548889229900,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=2 previousRealFrameId=1 index=1 count=2 rawStatus=0 status=ENABLED disable=0 reset=false epoch=1 completion=4 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=true VkImage=2646116320736",
+      "fields": {
+        "realFrameId": "2",
+        "previousRealFrameId": "1",
+        "index": "1",
+        "count": "2",
+        "rawStatus": "0",
+        "status": "ENABLED",
+        "disable": "0",
+        "reset": "false",
+        "epoch": "1",
+        "completion": "4",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "true",
+        "VkImage": "2646116320736"
+      },
+      "source": "frame-sequence.jsonl",
+      "line": 19
+    },
+    {
+      "timestamp_ns": 88548889889500,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=2 previousRealFrameId=1 index=2 count=2 rawStatus=4294967295 status=UNKNOWN disable=-1 reset=false epoch=1 completion=4 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2646116325200",
+      "fields": {
+        "realFrameId": "2",
+        "previousRealFrameId": "1",
+        "index": "2",
+        "count": "2",
+        "rawStatus": "4294967295",
+        "status": "UNKNOWN",
+        "disable": "-1",
+        "reset": "false",
+        "epoch": "1",
+        "completion": "4",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "false",
+        "VkImage": "2646116325200"
+      },
+      "source": "frame-sequence.jsonl",
+      "line": 20
+    }
+  ],
+  "UNKNOWN_not_API_disable_value": [
+    {
+      "timestamp_ns": 88548889889500,
+      "type": "OUTPUT_READY",
+      "detail": "OUTPUT_READY realFrameId=2 previousRealFrameId=1 index=2 count=2 rawStatus=4294967295 status=UNKNOWN disable=-1 reset=false epoch=1 completion=4 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2646116325200",
+      "fields": {
+        "realFrameId": "2",
+        "previousRealFrameId": "1",
+        "index": "2",
+        "count": "2",
+        "rawStatus": "4294967295",
+        "status": "UNKNOWN",
+        "disable": "-1",
+        "reset": "false",
+        "epoch": "1",
+        "completion": "4",
+        "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+        "presentable": "false",
+        "VkImage": "2646116325200"
+      },
+      "source": "frame-sequence.jsonl",
+      "line": 20
+    }
+  ],
+  "completion_scope": "D3D12 same command list containing all Evaluate/status copies; queue Signal after Execute",
+  "invalid_output_presentations": 0,
+  "root_cause": "SENTINEL_REMAINED_UNWRITTEN_OR_UNCONSUMED; reason UNKNOWN"
+}
