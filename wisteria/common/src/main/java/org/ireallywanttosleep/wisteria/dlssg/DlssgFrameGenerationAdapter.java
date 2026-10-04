@@ -75,10 +75,9 @@ final class DlssgFrameGenerationAdapter {
         try{
             var snapshot=(DlssgFrameGenerationBackend.Snapshot)input.providerInputSnapshot();var metadata=Objects.requireNonNull(snapshot.metadata());
             var frame=input.frameResources();
-            // The controlled baseline uses OpenGL FSR1 and owned capture inputs. A
-            // Vulkan upscaler can read its borrowed inputs concurrently on the main
-            // queue; changing their layouts for transfer requires a separate audited join.
-            if(frame.hasBorrowedAlgorithmInputs())throw new IllegalStateException("Borrowed Vulkan-upscaler inputs need an audited queue join; use the unchanged owned-capture baseline");
+            // Retain the rejection unless a fresh receipt binds these exact images to
+            // a successful SR submission and its binary signals on the same family.
+            var borrowed=frame.hasBorrowedAlgorithmInputs()?frame.claimBorrowedReadiness(input.device()):null;
             VulkanTexture[] sources={frame.finalColorVulkanTexture(),frame.hudlessColorVulkanTexture(),frame.depthVulkanTexture(),frame.motionVectorVulkanTexture()};
             for(var src:sources)if(src==null||src.handle()==0)throw new IllegalStateException("Missing real FG input");
             int w=metadata.displaySize().width(),h=metadata.displaySize().height(),rw=metadata.renderSize().width(),rh=metadata.renderSize().height();
@@ -106,10 +105,20 @@ final class DlssgFrameGenerationAdapter {
             }
             collectRetiredPools();slot=current.acquire();stage="PREPARE_EVALUATE";
             boolean reset=invalidHistory||snapshot.historyResetRequested()||metadata.discontinuityEpoch()!=lastEpoch||metadata.monotonicFrameId()!=lastId+1;
-            long[] nativeSources=new long[20];for(int j=0;j<4;j++){
+            long[] nativeSources=new long[borrowed==null?20:32];for(int j=0;j<4;j++){
                 var src=sources[j];int expectedW=j<2?w:rw,expectedH=j<2?h:rh;
                 if(src.getWidth()!=expectedW||src.getHeight()!=expectedH)throw new IllegalStateException("Resource/metadata extent mismatch");
                 int off=j*5;nativeSources[off]=src.handle();nativeSources[off+1]=src.getWidth();nativeSources[off+2]=src.getHeight();nativeSources[off+3]=src.getTextureFormat().vk();nativeSources[off+4]=src.getCurrentLayout();
+            }
+            if(borrowed!=null){var p=borrowed.producer();
+                long[] receipt={p.device(),p.queue(),p.family(),p.index(),p.command(),p.generation(),p.fence(),
+                    borrowed.captureGeneration(),borrowed.frame(),borrowed.depth().ready(),borrowed.motion().ready(),1};
+                System.arraycopy(receipt,0,nativeSources,20,receipt.length);
+                long[] depthDest=DlssgBridge.image(current.nativePool,slot.index,2),motionDest=DlssgBridge.image(current.nativePool,slot.index,3);
+                borrowed.requireIndependentDestination(depthDest[0],motionDest[0],sources[2].getCurrentLayout(),sources[3].getCurrentLayout());
+                event("BORROWED_QUEUE_JOIN realFrameId="+metadata.monotonicFrameId()+" logicalFrame="+borrowed.frame()+" captureGeneration="+borrowed.captureGeneration()+
+                    " producer="+p+" depth="+borrowed.depth()+" motion="+borrowed.motion()+" consumerFamily="+input.device().requireFgQueue().getQueueFamilyIndex()+
+                    " consumerIndex="+input.device().requireFgQueue().getQueueIndex()+" depthDestination="+depthDest[0]+" motionDestination="+motionDest[0]+" cpuWait=false");
             }
             float[] previousClip=snapshot.constants().clipToPrevClip();double cameraMotion=0;
             for(int j=0;j<16;j++)cameraMotion=Math.max(cameraMotion,Math.abs(previousClip[j]-(j%5==0?1:0)));

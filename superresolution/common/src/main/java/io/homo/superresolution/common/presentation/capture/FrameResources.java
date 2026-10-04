@@ -55,6 +55,8 @@ public final class FrameResources {
     private boolean borrowedInputReleaseRequired;
     private boolean borrowedInputReleaseSubmitted;
     private boolean borrowedInputReleaseFailed;
+    private volatile BorrowedInputReadiness borrowedReadiness;
+    private boolean borrowedReadinessClaimed;
 
     FrameResources(
             int index,
@@ -90,6 +92,8 @@ public final class FrameResources {
         fence = 0L;
         clearDlssGInputCompletion();
         resetBorrowedInputReleaseSubmission();
+        borrowedReadiness = null;
+        borrowedReadinessClaimed = false;
         lifecycle.beginRecording();
         traceLifecycle();
     }
@@ -321,6 +325,46 @@ public final class FrameResources {
     /** Borrowed algorithm inputs obey its Y convention; owned capture inputs are always flipped. */
     public boolean hasBorrowedAlgorithmInputs() { return borrowedInputReleaseRequired; }
 
+    public void publishBorrowedReadiness(BorrowedInputReadiness receipt) {
+        requireWritable();
+        if (!hasBorrowedAlgorithmInputs() || borrowedReadiness != null
+                || receipt.captureGeneration() != generation || receipt.frame() != logicalFrameIndex)
+            throw new IllegalStateException("Invalid borrowed readiness publication");
+        borrowedReadiness = receipt;
+    }
+
+    public BorrowedInputReadiness claimBorrowedReadiness(VulkanDevice consumer) {
+        BorrowedInputReadiness receipt = borrowedReadiness;
+        if (receipt == null || borrowedReadinessClaimed || !isSealed() || unrecoverable)
+            throw new IllegalStateException("Borrowed inputs require fresh submitted producer readiness");
+        var main = consumer.getMainQueue(); var fg = consumer.requireFgQueue();
+        var p = receipt.producer();
+        receipt.validate(generation, logicalFrameIndex,
+                new BorrowedInputReadiness.Submission(consumer.getVkDevice().address(), main.getQueue().address(),
+                        main.getQueueFamilyIndex(), main.getQueueIndex(), p.command(), p.generation(), p.fence()),
+                consumer.getVkDevice().address(), fg.getQueue().address(), fg.getQueueFamilyIndex(), fg.getQueueIndex(),
+                sourceReceipt(depth), sourceReceipt(motionVector), readySemaphores());
+        borrowedReadinessClaimed = true;
+        return receipt;
+    }
+
+    private static BorrowedInputReadiness.Source sourceReceipt(FrameTextureResource resource) {
+        var t = resource.vkTexture();
+        if (!resource.isValid() || t == null) throw new IllegalStateException("Borrowed source lifetime ended");
+        return new BorrowedInputReadiness.Source(t.handle(), t.getTextureFormat().vk(), t.getWidth(), t.getHeight(),
+                t.getCurrentLayout(), resource.readySemaphore());
+    }
+
+    /** A sealed capture is already published to the independent consumer worker.
+     * GL's server wait may precede its future Vulkan signal; no CPU rendezvous is needed.
+     * Failure/retirement remains fail-closed; old producers retain their original path.
+     */
+    public boolean hasGpuOrderedBorrowedRelease() {
+        if (borrowedReadiness == null) return false;
+        if (unrecoverable || !isSealed()) throw new IllegalStateException("Borrowed capture has no live release path");
+        return true;
+    }
+
     public GlImportableTexture2D finalColorGlTexture() {
         return finalColor.glTexture();
     }
@@ -391,7 +435,10 @@ public final class FrameResources {
         if (commandBuffer != null && commandBufferGeneration > 0L) {
             commandBuffer.waitForSubmission(commandBufferGeneration);
         }
-        awaitDlssGInputs();
+        // The tracked Vulkan output submission waits on this D3D12 completion timeline.
+        // Its completed fence already covers it; do not add a cross-API host wait.
+        if (borrowedReadiness != null) clearDlssGInputCompletion();
+        else awaitDlssGInputs();
         finalColor.awaitOwnedRelease();
         hudlessColor.awaitOwnedRelease();
         depth.awaitOwnedRelease();

@@ -30,6 +30,7 @@ import io.homo.superresolution.common.perf.PerformanceTracker;
 import io.homo.superresolution.common.presentation.PresentationBackendManager;
 import io.homo.superresolution.common.presentation.capture.FrameCaptureManager;
 import io.homo.superresolution.common.presentation.capture.FrameResources;
+import io.homo.superresolution.common.presentation.capture.BorrowedInputReadiness;
 import io.homo.superresolution.common.upscale.DispatchResource;
 import io.homo.superresolution.common.upscale.InteropResourcesPreprocessor;
 import io.homo.superresolution.common.workmode.SRWorkModeManager;
@@ -295,8 +296,9 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
                 commandBuffer,
                 new long[]{glFinishSemaphore.getVkSemaphoreHandle()},
                 new int[]{VK_PIPELINE_STAGE_ALL_COMMANDS_BIT},
-                new long[]{upscaleFinishSemaphore.getVkSemaphoreHandle()}
+                frameResourcesSet.upscaleSignals()
         );
+        frameResourcesSet.publishSubmittedReadiness(vulkanDevice, commandBuffer);
 
         // 存一下第N-1帧的Cmdbuf
         frameResourcesSet.commandBuffer = commandBuffer;
@@ -412,6 +414,9 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
         int[] layouts = new int[handles.length];
         Arrays.fill(layouts, GL_LAYOUT_SHADER_READ_ONLY_EXT);
         inFlight.glFinish.signalVulkan(handles, new int[]{}, layouts);
+        // The external GL signal performs this layout transition before the Vulkan wait.
+        for (InteropResourceType type : inFlight.resourceTypes())
+            if (type.isInput()) inFlight.vulkan(type).setCurrentLayout(org.lwjgl.vulkan.VK10.VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL);
     }
 
     private void publishCaptureInputs(
@@ -454,19 +459,9 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
             inFlight.captureInputsFrame = captureFrame;
         }
         if (borrowedDepth) {
-            inFlight.captureDepthReady.signalVulkan(
-                    new int[]{Math.toIntExact(inFlight.openGl(Depth).handle())},
-                    new int[0],
-                    new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
-            );
             inFlight.captureDepthPending = true;
         }
         if (borrowedMotionVectors) {
-            inFlight.captureMotionReady.signalVulkan(
-                    new int[]{Math.toIntExact(inFlight.openGl(MotionVectors).handle())},
-                    new int[0],
-                    new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
-            );
             inFlight.captureMotionPending = true;
         }
 
@@ -630,6 +625,31 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
             return Collections.unmodifiableSet(vulkanTextures.keySet());
         }
 
+        private long[] upscaleSignals() {
+            if (!captureDepthPending && !captureMotionPending) return new long[]{upscaleVkFinish.getVkSemaphoreHandle()};
+            if (!captureDepthPending || !captureMotionPending)
+                throw new IllegalStateException("Borrowed queue join requires both real depth and motion inputs");
+            return new long[]{upscaleVkFinish.getVkSemaphoreHandle(), captureDepthReady.getVkSemaphoreHandle(),
+                    captureMotionReady.getVkSemaphoreHandle()};
+        }
+
+        private void publishSubmittedReadiness(VulkanDevice device, VulkanCommandBuffer submitted) {
+            if (captureInputsFrame == null) return;
+            var queue = device.getMainQueue();
+            var submission = new BorrowedInputReadiness.Submission(device.getVkDevice().address(), queue.getQueue().address(),
+                    queue.getQueueFamilyIndex(), queue.getQueueIndex(), submitted.getNativeCommandBuffer().address(),
+                    submitted.submissionGeneration(), fence);
+            captureInputsFrame.publishBorrowedReadiness(new BorrowedInputReadiness(captureInputsFrame.generation(),
+                    frameData.frameCount(), submission, sourceReceipt(Depth, captureDepthReady),
+                    sourceReceipt(MotionVectors, captureMotionReady)));
+        }
+
+        private BorrowedInputReadiness.Source sourceReceipt(InteropResourceType type, VkGlInteropSemaphore ready) {
+            var t = vulkan(type);
+            return new BorrowedInputReadiness.Source(t.handle(), t.getTextureFormat().vk(), t.getWidth(), t.getHeight(),
+                    t.getCurrentLayout(), ready.getVkSemaphoreHandle());
+        }
+
         public void destroy() {
             awaitCaptureRelease();
             if (outputFrameBuffer != null) {
@@ -736,13 +756,14 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
             }
             if (captureInputsFrame != null
                     && (captureDepthPending || captureMotionPending)) {
-                captureInputsFrame.awaitBorrowedInputReleaseSubmission();
+                if (!captureInputsFrame.hasGpuOrderedBorrowedRelease())
+                    captureInputsFrame.awaitBorrowedInputReleaseSubmission();
             }
             if (captureDepthPending && captureDepthRelease != null && openGl(Depth) != null) {
                 captureDepthRelease.waitVulkanSignal(
                         new int[]{Math.toIntExact(openGl(Depth).handle())},
                         new int[0],
-                        new int[]{GL_LAYOUT_TRANSFER_DST_EXT}
+                        new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
                 );
                 captureDepthPending = false;
             }
@@ -750,7 +771,7 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
                 captureMotionRelease.waitVulkanSignal(
                         new int[]{Math.toIntExact(openGl(MotionVectors).handle())},
                         new int[0],
-                        new int[]{GL_LAYOUT_TRANSFER_DST_EXT}
+                        new int[]{GL_LAYOUT_SHADER_READ_ONLY_EXT}
                 );
                 captureMotionPending = false;
             }

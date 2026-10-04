@@ -194,6 +194,13 @@ public final class FGConstantsFeature {
             invalidateHistoryInternal();
             if (!captureFailureReported) {
                 SuperResolution.LOGGER.warn("Failed to build DLSS-G constants", exception);
+                if (Boolean.getBoolean("wisteria.dlssg.enabled")) {
+                    SuperResolution.LOGGER.warn("DLSSG_MATRIX_EVIDENCE logicalFrame={} render={}x{} display={}x{} projection={} previousProjection={} modelView={} jitter={} resetHistory={}",
+                            dispatch.frameCount(), dispatch.renderWidth(), dispatch.renderHeight(), dispatch.screenWidth(), dispatch.screenHeight(),
+                            java.util.Arrays.toString(dispatch.projectionMatrix().get(new float[16])),
+                            java.util.Arrays.toString(dispatch.lastProjectionMatrix().get(new float[16])),
+                            java.util.Arrays.toString(dispatch.modelViewMatrix().get(new float[16])), dispatch.jitterOffset(), captureHistoryInvalid);
+                }
                 captureFailureReported = true;
             }
         }

@@ -22,8 +22,8 @@ final class DlssgBridge {
             Path dll = root.resolve("native/wisteria_dlssg_bridge-" + hash + ".dll");
             Files.write(dll, bytes);
             System.load(dll.toString());
-            if (abi() != 2) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
-            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":2,\"sha256\":\"" + hash + "\"}\n");
+            if (abi() != 3) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
+            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":3,\"sha256\":\"" + hash + "\"}\n");
             loaded = true;
         } catch (Exception e) { throw new IllegalStateException("DLSS-G local bridge load failed", e); }
     }

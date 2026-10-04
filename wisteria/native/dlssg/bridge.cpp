@@ -45,6 +45,8 @@ struct Slot {
     ComPtr<ID3D12QueryHeap> timing;
     VkSample colorSample; std::vector<VkSample> generatedSamples;
     uint64_t ready{}, done{}, frameId{};
+    std::array<jlong,2> borrowedReady{};
+    std::string borrowedEvidence;
     bool leased=false, prepared=false, submitted=false, sampled=false, reset=false;
     std::vector<bool> priorInitialized;
     HANDLE completionEvent{}; PTP_WAIT completionWait{};
@@ -288,7 +290,24 @@ struct Session {
         s.commands->CopyTextureRegion(&to,0,0,0,&from,nullptr);dxBarrier(s,im,D3D12_RESOURCE_STATE_COMMON);
     }
     void prepare(Pool& p,Slot& s,VkCommandBuffer output,const std::vector<jlong>& src,const std::vector<float>& constants,uint64_t frameId,double delta,bool reset,bool flipBorrowedInputs,bool sample) {
-        if(s.leased||unsafe||p.failed||src.size()!=20||constants.size()!=108)throw std::runtime_error("Invalid or failed slot/metadata contract");
+        if(s.leased||unsafe||p.failed||(src.size()!=20&&src.size()!=32)||constants.size()!=108)throw std::runtime_error("Invalid or failed slot/metadata contract");
+        s.borrowedReady={};s.borrowedEvidence.clear();
+        if(src.size()==32){
+            VkQueue actualProducer{};
+            if(src[22]!=family||src[23]!=0||src[20]!=reinterpret_cast<jlong>(device)||src[31]!=1
+                    ||!src[24]||src[25]<=0||!src[26]||src[27]<=0||!src[29]||!src[30]||src[29]==src[30])
+                throw std::runtime_error("Borrowed producer device/family/submission contract rejected");
+            fn<PFN_vkGetDeviceQueue>("vkGetDeviceQueue")(device,family,uint32_t(src[23]),&actualProducer);
+            if(src[21]!=reinterpret_cast<jlong>(actualProducer))throw std::runtime_error("Borrowed producer queue identity mismatch");
+            if(src[13]!=VK_FORMAT_R32_SFLOAT||src[18]!=VK_FORMAT_R16G16_SFLOAT
+                    ||src[14]!=VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL||src[19]!=VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)
+                throw std::runtime_error("Borrowed depth/motion format/layout contract rejected");
+            s.borrowedReady={src[29],src[30]};
+            s.borrowedEvidence="logicalFrame="+std::to_string(src[28])+" captureGeneration="+std::to_string(src[27])+
+                " producerQueue="+std::to_string(src[21])+" producerFamily="+std::to_string(src[22])+" producerIndex="+std::to_string(src[23])+
+                " producerCommand="+std::to_string(src[24])+" producerSubmission="+std::to_string(src[25])+" producerFence="+std::to_string(src[26])+
+                " depthReady="+std::to_string(src[29])+" motionReady="+std::to_string(src[30])+" sourceReadyValue=BINARY_SIGNAL";
+        }
         s.leased=true;s.prepared=false;s.submitted=false;s.frameId=frameId;s.sampled=sample&&s.colorSample.buffer;s.reset=reset;
         s.flagsReady.store(false);std::fill(s.flags.begin(),s.flags.end(),-1);
         s.diagnostic=submittedFrames<8||s.sampled;s.completionObserved=0;s.statusReadError.clear();
@@ -304,6 +323,7 @@ struct Session {
             sharedBarrier(s.inputs,im,false,false);
             if(j<4){auto image=reinterpret_cast<VkImage>(src[j*5]);auto width=uint32_t(src[j*5+1]);auto height=uint32_t(src[j*5+2]);auto format=VkFormat(src[j*5+3]);auto layout=int(src[j*5+4]);
                 if(width!=im.width||height!=im.height)throw std::runtime_error("Input extent mismatch");
+                if(!image||image==im.image)throw std::runtime_error("Input source/destination lifetime or alias violation");
                 for(auto f:{format,im.format})if(!formatProperties.count(f)){VkFormatProperties properties{};fn<PFN_vkGetPhysicalDeviceFormatProperties>("vkGetPhysicalDeviceFormatProperties")(physical,f,&properties);formatProperties[f]=properties;}
                 const auto a=formatProperties.at(format),b=formatProperties.at(im.format);
                 if(!(a.optimalTilingFeatures&VK_FORMAT_FEATURE_BLIT_SRC_BIT)||!(b.optimalTilingFeatures&VK_FORMAT_FEATURE_BLIT_DST_BIT))throw std::runtime_error("Input format conversion not supported by blit");
@@ -312,6 +332,11 @@ struct Session {
                 if(j>=2&&flipBorrowedInputs){region.srcOffsets[0].y=int(height);region.srcOffsets[1].y=0;}
                 fn<PFN_vkCmdBlitImage>("vkCmdBlitImage")(s.inputs,image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,im.image,VK_IMAGE_LAYOUT_GENERAL,1,&region,VK_FILTER_NEAREST);
                 sourceBarrier(s.inputs,image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,layout);
+                if(src.size()==32&&j>=2)event("borrowed_copy_recorded","realFrameId="+std::to_string(frameId)+" resource="+(j==2?"depth":"motion")+
+                    " source="+std::to_string(src[j*5])+" destination="+std::to_string(reinterpret_cast<jlong>(im.image))+
+                    " sourceFormat="+std::to_string(format)+" destinationFormat="+std::to_string(im.format)+" width="+std::to_string(width)+" height="+std::to_string(height)+
+                    " sourceBefore="+std::to_string(layout)+" sourceCopy=6 sourceAfter="+std::to_string(layout)+
+                    " destinationBefore="+(s.priorInitialized[j]?"GENERAL":"UNDEFINED")+" destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true "+s.borrowedEvidence);
             }else{VkClearColorValue sentinel{};sentinel.float32[0]=sentinel.float32[2]=sentinel.float32[3]=1;VkImageSubresourceRange range{VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};fn<PFN_vkCmdClearColorImage>("vkCmdClearColorImage")(s.inputs,im.image,VK_IMAGE_LAYOUT_GENERAL,&sentinel,1,&range);}
             sharedBarrier(s.inputs,im,false,true);
             // Recorded into the worker's already-begun output command buffer; its GPU
@@ -360,6 +385,8 @@ struct Session {
     }
     void submit(JNIEnv* env,Slot& s,const std::vector<jlong>& semaphores,jobject notification) {
         if(!s.prepared||s.submitted||unsafe)throw std::runtime_error("Invalid input submission state");
+        for(auto expected:s.borrowedReady)if(expected&&std::find(semaphores.begin(),semaphores.end(),expected)==semaphores.end())
+            throw std::runtime_error("Borrowed producer signal absent from consumer GPU waits");
         std::vector<VkSemaphore> waits;for(auto v:semaphores)waits.push_back(reinterpret_cast<VkSemaphore>(v));std::vector<VkPipelineStageFlags> stages(waits.size(),VK_PIPELINE_STAGE_ALL_COMMANDS_BIT);std::vector<uint64_t> zeros(waits.size(),0);
         VkTimelineSemaphoreSubmitInfo ti{VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO};ti.waitSemaphoreValueCount=uint32_t(waits.size());ti.pWaitSemaphoreValues=zeros.data();ti.signalSemaphoreValueCount=1;ti.pSignalSemaphoreValues=&s.ready;
         VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};si.pNext=&ti;si.commandBufferCount=1;si.pCommandBuffers=&s.inputs;si.waitSemaphoreCount=uint32_t(waits.size());si.pWaitSemaphores=waits.data();si.pWaitDstStageMask=stages.data();si.signalSemaphoreCount=1;si.pSignalSemaphores=&timeline;
@@ -372,6 +399,7 @@ struct Session {
         s.submitted=true;unsafe=true;vkcheck(fn<PFN_vkQueueSubmit>("vkQueueSubmit")(queue,1,&si,VK_NULL_HANDLE),"input queue submit");
         hr(dx.queue->Wait(fence.Get(),s.ready),"D3D12 queue GPU wait");ID3D12CommandList* lists[]={s.commands.Get()};dx.queue->ExecuteCommandLists(1,lists);hr(dx.queue->Signal(fence.Get(),s.done),"D3D12 queue completion signal");unsafe=false;++submittedFrames;
         event("vulkan_d3d12_submit","realFrameId="+std::to_string(s.frameId)+" ready="+std::to_string(s.ready)+" completion="+std::to_string(s.done)+" cpuWait=false");
+        if(s.borrowedReady[0])event("borrowed_copy_submit","realFrameId="+std::to_string(s.frameId)+" copyCommand="+std::to_string(reinterpret_cast<jlong>(s.inputs))+" copyCompleteValue="+std::to_string(s.ready)+" fgCompleteValue="+std::to_string(s.done)+" consumerQueue="+std::to_string(reinterpret_cast<jlong>(queue))+" consumerFamily="+std::to_string(family)+" waits=PRODUCER_BINARY cpuWait=false "+s.borrowedEvidence);
         event("slot_state","realFrameId="+std::to_string(s.frameId)+" state=GENERATING; output submitted by Vulkan worker with GPU timeline wait");
     }
     Bytes pixels(Readback& rb,uint32_t w,uint32_t h) {
@@ -384,6 +412,7 @@ struct Session {
         // have completed. Their GPU wait on done proves the D3D12 work also completed.
         if(!s.leased||!s.submitted||fence->GetCompletedValue()<s.done||fence->GetCompletedValue()==UINT64_MAX)throw std::runtime_error("Premature lease retirement or device removed");
         hr(dx.device->GetDeviceRemovedReason(),"device removed reason");++completedFrames;
+        if(s.borrowedReady[0])event("borrowed_copy_complete","realFrameId="+std::to_string(s.frameId)+" depthCopies=1 motionCopies=1 copyCompleteValue="+std::to_string(s.ready)+" observedCompletion="+std::to_string(fence->GetCompletedValue())+" cpuTransportCopies=0 "+s.borrowedEvidence);
         if(!s.flagsReady.load(std::memory_order_acquire))throw std::runtime_error("Retirement before flags callback");
         if(s.diagnostic){auto readStatus=[&](ID3D12Resource* resource){void* ptr{};D3D12_RANGE range{0,4},none{0,0};hr(resource->Map(0,&range,&ptr),"diagnostic status map");auto value=*static_cast<uint32_t*>(ptr);resource->Unmap(0,&none);return value;};
             for(unsigned k=0;k<p.generatedCount;++k)event("status_trace","PAIR_ID="+std::to_string(s.frameId)+" COUNT="+std::to_string(p.generatedCount)+" INDEX="+std::to_string(k+1)+" ARRAY_SLOT="+std::to_string(k)+" OUTPUT_RESOURCE_ID="+handleText(s.images[4+k].dx.resource.Get())+" STATUS_RESOURCE_ID="+handleText(s.disable[k].Get())+" STATUS_BEFORE="+std::to_string(readStatus(s.statusBefore[k].Get()))+" STATUS_AFTER_EVALUATE="+std::to_string(uint32_t(s.flags[k]))+" STATUS_AFTER_GROUP="+std::to_string(readStatus(s.statusGroupEnd[k].Get()))+" COMPLETION_ID="+std::to_string(s.done)+" COMPLETION_OBSERVED="+std::to_string(s.completionObserved)+" COMPLETION_MODEL=GROUP_ORDERED_COMMAND_LIST STATUS_READ_ERROR="+jsonQuote(s.statusReadError));}
@@ -432,7 +461,7 @@ static Slot& slot(Pool& p,jint i){if(i<0||size_t(i)>=p.slots.size())throw std::r
 }
 using namespace integration;
 #define JNI_METHOD(name) Java_org_ireallywanttosleep_wisteria_dlssg_DlssgBridge_##name
-extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 2;}
+extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 3;}
 extern "C" JNIEXPORT jint JNICALL JNI_METHOD(reportedMax)(JNIEnv*,jclass,jlong h){return session(h).reportedMax;}
 extern "C" JNIEXPORT jintArray JNICALL JNI_METHOD(probeCapabilities)(JNIEnv* e,jclass,jstring out,jstring dll,jstring runtime,jint count){
     try {
