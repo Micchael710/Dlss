@@ -1,0 +1,8 @@
+{
+  "before_sha256": "5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8",
+  "before": 0,
+  "restored_sha256": "5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8",
+  "test": 1,
+  "after": 0,
+  "restored_byte_identical": true
+}

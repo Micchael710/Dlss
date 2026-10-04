@@ -1,0 +1,7 @@
+cmake_minimum_required(VERSION 3.20)
+project(streamline_mfg_x3 LANGUAGES CXX)
+add_executable(streamline_mfg_x3 main.cpp)
+target_compile_features(streamline_mfg_x3 PRIVATE cxx_std_17)
+target_compile_definitions(streamline_mfg_x3 PRIVATE UNICODE _UNICODE NOMINMAX)
+target_include_directories(streamline_mfg_x3 PRIVATE ../../superresolution/native/cpp/third_party/Streamline/include)
+target_link_libraries(streamline_mfg_x3 PRIVATE d3d12 dxgi d3dcompiler user32)

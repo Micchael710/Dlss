@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — isolated Streamline x3 runtime FAIL at first Present
+
+From `7bd9578f3d28596e3b020f4a5216e796a23635cd`, one D3D12/proxy-swapchain standalone run, count2 only. Init/support/SetOptions2/swapchain PASS; first Present0x887a0001 `DXGI_ERROR_INVALID_CALL`. Create1/Evaluate0; real successful Present0; G1/G2 unproven. Device removed0, no crash; shutdown0/process1, INI restored exactly. No retry or Minecraft/baseline changes. Historical max4/options capability remains proven. [Runtime evidence](DLSSG_STREAMLINE_X3_RUNTIME.md).
+
 ## 2026-10-04 — Streamline MFG capability/options PASS through SM86
 
 From `dd0262a544e530e97f5c0f4d0df1dcd06ba41c3f`, reused existing direct-x2 ProjectID and engineVersion via public SL Preferences. One run: Init/device/feature/GetState0; actual **maximum4**, SetOptions1–4 return0. x3/x4/x5 reported capability/options YES via SM86, not native physical capability or frame-generation PASS. Shutdown/exit0, INI restored exactly. No Minecraft/Present/baseline modifications; STOP. [Evidence and identity mapping](DLSSG_STREAMLINE_CAPABILITY.md).

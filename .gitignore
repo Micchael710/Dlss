@@ -110,3 +110,7 @@ logs/runtime/dlss-sr/20261004-205910-991-handoff-x2/worker-result.json
 
 # Authorized local SDK/proxy capability runtime; publish hashes and text only.
 experiments/streamline-mfg-capability/runtime/
+
+# Standalone x3 run: keep full automatic SM86 kernel telemetry locally.
+logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_2361472.jsonl
+logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2361472.jsonl
