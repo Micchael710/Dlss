@@ -1,0 +1,29 @@
+[streamline][info]log.cpp:131[logva] Log file D:\ProjectDllsss\logs\research\streamline-mfg-x3\20261004-present-debug\sl.log opened on 04.10.2026 at 19-15-37
+[19-15-37][streamline][info][tid:1671964][0s:010ms:140us]pluginManager.cpp:423[setHostSDKVersion] Streamline v2.12.0.17026aaf3 - built on Mon Jun 22 13:03:05 2026 - host SDK v2.12.0
+[19-15-37][streamline][info][tid:1671964][0s:014ms:312us]ota.cpp:410[parseServerManifest] OTA feature sdk_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:014ms:533us]ota.cpp:410[parseServerManifest] OTA feature common_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:014ms:629us]ota.cpp:410[parseServerManifest] OTA feature deepdvc_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:014ms:738us]ota.cpp:410[parseServerManifest] OTA feature dlss_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:547us]ota.cpp:410[parseServerManifest] OTA feature dlss_d_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:621us]ota.cpp:410[parseServerManifest] OTA feature dlss_g_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:679us]ota.cpp:410[parseServerManifest] OTA feature nis_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:724us]ota.cpp:410[parseServerManifest] OTA feature nvperf_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:750us]ota.cpp:410[parseServerManifest] OTA feature pcl_0 version 2.14.0
+[19-15-37][streamline][info][tid:1671964][0s:015ms:799us]ota.cpp:410[parseServerManifest] OTA feature reflex_0 version 2.14.0
+[19-15-38][streamline][info][tid:1671964][0s:561ms:851us]ota.cpp:834[getNVDAArchitecture] Found NVIDIA GPUs, [000000AD3E7EE2D0]: 1
+[19-15-38][streamline][info][tid:1671964][0s:572ms:537us]ota.cpp:840[getNVDAArchitecture] Found GPU 0, arch=0x1b0
+[19-15-38][streamline][info][tid:1671964][0s:574ms:153us]ota.cpp:246[invokeNGXUpdater] Invoking NGX Updater: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -cmsid 0 -feature sl_sdk_0 -api update -type zip -gpuarch 0x1B0 -bootstrap
+[19-15-38][streamline][info][tid:1671964][0s:574ms:454us]pluginManager.cpp:538[findPlugins] Looking for plugins in D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime ...
+[19-15-38][streamline][info][tid:1671964][0s:574ms:860us]pluginManager.cpp:1024[loadPlugins] eLoadDownloadedPlugins flag not passed to preferences, OTA'd plugins will not be loaded!
+[19-15-38][streamline][info][tid:1671964][0s:900ms:598us]plugin.cpp:94[isAppDenylisted] Plugin path: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\
+[19-15-38][streamline][error][tid:1671964][0s:901ms:521us]plugin.cpp:317[onLoad] JSON exception weakly_canonical: Access is denied.: "D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\"
+[19-15-38][streamline][info][tid:1671964][0s:901ms:593us]commonInterface.cpp:168[getSystemCaps] Enumerating up to 8 adapters but only one of them can be used to create a device - no mGPU support in this SDK
+[19-15-38][streamline][info][tid:1671964][0s:980ms:412us]commonInterface.cpp:290[getSystemCaps] >-----------------------------------------
+[19-15-38][streamline][info][tid:1671964][0s:980ms:543us]commonInterface.cpp:293[getSystemCaps] NVIDIA driver 596.49
+[19-15-38][streamline][info][tid:1671964][1s:001ms:930us]commonInterface.cpp:318[getSystemCaps] Adapter 0 architecture 0x1b0 implementation 0x7 revision 0xa1 - bit 0x1 - LUID 0.76108
+[19-15-38][streamline][info][tid:1671964][1s:002ms:183us]commonInterface.cpp:324[getSystemCaps] -----------------------------------------<
+[19-15-38][streamline][info][tid:1671964][1s:005ms:127us]commonEntry.cpp:1944[getOSVersionAndUpdateTimerResolution] Changed high resolution timer resolution to 5000 [100 ns units].
+[19-15-38][streamline][error][tid:1671964][1s:005ms:251us]pluginManager.cpp:695[loadPlugin] JSON exception [json.exception.type_error.302] type must be number, but is null in plugin 
+[19-15-38][streamline][error][tid:1671964][1s:011ms:194us]file.h:249[createDirectoryRecursively] createDirectoryRecursively failed with Access is denied.
+[19-15-38][streamline][error][tid:1671964][1s:011ms:431us]exception.cpp:65[writeMiniDump] Failed to create folder C:\ProgramData/NVIDIA/Streamline/streamline_mfg_x3/1791155738906584
+[19-15-45][streamline][info][tid:1722792][7s:236ms:716us]ota.cpp:148[execThreadProc] execThreadProc: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -cmsid 0 -feature sl_sdk_0 -api update -type zip -gpuarch 0x1B0 -bootstrap
