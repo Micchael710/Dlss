@@ -6,6 +6,8 @@
 #include <nvsdk_ngx_helpers_dlssg_d3d.h>
 using Microsoft::WRL::ComPtr;
 
+enum class D3D12InitializationContext { StandaloneHarness, EmbeddedMinecraft };
+
 static std::string hrHex(HRESULT h){std::ostringstream o;o<<"0x"<<std::hex<<std::setw(8)<<std::setfill('0')<<uint32_t(h);return o.str();}
 struct D3DImage {
  ComPtr<ID3D12Resource> resource;
@@ -21,18 +23,37 @@ struct D3D12NgxSession {
  NVSDK_NGX_Parameter* parameters{};NVSDK_NGX_Handle* feature{};bool initialized=false,unsafe=false,removed=false;
  explicit D3D12NgxSession(EvidenceRecorder& rec,fs::path rt):r(rec),runtime(rt){}
  void check(HRESULT h,const char* name){r.event("d3d12_result",std::string(name)+"="+hrHex(h));if(FAILED(h)){if(device){auto reason=device->GetDeviceRemovedReason();r.str("device_removed_reason",hrHex(reason));removed=FAILED(reason);r.raw("device_removed",removed?"true":"false");}throw std::runtime_error(std::string(name)+" "+hrHex(h));}}
- void initialize(){
+ void initialize(D3D12InitializationContext context=D3D12InitializationContext::StandaloneHarness){
   r.str("if_fail_stage","PRECONDITION");
-  ComPtr<ID3D12Debug> debug;auto dh=D3D12GetDebugInterface(IID_PPV_ARGS(&debug));
-  r.raw("debug_layer_enabled",SUCCEEDED(dh)?"true":"false");if(SUCCEEDED(dh))debug->EnableDebugLayer();
-  check(CreateDXGIFactory2(SUCCEEDED(dh)?DXGI_CREATE_FACTORY_DEBUG:0,IID_PPV_ARGS(&factory)),"CreateDXGIFactory2");
+  bool debugEnabledByInitializer=false;
+  if(context==D3D12InitializationContext::StandaloneHarness){
+   // Only the standalone bootstrap may opt into process-wide debug configuration.
+   // Its device has not yet been created; historical harness callers retain this path.
+   ComPtr<ID3D12Debug> debug;auto dh=D3D12GetDebugInterface(IID_PPV_ARGS(&debug));
+   if(SUCCEEDED(dh)){debug->EnableDebugLayer();debugEnabledByInitializer=true;}
+   r.str("initialization_context","STANDALONE_HARNESS");
+   r.str("d3d12_debug_layer",debugEnabledByInitializer?"ENABLED_BEFORE_DEVICE":"UNAVAILABLE");
+  }else{
+   // Minecraft and third-party graphics modules already own their process startup.
+   // Do not query/enable/disable debug or DRED here, even if the SDK is installed.
+   r.str("initialization_context","EMBEDDED_MINECRAFT");
+   r.str("d3d12_debug_layer","UNAVAILABLE_IN_EMBEDDED_RUNTIME");
+  }
+  r.raw("debug_layer_enabled",debugEnabledByInitializer?"true":"false");
+  r.str("debug_layer_observation_scope","enabled by this initializer; pre-existing process debug state unknown");
+  r.raw("dxgi_factory_flags",debugEnabledByInitializer?std::to_string(DXGI_CREATE_FACTORY_DEBUG):"0");
+  check(CreateDXGIFactory2(debugEnabledByInitializer?DXGI_CREATE_FACTORY_DEBUG:0,IID_PPV_ARGS(&factory)),"CreateDXGIFactory2");
   for(UINT i=0;;++i){ComPtr<IDXGIAdapter1> candidate;auto h=factory->EnumAdapters1(i,&candidate);if(h==DXGI_ERROR_NOT_FOUND)break;check(h,"EnumAdapters1");DXGI_ADAPTER_DESC1 d{};check(candidate->GetDesc1(&d),"GetDesc1");
    auto name=fs::path(d.Description).string();auto luid=hexBytes(reinterpret_cast<const uint8_t*>(&d.AdapterLuid),sizeof(LUID));
-   r.event("adapter",name+" vendor="+std::to_string(d.VendorId)+" luid="+luid);
+   r.event("adapter",name+" vendor="+std::to_string(d.VendorId)+" device="+std::to_string(d.DeviceId)+" flags="+std::to_string(d.Flags)+" luid="+luid);
    if(d.VendorId==0x10de&&name.find("3050 Ti")!=std::string::npos&&luid=="4c29010000000000"&&!(d.Flags&DXGI_ADAPTER_FLAG_SOFTWARE)){adapter=candidate;r.str("gpu",name);r.raw("vendor_id",std::to_string(d.VendorId));r.raw("device_id",std::to_string(d.DeviceId));r.str("device_luid",luid);break;}
   }
   if(!adapter)throw std::runtime_error("Identified RTX 3050 Ti LUID absent; refusing another adapter");
-  check(D3D12CreateDevice(adapter.Get(),D3D_FEATURE_LEVEL_12_0,IID_PPV_ARGS(&device)),"D3D12CreateDevice");r.str("feature_level","12_0");
+  r.str("d3d12_create_arguments","selected IDXGIAdapter1; feature level 12_0; IID_ID3D12Device; nonnull output; no WARP/null adapter");
+  r.str("if_fail_stage","D3D12_CREATE_DEVICE");
+  auto deviceResult=D3D12CreateDevice(adapter.Get(),D3D_FEATURE_LEVEL_12_0,IID_PPV_ARGS(&device));
+  r.str("d3d12_create_device_result",hrHex(deviceResult));
+  check(deviceResult,"D3D12CreateDevice");r.str("feature_level","12_0");
   device.As(&infoQueue);
   D3D12_COMMAND_QUEUE_DESC q{};q.Type=D3D12_COMMAND_LIST_TYPE_DIRECT;check(device->CreateCommandQueue(&q,IID_PPV_ARGS(&queue)),"CreateCommandQueue");
   check(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(&allocator)),"CreateCommandAllocator");

@@ -1,5 +1,15 @@
 # Wisteria DLSS-G x2 — isolated runtime integration
 
+## Embedded debug correction — next authorized phase
+
+Phase base `289862295b04422a41dc0a5a47068ab1b00c9bd4`. The shared public D3D12 initializer now accepts an explicit context. Historical standalone callers keep StandaloneHarness by default and may enable the layer before creating their device. The JNI session explicitly selects EmbeddedMinecraft: it does not call D3D12GetDebugInterface, EnableDebugLayer, DisableDebugLayer or DRED configuration; DXGI factory flags are0. It records `UNAVAILABLE_IN_EMBEDDED_RUNTIME` and `debug_layer_enabled=false` scoped to this initializer. Pre-existing third-party process debug state remains unknown. Debug absence is not a functional failure.
+
+Public CreateDevice audit: adapter is nonnull IDXGIAdapter1 selected by VendorId0x10de, RTX3050Ti name, exact LUID `4c29010000000000`, and no DXGI_ADAPTER_FLAG_SOFTWARE. DeviceId is recorded (prior observed9632/0x25a0). Required feature level stays D3D_FEATURE_LEVEL_12_0; IID/output stay IID_PPV_ARGS(&device). No null adapter, WARP, AMD iGPU, changed feature level or architecture gate patch. Borrowed Vulkan UUID/LUID and driver checks remain unchanged. Exact create HRESULT is now written before throwing so device-creation failures have durable evidence even without an ID3D12Device.
+
+New C++/JNI and Java build PASS; existing 19 SR CPU tests and 7 evidence CPU tests PASS; DlssgContractTest geometry/motion/metadata/ABI PASS. Packaging retains nine AMD Java classes and both AMD DLLs byte-for-byte. New candidate hashes: SR `5c4939db10578db4dde93c2968c697f469ed6adf9f322e72a95660b2b4842848`; Wisteria `7b425231bf36b377fe88a51f415f0f2cf0fa9c5f33e1b62567e609097e3e71ec`. Native-only behavioral correction; PresentWorker, provider output protocol, shared pool, NGX runtime, loader flags and input mappings are unchanged. No closed harness or new GPU test ran during these checks.
+
+Previous FAIL run below remains preserved without modification. New shadow: pending; presentation requires new shadow PASS and matching artifact hashes. One attempt in each authorized mode, stop on failure.
+
 Base: `29deca27b6d4a4401699c83be4258a0fa02f10ab`. Prior offscreen gates remain closed; this phase does not rerun them. Read `CURRENT_REAL_PIPELINE.md` for the pre-edit pipeline audit.
 
 ## Candidate implementation

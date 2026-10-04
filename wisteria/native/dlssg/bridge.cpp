@@ -80,7 +80,7 @@ struct Session {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
             throw std::runtime_error("Runtime SHA256 mismatch");
         vendorLog.open(out/"ngx.log"); validationLog.open(out/"d3d12-debug.log");
-        external.start(evidence,dll); dx.initialize();
+        external.start(evidence,dll); dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
         hr(dx.queue->GetTimestampFrequency(&dxFrequency),"D3D12 timestamp frequency");
         disableSentinel=dx.buffer(16,D3D12_HEAP_TYPE_UPLOAD,D3D12_RESOURCE_STATE_GENERIC_READ);
         void* map{};D3D12_RANGE none{0,0};hr(disableSentinel->Map(0,&none,&map),"disable sentinel map");std::memset(map,255,16);disableSentinel->Unmap(0,nullptr);

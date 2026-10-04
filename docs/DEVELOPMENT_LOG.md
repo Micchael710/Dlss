@@ -548,3 +548,20 @@ AMD candidate Java/native bytes identical. Earlier offscreen/AMD PASS gates pres
 Evidence result/run-manifest/events/provider/capture/pool/sync/timing/error text saved
 under logs/runtime/minecraft-dlssg-x2/20261004-010600-001. Binaries/UI screenshot/world
 stay local/ignored. Higher MFG/DLSS SR/direct Vulkan NGX not tested. Stop at failed gate.
+
+## 2026-10-03 — embedded D3D12 initialization correction, pre-run gates
+
+Continue2898622. Explicit D3D12InitializationContext separates standalone debug
+bootstrap from embedded Minecraft initialization. Embedded: no debug/DRED global
+configuration, no D3D12GetDebugInterface/EnableDebugLayer; DXGI factory flags0.
+Standalone default retains prior behavior; no closed GPU harness was rerun.
+Same NVIDIA Vendor/LUID/name/non-software adapter, FL12_0 and public device IID;
+DeviceId/flags and CreateDevice arguments/result now logged explicitly.
+
+Bridge C++/JNI build PASS; Java21 builds PASS; 19 SR CPU tests,7 evidence tests and
+DlssgContractTest matrices/depth/motion/jitter/metadata/reset/JNI ABI1 PASS.
+AMD nine Java classes and two packaged DLLs identical; three baseline hashes unchanged.
+Previous candidate JARs archived locally under builds/experimental/dlssg-x2/history/2898622.
+New candidate manifest updated; previous failed runtime evidence remains untouched.
+No changes AMD/PresentWorker/NGX/private ABI/loader/inputs/pool/scheduler/driver/DRS.
+Next: exactly one new shadow, then one presentation x2 only if full shadow passes.

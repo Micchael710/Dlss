@@ -1,4 +1,20 @@
-## Estado vigente — único shadow Minecraft FAIL; detenerse sin retry
+## Estado vigente — corrección embedded debug compilada; nuevo shadow pendiente
+
+Nueva fase autorizada desde `289862295b04422a41dc0a5a47068ab1b00c9bd4`.
+Inicializador D3D12 distingue StandaloneHarness (debug antes de su device) de
+EmbeddedMinecraft (no consulta/enable/disable debug ni DRED; DXGI factory flags0).
+Bridge llama explícitamente EmbeddedMinecraft. Registra debug no disponible para
+este inicializador; no afirma conocer la configuración previa de terceros.
+Selección NVIDIA/LUID/no software y CreateDevice FL12_0/IID_ID3D12Device no cambian.
+
+Build C++/JNI y Java21 PASS; 19 tests CPU SR, 7 tests CPU de evidencia y
+DlssgContractTest (matrices/depth/motion/jitter/metadata/reset/JNI ABI1) PASS.
+Packaging confirma nueve clases AMD y dos DLL AMD idénticas; hashes baseline
+sin cambios. Candidatos de fase previa archivados localmente antes de empaquetar.
+Siguiente: un único nuevo shadow; si pasa, una presentación x2; si falla, stop.
+No cambios PresentWorker/AMD/NGX/inputs/scheduler; no nuevos harnesses offscreen.
+
+## Fase previa — único shadow Minecraft FAIL; preservado
 
 Run `20261004-010600-001` (UTC; 2026-10-03 local), implementación `621546f`.
 Minecraft1.21.1/NeoForge21.1.219 abrió el mismo mundo con Complementary, SR1.7,

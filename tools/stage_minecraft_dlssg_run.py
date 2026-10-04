@@ -1,6 +1,6 @@
 """Prepare exactly one isolated run; no process is started by this tool."""
 from pathlib import Path
-import hashlib,json,shutil,sys,datetime,re
+import hashlib,json,shutil,sys,datetime,re,subprocess
 ROOT=Path(__file__).resolve().parents[1]
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest()
 mode=sys.argv[1] if len(sys.argv)>1 else 'shadow'
@@ -31,7 +31,9 @@ text,n=re.subn(r'(\[frame_generation\][\s\S]*?provider = )"[^"]+"',r'\1"wisteria
 text,n=re.subn(r'(\[frame_generation\][\s\S]*?backend = )"[^"]+"',r'\1"wisteria:dlssg"',text,count=1);assert n==1
 config.write_bytes(text.encode('utf-8'))
 manifest={'run_id':runid,'mode':mode,'attempt_limit':1,'status':'PREPARED_NOT_LAUNCHED',
- 'project_base':'29deca27b6d4a4401699c83be4258a0fa02f10ab','artifacts':artifact['artifacts'],
+ 'project_base':'289862295b04422a41dc0a5a47068ab1b00c9bd4',
+ 'implementation_commit':subprocess.check_output(['C:/Users/micha/.cache/codex-runtimes/codex-primary-runtime/dependencies/native/git/cmd/git.exe','rev-parse','HEAD'],cwd=ROOT,text=True).strip(),
+ 'artifacts':artifact['artifacts'],
  'original_test_config_sha256':hashlib.sha256(old).hexdigest(),'test_config_sha256':sha(config),
  'component_sha256':sha(component),'runtime_sha256':sha(runtime),
  'profile':'Minecraft1.21.1 / NeoForge21.1.219 / Java21 / Complementary / SR1.7 / OpenGLFSR1 / VulkanPresent / OptiScalerOFF',
