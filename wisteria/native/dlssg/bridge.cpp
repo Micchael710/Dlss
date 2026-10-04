@@ -253,7 +253,8 @@ struct Session {
             D3D12_QUERY_HEAP_DESC q{};q.Type=D3D12_QUERY_HEAP_TYPE_TIMESTAMP;q.Count=count*2;hr(dx.device->CreateQueryHeap(&q,IID_PPV_ARGS(&s.timing)),"slot timestamp heap");
             s.timingReadback=dx.buffer(count*16,D3D12_HEAP_TYPE_READBACK,D3D12_RESOURCE_STATE_COPY_DEST);
             // Pixel readback objects exist only for the bounded diagnostic sampling window.
-            if(i<3){s.colorSample=createSample(w,h);for(auto& sample:s.generatedSamples)sample=createSample(w,h);}
+            // Every leased slot can participate in a consecutive bounded capture.
+            s.colorSample=createSample(w,h);for(auto& sample:s.generatedSamples)sample=createSample(w,h);
         }
         auto code=NVSDK_NGX_D3D12_AllocateParameters(&p->parameters);if(!NVSDK_NGX_SUCCEED(code)||!p->parameters)throw std::runtime_error("Allocate feature parameters "+resultHex(code));
         NVSDK_NGX_DLSSG_Create_Params cp{};cp.Width=w;cp.Height=h;cp.RenderWidth=rw;cp.RenderHeight=rh;cp.NativeBackbufferFormat=DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -290,7 +291,7 @@ struct Session {
         if(s.leased||unsafe||p.failed||src.size()!=20||constants.size()!=108)throw std::runtime_error("Invalid or failed slot/metadata contract");
         s.leased=true;s.prepared=false;s.submitted=false;s.frameId=frameId;s.sampled=sample&&s.colorSample.buffer;s.reset=reset;
         s.flagsReady.store(false);std::fill(s.flags.begin(),s.flags.end(),-1);
-        s.diagnostic=submittedFrames<8;s.completionObserved=0;s.statusReadError.clear();
+        s.diagnostic=submittedFrames<8||s.sampled;s.completionObserved=0;s.statusReadError.clear();
         for(size_t j=0;j<s.images.size();++j)s.priorInitialized[j]=s.images[j].initialized;
         s.ready=++sequence;s.done=++sequence;
         vkcheck(fn<PFN_vkResetCommandBuffer>("vkResetCommandBuffer")(s.inputs,0),"input reset");VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};bi.flags=VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;

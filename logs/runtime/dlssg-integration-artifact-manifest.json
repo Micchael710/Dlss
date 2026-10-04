@@ -14,9 +14,9 @@
     },
     "wisteria": {
       "path": "builds\\experimental\\dlssg-x2\\wisteria-dlssg-x2-candidate.jar",
-      "sha256": "8401f6180a627a20d86f1a2aafec1d1ae8b2f7273dd87ab4be1f3e3701a007b5",
-      "java21_classes": 41,
-      "bytes": 3127239
+      "sha256": "bb8021b39c5a15e0781d0859d187fcf32e13adc5e83edb86df40b922dfb4ec17",
+      "java21_classes": 42,
+      "bytes": 3128619
     }
   },
   "amd_classes_unchanged": 9,

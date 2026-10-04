@@ -69,6 +69,9 @@ neoForge {
                     jvmArgument "-Dwisteria.dlssg.requestedCount=${requestedCount}"
                 }
                 jvmArgument "-Dwisteria.dlssg.runDir=${experimentDir}"
+                if (providers.gradleProperty('dlssg_image_diagnostic').orElse('false').get() == 'true') {
+                    jvmArgument '-Dwisteria.dlssg.imageDiagnostic=true'
+                }
                 jvmArgument "-Dwisteria.dlssg.externalDll=${file(experimentDir + '/component/version.dll').absolutePath}"
                 jvmArgument "-Dwisteria.dlssg.runtimeDir=${file(experimentDir + '/stock-runtime').absolutePath}"
             }

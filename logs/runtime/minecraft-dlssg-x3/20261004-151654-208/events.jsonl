@@ -1,0 +1,56 @@
+{"timestamp_ns":125456464423400,"pid":1305364,"type":"external_load_begin","detail":"D:\\\\ProjectDllsss\\\\logs\\\\runtime\\\\minecraft-dlssg-x3\\\\20261004-151654-208\\\\component\\\\version.dll"}
+{"timestamp_ns":125456489633100,"pid":1305364,"type":"external_load_complete","detail":"00007FFCE3A10000"}
+{"timestamp_ns":125456495939300,"pid":1305364,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":125456496078600,"pid":1305364,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":125456496095800,"pid":1305364,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":125456496125000,"pid":1305364,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 device=9632 flags=0 luid=4c29010000000000"}
+{"timestamp_ns":125456504397000,"pid":1305364,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":125456539380600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":125456539423500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":125456539593000,"pid":1305364,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":125456539619100,"pid":1305364,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":125456539638300,"pid":1305364,"type":"d3d12_result","detail":"CreateFence=0x00000000"}
+{"timestamp_ns":125458159683300,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064086113000,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064086509500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064087011500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064087345700,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064087704600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064088031800,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064088365100,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064088696800,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064089706300,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064097999900,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064098403600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064098850100,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064099181600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064099494200,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064099748800,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064099989200,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064100246900,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064100775800,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064107362500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064107725900,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064108061300,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064108456700,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064108773400,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064109091200,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064109395600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064109694600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064110567800,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064119143000,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064119587400,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064119997300,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064120403500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064120732100,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064121046600,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064121586300,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064121932700,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064122670500,"pid":1305364,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":126064124663000,"pid":1305364,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":126064124777700,"pid":1305364,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":126064305579300,"pid":1305364,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":126064305637500,"pid":1305364,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":126064305654000,"pid":1305364,"type":"submit","detail":"Minecraft pool CreateFeature fenceValue=1 commandList=00000285B35467E0"}
+{"timestamp_ns":126064305675600,"pid":1305364,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":126064310343600,"pid":1305364,"type":"completion","detail":"Minecraft pool CreateFeature value=1"}

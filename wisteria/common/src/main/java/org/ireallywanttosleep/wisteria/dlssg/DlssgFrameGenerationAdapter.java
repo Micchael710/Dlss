@@ -22,6 +22,7 @@ final class DlssgFrameGenerationAdapter {
     private PrintWriter events;
     private PrintWriter jsonEvents;
     private int dispatched,samples;
+    private final DlssgDiagnosticCapture diagnosticCapture=new DlssgDiagnosticCapture(Boolean.getBoolean("wisteria.dlssg.imageDiagnostic"));
     private volatile int reportedMax;
     private final int requestedMax=Integer.getInteger("wisteria.dlssg.requestedCount",1);
     int supportedCount(){return Math.min(reportedMax,Math.min(requestedMax,4));}
@@ -67,7 +68,8 @@ final class DlssgFrameGenerationAdapter {
         }catch(Exception e){throw new IllegalStateException("DLSS-G session initialization failed",e);}
     }
     FrameGenerationDispatchResult dispatch(FrameGenerationDispatchInput input){
-        requireOwner();if(!healthy)return FrameGenerationDispatchResult.failed("DLSS-G experiment latched unavailable; no retry");
+        requireOwner();if(diagnosticCapture.limitReached(dispatched)){healthy=false;event("DIAGNOSTIC_LIMIT dispatches="+dispatched+" presentationValidityUnchanged=true");}
+        if(!healthy)return FrameGenerationDispatchResult.failed("DLSS-G experiment latched unavailable; no retry");
         Slot slot=null;
         String stage="INPUT_MAPPING";
         try{
@@ -112,14 +114,15 @@ final class DlssgFrameGenerationAdapter {
             float[] previousClip=snapshot.constants().clipToPrevClip();double cameraMotion=0;
             for(int j=0;j<16;j++)cameraMotion=Math.max(cameraMotion,Math.abs(previousClip[j]-(j%5==0?1:0)));
             // First bounded sample requires actual camera motion; following samples anchor A/B.
-            boolean sample=!reset&&dispatched>=30&&samples<3&&slot.index<3&&(samples>0||cameraMotion>0.01);
+            boolean sample=diagnosticCapture.enabled()?diagnosticCapture.select(dispatched,reset,cameraMotion)
+                :!reset&&dispatched>=30&&samples<3&&slot.index<3&&(samples>0||cameraMotion>0.01);
             if(sample){samples++;event("SAMPLE_REQUEST realFrameId="+metadata.monotonicFrameId()+" cameraMatrixDelta="+cameraMotion);}
             long[] wait=DlssgBridge.prepare(session,current.nativePool,slot.index,input.commandBuffer(),nativeSources,constants,
                 metadata.monotonicFrameId(),metadata.realFrameDeltaMs(),reset,flip,sample);
             slot.real.setCurrentLayout(VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);for(var image:slot.generated)image.setCurrentLayout(VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
             invalidHistory=false;lastId=metadata.monotonicFrameId();lastEpoch=metadata.discontinuityEpoch();dispatched++;
             event("PREPARED realFrameId="+lastId+" timestamp="+metadata.realFrameTimestamp()+" deltaMs="+metadata.realFrameDeltaMs()+" epoch="+lastEpoch+" reset="+reset+" slot="+slot.index+" VkImage="+slot.generated.get(0).handle()+" copies=4 outputCopies=0 shadow="+shadow+" sample="+sample+" inputKey="+key+" motionJittered="+snapshot.constants().motionVectorsJittered()+" jitter="+snapshot.constants().jitterOffsetX()+","+snapshot.constants().jitterOffsetY());
-            Lease lease=new Lease(slot,input.device(),frame.readySemaphores(),wait,metadata.monotonicFrameId(),metadata.discontinuityEpoch(),reset,shadow);
+            Lease lease=new Lease(slot,input.device(),frame.readySemaphores(),wait,metadata.monotonicFrameId(),metadata.discontinuityEpoch(),reset,shadow,sample);
             return FrameGenerationDispatchResult.success(count,lease,reset?FrameGenerationDispatchResult.HistoryDisposition.RESET:FrameGenerationDispatchResult.HistoryDisposition.UNCHANGED);
         }catch(Throwable error){
             if(slot!=null){try{DlssgBridge.abort(session,slot.pool.nativePool,slot.index);slot.leased=false;}catch(Throwable aborted){error.addSuppressed(aborted);}}
@@ -147,15 +150,15 @@ final class DlssgFrameGenerationAdapter {
     }
     private final class Lease implements FrameGenerationProviderOutput,FrameGenerationSubmissionPlan{
         final Slot slot;final VulkanDevice device;final long[] captureReady,wait;final long id,epoch;
-        final boolean reset;final DlssgOutputStatus status;
+        final boolean reset,sampled;final DlssgOutputStatus status;
         boolean submitted,released;
-        Lease(Slot s,VulkanDevice d,long[] ready,long[] wait,long id,long epoch,boolean reset,boolean shadow){
-            slot=s;device=d;captureReady=ready.clone();this.wait=wait.clone();this.id=id;this.epoch=epoch;this.reset=reset;
+        Lease(Slot s,VulkanDevice d,long[] ready,long[] wait,long id,long epoch,boolean reset,boolean shadow,boolean sampled){
+            slot=s;device=d;captureReady=ready.clone();this.wait=wait.clone();this.id=id;this.epoch=epoch;this.reset=reset;this.sampled=sampled;
             status=new DlssgOutputStatus(id,wait[1],s.generated.size(),reset||shadow,flags->{
                 for(int k=0;k<flags.length;k++){
                     String state=flags[k]==0?"ENABLED":flags[k]==1?"DISABLED":"UNKNOWN";
                     event("OUTPUT_READY realFrameId="+id+" previousRealFrameId="+(id-1)+" index="+(k+1)+" count="+flags.length+" rawStatus="+Integer.toUnsignedString(flags[k])+" status="+state+" disable="+flags[k]+" reset="+reset+" epoch="+epoch+" completion="+wait[1]+" completionScope=GROUP_ORDERED_COMMAND_LIST presentable="+(flags[k]==0&&!reset&&!shadow)+" VkImage="+slot.generated.get(k).handle());
-                    if("UNKNOWN".equals(state))fail("OUTPUT_STATUS_NOT_CONFIRMED_INDEX_"+(k+1),new IllegalStateException("STATUS_NOT_WRITTEN_OR_UNCONSUMED raw="+Integer.toUnsignedString(flags[k])+" realFrameId="+id));
+                    if("UNKNOWN".equals(state)&&!diagnosticCapture.enabled())fail("OUTPUT_STATUS_NOT_CONFIRMED_INDEX_"+(k+1),new IllegalStateException("STATUS_NOT_WRITTEN_OR_UNCONSUMED raw="+Integer.toUnsignedString(flags[k])+" realFrameId="+id));
                 }
             });
         }
@@ -177,7 +180,9 @@ final class DlssgFrameGenerationAdapter {
             }catch(Throwable e){fail("GPU_SUBMISSION",e);throw e;}
         }
         public void release(){requireOwner();if(released)return;
-            try{DlssgBridge.release(session,slot.pool.nativePool,slot.index);released=true;slot.leased=false;event("RETIRED realFrameId="+id+" slot="+slot.index);collectRetiredPools();}
+            try{DlssgBridge.release(session,slot.pool.nativePool,slot.index);released=true;slot.leased=false;event("RETIRED realFrameId="+id+" slot="+slot.index);
+                if(sampled&&diagnosticCapture.completedSample()){healthy=false;event("DIAGNOSTIC_CAPTURE_COMPLETE realFrameId="+id+" presentationValidityUnchanged=true");}
+                collectRetiredPools();}
             catch(Throwable e){fail("LEASE_RETIREMENT",e);throw e;}
         }
         public void abort(){requireOwner();if(released)return;

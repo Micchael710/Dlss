@@ -1,0 +1,162 @@
+{
+  "diagnostic_only": true,
+  "presentation_gating_changed": false,
+  "pairs": [
+    {
+      "frame_id": 573,
+      "hashes": {
+        "A": "fee90ccf1713a56421401c243d201f03fdf550bebcd81952d65ddb638d2afc5d",
+        "G1": "2d4d2a58cc49072c332cde77c14be458a37db472a9d950eaf19a23012128d6ee",
+        "G2": "1b1f9bc71e98d13a4d61f2b8ba39de270277fb441e29bec09fe1227979b7554d",
+        "B": "4369151bf9d69a669af45242eaf0315b551d6a1dfe0d0a11a64576f5227f9627"
+      },
+      "images": {
+        "G1": {
+          "optional_status": "0",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.0025907494145199065,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        },
+        "G2": {
+          "optional_status": "-1",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.0028346994535519126,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        }
+      },
+      "temporal": {
+        "method": "Farneback A->Gi motion projected onto A->B; central textured scenery; diagnostic estimate, not ground truth",
+        "motion_pixels": 10055,
+        "G1": {
+          "support_pixels": 7063,
+          "tau_median": 0.29484814405441284,
+          "tau_quartiles": [
+            0.03173549845814705,
+            0.38544610142707825
+          ],
+          "median_relative_off_axis_error": 0.13324029743671417
+        },
+        "G2": {
+          "support_pixels": 6170,
+          "tau_median": 0.6122087240219116,
+          "tau_quartiles": [
+            0.1473926305770874,
+            0.6799884140491486
+          ],
+          "median_relative_off_axis_error": 0.16143138706684113
+        },
+        "ordered_motion_estimate": true
+      }
+    },
+    {
+      "frame_id": 574,
+      "hashes": {
+        "A": "4369151bf9d69a669af45242eaf0315b551d6a1dfe0d0a11a64576f5227f9627",
+        "G1": "649522a5876b18c79b9a0536e2d8f9adcd5f6ea988a4e07b951b5aed2d4bea8f",
+        "G2": "c8abb6d6cc196290f1efc40c185f27b0610338d93fae6538de8708e22d28e16c",
+        "B": "b617958c1e02127cf03170801458ab5ce28a5d4309eea2fe054cd9a0991ca628"
+      },
+      "images": {
+        "G1": {
+          "optional_status": "0",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.0027907884465261513,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        },
+        "G2": {
+          "optional_status": "-1",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.002971311475409836,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        }
+      },
+      "temporal": {
+        "method": "Farneback A->Gi motion projected onto A->B; central textured scenery; diagnostic estimate, not ground truth",
+        "motion_pixels": 12777,
+        "G1": {
+          "support_pixels": 9414,
+          "tau_median": 0.15958616137504578,
+          "tau_quartiles": [
+            0.004966842359863222,
+            0.34769468754529953
+          ],
+          "median_relative_off_axis_error": 0.10204006731510162
+        },
+        "G2": {
+          "support_pixels": 8751,
+          "tau_median": 0.40889230370521545,
+          "tau_quartiles": [
+            0.11013445630669594,
+            0.6870312392711639
+          ],
+          "median_relative_off_axis_error": 0.15901891887187958
+        },
+        "ordered_motion_estimate": true
+      }
+    },
+    {
+      "frame_id": 575,
+      "hashes": {
+        "A": "b617958c1e02127cf03170801458ab5ce28a5d4309eea2fe054cd9a0991ca628",
+        "G1": "946acbf3efe0aa25a1739aaef50caee927370281ff9acfb859a408c29e21db4d",
+        "G2": "6c034058cfd4d2fae4f228a62211fd6c87f789caf48145b25924b326515642c3",
+        "B": "0791618e28d79ade0186d2dc7647e7811397f1adcfe2dfa64064de02399afb85"
+      },
+      "images": {
+        "G1": {
+          "optional_status": "0",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.002537080405932865,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        },
+        "G2": {
+          "optional_status": "-1",
+          "sentinel_pixels": 0,
+          "black_fraction": 0.002424863387978142,
+          "differs_from_A": true,
+          "differs_from_B": true,
+          "differs_from_other_G": true,
+          "nonblack_nonsentinel_distinct": true
+        }
+      },
+      "temporal": {
+        "method": "Farneback A->Gi motion projected onto A->B; central textured scenery; diagnostic estimate, not ground truth",
+        "motion_pixels": 16199,
+        "G1": {
+          "support_pixels": 13055,
+          "tau_median": 0.11498763412237167,
+          "tau_quartiles": [
+            -0.07244723290205002,
+            0.3694991171360016
+          ],
+          "median_relative_off_axis_error": 0.09295487403869629
+        },
+        "G2": {
+          "support_pixels": 12150,
+          "tau_median": 0.3710483908653259,
+          "tau_quartiles": [
+            0.031185472384095192,
+            0.6388078778982162
+          ],
+          "median_relative_off_axis_error": 0.12606260180473328
+        },
+        "ordered_motion_estimate": true
+      }
+    }
+  ]
+}

@@ -1,4 +1,31 @@
-## Estado vigente — auditoría index2, 2026-10-04
+## Estado vigente — G2 produce imagen; presentación x3 bloqueada, 2026-10-04
+
+HEAD inicial de esta fase: 91c8292b560b4e87bd3a8d4a9fac7ab45880e201.
+Diagnóstico único `20261004-151654-208`, Java25.0.4, count2/indices1,2.
+Cuatro grupos capturados572–575, tres pares A/B anclados y sin reset.
+G2 es distinto de A/B/G1, sin sentinel, no negro. Estimación de movimiento
+A<G1<G2<B en las tres muestras, con confianza moderada y artefactos de nubes.
+G2_IMAGE_GENERATION=PASS_BOUNDED_DIAGNOSTIC; G2_OPTIONAL_STATUS=UNKNOWN.
+Esto sustituye cualquier inferencia de que sentinel de estado implica ausencia
+de imagen. NO autoriza G2: cero presentaciones de index2.
+
+Contrato público: output disable opcional, hint boolean en primer byte de
+buffer>=4 bytes para frame(s) interpolado(s). Sugiere intención de grupo pero
+no demuestra que flag0 de G1 se pueda propagar a G2. No se cambió el gating.
+MINECRAFT_DLSSG_X3=BLOCKED_STATUS_SEMANTICS_UNPROVEN; funcional PASS=NO.
+Sin retest de presentación, sin x4/x5. Getter2 corresponde también al techo
+configurado MaxGeneratedFrames2, no prueba un límite intrínseco de la ruta.
+Streamline/OptiScaler permiten solicitar count, pero administran presentación;
+no contrato público demostrado de exportar outputs manteniendo PresentWorker.
+
+Normal shutdown, sin crash/device lost; AMD9clases/2DLL idénticos. Modo
+diagnóstico apagado por defecto, warmup30, máximo4 muestras/600dispatches.
+Readback sólo diagnóstico, transporte CPU de gameplay0, único PresentWorker.
+Informe y fuentes: `DLSSG_MFG_PUBLIC_CONTRACT_IMAGE_DIAGNOSTIC.md`.
+DLSS_SR_NEXT_ITERATION_REQUIRED=YES; DLSS_SR_UI_OPTION_ALREADY_EXISTS=YES.
+La siguiente iteración debe implementar NGX DLSS SR real en la opción existente.
+
+## Estado histórico preservado — auditoría index2, 2026-10-04
 
 HEAD inicial ed7a4d4; trabajo pendiente Java25 conservado en commit2cd78d3.
 Prueba única nueva x3: `20261004-144431-183`, Java25.0.4 desde Minecraft,
