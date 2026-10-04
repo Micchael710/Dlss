@@ -71,7 +71,10 @@ int wmain(int argc,wchar_t** argv) {
         sl::Preferences pref{};pref.pathsToPlugins=&pluginPath;pref.numPathsToPlugins=1;
         pref.pathToLogsAndData=logDir.c_str();pref.featuresToLoad=features;pref.numFeaturesToLoad=2;
         pref.flags=sl::PreferenceFlags::eDisableCLStateTracking|sl::PreferenceFlags::eUseManualHooking;
-        pref.engine=sl::EngineType::eCustom;pref.engineVersion="capability-only-1";pref.renderAPI=sl::RenderAPI::eD3D12;
+        // Exact existing direct-x2 ProjectID identity; not an ApplicationID substitute.
+        pref.engine=sl::EngineType::eCustom;pref.engineVersion="1.0.0";
+        pref.projectId="3e6891d2-09ac-4f54-ae8d-f481c3150d4b";pref.renderAPI=sl::RenderAPI::eD3D12;
+        std::cout<<"NGX_IDENTITY_API=PROJECT_ID\nNGX_PROJECT_ID="<<pref.projectId<<"\nNGX_ENGINE_VERSION="<<pref.engineVersion<<std::endl;
         stage="STREAMLINE_INIT";result("STREAMLINE_INIT_RESULT",init(pref,sl::kSDKVersion));initialized=true;
         // Init precedes device creation, as required by the public programming guide.
         stage="ADAPTER_SELECTION";ComPtr<IDXGIFactory1> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));

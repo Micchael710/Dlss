@@ -1,5 +1,17 @@
 # Streamline + SM86 capability harness — 2026-10-04
 
+## Current result — real maximum4, options1–4 accepted, no generation test
+
+Start `dd0262a544e530e97f5c0f4d0df1dcd06ba41c3f`, main clean. Direct x2 uses `NVSDK_NGX_D3D12_Init_with_ProjectID`, GUID `3e6891d2-09ac-4f54-ae8d-f481c3150d4b`, CUSTOM engine, version1.0.0; no ApplicationID. Source `experiments/dlssg-external-harness/d3d12_worker.inc:63` is included by the harness and direct bridge. Historical combined x2 evidence confirms NGX Init PASS. Public SDK2.12 source in the supplied ZIP (`source/plugins/sl.common/commonEntry.cpp:1490–1509`) maps nonempty projectId/engineVersion to that ProjectID API. This is not an ApplicationID substitution or newly invented identity.
+
+Only harness change: Preferences.projectId uses that GUID; engineVersion uses1.0.0. Engine CUSTOM unchanged. slInit already precedes device creation; slSetD3DDevice was already present and succeeding after creating the explicit RTX3050Ti device, so that call was not changed. Same SDK2.12.0.17026aaf3, SM86 0.3.5 and runtime binary hashes/layout/MaxGeneratedFrames4. One rebuilt-harness execution with temporary SpoofArchToGame1, no retries or swapchain/Present.
+
+Actual results: Init0, slSetD3DDevice0, feature support0, GetState0, DLSSGStatus0. **GetState.numFramesToGenerateMax=4**, sourced from the real API with SM86 active; label `REPORTED_VALUE_VIA_SM86_PROXY`, not physical native Ampere capability. SetOptions counts1,2,3,4 each return0. Hence reported/options capability x2/x3/x4/x5 YES. It is **not** a frame-generation/runtime presentation PASS. Options take effect at a future Present, which was not called.
+
+Device NVIDIA GeForce RTX3050Ti Laptop GPU, LUID `4c29010000000000`. SL reports architecture0x1b0 and DLSS-G hardware mask0x1. NGX log resolves the existing GUID to a CMS identity, DLSS-G startup succeeds and NGX shutdown is logged: context creation is supported by these events plus successful feature/state queries. Shutdown0/process exit0. INI restored byte-identically to SpoofArchToGame0, SHA256 `5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8`.
+
+STOP after capability/options. No Minecraft, generated frames, x3/x4/x5 runtime, PresentWorker/direct x2/SR/AMD changes. Evidence: `logs/research/streamline-mfg-capability/20261004-ngx-identity/` (actual harness/SL logs, structured result, ProjectID provenance, same-DLL hashes, config restoration). The unchanged INI logging path emitted this run's SM86 backend/loader logs under `20261004-sdk212/backend/`; they confirm installed hooks, zero feature creates/evaluates and bundled runtime redirection. Actual loaded bundled-runtime hashes/version are recorded separately. ZIP/DLLs/executable/temporary INI are not published. Previous blockers below remain historical.
+
 ## Current result — single SpoofArchToGame1 test, new identity/NGX blocker
 
 Start `3dace051fee6a307fc68d816892f8d8e346d55ee`, clean main. Same executable, runtime DLL hashes, adapter, loading mechanism and MaxGeneratedFrames4. Only temporary isolated INI change: SpoofArchToGame0→1. No build/source changes or additional research. One execution, no retry. Original INI restored exactly: SHA256 `5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8`. Temporary test INI is not published; only hashes/results.

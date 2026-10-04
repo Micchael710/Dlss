@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — Streamline MFG capability/options PASS through SM86
+
+From `dd0262a544e530e97f5c0f4d0df1dcd06ba41c3f`, reused existing direct-x2 ProjectID and engineVersion via public SL Preferences. One run: Init/device/feature/GetState0; actual **maximum4**, SetOptions1–4 return0. x3/x4/x5 reported capability/options YES via SM86, not native physical capability or frame-generation PASS. Shutdown/exit0, INI restored exactly. No Minecraft/Present/baseline modifications; STOP. [Evidence and identity mapping](DLSSG_STREAMLINE_CAPABILITY.md).
+
 ## 2026-10-04 — SM86 spoof test changes architecture, query blocked by NGX context
 
 From `3dace051fee6a307fc68d816892f8d8e346d55ee`, one unchanged-harness run with temporary SpoofArchToGame1. Streamline architecture0x170→0x1b0 and hardware mask0x0→0x1; feature query6→32 `eErrorFeatureNotSupported`. Log requires correct application ID / missing NGX context. GetState max remains UNKNOWN. No retry; INI restored byte-identically; x2/SR/AMD/PresentWorker untouched. [Evidence](DLSSG_STREAMLINE_CAPABILITY.md).

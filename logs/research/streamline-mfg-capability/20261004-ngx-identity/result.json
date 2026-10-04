@@ -1,0 +1,115 @@
+{
+  "status": "CAPABILITY_AND_OPTIONS_ACCEPTED",
+  "github_start_head": "dd0262a544e530e97f5c0f4d0df1dcd06ba41c3f",
+  "streamline_package": "2.12.0",
+  "runtime_version": "2.12.0.17026aaf3",
+  "gpu_name": "NVIDIA GeForce RTX 3050 Ti Laptop GPU",
+  "adapter_luid": "4c29010000000000",
+  "direct_x2_ngx_init_api": "NVSDK_NGX_D3D12_Init_with_ProjectID",
+  "direct_x2_ngx_application_id": "NONE",
+  "direct_x2_ngx_project_id": "3e6891d2-09ac-4f54-ae8d-f481c3150d4b",
+  "direct_x2_ngx_engine_type": "NVSDK_NGX_ENGINE_TYPE_CUSTOM",
+  "direct_x2_ngx_engine_version": "1.0.0",
+  "identity_source": "experiments/dlssg-external-harness/d3d12_worker.inc:63, included by harness.cpp and wisteria/native/dlssg/bridge.cpp",
+  "public_identity_mapping": "SDK2.12 Preferences.projectId + engine + engineVersion; source/plugins/sl.common/commonEntry.cpp:1490-1509",
+  "sm86_component_version": "0.3.5",
+  "sm86_proxy_loaded": "YES",
+  "sm86_proxy_active": "YES_FOR_REPORTED_ARCHITECTURE_AND_FEATURE_GATE",
+  "sm86_config_spoof_arch_to_game_test": 1,
+  "config_restored_byte_identical": true,
+  "config_restoration": {
+    "after": 0,
+    "test": 1,
+    "before": 0,
+    "restored_sha256": "5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8",
+    "test_sha256": "5a5b4659c6d3a3d61938ac481bfe6e7e03ebbddc67e8ec405520a9aff58941fe",
+    "restored_byte_identical": true,
+    "before_sha256": "5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8"
+  },
+  "sl_set_d3d_device_present": true,
+  "sl_set_d3d_device_result": 0,
+  "streamline_init_result": 0,
+  "ngx_context_created": true,
+  "ngx_context_evidence": "NGX MapProjectId resolves existing GUID; DLSS-G startup, feature support and GetState succeed; NGX shutdown logged",
+  "dlssg_feature_support_result": 0,
+  "dlssg_feature_supported": true,
+  "dlssg_get_state_result": 0,
+  "dlssg_status": 0,
+  "num_frames_to_generate_max": 4,
+  "max_value_source": "REPORTED_VALUE_VIA_SM86_PROXY",
+  "set_options": {
+    "1": 0,
+    "2": 0,
+    "3": 0,
+    "4": 0
+  },
+  "capability": {
+    "x2": true,
+    "x3": true,
+    "x4": true,
+    "x5": true
+  },
+  "streamline_shutdown_result": 0,
+  "process_exit_code": 0,
+  "if_fail_stage": "NONE",
+  "root_cause": "Prior missing ProjectID/engine-version identity resolved by reusing existing direct x2 identity via public SL Preferences.",
+  "cause_confidence": "HIGH_FOR_OBSERVED_CAPABILITY_AND_IDENTITY_FIX",
+  "runtime_dll_hashes": [
+    {
+      "name": "sl.interposer.dll",
+      "sha256": "2a79db6857ae8c75bbd871a9489c48bc6a39f7fcc88b9b02afd53d0376cbec66"
+    },
+    {
+      "name": "sl.common.dll",
+      "sha256": "c57930ef5a8a3fe9be85efdf71a61d8107c1148e8a6aed456464547128f7f4ae"
+    },
+    {
+      "name": "sl.dlss_g.dll",
+      "sha256": "1fec3f8fdfc59d78c4445c276c1a0fb798bf251985f348597dc2b44d0c995e52"
+    },
+    {
+      "name": "sl.reflex.dll",
+      "sha256": "7e6e4ccc4b561bd449fb0da90709d9b96b08c3f6f4697362caaa359e72a58a67"
+    },
+    {
+      "name": "sl.pcl.dll",
+      "sha256": "699ab461e64e95189a7fe6a21c79ad237cf56b60ea748cb6c840cd5431ba91d1"
+    },
+    {
+      "name": "nvngx_dlssg.dll",
+      "sha256": "135eaf0733c1e37381a8c28abcf7a862404a54132b81787c04e35d09efc5e36f"
+    },
+    {
+      "name": "component/version.dll",
+      "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838"
+    },
+    {
+      "name": "NvLowLatencyVk.dll",
+      "sha256": "2a77dc3e1c724b7eea5755be0ae7423752e79a2459fae72181a9f00e3507e5d6"
+    }
+  ],
+  "attempts": 1,
+  "x3_runtime_tested": false,
+  "x4_runtime_tested": false,
+  "x5_runtime_tested": false,
+  "minecraft_executed": false,
+  "presentworker_modified": false,
+  "x2_baseline_modified": false,
+  "amd_baseline_modified": false,
+  "present_calls": 0,
+  "generated_frames_tested": false,
+  "data_hardcoded_or_fabricated": false,
+  "observed_bundled_runtime": [
+    {
+      "file_version": "310,9,1,0",
+      "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+      "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\nvngx_dlssg.dll"
+    },
+    {
+      "file_version": null,
+      "sha256": "1aebf8f306fbaede18c98b372da9c70a1bbdb1bd35327f7f85c2969085a619a1",
+      "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\bundle-cache\\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7\\sm86_backend.dll"
+    }
+  ],
+  "sm86_backend_log_directory": "logs/research/streamline-mfg-capability/20261004-sdk212/backend"
+}
