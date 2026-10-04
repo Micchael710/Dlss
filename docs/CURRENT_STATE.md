@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — isolated Streamline capability harness blocked before Init
+
+Start `38786a2a553ed089fc811c7698b9c4b2e946dfa9`. Harness C++ build PASS; sole invocation exits2 at missing `sl.interposer.dll` preflight. Both workspaces lack Streamline runtime DLLs/package; SM86 remains unloaded. GetState maximum/support/options NOT_QUERIED. No download/retry/Minecraft or baseline code/config/binary change. Direct SR+x2 PASS preserved. [Capability evidence](DLSSG_STREAMLINE_CAPABILITY.md).
+
 ## 2026-10-04 — Streamline feasibility STOP at presentation contract
 
 Start `078fec4279251700337c79dda2fcb74bcc6f8b39`. Public Streamline DLSS-G has MFG options, but its generated frames use intercepted swapchain presentation and no reviewed public generated-texture export. Current PresentWorker sidecar is incompatible. No harness/build/runtime/config/code change; direct SR+x2 preserved. D3D12 requires DXGI, while the official Vulkan alternative still intercepts Vulkan presentation. Details and primary sources: [public feasibility](DLSSG_STREAMLINE_PUBLIC_FEASIBILITY.md). Direct x3 status blocker stays closed; no x4/x5/x6.

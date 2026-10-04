@@ -1,0 +1,25 @@
+{
+  "minecraft_executed": false,
+  "attempts": 1,
+  "header_version": "2.12.0",
+  "sm86_sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+  "fail_stage": "MISSING_AUTHORIZED_RUNTIME_BINARIES",
+  "compiler": "MSVC 19.51.36244.0",
+  "runtime_max": null,
+  "sm86_component_version": "0.3.5",
+  "missing": [
+    "sl.interposer.dll",
+    "sl.common.dll",
+    "sl.dlss_g.dll"
+  ],
+  "x2_baseline_modified": false,
+  "sm86_proxy_loaded": false,
+  "getstate": "NOT_CALLED",
+  "searched_roots": [
+    "D:/ProjectDllsss",
+    "D:/ProjectDlssmiAmigo"
+  ],
+  "build": "PASS",
+  "process_exit_code": 2,
+  "streamline_dll_or_archive_found": false
+}
