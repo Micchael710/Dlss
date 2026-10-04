@@ -1,0 +1,211 @@
+{
+  "finding": "SAME_INTERVAL_DISABLE1_PRESENT_REQUEST_CONFIRMED",
+  "realFrameAId": 4036,
+  "realFrameBId": 4037,
+  "generatedIndex": 1,
+  "multiFrameCount": 1,
+  "reset": false,
+  "resetEpoch": 3,
+  "deltaMs": 578.9245,
+  "discontinuity": "no reset was marked; cause of NGX disable is not proven",
+  "evaluate_result": "0x00000001",
+  "disable": 1,
+  "D3D12_signal": 8070,
+  "Vulkan_wait": 8070,
+  "presented_VkImage_decimal": 1695473108976,
+  "evaluate_VkImage_hex": "0000018AC21287F0",
+  "same_image": true,
+  "present_scope": "PresentWorker callback after vkQueuePresentKHR accepted; not photon/display timestamp",
+  "flag_scope": "same slot/fence read after Vulkan and presentation fence retirement, before reuse",
+  "root_cause": "lease declares generated candidate from !reset before GPU disable flag is read; disable first consumed at lease retirement",
+  "pixel_readback": false,
+  "corruption": "UNKNOWN",
+  "cause_of_reported_cut": "UNKNOWN",
+  "fix_required": true,
+  "evidence": [
+    {
+      "file": "frame-sequence.log",
+      "line": 24189,
+      "raw": "83836670623300 PREPARED realFrameId=4036 timestamp=83836118502600 deltaMs=14.9031 epoch=3 reset=false slot=0 VkImage=1694771704064 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24190,
+      "raw": "83836671475300 SUBMITTED realFrameId=4036 slot=0 done=8068 presentation=GENERATED_THEN_REAL"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24191,
+      "raw": "83836678626600 VULKAN_CONSUMER_SUBMIT realFrameId=4036 slot=0 commandBuffer=1695389788496 fence=1695404271952 timelineWait=8068 G1=1694771704064"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24194,
+      "raw": "83836714985800 PREPARED realFrameId=4037 timestamp=83836697427100 deltaMs=578.9245 epoch=3 reset=false slot=2 VkImage=1695473108976 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24195,
+      "raw": "83836715271700 SUBMITTED realFrameId=4037 slot=2 done=8070 presentation=GENERATED_THEN_REAL"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24196,
+      "raw": "83836728439600 VULKAN_CONSUMER_SUBMIT realFrameId=4037 slot=2 commandBuffer=1695389795424 fence=1695404272496 timelineWait=8070 G1=1695473108976"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24198,
+      "raw": "83836729434900 PREPARED realFrameId=4038 timestamp=83836722480500 deltaMs=25.0534 epoch=3 reset=false slot=1 VkImage=1695473116416 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24199,
+      "raw": "83836729604600 SUBMITTED realFrameId=4038 slot=1 done=8072 presentation=GENERATED_THEN_REAL"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24200,
+      "raw": "83836743372100 VULKAN_CONSUMER_SUBMIT realFrameId=4038 slot=1 commandBuffer=1694442188384 fence=1695861223472 timelineWait=8072 G1=1695473116416"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24201,
+      "raw": "83836743687400 PRESENT realFrameId=4036 previousRealFrameId=4035 generatedIndex=1 multiFrameCount=1 displayIndex=16236 kind=GENERATED VkImage=1694771704064 timestamp=83836743684000 queueDelayNs=34735000 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24202,
+      "raw": "83836751497400 PRESENT realFrameId=4036 previousRealFrameId=4035 generatedIndex=0 multiFrameCount=1 displayIndex=16237 kind=REAL VkImage=1694771696624 timestamp=83836751492700 queueDelayNs=34735000 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24203,
+      "raw": "83836751612300 RETIRED realFrameId=4036 slot=0"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24207,
+      "raw": "83836757945000 PRESENT realFrameId=4037 previousRealFrameId=4036 generatedIndex=1 multiFrameCount=1 displayIndex=16238 kind=GENERATED VkImage=1695473108976 timestamp=83836757941500 queueDelayNs=23085700 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24208,
+      "raw": "83836773398300 PRESENT realFrameId=4037 previousRealFrameId=4036 generatedIndex=0 multiFrameCount=1 displayIndex=16239 kind=REAL VkImage=1695473103024 timestamp=83836773394200 queueDelayNs=23085700 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24212,
+      "raw": "83836775950200 RETIRED realFrameId=4037 slot=2"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24213,
+      "raw": "83836790523400 PRESENT realFrameId=4038 previousRealFrameId=4037 generatedIndex=1 multiFrameCount=1 displayIndex=16240 kind=GENERATED VkImage=1695473116416 timestamp=83836790519400 queueDelayNs=30042600 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24214,
+      "raw": "83836804797700 PRESENT realFrameId=4038 previousRealFrameId=4037 generatedIndex=0 multiFrameCount=1 displayIndex=16241 kind=REAL VkImage=1694771705552 timestamp=83836804794800 queueDelayNs=30042600 latencyMethod=CPU_batch_publication_to_present_worker_entry"
+    },
+    {
+      "file": "frame-sequence.log",
+      "line": 24218,
+      "raw": "83836809245300 RETIRED realFrameId=4038 slot=1"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24323,
+      "raw": "{\"timestamp_ns\":83836669308800,\"type\":\"slot_state\",\"detail\":\"realFrameId=4036 state=FILLING\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24324,
+      "raw": "{\"timestamp_ns\":83836670539200,\"type\":\"evaluate\",\"detail\":\"realFrameId=4036 deltaMs=14.903100 reset=0 count=1 index=1 result=0x00000001 VkImage=0000018A9843F100 ready=8067 done=8068\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24325,
+      "raw": "{\"timestamp_ns\":83836671448900,\"type\":\"vulkan_d3d12_submit\",\"detail\":\"realFrameId=4036 ready=8067 completion=8068 cpuWait=false\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24326,
+      "raw": "{\"timestamp_ns\":83836671461300,\"type\":\"slot_state\",\"detail\":\"realFrameId=4036 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24327,
+      "raw": "{\"timestamp_ns\":83836713502700,\"type\":\"slot_state\",\"detail\":\"realFrameId=4037 state=FILLING\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24328,
+      "raw": "{\"timestamp_ns\":83836714895200,\"type\":\"evaluate\",\"detail\":\"realFrameId=4037 deltaMs=578.924500 reset=0 count=1 index=1 result=0x00000001 VkImage=0000018AC21287F0 ready=8069 done=8070\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24329,
+      "raw": "{\"timestamp_ns\":83836715250700,\"type\":\"vulkan_d3d12_submit\",\"detail\":\"realFrameId=4037 ready=8069 completion=8070 cpuWait=false\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24330,
+      "raw": "{\"timestamp_ns\":83836715263100,\"type\":\"slot_state\",\"detail\":\"realFrameId=4037 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24333,
+      "raw": "{\"timestamp_ns\":83836728678400,\"type\":\"slot_state\",\"detail\":\"realFrameId=4038 state=FILLING\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24334,
+      "raw": "{\"timestamp_ns\":83836729366700,\"type\":\"evaluate\",\"detail\":\"realFrameId=4038 deltaMs=25.053400 reset=0 count=1 index=1 result=0x00000001 VkImage=0000018AC212A500 ready=8071 done=8072\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24335,
+      "raw": "{\"timestamp_ns\":83836729592700,\"type\":\"vulkan_d3d12_submit\",\"detail\":\"realFrameId=4038 ready=8071 completion=8072 cpuWait=false\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24336,
+      "raw": "{\"timestamp_ns\":83836729598700,\"type\":\"slot_state\",\"detail\":\"realFrameId=4038 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24337,
+      "raw": "{\"timestamp_ns\":83836751590300,\"type\":\"completion\",\"detail\":\"realFrameId=4036 done=8068 DLSSG_GPU_ms=4.409344 INPUT_GPU_COPY_ms=0.112960 disable=0 generatedFrames=4031\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24338,
+      "raw": "{\"timestamp_ns\":83836751608400,\"type\":\"slot_recycle\",\"detail\":\"realFrameId=4036 state=FREE\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24347,
+      "raw": "{\"timestamp_ns\":83836775937500,\"type\":\"completion\",\"detail\":\"realFrameId=4037 done=8070 DLSSG_GPU_ms=0.178176 INPUT_GPU_COPY_ms=0.106560 disable=1 generatedFrames=4031\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24348,
+      "raw": "{\"timestamp_ns\":83836775947500,\"type\":\"slot_recycle\",\"detail\":\"realFrameId=4037 state=FREE\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24353,
+      "raw": "{\"timestamp_ns\":83836809224300,\"type\":\"completion\",\"detail\":\"realFrameId=4038 done=8072 DLSSG_GPU_ms=3.909632 INPUT_GPU_COPY_ms=0.108128 disable=0 generatedFrames=4032\"}"
+    },
+    {
+      "file": "provider-events.jsonl",
+      "line": 24354,
+      "raw": "{\"timestamp_ns\":83836809241600,\"type\":\"slot_recycle\",\"detail\":\"realFrameId=4038 state=FREE\"}"
+    }
+  ],
+  "source_sha256": {
+    "frame-sequence.log": "fb1bd152939ade1f94d97b6778d2f1e4162510f8aa18be2c2b16983ceecce354",
+    "provider-events.jsonl": "ecd77d1f39acf43972de12d31cffcab0f36d57b88946088fdbbd3a013c16772a"
+  }
+}

@@ -23,6 +23,7 @@ import io.homo.superresolution.core.graphics.vulkan.VulkanTexture;
 import javax.annotation.Nullable;
 
 import java.util.List;
+import java.util.concurrent.CompletableFuture;
 
 public interface FrameGenerationProviderOutput extends AutoCloseable {
     List<VulkanTexture> generatedOutputs();
@@ -38,8 +39,20 @@ public interface FrameGenerationProviderOutput extends AutoCloseable {
     /** Existing providers record all their work in the worker command buffers. */
     default @Nullable FrameGenerationSubmissionPlan submissionPlan() { return null; }
 
+    /** Optional asynchronous validity metadata. GPU semaphore ordering is unchanged. */
+    default CompletableFuture<Void> presentationReadiness() {
+        return CompletableFuture.completedFuture(null);
+    }
+    /** Zero-based candidate index; consulted only after presentationReadiness completes. */
+    default boolean isGeneratedOutputPresentable(int index) { return true; }
+    default void onGeneratedOutputDiscarded(int index, long timestampNs) {}
+
     /** Observation only, called after the present request; this is not a display timestamp. */
     default void onPresented(long displayIndex, boolean generated, long requestNs, long queueDelayNs) {}
+    default void onPresented(long displayIndex, int outputIndex, boolean generated,
+                             long requestNs, long queueDelayNs, long deadlineNs) {
+        onPresented(displayIndex, generated, requestNs, queueDelayNs);
+    }
     default void onOutputSubmitted(long commandBuffer, long fence) {}
 
     default void abort() {

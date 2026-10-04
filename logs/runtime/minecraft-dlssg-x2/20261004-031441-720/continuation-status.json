@@ -1,0 +1,11 @@
+{
+  "status": "USER_INTERRUPTION / INCOMPLETE",
+  "original_process_resumed": false,
+  "original_process_id": 2396248,
+  "original_launcher_id": 2391872,
+  "original_process_exists": false,
+  "observed_shutdown": "world saved / Vulkan destroyed / BUILD SUCCESSFUL",
+  "replacement_authorized": true,
+  "replacement_reason": "ORIGINAL_PROCESS_NO_LONGER_AVAILABLE_AFTER_USER_INTERRUPTION",
+  "post_interruption_config_preserved_locally": true
+}

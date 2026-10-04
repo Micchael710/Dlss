@@ -68,3 +68,14 @@ logs/runtime/minecraft-dlssg-x2/**/worker-result.json
 # Nested upstream rules unignore JARs; prune the local wrapper binary directory.
 # Already tracked wrapper scripts/properties remain tracked.
 superresolution/gradle/wrapper/
+
+# Local MFG runtimes, bounded image samples and original isolated config backups.
+logs/runtime/minecraft-dlssg-x*/**/component/
+logs/runtime/minecraft-dlssg-x*/**/stock-runtime/
+logs/runtime/minecraft-dlssg-x*/**/bundle-cache/
+logs/runtime/minecraft-dlssg-x*/**/native/
+logs/runtime/minecraft-dlssg-x*/**/*.png
+logs/runtime/minecraft-dlssg-x*/**/original-test-config.toml
+logs/runtime/minecraft-dlssg-x*/**/*.local.toml
+logs/runtime/minecraft-dlssg-x*/**/launcher-pid.txt
+logs/runtime/minecraft-dlssg-x*/**/worker-result.json

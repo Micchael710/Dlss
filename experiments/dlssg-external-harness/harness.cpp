@@ -65,11 +65,13 @@ struct EvidenceRecorder{
 };
 struct ExternalLoader{
  HMODULE module{};
- void start(EvidenceRecorder& r,const fs::path& dll){
+ void start(EvidenceRecorder& r,const fs::path& dll,unsigned requestedMax=1){
+  if(requestedMax<1||requestedMax>4)throw std::runtime_error("Invalid phase multiplier request");
+  r.raw("external_requested_max",std::to_string(requestedMax));
   r.str("if_fail_stage","PRECONDITION");auto hash=sha(readFile(dll));r.str("external_dll_sha256",hash);r.str("external_dll_path",dll.string());
   if(hash!="c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838")throw std::runtime_error("Not the identified sdli 0.3.5 module");
   r.modules("modules_before_external");std::ofstream ini(dll.parent_path()/"dlssg_sm86.ini");
-  ini<<"[General]\nEnabled=1\n[FrameGeneration]\nOptimized=0\nMaxGeneratedFrames=1\n[Compatibility]\nRouter=SM86\nKernelImage=Auto\nSpoofArchToGame=0\n[Logging]\nLevel=3\nDirectory="<<(r.out/"backend").string()<<"\n[Runtime]\nMode=Bundled\nCacheDirectory="<<(r.out/"bundle-cache").string()<<'\n';ini.close();if(!ini)throw std::runtime_error("INI write failed");
+  ini<<"[General]\nEnabled=1\n[FrameGeneration]\nOptimized=0\nMaxGeneratedFrames="<<requestedMax<<"\n[Compatibility]\nRouter=SM86\nKernelImage=Auto\nSpoofArchToGame=0\n[Logging]\nLevel=3\nDirectory="<<(r.out/"backend").string()<<"\n[Runtime]\nMode=Bundled\nCacheDirectory="<<(r.out/"bundle-cache").string()<<'\n';ini.close();if(!ini)throw std::runtime_error("INI write failed");
   r.str("if_fail_stage","LOADER");r.event("external_load_begin",dll.string());module=LoadLibraryW(dll.c_str());auto err=GetLastError();r.str("external_module",handleText(module));r.raw("loader_win32_error",module?"0":std::to_string(err));if(!module)throw std::runtime_error("External LoadLibrary failed Win32="+std::to_string(err));
   r.str("public_initializer","NONE_SDLI_LOAD_CONTRACT");r.str("external_loader_ready","LOADED");r.str("backend_install_observation","NOT_YET_OBSERVED");r.modules("modules_after_external");r.event("external_load_complete",handleText(module));
  }

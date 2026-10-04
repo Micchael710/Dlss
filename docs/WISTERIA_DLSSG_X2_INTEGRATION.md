@@ -8,7 +8,13 @@ Public CreateDevice audit: adapter is nonnull IDXGIAdapter1 selected by VendorId
 
 New C++/JNI and Java build PASS; existing 19 SR CPU tests and 7 evidence CPU tests PASS; DlssgContractTest geometry/motion/metadata/ABI PASS. Packaging retains nine AMD Java classes and both AMD DLLs byte-for-byte. New candidate hashes: SR `5c4939db10578db4dde93c2968c697f469ed6adf9f322e72a95660b2b4842848`; Wisteria `7b425231bf36b377fe88a51f415f0f2cf0fa9c5f33e1b62567e609097e3e71ec`. Native-only behavioral correction; PresentWorker, provider output protocol, shared pool, NGX runtime, loader flags and input mappings are unchanged. No closed harness or new GPU test ran during these checks.
 
-Previous FAIL run below remains preserved without modification. New shadow: pending; presentation requires new shadow PASS and matching artifact hashes. One attempt in each authorized mode, stop on failure.
+Previous FAIL run below remains preserved without modification. New shadow: PASS (`20261004-030130-357`); presentation requires this gate and matching artifact hashes. One attempt in each authorized mode, stop on failure.
+
+### New shadow outcome
+
+Embedded initialization records debug unavailable/not enabled by our code and factory flags0. Same GPU/driver, D3D12CreateDevice S_OK, NGX Init/CreateFeature PASS. Public backend logs show64 named kernels status0; six empty diagnostics excluded under the existing evidence rule. Eight slots/40 resource imports persist for6776 submitted/completed real jobs;27104 input Vulkan blits, no CPU frame transport or per-frame CPU API handoff wait.6775 non-reset completion flags allow generation, independently supported by Vulkan-readback content samples. Three sampled B/G pairs31–33 only; sample31 anchors A, samples32/33 have G!=A/B/sentinel and readable complete world/HUD, no severe corruption. Static-world temporal sanity passes; strong camera/entity/particle quality remains a presentation-phase observation, not established by these hashes.
+
+All shadow PresentWorker callbacks are REAL. DeviceRemovedReason S_OK, no Vulkan device-lost/crash, safe pool drain and orderly world save/shutdown. Original isolated config restored byte-for-byte; AMD hashes unchanged. Full gates/result and GPU-duration summaries in the new run directory. Debug message validation is unavailable in embedded mode; recorder0 is not certified zero debug errors. Prior failure is still consistent with late debug enable: successful before/after result strengthens that hypothesis but does not prove the original device owner/reset mechanism.
 
 Base: `29deca27b6d4a4401699c83be4258a0fa02f10ab`. Prior offscreen gates remain closed; this phase does not rerun them. Read `CURRENT_REAL_PIPELINE.md` for the pre-edit pipeline audit.
 
@@ -63,3 +69,7 @@ The reused standalone initializer in `experiments/dlssg-external-harness/d3d12_w
 Next implementation should separate standalone debug bootstrap from embedded session initialization and never enable the debug layer late. If debug validation is needed, arrange it before any process D3D12 device or record it unavailable; do not change global driver settings. This correction is **proposed only**, not applied after the failed run. Do not claim shared-pool/sync/resize/provider-switch runtime PASS from compiled source. Those paths are implemented but not reached in this attempt; lifetime behavior remains runtime-unproven.
 
 Evidence: `logs/runtime/minecraft-dlssg-x2/20261004-010600-001/` contains immutable original event/launcher logs, run-manifest, result, real capture sequence, unavailable-timing/sync/pool records and unchanged baseline hashes. Three sampled pixel readbacks were planned; none occurred because setup failed. One local UI screenshot is ignored by Git. Original isolated SR config restored byte-for-byte (SHA256 `834981a0d32679bfd99b567150179a9d279ab0780d81949c6297f94c3493f0ee`). No binary payload or runtime world is published.
+
+## Frame4037 review and completion gating
+
+Same interval/resource confirmed in logs; NGX disable1 was consumed only at lease retirement, after a GENERATED present callback. No pixel readback: no corruption claim or causal attribution to perceived cutting. Interrupted presentation retains INCOMPLETE, not technical FAIL/PASS. New generic readiness/validity hook preserves AMD defaults, filters disabled candidates before acquiring a swapchain target, drains every submitted semaphore/fence, and uses an asynchronous D3D12 completion notification. No per-frame API handoff CPU fence wait. See DLSSG_MFG_RUNTIME_VALIDATION.md.

@@ -1,0 +1,14 @@
+{
+  "input_vulkan_gpu_copy_ms": {
+    "samples": 6776,
+    "mean": 0.10022343801652893,
+    "p95": 0.110976
+  },
+  "dlssg_gpu_ms": {
+    "samples": 6776,
+    "mean": 6.088900911452185,
+    "p95": 7.493632
+  },
+  "end_to_end_added_latency_ms": null,
+  "latency_method": "GPU durations per own clock; no cross-clock/display latency sum"
+}

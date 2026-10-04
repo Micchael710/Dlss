@@ -13,11 +13,11 @@ public final class DlssgFrameGenerationBackend implements FrameGenerationProvide
     public FrameGenerationExecutionModel executionModel(){return FrameGenerationExecutionModel.APPLICATION_MANAGED_ASYNC;}
     public void initialize(){
         if(!Boolean.getBoolean("wisteria.dlssg.enabled"))return;
-        try{DlssgBridge.load();loaded=true;}catch(Throwable e){adapter.fail("JNI_LOAD",e);}
+        try{DlssgBridge.load();adapter.bootstrap(io.homo.superresolution.core.RenderSystems.vulkan().device());loaded=true;}catch(Throwable e){adapter.fail("JNI_LOAD",e);}
     }
     public boolean isAvailable(){return loaded&&adapter.healthy();}
     public boolean isDependenciesSatisfied(){return isAvailable();}
-    public int supportedGeneratedFrameCount(){return isAvailable()?1:0;}
+    public int supportedGeneratedFrameCount(){return isAvailable()?adapter.supportedCount():0;}
     public int presentationManagedGeneratedFrameCount(FrameGenerationMode mode){return Math.min(mode.generatedFrameCount(),supportedGeneratedFrameCount());}
     public ProviderInputSnapshot captureInputSnapshot(String id,FrameResources frame,FrameGenerationConstants constants,FrameGenerationMode mode){
         var state=io.homo.superresolution.common.workmode.SRWorkModeManager.getCurrentState();

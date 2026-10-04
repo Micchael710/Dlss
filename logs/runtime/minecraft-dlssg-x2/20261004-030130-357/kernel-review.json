@@ -1,0 +1,391 @@
+{
+  "named_kernel_count": 64,
+  "all_status_zero": true,
+  "empty_diagnostics_excluded": 6,
+  "evidence": [
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 16,
+      "entry": "Kernel_BlendCandidatesFused",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 18,
+      "entry": "Kernel_Copy4Channel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 20,
+      "entry": "Kernel_DL1Net_Input",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 22,
+      "entry": "Kernel_DL1Net_Output",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 24,
+      "entry": "Kernel_DetectMenus",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 26,
+      "entry": "Kernel_DetectMenusHudless",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 28,
+      "entry": "Kernel_Distortion",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 30,
+      "entry": "Kernel_DownsampleDistortion",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 32,
+      "entry": "Kernel_DownsampleRGBAndEstimateUIFused",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 34,
+      "entry": "Kernel_EstimateIntermMvecsScatter",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 36,
+      "entry": "Kernel_EstimatePrev2CurrScatter",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 38,
+      "entry": "Kernel_InitMvecQualityMask",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 40,
+      "entry": "Kernel_InputMvecProcessing",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 42,
+      "entry": "Kernel_MenuDetectionOutput",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 44,
+      "entry": "Kernel_OutputPull",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 46,
+      "entry": "Kernel_OutputPullMiddle",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 48,
+      "entry": "Kernel_OutputPush",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 50,
+      "entry": "Kernel_OutputPushFine",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 52,
+      "entry": "Kernel_Prev2CurrUnpackPull",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 54,
+      "entry": "Kernel_Prev2CurrPullMiddle",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 56,
+      "entry": "Kernel_Prev2CurrPush",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 58,
+      "entry": "Kernel_Prev2CurrPushFine",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 60,
+      "entry": "Kernel_Scatter3d",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 62,
+      "entry": "Kernel_WarpBlendingWeights",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 64,
+      "entry": "Kernel_ZeroBuffer",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 66,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 68,
+      "entry": "k_pooling",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 70,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 72,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 74,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 76,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 78,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 80,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 82,
+      "entry": "k_upscale",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 84,
+      "entry": "k_element_wise",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 86,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 88,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 90,
+      "entry": "k_upscale",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 92,
+      "entry": "k_element_wise",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 94,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 96,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 98,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 100,
+      "entry": "k_upscale",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 102,
+      "entry": "k_element_wise",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 104,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 106,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 108,
+      "entry": "k_upscale",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 110,
+      "entry": "k_element_wise",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 112,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 114,
+      "entry": "k_conv_fp16_nhwc",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 116,
+      "entry": "k_initial_merge",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 118,
+      "entry": "custom_block0_convPre_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 120,
+      "entry": "custom_block0_conv0_c8_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 122,
+      "entry": "custom_block0_conv1_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 124,
+      "entry": "custom_block0_conv2_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 126,
+      "entry": "custom_block0_conv_bot0_hf_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 128,
+      "entry": "custom_block0_conv_bot1_hf_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 130,
+      "entry": "custom_upsample_hf_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 132,
+      "entry": "k_central_block_original",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 134,
+      "entry": "custom_block1_conv0_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 136,
+      "entry": "custom_block1_conv1_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 138,
+      "entry": "custom_block1_conv2_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 140,
+      "entry": "custom_block1_conv_bot0_hf_kernel",
+      "status": 0
+    },
+    {
+      "source": "backend\\backend_2361228.jsonl",
+      "line": 142,
+      "entry": "custom_block1_conv_bot1_hf_kernel",
+      "status": 0
+    }
+  ]
+}

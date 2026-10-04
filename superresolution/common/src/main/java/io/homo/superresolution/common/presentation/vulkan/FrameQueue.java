@@ -26,6 +26,7 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.function.BooleanSupplier;
 import java.util.function.ToIntFunction;
+import java.util.function.Predicate;
 
 /**
  * Bounded queue used by the application-managed presentation threads.
@@ -114,6 +115,20 @@ final class FrameQueue<T> implements AutoCloseable {
 
     HeadResult<T> awaitHead() throws InterruptedException {
         return awaitHead(() -> false);
+    }
+
+    /** Event-driven head readiness; completion callbacks call signalConsumer. No polling. */
+    HeadResult<T> awaitReadyHead(Predicate<T> ready) throws InterruptedException {
+        lock.lockInterruptibly();
+        try {
+            boolean waited = false;
+            while (items.isEmpty() ? !closed : !ready.test(items.peekFirst())) {
+                waited = true;
+                notEmpty.await();
+            }
+            return items.isEmpty() ? HeadResult.closed(waited)
+                    : new HeadResult<>(items.peekFirst(), waited, false, false);
+        } finally { lock.unlock(); }
     }
 
     HeadResult<T> awaitHead(BooleanSupplier externalWakeCondition) throws InterruptedException {

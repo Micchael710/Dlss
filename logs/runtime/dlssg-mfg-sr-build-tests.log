@@ -1,0 +1,69 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+Graphics API: OpenGL
+Current Minecraft version: 1.21.1
+Enabled loader: neoforge
+> Task :buildSrc:checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :buildSrc:generateExternalPluginSpecBuilders UP-TO-DATE
+> Task :buildSrc:extractPluginRequests NO-SOURCE
+> Task :buildSrc:generatePluginAdapters NO-SOURCE
+> Task :buildSrc:extractPrecompiledScriptPluginPlugins UP-TO-DATE
+> Task :buildSrc:compilePluginsBlocks UP-TO-DATE
+> Task :buildSrc:generatePrecompiledScriptPluginAccessors UP-TO-DATE
+> Task :buildSrc:generateScriptPluginAdapters UP-TO-DATE
+> Task :buildSrc:compileKotlin UP-TO-DATE
+> Task :buildSrc:compileJava NO-SOURCE
+> Task :buildSrc:compileGroovy UP-TO-DATE
+> Task :buildSrc:compileGroovyPlugins NO-SOURCE
+> Task :buildSrc:pluginDescriptors UP-TO-DATE
+> Task :buildSrc:processResources UP-TO-DATE
+> Task :buildSrc:classes UP-TO-DATE
+> Task :buildSrc:jar UP-TO-DATE
+
+> Configure project :
+Minecraft native dependency profile: windows-x64 (LWJGL versions unchanged)
+
+> Task :common:createMinecraftArtifacts UP-TO-DATE
+> Task :neoforge:createMinecraftArtifacts UP-TO-DATE
+> Task :neoforge:mergeVmaNatives UP-TO-DATE
+> Task :common:compileSharedJava UP-TO-DATE
+> Task :common:processSharedResources NO-SOURCE
+> Task :common:sharedClasses UP-TO-DATE
+> Task :common:compileIrisapiJava UP-TO-DATE
+> Task :common:compileMaterialJava UP-TO-DATE
+> Task :common:processIrisapiResources UP-TO-DATE
+> Task :common:irisapiClasses UP-TO-DATE
+> Task :common:processMaterialResources NO-SOURCE
+> Task :common:materialClasses UP-TO-DATE
+> Task :neoforge:processResources
+> Task :neoforge:jarJar UP-TO-DATE
+
+> Task :common:compileJava
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :common:processResources UP-TO-DATE
+> Task :common:classes
+> Task :common:compileTestJava
+> Task :common:processTestResources NO-SOURCE
+> Task :common:testClasses
+> Task :common:test
+
+> Task :neoforge:compileJava
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :neoforge:classes
+> Task :neoforge:jar
+
+[Incubating] Problems report is available at: file:///D:/ProjectDllsss/superresolution/build/reports/problems/problems-report.html
+
+Deprecated Gradle features were used in this build, making it incompatible with Gradle 10.
+
+You can use '--warning-mode all' to show the individual deprecation warnings and determine if they come from your own scripts or plugins.
+
+For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/command_line_interface.html#sec:command_line_warnings in the Gradle documentation.
+
+BUILD SUCCESSFUL in 34s
+25 actionable tasks: 6 executed, 19 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

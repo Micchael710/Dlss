@@ -120,6 +120,8 @@ final class PresentPacer {
         awaitNextImage();
     }
 
+    long nextDeadlineNanos() { return nextDeadlineNanos; }
+
     long lastPhaseDurationNanos(Phase phase) {
         return lastPhaseDurations.get(phase.ordinal());
     }

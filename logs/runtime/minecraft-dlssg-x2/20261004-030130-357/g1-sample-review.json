@@ -1,0 +1,41 @@
+[
+  {
+    "real_id": 31,
+    "previous_known": false,
+    "valid": false,
+    "A_SHA256": null,
+    "B_SHA256": "ea87300182982a1384011b674f30771b6a7f51c4c31a57224bf4ff192eee99fa",
+    "G_SHA256": "2e4b472a1a7cdb0496f7e958cec4b57f5b4612a8385c79143053036e62be5bd5",
+    "width": 854,
+    "height": 480,
+    "scope": "Vulkan readback; static-world temporal sanity, not full motion-quality proof",
+    "source": "provider-events.jsonl",
+    "line": 226
+  },
+  {
+    "real_id": 32,
+    "previous_known": true,
+    "valid": true,
+    "A_SHA256": "ea87300182982a1384011b674f30771b6a7f51c4c31a57224bf4ff192eee99fa",
+    "B_SHA256": "ebfa0376f194b704ffc0027095a91f64eaa7845e287efebfe412ab75d456f879",
+    "G_SHA256": "4ef0cd4fc927a5f6c63fc474840fe0ed43b0ba3936db2f031daae95aca5429ba",
+    "width": 854,
+    "height": 480,
+    "scope": "Vulkan readback; static-world temporal sanity, not full motion-quality proof",
+    "source": "provider-events.jsonl",
+    "line": 234
+  },
+  {
+    "real_id": 33,
+    "previous_known": true,
+    "valid": true,
+    "A_SHA256": "ebfa0376f194b704ffc0027095a91f64eaa7845e287efebfe412ab75d456f879",
+    "B_SHA256": "ca9ed403431429e939a68e993e7f1d5982e2a3b9950de9d1d01ccbca24cb763d",
+    "G_SHA256": "2aba5c67be778f3396ac9fc4b141e5df4ace27b868ef86e7e76764f5940b693b",
+    "width": 854,
+    "height": 480,
+    "scope": "Vulkan readback; static-world temporal sanity, not full motion-quality proof",
+    "source": "provider-events.jsonl",
+    "line": 242
+  }
+]

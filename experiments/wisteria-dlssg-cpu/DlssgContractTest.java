@@ -30,7 +30,7 @@ public final class DlssgContractTest {
         near(constants.cameraViewToClip()[0],saved);
         for(int i=2;i<5;i++){Matrix4f identity=new Matrix4f().set(java.util.Arrays.copyOfRange(packed,i*16,(i+1)*16));if(!identity.equals(new Matrix4f(),2e-4f))throw new AssertionError("Reset history not identity");}
         System.load(java.nio.file.Path.of(args[0]).toAbsolutePath().toString());
-        if(DlssgBridge.abi()!=1)throw new AssertionError("JNI ABI mismatch");
+        if(DlssgBridge.abi()!=2)throw new AssertionError("JNI ABI mismatch");
         System.out.println("PASS: perspective near/far, camera inverse, DX Y convention, borrowed/owned motion, pixel jitter, immutable constants, reset matrices, new JNI ABI/linkage. GPU/community module not initialized.");
     }
 }

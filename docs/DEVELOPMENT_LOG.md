@@ -565,3 +565,60 @@ Previous candidate JARs archived locally under builds/experimental/dlssg-x2/hist
 New candidate manifest updated; previous failed runtime evidence remains untouched.
 No changes AMD/PresentWorker/NGX/private ABI/loader/inputs/pool/scheduler/driver/DRS.
 Next: exactly one new shadow, then one presentation x2 only if full shadow passes.
+
+## 2026-10-03 — corrected-init Minecraft shadow PASS
+
+Single shadow20261004-030130-357, implementationb87950e, no retry. Same UUID/LUID/
+driver, public component/runtime hashes. Embedded debug NEVER enabled; DXGI flags0.
+D3D12 device/queue, NGX Init/CreateFeature,64 named kernels, persistent pool8 images40,
+shared fence,6776 Evaluate/GPU completions PASS.6775 non-reset generation-enabled
+intervals;27104 Vulkan input blits; CPU image transport0/per-frame API CPU waits0.
+Three Vulkan B/G readbacks31–33;32/33 verify G distinct from A/B/sentinel and scene/HUD
+visually reasonable. First sample lacks A and supplies next sample anchor; not a fail.
+PresentWorker callbacks real-only; no device lost/crash; drained/normal world save.
+Config restored; AMD integrity PASS. Original failure run untouched. Raw image samples
+stay local ignored. Static-world sample proof is distinct from broad motion quality.
+Next automatically: one presentation x2 with identical candidates, no extra build.
+
+## 2026-10-03 — presentation launched, USER_INTERRUPTION
+
+Presentation20261004-031441-720 started once after shadow PASS, same candidate hashes.
+Computer Use stopped by physical Escape while selecting windows, before agent world
+load. No further UI/input/build/diagnostic/run. PENDING_USER_INTERRUPTION, not FAIL.
+Resume same process/run; no shadow repetition or second presentation launch.
+Isolated config remains staged until client shutdown; final commit/push pending.
+
+
+## 2026-10-04 — frame4037 review and MFG preparation
+
+HEAD inicial real: b87950e3f27e05e409efb7bc959599d901363c48. El usuario cerró
+presentation20261004-033955-918; se conserva USER_INTERRUPTION / INCOMPLETE.
+No se reanudó ese proceso, ni se lanzó otro x2/shadow. La continuación autorizada
+prioriza x3 → x4 → x5 y deja DLSS SR para después.
+
+Auditoría4037: NGX Evaluate SUCCESS, reset=false/epoch3/delta578.9245ms,
+VkImage1695473108976, ready8069/done8070; Vulkan wait8070 y callback PRESENT
+GENERATED para ese mismo ID/recurso. disable=1 leído antes de reutilizar ese slot.
+El callback confirma petición de presentación aceptada, no scanout físico.
+Bug demostrado: publicación de candidate G antes de leer su flag de GPU.
+Sin readback de4037: corrupción/correctitud y causa del corte siguen UNKNOWN.
+
+Corrección: evento de completion D3D12 con callback threadpool, snapshot inmutable
+por índice, readiness de batch FIFO y filtro antes de adquirir/presentar target.
+No espera de fence en dispatch/handoff, Sleep o polling. Cola presentation espera
+notificación mediante su Condition ordinaria. Lifetime y semáforos de candidates
+suprimidos se drenan al retirar el batch; no se destruyen recursos anticipadamente.
+AMD conserva defaults síncronos y gate presentable; su backend no se modifica.
+
+JNI ABI2, colección List<VulkanTexture> inmutable, N outputs por slot e indices1..N.
+Inputs/frameID/count constantes dentro del grupo; reset sólo en index1 conforme
+al contrato público ya auditado. El grupo entrega candidatos, nunca contadores
+válidos por request. Válidos se cuentan tras completion + disable0 + !reset.
+Pool=floor(6/(N+1))+2: x3=4slots/2outputs, x4=3/3, x5=3/4. El peso N+1 se
+conserva incluso durante reset/discard, por lo que esa cota incluye esos grupos.
+
+Capabilities: getter público real tras loader adaptado; puede estar intervenido.
+El máximo solicitado en INI es independiente del valor reportado. Disponibilidad
+no publicada hasta init/query; no getter propio modificado ni binarios parcheados.
+Muestras: hasta3 intervalos, iniciadas con movimiento de cámara y sin reset.
+Nuevos resultados: todavía NOT_RUN; x4/x5 sólo después de PASS previo.

@@ -195,6 +195,10 @@ final class FrameGenerationWorker {
                             capacityTrace.close();
                         }
                         PresentImageBatch batch = dispatch(work, batchId);
+                        if (batch.output() != null) {
+                            batch.output().presentationReadiness().whenComplete(
+                                    (ignored, error) -> presenter.presentationQueue.signalConsumer());
+                        }
                         try {
                             presenter.presentationQueue.put(batch);
                         } catch (Throwable throwable) {

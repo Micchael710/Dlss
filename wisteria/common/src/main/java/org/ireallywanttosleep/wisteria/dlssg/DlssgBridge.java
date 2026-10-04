@@ -22,19 +22,20 @@ final class DlssgBridge {
             Path dll = root.resolve("native/wisteria_dlssg_bridge-" + hash + ".dll");
             Files.write(dll, bytes);
             System.load(dll.toString());
-            if (abi() != 1) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
-            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":1,\"sha256\":\"" + hash + "\"}\n");
+            if (abi() != 2) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
+            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":2,\"sha256\":\"" + hash + "\"}\n");
             loaded = true;
         } catch (Exception e) { throw new IllegalStateException("DLSS-G local bridge load failed", e); }
     }
     static native int abi();
+    static native int reportedMax(long session);
     static native long create(long instance,long physical,long device,long queue,int family,long gipa,
-                              String out,String dll,String runtime);
-    static native long createPool(long session,int w,int h,int rw,int rh,int slots);
+                              String out,String dll,String runtime,int requestedMax);
+    static native long createPool(long session,int w,int h,int rw,int rh,int slots,int count);
     static native long[] image(long pool,int slot,int role);
     static native long[] prepare(long session,long pool,int slot,long command,long[] sources,float[] constants,
                                  long frameId,double delta,boolean reset,boolean flip,boolean sample);
-    static native void submit(long session,long pool,int slot,long[] readySemaphores);
+    static native void submit(long session,long pool,int slot,long[] readySemaphores,DlssgOutputStatus status);
     static native void release(long session,long pool,int slot);
     static native void abort(long session,long pool,int slot);
     static native void closePool(long session,long pool);

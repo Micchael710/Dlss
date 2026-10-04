@@ -1,4 +1,59 @@
-## Estado vigente — corrección embedded debug compilada; nuevo shadow pendiente
+## Fase vigente — gating de output y preparación MFG, sin PASS gráfico nuevo
+
+HEAD inicial real: b87950e3f27e05e409efb7bc959599d901363c48. El usuario cerró
+presentation20261004-033955-918; se conserva USER_INTERRUPTION / INCOMPLETE.
+No se reanudó ese proceso, ni se lanzó otro x2/shadow. La continuación autorizada
+prioriza x3 → x4 → x5 y deja DLSS SR para después.
+
+Auditoría4037: NGX Evaluate SUCCESS, reset=false/epoch3/delta578.9245ms,
+VkImage1695473108976, ready8069/done8070; Vulkan wait8070 y callback PRESENT
+GENERATED para ese mismo ID/recurso. disable=1 leído antes de reutilizar ese slot.
+El callback confirma petición de presentación aceptada, no scanout físico.
+Bug demostrado: publicación de candidate G antes de leer su flag de GPU.
+Sin readback de4037: corrupción/correctitud y causa del corte siguen UNKNOWN.
+
+Corrección: evento de completion D3D12 con callback threadpool, snapshot inmutable
+por índice, readiness de batch FIFO y filtro antes de adquirir/presentar target.
+No espera de fence en dispatch/handoff, Sleep o polling. Cola presentation espera
+notificación mediante su Condition ordinaria. Lifetime y semáforos de candidates
+suprimidos se drenan al retirar el batch; no se destruyen recursos anticipadamente.
+AMD conserva defaults síncronos y gate presentable; su backend no se modifica.
+
+JNI ABI2, colección List<VulkanTexture> inmutable, N outputs por slot e indices1..N.
+Inputs/frameID/count constantes dentro del grupo; reset sólo en index1 conforme
+al contrato público ya auditado. El grupo entrega candidatos, nunca contadores
+válidos por request. Válidos se cuentan tras completion + disable0 + !reset.
+Pool=floor(6/(N+1))+2: x3=4slots/2outputs, x4=3/3, x5=3/4. El peso N+1 se
+conserva incluso durante reset/discard, por lo que esa cota incluye esos grupos.
+
+Capabilities: getter público real tras loader adaptado; puede estar intervenido.
+El máximo solicitado en INI es independiente del valor reportado. Disponibilidad
+no publicada hasta init/query; no getter propio modificado ni binarios parcheados.
+Muestras: hasta3 intervalos, iniciadas con movimiento de cámara y sin reset.
+Nuevos resultados: todavía NOT_RUN; x4/x5 sólo después de PASS previo.
+
+## Pausa por USER_INTERRUPTION — Escape físico, no fallo técnico
+
+Shadow20261004-030130-357 cerrado PASS; pruebas y fix compilado en b87950e.
+Presentation20261004-031441-720 ya lanzado una vez; Computer Use interrumpido
+antes de seleccionar ventana/cargar mundo por el agente. Validación PENDING.
+No nueva ejecución: continuar el mismo proceso/run cuando el usuario lo indique.
+No diagnóstico extra, no input tras Escape, no retest shadow ni gates históricos.
+Config aislada DLSS-G sigue preparada; restaurar sólo tras cerrar este cliente.
+Evidencia y documentación shadow guardadas; commit/push final pendientes.
+
+## Estado vigente — nuevo shadow DLSS-G PASS; presentación x2 siguiente
+
+Run `20261004-030130-357`: D3D12CreateDevice S_OK, debug no habilitado por nuestro
+inicializador embedded; GPU exacta, NGX Init/CreateFeature,64 kernels named PASS.
+Pool8/40 images persistentes, fence importada;6776 Evaluate/submits/completions,
+6775 intervalos non-reset con disable flag0. Copias GPU inputs27104 (4/job), CPU0.
+Tres readbacks Vulkan; muestras32/33 con A conocido, G distintoA/B/sentinel,
+mundo/HUD completos sin corrupción obvia; muestra31 usada como ancla A.
+Sólo real presentations; no retry/crash/device lost, drain y shutdown normales.
+Dos muestras validan contenido; contador6775 no es hash de cada output.
+Config aislada restaurada y hashes baseline iguales. Presentación: aún NOT_RUN,
+ahora autorizada automáticamente por gate PASS, una sola ejecución x2.
 
 Nueva fase autorizada desde `289862295b04422a41dc0a5a47068ab1b00c9bd4`.
 Inicializador D3D12 distingue StandaloneHarness (debug antes de su device) de

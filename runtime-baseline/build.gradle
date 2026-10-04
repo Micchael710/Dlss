@@ -62,6 +62,11 @@ neoForge {
                 def experimentDir = file(providers.gradleProperty('dlssg_run_dir').get()).absolutePath
                 jvmArgument '-Dwisteria.dlssg.enabled=true'
                 jvmArgument "-Dwisteria.dlssg.mode=${experimentMode}"
+                if (providers.gradleProperty('dlssg_requested_count').isPresent()) {
+                    def requestedCount = providers.gradleProperty('dlssg_requested_count').get().toInteger()
+                    if (requestedCount < 1 || requestedCount > 4) throw new GradleException('Phase supports x2 through x5 only')
+                    jvmArgument "-Dwisteria.dlssg.requestedCount=${requestedCount}"
+                }
                 jvmArgument "-Dwisteria.dlssg.runDir=${experimentDir}"
                 jvmArgument "-Dwisteria.dlssg.externalDll=${file(experimentDir + '/component/version.dll').absolutePath}"
                 jvmArgument "-Dwisteria.dlssg.runtimeDir=${file(experimentDir + '/stock-runtime').absolutePath}"

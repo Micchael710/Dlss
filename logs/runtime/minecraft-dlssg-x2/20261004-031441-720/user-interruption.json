@@ -1,0 +1,15 @@
+{
+  "run_id": "20261004-031441-720",
+  "mode": "presentation",
+  "status": "USER_INTERRUPTION",
+  "reason": "Physical Escape stopped Computer Use before Minecraft window selection/world load by the agent",
+  "MINECRAFT_DLSSG_X2_PRESENTATION": "PENDING_USER_INTERRUPTION",
+  "world_load_requested_by_agent": false,
+  "runtime_attempts_started": 1,
+  "no_retry": true,
+  "shadow_reference": "20261004-030130-357",
+  "shadow_result": "PASS",
+  "resume_rule": "Continue this existing run/window. Do not launch another Minecraft process or repeat the shadow.",
+  "isolated_config_restoration": "PENDING_AFTER_CLIENT_SHUTDOWN",
+  "github_push": "PENDING_FINAL_VALIDATION"
+}

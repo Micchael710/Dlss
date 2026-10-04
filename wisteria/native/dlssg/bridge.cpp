@@ -6,6 +6,7 @@
 #include <jni.h>
 #include <array>
 #include <memory>
+#include <atomic>
 
 namespace integration {
 static void hr(HRESULT h, const char* what) {
@@ -30,20 +31,53 @@ struct VkSample {
 };
 struct Slot {
     // color, HUDless, depth, motion, G1. All handles are imported once.
-    std::array<Image,5> images;
+    std::vector<Image> images;
     VkCommandBuffer inputs{};
     ComPtr<ID3D12CommandAllocator> allocator;
     ComPtr<ID3D12GraphicsCommandList> commands;
-    ComPtr<ID3D12Resource> disable, disableReadback, timingReadback;
+    std::vector<ComPtr<ID3D12Resource>> disable, disableReadback;
+    ComPtr<ID3D12Resource> timingReadback;
     ComPtr<ID3D12QueryHeap> timing;
-    VkSample colorSample, generatedSample;
+    VkSample colorSample; std::vector<VkSample> generatedSamples;
     uint64_t ready{}, done{}, frameId{};
     bool leased=false, prepared=false, submitted=false, sampled=false, reset=false;
-    std::array<bool,5> priorInitialized{};
+    std::vector<bool> priorInitialized;
+    HANDLE completionEvent{}; PTP_WAIT completionWait{};
+    ComPtr<ID3D12Fence> completionFence;
+    JavaVM* vm{}; jobject notification{}; jmethodID notifyMethod{};
+    std::vector<jint> flags; std::atomic<bool> flagsReady{false};
     uint32_t timestampIndex{};
 };
+// One event-driven callback per real interval, after the shared D3D12 fence.
+// No WaitForSingleObject, sleep, polling, or CPU fence wait in the handoff path.
+static void CALLBACK notifyFlags(PTP_CALLBACK_INSTANCE, void* context, PTP_WAIT, TP_WAIT_RESULT) {
+    auto& s=*static_cast<Slot*>(context);
+    auto vm=s.vm; auto target=s.notification; auto method=s.notifyMethod;
+    const auto frame=s.frameId, done=s.done;
+    std::vector<jint> flags(s.disableReadback.size(),-1);
+    try {
+        auto completed=s.completionFence->GetCompletedValue();
+        if(completed==UINT64_MAX||completed<done)throw std::runtime_error("Fence completion unavailable/device removed");
+        for(size_t k=0;k<flags.size();++k) {
+            void* map{};D3D12_RANGE range{0,4},none{0,0};
+            hr(s.disableReadback[k]->Map(0,&range,&map),"completed disable map");
+            flags[k]=*static_cast<jint*>(map);s.disableReadback[k]->Unmap(0,&none);
+        }
+    } catch(...) { std::fill(flags.begin(),flags.end(),-1); }
+    s.flags=flags;s.notification=nullptr;s.flagsReady.store(true,std::memory_order_release);
+    JNIEnv* e{};bool attached=false;
+    if(vm->GetEnv(reinterpret_cast<void**>(&e),JNI_VERSION_1_8)==JNI_EDETACHED) {
+        attached=vm->AttachCurrentThreadAsDaemon(reinterpret_cast<void**>(&e),nullptr)==JNI_OK;
+    }
+    // All accesses to Slot precede notification; Java may retire/reuse it after this.
+    if(e){auto values=e->NewIntArray(static_cast<jsize>(flags.size()));
+        if(values){e->SetIntArrayRegion(values,0,static_cast<jsize>(flags.size()),flags.data());
+            e->CallVoidMethod(target,method,jlong(frame),values,jlong(done));e->DeleteLocalRef(values);}
+        if(e->ExceptionCheck())e->ExceptionClear();e->DeleteGlobalRef(target);}
+    if(attached)vm->DetachCurrentThread();
+}
 struct Pool {
-    unsigned width{},height{},renderWidth{},renderHeight{};
+    unsigned width{},height{},renderWidth{},renderHeight{},generatedCount{};
     NVSDK_NGX_Parameter* parameters{}; NVSDK_NGX_Handle* feature{};
     std::vector<std::unique_ptr<Slot>> slots;
     bool failed=false;
@@ -59,6 +93,7 @@ struct Session {
     ComPtr<ID3D12Fence> fence;
     ComPtr<ID3D12Resource> disableSentinel;
     uint64_t sequence{}, dxFrequency{}, submittedFrames{}, completedFrames{}, generatedFrames{};
+    unsigned reportedMax{},requestedMax{};
     float vkPeriod{}; uint32_t vkTimestampBits{};
     bool unsafe=false; std::vector<std::unique_ptr<Pool>> pools;
     std::ofstream events;
@@ -76,11 +111,20 @@ struct Session {
               <<",\"type\":"<<jsonQuote(type)<<",\"detail\":"<<jsonQuote(detail)<<"}\n";
         // Stream buffering is intentional; no per-frame checkpoint replacement or sleep.
     }
-    Session(fs::path out, fs::path dll, fs::path runtime):evidence(out),dx(evidence,runtime),events(out/"provider-events.jsonl") {
+    Session(fs::path out, fs::path dll, fs::path runtime,unsigned count):evidence(out),dx(evidence,runtime),events(out/"provider-events.jsonl") {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
             throw std::runtime_error("Runtime SHA256 mismatch");
         vendorLog.open(out/"ngx.log"); validationLog.open(out/"d3d12-debug.log");
-        external.start(evidence,dll); dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
+        requestedMax=count;external.start(evidence,dll,count); dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
+        NVSDK_NGX_Parameter* caps{};auto query=NVSDK_NGX_D3D12_GetCapabilityParameters(&caps);
+        evidence.str("mfg_capability_query_result",resultHex(query));
+        if(!NVSDK_NGX_SUCCEED(query)||!caps)throw std::runtime_error("NGX capabilities unavailable");
+        unsigned available{};auto a=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_Parameter_FrameGeneration_Available,&available);
+        auto m=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_DLSSG_Parameter_MultiFrameCountMax,&reportedMax);
+        NVSDK_NGX_D3D12_DestroyParameters(caps);
+        evidence.raw("raw_reported_multiframecountmax",std::to_string(reportedMax));evidence.str("raw_max_getter_result",resultHex(m));
+        evidence.str("capability_provenance","public NGX query after external loader; may be hooked; not proof of execution");
+        if(!NVSDK_NGX_SUCCEED(a)||!available||!NVSDK_NGX_SUCCEED(m)||reportedMax<count)throw std::runtime_error("Requested MFG count exceeds reported NGX availability/max");
         hr(dx.queue->GetTimestampFrequency(&dxFrequency),"D3D12 timestamp frequency");
         disableSentinel=dx.buffer(16,D3D12_HEAP_TYPE_UPLOAD,D3D12_RESOURCE_STATE_GENERIC_READ);
         void* map{};D3D12_RANGE none{0,0};hr(disableSentinel->Map(0,&none,&map),"disable sentinel map");std::memset(map,255,16);disableSentinel->Unmap(0,nullptr);
@@ -179,24 +223,29 @@ struct Session {
         if(!sample.coherent){VkMappedMemoryRange range{VK_STRUCTURE_TYPE_MAPPED_MEMORY_RANGE};range.memory=sample.memory;range.size=VK_WHOLE_SIZE;vkcheck(fn<PFN_vkInvalidateMappedMemoryRanges>("vkInvalidateMappedMemoryRanges")(device,1,&range),"sample invalidate");}
         Bytes out(sample.size);std::memcpy(out.data(),mapped,out.size());fn<PFN_vkUnmapMemory>("vkUnmapMemory")(device,sample.memory);return out;
     }
-    Pool* createPool(unsigned w,unsigned h,unsigned rw,unsigned rh,unsigned capacity) {
-        if(!w||!h||!rw||!rh||capacity<2||capacity>64)throw std::runtime_error("Invalid pool contract");
+    Pool* createPool(unsigned w,unsigned h,unsigned rw,unsigned rh,unsigned capacity,unsigned count) {
+        if(!w||!h||!rw||!rh||capacity<2||capacity>64||!count||count>4||count>reportedMax||count>requestedMax)throw std::runtime_error("Invalid pool contract");
         auto holder=std::make_unique<Pool>();auto p=holder.get();pools.push_back(std::move(holder));
-        p->width=w;p->height=h;p->renderWidth=rw;p->renderHeight=rh;
+        p->width=w;p->height=h;p->renderWidth=rw;p->renderHeight=rh;p->generatedCount=count;
         if(vkTimestampBits){VkQueryPoolCreateInfo qi{VK_STRUCTURE_TYPE_QUERY_POOL_CREATE_INFO};qi.queryType=VK_QUERY_TYPE_TIMESTAMP;qi.queryCount=capacity*2;vkcheck(fn<PFN_vkCreateQueryPool>("vkCreateQueryPool")(device,&qi,nullptr,&p->inputTiming),"input timing query pool");}
         for(unsigned i=0;i<capacity;++i){auto ptr=std::make_unique<Slot>();auto& s=*ptr;p->slots.push_back(std::move(ptr));
-            for(int j=0;j<5;++j)s.images[j]=createImage(j==2||j==3?rw:w,j==2||j==3?rh:h,j==2?DXGI_FORMAT_R32_FLOAT:j==3?DXGI_FORMAT_R32G32_FLOAT:DXGI_FORMAT_R8G8B8A8_UNORM,j==2?VK_FORMAT_R32_SFLOAT:j==3?VK_FORMAT_R32G32_SFLOAT:VK_FORMAT_R8G8B8A8_UNORM);
+            s.images.resize(4+count);s.priorInitialized.resize(4+count);
+            for(unsigned j=0;j<4+count;++j)s.images[j]=createImage(j==2||j==3?rw:w,j==2||j==3?rh:h,j==2?DXGI_FORMAT_R32_FLOAT:j==3?DXGI_FORMAT_R32G32_FLOAT:DXGI_FORMAT_R8G8B8A8_UNORM,j==2?VK_FORMAT_R32_SFLOAT:j==3?VK_FORMAT_R32G32_SFLOAT:VK_FORMAT_R8G8B8A8_UNORM);
             VkCommandBufferAllocateInfo ca{VK_STRUCTURE_TYPE_COMMAND_BUFFER_ALLOCATE_INFO};ca.commandPool=commandPool;ca.level=VK_COMMAND_BUFFER_LEVEL_PRIMARY;ca.commandBufferCount=1;
             vkcheck(fn<PFN_vkAllocateCommandBuffers>("vkAllocateCommandBuffers")(device,&ca,&s.inputs),"slot input command allocation");
             hr(dx.device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(&s.allocator)),"slot allocator");
             hr(dx.device->CreateCommandList(0,D3D12_COMMAND_LIST_TYPE_DIRECT,s.allocator.Get(),nullptr,IID_PPV_ARGS(&s.commands)),"slot command list");hr(s.commands->Close(),"slot initial close");
-            s.disable=dx.buffer(16,D3D12_HEAP_TYPE_DEFAULT,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS);
+            s.disable.resize(count);s.disableReadback.resize(count);s.generatedSamples.resize(count);s.flags.resize(count,-1);
+            for(unsigned k=0;k<count;++k){s.disable[k]=dx.buffer(16,D3D12_HEAP_TYPE_DEFAULT,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS);s.disableReadback[k]=dx.buffer(16,D3D12_HEAP_TYPE_READBACK,D3D12_RESOURCE_STATE_COPY_DEST);}
+            s.completionFence=fence;
+            s.completionEvent=CreateEventW(nullptr,FALSE,FALSE,nullptr);if(!s.completionEvent)throw std::runtime_error("completion event create");
+            s.completionWait=CreateThreadpoolWait(notifyFlags,&s,nullptr);if(!s.completionWait)throw std::runtime_error("completion callback create");
             s.timestampIndex=i*2;
-            s.disableReadback=dx.buffer(16,D3D12_HEAP_TYPE_READBACK,D3D12_RESOURCE_STATE_COPY_DEST);
-            D3D12_QUERY_HEAP_DESC q{};q.Type=D3D12_QUERY_HEAP_TYPE_TIMESTAMP;q.Count=2;hr(dx.device->CreateQueryHeap(&q,IID_PPV_ARGS(&s.timing)),"slot timestamp heap");
-            s.timingReadback=dx.buffer(16,D3D12_HEAP_TYPE_READBACK,D3D12_RESOURCE_STATE_COPY_DEST);
+
+            D3D12_QUERY_HEAP_DESC q{};q.Type=D3D12_QUERY_HEAP_TYPE_TIMESTAMP;q.Count=count*2;hr(dx.device->CreateQueryHeap(&q,IID_PPV_ARGS(&s.timing)),"slot timestamp heap");
+            s.timingReadback=dx.buffer(count*16,D3D12_HEAP_TYPE_READBACK,D3D12_RESOURCE_STATE_COPY_DEST);
             // Pixel readback objects exist only for the bounded diagnostic sampling window.
-            if(i<3){s.colorSample=createSample(w,h);s.generatedSample=createSample(w,h);}
+            if(i<3){s.colorSample=createSample(w,h);for(auto& sample:s.generatedSamples)sample=createSample(w,h);}
         }
         auto code=NVSDK_NGX_D3D12_AllocateParameters(&p->parameters);if(!NVSDK_NGX_SUCCEED(code)||!p->parameters)throw std::runtime_error("Allocate feature parameters "+resultHex(code));
         NVSDK_NGX_DLSSG_Create_Params cp{};cp.Width=w;cp.Height=h;cp.RenderWidth=rw;cp.RenderHeight=rh;cp.NativeBackbufferFormat=DXGI_FORMAT_R8G8B8A8_UNORM;
@@ -232,15 +281,16 @@ struct Session {
     void prepare(Pool& p,Slot& s,VkCommandBuffer output,const std::vector<jlong>& src,const std::vector<float>& constants,uint64_t frameId,double delta,bool reset,bool flipBorrowedInputs,bool sample) {
         if(s.leased||unsafe||p.failed||src.size()!=20||constants.size()!=108)throw std::runtime_error("Invalid or failed slot/metadata contract");
         s.leased=true;s.prepared=false;s.submitted=false;s.frameId=frameId;s.sampled=sample&&s.colorSample.buffer;s.reset=reset;
-        for(size_t j=0;j<5;++j)s.priorInitialized[j]=s.images[j].initialized;
+        s.flagsReady.store(false);std::fill(s.flags.begin(),s.flags.end(),-1);
+        for(size_t j=0;j<s.images.size();++j)s.priorInitialized[j]=s.images[j].initialized;
         s.ready=++sequence;s.done=++sequence;
         vkcheck(fn<PFN_vkResetCommandBuffer>("vkResetCommandBuffer")(s.inputs,0),"input reset");VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};bi.flags=VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
         vkcheck(fn<PFN_vkBeginCommandBuffer>("vkBeginCommandBuffer")(s.inputs,&bi),"input begin");
         if(p.inputTiming){fn<PFN_vkCmdResetQueryPool>("vkCmdResetQueryPool")(s.inputs,p.inputTiming,s.timestampIndex,2);fn<PFN_vkCmdWriteTimestamp>("vkCmdWriteTimestamp")(s.inputs,VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,p.inputTiming,s.timestampIndex);}
         event("slot_state","realFrameId="+std::to_string(frameId)+" state=FILLING");
-        for(int j=0;j<5;++j){auto& im=s.images[j];
+        for(size_t j=0;j<s.images.size();++j){auto& im=s.images[j];
             // Previous output acquire was TRANSFER_SRC for the two presented images.
-            if(im.initialized&&(j==0||j==4))sourceBarrier(s.inputs,im.image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,VK_IMAGE_LAYOUT_GENERAL);
+            if(im.initialized&&(j==0||j>=4))sourceBarrier(s.inputs,im.image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,VK_IMAGE_LAYOUT_GENERAL);
             sharedBarrier(s.inputs,im,false,false);
             if(j<4){auto image=reinterpret_cast<VkImage>(src[j*5]);auto width=uint32_t(src[j*5+1]);auto height=uint32_t(src[j*5+2]);auto format=VkFormat(src[j*5+3]);auto layout=int(src[j*5+4]);
                 if(width!=im.width||height!=im.height)throw std::runtime_error("Input extent mismatch");
@@ -256,16 +306,17 @@ struct Session {
             sharedBarrier(s.inputs,im,false,true);
             // Recorded into the worker's already-begun output command buffer; its GPU
             // timeline wait is added by the provider submission plan after input submit.
-            sharedBarrier(output,im,true,false,j==0||j==4?VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL:VK_IMAGE_LAYOUT_GENERAL);
+            sharedBarrier(output,im,true,false,j==0||j>=4?VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL:VK_IMAGE_LAYOUT_GENERAL);
         }
-        if(s.sampled){sampleCopy(output,s.images[0],s.colorSample);sampleCopy(output,s.images[4],s.generatedSample);}
+        if(s.sampled){sampleCopy(output,s.images[0],s.colorSample);for(unsigned k=0;k<p.generatedCount;++k)sampleCopy(output,s.images[4+k],s.generatedSamples[k]);}
         if(p.inputTiming)fn<PFN_vkCmdWriteTimestamp>("vkCmdWriteTimestamp")(s.inputs,VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT,p.inputTiming,s.timestampIndex+1);
         vkcheck(fn<PFN_vkEndCommandBuffer>("vkEndCommandBuffer")(s.inputs),"input end");
         hr(s.allocator->Reset(),"slot allocator reset");hr(s.commands->Reset(s.allocator.Get(),nullptr),"slot list reset");
-        D3D12_RESOURCE_BARRIER flagBarrier{};flagBarrier.Type=D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;flagBarrier.Transition={s.disable.Get(),D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_STATE_COPY_DEST};s.commands->ResourceBarrier(1,&flagBarrier);s.commands->CopyBufferRegion(s.disable.Get(),0,disableSentinel.Get(),0,16);std::swap(flagBarrier.Transition.StateBefore,flagBarrier.Transition.StateAfter);s.commands->ResourceBarrier(1,&flagBarrier);
-        for(int j=0;j<5;++j)dxBarrier(s,s.images[j],j==4?D3D12_RESOURCE_STATE_UNORDERED_ACCESS:D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
-        NVSDK_NGX_D3D12_DLSSG_Eval_Params ep{};ep.pBackbuffer=s.images[0].dx.resource.Get();ep.pHudless=s.images[1].dx.resource.Get();ep.pDepth=s.images[2].dx.resource.Get();ep.pMVecs=s.images[3].dx.resource.Get();ep.pOutputInterpFrame=s.images[4].dx.resource.Get();ep.pOutputDisableInterpolation=s.disable.Get();
-        NVSDK_NGX_DLSSG_Opt_Eval_Params opts{};opts.multiFrameCount=opts.multiFrameIndex=1;
+        for(unsigned k=0;k<p.generatedCount;++k){
+        D3D12_RESOURCE_BARRIER flagBarrier{};flagBarrier.Type=D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;flagBarrier.Transition={s.disable[k].Get(),D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_STATE_COPY_DEST};s.commands->ResourceBarrier(1,&flagBarrier);s.commands->CopyBufferRegion(s.disable[k].Get(),0,disableSentinel.Get(),0,16);std::swap(flagBarrier.Transition.StateBefore,flagBarrier.Transition.StateAfter);s.commands->ResourceBarrier(1,&flagBarrier);
+        for(size_t j=0;j<s.images.size();++j)dxBarrier(s,s.images[j],j>=4?D3D12_RESOURCE_STATE_UNORDERED_ACCESS:D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+        NVSDK_NGX_D3D12_DLSSG_Eval_Params ep{};ep.pBackbuffer=s.images[0].dx.resource.Get();ep.pHudless=s.images[1].dx.resource.Get();ep.pDepth=s.images[2].dx.resource.Get();ep.pMVecs=s.images[3].dx.resource.Get();ep.pOutputInterpFrame=s.images[4+k].dx.resource.Get();ep.pOutputDisableInterpolation=s.disable[k].Get();
+        NVSDK_NGX_DLSSG_Opt_Eval_Params opts{};opts.multiFrameCount=p.generatedCount;opts.multiFrameIndex=k+1;
         // All five matrices have already been converted to row-major DX clip space.
         std::memcpy(opts.cameraViewToClip,constants.data(),16*sizeof(float));
         std::memcpy(opts.clipToCameraView,constants.data()+16,16*sizeof(float));
@@ -273,23 +324,29 @@ struct Session {
         std::memcpy(opts.clipToPrevClip,constants.data()+48,16*sizeof(float));
         std::memcpy(opts.prevClipToClip,constants.data()+64,16*sizeof(float));
         auto v=constants.data()+80;opts.jitterOffset[0]=v[0];opts.jitterOffset[1]=v[1];opts.mvecScale[0]=v[2];opts.mvecScale[1]=v[3];
-        opts.cameraPinholeOffset[0]=v[4];opts.cameraPinholeOffset[1]=v[5];std::memcpy(opts.cameraPos,v+6,3*sizeof(float));std::memcpy(opts.cameraUp,v+9,3*sizeof(float));std::memcpy(opts.cameraRight,v+12,3*sizeof(float));std::memcpy(opts.cameraFwd,v+15,3*sizeof(float));opts.cameraNear=v[18];opts.cameraFar=v[19];opts.cameraFOV=v[20];opts.cameraAspectRatio=v[21];opts.depthInverted=v[22]!=0;opts.cameraMotionIncluded=v[23]!=0;opts.motionVectorsInvalidValue=v[24];opts.motionVectorsDilated=v[25]!=0;opts.orthoProjection=v[26]!=0;opts.minRelativeLinearDepthObjectSeparation=v[27];opts.reset=reset;
+        opts.cameraPinholeOffset[0]=v[4];opts.cameraPinholeOffset[1]=v[5];std::memcpy(opts.cameraPos,v+6,3*sizeof(float));std::memcpy(opts.cameraUp,v+9,3*sizeof(float));std::memcpy(opts.cameraRight,v+12,3*sizeof(float));std::memcpy(opts.cameraFwd,v+15,3*sizeof(float));opts.cameraNear=v[18];opts.cameraFar=v[19];opts.cameraFOV=v[20];opts.cameraAspectRatio=v[21];opts.depthInverted=v[22]!=0;opts.cameraMotionIncluded=v[23]!=0;opts.motionVectorsInvalidValue=v[24];opts.motionVectorsDilated=v[25]!=0;opts.orthoProjection=v[26]!=0;opts.minRelativeLinearDepthObjectSeparation=v[27];opts.reset=reset&&k==0;
         opts.mvecsSubrectSize=opts.depthSubrectSize={p.renderWidth,p.renderHeight};opts.hudLessSubrectSize=opts.backbufferSubrectSize=opts.outputInterpSubrectSize={p.width,p.height};
-        s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,0);
+        s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2);
         NVSDK_NGX_Parameter_SetULL(p.parameters,NVSDK_NGX_DLSSG_Parameter_BackbufferFrameID,frameId);
         auto code=NGX_D3D12_EVALUATE_DLSSG(s.commands.Get(),p.feature,p.parameters,&ep,&opts);
-        event("evaluate", "realFrameId="+std::to_string(frameId)+" deltaMs="+std::to_string(delta)+" reset="+std::to_string(reset)+" count=1 index=1 result="+resultHex(code)+" VkImage="+handleText(s.images[4].image)+" ready="+std::to_string(s.ready)+" done="+std::to_string(s.done));
+        event("evaluate", "realFrameId="+std::to_string(frameId)+" deltaMs="+std::to_string(delta)+" reset="+std::to_string(reset)+" count="+std::to_string(p.generatedCount)+" index="+std::to_string(k+1)+" result="+resultHex(code)+" VkImage="+handleText(s.images[4+k].image)+" ready="+std::to_string(s.ready)+" done="+std::to_string(s.done));
         if(!NVSDK_NGX_SUCCEED(code)){p.failed=true;throw std::runtime_error("NGX Evaluate "+resultHex(code));}
-        s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,1);s.commands->ResolveQueryData(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,0,2,s.timingReadback.Get(),0);
+        s.commands->EndQuery(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2+1);s.commands->ResolveQueryData(s.timing.Get(),D3D12_QUERY_TYPE_TIMESTAMP,k*2,2,s.timingReadback.Get(),k*16);
         for(auto& im:s.images)dxBarrier(s,im,D3D12_RESOURCE_STATE_COMMON);
-        D3D12_RESOURCE_BARRIER db{};db.Type=D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;db.Transition={s.disable.Get(),D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_STATE_COPY_SOURCE};s.commands->ResourceBarrier(1,&db);s.commands->CopyBufferRegion(s.disableReadback.Get(),0,s.disable.Get(),0,16);std::swap(db.Transition.StateBefore,db.Transition.StateAfter);s.commands->ResourceBarrier(1,&db);
+        D3D12_RESOURCE_BARRIER db{};db.Type=D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;db.Transition={s.disable[k].Get(),D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_STATE_COPY_SOURCE};s.commands->ResourceBarrier(1,&db);s.commands->CopyBufferRegion(s.disableReadback[k].Get(),0,s.disable[k].Get(),0,16);std::swap(db.Transition.StateBefore,db.Transition.StateAfter);s.commands->ResourceBarrier(1,&db);
+        }
         hr(s.commands->Close(),"slot list close");s.prepared=true;
     }
-    void submit(Slot& s,const std::vector<jlong>& semaphores) {
+    void submit(JNIEnv* env,Slot& s,const std::vector<jlong>& semaphores,jobject notification) {
         if(!s.prepared||s.submitted||unsafe)throw std::runtime_error("Invalid input submission state");
         std::vector<VkSemaphore> waits;for(auto v:semaphores)waits.push_back(reinterpret_cast<VkSemaphore>(v));std::vector<VkPipelineStageFlags> stages(waits.size(),VK_PIPELINE_STAGE_ALL_COMMANDS_BIT);std::vector<uint64_t> zeros(waits.size(),0);
         VkTimelineSemaphoreSubmitInfo ti{VK_STRUCTURE_TYPE_TIMELINE_SEMAPHORE_SUBMIT_INFO};ti.waitSemaphoreValueCount=uint32_t(waits.size());ti.pWaitSemaphoreValues=zeros.data();ti.signalSemaphoreValueCount=1;ti.pSignalSemaphoreValues=&s.ready;
         VkSubmitInfo si{VK_STRUCTURE_TYPE_SUBMIT_INFO};si.pNext=&ti;si.commandBufferCount=1;si.pCommandBuffers=&s.inputs;si.waitSemaphoreCount=uint32_t(waits.size());si.pWaitSemaphores=waits.data();si.pWaitDstStageMask=stages.data();si.signalSemaphoreCount=1;si.pSignalSemaphores=&timeline;
+        env->GetJavaVM(&s.vm);s.notification=env->NewGlobalRef(notification);
+        s.notifyMethod=env->GetMethodID(env->GetObjectClass(notification),"completeFromNative","(J[IJ)V");
+        if(!s.notification||!s.notifyMethod)throw std::runtime_error("JNI completion contract unavailable");
+        SetThreadpoolWait(s.completionWait,s.completionEvent,nullptr);
+        hr(fence->SetEventOnCompletion(s.done,s.completionEvent),"async completion notification");
         // Caller holds the borrowed queue's Java submitLock for this native submit.
         s.submitted=true;unsafe=true;vkcheck(fn<PFN_vkQueueSubmit>("vkQueueSubmit")(queue,1,&si,VK_NULL_HANDLE),"input queue submit");
         hr(dx.queue->Wait(fence.Get(),s.ready),"D3D12 queue GPU wait");ID3D12CommandList* lists[]={s.commands.Get()};dx.queue->ExecuteCommandLists(1,lists);hr(dx.queue->Signal(fence.Get(),s.done),"D3D12 queue completion signal");unsafe=false;++submittedFrames;
@@ -306,20 +363,22 @@ struct Session {
         // have completed. Their GPU wait on done proves the D3D12 work also completed.
         if(!s.leased||!s.submitted||fence->GetCompletedValue()<s.done||fence->GetCompletedValue()==UINT64_MAX)throw std::runtime_error("Premature lease retirement or device removed");
         hr(dx.device->GetDeviceRemovedReason(),"device removed reason");++completedFrames;
-        void* mapped{};D3D12_RANGE range{0,16};hr(s.timingReadback->Map(0,&range,&mapped),"timing map");uint64_t ticks[2];std::memcpy(ticks,mapped,16);D3D12_RANGE none{0,0};s.timingReadback->Unmap(0,&none);
-        hr(s.disableReadback->Map(0,&range,&mapped),"disable metadata map");auto disabled=*static_cast<uint32_t*>(mapped);s.disableReadback->Unmap(0,&none);if(disabled==0&&!s.reset)++generatedFrames;
+        if(!s.flagsReady.load(std::memory_order_acquire))throw std::runtime_error("Retirement before flags callback");
         double inputMs=-1;
         if(p.inputTiming){uint64_t inputTicks[2]{};auto code=fn<PFN_vkGetQueryPoolResults>("vkGetQueryPoolResults")(device,p.inputTiming,s.timestampIndex,2,sizeof inputTicks,inputTicks,sizeof(uint64_t),VK_QUERY_RESULT_64_BIT);vkcheck(code,"completed input timestamps");auto mask=vkTimestampBits==64?~uint64_t(0):((uint64_t(1)<<vkTimestampBits)-1);inputMs=double((inputTicks[1]-inputTicks[0])&mask)*vkPeriod/1e6;}
-        event("completion","realFrameId="+std::to_string(s.frameId)+" done="+std::to_string(s.done)+" DLSSG_GPU_ms="+std::to_string(double(ticks[1]-ticks[0])*1000/dxFrequency)+" INPUT_GPU_COPY_ms="+std::to_string(inputMs)+" disable="+std::to_string(disabled)+" generatedFrames="+std::to_string(generatedFrames));
-        if(s.sampled){auto b=pixels(s.colorSample),g=pixels(s.generatedSample);auto bh=sha(b),gh=sha(g);
-            size_t black=0,sentinel=0;for(size_t j=0;j<g.size();j+=4){black+=g[j]==0&&g[j+1]==0&&g[j+2]==0;sentinel+=g[j]==255&&g[j+1]==0&&g[j+2]==255;}
-            bool previousKnown=previousSampleId+1==s.frameId;bool valid=previousKnown&&!s.reset&&disabled==0&&gh!=bh&&gh!=previousSampleHash&&black<g.size()/4&&sentinel<g.size()/4;
-            event("output_sample","realFrameId="+std::to_string(s.frameId)+" B_SHA256="+bh+" G_SHA256="+gh+" A_SHA256="+previousSampleHash+" previousKnown="+std::to_string(previousKnown)+" disable="+std::to_string(disabled)+" blackPixels="+std::to_string(black)+" sentinelPixels="+std::to_string(sentinel)+" valid="+std::to_string(valid));
+        void* mapped{};D3D12_RANGE range{0,p.generatedCount*16},none{0,0};hr(s.timingReadback->Map(0,&range,&mapped),"timing map");
+        std::vector<uint64_t> ticks(p.generatedCount*2);std::memcpy(ticks.data(),mapped,p.generatedCount*16);s.timingReadback->Unmap(0,&none);
+        for(unsigned k=0;k<p.generatedCount;++k){auto disabled=s.flags[k];if(disabled==0&&!s.reset)++generatedFrames;
+            event("completion","realFrameId="+std::to_string(s.frameId)+" index="+std::to_string(k+1)+" count="+std::to_string(p.generatedCount)+" done="+std::to_string(s.done)+" DLSSG_GPU_ms="+std::to_string(double(ticks[k*2+1]-ticks[k*2])*1000/dxFrequency)+" INPUT_GPU_COPY_ms="+std::to_string(inputMs)+" disable="+std::to_string(disabled)+" generatedFrames="+std::to_string(generatedFrames));}
+        if(s.sampled){auto b=pixels(s.colorSample);auto bh=sha(b);bool previousKnown=previousSampleId+1==s.frameId;
+            save(evidence.out/("sample-"+std::to_string(s.frameId)+"-B.bin"),b);
+            for(unsigned k=0;k<p.generatedCount;++k){auto g=pixels(s.generatedSamples[k]);auto gh=sha(g);size_t black=0,sentinel=0;
+                for(size_t j=0;j<g.size();j+=4){black+=g[j]==0&&g[j+1]==0&&g[j+2]==0;sentinel+=g[j]==255&&g[j+1]==0&&g[j+2]==255;}
+                bool valid=previousKnown&&!s.reset&&s.flags[k]==0&&gh!=bh&&gh!=previousSampleHash&&black<g.size()/4&&sentinel==0;
+                event("output_sample","realFrameId="+std::to_string(s.frameId)+" index="+std::to_string(k+1)+" count="+std::to_string(p.generatedCount)+" B_SHA256="+bh+" G_SHA256="+gh+" A_SHA256="+previousSampleHash+" previousKnown="+std::to_string(previousKnown)+" disable="+std::to_string(s.flags[k])+" blackPixels="+std::to_string(black)+" sentinelPixels="+std::to_string(sentinel)+" valid="+std::to_string(valid));
+                save(evidence.out/("sample-"+std::to_string(s.frameId)+"-G"+std::to_string(k+1)+".bin"),g);}
             previousSampleHash=bh;previousSampleId=s.frameId;
-            save(evidence.out/("sample-"+std::to_string(s.frameId)+"-B.bin"),b);save(evidence.out/("sample-"+std::to_string(s.frameId)+"-G.bin"),g);
-            event("sample_metadata","realFrameId="+std::to_string(s.frameId)+" width="+std::to_string(p.width)+" height="+std::to_string(p.height)+" readback_api=Vulkan");
-            events.flush();
-        }
+            event("sample_metadata","realFrameId="+std::to_string(s.frameId)+" width="+std::to_string(p.width)+" height="+std::to_string(p.height)+" readback_api=Vulkan");events.flush();}
         s.leased=false;s.prepared=s.submitted=false;
         event("slot_recycle","realFrameId="+std::to_string(s.frameId)+" state=FREE");
         if(completedFrames%120==0)events.flush();
@@ -327,7 +386,8 @@ struct Session {
     void closePool(Pool& p) {
         for(auto& s:p.slots)if(s->leased)throw std::runtime_error("Cannot destroy leased pool");
         if(p.feature){NVSDK_NGX_D3D12_ReleaseFeature(p.feature);p.feature=nullptr;}if(p.parameters){NVSDK_NGX_D3D12_DestroyParameters(p.parameters);p.parameters=nullptr;}
-        for(auto& s:p.slots){for(auto& im:s->images){if(im.view)fn<PFN_vkDestroyImageView>("vkDestroyImageView")(device,im.view,nullptr);if(im.image)fn<PFN_vkDestroyImage>("vkDestroyImage")(device,im.image,nullptr);if(im.memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,im.memory,nullptr);im.view={};im.image={};im.memory={};im.dx.resource.Reset();}for(VkSample* sample:{&s->colorSample,&s->generatedSample}){if(sample->buffer)fn<PFN_vkDestroyBuffer>("vkDestroyBuffer")(device,sample->buffer,nullptr);if(sample->memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,sample->memory,nullptr);}if(s->inputs){fn<PFN_vkFreeCommandBuffers>("vkFreeCommandBuffers")(device,commandPool,1,&s->inputs);s->inputs={};}}
+        for(auto& s:p.slots){if(s->completionWait){SetThreadpoolWait(s->completionWait,nullptr,nullptr);WaitForThreadpoolWaitCallbacks(s->completionWait,FALSE);CloseThreadpoolWait(s->completionWait);CloseHandle(s->completionEvent);}
+            for(auto& im:s->images){if(im.view)fn<PFN_vkDestroyImageView>("vkDestroyImageView")(device,im.view,nullptr);if(im.image)fn<PFN_vkDestroyImage>("vkDestroyImage")(device,im.image,nullptr);if(im.memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,im.memory,nullptr);im.view={};im.image={};im.memory={};im.dx.resource.Reset();}s->generatedSamples.push_back(s->colorSample);for(auto& sampleValue:s->generatedSamples){auto sample=&sampleValue;if(sample->buffer)fn<PFN_vkDestroyBuffer>("vkDestroyBuffer")(device,sample->buffer,nullptr);if(sample->memory)fn<PFN_vkFreeMemory>("vkFreeMemory")(device,sample->memory,nullptr);}if(s->inputs){fn<PFN_vkFreeCommandBuffers>("vkFreeCommandBuffers")(device,commandPool,1,&s->inputs);s->inputs={};}}
         p.slots.clear();
         if(p.inputTiming){fn<PFN_vkDestroyQueryPool>("vkDestroyQueryPool")(device,p.inputTiming,nullptr);p.inputTiming={};}
     }
@@ -349,15 +409,16 @@ static Slot& slot(Pool& p,jint i){if(i<0||size_t(i)>=p.slots.size())throw std::r
 }
 using namespace integration;
 #define JNI_METHOD(name) Java_org_ireallywanttosleep_wisteria_dlssg_DlssgBridge_##name
-extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 1;}
-extern "C" JNIEXPORT jlong JNICALL JNI_METHOD(create)(JNIEnv* e,jclass,jlong i,jlong p,jlong d,jlong q,jint family,jlong proc,jstring out,jstring dll,jstring runtime){
-    Session* s{};try{s=new Session(path(e,out),path(e,dll),path(e,runtime));s->borrow(reinterpret_cast<VkInstance>(i),reinterpret_cast<VkPhysicalDevice>(p),reinterpret_cast<VkDevice>(d),reinterpret_cast<VkQueue>(q),family,reinterpret_cast<PFN_vkGetInstanceProcAddr>(proc));return reinterpret_cast<jlong>(s);}catch(const std::exception& ex){if(s){s->unsafe=true;s->evidence.str("integration_error",ex.what());}error(e,ex);return 0;}
+extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 2;}
+extern "C" JNIEXPORT jint JNICALL JNI_METHOD(reportedMax)(JNIEnv*,jclass,jlong h){return session(h).reportedMax;}
+extern "C" JNIEXPORT jlong JNICALL JNI_METHOD(create)(JNIEnv* e,jclass,jlong i,jlong p,jlong d,jlong q,jint family,jlong proc,jstring out,jstring dll,jstring runtime,jint count){
+    Session* s{};try{s=new Session(path(e,out),path(e,dll),path(e,runtime),count);s->borrow(reinterpret_cast<VkInstance>(i),reinterpret_cast<VkPhysicalDevice>(p),reinterpret_cast<VkDevice>(d),reinterpret_cast<VkQueue>(q),family,reinterpret_cast<PFN_vkGetInstanceProcAddr>(proc));return reinterpret_cast<jlong>(s);}catch(const std::exception& ex){if(s){s->unsafe=true;s->evidence.str("integration_error",ex.what());}error(e,ex);return 0;}
 }
-extern "C" JNIEXPORT jlong JNICALL JNI_METHOD(createPool)(JNIEnv* e,jclass,jlong handle,jint w,jint h,jint rw,jint rh,jint capacity){try{return reinterpret_cast<jlong>(session(handle).createPool(w,h,rw,rh,capacity));}catch(const std::exception& ex){error(e,ex);return 0;}}
+extern "C" JNIEXPORT jlong JNICALL JNI_METHOD(createPool)(JNIEnv* e,jclass,jlong handle,jint w,jint h,jint rw,jint rh,jint capacity,jint count){try{return reinterpret_cast<jlong>(session(handle).createPool(w,h,rw,rh,capacity,count));}catch(const std::exception& ex){error(e,ex);return 0;}}
 extern "C" JNIEXPORT jlongArray JNICALL JNI_METHOD(image)(JNIEnv* e,jclass,jlong ph,jint index,jint role){try{auto& im=slot(pool(ph),index).images.at(role);jlong values[]={reinterpret_cast<jlong>(im.image),reinterpret_cast<jlong>(im.view),reinterpret_cast<jlong>(im.memory)};auto a=e->NewLongArray(3);e->SetLongArrayRegion(a,0,3,values);return a;}catch(const std::exception& ex){error(e,ex);return nullptr;}}
 extern "C" JNIEXPORT jlongArray JNICALL JNI_METHOD(prepare)(JNIEnv* e,jclass,jlong h,jlong ph,jint index,jlong command,jlongArray sources,jfloatArray data,jlong frameId,jdouble delta,jboolean reset,jboolean flip,jboolean sample){try{std::vector<jlong> src(e->GetArrayLength(sources));e->GetLongArrayRegion(sources,0,jint(src.size()),src.data());std::vector<float> constants(e->GetArrayLength(data));e->GetFloatArrayRegion(data,0,jint(constants.size()),constants.data());auto& s=session(h);auto& p=pool(ph);auto& sl=slot(p,index);s.prepare(p,sl,reinterpret_cast<VkCommandBuffer>(command),src,constants,frameId,delta,reset,flip,sample);jlong result[]={reinterpret_cast<jlong>(s.timeline),jlong(sl.done)};auto a=e->NewLongArray(2);e->SetLongArrayRegion(a,0,2,result);return a;}catch(const std::exception& ex){error(e,ex);return nullptr;}}
-extern "C" JNIEXPORT void JNICALL JNI_METHOD(submit)(JNIEnv* e,jclass,jlong h,jlong ph,jint index,jlongArray waits){try{std::vector<jlong> values(e->GetArrayLength(waits));e->GetLongArrayRegion(waits,0,jint(values.size()),values.data());session(h).submit(slot(pool(ph),index),values);}catch(const std::exception& ex){session(h).unsafe=true;error(e,ex);}}
+extern "C" JNIEXPORT void JNICALL JNI_METHOD(submit)(JNIEnv* e,jclass,jlong h,jlong ph,jint index,jlongArray waits,jobject notification){try{std::vector<jlong> values(e->GetArrayLength(waits));e->GetLongArrayRegion(waits,0,jint(values.size()),values.data());session(h).submit(e,slot(pool(ph),index),values,notification);}catch(const std::exception& ex){session(h).unsafe=true;error(e,ex);}}
 extern "C" JNIEXPORT void JNICALL JNI_METHOD(release)(JNIEnv* e,jclass,jlong h,jlong ph,jint index){try{auto& p=pool(ph);session(h).release(p,slot(p,index));}catch(const std::exception& ex){session(h).unsafe=true;error(e,ex);}}
-extern "C" JNIEXPORT void JNICALL JNI_METHOD(abort)(JNIEnv* e,jclass,jlong h,jlong ph,jint index){try{auto& sl=slot(pool(ph),index);if(sl.submitted){session(h).unsafe=true;throw std::runtime_error("Abort after GPU submission retains native session");}for(size_t j=0;j<5;++j){sl.images[j].initialized=sl.priorInitialized[j];sl.images[j].dx.state=D3D12_RESOURCE_STATE_COMMON;}sl.leased=sl.prepared=false;}catch(const std::exception& ex){error(e,ex);}}
+extern "C" JNIEXPORT void JNICALL JNI_METHOD(abort)(JNIEnv* e,jclass,jlong h,jlong ph,jint index){try{auto& sl=slot(pool(ph),index);if(sl.submitted){session(h).unsafe=true;throw std::runtime_error("Abort after GPU submission retains native session");}for(size_t j=0;j<sl.images.size();++j){sl.images[j].initialized=sl.priorInitialized[j];sl.images[j].dx.state=D3D12_RESOURCE_STATE_COMMON;}sl.leased=sl.prepared=false;}catch(const std::exception& ex){error(e,ex);}}
 extern "C" JNIEXPORT void JNICALL JNI_METHOD(closePool)(JNIEnv* e,jclass,jlong h,jlong ph){try{session(h).closePool(pool(ph));}catch(const std::exception& ex){error(e,ex);}}
 extern "C" JNIEXPORT void JNICALL JNI_METHOD(close)(JNIEnv* e,jclass,jlong h){try{auto& s=session(h);s.close();if(!s.unsafe)delete &s;}catch(const std::exception& ex){session(h).unsafe=true;error(e,ex);}}

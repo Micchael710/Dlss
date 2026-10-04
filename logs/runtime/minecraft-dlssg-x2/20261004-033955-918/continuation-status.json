@@ -1,0 +1,8 @@
+{
+  "status": "USER_INTERRUPTION / INCOMPLETE",
+  "original_process_resumed": false,
+  "client_closed_by_user": true,
+  "new_x2_run": false,
+  "observed_shutdown": "world saved / Vulkan destroyed / BUILD SUCCESSFUL",
+  "runtime_pass_reclassified": false
+}

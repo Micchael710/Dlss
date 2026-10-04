@@ -88,11 +88,13 @@ final class PresentWorker {
     private void runLoop() {
         try {
             while (true) {
-                FrameQueue.HeadResult<PresentImageBatch> head = presenter.presentationQueue.awaitHead();
+                FrameQueue.HeadResult<PresentImageBatch> head = presenter.presentationQueue.awaitReadyHead(
+                        batch -> batch.output() == null || batch.output().presentationReadiness().isDone());
                 if (head.closedAndEmpty()) {
                     return;
                 }
                 PresentImageBatch batch = head.value();
+                if (batch.output() != null) batch.output().presentationReadiness().getNow(null);
                 boolean discard;
                 synchronized (presenter.stateLock) {
                     inFlight = true;
@@ -150,11 +152,16 @@ final class PresentWorker {
             // is not held behind the generated images' display intervals.
             for (int index = 0; index < batch.imageCount(); index++) {
                 PresentImage presentImage = batch.images().get(index);
+                if (presentImage.kind() == PresentImage.Kind.GENERATED && batch.output() != null
+                        && !batch.output().isGeneratedOutputPresentable(index)) {
+                    batch.output().onGeneratedOutputDiscarded(index, System.nanoTime());
+                    continue; // releaseBatch still drains this candidate's unconsumed semaphore.
+                }
                 FramePacingTrace.Span acquireTrace =
                         beginTrace("present_target_acquire", batch, presentImage);
                 PreparedImage image;
                 try {
-                    image = new PreparedImage(swapchain.acquirePresentTarget(), presentImage);
+                    image = new PreparedImage(swapchain.acquirePresentTarget(), presentImage, index);
                 } finally {
                     acquireTrace.close();
                 }
@@ -209,8 +216,11 @@ final class PresentWorker {
             }
             PresentPacer pacer = presenter.pacer;
             try {
+                int validGeneratedCount = prepared.size() - 1;
+                long validInterval = batch.intervalNanos() * (batch.generatedCount() + 1L)
+                        / (validGeneratedCount + 1L);
                 pacer.beginPresentFrameBatch(
-                        waited, batch.pacingEnabled(), batch.generatedCount(), batch.intervalNanos());
+                        waited, batch.pacingEnabled(), validGeneratedCount, validInterval);
                 for (PreparedImage image : prepared) {
                     if (isPaused()) {
                         pacer.reset();
@@ -218,6 +228,7 @@ final class PresentWorker {
                     }
                     FramePacingTrace.Span waitTrace =
                             beginTrace("present_pacing_wait", batch, image.image);
+                    long deadlineNs = pacer.nextDeadlineNanos();
                     try {
                         if (image.image.kind() == PresentImage.Kind.GENERATED) {
                             pacer.sleepAtPresentGeneratedFrame();
@@ -257,7 +268,8 @@ final class PresentWorker {
                         }
                         presentTrace.complete("complete", "presented=true");
                         if (batch.output() != null) batch.output().onPresented(image.image.displayIndex(),
-                                image.image.kind() == PresentImage.Kind.GENERATED, System.nanoTime(), queueDelayNs);
+                                image.outputIndex, image.image.kind() == PresentImage.Kind.GENERATED,
+                                System.nanoTime(), queueDelayNs, deadlineNs);
                     } catch (Throwable throwable) {
                         presentTrace.complete(
                                 "failed",
@@ -464,13 +476,15 @@ final class PresentWorker {
     private static final class PreparedImage {
         private final VulkanSwapchain.PresentTarget target;
         private final PresentImage image;
+        private final int outputIndex;
         private VulkanSwapchain.PresentBlitSubmission submission;
         private boolean rendered;
         private boolean presented;
 
-        private PreparedImage(VulkanSwapchain.PresentTarget target, PresentImage image) {
+        private PreparedImage(VulkanSwapchain.PresentTarget target, PresentImage image, int outputIndex) {
             this.target = target;
             this.image = image;
+            this.outputIndex = outputIndex;
         }
     }
 
