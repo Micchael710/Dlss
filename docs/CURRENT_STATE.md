@@ -1,5 +1,15 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — x3 STOP: public status scope unspecified
+
+Start HEAD `46b7af2364c668965a7903399f2d2d308cf1611f`, main clean. Result: **X3_BLOCKED_PUBLIC_STATUS_SEMANTICS_UNSPECIFIED**. Stable SR+x2 baseline preserved; no implementation/config/binary changes, build, tests or Minecraft run after this first blocker.
+
+Public NVIDIA sources checked on 2026-10-04: [definitions](https://raw.githubusercontent.com/NVIDIA/DLSS/main/include/nvsdk_ngx_defs_dlssg.h), OutputDisableInterpolation lines102–107 and count/index lines301–309; [D3D helper](https://raw.githubusercontent.com/NVIDIA/DLSS/main/include/nvsdk_ngx_helpers_dlssg_d3d.h), optional pointer line39 and bindings lines73–79. The disable hint suppresses interpolated frame(s), but these public descriptions do not specify per-index versus group write ownership, or authorize G2 from G1's zero. Classification C: UNSPECIFIED, not proven GROUP_LEVEL or PER_OUTPUT. No UNKNOWN-to-valid substitution.
+
+Bounded source inspection at this HEAD: bridge.cpp pool creation lines291–301 allocates distinct output images `images[4+k]`, status `disable[k]` and readback `disableReadback[k]` per output. Prepare lines431–462 initializes each status to 0xffffffff, binds the matching output/status, passes count=p.generatedCount/index=k+1, then records its GPU readback. Callback lines68–81 maps only after completionFence >= done; resources stay pool-owned until retirement/close. G1/G2 use the same real pair; no duplicate/recursive G2. Adapter lines174–176 preserves UNKNOWN rejection. This source inspection found no missing index2 binding or premature readback; actual new x3 pointer/handle values are NOT_OBSERVED because runtime was not authorized past this gate.
+
+Historical G2 image generation remains PASS_BOUNDED_DIAGNOSTIC_HISTORICAL and optional status UNKNOWN_0xffffffff; no diagnostic repeated. Current-iteration index1/index2 Evaluate, completion and present counts are 0 (NOT_RUN). GL errors/device loss/shutdown/exit/scanout FPS are NOT_MEASURED_THIS_ITERATION, not inherited x3 PASS values. AMD code/binaries untouched, no runtime. Existing x2 GL-release/readiness/handoff/shutdown architecture and sole PresentWorker owner unchanged. Config restoration NOT_NEEDED_UNCHANGED. No x4/x5/x6, no fabricated status/completion/capability/FPS.
+
 ## 2026-10-04 — DLSS SR + DLSS-G x2 PASS; GL release and shutdown
 
 Single combined run `20261004-205910-991-handoff-x2`, Java25.0.4 / Minecraft1.21.1 / Neo21.1.219; start HEAD `5d0c95a3d7d586c090de5e9a35d58393e9f28aba`. FG stopped automatically at 200 dispatches. No runtime retry, standalone SR rerun, AMD execution or x3/x4/x5/x6.
