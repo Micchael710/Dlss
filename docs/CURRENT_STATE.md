@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — Streamline feasibility STOP at presentation contract
+
+Start `078fec4279251700337c79dda2fcb74bcc6f8b39`. Public Streamline DLSS-G has MFG options, but its generated frames use intercepted swapchain presentation and no reviewed public generated-texture export. Current PresentWorker sidecar is incompatible. No harness/build/runtime/config/code change; direct SR+x2 preserved. D3D12 requires DXGI, while the official Vulkan alternative still intercepts Vulkan presentation. Details and primary sources: [public feasibility](DLSSG_STREAMLINE_PUBLIC_FEASIBILITY.md). Direct x3 status blocker stays closed; no x4/x5/x6.
+
 ## 2026-10-04 — x3 STOP: public status scope unspecified
 
 Start HEAD `46b7af2364c668965a7903399f2d2d308cf1611f`, main clean. Result: **X3_BLOCKED_PUBLIC_STATUS_SEMANTICS_UNSPECIFIED**. Stable SR+x2 baseline preserved; no implementation/config/binary changes, build, tests or Minecraft run after this first blocker.

@@ -1,5 +1,9 @@
 # Development Log
 
+## 2026-10-04 — Streamline public feasibility, documentation only
+
+Verified clean main at `078fec4279251700337c79dda2fcb74bcc6f8b39`. Reviewed public MFG API, presentation/manual-hook contract and existing SM86 component documentation. STOP: no generated-texture export compatible with PresentWorker sole presentation. Runtime capability/max/options unqueried; no harness or Minecraft. SR+x2 code, AMD, configuration and binaries unchanged. [Findings and architecture required](DLSSG_STREAMLINE_PUBLIC_FEASIBILITY.md).
+
 ## 2026-10-04 — x3 STOP: public status scope unspecified
 
 Start HEAD `46b7af2364c668965a7903399f2d2d308cf1611f`, main clean. Result: **X3_BLOCKED_PUBLIC_STATUS_SEMANTICS_UNSPECIFIED**. Stable SR+x2 baseline preserved; no implementation/config/binary changes, build, tests or Minecraft run after this first blocker.
