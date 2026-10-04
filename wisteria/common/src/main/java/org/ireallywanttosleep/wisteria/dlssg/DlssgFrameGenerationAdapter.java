@@ -63,6 +63,10 @@ final class DlssgFrameGenerationAdapter {
                 VK.getFunctionProvider().getFunctionAddress("vkGetInstanceProcAddr"),out.toString(),
                 System.getProperty("wisteria.dlssg.externalDll"),System.getProperty("wisteria.dlssg.runtimeDir"),requestedMax);
             reportedMax=DlssgBridge.reportedMax(session);
+            if(Boolean.getBoolean("sr.dlss.secondSubmitDiagnostics"))
+                DlssgBridge.configureDiagnostics(session,out.toString(),device.getVkDevice().getCapabilities().VK_EXT_device_fault,
+                        device.getVkDevice().getCapabilities().VK_NV_device_diagnostic_checkpoints,
+                        device.getVkDevice().getCapabilities().VK_KHR_synchronization2);
             if(requestedMax<1||requestedMax>4||reportedMax<requestedMax)throw new IllegalStateException("Requested MFG count not permitted by observed NGX capability");
             event("SESSION persistent=true shadow="+shadow+" requestedCount="+requestedMax+" reportedMax="+reportedMax+" outputPoolSlots="+AsyncFramePresenter.maximumLiveProviderLeases(requestedMax));
         }catch(Exception e){throw new IllegalStateException("DLSS-G session initialization failed",e);}

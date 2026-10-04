@@ -1,0 +1,61 @@
+[16:25:46] [SR-FrameGeneration-FG/INFO] [SuperResolution/]: NGX [UNKNOWN:ON] [2026-10-04 16:25:46] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980
+[16:25:46] [Render thread/INFO] [SuperResolution/]: SR_FG_INPUT frame=2 timestampNs=143914900013400 deltaMs=405.9481 epoch=1 render=Size[width=495, height=278] display=Size[width=854, height=480] jitter=0.1875,0.018518507 cameraNear=0.05 cameraFar=768.0 fovRadians=1.2215366 depthInverted=0 MV=previousMinusCurrentUV_Yflipped meters=1_MinecraftBlockConvention
+[16:25:46] [Render thread/INFO] [OpenGLDebug/]: OpenGL debug message: id=1282, source=API, type=ERROR, severity=HIGH, message='GL_INVALID_OPERATION error generated. Wait for sync object failed.'
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]: OpenGL Error!
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     java.base/java.lang.Thread.getStackTrace(Thread.java:2193)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.platform.GlDebug.handler$zkd000$super_resolution$printGlErrorStackTrace(GlDebug.java:542)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/com.mojang.blaze3d.platform.GlDebug.printDebugLog(GlDebug.java:106)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/org.lwjgl.opengl@3.3.4+7/org.lwjgl.opengl.GLDebugMessageCallbackI.callback(GLDebugMessageCallbackI.java:46)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/org.lwjgl@3.3.4+7/org.lwjgl.system.JNI.callPPPV(Native Method)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/org.lwjgl.opengl@3.3.4+7/org.lwjgl.opengl.EXTSemaphore.glWaitSemaphoreEXT(EXTSemaphore.java:246)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.core.graphics.vulkan.VkGlInteropSemaphore.waitVulkanSignal(VkGlInteropSemaphore.java:136)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.common.upscale.interoplayer.GlVulkanInteropAlgorithm$FrameResourcesSet.awaitCaptureRelease(GlVulkanInteropAlgorithm.java:763)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.common.upscale.interoplayer.GlVulkanInteropAlgorithm.processInputResources(GlVulkanInteropAlgorithm.java:359)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.common.upscale.interoplayer.GlVulkanInteropAlgorithm.dispatchInternal(GlVulkanInteropAlgorithm.java:274)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.common.upscale.interoplayer.GlVulkanInteropAlgorithm.dispatchWithInputWriter(GlVulkanInteropAlgorithm.java:158)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.common.upscale.interoplayer.GlVulkanInteropAlgorithm.dispatch(GlVulkanInteropAlgorithm.java:210)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.shadercompat.IrisShaderCompatUpscaleDispatcher.dispatchUpscale(IrisShaderCompatUpscaleDispatcher.java:552)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.superresolution.shadercompat.IrisShaderCompatEventHandler.onCompositeRendererRenderBefore(IrisShaderCompatEventHandler.java:132)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.ConsumerEventHandler.invoke(ConsumerEventHandler.java:27)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:360)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/net.neoforged.bus/net.neoforged.bus.EventBus.post(EventBus.java:328)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/super_resolution@0.9.2-alpha.1+dev.d9648f2.opengl/io.homo.irisapi.handlers.IrisRenderingPipelineHandler.onCompositePassDispatchBefore(IrisRenderingPipelineHandler.java:70)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.CompositeRenderer.superresolution$handlePassEvent(CompositeRenderer.java:2570)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.CompositeRenderer.handler$zlh000$super_resolution$onBeforeRenderA(CompositeRenderer.java:2625)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.CompositeRenderer.renderAll(CompositeRenderer.java:284)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/iris@1.8.8+mc1.21.1/net.irisshaders.iris.pipeline.IrisRenderingPipeline.finalizeLevelRendering(IrisRenderingPipeline.java:1088)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.handler$zeh000$iris$endLevelRender(LevelRenderer.java:7818)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.LevelRenderer.renderLevel(LevelRenderer.java:1240)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.renderLevel(GameRenderer.java:1271)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.renderer.GameRenderer.render(GameRenderer.java:1024)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.runTick(Minecraft.java:1195)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.Minecraft.run(Minecraft.java:807)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     TRANSFORMER/minecraft@1.21.1/net.minecraft.client.main.Main.main(Main.java:230)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     java.base/java.lang.reflect.Method.invoke(Method.java:565)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.runTarget(CommonLaunchHandler.java:136)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.clientService(CommonLaunchHandler.java:124)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.NeoForgeClientDevLaunchHandler.runService(NeoForgeClientDevLaunchHandler.java:23)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/fml_loader@4.0.42/net.neoforged.fml.loading.targets.CommonLaunchHandler.lambda$launchService$4(CommonLaunchHandler.java:118)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandlerDecorator.launch(LaunchServiceHandlerDecorator.java:30)
+[16:25:46] [Render thread/ERROR] [OpenGLDebug/]:     MC-BOOTSTRAP/cpw.mods.modlauncher@11.0.5/cpw.mods.modlauncher.LaunchServiceHandler.launch(LaunchServiceHandler.java:53)
+
+--- ACTUAL PROCESS END ---
+[2026-10-04 16:27:07] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+
+> Task :runClient FAILED
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':runClient' (registered in build file 'build.gradle').
+> Process 'command 'C:\Program Files\Java\jdk-25.0.4\bin\java.exe'' finished with non-zero exit value -1073740791 (NTSTATUS 0xC0000409)
+
+* Try:
+> Run with --stacktrace option to get the stack trace.
+> Run with --info or --debug option to get more log output.
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+> Get more help at https://help.gradle.org.
+
+BUILD FAILED in 3m 58s
+6 actionable tasks: 3 executed, 3 up-to-date

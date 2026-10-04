@@ -22,12 +22,13 @@ final class DlssgBridge {
             Path dll = root.resolve("native/wisteria_dlssg_bridge-" + hash + ".dll");
             Files.write(dll, bytes);
             System.load(dll.toString());
-            if (abi() != 3) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
-            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":3,\"sha256\":\"" + hash + "\"}\n");
+            if (abi() != 4) throw new IllegalStateException("DLSS-G JNI ABI mismatch");
+            Files.writeString(root.resolve("jni-manifest.json"), "{\"abi\":4,\"sha256\":\"" + hash + "\"}\n");
             loaded = true;
         } catch (Exception e) { throw new IllegalStateException("DLSS-G local bridge load failed", e); }
     }
     static native int abi();
+    static native void configureDiagnostics(long session,String out,boolean fault,boolean checkpoints,boolean sync2);
     static native int reportedMax(long session);
     /** Isolated preflight: public NGX init/query only, no feature or Evaluate. */
     static native int[] probeCapabilities(String out,String dll,String runtime,int requestedMax);

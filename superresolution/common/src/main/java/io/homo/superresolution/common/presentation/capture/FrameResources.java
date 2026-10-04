@@ -57,6 +57,8 @@ public final class FrameResources {
     private boolean borrowedInputReleaseFailed;
     private volatile BorrowedInputReadiness borrowedReadiness;
     private boolean borrowedReadinessClaimed;
+    private VkGlInteropSemaphore slotDepthReady, slotMotionReady;
+    private final BorrowedSemaphoreCycle borrowedCycle = new BorrowedSemaphoreCycle();
 
     FrameResources(
             int index,
@@ -125,7 +127,8 @@ public final class FrameResources {
             VkGlInteropSemaphore release
     ) {
         requireWritable();
-        depth.borrow(vkTexture, glTexture, ready, release);
+        if (slotDepthReady == null) slotDepthReady = VkGlInteropSemaphore.create(device);
+        depth.borrow(vkTexture, glTexture, slotDepthReady, release);
         if (depth.isValid()) {
             requireBorrowedInputReleaseSubmission();
         }
@@ -138,7 +141,8 @@ public final class FrameResources {
             VkGlInteropSemaphore release
     ) {
         requireWritable();
-        motionVector.borrow(vkTexture, glTexture, ready, release);
+        if (slotMotionReady == null) slotMotionReady = VkGlInteropSemaphore.create(device);
+        motionVector.borrow(vkTexture, glTexture, slotMotionReady, release);
         if (motionVector.isValid()) {
             requireBorrowedInputReleaseSubmission();
         }
@@ -197,6 +201,7 @@ public final class FrameResources {
         depth.markSubmitted();
         motionVector.markSubmitted();
         lifecycle.markSubmitted();
+        if (borrowedReadiness != null) borrowedCycle.consume(generation);
         traceLifecycle();
         publishBorrowedInputReleaseSubmission();
     }
@@ -244,6 +249,8 @@ public final class FrameResources {
         hudlessColor.destroy();
         depth.destroy();
         motionVector.destroy();
+        if (slotDepthReady != null) { slotDepthReady.destroy(); slotDepthReady = null; }
+        if (slotMotionReady != null) { slotMotionReady.destroy(); slotMotionReady = null; }
     }
 
     public int index() {
@@ -393,6 +400,17 @@ public final class FrameResources {
         return semaphores;
     }
 
+    public long[] scheduleBorrowedReadySignals() {
+        requireWritable();
+        if (!depth.isValid() || !motionVector.isValid() || !hasBorrowedAlgorithmInputs())
+            throw new IllegalStateException("Borrowed ready pair requires both live inputs");
+        borrowedCycle.signal(generation);
+        return new long[]{depth.readySemaphore(), motionVector.readySemaphore()};
+    }
+
+    public long borrowedDepthReady() { return depth.readySemaphore(); }
+    public long borrowedMotionReady() { return motionVector.readySemaphore(); }
+
     public long[] releaseSemaphores() {
         long[] semaphores = new long[validResourceCount()];
         int count = 0;
@@ -434,6 +452,11 @@ public final class FrameResources {
         long commandBufferGeneration = submittedCommandBufferGeneration;
         if (commandBuffer != null && commandBufferGeneration > 0L) {
             commandBuffer.waitForSubmission(commandBufferGeneration);
+        }
+        if (borrowedReadiness != null) {
+            if (commandBuffer == null || commandBufferGeneration <= 0)
+                throw new IllegalStateException("Borrowed retirement has no tracked output fence");
+            borrowedCycle.retire(generation, commandBuffer.isSubmissionComplete(commandBufferGeneration));
         }
         // The tracked Vulkan output submission waits on this D3D12 completion timeline.
         // Its completed fence already covers it; do not add a cross-API host wait.

@@ -7,6 +7,9 @@
 #include <array>
 #include <memory>
 #include <atomic>
+#include <mutex>
+#include <functional>
+#include "reuse_contract.h"
 
 namespace integration {
 static void hr(HRESULT h, const char* what) {
@@ -30,6 +33,11 @@ struct VkSample {
     VkBuffer buffer{}; VkDeviceMemory memory{}; size_t size{}; bool coherent=false;
 };
 struct Slot {
+    struct Marker { uint64_t interval{}; const char* phase{}; };
+    std::array<Marker,16> markers{};
+    size_t markerCount{};
+    uint64_t diagnosticOrdinal{}, commandGeneration{};
+    std::function<void(Slot&)> completionDiagnostic;
     // color, HUDless, depth, motion, followed by N independent generated images.
     std::vector<Image> images;
     VkCommandBuffer inputs{};
@@ -72,6 +80,7 @@ static void CALLBACK notifyFlags(PTP_CALLBACK_INSTANCE, void* context, PTP_WAIT,
             flags[k]=*static_cast<jint*>(map);s.disableReadback[k]->Unmap(0,&none);
         }
     } catch(const std::exception& ex) { s.statusReadError=ex.what();std::fill(flags.begin(),flags.end(),-1); }
+    if(s.completionDiagnostic)s.completionDiagnostic(s);
     s.flags=flags;s.notification=nullptr;s.flagsReady.store(true,std::memory_order_release);
     JNIEnv* e{};bool attached=false;
     if(vm->GetEnv(reinterpret_cast<void**>(&e),JNI_VERSION_1_8)==JNI_EDETACHED) {
@@ -105,6 +114,10 @@ struct Session {
     float vkPeriod{}; uint32_t vkTimestampBits{};
     bool unsafe=false; std::vector<std::unique_ptr<Pool>> pools;
     std::ofstream events;
+    std::ofstream twoInterval;
+    std::mutex diagnosticMutex;
+    bool deviceFaultEnabled=false, checkpointsEnabled=false, sync2Enabled=false;
+    uint64_t diagnosticIntervals{};
     std::string previousSampleHash; uint64_t previousSampleId{};
     std::map<VkFormat,VkFormatProperties> formatProperties;
 
@@ -118,6 +131,45 @@ struct Session {
         events<<"{\"timestamp_ns\":"<<std::chrono::duration_cast<std::chrono::nanoseconds>(std::chrono::steady_clock::now().time_since_epoch()).count()
               <<",\"type\":"<<jsonQuote(type)<<",\"detail\":"<<jsonQuote(detail)<<"}\n";
         events.flush(); // Retain the short failing run; no checkpoint replacement or fence wait.
+    }
+    void state(Slot& s,const char* type,const std::string& detail="") {
+        std::lock_guard<std::mutex> lock(diagnosticMutex);
+        if(!twoInterval.is_open()||!s.diagnosticOrdinal||s.diagnosticOrdinal>3)return;
+        twoInterval<<"{\"interval\":"<<s.diagnosticOrdinal<<",\"realFrameId\":"<<s.frameId
+            <<",\"event\":"<<jsonQuote(type)<<",\"commandBuffer\":"<<jsonQuote(handleText(s.inputs))
+            <<",\"commandGeneration\":"<<s.commandGeneration<<",\"commandPool\":"<<jsonQuote(handleText(commandPool))
+            <<",\"queue\":"<<jsonQuote(handleText(queue))<<",\"ready\":"<<s.ready<<",\"done\":"<<s.done
+            <<",\"detail\":"<<jsonQuote(detail)<<"}\n";twoInterval.flush();
+    }
+    void checkpoint(Slot& s,VkCommandBuffer c,const char* phase) {
+        if(!checkpointsEnabled||s.diagnosticOrdinal>3||s.markerCount>=s.markers.size())return;
+        auto& marker=s.markers[s.markerCount++];marker={s.diagnosticOrdinal,phase};
+        fn<PFN_vkCmdSetCheckpointNV>("vkCmdSetCheckpointNV")(c,&marker);
+    }
+    void configureDiagnostics(const fs::path& out,bool fault,bool checkpoints,bool sync2) {
+        deviceFaultEnabled=fault;checkpointsEnabled=checkpoints;sync2Enabled=sync2;twoInterval.open(out/"fg-two-interval-state.jsonl");
+        evidence.raw("device_fault_enabled",fault?"true":"false");evidence.raw("diagnostic_checkpoints_enabled",checkpoints?"true":"false");
+    }
+    void captureFault() {
+        try {
+            if(deviceFaultEnabled) {
+                VkDeviceFaultCountsEXT counts{VK_STRUCTURE_TYPE_DEVICE_FAULT_COUNTS_EXT};
+                auto get=fn<PFN_vkGetDeviceFaultInfoEXT>("vkGetDeviceFaultInfoEXT");auto r=get(device,&counts,nullptr);
+                event("device_fault_counts","VkResult="+std::to_string(r)+" addressInfoCount="+std::to_string(counts.addressInfoCount)+" vendorInfoCount="+std::to_string(counts.vendorInfoCount));
+                if(r==VK_SUCCESS){std::vector<VkDeviceFaultAddressInfoEXT> addresses(counts.addressInfoCount);std::vector<VkDeviceFaultVendorInfoEXT> vendors(counts.vendorInfoCount);
+                    VkDeviceFaultInfoEXT info{VK_STRUCTURE_TYPE_DEVICE_FAULT_INFO_EXT};info.pAddressInfos=addresses.data();info.pVendorInfos=vendors.data();counts.vendorBinarySize=0;
+                    r=get(device,&counts,&info);event("device_fault_description","VkResult="+std::to_string(r)+" description="+info.description);
+                    for(auto& a:addresses)event("device_fault_address","type="+std::to_string(a.addressType)+" address="+std::to_string(a.reportedAddress)+" precision="+std::to_string(a.addressPrecision));
+                    for(auto& v:vendors)event("device_fault_vendor",std::string(v.description)+" code="+std::to_string(v.vendorFaultCode)+" data="+std::to_string(v.vendorFaultData));}
+            } else event("device_fault_description","UNAVAILABLE_NOT_ENABLED");
+            if(checkpointsEnabled){
+                VkQueue producer{};fn<PFN_vkGetDeviceQueue>("vkGetDeviceQueue")(device,family,0,&producer);
+                for(auto q:{producer,queue}){uint32_t n{};auto get=fn<PFN_vkGetQueueCheckpointDataNV>("vkGetQueueCheckpointDataNV");get(q,&n,nullptr);std::vector<VkCheckpointDataNV> data(n);for(auto& d:data)d.sType=VK_STRUCTURE_TYPE_CHECKPOINT_DATA_NV;get(q,&n,data.data());
+                    for(auto& d:data){std::string phase="UNKNOWN_EXTERNAL_MARKER";uint64_t ordinal{};
+                        for(auto& p:pools)for(auto& slot:p->slots)for(auto& m:slot->markers)if(&m==d.pCheckpointMarker){phase=m.phase?m.phase:"UNSET";ordinal=m.interval;}
+                        event("device_lost_checkpoint","queue="+handleText(q)+" stage="+std::to_string(d.stage)+" marker="+handleText(d.pCheckpointMarker)+" interval="+std::to_string(ordinal)+" phase="+phase);}}
+            }
+        } catch(const std::exception& ex){event("device_fault_query_error",ex.what());}
     }
     Session(fs::path out, fs::path dll, fs::path runtime,unsigned count):evidence(out),dx(evidence,runtime),events(out/"provider-events.jsonl") {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
@@ -278,6 +330,22 @@ struct Session {
         im.initialized=true;
     }
     void sourceBarrier(VkCommandBuffer c,VkImage image,int before,int after) {
+        if((before==VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL&&after==VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL)
+                ||(before==VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL&&after==VK_IMAGE_LAYOUT_SHADER_READ_ONLY_OPTIMAL)) {
+            bool toCopy=after==VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL;
+            if(sync2Enabled){VkImageMemoryBarrier2KHR b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER_2_KHR};
+                b.srcStageMask=toCopy?VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT_KHR:VK_PIPELINE_STAGE_2_BLIT_BIT_KHR;
+                b.dstStageMask=toCopy?VK_PIPELINE_STAGE_2_BLIT_BIT_KHR:VK_PIPELINE_STAGE_2_COMPUTE_SHADER_BIT_KHR;
+                b.srcAccessMask=toCopy?VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR:VK_ACCESS_2_TRANSFER_READ_BIT_KHR;
+                b.dstAccessMask=toCopy?VK_ACCESS_2_TRANSFER_READ_BIT_KHR:VK_ACCESS_2_SHADER_SAMPLED_READ_BIT_KHR;
+                b.oldLayout=VkImageLayout(before);b.newLayout=VkImageLayout(after);b.image=image;b.srcQueueFamilyIndex=b.dstQueueFamilyIndex=VK_QUEUE_FAMILY_IGNORED;b.subresourceRange={VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};
+                VkDependencyInfoKHR dep{VK_STRUCTURE_TYPE_DEPENDENCY_INFO_KHR};dep.imageMemoryBarrierCount=1;dep.pImageMemoryBarriers=&b;
+                fn<PFN_vkCmdPipelineBarrier2KHR>("vkCmdPipelineBarrier2KHR")(c,&dep);return;
+            }
+            VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};b.image=image;b.subresourceRange={VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};b.oldLayout=VkImageLayout(before);b.newLayout=VkImageLayout(after);b.srcQueueFamilyIndex=b.dstQueueFamilyIndex=VK_QUEUE_FAMILY_IGNORED;
+            b.srcAccessMask=toCopy?VK_ACCESS_SHADER_READ_BIT:VK_ACCESS_TRANSFER_READ_BIT;b.dstAccessMask=toCopy?VK_ACCESS_TRANSFER_READ_BIT:VK_ACCESS_SHADER_READ_BIT;
+            fn<PFN_vkCmdPipelineBarrier>("vkCmdPipelineBarrier")(c,toCopy?VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT:VK_PIPELINE_STAGE_TRANSFER_BIT,toCopy?VK_PIPELINE_STAGE_TRANSFER_BIT:VK_PIPELINE_STAGE_COMPUTE_SHADER_BIT,0,0,nullptr,0,nullptr,1,&b);return;
+        }
         VkImageMemoryBarrier b{VK_STRUCTURE_TYPE_IMAGE_MEMORY_BARRIER};b.image=image;b.subresourceRange={VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};b.oldLayout=VkImageLayout(before);b.newLayout=VkImageLayout(after);b.srcQueueFamilyIndex=b.dstQueueFamilyIndex=VK_QUEUE_FAMILY_IGNORED;b.srcAccessMask=VK_ACCESS_MEMORY_READ_BIT|VK_ACCESS_MEMORY_WRITE_BIT;b.dstAccessMask=VK_ACCESS_MEMORY_READ_BIT|VK_ACCESS_MEMORY_WRITE_BIT;
         fn<PFN_vkCmdPipelineBarrier>("vkCmdPipelineBarrier")(c,VK_PIPELINE_STAGE_ALL_COMMANDS_BIT,VK_PIPELINE_STAGE_ALL_COMMANDS_BIT,0,0,nullptr,0,nullptr,1,&b);
     }
@@ -290,6 +358,7 @@ struct Session {
         s.commands->CopyTextureRegion(&to,0,0,0,&from,nullptr);dxBarrier(s,im,D3D12_RESOURCE_STATE_COMMON);
     }
     void prepare(Pool& p,Slot& s,VkCommandBuffer output,const std::vector<jlong>& src,const std::vector<float>& constants,uint64_t frameId,double delta,bool reset,bool flipBorrowedInputs,bool sample) {
+        requireSlotRetired(s.leased,s.submitted,unsafe);
         if(s.leased||unsafe||p.failed||(src.size()!=20&&src.size()!=32)||constants.size()!=108)throw std::runtime_error("Invalid or failed slot/metadata contract");
         s.borrowedReady={};s.borrowedEvidence.clear();
         if(src.size()==32){
@@ -309,12 +378,16 @@ struct Session {
                 " depthReady="+std::to_string(src[29])+" motionReady="+std::to_string(src[30])+" sourceReadyValue=BINARY_SIGNAL";
         }
         s.leased=true;s.prepared=false;s.submitted=false;s.frameId=frameId;s.sampled=sample&&s.colorSample.buffer;s.reset=reset;
+        s.diagnosticOrdinal=++diagnosticIntervals;++s.commandGeneration;s.markerCount=0;
+        s.completionDiagnostic=[this](Slot& completed){state(completed,"D3D12_DONE","observed="+std::to_string(completed.completionObserved)+" error="+completed.statusReadError);};
         s.flagsReady.store(false);std::fill(s.flags.begin(),s.flags.end(),-1);
         s.diagnostic=submittedFrames<8||s.sampled;s.completionObserved=0;s.statusReadError.clear();
         for(size_t j=0;j<s.images.size();++j)s.priorInitialized[j]=s.images[j].initialized;
         s.ready=++sequence;s.done=++sequence;
+        state(s,"FRAME_BEGIN");state(s,"SR_READINESS",s.borrowedEvidence);
         vkcheck(fn<PFN_vkResetCommandBuffer>("vkResetCommandBuffer")(s.inputs,0),"input reset");VkCommandBufferBeginInfo bi{VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO};bi.flags=VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
         vkcheck(fn<PFN_vkBeginCommandBuffer>("vkBeginCommandBuffer")(s.inputs,&bi),"input begin");
+        state(s,"COMMAND_BEGIN");checkpoint(s,s.inputs,"SR_COMPLETION_WAIT_PASSED");
         if(p.inputTiming){fn<PFN_vkCmdResetQueryPool>("vkCmdResetQueryPool")(s.inputs,p.inputTiming,s.timestampIndex,2);fn<PFN_vkCmdWriteTimestamp>("vkCmdWriteTimestamp")(s.inputs,VK_PIPELINE_STAGE_TOP_OF_PIPE_BIT,p.inputTiming,s.timestampIndex);}
         event("slot_state","realFrameId="+std::to_string(frameId)+" state=FILLING");
         for(size_t j=0;j<s.images.size();++j){auto& im=s.images[j];
@@ -327,11 +400,16 @@ struct Session {
                 for(auto f:{format,im.format})if(!formatProperties.count(f)){VkFormatProperties properties{};fn<PFN_vkGetPhysicalDeviceFormatProperties>("vkGetPhysicalDeviceFormatProperties")(physical,f,&properties);formatProperties[f]=properties;}
                 const auto a=formatProperties.at(format),b=formatProperties.at(im.format);
                 if(!(a.optimalTilingFeatures&VK_FORMAT_FEATURE_BLIT_SRC_BIT)||!(b.optimalTilingFeatures&VK_FORMAT_FEATURE_BLIT_DST_BIT))throw std::runtime_error("Input format conversion not supported by blit");
+                if(j>=2){state(s,"SOURCE_STATE","role="+std::to_string(j)+" image="+handleText(image)+" format="+std::to_string(format)+" before="+std::to_string(layout)+" copy=6 after="+std::to_string(layout));
+                    state(s,"DESTINATION_STATE","role="+std::to_string(j)+" image="+handleText(im.image)+" memory="+handleText(im.memory)+" format="+std::to_string(im.format)+" dx="+handleText(im.dx.resource.Get())+" before="+(s.priorInitialized[j]?"GENERAL":"UNDEFINED"));
+                    checkpoint(s,s.inputs,j==2?"BEFORE_DEPTH_BARRIER":"BEFORE_MOTION_BARRIER");}
                 sourceBarrier(s.inputs,image,layout,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL);
+                if(j>=2)checkpoint(s,s.inputs,j==2?"AFTER_DEPTH_BARRIER":"AFTER_MOTION_BARRIER");
                 VkImageBlit region{};region.srcSubresource=region.dstSubresource={VK_IMAGE_ASPECT_COLOR_BIT,0,0,1};region.srcOffsets[1]={int(width),int(height),1};region.dstOffsets[1]={int(width),int(height),1};
                 if(j>=2&&flipBorrowedInputs){region.srcOffsets[0].y=int(height);region.srcOffsets[1].y=0;}
                 fn<PFN_vkCmdBlitImage>("vkCmdBlitImage")(s.inputs,image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,im.image,VK_IMAGE_LAYOUT_GENERAL,1,&region,VK_FILTER_NEAREST);
                 sourceBarrier(s.inputs,image,VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL,layout);
+                if(j>=2){checkpoint(s,s.inputs,j==2?"AFTER_DEPTH_COPY":"AFTER_MOTION_COPY");state(s,j==2?"DEPTH_COPY_RECORDED":"MOTION_COPY_RECORDED");}
                 if(src.size()==32&&j>=2)event("borrowed_copy_recorded","realFrameId="+std::to_string(frameId)+" resource="+(j==2?"depth":"motion")+
                     " source="+std::to_string(src[j*5])+" destination="+std::to_string(reinterpret_cast<jlong>(im.image))+
                     " sourceFormat="+std::to_string(format)+" destinationFormat="+std::to_string(im.format)+" width="+std::to_string(width)+" height="+std::to_string(height)+
@@ -339,13 +417,17 @@ struct Session {
                     " destinationBefore="+(s.priorInitialized[j]?"GENERAL":"UNDEFINED")+" destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true "+s.borrowedEvidence);
             }else{VkClearColorValue sentinel{};sentinel.float32[0]=sentinel.float32[2]=sentinel.float32[3]=1;VkImageSubresourceRange range{VK_IMAGE_ASPECT_COLOR_BIT,0,1,0,1};fn<PFN_vkCmdClearColorImage>("vkCmdClearColorImage")(s.inputs,im.image,VK_IMAGE_LAYOUT_GENERAL,&sentinel,1,&range);}
             sharedBarrier(s.inputs,im,false,true);
+            if(j==3)checkpoint(s,s.inputs,"DESTINATION_RELEASED_TO_D3D12");
             // Recorded into the worker's already-begun output command buffer; its GPU
             // timeline wait is added by the provider submission plan after input submit.
             sharedBarrier(output,im,true,false,j==0||j>=4?VK_IMAGE_LAYOUT_TRANSFER_SRC_OPTIMAL:VK_IMAGE_LAYOUT_GENERAL);
+            if(j==0)checkpoint(s,output,"OUTPUT_D3D12_DONE_WAIT_PASSED");
         }
         if(s.sampled){sampleCopy(output,s.images[0],s.colorSample);for(unsigned k=0;k<p.generatedCount;++k)sampleCopy(output,s.images[4+k],s.generatedSamples[k]);}
         if(p.inputTiming)fn<PFN_vkCmdWriteTimestamp>("vkCmdWriteTimestamp")(s.inputs,VK_PIPELINE_STAGE_BOTTOM_OF_PIPE_BIT,p.inputTiming,s.timestampIndex+1);
+        checkpoint(s,s.inputs,"BEFORE_D3D12_READY_SIGNAL");
         vkcheck(fn<PFN_vkEndCommandBuffer>("vkEndCommandBuffer")(s.inputs),"input end");
+        state(s,"COMMAND_END");
         hr(s.allocator->Reset(),"slot allocator reset");hr(s.commands->Reset(s.allocator.Get(),nullptr),"slot list reset");
         for(unsigned k=0;k<p.generatedCount;++k){
         D3D12_RESOURCE_BARRIER flagBarrier{};flagBarrier.Type=D3D12_RESOURCE_BARRIER_TYPE_TRANSITION;flagBarrier.Transition={s.disable[k].Get(),D3D12_RESOURCE_BARRIER_ALL_SUBRESOURCES,D3D12_RESOURCE_STATE_UNORDERED_ACCESS,D3D12_RESOURCE_STATE_COPY_DEST};s.commands->ResourceBarrier(1,&flagBarrier);s.commands->CopyBufferRegion(s.disable[k].Get(),0,disableSentinel.Get(),0,16);std::swap(flagBarrier.Transition.StateBefore,flagBarrier.Transition.StateAfter);s.commands->ResourceBarrier(1,&flagBarrier);
@@ -366,6 +448,7 @@ struct Session {
         NVSDK_NGX_Parameter_SetULL(p.parameters,NVSDK_NGX_DLSSG_Parameter_BackbufferFrameID,frameId);
         if(s.diagnostic)event("evaluate_begin","PAIR_ID="+std::to_string(frameId)+" COUNT="+std::to_string(opts.multiFrameCount)+" INDEX="+std::to_string(opts.multiFrameIndex)+" ARRAY_SLOT="+std::to_string(k)+" OUTPUT_RESOURCE_ID="+handleText(ep.pOutputInterpFrame)+" VkImage="+handleText(s.images[4+k].image)+" STATUS_RESOURCE_ID="+handleText(ep.pOutputDisableInterpolation)+" STATUS_READBACK_ID="+handleText(s.disableReadback[k].Get())+" INPUT_REAL_RESOURCE_ID="+handleText(ep.pBackbuffer)+" COMPLETION_ID="+std::to_string(s.done)+" STATUS_BEFORE=GPU_SNAPSHOT_PENDING");
         auto code=NGX_D3D12_EVALUATE_DLSSG(s.commands.Get(),p.feature,p.parameters,&ep,&opts);
+        state(s,"DLSSG_EVALUATE","result="+resultHex(code));
         if(s.diagnostic){unsigned actualCount{},actualIndex{};ID3D12Resource *actualOutput{},*actualStatus{};
             auto gc=NVSDK_NGX_Parameter_GetUI(p.parameters,NVSDK_NGX_DLSSG_Parameter_MultiFrameCount,&actualCount);
             auto gi=NVSDK_NGX_Parameter_GetUI(p.parameters,NVSDK_NGX_DLSSG_Parameter_MultiFrameIndex,&actualIndex);
@@ -396,7 +479,11 @@ struct Session {
         SetThreadpoolWait(s.completionWait,s.completionEvent,nullptr);
         hr(fence->SetEventOnCompletion(s.done,s.completionEvent),"async completion notification");
         // Caller holds the borrowed queue's Java submitLock for this native submit.
-        s.submitted=true;unsafe=true;vkcheck(fn<PFN_vkQueueSubmit>("vkQueueSubmit")(queue,1,&si,VK_NULL_HANDLE),"input queue submit");
+        s.submitted=true;unsafe=true;state(s,"QUEUE_SUBMIT_BEGIN",s.borrowedEvidence);
+        auto submitResult=fn<PFN_vkQueueSubmit>("vkQueueSubmit")(queue,1,&si,VK_NULL_HANDLE);
+        state(s,"QUEUE_SUBMIT_RESULT","VkResult="+std::to_string(submitResult));
+        if(submitResult==VK_ERROR_DEVICE_LOST)captureFault();
+        vkcheck(submitResult,"input queue submit");state(s,"D3D12_READY","GPU_SIGNAL_SUBMITTED_NOT_YET_OBSERVED");
         hr(dx.queue->Wait(fence.Get(),s.ready),"D3D12 queue GPU wait");ID3D12CommandList* lists[]={s.commands.Get()};dx.queue->ExecuteCommandLists(1,lists);hr(dx.queue->Signal(fence.Get(),s.done),"D3D12 queue completion signal");unsafe=false;++submittedFrames;
         event("vulkan_d3d12_submit","realFrameId="+std::to_string(s.frameId)+" ready="+std::to_string(s.ready)+" completion="+std::to_string(s.done)+" cpuWait=false");
         if(s.borrowedReady[0])event("borrowed_copy_submit","realFrameId="+std::to_string(s.frameId)+" copyCommand="+std::to_string(reinterpret_cast<jlong>(s.inputs))+" copyCompleteValue="+std::to_string(s.ready)+" fgCompleteValue="+std::to_string(s.done)+" consumerQueue="+std::to_string(reinterpret_cast<jlong>(queue))+" consumerFamily="+std::to_string(family)+" waits=PRODUCER_BINARY cpuWait=false "+s.borrowedEvidence);
@@ -411,6 +498,8 @@ struct Session {
         // Called only after the normal Vulkan output fence and all presentation fences
         // have completed. Their GPU wait on done proves the D3D12 work also completed.
         if(!s.leased||!s.submitted||fence->GetCompletedValue()<s.done||fence->GetCompletedValue()==UINT64_MAX)throw std::runtime_error("Premature lease retirement or device removed");
+        requireD3DDone(fence->GetCompletedValue(),s.done);
+        state(s,"D3D12_DONE","observed="+std::to_string(fence->GetCompletedValue()));state(s,"OUTPUT_READY","CALLER_OUTPUT_AND_PRESENT_FENCES_RETIRED");
         hr(dx.device->GetDeviceRemovedReason(),"device removed reason");++completedFrames;
         if(s.borrowedReady[0])event("borrowed_copy_complete","realFrameId="+std::to_string(s.frameId)+" depthCopies=1 motionCopies=1 copyCompleteValue="+std::to_string(s.ready)+" observedCompletion="+std::to_string(fence->GetCompletedValue())+" cpuTransportCopies=0 "+s.borrowedEvidence);
         if(!s.flagsReady.load(std::memory_order_acquire))throw std::runtime_error("Retirement before flags callback");
@@ -431,7 +520,7 @@ struct Session {
                 save(evidence.out/("sample-"+std::to_string(s.frameId)+"-G"+std::to_string(k+1)+".bin"),g);}
             previousSampleHash=bh;previousSampleId=s.frameId;
             event("sample_metadata","realFrameId="+std::to_string(s.frameId)+" width="+std::to_string(p.width)+" height="+std::to_string(p.height)+" readback_api=Vulkan");events.flush();}
-        s.leased=false;s.prepared=s.submitted=false;
+        state(s,"SLOT_RETIRE");state(s,"FRAME_END");s.leased=false;s.prepared=s.submitted=false;
         event("slot_recycle","realFrameId="+std::to_string(s.frameId)+" state=FREE");
         if(completedFrames%120==0)events.flush();
     }
@@ -461,7 +550,8 @@ static Slot& slot(Pool& p,jint i){if(i<0||size_t(i)>=p.slots.size())throw std::r
 }
 using namespace integration;
 #define JNI_METHOD(name) Java_org_ireallywanttosleep_wisteria_dlssg_DlssgBridge_##name
-extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 3;}
+extern "C" JNIEXPORT jint JNICALL JNI_METHOD(abi)(JNIEnv*,jclass){return 4;}
+extern "C" JNIEXPORT void JNICALL JNI_METHOD(configureDiagnostics)(JNIEnv* e,jclass,jlong h,jstring out,jboolean fault,jboolean checkpoints,jboolean sync2){try{session(h).configureDiagnostics(path(e,out),fault,checkpoints,sync2);}catch(const std::exception& ex){error(e,ex);}}
 extern "C" JNIEXPORT jint JNICALL JNI_METHOD(reportedMax)(JNIEnv*,jclass,jlong h){return session(h).reportedMax;}
 extern "C" JNIEXPORT jintArray JNICALL JNI_METHOD(probeCapabilities)(JNIEnv* e,jclass,jstring out,jstring dll,jstring runtime,jint count){
     try {

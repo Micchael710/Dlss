@@ -56,7 +56,7 @@ config.write_bytes(text.encode('utf-8'))
 manifest=dict(run_id=out.name,status='PREPARED_NOT_LAUNCHED',attempt_limit=1,standalone_gate=previous.name,standalone_rerun=False,
     sr='dlss',fg='X2',requested_count=1,ratio=1.724,required_runtime_java='25.0.4',bytecode_target=21,
     sr_jar=str(targets[0].relative_to(root)),sr_sha256=sha(targets[0]),wisteria_jar=str(targets[1].relative_to(root)),wisteria_sha256=sha(targets[1]),
-    bridge_abi=3,bridge_sha256=sha(native),protected_amd_9_classes_2_dlls_identical=True,amd_hashes=amd,
+    bridge_abi=4,bridge_sha256=sha(native),protected_amd_9_classes_2_dlls_identical=True,amd_hashes=amd,
     component_sha256=sha(component),fg_runtime_sha256=sha(runtime),original_config_sha256=hashlib.sha256(original).hexdigest(),test_config_sha256=sha(config))
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
 (base/'current-combined-run.txt').write_text(str(out))

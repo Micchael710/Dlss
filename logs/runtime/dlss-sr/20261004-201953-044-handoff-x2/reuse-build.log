@@ -1,0 +1,5 @@
+-- Configuring done (0.2s)
+-- Generating done (0.2s)
+-- Build files have been written to: D:/ProjectDllsss/experiments/dlssg-crossapi-interop/build
+[1/2] Building CXX object CMakeFiles\dlssg_reuse_contract_test.dir\reuse_contract_test.cpp.obj
+[2/2] Linking CXX executable dlssg_reuse_contract_test.exe

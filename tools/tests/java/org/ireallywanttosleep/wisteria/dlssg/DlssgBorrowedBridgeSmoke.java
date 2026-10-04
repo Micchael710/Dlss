@@ -7,7 +7,7 @@ public final class DlssgBorrowedBridgeSmoke {
         var method=Class.forName("org.ireallywanttosleep.wisteria.dlssg.DlssgBridge").getDeclaredMethod("abi");
         method.setAccessible(true);
         int abi=(Integer)method.invoke(null);
-        if(abi!=3)throw new AssertionError("Stale JNI payload contract: "+abi);
+        if(abi!=4)throw new AssertionError("Stale JNI payload contract: "+abi);
         System.out.println("PASS ACTUAL JNI LOAD ABI="+abi+"; NGX/feature/evaluate NOT_RUN");
     }
 }

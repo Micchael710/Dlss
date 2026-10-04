@@ -1,3 +1,4 @@
+param([string]$Target = '')
 $ErrorActionPreference = 'Stop'
 $harnessRoot = Split-Path $PSScriptRoot -Parent
 $harnessVs = 'D:\Programs File2\Microsoft Visual Studio\18\Community'
@@ -12,5 +13,6 @@ $harnessNinja = Join-Path $harnessVs 'Common7/IDE/CommonExtensions/Microsoft/CMa
 $harnessSource = Join-Path $harnessRoot 'experiments/dlssg-crossapi-interop'
 & $harnessCmake -S $harnessSource -B "$harnessSource/build" -G Ninja "-DCMAKE_MAKE_PROGRAM=$harnessNinja" -DCMAKE_BUILD_TYPE=Release
 if ($LASTEXITCODE -ne 0) { throw 'Harness configure failed' }
-& $harnessCmake --build "$harnessSource/build" --parallel 2
+if ($Target) { & $harnessCmake --build "$harnessSource/build" --parallel 2 --target $Target }
+else { & $harnessCmake --build "$harnessSource/build" --parallel 2 }
 if ($LASTEXITCODE -ne 0) { throw 'Harness build failed' }

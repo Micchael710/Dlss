@@ -227,9 +227,7 @@ public class VulkanCommandBuffer implements ICommandBuffer {
         if (reusableFence == VK_NULL_HANDLE) {
             reusableFence = ownerPool.getFencePool().createFence();
         }
-        if (inFlight && !isFenceSignaled()) {
-            throw new IllegalStateException("Command buffer is still in-flight and cannot be submitted again");
-        }
+        PendingGpuReuse.requireRetired(inFlight, !inFlight || isFenceSignaled());
         VK_CHECK(vkResetFences(vulkanDevice.getVkDevice(), reusableFence));
         inFlight = true;
         return reusableFence;
@@ -442,9 +440,7 @@ public class VulkanCommandBuffer implements ICommandBuffer {
         if (!inFlight) {
             return;
         }
-        if (!isFenceSignaled()) {
-            throw new IllegalStateException("Command buffer is still in-flight");
-        }
+        PendingGpuReuse.requireRetired(inFlight, isFenceSignaled());
     }
 
     private void clearRenderPassState() {

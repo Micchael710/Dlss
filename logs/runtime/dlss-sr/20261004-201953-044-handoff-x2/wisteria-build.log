@@ -1,0 +1,25 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+❇️ Wisteria target: Minecraft 1.21.1 (1.21.1)
+❇️ loader neoforge
+> Task :common:createMinecraftArtifacts UP-TO-DATE
+> Task :neoforge:createMinecraftArtifacts UP-TO-DATE
+> Task :neoforge:processResources UP-TO-DATE
+> Task :neoforge:jarJar NO-SOURCE
+> Task :neoforge:processTestResources NO-SOURCE
+> Task :common:compileJava
+> Task :common:processResources
+> Task :common:classes
+> Task :neoforge:compileJava UP-TO-DATE
+> Task :neoforge:classes UP-TO-DATE
+> Task :neoforge:jar
+> Task :neoforge:assemble
+> Task :neoforge:compileTestJava NO-SOURCE
+> Task :neoforge:testClasses UP-TO-DATE
+> Task :neoforge:test NO-SOURCE
+> Task :neoforge:check UP-TO-DATE
+> Task :neoforge:build
+
+BUILD SUCCESSFUL in 35s
+7 actionable tasks: 3 executed, 4 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

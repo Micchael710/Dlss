@@ -89,3 +89,12 @@ logs/runtime/dlss-sr/**/component/
 logs/runtime/dlss-sr/**/stock-runtime/
 logs/runtime/dlss-sr/**/bundle-cache/
 logs/runtime/dlss-sr/**/native/
+
+# Preserve full raw telemetry of this diagnostic locally; export bounded first-three evidence.
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/launcher.log
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/provider-events.jsonl
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/frame-sequence.jsonl
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/frame-sequence.log
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/dlss-sr-events.jsonl
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/ngx.log
+logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/worker-result.json

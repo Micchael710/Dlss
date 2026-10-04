@@ -57,6 +57,8 @@ neoForge {
             jvmArgument "-XX:ErrorFile=${file('../logs/runtime/hs_err_pid%p.log').absolutePath}"
             jvmArgument '-Dorg.lwjgl.util.Debug=true'
             jvmArgument '-Dsr.baselineDiagnostics=true'
+            if (providers.gradleProperty('dlssg_second_submit_diagnostics').isPresent())
+                jvmArgument '-Dsr.dlss.secondSubmitDiagnostics=true'
             if (providers.gradleProperty('dlss_sr_run_dir').isPresent()) {
                 jvmArgument "-Dsr.dlss.runDir=${file(providers.gradleProperty('dlss_sr_run_dir').get()).absolutePath}"
             }

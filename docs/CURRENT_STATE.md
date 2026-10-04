@@ -1,5 +1,24 @@
 ## Estado vigente — handoff experimental llega a FG Create/Evaluate; combinación x2 FAIL por device lost
 
+## 2026-10-04 — second-submit diagnostic, combined outcome FAIL
+
+One combined run: `20261004-201953-044-handoff-x2`. No standalone SR rerun, AMD run or x3+ run. Start HEAD `d9648f281d9b9316d9efa615da231b0cd1a864da`.
+
+The first three native input submissions returned VK_SUCCESS and each reached D3D12 completion and slot retirement. The previous second-submit VK_ERROR_DEVICE_LOST did not recur. Observed FG: Create pools 3, Evaluate 3721, completion callbacks 3721, valid intervals 3661, generated presents 3660; REAL → G1 → REAL observed True. These are public worker present events, not a scanout capture.
+
+**Combined FAIL:** the first OpenGL error was `GL_INVALID_OPERATION: Wait for sync object failed` in `glWaitSemaphoreEXT`, from `FrameResourcesSet.awaitCaptureRelease`, launcher line 1174. The user closed the game normally, but the process exited -1073740791 (`0xC0000409`); Gradle exit 1. Native bridge recorded DRAINED, device removed false. SR shutdown completion was not observed. No retry. Original device-loss root cause remains **UNKNOWN**; this run changed readiness isolation and source barrier scopes together, so it cannot attribute the previous fault to one change.
+
+Implementation: persistent borrowed readiness pair per capture slot, one signal/consume cycle retired after the existing output fence; no new per-frame host waits or CPU frame transport. Reset/retirement guards remain. JNI ABI4 adds device-fault/checkpoint configuration and first-three-interval state. Diagnostics are opt-in. Optional device_fault feature is queried and enabled correctly; vendor binary is disabled. Both fault and checkpoint extensions were enabled, but neither fault data nor queue checkpoint snapshots were queried because VK_ERROR_DEVICE_LOST did not occur. Checkpoint markers remain alive until slot retirement.
+
+Preflight: actual NVIDIA Vulkan format/usage/extent/sample queries PASS for R32F and RG16F → RG32F floating-point color NEAREST blit. COLOR aspect, mip0, layer0/count1, samples1, 495x278; linear filtering is unused. No compute conversion or CPU conversion. Vulkan validation layer is absent; zero captured VUIDs is **not** a validation PASS. CPU tests rejected 13 stale/readiness cases, 8 binary/pending reuse cases and 4 native slot/command cases. Actual JNI load ABI4, C++JNI, SR NeoForge and Wisteria builds passed. AMD 9 classes + 2 DLLs remain byte-identical by hashes; historical MFG x3 evidence retained.
+
+NGX SDK section 3.4 guarantees input resources return to read state. Caller declares SHADER_READ_ONLY_OPTIMAL; borrowed source barriers remain 5 → 6 → 5, now with explicit compute sampled-read ↔ blit transfer-read scopes, using enabled sync2 in the diagnostic route. This is the documented/caller contract, not a measured image-layout query. [Pinned NVIDIA SDK guide](https://raw.githubusercontent.com/NVIDIA/DLSS/374959484e79a640feaba44c93ac8cfb0a03f5b5/doc/DLSS_Programming_Guide_Release.pdf), [Vulkan blit contract](https://docs.vulkan.org/refpages/latest/refpages/source/vkCmdBlitImage.html).
+
+Config restored byte-for-byte: `ade8502bc8d5d523397b5e1838e1f9100d9782ff116c12ef7484594095172462`. Baseline/live launcher unaffected. Exported evidence: `logs/runtime/dlss-sr/20261004-201953-044-handoff-x2/fg-two-interval-state.jsonl`, prior two-interval comparison, format preflight, build logs, bounded runtime samples, first GL error stack, shutdown result and runtime-result.json. Full existing raw telemetry and binary samples remain local; no binary upload. Presentation owner remains PresentWorker.
+
+Current blocker: **GL_RELEASE_WAIT_FAILED_AND_NATIVE_SHUTDOWN_CRASH**. Do not call this validated SR+x2. Native crash cause and original lost cause UNKNOWN.
+
+
 Inicio b3dd23c0f0b28a9e494ea0aac61fb51209179f63, main limpio. Una sola
 ejecución combinada: `20261004-181754-546-handoff-x2`, Java25.0.4,
 MC1.21.1/Neo21.1.219, SR495x278/display854x480, count1/index1.

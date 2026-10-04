@@ -1,0 +1,380 @@
+{
+  "prior_run": "20261004-181754-546-handoff-x2",
+  "records": [
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451720885200,
+        "type": "slot_state",
+        "detail": "realFrameId=1 state=FILLING"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451721111300,
+        "type": "borrowed_copy_recorded",
+        "detail": "realFrameId=1 resource=depth source=2952963527680 destination=2956805655520 sourceFormat=100 destinationFormat=100 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451721194200,
+        "type": "borrowed_copy_recorded",
+        "detail": "realFrameId=1 resource=motion source=2952963538096 destination=2956805643616 sourceFormat=83 destinationFormat=103 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451722605400,
+        "type": "evaluate_begin",
+        "detail": "PAIR_ID=1 COUNT=1 INDEX=1 ARRAY_SLOT=0 OUTPUT_RESOURCE_ID=000002AFB82FCB70 VkImage=000002B06F59C610 STATUS_RESOURCE_ID=000002AFB8A77DA0 STATUS_READBACK_ID=000002AFB8A75050 INPUT_REAL_RESOURCE_ID=000002B06CE85C10 COMPLETION_ID=2 STATUS_BEFORE=GPU_SNAPSHOT_PENDING"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451734078300,
+        "type": "evaluate_parameters",
+        "detail": "PAIR_ID=1 INDEX=1 EVALUATE_RESULT=0x00000001 NGX_COUNT=1 NGX_INDEX=1 NGX_OUTPUT_RESOURCE_ID=000002AFB82FCB70 NGX_STATUS_RESOURCE_ID=000002AFB8A77DA0 GET_COUNT=0x00000001 GET_INDEX=0x00000001 GET_OUTPUT=0x00000001 GET_STATUS=0x00000001"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451734121200,
+        "type": "evaluate",
+        "detail": "realFrameId=1 deltaMs=0.000000 reset=1 evaluateReset=1 count=1 index=1 result=0x00000001 VkImage=000002B06F59C610 ready=1 done=2"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451749892000,
+        "type": "vulkan_d3d12_submit",
+        "detail": "realFrameId=1 ready=1 completion=2 cpuWait=false"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451749939100,
+        "type": "borrowed_copy_submit",
+        "detail": "realFrameId=1 copyCommand=2956763908064 copyCompleteValue=1 fgCompleteValue=2 consumerQueue=2953834146192 consumerFamily=0 waits=PRODUCER_BINARY cpuWait=false logicalFrame=2616 captureGeneration=2749 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971830960 producerSubmission=1 producerFence=2957204802624 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451749968400,
+        "type": "slot_state",
+        "detail": "realFrameId=1 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451759899400,
+        "type": "slot_state",
+        "detail": "realFrameId=2 state=FILLING"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451760021300,
+        "type": "borrowed_copy_recorded",
+        "detail": "realFrameId=2 resource=depth source=2952963527680 destination=2952957230560 sourceFormat=100 destinationFormat=100 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2617 captureGeneration=2750 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971817104 producerSubmission=1 producerFence=2956995643440 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451760068300,
+        "type": "borrowed_copy_recorded",
+        "detail": "realFrameId=2 resource=motion source=2952963538096 destination=2952957239488 sourceFormat=83 destinationFormat=103 width=495 height=278 sourceBefore=5 sourceCopy=6 sourceAfter=5 destinationBefore=UNDEFINED destinationCopy=GENERAL destinationAfter=GENERAL sourceOwnership=SAME_FAMILY_RESTORED persistentDestination=true logicalFrame=2617 captureGeneration=2750 producerQueue=2953834132176 producerFamily=0 producerIndex=0 producerCommand=2952971817104 producerSubmission=1 producerFence=2956995643440 depthReady=2956992840864 motionReady=2956992839040 sourceReadyValue=BINARY_SIGNAL"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451760336300,
+        "type": "evaluate_begin",
+        "detail": "PAIR_ID=2 COUNT=1 INDEX=1 ARRAY_SLOT=0 OUTPUT_RESOURCE_ID=000002AF8CAD5540 VkImage=000002AF89F783B0 STATUS_RESOURCE_ID=000002AF8C7B0DE0 STATUS_READBACK_ID=000002AF8C7B16F0 INPUT_REAL_RESOURCE_ID=000002AF8CAD4220 COMPLETION_ID=4 STATUS_BEFORE=GPU_SNAPSHOT_PENDING"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451763888400,
+        "type": "evaluate_parameters",
+        "detail": "PAIR_ID=2 INDEX=1 EVALUATE_RESULT=0x00000001 NGX_COUNT=1 NGX_INDEX=1 NGX_OUTPUT_RESOURCE_ID=000002AF8CAD5540 NGX_STATUS_RESOURCE_ID=000002AF8C7B0DE0 GET_COUNT=0x00000001 GET_INDEX=0x00000001 GET_OUTPUT=0x00000001 GET_STATUS=0x00000001"
+      }
+    },
+    {
+      "file": "provider-events.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451763926800,
+        "type": "evaluate",
+        "detail": "realFrameId=2 deltaMs=102.712000 reset=0 evaluateReset=0 count=1 index=1 result=0x00000001 VkImage=000002AF89F783B0 ready=3 done=4"
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451719897400,
+        "type": "BORROWED_QUEUE_JOIN",
+        "detail": "BORROWED_QUEUE_JOIN realFrameId=1 logicalFrame=2616 captureGeneration=2749 producer=Submission[device=2953838796992, queue=2953834132176, family=0, index=0, command=2952971830960, generation=1, fence=2957204802624] depth=Source[image=2952963527680, format=100, width=495, height=278, layout=5, ready=2956992840864] motion=Source[image=2952963538096, format=83, width=495, height=278, layout=5, ready=2956992839040] consumerFamily=0 consumerIndex=1 depthDestination=2956805655520 motionDestination=2956805643616 cpuWait=false",
+        "fields": {
+          "realFrameId": "1",
+          "logicalFrame": "2616",
+          "captureGeneration": "2749",
+          "producer": "Submission[device=2953838796992,",
+          "queue": "2953834132176,",
+          "family": "0,",
+          "index": "0,",
+          "command": "2952971830960,",
+          "generation": "1,",
+          "fence": "2957204802624]",
+          "depth": "Source[image=2952963527680,",
+          "format": "83,",
+          "width": "495,",
+          "height": "278,",
+          "layout": "5,",
+          "ready": "2956992839040]",
+          "motion": "Source[image=2952963538096,",
+          "consumerFamily": "0",
+          "consumerIndex": "1",
+          "depthDestination": "2956805655520",
+          "motionDestination": "2956805643616",
+          "cpuWait": "false"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451736351300,
+        "type": "PREPARED",
+        "detail": "PREPARED realFrameId=1 timestamp=136451437500000 deltaMs=0.0 epoch=1 reset=true slot=0 VkImage=2956805654032 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=495, rh=278, count=1, color=37, hudless=37, motion=83, flip=true] motionJittered=0 jitter=-0.21875,0.4259259",
+        "fields": {
+          "realFrameId": "1",
+          "timestamp": "136451437500000",
+          "deltaMs": "0.0",
+          "epoch": "1",
+          "reset": "true",
+          "slot": "0",
+          "VkImage": "2956805654032",
+          "copies": "4",
+          "outputCopies": "0",
+          "shadow": "false",
+          "sample": "false",
+          "inputKey": "Key[w=854,",
+          "h": "480,",
+          "rw": "495,",
+          "rh": "278,",
+          "count": "1,",
+          "color": "37,",
+          "hudless": "37,",
+          "motion": "83,",
+          "flip": "true]",
+          "motionJittered": "0",
+          "jitter": "-0.21875,0.4259259"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451752322800,
+        "type": "OUTPUT_READY",
+        "detail": "OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=1 count=1 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2956805654032",
+        "fields": {
+          "realFrameId": "1",
+          "previousRealFrameId": "0",
+          "index": "1",
+          "count": "1",
+          "rawStatus": "1",
+          "status": "DISABLED",
+          "disable": "1",
+          "reset": "true",
+          "epoch": "1",
+          "completion": "2",
+          "completionScope": "GROUP_ORDERED_COMMAND_LIST",
+          "presentable": "false",
+          "VkImage": "2956805654032"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451753025800,
+        "type": "SUBMITTED",
+        "detail": "SUBMITTED realFrameId=1 slot=0 done=2 presentation=GENERATED_THEN_REAL",
+        "fields": {
+          "realFrameId": "1",
+          "slot": "0",
+          "done": "2",
+          "presentation": "GENERATED_THEN_REAL"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451757137000,
+        "type": "VULKAN_CONSUMER_SUBMIT",
+        "detail": "VULKAN_CONSUMER_SUBMIT realFrameId=1 slot=0 commandBuffer=2952971837888 fence=2956698334800 timelineWait=2 G1=2956805654032",
+        "fields": {
+          "realFrameId": "1",
+          "slot": "0",
+          "commandBuffer": "2952971837888",
+          "fence": "2956698334800",
+          "timelineWait": "2",
+          "G1": "2956805654032"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451759574400,
+        "type": "BORROWED_QUEUE_JOIN",
+        "detail": "BORROWED_QUEUE_JOIN realFrameId=2 logicalFrame=2617 captureGeneration=2750 producer=Submission[device=2953838796992, queue=2953834132176, family=0, index=0, command=2952971817104, generation=1, fence=2956995643440] depth=Source[image=2952963527680, format=100, width=495, height=278, layout=5, ready=2956992840864] motion=Source[image=2952963538096, format=83, width=495, height=278, layout=5, ready=2956992839040] consumerFamily=0 consumerIndex=1 depthDestination=2952957230560 motionDestination=2952957239488 cpuWait=false",
+        "fields": {
+          "realFrameId": "2",
+          "logicalFrame": "2617",
+          "captureGeneration": "2750",
+          "producer": "Submission[device=2953838796992,",
+          "queue": "2953834132176,",
+          "family": "0,",
+          "index": "0,",
+          "command": "2952971817104,",
+          "generation": "1,",
+          "fence": "2956995643440]",
+          "depth": "Source[image=2952963527680,",
+          "format": "83,",
+          "width": "495,",
+          "height": "278,",
+          "layout": "5,",
+          "ready": "2956992839040]",
+          "motion": "Source[image=2952963538096,",
+          "consumerFamily": "0",
+          "consumerIndex": "1",
+          "depthDestination": "2952957230560",
+          "motionDestination": "2952957239488",
+          "cpuWait": "false"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451760465900,
+        "type": "DISCARD",
+        "detail": "DISCARD realFrameId=1 generatedIndex=1 count=1 disable=1 reset=true epoch=1 timestamp=136451758666300 lifetime=retained_until_all_gpu_fences",
+        "fields": {
+          "realFrameId": "1",
+          "generatedIndex": "1",
+          "count": "1",
+          "disable": "1",
+          "reset": "true",
+          "epoch": "1",
+          "timestamp": "136451758666300",
+          "lifetime": "retained_until_all_gpu_fences"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 1,
+      "record": {
+        "timestamp_ns": 136451763822200,
+        "type": "PRESENT",
+        "detail": "PRESENT realFrameId=1 previousRealFrameId=0 generatedIndex=0 multiFrameCount=1 epoch=1 reset=true displayIndex=2749 kind=REAL VkImage=2956805652544 timestamp=136451761631900 queueDelayNs=429000 deadlineNs=0 lateNs=-1 latencyMethod=CPU_batch_publication_to_present_worker_entry;request_not_scanout",
+        "fields": {
+          "realFrameId": "1",
+          "previousRealFrameId": "0",
+          "generatedIndex": "0",
+          "multiFrameCount": "1",
+          "epoch": "1",
+          "reset": "true",
+          "displayIndex": "2749",
+          "kind": "REAL",
+          "VkImage": "2956805652544",
+          "timestamp": "136451761631900",
+          "queueDelayNs": "429000",
+          "deadlineNs": "0",
+          "lateNs": "-1",
+          "latencyMethod": "CPU_batch_publication_to_present_worker_entry"
+        }
+      }
+    },
+    {
+      "file": "frame-sequence.jsonl",
+      "interval": 2,
+      "record": {
+        "timestamp_ns": 136451764335900,
+        "type": "PREPARED",
+        "detail": "PREPARED realFrameId=2 timestamp=136451540212000 deltaMs=102.712 epoch=1 reset=false slot=1 VkImage=2952957232048 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=495, rh=278, count=1, color=37, hudless=37, motion=83, flip=true] motionJittered=0 jitter=0.28125,0.0925926",
+        "fields": {
+          "realFrameId": "2",
+          "timestamp": "136451540212000",
+          "deltaMs": "102.712",
+          "epoch": "1",
+          "reset": "false",
+          "slot": "1",
+          "VkImage": "2952957232048",
+          "copies": "4",
+          "outputCopies": "0",
+          "shadow": "false",
+          "sample": "false",
+          "inputKey": "Key[w=854,",
+          "h": "480,",
+          "rw": "495,",
+          "rh": "278,",
+          "count": "1,",
+          "color": "37,",
+          "hudless": "37,",
+          "motion": "83,",
+          "flip": "true]",
+          "motionJittered": "0",
+          "jitter": "0.28125,0.0925926"
+        }
+      }
+    }
+  ],
+  "unrecorded": [
+    "second native input command handle",
+    "native command generations",
+    "native command pool",
+    "actual binary consumption completion",
+    "release semaphore identities"
+  ],
+  "conclusion": "Distinct capture generations, SR commands/fences and FG destination slots. Shared source images/readiness pair. Underlying lost cause UNKNOWN."
+}

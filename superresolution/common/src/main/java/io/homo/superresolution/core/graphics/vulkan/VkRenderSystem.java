@@ -301,6 +301,11 @@ public class VkRenderSystem implements IRenderSystem {
 
             List<String> enableDeviceExts = new ArrayList<>();
             List<String> supportedDeviceExts = capabilities.getDeviceExtensions();
+            boolean secondSubmitDiagnostics = Boolean.getBoolean("sr.dlss.secondSubmitDiagnostics");
+            if (secondSubmitDiagnostics) {
+                for (String diagnostic : List.of("VK_EXT_device_fault", "VK_NV_device_diagnostic_checkpoints"))
+                    if (supportedDeviceExts.contains(diagnostic)) enableDeviceExts.add(diagnostic);
+            }
             for (String ext : deviceExtensions) {
                 if (supportedDeviceExts.contains(ext)) {
                     enableDeviceExts.add(ext);
@@ -362,6 +367,11 @@ public class VkRenderSystem implements IRenderSystem {
                             .sType(EXTPresentTiming.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PRESENT_TIMING_FEATURES_EXT);
 #endif
             long featureQueryChain = dynamicRenderingLocalReadFeatures.address();
+            VkPhysicalDeviceFaultFeaturesEXT faultFeatures = VkPhysicalDeviceFaultFeaturesEXT.calloc(stack)
+                    .sType(EXTDeviceFault.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT);
+            if (enableDeviceExts.contains("VK_EXT_device_fault")) {
+                faultFeatures.pNext(featureQueryChain); featureQueryChain = faultFeatures.address();
+            }
             if (hasSynchronization2Extension) {
                 synchronization2Features.pNext(featureQueryChain);
                 featureQueryChain = synchronization2Features.address();
@@ -394,6 +404,8 @@ public class VkRenderSystem implements IRenderSystem {
                     .pNext(features12.address());
 
             vkGetPhysicalDeviceFeatures2(physicalDevice, features2);
+            boolean diagnosticFaultEnabled = enableDeviceExts.contains("VK_EXT_device_fault") && faultFeatures.deviceFault();
+            if (!diagnosticFaultEnabled) enableDeviceExts.remove("VK_EXT_device_fault");
 
             boolean deviceSupportsMutableDescriptor = mutableDescriptorTypeFeaturesEXT.mutableDescriptorType();
             boolean deviceSupportsShaderInt8 = features12.shaderInt8();
@@ -486,6 +498,12 @@ public class VkRenderSystem implements IRenderSystem {
                             .pNext(deviceDynamicRenderingFeatures.address());
 
             long deviceFeatureChain = deviceDynamicRenderingLocalReadFeatures.address();
+            if (diagnosticFaultEnabled) {
+                VkPhysicalDeviceFaultFeaturesEXT enabledFault = VkPhysicalDeviceFaultFeaturesEXT.calloc(stack)
+                        .sType(EXTDeviceFault.VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FAULT_FEATURES_EXT)
+                        .deviceFault(true).deviceFaultVendorBinary(false).pNext(deviceFeatureChain);
+                deviceFeatureChain = enabledFault.address();
+            }
             if (deviceSupportsSynchronization2) {
                 VkPhysicalDeviceSynchronization2FeaturesKHR deviceSynchronization2Features =
                         VkPhysicalDeviceSynchronization2FeaturesKHR.calloc(stack)

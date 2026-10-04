@@ -629,8 +629,8 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
             if (!captureDepthPending && !captureMotionPending) return new long[]{upscaleVkFinish.getVkSemaphoreHandle()};
             if (!captureDepthPending || !captureMotionPending)
                 throw new IllegalStateException("Borrowed queue join requires both real depth and motion inputs");
-            return new long[]{upscaleVkFinish.getVkSemaphoreHandle(), captureDepthReady.getVkSemaphoreHandle(),
-                    captureMotionReady.getVkSemaphoreHandle()};
+            var ready = captureInputsFrame.scheduleBorrowedReadySignals();
+            return new long[]{upscaleVkFinish.getVkSemaphoreHandle(), ready[0], ready[1]};
         }
 
         private void publishSubmittedReadiness(VulkanDevice device, VulkanCommandBuffer submitted) {
@@ -640,14 +640,14 @@ public abstract class GlVulkanInteropAlgorithm extends AbstractAlgorithm impleme
                     queue.getQueueFamilyIndex(), queue.getQueueIndex(), submitted.getNativeCommandBuffer().address(),
                     submitted.submissionGeneration(), fence);
             captureInputsFrame.publishBorrowedReadiness(new BorrowedInputReadiness(captureInputsFrame.generation(),
-                    frameData.frameCount(), submission, sourceReceipt(Depth, captureDepthReady),
-                    sourceReceipt(MotionVectors, captureMotionReady)));
+                    frameData.frameCount(), submission, sourceReceipt(Depth, captureInputsFrame.borrowedDepthReady()),
+                    sourceReceipt(MotionVectors, captureInputsFrame.borrowedMotionReady())));
         }
 
-        private BorrowedInputReadiness.Source sourceReceipt(InteropResourceType type, VkGlInteropSemaphore ready) {
+        private BorrowedInputReadiness.Source sourceReceipt(InteropResourceType type, long ready) {
             var t = vulkan(type);
             return new BorrowedInputReadiness.Source(t.handle(), t.getTextureFormat().vk(), t.getWidth(), t.getHeight(),
-                    t.getCurrentLayout(), ready.getVkSemaphoreHandle());
+                    t.getCurrentLayout(), ready);
         }
 
         public void destroy() {
