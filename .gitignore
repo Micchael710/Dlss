@@ -118,3 +118,7 @@ logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2361472.j
 # Raw telemetry for the clean local Streamline control (bounded summary committed).
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_86908.jsonl
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_86908.jsonl
+
+# Raw base proxy Present telemetry; bounded text evidence retained in run directory.
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_239840.jsonl
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_239840.jsonl
