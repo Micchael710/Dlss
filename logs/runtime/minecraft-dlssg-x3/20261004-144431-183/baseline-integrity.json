@@ -1,0 +1,29 @@
+{
+  "protected_files": {
+    "builds\\baseline\\super_resolution-neoforge-1.21..1.21.1-0.9.2-alpha.1+dev.f0e41bf8.opengl-fg-backpressure.jar": {
+      "expected_sha256": "20fa05a42731692d5c20aa2cd82d7ff1367febc4fc1261fcad1a3a3c478c0896",
+      "actual_sha256": "20fa05a42731692d5c20aa2cd82d7ff1367febc4fc1261fcad1a3a3c478c0896"
+    },
+    "builds\\baseline\\wisteria-neoforge-1.21.1-0.1.0-alpha.1+1.21.1-fsr-backpressure.jar": {
+      "expected_sha256": "ac16837b0447d14f4cdff4ed00c75bb84feb2a80a87d261f690b47914f5a8e53",
+      "actual_sha256": "ac16837b0447d14f4cdff4ed00c75bb84feb2a80a87d261f690b47914f5a8e53"
+    },
+    "wisteria\\native\\build\\fsr-windows-x64\\wisteria_fsr_bridge.dll": {
+      "expected_sha256": "b0388beb885271fafa59e788bb4f9c2ce7d508ae4ecb11879b113a7f0d043f7b",
+      "actual_sha256": "b0388beb885271fafa59e788bb4f9c2ce7d508ae4ecb11879b113a7f0d043f7b"
+    }
+  },
+  "AMD_9_classes_2_DLLs_identical": {
+    "org/ireallywanttosleep/wisteria/fsr/FidelityFxBridge.class": "6566b5bb0d8cc31cc2f06332ab83ac1cc2d963cb0c89d7ec1b871d04bc498a8a",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter$1.class": "091d1c0d3383bcdf2e155945f5a24997d3cd2a228e9cfec8cbb52f57d40b7e68",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter$Key.class": "14d10e288a25a8bf669a27de8d798f74d60e1778e227d6bc83cff2453b04cfa7",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationAdapter.class": "2eb29f95b051c9a73293f1ed18848706fd4bdb4996adc77f947d156733a235a2",
+    "org/ireallywanttosleep/wisteria/fsr/FsrFrameGenerationBackend.class": "595c6d071d60432203c7dadcc055790d50a920e5d6ce6e4261d49c995f6536d6",
+    "org/ireallywanttosleep/wisteria/fsr/FsrInputSnapshot.class": "decedc93b1b07b22cf64f536a6d0af2da4289337810441cb0ec5fd1045e85177",
+    "org/ireallywanttosleep/wisteria/fsr/FsrOutputPool$Slot.class": "4e384722befb30ee03a5b0724f700f94283faa9d82dabc16365693d96c9aa689",
+    "org/ireallywanttosleep/wisteria/fsr/FsrOutputPool.class": "0d0ba69570ae1493dce315e3a55328069c7810069566877e02f0391bf0dc0c21",
+    "org/ireallywanttosleep/wisteria/fsr/FsrSession.class": "b9304f806788788648fa8e51d5531cab63e2acaeca1e09798c24cd55d73980b1",
+    "natives/windows-x64/wisteria_fsr_bridge.dll": "b0388beb885271fafa59e788bb4f9c2ce7d508ae4ecb11879b113a7f0d043f7b",
+    "natives/windows-x64/amd_fidelityfx_vk.dll": "c84ca40421ff5594edfc6553cb89a2d07982b0cadb1a66beb989b2cdedd39197"
+  }
+}

@@ -2,6 +2,20 @@ package org.ireallywanttosleep.wisteria.dlssg;
 public final class DlssgOutputStatusTest {
     private static void check(boolean value){if(!value)throw new AssertionError();}
     public static void main(String[] args){
+        // Explicit A/B/C fixtures, never runtime output or proof of generation.
+        for(int second:new int[]{0,1,-1}){
+            var pair=new DlssgOutputStatus(123,246,2,false,f->{});
+            boolean premature=false;try{pair.presentable(1);}catch(IllegalStateException expected){premature=true;}
+            check(premature);
+            pair.completeFromNative(123,new int[]{0,second},246);
+            check(pair.presentable(0));check(pair.presentable(1)==(second==0));
+            check(pair.state(1).equals(second==0?"ENABLED":second==1?"DISABLED":"UNKNOWN"));
+        }
+        var stale=new DlssgOutputStatus(123,246,2,false,f->{});
+        stale.completeFromNative(123,new int[]{0,0},244);
+        check(stale.readiness().isCompletedExceptionally());
+        boolean stalePresentable=false;try{stale.presentable(1);stalePresentable=true;}catch(RuntimeException expected){}
+        check(!stalePresentable); // Group244/index1 completion cannot authorize group246/index2.
         for(int count=1;count<=4;count++){
             var status=new DlssgOutputStatus(4037,8070,count,false,flags->{});
             check(!status.readiness().isDone());

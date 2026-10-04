@@ -1,0 +1,54 @@
+{
+  "SR_test_suites": [
+    {
+      "suite": "io.homo.superresolution.common.framegeneration.constants.RealFrameClockTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "io.homo.superresolution.common.presentation.capture.FrameResourceLifecycleBackpressureTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "io.homo.superresolution.common.presentation.vulkan.FrameQueueReadinessTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "io.homo.superresolution.common.upscale.interoplayer.InteropInputWriteSessionTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0
+    },
+    {
+      "suite": "io.homo.superresolution.common.upscale.interoplayer.InteropResourceLayoutTest",
+      "tests": 10,
+      "failures": 0,
+      "errors": 0
+    }
+  ],
+  "SR_build": "PASS_WINDOWS_X64_NEOfORGE",
+  "Wisteria_build": "PASS_WITH_EXISTING_AMD_NATIVES_AND_NEW_JNI",
+  "CXX_JNI_build": "PASS",
+  "DlssgContractTest": "PASS_JAVA25",
+  "DlssgOutputStatusTest": "PASS_JAVA25",
+  "FrameQueueReadinessTest": "PASS_JAVA25_2_TESTS",
+  "AMD_classes_unchanged": 9,
+  "AMD_DLLs_unchanged": 2,
+  "MOD_BYTECODE_TARGET": 21,
+  "build_attempt_notes": "First command accidentally included Fabric; second used wrong profile property. Both logs preserved; corrected existing loader=neoforge and sr_native_arch=windows-x64 passed. No build configuration/source change in SR.",
+  "validation_scope": "New native diagnostic build, actual JNI ABI smoke, Java status fixtures, public NGX helper CPU mock, SR tests/build and Wisteria build. No GPU output generation asserted.",
+  "logs": [
+    "dlssg-index2-diagnostic-native-build.log",
+    "dlssg-index2-diagnostic-cpp-tests.log",
+    "dlssg-index2-diagnostic-jni-tests.log",
+    "dlssg-index2-diagnostic-output-tests.log",
+    "dlssg-index2-diagnostic-sr-build-tests-corrected.log",
+    "dlssg-index2-diagnostic-wisteria-local-build.log"
+  ],
+  "INDEX2_PIPELINE_AUDIT": "PASS_STATIC_ASSOCIATION_VENDOR_INTERNALS_UNKNOWN"
+}

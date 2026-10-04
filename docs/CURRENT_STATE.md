@@ -1,3 +1,18 @@
+## Estado vigente — auditoría index2, 2026-10-04
+
+HEAD inicial ed7a4d4; trabajo pendiente Java25 conservado en commit2cd78d3.
+Prueba única nueva x3: `20261004-144431-183`, Java25.0.4 desde Minecraft,
+count2/index1,index2. FAIL_OUTPUT2_STATUS_NOT_WRITTEN. Getters NGX y backend
+externo confirman index2/count2 y SUCCESS; recursos y estados independientes.
+Sentinel leído antes4294967295 y después4294967295 para G2, también al final
+completo del grupo. G1 cambia a0. GPU group completion observada. UNKNOWN
+se descarta, nunca se convierte a disable válido ni se presenta como G2.
+Última frontera: NGX Evaluate y completion GPU del grupo. Causa interna
+indeterminada; no atribuir a Java, RTX3050Ti ni componente externo sin evidencia.
+Builds/tests locales pasaron, AMD9 clases/2DLL idénticos al baseline.
+Sin retry/x4/x5/multiplayer. Mantener fix PresentWorker, FSR1 y bytecode21.
+Detalles y veinte comprobaciones en `DLSSG_INDEX2_PIPELINE_AUDIT.md`.
+
 ## Estado vigente — runtime Java 25; x3 detenido por metadata de output
 
 El usuario confirmó que Minecraft debe ejecutarse con Java 25. El launcher aislado

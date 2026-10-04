@@ -1,0 +1,32 @@
+123550132520300 SESSION persistent=true shadow=false requestedCount=2 reportedMax=2 outputPoolSlots=4
+123607485732900 POOL_CREATE key=Key[w=854, h=480, rw=502, rh=282, count=2, color=37, hudless=37, motion=97, flip=false] persistentHandles=true
+123607487914000 POOL_LEASE slot=0 inFlight=1 capacity=4
+123607506676100 PREPARED realFrameId=1 timestamp=123607163025100 deltaMs=0.0 epoch=1 reset=true slot=0 VkImage=2559645144560 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, count=2, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0
+123607525177200 SUBMITTED realFrameId=1 slot=0 done=2 presentation=GENERATED_THEN_REAL
+123607525988400 OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=1 count=2 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2559645144560
+123607526715100 OUTPUT_READY realFrameId=1 previousRealFrameId=0 index=2 count=2 rawStatus=1 status=DISABLED disable=1 reset=true epoch=1 completion=2 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2559645146048
+123607529786800 VULKAN_CONSUMER_SUBMIT realFrameId=1 slot=0 commandBuffer=2559181962864 fence=2559264665760 timelineWait=2 G1=2559645144560
+123607530630000 VULKAN_CONSUMER_SUBMIT realFrameId=1 slot=0 commandBuffer=2559181955936 fence=2559264671744 timelineWait=2 G1=2559645144560
+123607532552800 POOL_LEASE slot=1 inFlight=2 capacity=4
+123607533787700 DISCARD realFrameId=1 generatedIndex=1 count=2 disable=1 reset=true epoch=1 timestamp=123607532060000 lifetime=retained_until_all_gpu_fences
+123607534221500 DISCARD realFrameId=1 generatedIndex=2 count=2 disable=1 reset=true epoch=1 timestamp=123607534209200 lifetime=retained_until_all_gpu_fences
+123607537632600 PRESENT realFrameId=1 previousRealFrameId=0 generatedIndex=0 multiFrameCount=2 epoch=1 reset=true displayIndex=2367 kind=REAL VkImage=2559202970736 timestamp=123607535255800 queueDelayNs=364000 deadlineNs=0 lateNs=-1 latencyMethod=CPU_batch_publication_to_present_worker_entry;request_not_scanout
+123607538093600 PREPARED realFrameId=2 timestamp=123607332622500 deltaMs=169.5974 epoch=1 reset=false slot=1 VkImage=2559217718944 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, count=2, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0
+123607538887900 SUBMITTED realFrameId=2 slot=1 done=4 presentation=GENERATED_THEN_REAL
+123607539286900 VULKAN_CONSUMER_SUBMIT realFrameId=2 slot=1 commandBuffer=2559218038592 fence=2559835035376 timelineWait=4 G1=2559217718944
+123607539635400 VULKAN_CONSUMER_SUBMIT realFrameId=2 slot=1 commandBuffer=2559218045520 fence=2559835036464 timelineWait=4 G1=2559217718944
+123607542658100 RETIRED realFrameId=1 slot=0
+123607543442000 POOL_LEASE slot=0 inFlight=2 capacity=4
+123607545767900 PREPARED realFrameId=3 timestamp=123607401054000 deltaMs=68.4315 epoch=1 reset=false slot=0 VkImage=2559645144560 copies=4 outputCopies=0 shadow=false sample=false inputKey=Key[w=854, h=480, rw=502, rh=282, count=2, color=37, hudless=37, motion=97, flip=false] motionJittered=0 jitter=0.0,-0.0
+123607546947900 SUBMITTED realFrameId=3 slot=0 done=6 presentation=GENERATED_THEN_REAL
+123607547446600 VULKAN_CONSUMER_SUBMIT realFrameId=3 slot=0 commandBuffer=2559218031664 fence=2559835032384 timelineWait=6 G1=2559645144560
+123607547777800 VULKAN_CONSUMER_SUBMIT realFrameId=3 slot=0 commandBuffer=2559218024736 fence=2559835029392 timelineWait=6 G1=2559645144560
+123607549068900 OUTPUT_READY realFrameId=2 previousRealFrameId=1 index=1 count=2 rawStatus=0 status=ENABLED disable=0 reset=false epoch=1 completion=4 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=true VkImage=2559217718944
+123607549484200 OUTPUT_READY realFrameId=2 previousRealFrameId=1 index=2 count=2 rawStatus=4294967295 status=UNKNOWN disable=-1 reset=false epoch=1 completion=4 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2559217721920
+123607553986600 DISCARD realFrameId=2 generatedIndex=2 count=2 disable=-1 reset=false epoch=1 timestamp=123607553961900 lifetime=retained_until_all_gpu_fences
+123607555435300 PRESENT realFrameId=2 previousRealFrameId=1 generatedIndex=1 multiFrameCount=2 epoch=1 reset=false displayIndex=2368 kind=GENERATED VkImage=2559217718944 timestamp=123607555388800 queueDelayNs=13251400 deadlineNs=123607554845200 lateNs=543600 latencyMethod=CPU_batch_publication_to_present_worker_entry;request_not_scanout
+123607558994800 OUTPUT_READY realFrameId=3 previousRealFrameId=2 index=1 count=2 rawStatus=0 status=ENABLED disable=0 reset=false epoch=1 completion=6 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=true VkImage=2559645144560
+123607559719600 OUTPUT_READY realFrameId=3 previousRealFrameId=2 index=2 count=2 rawStatus=4294967295 status=UNKNOWN disable=-1 reset=false epoch=1 completion=6 completionScope=GROUP_ORDERED_COMMAND_LIST presentable=false VkImage=2559645146048
+123607632695200 PRESENT realFrameId=2 previousRealFrameId=1 generatedIndex=0 multiFrameCount=2 epoch=1 reset=false displayIndex=2370 kind=REAL VkImage=2559217724896 timestamp=123607632671900 queueDelayNs=13251400 deadlineNs=123607628730199 lateNs=3941701 latencyMethod=CPU_batch_publication_to_present_worker_entry;request_not_scanout
+123607633828300 RETIRED realFrameId=2 slot=1
+123607634369100 RETIRED realFrameId=3 slot=0

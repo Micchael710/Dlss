@@ -1,0 +1,180 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+❇️ Wisteria target: Minecraft 1.21.1 (1.21.1)
+❇️ loader neoforge
+
+> Task :common:createMinecraftArtifacts
+Loaded 107 artifacts from D:\ProjectDllsss\wisteria\common\build\tmp\createMinecraftArtifacts\nfrt_artifact_manifest.properties
+*** Started working on downloadJson
+ DONE  Completed downloadJson in 0.06s
+*** Started working on downloadClient
+*** Started working on downloadServer
+*** Started working on downloadClientMappings
+ DONE  Completed downloadServer in 0.04s
+ DONE  Completed downloadClientMappings in 0.04s
+ DONE  Completed downloadClient in 0.04s
+*** Started working on mergeMappings
+ REUSE Used cache of mergeMappings in 0.00s
+*** Started working on stripClient
+ REUSE Used cache of stripClient in 0.01s
+*** Started working on extractServer
+ REUSE Used cache of extractServer in 0.00s
+*** Started working on stripServer
+ REUSE Used cache of stripServer in 0.00s
+*** Started working on merge
+ REUSE Used cache of merge in 0.00s
+*** Started working on rename
+ REUSE Used cache of rename in 0.00s
+*** Started working on decompile
+ REUSE Used cache of decompile in 0.00s
+*** Started working on inject
+ REUSE Used cache of inject in 0.00s
+*** Started working on patch
+ REUSE Used cache of patch in 0.00s
+*** Started working on recompile
+ REUSE Used cache of recompile in 0.00s
+*** Started working on mergeWithSources
+ REUSE Used cache of mergeWithSources in 0.00s
+Total runtime: 1.83s
+
+
+> Task :neoforge:createMinecraftArtifacts
+Cache maintenance is already performed by another process.
+Loaded 145 artifacts from D:\ProjectDllsss\wisteria\neoforge\build\tmp\createMinecraftArtifacts\nfrt_artifact_manifest.properties
+*** Started working on downloadJson
+Waiting for lock on downloadJson_5014bdd0ad2a5e976245ebd187d1027b7a1c2dee. DONE  Completed downloadJson in 1.05s
+*** Started working on downloadServer
+*** Started working on downloadClientMappings
+*** Started working on downloadClient
+ DONE  Completed downloadServer in 0.05s
+ DONE  Completed downloadClientMappings in 0.05s
+ DONE  Completed downloadClient in 0.05s
+*** Started working on stripClient
+ REUSE Used cache of stripClient in 0.00s
+*** Started working on mergeMappings
+ REUSE Used cache of mergeMappings in 0.00s
+*** Started working on extractServer
+ REUSE Used cache of extractServer in 0.00s
+*** Started working on stripServer
+ REUSE Used cache of stripServer in 0.00s
+*** Started working on merge
+ REUSE Used cache of merge in 0.00s
+*** Started working on rename
+ REUSE Used cache of rename in 0.00s
+*** Started working on decompile
+ REUSE Used cache of decompile in 0.00s
+*** Started working on inject
+ REUSE Used cache of inject in 0.00s
+*** Started working on patch
+ REUSE Used cache of patch in 0.01s
+*** Started working on applyNeoforgePatches
+ REUSE Used cache of applyNeoforgePatches in 0.01s
+*** Started working on transformSources
+ REUSE Used cache of transformSources in 0.00s
+*** Started working on recompile
+ REUSE Used cache of recompile in 0.00s
+*** Started working on sourcesWithNeoForge
+ REUSE Used cache of sourcesWithNeoForge in 0.00s
+*** Started working on compiledWithNeoForge
+ REUSE Used cache of compiledWithNeoForge in 0.00s
+*** Started working on sourcesAndCompiledWithNeoForge
+ REUSE Used cache of sourcesAndCompiledWithNeoForge in 0.00s
+Total runtime: 3.78s
+
+
+> Task :neoforge:processResources
+> Task :neoforge:jarJar NO-SOURCE
+> Task :neoforge:processTestResources NO-SOURCE
+
+> Task :common:compileJava
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:5: error: AsyncFramePresenter is not public in io.homo.superresolution.common.presentation.vulkan; cannot be accessed from outside package
+import io.homo.superresolution.common.presentation.vulkan.AsyncFramePresenter;
+                                                         ^
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:148: error: cannot find symbol
+    private final class Lease implements FrameGenerationProviderOutput,FrameGenerationSubmissionPlan{
+                                                                       ^
+  symbol:   class FrameGenerationSubmissionPlan
+  location: class DlssgFrameGenerationAdapter
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:170: error: cannot find symbol
+        public FrameGenerationSubmissionPlan submissionPlan(){return this;}
+               ^
+  symbol:   class FrameGenerationSubmissionPlan
+  location: class DlssgFrameGenerationAdapter.Lease
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:172: error: cannot find symbol
+        public TimelineWait submitInputs(){
+               ^
+  symbol:   class TimelineWait
+  location: class DlssgFrameGenerationAdapter.Lease
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationBackend.java:36: error: cannot find symbol
+                    boolean historyResetRequested,RealFrameMetadata metadata,boolean flipBorrowedInputs) implements ProviderInputSnapshot {}
+                                                  ^
+  symbol:   class RealFrameMetadata
+  location: class Snapshot
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\fsr\FsrInputSnapshot.java:9: error: cannot find symbol
+                               RealFrameMetadata metadata) implements ProviderInputSnapshot {}
+                               ^
+  symbol:   class RealFrameMetadata
+  location: class FsrInputSnapshot
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:66: error: AsyncFramePresenter is not public in io.homo.superresolution.common.presentation.vulkan; cannot be accessed from outside package
+            event("SESSION persistent=true shadow="+shadow+" requestedCount="+requestedMax+" reportedMax="+reportedMax+" outputPoolSlots="+AsyncFramePresenter.maximumLiveProviderLeases(requestedMax));
+                                                                                                                                           ^
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:79: error: cannot find symbol
+            if(frame.hasBorrowedAlgorithmInputs())throw new IllegalStateException("Borrowed Vulkan-upscaler inputs need an audited queue join; use the unchanged owned-capture baseline");
+                    ^
+  symbol:   method hasBorrowedAlgorithmInputs()
+  location: variable frame of type FrameResources
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:133: error: AsyncFramePresenter is not public in io.homo.superresolution.common.presentation.vulkan; cannot be accessed from outside package
+        Pool(VulkanDevice device,Key k){key=k;int count=AsyncFramePresenter.maximumLiveProviderLeases(k.count);nativePool=DlssgBridge.createPool(session,k.w,k.h,k.rw,k.rh,count,k.count);slots=new Slot[count];for(int i=0;i<count;i++)slots[i]=new Slot(this,i,device);}
+                                                        ^
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:146: error: cannot find symbol
+        return VulkanTexture.wrapBorrowedImage(device,description,handles[0],handles[1],handles[2],VK_IMAGE_LAYOUT_UNDEFINED);
+                            ^
+  symbol:   method wrapBorrowedImage(VulkanDevice,TextureDescription,long,long,long,int)
+  location: class VulkanTexture
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:176: error: cannot find symbol
+                return new TimelineWait(wait[0],wait[1]);
+                           ^
+  symbol:   class TimelineWait
+  location: class DlssgFrameGenerationAdapter.Lease
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationBackend.java:24: error: cannot find symbol
+        if(frame.metadata()==null||!frame.hasFinalColor()||!frame.hasHudlessColor()||!frame.hasDepth()||!frame.hasMotionVector()
+                ^
+  symbol:   method metadata()
+  location: variable frame of type FrameResources
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationBackend.java:29: error: cannot find symbol
+                frame.hasBorrowedAlgorithmInputs()&&!io.homo.superresolution.common.config.SuperResolutionConfig.isFlipVkGlInteropResourcesY());
+                     ^
+  symbol:   method hasBorrowedAlgorithmInputs()
+  location: variable frame of type FrameResources
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationBackend.java:28: error: cannot find symbol
+        return new Snapshot(id,frame.logicalFrameIndex(),mode,constants,constants.reset()!=0,frame.metadata(),
+                                                                                                  ^
+  symbol:   method metadata()
+  location: variable frame of type FrameResources
+D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\fsr\FsrFrameGenerationBackend.java:44: error: cannot find symbol
+                constants.reset() != 0, frame.metadata());
+                                             ^
+  symbol:   method metadata()
+  location: variable frame of type FrameResources
+15 errors
+
+> Task :common:compileJava FAILED
+
+[Incubating] Problems report is available at: file:///D:/ProjectDllsss/wisteria/build/reports/problems/problems-report.html
+4 actionable tasks: 4 executed
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':common:compileJava' (registered by plugin class 'org.gradle.api.plugins.JavaBasePlugin').
+> Compilation failed; see the compiler output below.
+  D:\ProjectDllsss\wisteria\common\src\main\java\org\ireallywanttosleep\wisteria\dlssg\DlssgFrameGenerationAdapter.java:5: error: AsyncFramePresenter is not public in io.homo.superresolution.common.presentation.vulkan; cannot be accessed from outside package
+  import io.homo.superresolution.common.presentation.vulkan.AsyncFramePresenter;
+                                                           ^
+  15 errors
+
+* Try:
+> Check your code and dependencies to fix the compilation error(s)
+> Run with --scan to get full insights from a Build Scan (powered by Develocity).
+
+BUILD FAILED in 37s

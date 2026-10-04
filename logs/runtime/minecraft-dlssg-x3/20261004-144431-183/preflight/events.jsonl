@@ -1,0 +1,12 @@
+{"timestamp_ns":123467483577200,"pid":647696,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\runtime\\minecraft-dlssg-x3\\20261004-144431-183/component/version.dll"}
+{"timestamp_ns":123467498398700,"pid":647696,"type":"external_load_complete","detail":"00007FFCE3A10000"}
+{"timestamp_ns":123467545858900,"pid":647696,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":123467546031600,"pid":647696,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":123467546059500,"pid":647696,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":123467546101100,"pid":647696,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 device=9632 flags=0 luid=4c29010000000000"}
+{"timestamp_ns":123467950174800,"pid":647696,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":123467992920300,"pid":647696,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":123467993171100,"pid":647696,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":123467998603000,"pid":647696,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":123467998678000,"pid":647696,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":123467998715000,"pid":647696,"type":"d3d12_result","detail":"CreateFence=0x00000000"}

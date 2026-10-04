@@ -8,15 +8,15 @@
   "artifacts": {
     "superresolution": {
       "path": "builds\\experimental\\dlssg-x2\\superresolution-dlssg-x2-candidate.jar",
-      "sha256": "6bb74da254bcfcc173930742bdb71ae837313de2aaf00107b19685ebb1df4450",
+      "sha256": "dab4218545c560b7ba242560fac53e1fb93ad62c2127e8d227a5bade77cc2e65",
       "java21_classes": 1387,
-      "bytes": 32336073
+      "bytes": 32336074
     },
     "wisteria": {
       "path": "builds\\experimental\\dlssg-x2\\wisteria-dlssg-x2-candidate.jar",
-      "sha256": "09da885ea55725d11d261c1ddbd98a21620bf8210a6c83e0ff75b0da327382b9",
+      "sha256": "8401f6180a627a20d86f1a2aafec1d1ae8b2f7273dd87ab4be1f3e3701a007b5",
       "java21_classes": 41,
-      "bytes": 3124451
+      "bytes": 3127239
     }
   },
   "amd_classes_unchanged": 9,

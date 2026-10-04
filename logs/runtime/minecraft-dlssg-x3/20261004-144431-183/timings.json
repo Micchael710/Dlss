@@ -1,0 +1,82 @@
+{
+  "scope": "provider-owned batches only, startup window; real-only fallback without provider output excluded",
+  "duration_seconds": 0.0974161,
+  "real_presented": 2,
+  "generated_presented": 1,
+  "total_presented": 3,
+  "real_presented_fps": 20.53048726031939,
+  "generated_presented_fps": 10.265243630159695,
+  "presented_fps": 30.79573089047909,
+  "steady_state_fps": "NOT_MEASURED",
+  "late_generated": 1,
+  "late_scope": "accepted request after host pacing deadline, not scanout",
+  "valid_unpresented_keys": [
+    [
+      3,
+      1
+    ]
+  ],
+  "duplicate_generated_keys": 0,
+  "gpu_ms": [
+    {
+      "realFrameId": "1",
+      "index": "1",
+      "count": "2",
+      "done": "2",
+      "DLSSG_GPU_ms": "1.049600",
+      "INPUT_GPU_COPY_ms": "0.129696",
+      "disable": "1",
+      "generatedFrames": "0"
+    },
+    {
+      "realFrameId": "1",
+      "index": "2",
+      "count": "2",
+      "done": "2",
+      "DLSSG_GPU_ms": "0.016384",
+      "INPUT_GPU_COPY_ms": "0.129696",
+      "disable": "1",
+      "generatedFrames": "0"
+    },
+    {
+      "realFrameId": "2",
+      "index": "1",
+      "count": "2",
+      "done": "4",
+      "DLSSG_GPU_ms": "4.984832",
+      "INPUT_GPU_COPY_ms": "0.135104",
+      "disable": "0",
+      "generatedFrames": "1"
+    },
+    {
+      "realFrameId": "2",
+      "index": "2",
+      "count": "2",
+      "done": "4",
+      "DLSSG_GPU_ms": "3.790816",
+      "INPUT_GPU_COPY_ms": "0.135104",
+      "disable": "-1",
+      "generatedFrames": "1"
+    },
+    {
+      "realFrameId": "3",
+      "index": "1",
+      "count": "2",
+      "done": "6",
+      "DLSSG_GPU_ms": "4.580352",
+      "INPUT_GPU_COPY_ms": "0.128544",
+      "disable": "0",
+      "generatedFrames": "2"
+    },
+    {
+      "realFrameId": "3",
+      "index": "2",
+      "count": "2",
+      "done": "6",
+      "DLSSG_GPU_ms": "5.062656",
+      "INPUT_GPU_COPY_ms": "0.128544",
+      "disable": "-1",
+      "generatedFrames": "2"
+    }
+  ]
+}

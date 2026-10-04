@@ -9,3 +9,8 @@ target_compile_definitions(wisteria_dlssg_bridge PRIVATE VK_NO_PROTOTYPES VK_USE
 target_compile_options(wisteria_dlssg_bridge PRIVATE /W4 /utf-8)
 target_include_directories(wisteria_dlssg_bridge PRIVATE ${JNI_INCLUDE_DIRS} "${PROJECT_ROOT}/logs/research/dlssg-ampere/deep/official-sdk/include" "${PROJECT_ROOT}/superresolution/native/cpp/third_party")
 target_link_libraries(wisteria_dlssg_bridge PRIVATE "${PROJECT_ROOT}/experiments/ngx-dlssg-probe/vendor/nvsdk_ngx_s.lib" advapi32 user32 shell32 ole32 dxgi d3d12 d3d11 version bcrypt wintrust psapi shlwapi)
+
+add_executable(dlssg_parameter_contract_test parameter_contract_test.cpp)
+target_include_directories(dlssg_parameter_contract_test PRIVATE "${PROJECT_ROOT}/logs/research/dlssg-ampere/deep/official-sdk/include")
+enable_testing()
+add_test(NAME dlssg_parameter_contract COMMAND dlssg_parameter_contract_test)

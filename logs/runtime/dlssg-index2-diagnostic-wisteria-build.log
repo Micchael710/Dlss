@@ -1,0 +1,11 @@
+Active code page: 65001
+Exception in thread "main" java.io.FileNotFoundException: C:\Users\micha\.gradle\wrapper\dists\gradle-9.4.0-bin\lcvyxq3t37f6mx9miaydrrgs\gradle-9.4.0-bin.zip.lck (Access is denied)
+	at java.base/java.io.RandomAccessFile.open0(Native Method)
+	at java.base/java.io.RandomAccessFile.open(RandomAccessFile.java:338)
+	at java.base/java.io.RandomAccessFile.<init>(RandomAccessFile.java:257)
+	at java.base/java.io.RandomAccessFile.<init>(RandomAccessFile.java:211)
+	at org.gradle.wrapper.ExclusiveFileAccessManager.access(ExclusiveFileAccessManager.java:53)
+	at org.gradle.wrapper.Install.createDist(Install.java:68)
+	at org.gradle.wrapper.WrapperExecutor.execute(WrapperExecutor.java:102)
+	at org.gradle.wrapper.GradleWrapperMain.main(GradleWrapperMain.java:66)
+Press any key to continue . . . 

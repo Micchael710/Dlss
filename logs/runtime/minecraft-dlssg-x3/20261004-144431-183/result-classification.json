@@ -1,0 +1,220 @@
+{
+  "run_id": "20261004-144431-183",
+  "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+  "observed_pairs": [
+    {
+      "PAIR_ID": 1,
+      "indices": [
+        {
+          "evaluate": {
+            "PAIR_ID": "1",
+            "INDEX": "1",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "1",
+            "NGX_OUTPUT_RESOURCE_ID": "000002532E04E200",
+            "NGX_STATUS_RESOURCE_ID": "00000253DFAB1E00",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "1",
+            "COUNT": "2",
+            "INDEX": "1",
+            "ARRAY_SLOT": "0",
+            "OUTPUT_RESOURCE_ID": "000002532E04E200",
+            "STATUS_RESOURCE_ID": "00000253DFAB1E00",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "1",
+            "STATUS_AFTER_GROUP": "1",
+            "COMPLETION_ID": "2",
+            "COMPLETION_OBSERVED": "2",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        },
+        {
+          "evaluate": {
+            "PAIR_ID": "1",
+            "INDEX": "2",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "2",
+            "NGX_OUTPUT_RESOURCE_ID": "000002532E0511D0",
+            "NGX_STATUS_RESOURCE_ID": "00000253DFAB14F0",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "1",
+            "COUNT": "2",
+            "INDEX": "2",
+            "ARRAY_SLOT": "1",
+            "OUTPUT_RESOURCE_ID": "000002532E0511D0",
+            "STATUS_RESOURCE_ID": "00000253DFAB14F0",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "1",
+            "STATUS_AFTER_GROUP": "1",
+            "COMPLETION_ID": "2",
+            "COMPLETION_OBSERVED": "2",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        }
+      ]
+    },
+    {
+      "PAIR_ID": 2,
+      "indices": [
+        {
+          "evaluate": {
+            "PAIR_ID": "2",
+            "INDEX": "1",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "1",
+            "NGX_OUTPUT_RESOURCE_ID": "0000025402680960",
+            "NGX_STATUS_RESOURCE_ID": "00000253DFBB58B0",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "2",
+            "COUNT": "2",
+            "INDEX": "1",
+            "ARRAY_SLOT": "0",
+            "OUTPUT_RESOURCE_ID": "0000025402680960",
+            "STATUS_RESOURCE_ID": "00000253DFBB58B0",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "0",
+            "STATUS_AFTER_GROUP": "0",
+            "COMPLETION_ID": "4",
+            "COMPLETION_OBSERVED": "5",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        },
+        {
+          "evaluate": {
+            "PAIR_ID": "2",
+            "INDEX": "2",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "2",
+            "NGX_OUTPUT_RESOURCE_ID": "000002540267F640",
+            "NGX_STATUS_RESOURCE_ID": "00000254073FCF10",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "2",
+            "COUNT": "2",
+            "INDEX": "2",
+            "ARRAY_SLOT": "1",
+            "OUTPUT_RESOURCE_ID": "000002540267F640",
+            "STATUS_RESOURCE_ID": "00000254073FCF10",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "4294967295",
+            "STATUS_AFTER_GROUP": "4294967295",
+            "COMPLETION_ID": "4",
+            "COMPLETION_OBSERVED": "5",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        }
+      ]
+    },
+    {
+      "PAIR_ID": 3,
+      "indices": [
+        {
+          "evaluate": {
+            "PAIR_ID": "3",
+            "INDEX": "1",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "1",
+            "NGX_OUTPUT_RESOURCE_ID": "000002532E04E200",
+            "NGX_STATUS_RESOURCE_ID": "00000253DFAB1E00",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "3",
+            "COUNT": "2",
+            "INDEX": "1",
+            "ARRAY_SLOT": "0",
+            "OUTPUT_RESOURCE_ID": "000002532E04E200",
+            "STATUS_RESOURCE_ID": "00000253DFAB1E00",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "0",
+            "STATUS_AFTER_GROUP": "0",
+            "COMPLETION_ID": "6",
+            "COMPLETION_OBSERVED": "6",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        },
+        {
+          "evaluate": {
+            "PAIR_ID": "3",
+            "INDEX": "2",
+            "EVALUATE_RESULT": "0x00000001",
+            "NGX_COUNT": "2",
+            "NGX_INDEX": "2",
+            "NGX_OUTPUT_RESOURCE_ID": "000002532E0511D0",
+            "NGX_STATUS_RESOURCE_ID": "00000253DFAB14F0",
+            "GET_COUNT": "0x00000001",
+            "GET_INDEX": "0x00000001",
+            "GET_OUTPUT": "0x00000001",
+            "GET_STATUS": "0x00000001"
+          },
+          "status_trace": {
+            "PAIR_ID": "3",
+            "COUNT": "2",
+            "INDEX": "2",
+            "ARRAY_SLOT": "1",
+            "OUTPUT_RESOURCE_ID": "000002532E0511D0",
+            "STATUS_RESOURCE_ID": "00000253DFAB14F0",
+            "STATUS_BEFORE": "4294967295",
+            "STATUS_AFTER_EVALUATE": "4294967295",
+            "STATUS_AFTER_GROUP": "4294967295",
+            "COMPLETION_ID": "6",
+            "COMPLETION_OBSERVED": "6",
+            "COMPLETION_MODEL": "GROUP_ORDERED_COMMAND_LIST",
+            "STATUS_READ_ERROR": "\"\""
+          }
+        }
+      ]
+    }
+  ],
+  "INDEX2_REACHES_CPP": "YES",
+  "INDEX2_NGX_COUNT": 2,
+  "INDEX2_NGX_INDEX": 2,
+  "INDEX2_EVALUATE_RESULT": "SUCCESS",
+  "INDEX2_GPU_COMPLETION": "YES_GROUP",
+  "INDEX2_STATUS_AFTER_COMPLETION": "0xffffffff",
+  "LAST_CONFIRMED_BOUNDARY": "NGX_EVALUATE_AND_GPU_GROUP_COMPLETION",
+  "INDEX2_SENTINEL_CLASSIFICATION": "UNKNOWN_NOT_WRITTEN_IN_PER_EVALUATE_OR_GROUP_END_SNAPSHOT",
+  "ROOT_CAUSE": "INDEX2_STATUS_RESOURCE_UNCHANGED_THROUGH_GROUP_COMPLETION; INTERNAL_REASON_UNDETERMINED",
+  "CAUSE_CONFIDENCE": "HIGH_BOUNDARY_AND_READBACK_OBSERVATION; UNKNOWN_INTERNAL_MECHANISM",
+  "BUG_IN_OUR_MOD": "NOT_DEMONSTRATED",
+  "FIX_IMPLEMENTED": "NO_SENTINEL_FIX; DISABLE_UNKNOWN_GATING_PRESERVED",
+  "NEXT_GRAPHICS_ATTEMPT_ALLOWED": false,
+  "X4": "NOT_RUN_X3_FAILED",
+  "X5": "NOT_RUN_X3_FAILED",
+  "MINECRAFT_DLSSG_X3": "FAIL_OUTPUT2_STATUS_NOT_WRITTEN",
+  "NORMAL_SHUTDOWN": true,
+  "CRASH": false,
+  "DEVICE_LOST": false
+}
