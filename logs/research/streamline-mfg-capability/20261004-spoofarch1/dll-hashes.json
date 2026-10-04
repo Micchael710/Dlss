@@ -1,0 +1,34 @@
+[
+  {
+    "sha256": "2a77dc3e1c724b7eea5755be0ae7423752e79a2459fae72181a9f00e3507e5d6",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\NvLowLatencyVk.dll"
+  },
+  {
+    "sha256": "135eaf0733c1e37381a8c28abcf7a862404a54132b81787c04e35d09efc5e36f",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\nvngx_dlssg.dll"
+  },
+  {
+    "sha256": "c57930ef5a8a3fe9be85efdf71a61d8107c1148e8a6aed456464547128f7f4ae",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\sl.common.dll"
+  },
+  {
+    "sha256": "1fec3f8fdfc59d78c4445c276c1a0fb798bf251985f348597dc2b44d0c995e52",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\sl.dlss_g.dll"
+  },
+  {
+    "sha256": "2a79db6857ae8c75bbd871a9489c48bc6a39f7fcc88b9b02afd53d0376cbec66",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\sl.interposer.dll"
+  },
+  {
+    "sha256": "699ab461e64e95189a7fe6a21c79ad237cf56b60ea748cb6c840cd5431ba91d1",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\sl.pcl.dll"
+  },
+  {
+    "sha256": "7e6e4ccc4b561bd449fb0da90709d9b96b08c3f6f4697362caaa359e72a58a67",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\sl.reflex.dll"
+  },
+  {
+    "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+    "path": "D:\\ProjectDllsss\\experiments\\streamline-mfg-capability\\runtime\\component\\version.dll"
+  }
+]

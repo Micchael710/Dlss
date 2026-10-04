@@ -1,0 +1,75 @@
+[streamline][info]log.cpp:131[logva] Log file D:\ProjectDllsss\logs\research\streamline-mfg-capability\20261004-spoofarch1\sl.log opened on 04.10.2026 at 18-23-27
+[18-23-27][streamline][info][tid:869920][0s:005ms:084us]pluginManager.cpp:423[setHostSDKVersion] Streamline v2.12.0.17026aaf3 - built on Mon Jun 22 13:03:05 2026 - host SDK v2.12.0
+[18-23-27][streamline][info][tid:869920][0s:747ms:237us]pluginManager.cpp:538[findPlugins] Looking for plugins in D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime ...
+[18-23-27][streamline][info][tid:869920][0s:747ms:490us]pluginManager.cpp:1024[loadPlugins] eLoadDownloadedPlugins flag not passed to preferences, OTA'd plugins will not be loaded!
+[18-23-28][streamline][info][tid:869920][1s:007ms:020us]plugin.cpp:94[isAppDenylisted] Plugin path: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\
+[18-23-28][streamline][info][tid:869920][1s:017ms:935us]plugin.cpp:110[isAppDenylisted] Plugin is not from OTA - denylist does not apply
+[18-23-28][streamline][info][tid:869920][1s:018ms:128us]commonInterface.cpp:168[getSystemCaps] Enumerating up to 8 adapters but only one of them can be used to create a device - no mGPU support in this SDK
+[18-23-28][streamline][info][tid:869920][1s:091ms:119us]commonInterface.cpp:290[getSystemCaps] >-----------------------------------------
+[18-23-28][streamline][info][tid:869920][1s:091ms:259us]commonInterface.cpp:293[getSystemCaps] NVIDIA driver 596.49
+[18-23-28][streamline][info][tid:869920][1s:118ms:019us]commonInterface.cpp:318[getSystemCaps] Adapter 0 architecture 0x1b0 implementation 0x7 revision 0xa1 - bit 0x1 - LUID 0.76108
+[18-23-28][streamline][info][tid:869920][1s:118ms:191us]commonInterface.cpp:324[getSystemCaps] -----------------------------------------<
+[18-23-28][streamline][info][tid:869920][1s:120ms:096us]commonEntry.cpp:1944[getOSVersionAndUpdateTimerResolution] Changed high resolution timer resolution to 5000 [100 ns units].
+[18-23-28][streamline][info][tid:869920][1s:120ms:207us]commonEntry.cpp:2023[updateEmbeddedJSON] Detected Windows OS version 10.0.26200
+[18-23-28][streamline][info][tid:869920][1s:120ms:471us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.common' - version 2.12.0.17026aaf3 PRODUCTION - id 4294967295 - priority 0 - adapter mask 0xf - interposer 'no'
+[18-23-29][streamline][error][tid:869920][1s:996ms:021us]commonEntry.cpp:992[getNGXFeatureRequirements] ngxResult failed 0xbad00005
+[18-23-29][streamline][warn][tid:869920][1s:996ms:141us]dlss_gEntry.cpp:142[updateEmbeddedJSON] Failed to obtain DLSS-G min spec requirements from NGX, using SL defaults
+[18-23-29][streamline][info][tid:869920][2s:000ms:463us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.dlss_g' - version 2.12.0.17026aaf3 PRODUCTION - id 1000 - priority 1000 - adapter mask 0x1 - interposer 'no'
+[18-23-29][streamline][info][tid:869920][2s:042ms:172us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.pcl' - version 2.12.0.17026aaf3 PRODUCTION - id 4 - priority 2 - adapter mask 0xf - interposer 'no'
+[18-23-29][streamline][info][tid:869920][2s:077ms:022us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.reflex' - version 2.12.0.17026aaf3 PRODUCTION - id 3 - priority 100 - adapter mask 0xf - interposer 'no'
+[18-23-29][streamline][info][tid:869920][2s:077ms:192us]pluginManager.cpp:1159[loadPlugins] Plugin execution order based on priority:
+[18-23-29][streamline][info][tid:869920][2s:077ms:286us]pluginManager.cpp:1162[loadPlugins] P0 - sl.common
+[18-23-29][streamline][info][tid:869920][2s:077ms:346us]pluginManager.cpp:1162[loadPlugins] P2 - sl.pcl
+[18-23-29][streamline][info][tid:869920][2s:077ms:385us]pluginManager.cpp:1162[loadPlugins] P100 - sl.reflex
+[18-23-29][streamline][info][tid:869920][2s:077ms:420us]pluginManager.cpp:1162[loadPlugins] P1000 - sl.dlss_g
+[18-23-29][streamline][info][tid:869920][2s:697ms:313us]pluginManager.cpp:1362[initializePlugins] Initializing plugins - api 0.0.1 - application ID 100721531
+[18-23-29][streamline][info][tid:869920][2s:698ms:926us]commonEntry.cpp:1467[slOnPluginStartup] At least one plugin requires NGX, trying to initialize ...
+[18-23-29][streamline][error][tid:869920][2s:699ms:240us]commonEntry.cpp:1558[slOnPluginStartup] Please provide correct application id when calling slInit - NGX based features will be disabled
+[18-23-29][streamline][warn][tid:869920][2s:699ms:340us]commonEntry.cpp:1648[slOnPluginStartup] Failed to initialize NGX, any SL feature requiring NGX will be unloaded and disabled
+[18-23-29][streamline][info][tid:869920][2s:699ms:400us]commonEntry.cpp:1654[slOnPluginStartup] At least one plugin requires DRS, trying to initialize ...
+[18-23-30][streamline][info][tid:869920][3s:385ms:768us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.common:slSetData:0x0
+[18-23-30][streamline][info][tid:869920][3s:385ms:951us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.common:slGetData:0x0
+[18-23-30][streamline][info][tid:869920][3s:386ms:240us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.common:slAllocateResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:386ms:389us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.common:slFreeResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:386ms:617us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.common:slEvaluateFeature:0x7ffd79c9a010
+[18-23-30][streamline][info][tid:869920][3s:386ms:811us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.common:slSetTag:0x7ffd79c98af0
+[18-23-30][streamline][info][tid:869920][3s:386ms:886us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.common:slSetTagForFrame:0x7ffd79c98c60
+[18-23-30][streamline][info][tid:869920][3s:386ms:931us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.common:slSetConsts:0x7ffd79c99af0
+[18-23-30][streamline][info][tid:869920][3s:386ms:972us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkPresent:before - skipped
+[18-23-30][streamline][info][tid:869920][3s:387ms:011us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkAfterPresent:after - skipped
+[18-23-30][streamline][info][tid:869920][3s:387ms:048us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindPipeline:after - skipped
+[18-23-30][streamline][info][tid:869920][3s:387ms:085us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindDescriptorSets:after - skipped
+[18-23-30][streamline][info][tid:869920][3s:387ms:122us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkBeginCommandBuffer:after - skipped
+[18-23-30][streamline][info][tid:869920][3s:387ms:162us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChain:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:199us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForHwnd:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:236us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForCoreWindow:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:275us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookResizeSwapChainPre:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:318us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:360us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookAfterPresent:after - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:402us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent1:before - OK
+[18-23-30][streamline][info][tid:869920][3s:387ms:458us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.pcl:slSetData:0x7ffd78fab6c0
+[18-23-30][streamline][info][tid:869920][3s:387ms:517us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.pcl:slGetData:0x7ffd78fab6d0
+[18-23-30][streamline][info][tid:869920][3s:387ms:567us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.pcl:slAllocateResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:615us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.pcl:slFreeResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:741us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.pcl:slEvaluateFeature:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:800us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.pcl:slSetTag:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:845us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.pcl:slSetTagForFrame:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:887us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.pcl:slSetConsts:0x0
+[18-23-30][streamline][info][tid:869920][3s:387ms:929us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.pcl' has no registered hooks
+[18-23-30][streamline][info][tid:869920][3s:387ms:968us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.reflex:slSetData:0x7ffd79a1b7f0
+[18-23-30][streamline][info][tid:869920][3s:388ms:008us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.reflex:slGetData:0x7ffd79a1c150
+[18-23-30][streamline][info][tid:869920][3s:388ms:047us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.reflex:slAllocateResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:083us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.reflex:slFreeResources:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:119us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.reflex:slEvaluateFeature:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:155us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.reflex:slSetTag:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:192us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.reflex:slSetTagForFrame:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:229us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.reflex:slSetConsts:0x0
+[18-23-30][streamline][info][tid:869920][3s:388ms:264us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.reflex' has no registered hooks
+[18-23-30][streamline][info][tid:869920][3s:393ms:772us]dlfgDrs.cpp:41[readSingleDRSKey] Read DRS key 11041231 = 0x60925292 from global profile
+[18-23-30][streamline][info][tid:869920][3s:404ms:997us]dlss_gEntry.cpp:1426[slOnPluginStartup] Host SDK version: 2.12.0, platform: D3D12 (VSync with FG: supported)
+[18-23-30][streamline][error][tid:869920][3s:405ms:152us]dlss_gEntry.cpp:1446[slOnPluginStartup] Unable to find NGX context - make sure sl.common was initialized properly
+[18-23-30][streamline][info][tid:869920][3s:410ms:877us]pluginManager.cpp:1171[unloadPlugins] Unloading all plugins ...
+[18-23-30][streamline][info][tid:869920][3s:411ms:047us]plugin.cpp:344[onShutdown] Shutting down plugin sl.reflex
+[18-23-30][streamline][info][tid:869920][3s:411ms:536us]plugin.cpp:344[onShutdown] Shutting down plugin sl.pcl
+[18-23-30][streamline][info][tid:869920][3s:457ms:261us]plugin.cpp:344[onShutdown] Shutting down plugin sl.common
+[18-23-30][streamline][info][tid:869920][3s:458ms:414us]generic.cpp:327[shutdown] Delayed destroy resource list count 0

@@ -1,5 +1,13 @@
 # Streamline + SM86 capability harness — 2026-10-04
 
+## Current result — single SpoofArchToGame1 test, new identity/NGX blocker
+
+Start `3dace051fee6a307fc68d816892f8d8e346d55ee`, clean main. Same executable, runtime DLL hashes, adapter, loading mechanism and MaxGeneratedFrames4. Only temporary isolated INI change: SpoofArchToGame0→1. No build/source changes or additional research. One execution, no retry. Original INI restored exactly: SHA256 `5bc366c91027aab6aed8f6b59947b284047e194a0a315eb9a60c71df4d2233e8`. Temporary test INI is not published; only hashes/results.
+
+Init0; RTX3050Ti LUID `4c29010000000000`; SM86 loaded. Actual SL log comparison: architecture0x170→0x1b0, DLSS-G adapter mask0x0→0x1. This demonstrates proxy effect on Streamline's reported architecture/hardware mask. It does **not** demonstrate a successful public feature-support query: that changed6→32 (`eErrorFeatureNotSupported`). `SM86_PROXY_ACTIVE_FOR_STREAMLINE_FEATURE_GATE=NO_OR_UNPROVEN`, because the required SUCCESS was not observed.
+
+New log blocker: SL requests a correct application ID, reports failed NGX initialization and disables NGX-based features; DLSS-G reports missing NGX context. STOP at FEATURE_SUPPORT. No application-ID workaround, GetState, SetOptions, swapchain, frames or Minecraft. Max/capabilities remain UNKNOWN, not a claim that MFG is impossible. SL shutdown0; process exit1, functional failure. Baseline x2/SR/AMD/PresentWorker untouched. Evidence: `logs/research/streamline-mfg-capability/20261004-spoofarch1/` with actual SL/harness logs, DLL/executable hashes, result and byte-identical restoration.
+
 ## Current result — SDK 2.12.0 provided, BLOCKED_FEATURE_SUPPORT
 
 Start HEAD `a136e68a9fc7fcef2443ae9c95e25df706389188`, main clean. Used the user-authorized `streamline-sdk-v2.12.0.zip` directly, no download. Matched24 local headers; staged only production `bin/x64` DLLs after checking AMD64 PE machine0x8664. Normal loader dependency inspection identified `NvLowLatencyVk.dll` in sl.common, included from the same package. Streamline interposer/common/DLSS-G/Reflex/PCL file versions2.12.0; packaged NGX DLSS-G file version310.7.0.0 is recorded separately, not mislabeled310.9.1. All staged DLL hashes and DLLs observed loaded are in the evidence. Proprietary/runtime/build files remain ignored and local.

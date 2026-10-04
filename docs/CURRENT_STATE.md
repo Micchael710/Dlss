@@ -1,5 +1,9 @@
 ## Estado vigente — DLSS SR + DLSS-G x2 PASS
 
+## 2026-10-04 — SM86 spoof test changes architecture, query blocked by NGX context
+
+From `3dace051fee6a307fc68d816892f8d8e346d55ee`, one unchanged-harness run with temporary SpoofArchToGame1. Streamline architecture0x170→0x1b0 and hardware mask0x0→0x1; feature query6→32 `eErrorFeatureNotSupported`. Log requires correct application ID / missing NGX context. GetState max remains UNKNOWN. No retry; INI restored byte-identically; x2/SR/AMD/PresentWorker untouched. [Evidence](DLSSG_STREAMLINE_CAPABILITY.md).
+
 ## 2026-10-04 — Streamline SDK2.12 actual query stops at feature support
 
 Start `a136e68a9fc7fcef2443ae9c95e25df706389188`. User-provided SDK2.12.0 staged locally; one isolated harness run. Init0; correct RTX3050Ti/LUID; feature support6 `eErrorNoSupportedAdapterFound`. GetState max/options NOT_QUERIED. SM86 loaded, effect on Streamline NOT_DEMONSTRATED. SL shutdown0/clientexit1. No retry/Minecraft or baseline modifications. [Runtime evidence and hashes](DLSSG_STREAMLINE_CAPABILITY.md). Direct SR+x2 PASS remains preserved.
