@@ -1,0 +1,40 @@
+{
+  "scope": "per-index D3D12 GPU timestamp pairs; startup-only, not FPS benchmark",
+  "gpu_ms": [
+    {
+      "realFrameId": "1",
+      "index": "1",
+      "milliseconds": 1.0752
+    },
+    {
+      "realFrameId": "1",
+      "index": "2",
+      "milliseconds": 0.016384
+    },
+    {
+      "realFrameId": "2",
+      "index": "1",
+      "milliseconds": 4.968448
+    },
+    {
+      "realFrameId": "2",
+      "index": "2",
+      "milliseconds": 3.79392
+    },
+    {
+      "realFrameId": "3",
+      "index": "1",
+      "milliseconds": 4.856832
+    },
+    {
+      "realFrameId": "3",
+      "index": "2",
+      "milliseconds": 3.791872
+    }
+  ],
+  "real_fps": "NOT_MEASURED",
+  "presented_fps": "NOT_MEASURED",
+  "dropped": "UNKNOWN",
+  "late": "UNKNOWN",
+  "presentation_evidence": "Java writer buffered all records; frame-sequence.log empty after crash"
+}

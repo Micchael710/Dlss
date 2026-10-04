@@ -1,0 +1,11 @@
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.7.1/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Task :auditRuntimeJava
+MINECRAFT_RUNTIME_JAVA 25
+MINECRAFT_RUNTIME_EXECUTABLE C:\Program Files\Java\jdk-25.0.4\bin\java.exe
+MOD_BYTECODE_TARGET 21 (prebuilt external artifacts)
+
+BUILD SUCCESSFUL in 14s
+1 actionable task: 1 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.7.1/userguide/configuration_cache_enabling.html

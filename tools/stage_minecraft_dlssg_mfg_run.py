@@ -33,7 +33,8 @@ manifest=dict(run_id=runid,mode='presentation',requested_count=count,requested_i
              raw_reported_max=None,capability_provenance='pending actual public NGX query after external loader; may be hooked',
              attempt_limit=1,status='PREPARED_NOT_LAUNCHED',implementation_commit=head,artifacts=artifact['artifacts'],baseline_sha256=artifact['baseline_sha256'],
              original_test_config_sha256=hashlib.sha256(old).hexdigest(),test_config_sha256=sha(config),component_sha256=sha(component),runtime_sha256=sha(runtime),
-             profile='Minecraft1.21.1 / NeoForge21.1.219 / Complementary / FSR1 ratio1.7 / VulkanPresent / OptiScalerOFF',
+             profile='Minecraft1.21.1 / NeoForge21.1.219 / Java25 / Complementary / FSR1 ratio1.7 / VulkanPresent / OptiScalerOFF',
+             required_runtime_java=25,mod_bytecode_target=21,actual_runtime_java=None,
              pool_formula='floor(6/(requested_count+1))+2; candidate image weight retained even for reset/disabled group',pool_slots=6//(count+1)+2,outputs_per_slot=count,
              samples='at most 3 intervals; start after non-reset camera motion; CPU readback diagnostic only')
 (out/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n',encoding='utf-8')

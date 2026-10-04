@@ -1,0 +1,393 @@
+{
+  "images": [
+    {
+      "timestamp_ns": 86492520541300,
+      "type": "resource_pool",
+      "detail": "image=000002391CD39C70 memory=000002391F57E8A0 D3D12=000002386CF127D0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 1,
+      "fields": {
+        "image": "000002391CD39C70",
+        "memory": "000002391F57E8A0",
+        "D3D12": "000002386CF127D0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492521629100,
+      "type": "resource_pool",
+      "detail": "image=000002391CD390D0 memory=000002391F57CC80 D3D12=000002386CF14E10 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 2,
+      "fields": {
+        "image": "000002391CD390D0",
+        "memory": "000002391F57CC80",
+        "D3D12": "000002386CF14E10",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492522756800,
+      "type": "resource_pool",
+      "detail": "image=000002391CD3A240 memory=000002391F57CE60 D3D12=000002386CF13160 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 3,
+      "fields": {
+        "image": "000002391CD3A240",
+        "memory": "000002391F57CE60",
+        "D3D12": "000002386CF13160",
+        "format": "100",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492523791800,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D4F80 memory=000002391F57EC60 D3D12=000002386CF14480 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 4,
+      "fields": {
+        "image": "000002391E6D4F80",
+        "memory": "000002391F57EC60",
+        "D3D12": "000002386CF14480",
+        "format": "103",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492524772400,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D3E10 memory=000002391F57F020 D3D12=000002386CF20D50 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 5,
+      "fields": {
+        "image": "000002391E6D3E10",
+        "memory": "000002391F57F020",
+        "D3D12": "000002386CF20D50",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492525979700,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D5550 memory=000002391F57B060 D3D12=000002386CF1DD80 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 6,
+      "fields": {
+        "image": "000002391E6D5550",
+        "memory": "000002391F57B060",
+        "D3D12": "000002386CF1DD80",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492531945700,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D5B20 memory=000002391F57F200 D3D12=000002391E3DE000 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 7,
+      "fields": {
+        "image": "000002391E6D5B20",
+        "memory": "000002391F57F200",
+        "D3D12": "000002391E3DE000",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492533184000,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D3270 memory=000002391F581000 D3D12=000002391E3DB030 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 8,
+      "fields": {
+        "image": "000002391E6D3270",
+        "memory": "000002391F581000",
+        "D3D12": "000002391E3DB030",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492534283500,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D43E0 memory=000002391F57FF20 D3D12=000002391E3DE990 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 9,
+      "fields": {
+        "image": "000002391E6D43E0",
+        "memory": "000002391F57FF20",
+        "D3D12": "000002391E3DE990",
+        "format": "100",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492535324400,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D3840 memory=000002391F57F3E0 D3D12=000002391E3DD670 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 10,
+      "fields": {
+        "image": "000002391E6D3840",
+        "memory": "000002391F57F3E0",
+        "D3D12": "000002391E3DD670",
+        "format": "103",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492536240200,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D60F0 memory=000002391F57F5C0 D3D12=000002391E3DB9C0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 11,
+      "fields": {
+        "image": "000002391E6D60F0",
+        "memory": "000002391F57F5C0",
+        "D3D12": "000002391E3DB9C0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492537332600,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D2CA0 memory=000002391F57F7A0 D3D12=000002391E3DF320 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 12,
+      "fields": {
+        "image": "000002391E6D2CA0",
+        "memory": "000002391F57F7A0",
+        "D3D12": "000002391E3DF320",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492544253000,
+      "type": "resource_pool",
+      "detail": "image=000002391E6D49B0 memory=000002391F5804C0 D3D12=000002391E3DFCB0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 13,
+      "fields": {
+        "image": "000002391E6D49B0",
+        "memory": "000002391F5804C0",
+        "D3D12": "000002391E3DFCB0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492545534900,
+      "type": "resource_pool",
+      "detail": "image=00000239473C59A0 memory=000002391F5815A0 D3D12=000002391E3DCCE0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 14,
+      "fields": {
+        "image": "00000239473C59A0",
+        "memory": "000002391F5815A0",
+        "D3D12": "000002391E3DCCE0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492546475000,
+      "type": "resource_pool",
+      "detail": "image=00000239473C6B10 memory=000002391F5806A0 D3D12=000002391E3E1960 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 15,
+      "fields": {
+        "image": "00000239473C6B10",
+        "memory": "000002391F5806A0",
+        "D3D12": "000002391E3E1960",
+        "format": "100",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492547417300,
+      "type": "resource_pool",
+      "detail": "image=00000239473C70E0 memory=000002391F581780 D3D12=000002391E3E2C80 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 16,
+      "fields": {
+        "image": "00000239473C70E0",
+        "memory": "000002391F581780",
+        "D3D12": "000002391E3E2C80",
+        "format": "103",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492548410700,
+      "type": "resource_pool",
+      "detail": "image=00000239473C76B0 memory=000002391F580880 D3D12=000002391E3E3610 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 17,
+      "fields": {
+        "image": "00000239473C76B0",
+        "memory": "000002391F580880",
+        "D3D12": "000002391E3E3610",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492549232900,
+      "type": "resource_pool",
+      "detail": "image=00000239473C7C80 memory=000002391F580A60 D3D12=000002391E3E0640 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 18,
+      "fields": {
+        "image": "00000239473C7C80",
+        "memory": "000002391F580A60",
+        "D3D12": "000002391E3E0640",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492556107300,
+      "type": "resource_pool",
+      "detail": "image=00000239473C6540 memory=00000238720332D0 D3D12=000002391E3E3FA0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 19,
+      "fields": {
+        "image": "00000239473C6540",
+        "memory": "00000238720332D0",
+        "D3D12": "000002391E3E3FA0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492557002100,
+      "type": "resource_pool",
+      "detail": "image=00000239473C4830 memory=0000023872030D50 D3D12=000002391E3E0FD0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 20,
+      "fields": {
+        "image": "00000239473C4830",
+        "memory": "0000023872030D50",
+        "D3D12": "000002391E3E0FD0",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492558348400,
+      "type": "resource_pool",
+      "detail": "image=00000239473C4E00 memory=0000023872033690 D3D12=000002391E3E65E0 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 21,
+      "fields": {
+        "image": "00000239473C4E00",
+        "memory": "0000023872033690",
+        "D3D12": "000002391E3E65E0",
+        "format": "100",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492559418300,
+      "type": "resource_pool",
+      "detail": "image=00000239473C5F70 memory=0000023872030F30 D3D12=000002391E3E4930 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 22,
+      "fields": {
+        "image": "00000239473C5F70",
+        "memory": "0000023872030F30",
+        "D3D12": "000002391E3E4930",
+        "format": "103",
+        "extent": "502x282",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492560508800,
+      "type": "resource_pool",
+      "detail": "image=00000239473C53D0 memory=0000023872030210 D3D12=000002391E3E6F70 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 23,
+      "fields": {
+        "image": "00000239473C53D0",
+        "memory": "0000023872030210",
+        "D3D12": "000002391E3E6F70",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    },
+    {
+      "timestamp_ns": 86492561349800,
+      "type": "resource_pool",
+      "detail": "image=000002393A658360 memory=0000023872035A30 D3D12=000002391E3E5C50 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true",
+      "source": "provider-events.jsonl",
+      "line": 24,
+      "fields": {
+        "image": "000002393A658360",
+        "memory": "0000023872035A30",
+        "D3D12": "000002391E3E5C50",
+        "format": "37",
+        "extent": "854x480",
+        "memoryType": "1",
+        "handle_closed_after_import": "true"
+      }
+    }
+  ],
+  "observed_shared_images": 24,
+  "images_per_slot": 6,
+  "observed_slots": 4,
+  "expected_slots": 4,
+  "generated_outputs_per_slot": 2
+}

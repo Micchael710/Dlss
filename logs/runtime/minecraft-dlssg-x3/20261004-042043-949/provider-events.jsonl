@@ -1,0 +1,48 @@
+{"timestamp_ns":86492520541300,"type":"resource_pool","detail":"image=000002391CD39C70 memory=000002391F57E8A0 D3D12=000002386CF127D0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492521629100,"type":"resource_pool","detail":"image=000002391CD390D0 memory=000002391F57CC80 D3D12=000002386CF14E10 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492522756800,"type":"resource_pool","detail":"image=000002391CD3A240 memory=000002391F57CE60 D3D12=000002386CF13160 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492523791800,"type":"resource_pool","detail":"image=000002391E6D4F80 memory=000002391F57EC60 D3D12=000002386CF14480 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492524772400,"type":"resource_pool","detail":"image=000002391E6D3E10 memory=000002391F57F020 D3D12=000002386CF20D50 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492525979700,"type":"resource_pool","detail":"image=000002391E6D5550 memory=000002391F57B060 D3D12=000002386CF1DD80 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492531945700,"type":"resource_pool","detail":"image=000002391E6D5B20 memory=000002391F57F200 D3D12=000002391E3DE000 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492533184000,"type":"resource_pool","detail":"image=000002391E6D3270 memory=000002391F581000 D3D12=000002391E3DB030 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492534283500,"type":"resource_pool","detail":"image=000002391E6D43E0 memory=000002391F57FF20 D3D12=000002391E3DE990 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492535324400,"type":"resource_pool","detail":"image=000002391E6D3840 memory=000002391F57F3E0 D3D12=000002391E3DD670 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492536240200,"type":"resource_pool","detail":"image=000002391E6D60F0 memory=000002391F57F5C0 D3D12=000002391E3DB9C0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492537332600,"type":"resource_pool","detail":"image=000002391E6D2CA0 memory=000002391F57F7A0 D3D12=000002391E3DF320 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492544253000,"type":"resource_pool","detail":"image=000002391E6D49B0 memory=000002391F5804C0 D3D12=000002391E3DFCB0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492545534900,"type":"resource_pool","detail":"image=00000239473C59A0 memory=000002391F5815A0 D3D12=000002391E3DCCE0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492546475000,"type":"resource_pool","detail":"image=00000239473C6B10 memory=000002391F5806A0 D3D12=000002391E3E1960 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492547417300,"type":"resource_pool","detail":"image=00000239473C70E0 memory=000002391F581780 D3D12=000002391E3E2C80 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492548410700,"type":"resource_pool","detail":"image=00000239473C76B0 memory=000002391F580880 D3D12=000002391E3E3610 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492549232900,"type":"resource_pool","detail":"image=00000239473C7C80 memory=000002391F580A60 D3D12=000002391E3E0640 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492556107300,"type":"resource_pool","detail":"image=00000239473C6540 memory=00000238720332D0 D3D12=000002391E3E3FA0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492557002100,"type":"resource_pool","detail":"image=00000239473C4830 memory=0000023872030D50 D3D12=000002391E3E0FD0 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492558348400,"type":"resource_pool","detail":"image=00000239473C4E00 memory=0000023872033690 D3D12=000002391E3E65E0 format=100 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492559418300,"type":"resource_pool","detail":"image=00000239473C5F70 memory=0000023872030F30 D3D12=000002391E3E4930 format=103 extent=502x282 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492560508800,"type":"resource_pool","detail":"image=00000239473C53D0 memory=0000023872030210 D3D12=000002391E3E6F70 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492561349800,"type":"resource_pool","detail":"image=000002393A658360 memory=0000023872035A30 D3D12=000002391E3E5C50 format=37 extent=854x480 memoryType=1 handle_closed_after_import=true"}
+{"timestamp_ns":86492779862100,"type":"slot_state","detail":"realFrameId=1 state=FILLING"}
+{"timestamp_ns":86492802046500,"type":"evaluate","detail":"realFrameId=1 deltaMs=0.000000 reset=1 count=2 index=1 result=0x00000001 VkImage=000002391E6D3E10 ready=1 done=2"}
+{"timestamp_ns":86492802598600,"type":"evaluate","detail":"realFrameId=1 deltaMs=0.000000 reset=1 count=2 index=2 result=0x00000001 VkImage=000002391E6D5550 ready=1 done=2"}
+{"timestamp_ns":86492831642600,"type":"vulkan_d3d12_submit","detail":"realFrameId=1 ready=1 completion=2 cpuWait=false"}
+{"timestamp_ns":86492831670300,"type":"slot_state","detail":"realFrameId=1 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait"}
+{"timestamp_ns":86492846336900,"type":"slot_state","detail":"realFrameId=2 state=FILLING"}
+{"timestamp_ns":86492850892200,"type":"evaluate","detail":"realFrameId=2 deltaMs=198.095400 reset=0 count=2 index=1 result=0x00000001 VkImage=000002391E6D60F0 ready=3 done=4"}
+{"timestamp_ns":86492851539900,"type":"evaluate","detail":"realFrameId=2 deltaMs=198.095400 reset=0 count=2 index=2 result=0x00000001 VkImage=000002391E6D2CA0 ready=3 done=4"}
+{"timestamp_ns":86492852322600,"type":"vulkan_d3d12_submit","detail":"realFrameId=2 ready=3 completion=4 cpuWait=false"}
+{"timestamp_ns":86492852332400,"type":"slot_state","detail":"realFrameId=2 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait"}
+{"timestamp_ns":86492855428400,"type":"slot_state","detail":"realFrameId=3 state=FILLING"}
+{"timestamp_ns":86492856971200,"type":"evaluate","detail":"realFrameId=3 deltaMs=71.854900 reset=0 count=2 index=1 result=0x00000001 VkImage=00000239473C76B0 ready=5 done=6"}
+{"timestamp_ns":86492857557300,"type":"evaluate","detail":"realFrameId=3 deltaMs=71.854900 reset=0 count=2 index=2 result=0x00000001 VkImage=00000239473C7C80 ready=5 done=6"}
+{"timestamp_ns":86492858542600,"type":"vulkan_d3d12_submit","detail":"realFrameId=3 ready=5 completion=6 cpuWait=false"}
+{"timestamp_ns":86492858557500,"type":"slot_state","detail":"realFrameId=3 state=GENERATING; output submitted by Vulkan worker with GPU timeline wait"}
+{"timestamp_ns":86492859501600,"type":"completion","detail":"realFrameId=1 index=1 count=2 done=2 DLSSG_GPU_ms=1.075200 INPUT_GPU_COPY_ms=0.129984 disable=1 generatedFrames=0"}
+{"timestamp_ns":86492859518300,"type":"completion","detail":"realFrameId=1 index=2 count=2 done=2 DLSSG_GPU_ms=0.016384 INPUT_GPU_COPY_ms=0.129984 disable=1 generatedFrames=0"}
+{"timestamp_ns":86492859530800,"type":"slot_recycle","detail":"realFrameId=1 state=FREE"}
+{"timestamp_ns":86492864969400,"type":"completion","detail":"realFrameId=2 index=1 count=2 done=4 DLSSG_GPU_ms=4.968448 INPUT_GPU_COPY_ms=0.128704 disable=0 generatedFrames=1"}
+{"timestamp_ns":86492864995900,"type":"completion","detail":"realFrameId=2 index=2 count=2 done=4 DLSSG_GPU_ms=3.793920 INPUT_GPU_COPY_ms=0.128704 disable=-1 generatedFrames=1"}
+{"timestamp_ns":86492865002900,"type":"slot_recycle","detail":"realFrameId=2 state=FREE"}
+{"timestamp_ns":86492872069000,"type":"completion","detail":"realFrameId=3 index=1 count=2 done=6 DLSSG_GPU_ms=4.856832 INPUT_GPU_COPY_ms=0.138656 disable=0 generatedFrames=2"}
+{"timestamp_ns":86492872096400,"type":"completion","detail":"realFrameId=3 index=2 count=2 done=6 DLSSG_GPU_ms=3.791872 INPUT_GPU_COPY_ms=0.138656 disable=-1 generatedFrames=2"}
+{"timestamp_ns":86492872218100,"type":"slot_recycle","detail":"realFrameId=3 state=FREE"}

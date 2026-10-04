@@ -4,7 +4,8 @@ plugins {
 }
 
 // Separate launcher only. No source mod, no upstream development modpack.
-java { toolchain { languageVersion = JavaLanguageVersion.of(21) } }
+// The isolated Minecraft runtime uses Java 25. Mod artifacts remain Java 21 bytecode.
+java { toolchain { languageVersion = JavaLanguageVersion.of(25) } }
 repositories {
     mavenCentral()
     maven { url = 'https://maven.neoforged.net/releases' }
@@ -82,5 +83,16 @@ tasks.register('auditRuntimeProfile') {
             it.file.name.toLowerCase() =~ /distanthorizons|ssrd|wisterianative|xaero|spark|reeses|simple.clouds/
         }
         if (disallowed) throw new GradleException("Non-minimal runtime dependencies: ${disallowed*.file*.name}")
+    }
+}
+tasks.register('auditRuntimeJava') {
+    doLast {
+        def launcher = tasks.named('runClient').get().javaLauncher.get()
+        if (launcher.metadata.languageVersion.asInt() != 25) {
+            throw new GradleException('The isolated Minecraft runtime requires Java 25')
+        }
+        println "MINECRAFT_RUNTIME_JAVA ${launcher.metadata.languageVersion}"
+        println "MINECRAFT_RUNTIME_EXECUTABLE ${launcher.executablePath.asFile.absolutePath}"
+        println 'MOD_BYTECODE_TARGET 21 (prebuilt external artifacts)'
     }
 }

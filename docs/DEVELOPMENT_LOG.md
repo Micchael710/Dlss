@@ -621,4 +621,22 @@ Capabilities: getter público real tras loader adaptado; puede estar intervenido
 El máximo solicitado en INI es independiente del valor reportado. Disponibilidad
 no publicada hasta init/query; no getter propio modificado ni binarios parcheados.
 Muestras: hasta3 intervalos, iniciadas con movimiento de cámara y sin reset.
-Nuevos resultados: todavía NOT_RUN; x4/x5 sólo después de PASS previo.
+Nuevos resultados al preparar la fase: todavía NOT_RUN; x4/x5 sólo después de PASS previo.
+
+### 2026-10-04 — Java25 confirmado; primer x3 detenido
+
+El usuario corrigió el runtime: Java25.0.4 requerido. Launcher aislado toolchain25;
+auditRuntimeJava verifica el javaLauncher efectivo de runClient sin lanzarlo.
+Los mods siguen con bytecode21 y sus builds previamente validados se reutilizan.
+
+El único run x3 20261004-042043-949 se lanzó erróneamente con Java21.0.12.1.
+Durante la compactación llegó a cargar mundo y terminó en crash; recuperación
+de ventana encontró que ya estaba cerrado. No se envió otro input ni se reintentó.
+NGX init/CreateFeature y64 kernel creates status0; 6 Evaluate/completion,
+count2/indices1,2. Index2 flag -1 en los dos intervalos no-reset; error de
+readiness `GPU disable metadata unavailable` propagado al presenter.
+No readbacks; writer Java buffered y archivo vacío; present count/FPS/orden
+UNKNOWN. No evidencia para atribuir el problema a Java21 ni para certificar
+MFG o descartarlo en Java25. Stop x3; x4/x5 NOT_RUN; AMD hashes intactos.
+Se preservan logs, resultado y reviewer offline conservador. No se tocan ABI
+privada, drivers, .minecraft real, DLSS SR ni AMD.

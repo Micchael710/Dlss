@@ -1,0 +1,9 @@
+{"source": "launcher.log", "line": 672, "raw": "java.util.concurrent.CompletionException: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 677, "raw": "Caused by: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 688, "raw": "java.lang.IllegalStateException: Application-managed frame presenter failed"}
+{"source": "launcher.log", "line": 718, "raw": "Caused by: java.util.concurrent.CompletionException: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 723, "raw": "Caused by: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 745, "raw": "java.lang.IllegalStateException: Application-managed frame presenter failed"}
+{"source": "launcher.log", "line": 775, "raw": "Caused by: java.util.concurrent.CompletionException: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 780, "raw": "Caused by: java.lang.IllegalStateException: GPU disable metadata unavailable"}
+{"source": "launcher.log", "line": 946, "raw": "#@!@# Game crashed! Crash report saved to: #@!@# D:\\ProjectDllsss\\runtime-baseline\\instance\\.\\crash-reports\\crash-2026-10-04_00.28.57-client.txt"}

@@ -1,0 +1,22 @@
+{
+  "index": 2,
+  "raw_signed": -1,
+  "raw_unsigned_hex": "0xffffffff",
+  "initial_buffer_value": "0xffffffff",
+  "mixed_callback_snapshots": [
+    [
+      0,
+      -1
+    ],
+    [
+      0,
+      -1
+    ]
+  ],
+  "catch_all_read_fence_failure_excluded": true,
+  "reason": "notifyFlags catch fills all flags with -1; observed first index0",
+  "GPU_output_pixel_status": "UNKNOWN",
+  "why_second_flag_has_initial_value": "UNKNOWN",
+  "source": "wisteria/native/dlssg/bridge.cpp:53-77,129-130,316,336",
+  "closed_result_clarification": "result.json preserved immutable; this later source audit narrows its conservative alternative"
+}

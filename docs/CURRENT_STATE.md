@@ -1,4 +1,36 @@
-## Fase vigente — gating de output y preparación MFG, sin PASS gráfico nuevo
+## Estado vigente — runtime Java 25; x3 detenido por metadata de output
+
+El usuario confirmó que Minecraft debe ejecutarse con Java 25. El launcher aislado
+selecciona `C:/Program Files/Java/jdk-25.0.4/bin/java.exe`; los mods precompilados
+conservan bytecode Java 21. Esto sustituye las instrucciones históricas de ejecutar
+Minecraft con Java 21. No se recompilaron los mods ni se cambiaron drivers.
+
+Run x3 `20261004-042043-949`: se lanzó por error con Java 21.0.12.1. Al recuperar
+el estado después de la compactación, ya había cargado el mundo y había terminado
+con un crash Java. Se preserva como FAIL de ese run, **no** como resultado de Java25.
+No atribuir el fallo a la versión de Java: la relación causal sigue UNKNOWN.
+
+NGX init/CreateFeature PASS, 64 eventos de creación de kernels con status0;
+3 intervalos/6 Evaluate SUCCESS y 6 completions. Count2/indices1,2; recursos
+distintos. Flags: index1=[1,0,0], index2=[1,-1,-1]. La readiness rechazó el
+segundo output (`GPU disable metadata unavailable`); no se aprobó MFG.
+El valor -1 coincide con el sentinel inicial 0xffffffff. El snapshot mixto
+[0,-1] excluye el catch-all de lectura/fence (ese camino pondría todos los
+flags a -1). No se ha probado por qué el segundo flag conserva ese valor.
+
+No hubo readbacks. El writer Java no había vaciado su buffer cuando ocurrió el
+crash: frame-sequence.log quedó vacío. Present count/order/FPS/quality UNKNOWN
+o NOT_MEASURED. No inferir cero presentaciones de ese archivo vacío.
+El contador nativo llegó a 2 outputs con disable0/completion/non-reset, pero
+ninguno tiene validación de contenido. DeviceRemoved=false/reason0 observado
+en D3D12; no error Vulkan device-lost observado. AMD hashes siguen intactos.
+
+Resultado: `logs/runtime/minecraft-dlssg-x3/20261004-042043-949/result.json`.
+x3 con Java25 NOT_RUN; x4/x5 NOT_RUN conforme al stop obligatorio. No rerun
+shadow/x2, no DLSS SR, no ray tracing, no x6. Próxima fase: auditar el contrato
+público del flag MFG y recuperar observabilidad antes de autorizar otra prueba.
+
+## Preparación previa — gating de output y MFG
 
 HEAD inicial real: b87950e3f27e05e409efb7bc959599d901363c48. El usuario cerró
 presentation20261004-033955-918; se conserva USER_INTERRUPTION / INCOMPLETE.
