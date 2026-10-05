@@ -1,0 +1,13 @@
+[2026-10-05T21:21:42Z] Verified installer SHA256 matches official release digest 2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa.
+[2026-10-05T21:21:55Z] Extracted dlss-enabler.asi statically using innounp 2.70.1 (exit code 0, 943616 bytes).
+[2026-10-05T21:22:29Z] Evaluated metadata: FileVersion=3.00.000.0, ProductVersion=3.00.000.0, SignatureStatus=NotSigned.
+[2026-10-05T21:22:49Z] Verified PE headers via dumpbin /headers: PE32+ (x64), machine=x64 (0x8664), subsystem=GUI.
+[2026-10-05T21:22:57Z] Dumped export table via dumpbin /exports: 267 exported functions.
+[2026-10-05T21:24:49Z] Audited exports against 10 NGX DLSS-G signatures: 0 matched (all 10 NOT FOUND).
+[2026-10-05T21:26:47Z] Inspected OptiScaler/framegen/nvngx/Nvngx_Arturs.h: getMaxFakeFramesCount() returns 5.
+[2026-10-05T21:26:47Z] Inspected OptiScaler/framegen/nvngx/Nvngx_Arturs.cpp: Util::LoadProxyLibrary loads dlss-enabler-headless.dll and resolves 10 NGX DLSSG D3D12 functions.
+[2026-10-05T21:27:16Z] Downloaded official Dll version/dlss-enabler.asi from artur-graniszewski/DLSS-Enabler main: SHA256 matches installer payload exactly.
+[2026-10-05T21:27:31Z] Created exact bitwise copy dlss-enabler-headless.dll: SHA256 identical.
+[2026-10-05T21:29:03Z] Dumped exports of dlss-enabler-headless.dll: exactly identical to dlss-enabler.asi (267 proxy exports).
+[2026-10-05T21:29:31Z] Evaluation conclusion: dlss-enabler.asi is an interposer / loader proxy and does NOT export NGX DLSSG functions.
+[2026-10-05T21:29:31Z] Reached CASO B: ASI_DOES_NOT_MATCH_OPTISCALER_ARTURS_CONTRACT. Execution halted cleanly without runtime execution.

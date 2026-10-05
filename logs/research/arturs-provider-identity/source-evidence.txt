@@ -1,0 +1,25 @@
+=== SOURCE EVIDENCE: DLSS ENABLER & OPTISCALER ===
+
+1. DLSS ENABLER OFFICIAL RELEASE:
+- Repository: https://github.com/artur-graniszewski/DLSS-Enabler
+- Release Tag: v0.9.4
+- Asset: dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+- Asset Size: 33007175 bytes
+- Asset SHA256: 2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa
+- Internal Installer Component: {app}\plugins\dlss-enabler.asi
+- Internal Installer Size: 943616 bytes
+- Internal Installer SHA256: a478031d27de7feca2d11896083d0d6eaf00f26e4b53e5d6e711341e36b72784
+
+2. DLSS ENABLER REPOSITORY BINARY:
+- URL: https://raw.githubusercontent.com/artur-graniszewski/DLSS-Enabler/main/Dll%20version/dlss-enabler.asi
+- Repository Size: 943616 bytes
+- Repository SHA256: a478031d27de7feca2d11896083d0d6eaf00f26e4b53e5d6e711341e36b72784
+- Match with Installer ASI: YES (100% bit-for-bit identical)
+
+3. OPTISCALER SOURCE REPOSITORY:
+- Repository: https://github.com/optiscaler/OptiScaler
+- Default Branch: master
+- Source File 1: OptiScaler/framegen/nvngx/Nvngx_Arturs.h
+- Source File 2: OptiScaler/framegen/nvngx/Nvngx_Arturs.cpp
+- Expected Headless Provider Name: dlss-enabler-headless.dll (line 46 of Nvngx_Arturs.cpp)
+- Max Fake Frames Declaration: return 5; (line 16 of Nvngx_Arturs.h)

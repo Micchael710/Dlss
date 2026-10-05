@@ -1,0 +1,27 @@
+=== HASH AND INTEGRITY COMPARISON ===
+
+INSTALLER:
+Path: D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+Size: 33007175 bytes
+SHA256: 2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa
+Status: MATCHES_OFFICIAL_GITHUB_RELEASE_DIGEST
+
+EXTRACTED dlss-enabler.asi (FROM INSTALLER):
+Path: D:\ProjectDllsss-research\arturs-provider-validation\original\dlss-enabler.asi
+Size: 943616 bytes
+SHA256: a478031d27de7feca2d11896083d0d6eaf00f26e4b53e5d6e711341e36b72784
+
+OFFICIAL REPOSITORY dlss-enabler.asi (FROM GITHUB MAIN):
+Path: D:\ProjectDllsss-research\arturs-provider-validation\repo_asi\dlss-enabler.asi
+Size: 943616 bytes
+SHA256: a478031d27de7feca2d11896083d0d6eaf00f26e4b53e5d6e711341e36b72784
+Comparison: INSTALLER_ASI_MATCHES_OFFICIAL_REPO_ASI=YES
+
+RENAMED HEADLESS dlss-enabler-headless.dll:
+Path: D:\ProjectDllsss-research\arturs-provider-validation\headless\dlss-enabler-headless.dll
+Size: 943616 bytes
+SHA256: a478031d27de7feca2d11896083d0d6eaf00f26e4b53e5d6e711341e36b72784
+Comparison: HEADLESS_BINARY_IDENTICAL_TO_ASI=YES
+Export Table Comparison: HEADLESS_EXPORT_TABLE_IDENTICAL=YES
+Total Export Count: 267
+Matching OptiScaler NGX Export Count: 0

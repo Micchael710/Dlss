@@ -1,0 +1,35 @@
+=== OPTISCALER ARTURS PROVIDER CONTRACT ===
+
+1. SOURCE DEFINITIONS:
+- OptiScaler File: OptiScaler/framegen/nvngx/Nvngx_Arturs.cpp
+- OptiScaler Header: OptiScaler/framegen/nvngx/Nvngx_Arturs.h
+- Loading Function: Util::LoadProxyLibrary(L"dlss-enabler-headless.dll", L"", optiPath, &memModule, &dll);
+- Architecture Type: FGNvngxReplacement::Arturs
+- Declared Max Fake Frames: 5 (from Nvngx_Arturs::getMaxFakeFramesCount() in Nvngx_Arturs.h)
+
+2. EXPECTED EXPORT FUNCTIONS (via GetProcAddress):
+1. DLSSG_NVSDK_NGX_D3D12_Init
+2. DLSSG_NVSDK_NGX_D3D12_Init_Ext
+3. DLSSG_NVSDK_NGX_D3D12_Shutdown
+4. DLSSG_NVSDK_NGX_D3D12_Shutdown1
+5. DLSSG_NVSDK_NGX_D3D12_GetScratchBufferSize
+6. DLSSG_NVSDK_NGX_D3D12_CreateFeature
+7. DLSSG_NVSDK_NGX_D3D12_ReleaseFeature
+8. DLSSG_NVSDK_NGX_D3D12_GetFeatureRequirements
+9. DLSSG_NVSDK_NGX_D3D12_EvaluateFeature
+10. DLSSG_NVSDK_NGX_D3D12_PopulateParameters_Impl
+
+3. CONTRACT AUDIT SUMMARY:
+OPTISCALER_EXPECTED_EXPORT_COUNT=10
+PROVIDER_MATCHED_EXPORT_COUNT=0
+ARTURS_INIT_EXPORT_PRESENT=NO
+ARTURS_INIT_EXT_EXPORT_PRESENT=NO
+ARTURS_CREATE_EXPORT_PRESENT=NO
+ARTURS_EVALUATE_EXPORT_PRESENT=NO
+ARTURS_RELEASE_EXPORT_PRESENT=NO
+ARTURS_POPULATE_EXPORT_PRESENT=NO
+OPTISCALER_ARTURS_MAX_FAKE_FRAMES_STATIC=5
+OPTISCALER_ARTURS_MAX_FAKE_FRAMES_SOURCE=OptiScaler/framegen/nvngx/Nvngx_Arturs.h line 16
+
+4. CONCLUSION:
+dlss-enabler.asi (and its renamed copy dlss-enabler-headless.dll) is a game-loading proxy / hook DLL (version.dll/winmm.dll wrapper with DlssEnablerLogger and InitializeASI). It DOES NOT contain the NGX DLSS-G frame generation provider export table required by OptiScaler's Nvngx_Arturs backend.
