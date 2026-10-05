@@ -1,0 +1,22 @@
+﻿-- Configuring done (0.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: D:/ProjectDllsss/builds/experimental/streamline-mfg-x3
+[1/2] Building CXX object CMakeFiles\streamline_mfg_x3.dir\main.cpp.obj
+FAILED: [code=2] CMakeFiles/streamline_mfg_x3.dir/main.cpp.obj 
+"D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe"  /nologo /TP -DNOMINMAX -DUNICODE -D_UNICODE -ID:\ProjectDllsss\experiments\streamline-mfg-x3\..\..\superresolution\native\cpp\third_party\Streamline\include /DWIN32 /D_WINDOWS /EHsc /O2 /Ob2 /DNDEBUG -std:c++17 -MD /showIncludes /FoCMakeFiles\streamline_mfg_x3.dir\main.cpp.obj /FdCMakeFiles\streamline_mfg_x3.dir\ /FS -c D:\ProjectDllsss\experiments\streamline-mfg-x3\main.cpp
+D:\ProjectDllsss\experiments\streamline-mfg-x3\main.cpp(278): error C2039: 'renderingGameFrames': is not a member of 'sl::Constants'
+D:\ProjectDllsss\superresolution\native\cpp\third_party\Streamline\include\sl_consts.h(182): note: see declaration of 'sl::Constants'
+ninja: build stopped: subcommand failed.
+powershell.exe : Build failed
+At line:1 char:5
++ & { & powershell -NoProfile -ExecutionPolicy Bypass -File experiments ...
++     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Build failed:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+At D:\ProjectDllsss\experiments\streamline-mfg-x3\build.ps1:14 char:25
++ if($LASTEXITCODE -ne 0){throw 'Build failed'}
++                         ~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : OperationStopped: (Build failed:String) [], RuntimeException
+    + FullyQualifiedErrorId : Build failed
+ 
