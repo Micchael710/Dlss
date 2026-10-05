@@ -2,7 +2,12 @@ $ErrorActionPreference='Stop'
 $taskRoot=Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $taskRun=Join-Path $taskRoot 'logs/research/hybrid-mfg-x4-generation'
 $taskProcessFile=Join-Path $taskRun 'process-result.json'
-if(Test-Path $taskProcessFile){throw 'One run already requested; STOP, no retry'}
+if(Test-Path $taskProcessFile){
+ $taskExisting=Get-Content $taskProcessFile -Raw | ConvertFrom-Json
+ if($taskExisting.run_count -ge 1 -or $taskExisting.launched -eq $true){
+  throw 'One run already executed or launched; STOP, no retry'
+ }
+}
 $taskExe=Join-Path $PSScriptRoot 'build/hybrid_mfg_x4.exe'
 if(!(Test-Path $taskExe)){throw 'Build missing'}
 $taskDll=Join-Path $taskRoot 'logs/research/dlssg-ampere/deep/components/sdli-0.3.5/version.dll'
@@ -12,7 +17,7 @@ if((Get-FileHash $taskRuntime).Hash.ToLowerInvariant() -ne 'ff6e90eb78b827927dff
 foreach($subDir in @('component','stock-runtime','backend','bundle-cache')){New-Item -ItemType Directory -Path "$taskRun/$subDir" -Force | Out-Null}
 Copy-Item -LiteralPath $taskDll -Destination "$taskRun/component/version.dll"
 Copy-Item -LiteralPath $taskRuntime -Destination "$taskRun/stock-runtime/nvngx_dlssg.dll"
-$taskState=[ordered]@{run_count=1;started_utc=[DateTime]::UtcNow.ToString('o');process_exit_code=$null;timeout=$false;crash=$null;retry_allowed=$false}
+$taskState=[ordered]@{run_count=1;launched=$true;started_utc=[DateTime]::UtcNow.ToString('o');process_exit_code=$null;timeout=$false;crash=$null;retry_allowed=$false}
 $taskState | ConvertTo-Json | Set-Content $taskProcessFile
 $taskArgs='"'+$taskRun+'" "'+$taskRun+'/component/version.dll" "'+$taskRun+'/stock-runtime" "'+$PSScriptRoot+'/build"'
 $taskWorker=Start-Process -FilePath $taskExe -ArgumentList $taskArgs -WindowStyle Hidden -WorkingDirectory $taskRun -PassThru -RedirectStandardOutput "$taskRun/harness.log" -RedirectStandardError "$taskRun/stderr.log"

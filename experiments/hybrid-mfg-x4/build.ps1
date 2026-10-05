@@ -4,7 +4,7 @@ $taskEvidence=Join-Path $taskRoot 'logs/research/hybrid-mfg-x4-generation'
 $taskCounter=Join-Path $PSScriptRoot 'build/build-count.txt'
 New-Item -ItemType Directory -Path "$PSScriptRoot/build" -Force | Out-Null
 $taskCount=if(Test-Path $taskCounter){[int](Get-Content $taskCounter)}else{0}
-if($taskCount -ge 2){throw 'Two builds already used; STOP'}
+if($taskCount -ge 3){throw 'Three builds already used; STOP'}
 ($taskCount+1) | Set-Content $taskCounter
 $taskVs='D:\Programs File2\Microsoft Visual Studio\18\Community'
 $taskDev=Join-Path $taskVs 'Common7/Tools/VsDevCmd.bat'

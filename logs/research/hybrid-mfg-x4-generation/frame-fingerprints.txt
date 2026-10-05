@@ -1,1 +1,8 @@
-NOT_MEASURED: no runtime; hashes/positions/sentinels are unknown.
+a fingerprint=33df800084ad1000 position=443.5 objectPixels=43008 resource=000001E563FCC090
+g25 fingerprint=cf5710007f6b7000 position=447.5 objectPixels=43008 resource=000001E56134EF10
+g50 fingerprint=9c05512a6cf62858 position=451.409 objectPixels=42907 resource=000001E564365050
+g75 fingerprint=6d5ad0001ccf0000 position=455.5 objectPixels=43008 resource=000001E563FDD060
+b fingerprint=4374d8001b5c1000 position=459.5 objectPixels=43008 resource=000001E563FF4190
+sentinel0 fingerprint=088b70004ddb5000
+sentinel1 fingerprint=719ab0007bdb5000
+sentinel2 fingerprint=86cdf00051db5000

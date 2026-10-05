@@ -1,7 +1,10 @@
 {
-  "run_count": 0,
-  "launched": false,
-  "process_exit_code": null,
-  "crash": null,
-  "reason": "FIXTURE_SHADER_BUILD_FAILED"
+    "run_count":  1,
+    "launched":  true,
+    "started_utc":  "2026-10-05T20:54:22.1799200Z",
+    "process_exit_code":  1,
+    "timeout":  false,
+    "crash":  false,
+    "retry_allowed":  false,
+    "completed_utc":  "2026-10-05T20:54:26.2822790Z"
 }
