@@ -3,5 +3,5 @@
   "launched": false,
   "process_exit_code": null,
   "crash": null,
-  "reason": "BUILD_TOOLCHAIN_C1902_PROGRAM_DATABASE_MANAGER_MISMATCH"
+  "reason": "C1902_ROOT_CAUSE_NOT_RESOLVED"
 }

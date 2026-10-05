@@ -15,3 +15,14 @@ Evaluate, always count=1/index=1; never NVIDIA count=2.
 Baseline preservation verified by Git: only the two new experiment/evidence
 folders are changed. No Minecraft, direct NVIDIA, Streamline, SR, AMD or
 PresentWorker modification or execution in this iteration. No web research.
+
+Follow-up at a51f909e565c668cffdb444b8f7f8a06a1da56f9:
+No compilation, test compile, runtime or prototype/build script change.
+Fresh shell has no cl/link/PDB on PATH. Current installation VsDevCmd prioritizes
+14.51.36231 Hostx64/x64. Compiler FileVersion19.51.36244.0, compiler/link/PDB
+ProductVersion14.51.36244.0. Both toolset and Common7/IDE PDB copies match.
+No running mspdbsrv observed; none terminated. Version/path contamination not
+proven. Matching files and PATH do not establish which PDB endpoint was used by
+the failed compilation or explain C1902. Root cause unresolved; authorized second
+build deliberately not consumed per user stop condition. Cumulative builds1/run0.
+Full paths/versions/environment in toolchain-diagnostic.txt. No global changes.

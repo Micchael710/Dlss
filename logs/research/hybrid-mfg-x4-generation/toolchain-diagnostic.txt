@@ -1,0 +1,54 @@
+PHASE=VsDevCmd environment; no compilation
+PATH=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\VC\VCPackages;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TestWindow;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\TeamFoundation\Team Explorer;D:\Programs File2\Microsoft Visual Studio\18\Community\MSBuild\Current\bin\Roslyn;C:\Program Files (x86)\Microsoft SDKs\Windows\v10.0A\bin\NETFX 4.8 Tools\x64\;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\FSharp\Tools;D:\Programs File2\Microsoft Visual Studio\18\Community\Team Tools\DiagnosticsHub\Collector;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\Extensions\Microsoft\CodeCoverage.Console;D:\Windows Kits\10\bin\10.0.26100.0\\x64;D:\Windows Kits\10\bin\\x64;D:\Programs File2\Microsoft Visual Studio\18\Community\\MSBuild\Current\Bin\amd64;C:\Windows\Microsoft.NET\Framework64\v4.0.30319;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\Tools\;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\Users\micha\.codex\tmp\arg0\codex-arg0h2Ezqa;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\libheif\libheif\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\jxrlib\jxrlib\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override;C:\Program Files\Common Files\Oracle\Java\javapath;D:\Programs File2\Eclipse Adoptium\jdk-21.0.12.101-hotspot\bin;D:\Python311\Scripts\;D:\Python311\;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;D:\Programs File2\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Users\micha\AppData\Local\Microsoft\WindowsApps;C:\Program Files\dotnet\;D:\Programs File2\Git\cmd;D:\Programs File2\nodejs\;D:\Windows Kits\10\Windows Performance Toolkit\;C:\Users\micha\.cargo\bin;C:\Users\micha\.local\bin;C:\Users\micha\.dotnet\tools;C:\Users\micha\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\micha\AppData\Local\Python\bin;C:\Users\micha\AppData\Roaming\npm;D:\Programs File2\Antigravity IDE\bin;D:\Programs File2\AntiGravity\Antigravity IDE\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;C:\Users\micha\AppData\Local\OpenAI\Codex\bin\f1e5e36960c35938;C:\Users\micha\AppData\Local\OpenAI\Codex\bin\8aaf1547b825b104;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\Ninja;D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\VC\Linux\bin\ConnectionManagerExe;D:\Programs File2\Microsoft Visual Studio\18\Community\VC\vcpkg
+VCToolsInstallDir=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\
+VSINSTALLDIR=D:\Programs File2\Microsoft Visual Studio\18\Community\
+WindowsSdkDir=D:\Windows Kits\10\
+WindowsSdkVerBinPath=D:\Windows Kits\10\bin\10.0.26100.0\
+WHERE=cl.exe
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe
+WHERE=link.exe
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe
+WHERE=mspdbsrv.exe
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbsrv.exe
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdbsrv.exe
+WHERE=mspdbcore.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbcore.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdbcore.dll
+WHERE=mspdb*.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdb140.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbcore.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbst.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdb140.dll
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdbcore.dll
+GET_COMMAND_CL=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\cl.exe FILE_VERSION=19.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\link.exe FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdb140.dll FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbcore.dll FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbsrv.exe FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\Hostx64\x64\mspdbst.dll FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+PDB_PROCESSES=
+PHASE=additional local file versions; no compilation
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdbsrv.exe FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdbcore.dll FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+D:\Programs File2\Microsoft Visual Studio\18\Community\Common7\IDE\mspdb140.dll FILE_VERSION=14.51.36244.0 PRODUCT_VERSION=14.51.36244.0
+PHASE=initial shell
+CL_PATH_BEFORE_VSDEVCMD=NOT_ON_PATH
+LINK_PATH_BEFORE_VSDEVCMD=NOT_ON_PATH
+MSPDB_PATHS_BEFORE_VSDEVCMD=NOT_ON_PATH
+VCToolsInstallDir_BEFORE_VSDEVCMD=EMPTY
+VSINSTALLDIR_BEFORE_VSDEVCMD=EMPTY
+WindowsSdkDir_BEFORE_VSDEVCMD=EMPTY
+WindowsSdkVerBinPath_BEFORE_VSDEVCMD=EMPTY
+STALE_MSPDBSRV_FOUND=NO_PROCESS_OBSERVED
+MSPDBSRV_TERMINATED=NO
+MSPDBSRV_TERMINATION_REASON=No incompatible running process demonstrated
+INITIAL_PATH=C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\Users\micha\.codex\tmp\arg0\codex-arg0h2Ezqa;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\libheif\libheif\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\jxrlib\jxrlib\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\poppler\Library\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\override;C:\Program Files\Common Files\Oracle\Java\javapath;D:\Programs File2\Eclipse Adoptium\jdk-21.0.12.101-hotspot\bin;D:\Python311\Scripts\;D:\Python311\;C:\Program Files (x86)\Razer Chroma SDK\bin;C:\Program Files\Razer Chroma SDK\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\NVIDIA Corporation\NVIDIA App\NvDLISR;D:\Programs File2\NVIDIA Corporation\NVIDIA App\NvDLISR;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\powershell;C:\WINDOWS\system32\config\systemprofile\AppData\Local\Microsoft\WindowsApps;C:\Program Files (x86)\Razer\ChromaBroadcast\bin;C:\Program Files\Razer\ChromaBroadcast\bin;C:\Users\micha\AppData\Local\Microsoft\WindowsApps;C:\Program Files\dotnet\;D:\Programs File2\Git\cmd;D:\Programs File2\nodejs\;D:\Windows Kits\10\Windows Performance Toolkit\;C:\Users\micha\.cargo\bin;C:\Users\micha\.local\bin;C:\Users\micha\.dotnet\tools;C:\Users\micha\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\micha\AppData\Local\Python\bin;C:\Users\micha\AppData\Roaming\npm;D:\Programs File2\Antigravity IDE\bin;D:\Programs File2\AntiGravity\Antigravity IDE\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\bin\fallback;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\node\bin;C:\Users\micha\.cache\codex-runtimes\codex-primary-runtime\dependencies\native\git\cmd;C:\Users\micha\AppData\Local\OpenAI\Codex\bin\f1e5e36960c35938;C:\Users\micha\AppData\Local\OpenAI\Codex\bin\8aaf1547b825b104
+ON_DISK_VERSIONS_COHERENT=YES
+PATH_PRIORITIZES_EXPECTED_TOOLSET=YES
+TOOLCHAIN_ENVIRONMENT_COHERENT=NOT_DEMONSTRATED_FOR_ACTUAL_PDB_INTERACTION
+C1902_ROOT_CAUSE=UNKNOWN; no mismatched file/server identified without compilation
+C1902_RESOLVED=NO
+BUILD_2_USED=NO
+COMPILE_TESTS_THIS_ITERATION=0
+FAIL_STAGE=C1902_ROOT_CAUSE_NOT_RESOLVED
