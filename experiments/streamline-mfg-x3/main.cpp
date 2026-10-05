@@ -272,12 +272,60 @@ int wmain(int argc,wchar_t** argv){
         auto stateFn=feature<PFun_slDLSSGGetState>(interposer,sl::kFeatureDLSS_G,"slDLSSGGetState");auto optionsFn=feature<PFun_slDLSSGSetOptions>(interposer,sl::kFeatureDLSS_G,"slDLSSGSetOptions");auto reflex=feature<PFun_slReflexSetOptions>(interposer,sl::kFeatureReflex,"slReflexSetOptions");auto sleep=feature<PFun_slReflexSleep>(interposer,sl::kFeatureReflex,"slReflexSleep");auto marker=feature<PFun_slPCLSetMarker>(interposer,sl::kFeaturePCL,"slPCLSetMarker");
         auto tokenFn=api<PFun_slGetNewFrameToken>(interposer,"slGetNewFrameToken");auto constantsFn=api<PFun_slSetConstants>(interposer,"slSetConstants");auto tagFn=api<PFun_slSetTagForFrame>(interposer,"slSetTagForFrame");sl::ViewportHandle viewport{0};
         stage="REFLEX";sl::ReflexOptions ro{};ro.mode=sl::ReflexMode::eLowLatency;ro.frameLimitUs=16667;result("REFLEX_OPTIONS_RESULT",reflex(ro));sl::DLSSGOptions options{};options.mode=sl::DLSSGMode::eOn;options.numFramesToGenerate=generatedCount;std::cout<<"REQUESTED_GENERATED_COUNT="<<generatedCount<<std::endl;stage="SET_OPTIONS";result("SET_OPTIONS_RESULT",optionsFn(viewport,options));
+        UINT successfulRealPresentCount=0;
         for(UINT frame=0;frame<60;frame++){
             MSG message{};while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}stage="FRAME";sl::FrameToken* token{};result("TOKEN_RESULT",tokenFn(token,&frame));result("REFLEX_SLEEP_RESULT",sleep(*token));result("SIM_BEGIN_RESULT",marker(sl::PCLMarker::eSimulationStart,*token));
             sl::Constants c{};c.cameraViewToClip=c.clipToCameraView=c.clipToLensClip=c.clipToPrevClip=c.prevClipToClip=identity();c.cameraViewToClip.setRow(0,{float(Renderer::H)/Renderer::W,0,0,0});c.cameraViewToClip.setRow(2,{0,0,1.f/0.9f,0});c.cameraViewToClip.setRow(3,{0,0,-0.1f/0.9f,1});c.clipToCameraView.setRow(0,{float(Renderer::W)/Renderer::H,0,0,0});c.clipToCameraView.setRow(2,{0,0,0.9f,0});c.clipToCameraView.setRow(3,{0,0,0.1f,1});c.jitterOffset={0,0};c.mvecScale={1,1};c.cameraPinholeOffset={0,0};c.cameraPos={0,0,0};c.cameraUp={0,1,0};c.cameraRight={1,0,0};c.cameraFwd={0,0,1};c.cameraNear=0.1f;c.cameraFar=1;c.cameraFOV=1.5707963f;c.cameraAspectRatio=float(Renderer::W)/Renderer::H;c.motionVectorsInvalidValue=-65504;c.depthInverted=sl::eFalse;c.cameraMotionIncluded=sl::eTrue;c.motionVectors3D=sl::eFalse;c.reset=frame<3?sl::eTrue:sl::eFalse;c.orthographicProjection=sl::eTrue;c.motionVectorsDilated=sl::eFalse;c.motionVectorsJittered=sl::eFalse;result("CONSTANTS_RESULT",constantsFn(c,*token,viewport));result("SIM_END_RESULT",marker(sl::PCLMarker::eSimulationEnd,*token));result("RENDER_BEGIN_RESULT",marker(sl::PCLMarker::eRenderSubmitStart,*token));renderer.draw(frame);
-            sl::Resource depth(sl::ResourceType::eTex2d,renderer.depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE),motion(sl::ResourceType::eTex2d,renderer.motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);sl::ResourceTag tags[]={ {&depth,sl::kBufferTypeDepth,sl::ResourceLifecycle::eValidUntilPresent},{&motion,sl::kBufferTypeMotionVectors,sl::ResourceLifecycle::eValidUntilPresent}};result("TAGS_RESULT",tagFn(*token,viewport,tags,2,nullptr));result("RENDER_END_RESULT",marker(sl::PCLMarker::eRenderSubmitEnd,*token));result("PRESENT_BEGIN_RESULT",marker(sl::PCLMarker::ePresentStart,*token));stage="PRESENT";hr(renderer.swap->Present(0,0));std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;result("PRESENT_END_RESULT",marker(sl::PCLMarker::ePresentEnd,*token));stage="GET_RUNTIME_STATE";sl::DLSSGState state{};result("STATE_RESULT",stateFn(viewport,state,nullptr));std::cout<<"RUNTIME_STATE frame="<<frame<<" status="<<unsigned(state.status)<<" numFramesActuallyPresented="<<state.numFramesActuallyPresented<<" max="<<state.numFramesToGenerateMax<<" estimatedVRAM="<<state.estimatedVRAMUsageInBytes<<std::endl;
+            sl::Resource depth(sl::ResourceType::eTex2d,renderer.depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE),motion(sl::ResourceType::eTex2d,renderer.motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);sl::ResourceTag tags[]={ {&depth,sl::kBufferTypeDepth,sl::ResourceLifecycle::eValidUntilPresent},{&motion,sl::kBufferTypeMotionVectors,sl::ResourceLifecycle::eValidUntilPresent}};result("TAGS_RESULT",tagFn(*token,viewport,tags,2,nullptr));result("RENDER_END_RESULT",marker(sl::PCLMarker::eRenderSubmitEnd,*token));result("PRESENT_BEGIN_RESULT",marker(sl::PCLMarker::ePresentStart,*token));
+            UINT64 d3dBefore=0,dxgiBefore=0;
+            if(frame==0){
+                d3dBefore=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
+                dxgiBefore=dxgiInfoQueue?dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL):0;
+            }
+            stage="PRESENT";
+            HRESULT presented=renderer.swap->Present(0,0);
+            if(frame==0){
+                std::cout<<"FIRST_PRESENT_RESULT="<<(SUCCEEDED(presented)?"SUCCESS":"FAIL")<<std::endl;
+                std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;
+                std::ofstream valLog(logs/"validation-messages.log");
+                UINT64 d3dAfter=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
+                UINT64 dxgiAfter=dxgiInfoQueue?dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL):0;
+                for(UINT64 i=d3dBefore;i<d3dAfter;++i){
+                    SIZE_T size=0;d3dInfoQueue->GetMessage(i,nullptr,&size);
+                    if(size>0){
+                        std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<D3D12_MESSAGE*>(buf.data());
+                        if(SUCCEEDED(d3dInfoQueue->GetMessage(i,m,&size))){
+                            valLog<<"D3D12: "<<(m->pDescription?m->pDescription:"")<<"\n";
+                        }
+                    }
+                }
+                for(UINT64 i=dxgiBefore;i<dxgiAfter;++i){
+                    SIZE_T size=0;dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL,i,nullptr,&size);
+                    if(size>0){
+                        std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>(buf.data());
+                        if(SUCCEEDED(dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL,i,m,&size))){
+                            valLog<<"DXGI: "<<(m->pDescription?m->pDescription:"")<<"\n";
+                        }
+                    }
+                }
+                valLog.close();
+                if(FAILED(presented)){std::cout<<"PRESENT_END_EXECUTED=NO"<<std::endl;hr(presented);}
+            }else{
+                if(FAILED(presented)){std::cout<<"FAILED_FRAME_INDEX="<<frame<<std::endl;hr(presented);}
+            }
+            std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;
+            successfulRealPresentCount++;
+            result("PRESENT_END_RESULT",marker(sl::PCLMarker::ePresentEnd,*token));
+            stage="GET_RUNTIME_STATE";
+            sl::DLSSGState state{};
+            result("STATE_RESULT",stateFn(viewport,state,nullptr));
+            std::cout<<"RUNTIME_STATE frame="<<frame<<" status="<<unsigned(state.status)<<" numFramesActuallyPresented="<<state.numFramesActuallyPresented<<" max="<<state.numFramesToGenerateMax<<" estimatedVRAM="<<state.estimatedVRAMUsageInBytes<<std::endl;
+            std::cout<<"DLSSG_STATE_STATUS="<<unsigned(state.status)<<std::endl;
+            std::cout<<"DLSSG_STATE_NUM_FRAMES_TO_GENERATE_MAX="<<state.numFramesToGenerateMax<<std::endl;
+            std::cout<<"DLSSG_STATE_NUM_FRAMES_ACTUALLY_PRESENTED="<<state.numFramesActuallyPresented<<std::endl;
             if(state.status!=sl::DLSSGStatus::eOk)throw std::runtime_error("Nonzero runtime DLSSGStatus");
         }
+        std::cout<<"SUCCESSFUL_REAL_PRESENT_COUNT="<<successfulRealPresentCount<<std::endl;
         stage="DRAIN";renderer.drain();options.mode=sl::DLSSGMode::eOff;result("DLSSG_OFF_RESULT",optionsFn(viewport,options));renderer.drain();std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;loadedModules();stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;return 0;
     }catch(const std::exception& e){std::cout<<"FAIL_STAGE="<<stage<<"\nERROR="<<e.what()<<std::endl;if(renderer.device)std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;try{renderer.drain();}catch(...){std::cout<<"TERMINAL_DRAIN_FAILED=YES"<<std::endl;}if(initialized&&shutdown)std::cout<<"STREAMLINE_SHUTDOWN_RESULT="<<unsigned(shutdown())<<std::endl;return 1;}
 }
