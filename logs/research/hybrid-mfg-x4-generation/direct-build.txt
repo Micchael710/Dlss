@@ -1,0 +1,14 @@
+DIRECT_BUILD_CL_PATH=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe
+DIRECT_BUILD_LINK_PATH=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\link.exe
+CL_ENV_BEFORE=
+_CL__ENV_BEFORE=
+LINK_ENV_BEFORE=
+_LINK__ENV_BEFORE=
+CL_ENV_NEUTRALIZED=YES
+DIRECT_BUILD_ARGUMENTS=/nologo | /std:c++20 | /EHsc | /O2 | /MT | /DNDEBUG | /DNOMINMAX | /DWIN32_LEAN_AND_MEAN | /utf-8 | /W4 | /ID:\ProjectDllsss\logs\research\dlssg-ampere\deep\official-sdk\include | /FoD:\ProjectDllsss\experiments\hybrid-mfg-x4\build\hybrid_mfg_x4.obj | /FeD:\ProjectDllsss\experiments\hybrid-mfg-x4\build\hybrid_mfg_x4.exe | D:\ProjectDllsss\experiments\hybrid-mfg-x4\main.cpp | /link | /INCREMENTAL:NO | /OPT:REF | /OPT:ICF | D:\ProjectDllsss\experiments\ngx-dlssg-probe\vendor\nvsdk_ngx_s.lib | advapi32.lib | user32.lib | shell32.lib | ole32.lib | dxgi.lib | d3d12.lib | d3dcompiler.lib | version.lib | bcrypt.lib | wintrust.lib | psapi.lib | shlwapi.lib
+CL_EXIT_CODE=0
+CPP_EXE_CREATED=YES
+PDB_FILES_CREATED=0
+DIRECT_CPP_BUILD=PASS
+DIRECT_LINK=PASS
+C1902_BYPASS_RESULT=PASS

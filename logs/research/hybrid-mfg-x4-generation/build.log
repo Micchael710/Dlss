@@ -32,3 +32,17 @@ Call Stack (most recent call first):
 
 
 -- Configuring incomplete, errors occurred!
+BUILD_COUNT=2
+DIRECT_BUILD_CL_PATH=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\cl.exe
+DIRECT_BUILD_LINK_PATH=D:\Programs File2\Microsoft Visual Studio\18\Community\VC\Tools\MSVC\14.51.36231\bin\HostX64\x64\link.exe
+CL_ENV_BEFORE=
+_CL__ENV_BEFORE=
+LINK_ENV_BEFORE=
+_LINK__ENV_BEFORE=
+CL_ENV_NEUTRALIZED=YES
+main.cpp
+D:\ProjectDllsss\experiments\hybrid-mfg-x4\HybridInterpolationCS.hlsl(19,19-30): error X3129: warning treated as error
+D:\ProjectDllsss\experiments\hybrid-mfg-x4\HybridInterpolationCS.hlsl(19,19-30): error X3203: signed/unsigned mismatch, unsigned assumed
+D:\ProjectDllsss\experiments\hybrid-mfg-x4\HybridInterpolationCS.hlsl(19,35-51): error X3203: signed/unsigned mismatch, unsigned assumed
+
+compilation failed; no code produced

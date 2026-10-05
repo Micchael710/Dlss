@@ -1,28 +1,24 @@
-Result: BUILD BLOCKED / GPU generation NOT VALIDATED.
-One build attempt, zero runtime executions. CMake MSVC compiler check failed on
-its own trivial testCXXCompiler.cxx with fatal C1902 Program database manager
-mismatch. Failure occurred before compiling main.cpp or any HLSL entry point.
-User permits a second build only for a trivial local error caused by new code;
-this compiler-installation/environment failure does not qualify. No retry.
+Result: BUILD #2 FAILED AT SHADER COMPILATION / RUN_COUNT=0 / STOP.
 
-All source is a pending standalone D3D12 prototype. Generation booleans,
-fingerprints, centroids, CPU transport observations, device/crash/exit results
-are UNKNOWN/NOT_RUN, not inherited from historical x2 PASS. No presentation.
-Expected diagnostic readback if later authorized: 128 bytes GPU reductions plus
-16 bytes public NGX disable status. Expected history: four warmups and one target
-Evaluate, always count=1/index=1; never NVIDIA count=2.
+Investigation of interrupted state:
+Codex completed the transition to direct MSVC release compilation in build.ps1 and executed BUILD #2.
+Evidence:
+- experiments/hybrid-mfg-x4/build/build-count.txt incremented to 2 (10/5/2026 4:27:16 PM).
+- logs/research/hybrid-mfg-x4-generation/build.log records BUILD_COUNT=2, cl invocation, and fxc failure.
+- logs/research/hybrid-mfg-x4-generation/direct-build.txt records cl.exe exit code 0, hybrid_mfg_x4.exe created (458,240 bytes), PDB_FILES_CREATED=0.
+- C1902 bypass succeeded: cl.exe compiled and linked main.cpp directly in Release mode without PDB.
 
-Baseline preservation verified by Git: only the two new experiment/evidence
-folders are changed. No Minecraft, direct NVIDIA, Streamline, SR, AMD or
-PresentWorker modification or execution in this iteration. No web research.
+Failure cause:
+Direct C++ compilation passed (DIRECT_CPP_BUILD=PASS, DIRECT_LINK=PASS), but fxc.exe shader compilation failed on the first entry point (FixtureCS):
+HybridInterpolationCS.hlsl(19,19-30): error X3129: warning treated as error
+HybridInterpolationCS.hlsl(19,19-30): error X3203: signed/unsigned mismatch, unsigned assumed
+HybridInterpolationCS.hlsl(19,35-51): error X3203: signed/unsigned mismatch, unsigned assumed
+compilation failed; no code produced.
+build.ps1 aborted with "Shader build failed: FixtureCS" and no .cso bytecode files were produced.
 
-Follow-up at a51f909e565c668cffdb444b8f7f8a06a1da56f9:
-No compilation, test compile, runtime or prototype/build script change.
-Fresh shell has no cl/link/PDB on PATH. Current installation VsDevCmd prioritizes
-14.51.36231 Hostx64/x64. Compiler FileVersion19.51.36244.0, compiler/link/PDB
-ProductVersion14.51.36244.0. Both toolset and Common7/IDE PDB copies match.
-No running mspdbsrv observed; none terminated. Version/path contamination not
-proven. Matching files and PATH do not establish which PDB endpoint was used by
-the failed compilation or explain C1902. Root cause unresolved; authorized second
-build deliberately not consumed per user stop condition. Cumulative builds1/run0.
-Full paths/versions/environment in toolchain-diagnostic.txt. No global changes.
+Per project rule:
+- BUILD_COUNT=2 already consumed by the interrupted agent.
+- NO BUILD #3 is authorized.
+- FAIL_STAGE=FIXTURE_SHADER_BUILD.
+- RUN_COUNT=0; harness was not and cannot be executed without shaders.
+- STOP.
