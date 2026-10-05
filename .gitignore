@@ -138,3 +138,7 @@ logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2361472.j
 # Raw OFF per-frame Reflex sleep telemetry; bounded evidence committed.
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_1049028.jsonl
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_1049028.jsonl
+
+# Raw OFF full PCL/Reflex markers telemetry; bounded evidence committed.
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_1458144.jsonl
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_1458144.jsonl
