@@ -1,0 +1,341 @@
+[streamline][info]log.cpp:131[logva] Log file D:\ProjectDllsss\logs\research\streamline-mfg-x3\20261004-off-reflex-sleep\sl.log opened on 04.10.2026 at 20-13-52
+[20-13-52][streamline][info][tid:1050688][0s:005ms:114us]pluginManager.cpp:423[setHostSDKVersion] Streamline v2.12.0.17026aaf3 - built on Mon Jun 22 13:03:05 2026 - host SDK v2.12.0
+[20-13-53][streamline][info][tid:1050688][0s:816ms:737us]pluginManager.cpp:538[findPlugins] Looking for plugins in D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime ...
+[20-13-53][streamline][info][tid:1050688][0s:817ms:281us]pluginManager.cpp:1024[loadPlugins] eLoadDownloadedPlugins flag not passed to preferences, OTA'd plugins will not be loaded!
+[20-13-54][streamline][info][tid:1050688][1s:327ms:133us]plugin.cpp:94[isAppDenylisted] Plugin path: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\
+[20-13-54][streamline][info][tid:1050688][1s:329ms:416us]plugin.cpp:110[isAppDenylisted] Plugin is not from OTA - denylist does not apply
+[20-13-54][streamline][info][tid:1050688][1s:329ms:648us]commonInterface.cpp:168[getSystemCaps] Enumerating up to 8 adapters but only one of them can be used to create a device - no mGPU support in this SDK
+[20-13-54][streamline][info][tid:1050688][1s:413ms:496us]commonInterface.cpp:290[getSystemCaps] >-----------------------------------------
+[20-13-54][streamline][info][tid:1050688][1s:413ms:620us]commonInterface.cpp:293[getSystemCaps] NVIDIA driver 596.49
+[20-13-54][streamline][info][tid:1050688][1s:437ms:963us]commonInterface.cpp:318[getSystemCaps] Adapter 0 architecture 0x1b0 implementation 0x7 revision 0xa1 - bit 0x1 - LUID 0.76108
+[20-13-54][streamline][info][tid:1050688][1s:438ms:093us]commonInterface.cpp:324[getSystemCaps] -----------------------------------------<
+[20-13-54][streamline][info][tid:1050688][1s:439ms:805us]commonEntry.cpp:1944[getOSVersionAndUpdateTimerResolution] Changed high resolution timer resolution to 5000 [100 ns units].
+[20-13-54][streamline][info][tid:1050688][1s:440ms:075us]commonEntry.cpp:2023[updateEmbeddedJSON] Detected Windows OS version 10.0.26200
+[20-13-54][streamline][info][tid:1050688][1s:440ms:172us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.common' - version 2.12.0.17026aaf3 PRODUCTION - id 4294967295 - priority 0 - adapter mask 0xf - interposer 'no'
+[20-13-58][streamline][info][tid:1050688][6s:127ms:029us]commonEntry.cpp:999[getNGXFeatureRequirements] NGX feature 11 requirements - minOS 10.0.19041 minHW 0x170
+[20-13-58][streamline][info][tid:1050688][6s:132ms:868us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.dlss_g' - version 2.12.0.17026aaf3 PRODUCTION - id 1000 - priority 1000 - adapter mask 0x1 - interposer 'no'
+[20-13-58][streamline][info][tid:1050688][6s:195ms:902us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.pcl' - version 2.12.0.17026aaf3 PRODUCTION - id 4 - priority 2 - adapter mask 0xf - interposer 'no'
+[20-13-59][streamline][info][tid:1050688][6s:240ms:837us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.reflex' - version 2.12.0.17026aaf3 PRODUCTION - id 3 - priority 100 - adapter mask 0xf - interposer 'no'
+[20-13-59][streamline][info][tid:1050688][6s:241ms:037us]pluginManager.cpp:1159[loadPlugins] Plugin execution order based on priority:
+[20-13-59][streamline][info][tid:1050688][6s:241ms:126us]pluginManager.cpp:1162[loadPlugins] P0 - sl.common
+[20-13-59][streamline][info][tid:1050688][6s:241ms:188us]pluginManager.cpp:1162[loadPlugins] P2 - sl.pcl
+[20-13-59][streamline][info][tid:1050688][6s:241ms:243us]pluginManager.cpp:1162[loadPlugins] P100 - sl.reflex
+[20-13-59][streamline][info][tid:1050688][6s:241ms:284us]pluginManager.cpp:1162[loadPlugins] P1000 - sl.dlss_g
+[20-13-59][streamline][info][tid:1050688][7s:065ms:930us]pluginManager.cpp:1362[initializePlugins] Initializing plugins - api 0.0.1 - application ID 100721531
+[20-13-59][streamline][info][tid:1050688][7s:068ms:896us]commonEntry.cpp:1467[slOnPluginStartup] At least one plugin requires NGX, trying to initialize ...
+[20-13-59][streamline][info][tid:1050688][7s:071ms:020us]commonEntry.cpp:1267[ngxLog] [Unknown(32764)] [2026-10-04 20:13:59] [NGXSafeInitializeLog:148] App logging hooks successfully initialized
+
+[20-13-59][streamline][info][tid:1050688][7s:071ms:695us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:13:59] [NGXSafeInitializeLog:133] App logging hooks successfully initialized
+
+[20-13-59][streamline][info][tid:1050688][7s:109ms:168us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:13:59] [NGXGetPathUsingQAI:512] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+
+[20-13-59][streamline][info][tid:1050688][7s:109ms:305us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:13:59] [NGXGetPath:1045] using path for models: C:\ProgramData\NVIDIA\NGX\models
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:148us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [ModifyExistingFolderDACL:211] updated access control list for NGX cache (NGX cache should now be usable by all authenticated users)
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:544us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXCreateModelsFolder:1072] model folder created: C:\ProgramData\NVIDIA\NGX\models
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:614us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [dlss]
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:655us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9FEB50=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:689us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9FF4BC=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:721us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9FD524=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:815us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DF510=1.3.106
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:874us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9CB0B8=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:912us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9E26B0=2.1.28
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:945us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D48D0=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:252ms:978us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E99B5EC=1.2.109
+
+[20-14-00][streamline][info][tid:1050688][7s:253ms:011us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DFA64=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:253ms:044us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9FD6C0=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:253ms:132us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9CF688=2.2.15
+
+[20-14-00][streamline][info][tid:1050688][7s:253ms:170us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D6F08=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:253ms:256us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9BF564=2.1.201
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:572us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DB4F4=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:650us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D2F5C=1.2.110
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:696us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D7388=1.0.108
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:835us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9F5618=2.1.29
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:888us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DAE68=1.2.109
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:924us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D8C54=1.2.109
+
+[20-14-00][streamline][info][tid:1050688][7s:254ms:993us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D3EF0=2.1.28
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:028us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9FACDC=2.1.201
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:127us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_F7361DC=2.1.28
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:182us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9C3560=2.1.201
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:219us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9B0430=2.1.28
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:253us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658702=0.0.0
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:287us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658701=0.0.0
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:320us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658700=310.9.0
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:354us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9393FC=2.1.201
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:387us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [dlisp]
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:420us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9CF688=2.1.15
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:485us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E99B5EC=1.2.102
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:534us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658703=310.0.0
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:569us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D8C54=1.2.106
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:602us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9D2F5C=1.2.106
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:634us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DF510=1.3.101
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:666us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_B9DAE68=1.2.106
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:697us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_sdk_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:729us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:761us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_common_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:804us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_deepdvc_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:255ms:870us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:060us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_d_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:173us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_g_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:340us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_nis_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:401us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_deepdvc_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:489us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[20-14-00][streamline][info][tid:1050688][7s:256ms:533us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_nvperf_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:404us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_pcl_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:572us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_reflex_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:654us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [dlss_override]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:716us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [dlssd]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:777us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [dlssg]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:829us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_sdk_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:880us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_g_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:258ms:996us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_common_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:145us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:250us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_nis_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:304us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_dlss_d_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:354us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_nvperf_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:417us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_pcl_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:472us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXLoadConfig:1144] [sl_reflex_override_0]
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:529us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 86aa7b4
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:566us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::LoadMappingFileData:282]  project id 3F9D696D4363312194B0ECB2671E899F cms id B9FBD50
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:624us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 8618954
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:736us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId b9b05cc
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:796us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:259ms:999us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [MapProjectId:1905] Found cms id 876232c for engine: custom engineVersion 1.0.0 projectID 3e6891d2-09ac-4f54-ae8d-f481c3150d4b
+
+[20-14-00][streamline][info][tid:1050688][7s:837ms:645us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXDRSInit:327] NvAPI_DRS_FindApplicationByName -166
+
+[20-14-00][streamline][info][tid:1050688][7s:881ms:002us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXInitContext:245] called from module sl.common.dll at D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime
+
+[20-14-00][streamline][info][tid:1050688][7s:881ms:221us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dldenoiser, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:881ms:581us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[20-14-00][streamline][info][tid:1050688][7s:883ms:158us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXReportStatusFeedback:1060] Override shared memory was opened successfully
+
+[20-14-00][streamline][info][tid:1050688][7s:883ms:247us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXReportStatusFeedback:1072] Override shared memory was mapped successfully
+
+[20-14-00][streamline][info][tid:1050688][7s:883ms:676us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlss, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:886ms:450us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlinpainting, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:887ms:597us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlisr, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:888ms:246us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlslowmo, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:890ms:325us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlvsr, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:890ms:778us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlcolorize, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:891ms:598us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlstyletransfer, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:892ms:576us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlvdenoiser, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:892ms:908us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlisp, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:893ms:362us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlresolve, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][7s:893ms:814us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlssg, denial value 0 for Cms ID 876232c
+
+[20-14-00][streamline][info][tid:1050688][8s:001ms:673us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXSecureLoadFeature:1329] Feature dlssg failed to load (cmsid 141959980) from cache (location: C:\ProgramData\NVIDIA\NGX\models\dlssg\versions\0\files, name: 160_876232C.bin)
+
+[20-14-00][streamline][info][tid:1050688][8s:001ms:953us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:00] [NGXSecureLoadFeature:1329] Feature dlssg failed to load (cmsid 241534723) from cache (location: C:\ProgramData\NVIDIA\NGX\models\dlssg\versions\0\files, name: 160_E658703.bin)
+
+[20-14-01][streamline][info][tid:1050688][8s:902ms:369us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXSecureLoadFeature:1366] Found dlssg driver fallback snippet at C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+
+[20-14-01][streamline][info][tid:1050688][8s:902ms:514us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXSecureLoadFeature:1445] app 876232C feature dlssg snippet: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime/nvngx_dlssg.dll version: 310.9.1
+
+[20-14-01][streamline][info][tid:1050688][8s:902ms:586us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature deepdvc, denial value 0 for Cms ID 876232c
+
+[20-14-01][streamline][info][tid:1050688][8s:903ms:262us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[20-14-01][streamline][info][tid:1050688][8s:903ms:598us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlssd, denial value 0 for Cms ID 876232c
+
+[20-14-01][streamline][info][tid:1050688][8s:904ms:006us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature truehdr, denial value 0 for Cms ID 876232c
+
+[20-14-01][streamline][info][tid:1050688][8s:904ms:575us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature latewarp, denial value 0 for Cms ID 876232c
+
+[20-14-01][streamline][info][tid:1050688][8s:905ms:157us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature vsr, denial value 0 for Cms ID 876232c
+
+[20-14-01][streamline][info][tid:1050688][8s:905ms:689us]commonEntry.cpp:1267[ngxLog] [Unknown(32765)] [2026-10-04 20:14:01] [NGXContextDenyListData::IsFeatureDenied:669] Feature fgx, denial value 0 for Cms ID 876232c
+
+[20-14-02][streamline][info][tid:1050688][9s:731ms:199us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXInitLog:208] App logging hooks successfully initialized
+
+[20-14-02][streamline][info][tid:1050688][9s:731ms:338us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXInitLog:214] Build v310.9.1 CL 38868064
+
+[20-14-02][streamline][info][tid:1050688][9s:731ms:412us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXInitLog:216] Built with APP_NAME = endpoint
+
+[20-14-02][streamline][info][tid:1050688][9s:731ms:506us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXInitLog:226] Loaded from path "D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\bundle-cache\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7/nvngx_dlssg.dll" by streamline_mfg_x3.exe
+
+[20-14-02][streamline][info][tid:1050688][9s:753ms:946us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXCubinD3D12::Init:135] Enabling texmode_raw
+
+[20-14-02][streamline][info][tid:1050688][9s:754ms:596us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXCubinD3D12::Init:147] Enabling CuModule kernel path (load fatbin once, resolve entry points)
+
+[20-14-02][streamline][info][tid:1050688][9s:754ms:694us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXCubinKernelMap::InitCubins:42] Loading NGXCubin kernels
+
+[20-14-02][streamline][info][tid:1050688][9s:754ms:737us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXCubinGeneric::SetGPUArch:473] m_gpuArch = 0x170
+
+[20-14-02][streamline][info][tid:1050688][9s:762ms:475us]commonEntry.cpp:1267[ngxLog] [FrameGeneration] [2026-10-04 20:14:02] [tid:1050688][NGXCubinGeneric::genericPostInit:164] Fast UAV clear: supported
+
+[20-14-02][streamline][info][tid:1050688][9s:772ms:775us]commonEntry.cpp:1654[slOnPluginStartup] At least one plugin requires DRS, trying to initialize ...
+[20-14-03][streamline][info][tid:1050688][10s:625ms:587us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.common:slSetData:0x0
+[20-14-03][streamline][info][tid:1050688][10s:625ms:853us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.common:slGetData:0x0
+[20-14-03][streamline][info][tid:1050688][10s:626ms:030us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.common:slAllocateResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:626ms:162us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.common:slFreeResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:626ms:240us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.common:slEvaluateFeature:0x7ffd508fa010
+[20-14-03][streamline][info][tid:1050688][10s:626ms:283us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.common:slSetTag:0x7ffd508f8af0
+[20-14-03][streamline][info][tid:1050688][10s:626ms:395us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.common:slSetTagForFrame:0x7ffd508f8c60
+[20-14-03][streamline][info][tid:1050688][10s:626ms:524us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.common:slSetConsts:0x7ffd508f9af0
+[20-14-03][streamline][info][tid:1050688][10s:626ms:583us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkPresent:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:626ms:632us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkAfterPresent:after - skipped
+[20-14-03][streamline][info][tid:1050688][10s:626ms:678us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindPipeline:after - skipped
+[20-14-03][streamline][info][tid:1050688][10s:626ms:721us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkCmdBindDescriptorSets:after - skipped
+[20-14-03][streamline][info][tid:1050688][10s:626ms:757us]pluginManager.cpp:1235[processPluginHooks] Hook sl.common:slHookVkBeginCommandBuffer:after - skipped
+[20-14-03][streamline][info][tid:1050688][10s:626ms:802us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChain:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:626ms:973us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForHwnd:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:311us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForCoreWindow:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:513us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookResizeSwapChainPre:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:587us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:631us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookAfterPresent:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:673us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent1:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:627ms:752us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.pcl:slSetData:0x7ffd50f0b6c0
+[20-14-03][streamline][info][tid:1050688][10s:627ms:810us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.pcl:slGetData:0x7ffd50f0b6d0
+[20-14-03][streamline][info][tid:1050688][10s:627ms:867us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.pcl:slAllocateResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:627ms:919us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.pcl:slFreeResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:076us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.pcl:slEvaluateFeature:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:133us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.pcl:slSetTag:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:162us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.pcl:slSetTagForFrame:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:187us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.pcl:slSetConsts:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:210us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.pcl' has no registered hooks
+[20-14-03][streamline][info][tid:1050688][10s:628ms:245us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.reflex:slSetData:0x7ffd50c2b7f0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:293us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.reflex:slGetData:0x7ffd50c2c150
+[20-14-03][streamline][info][tid:1050688][10s:628ms:334us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.reflex:slAllocateResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:371us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.reflex:slFreeResources:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:408us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.reflex:slEvaluateFeature:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:443us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.reflex:slSetTag:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:483us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.reflex:slSetTagForFrame:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:602us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.reflex:slSetConsts:0x0
+[20-14-03][streamline][info][tid:1050688][10s:628ms:662us]pluginManager.cpp:1220[processPluginHooks] Plugin 'sl.reflex' has no registered hooks
+[20-14-03][streamline][info][tid:1050688][10s:634ms:203us]dlfgDrs.cpp:41[readSingleDRSKey] Read DRS key 11041231 = 0x60925292 from global profile
+[20-14-03][streamline][info][tid:1050688][10s:652ms:069us]dlss_gEntry.cpp:1426[slOnPluginStartup] Host SDK version: 2.12.0, platform: D3D12 (VSync with FG: supported)
+[20-14-03][streamline][info][tid:1050688][10s:652ms:198us]dlss_gEntry.cpp:1486[slOnPluginStartup] Multi-frame supported, max generated frames 4 (SL Plugin supports 5, NGX feature supports 4)
+[20-14-03][streamline][info][tid:1050688][10s:652ms:273us]flipMetering.cpp:59[initialize] pfnNvAPI_SetFlipConfig API available
+[20-14-03][streamline][info][tid:1050688][10s:652ms:322us]flipMetering.cpp:74[initialize] Driver reports SetFlipConfig V2 support
+[20-14-03][streamline][info][tid:1050688][10s:652ms:552us]dlfg.cpp:171[checkDynamicMFGSupport] Dynamic MFG is supported
+[20-14-03][streamline][info][tid:1050688][10s:653ms:363us]pluginManager.cpp:1468[mapPluginCallbacks] Callback sl.dlss_g:slSetData:0x7ffd526769e0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:445us]pluginManager.cpp:1469[mapPluginCallbacks] Callback sl.dlss_g:slGetData:0x7ffd526761a0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:493us]pluginManager.cpp:1470[mapPluginCallbacks] Callback sl.dlss_g:slAllocateResources:0x7ffd52677020
+[20-14-03][streamline][info][tid:1050688][10s:653ms:531us]pluginManager.cpp:1471[mapPluginCallbacks] Callback sl.dlss_g:slFreeResources:0x7ffd526771d0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:689us]pluginManager.cpp:1472[mapPluginCallbacks] Callback sl.dlss_g:slEvaluateFeature:0x0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:760us]pluginManager.cpp:1473[mapPluginCallbacks] Callback sl.dlss_g:slSetTag:0x0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:800us]pluginManager.cpp:1474[mapPluginCallbacks] Callback sl.dlss_g:slSetTagForFrame:0x0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:922us]pluginManager.cpp:1475[mapPluginCallbacks] Callback sl.dlss_g:slSetConsts:0x0
+[20-14-03][streamline][info][tid:1050688][10s:653ms:969us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkPresent:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:004us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkCreateSwapchainKHR:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:112us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkDestroySwapchainKHR:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:177us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkGetSwapchainImagesKHR:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:250us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkAcquireNextImageKHR:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:294us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkDeviceWaitIdle:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:334us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkCreateWin32SurfaceKHR:after - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:381us]pluginManager.cpp:1235[processPluginHooks] Hook sl.dlss_g:slHookVkDestroySurfaceKHR:before - skipped
+[20-14-03][streamline][info][tid:1050688][10s:654ms:421us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChainForCoreWindow:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:456us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChainForHwnd:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:493us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChain:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:531us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookPresent:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:572us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookPresent1:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:618us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetDescPost:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:663us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResizeSwapChainPre:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:708us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResizeSwapChainPost:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:749us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResize1SwapChainPre:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:794us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResize1SwapChainPost:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:836us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetBuffer:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:881us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetCurrentBackBufferIndex:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:921us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSetFullscreenStatePre:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:948us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSetFullscreenStatePost:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:654ms:996us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSwapChainDestroyed:before - OK
+[20-14-03][streamline][info][tid:1050688][10s:655ms:287us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateCommandQueue:after - OK
+[20-14-03][streamline][info][tid:1050688][10s:664ms:919us]sl.cpp:659[operator ()] Upgrading ID3D12Device to use SL proxy ...
+[20-14-04][streamline][info][tid:1050688][11s:654ms:205us]sl.cpp:679[operator ()] Upgrading IDXGIFactory to use SL proxy ...
+[20-14-04][streamline][info][tid:1050688][12s:165ms:087us]dlfgSwapchain.cpp:86[cloneFakeBuffers] cloneFakeBuffers: ENTRY - width=1280, height=720, format=28, bufferCount=5, isHybridGPU=0, swapchain=000001D86DEC2B90
+[20-14-05][streamline][info][tid:1050688][12s:254ms:224us]dxgiFactory.cpp:222[Release] Destroyed DXGIFactory proxy 0x1d818256910 - native factory 0x1d818362670 ref count 6
+[20-14-05][streamline][info][tid:1050688][12s:254ms:463us]dlss_gEntry.cpp:1288[slSetData] slDLSSGSetOptions() is called on the thread 1050688.
+[20-14-05][streamline][info][tid:1050688][12s:289ms:083us]dlfgPresent.cpp:800[presentCommon] Present() is called on the thread 1050688.
+[20-14-05][streamline][warn][tid:1050688][12s:289ms:385us]dlfgPresent.cpp:410[sanitizeResourceExtent] Invalid backbuffer resource extent, IF optionally specified by the client! Either extent not provided or one of the extent dimensions (0 x 0) is incorrectly zero. Resetting extent to full backbuffer resource size (1280 x 720)
+[20-14-05][streamline][info][tid:1050688][12s:307ms:495us]swapChainData.cpp:471[throttleFlipQueue] SetMaximumFrameLatency changed from 0 to 1.
+[20-14-05][streamline][warn][tid:1050688][12s:693ms:101us]dxgiSwapchain.cpp:255[operator ()] PFunPresentBefore failed The application made a call that is invalid. Either the parameters of the call or the state of some object was incorrect.
+Enable the D3D debug layer in order to see details via debug messages.
+[20-14-05][streamline][info][tid:1050688][12s:695ms:163us]pluginManager.cpp:1171[unloadPlugins] Unloading all plugins ...
+[20-14-05][streamline][info][tid:1050688][12s:695ms:271us]plugin.cpp:344[onShutdown] Shutting down plugin sl.dlss_g
+[20-14-05][streamline][info][tid:1050688][12s:714ms:950us]plugin.cpp:344[onShutdown] Shutting down plugin sl.reflex
+[20-14-05][streamline][info][tid:1050688][12s:716ms:927us]plugin.cpp:344[onShutdown] Shutting down plugin sl.pcl
+[20-14-05][streamline][info][tid:1050688][12s:717ms:035us]commonEntry.cpp:1771[slOnPluginShutdown] Shutting down NGX
+[20-14-05][streamline][info][tid:1050688][12s:970ms:431us]plugin.cpp:344[onShutdown] Shutting down plugin sl.common
+[20-14-05][streamline][info][tid:1050688][12s:981ms:484us]generic.cpp:327[shutdown] Delayed destroy resource list count 0
