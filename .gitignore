@@ -130,3 +130,7 @@ logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2361472.j
 # Raw loaded-off with Reflex telemetry; bounded result evidence retained.
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_591648.jsonl
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_591648.jsonl
+
+# Raw Reflex-only telemetry; bounded evidence retained in its run directory.
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_791132.jsonl
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_791132.jsonl

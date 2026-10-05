@@ -1,4 +1,4 @@
-param([Parameter(Mandatory)][string]$LogDirectory,[ValidateSet('1','2','base','off')][string]$GeneratedCount=1)
+param([Parameter(Mandatory)][string]$LogDirectory,[ValidateSet('1','2','base','off','reflex')][string]$GeneratedCount=1)
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $taskRuntime=Join-Path $taskRoot 'experiments/streamline-mfg-capability/runtime'
@@ -16,7 +16,7 @@ $taskText=[Text.Encoding]::UTF8.GetString($taskOriginal)
 if(([regex]::Matches($taskText,'SpoofArchToGame=0')).Count -ne 1){throw 'Unexpected spoof config'}
 @{attempts=1;requested_generated_count=$GeneratedCount;execution_mode='NORMAL_LOCAL';child_process_policy='NONE';runtime_binary_hashes_unchanged=$true;executable_sha256=(Get-FileHash $taskExe -Algorithm SHA256).Hash.ToLower()} | ConvertTo-Json | Set-Content (Join-Path $taskRun 'launch-requested.json')
 try {
- if($GeneratedCount -ne 'base'){[IO.File]::WriteAllBytes($taskIni,[Text.Encoding]::UTF8.GetBytes($taskText.Replace('SpoofArchToGame=0','SpoofArchToGame=1')))}
+ if($GeneratedCount -notin @('base','reflex')){[IO.File]::WriteAllBytes($taskIni,[Text.Encoding]::UTF8.GetBytes($taskText.Replace('SpoofArchToGame=0','SpoofArchToGame=1')))}
  $taskProcess=Start-Process -FilePath $taskExe -ArgumentList @($taskRuntime,$taskRun,$GeneratedCount) -WorkingDirectory $taskRoot -WindowStyle Hidden -RedirectStandardOutput (Join-Path $taskRun 'harness.log') -RedirectStandardError (Join-Path $taskRun 'stderr.log') -PassThru; $taskProcess.WaitForExit()
  @{process_id=$taskProcess.Id;process_exit_code=$taskProcess.ExitCode;attempts=1;execution_mode='NORMAL_LOCAL'} | ConvertTo-Json | Set-Content (Join-Path $taskRun 'process-result.json')
 } finally {
