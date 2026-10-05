@@ -119,6 +119,64 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
         for(auto& b:pso.BlendState.RenderTarget){b.SrcBlend=D3D12_BLEND_ONE;b.DestBlend=D3D12_BLEND_ZERO;b.BlendOp=D3D12_BLEND_OP_ADD;b.SrcBlendAlpha=D3D12_BLEND_ONE;b.DestBlendAlpha=D3D12_BLEND_ZERO;b.BlendOpAlpha=D3D12_BLEND_OP_ADD;b.LogicOp=D3D12_LOGIC_OP_NOOP;b.RenderTargetWriteMask=D3D12_COLOR_WRITE_ENABLE_ALL;}
         pso.PrimitiveTopologyType=D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;pso.NumRenderTargets=5;pso.RTVFormats[0]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[1]=DXGI_FORMAT_R32_FLOAT;pso.RTVFormats[2]=DXGI_FORMAT_R16G16_FLOAT;pso.RTVFormats[3]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[4]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.SampleDesc.Count=1;hr(device->CreateGraphicsPipelineState(&pso,IID_PPV_ARGS(&pipeline)));
     }
+    void recreateSwapchainForActiveDLSSG(HMODULE sl){
+        std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_BEGIN=YES"<<std::endl;
+        stage="ACTIVE_SWAPCHAIN_RECREATE_DRAIN";drain();
+        std::cout<<"ACTIVE_SWAPCHAIN_PRE_RECREATE_DRAIN=SUCCESS"<<std::endl;
+        buffers[0].Reset();buffers[1].Reset();
+        std::cout<<"OLD_BACKBUFFERS_RELEASED=YES"<<std::endl;
+        swap.Reset();
+        std::cout<<"OLD_SWAPCHAIN_RELEASED=YES"<<std::endl;
+
+        stage="ACTIVE_RECREATE_FACTORY";
+        ComPtr<IDXGIFactory4> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));
+        auto upgrade=api<PFun_slUpgradeInterface>(sl,"slUpgradeInterface");
+        auto f=factory.Detach();
+        auto upgraded=upgrade(reinterpret_cast<void**>(&f));factory.Attach(f);
+        result("ACTIVE_RECREATE_FACTORY_PROXY_RESULT",upgraded);
+        std::cout<<"ACTIVE_RECREATE_FACTORY_PROXY_ACTIVE=YES"<<std::endl;
+        stage="ACTIVE_RECREATE_TEARING_QUERY";
+        ComPtr<IDXGIFactory5> factory5;
+        HRESULT factory5Hr=factory.As(&factory5);
+        if(FAILED(factory5Hr)||!factory5){
+            void* nativeFac{};
+            if(api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(factory.Get(),&nativeFac)==sl::Result::eOk&&nativeFac){
+                factory5Hr=reinterpret_cast<IUnknown*>(nativeFac)->QueryInterface(IID_PPV_ARGS(&factory5));
+                reinterpret_cast<IUnknown*>(nativeFac)->Release();
+            }
+        }
+        std::cout<<"ACTIVE_RECREATE_FACTORY5_QUERY_HRESULT=0x"<<std::hex<<unsigned(factory5Hr)<<std::dec<<std::endl;
+        hr(factory5Hr);if(!factory5)throw std::runtime_error("Active IDXGIFactory5 missing");
+        BOOL tearingSupported=FALSE;
+        HRESULT tearingHr=factory5->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING,&tearingSupported,sizeof(tearingSupported));
+        std::cout<<"ACTIVE_RECREATE_TEARING_CHECK_HRESULT=0x"<<std::hex<<unsigned(tearingHr)<<std::dec<<std::endl;
+        std::cout<<"ACTIVE_RECREATE_TEARING_SUPPORTED="<<((SUCCEEDED(tearingHr)&&tearingSupported)?"YES":"NO")<<std::endl;
+        hr(tearingHr);if(!tearingSupported)throw std::runtime_error("Active tearing not supported");
+        DXGI_SWAP_CHAIN_DESC1 desc{};desc.Width=W;desc.Height=H;desc.Format=DXGI_FORMAT_R8G8B8A8_UNORM;desc.SampleDesc.Count=1;desc.BufferUsage=DXGI_USAGE_RENDER_TARGET_OUTPUT;desc.BufferCount=2;desc.SwapEffect=DXGI_SWAP_EFFECT_FLIP_DISCARD;desc.Flags=DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
+        stage="ACTIVE_SWAPCHAIN_RECREATE_CREATE";
+        ComPtr<IDXGISwapChain1> initial;
+        HRESULT created=factory->CreateSwapChainForHwnd(queue.Get(),window,&desc,nullptr,nullptr,&initial);
+        std::cout<<"ACTIVE_SWAPCHAIN_CREATE_HRESULT=0x"<<std::hex<<unsigned(created)<<std::dec<<std::endl;hr(created);
+        hr(initial.As(&swap));
+        std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_RESULT=SUCCESS\nACTIVE_SWAPCHAIN_CREATED_AFTER_DLSSG_ON=YES\nACTIVE_SWAPCHAIN_PRESENT_MODEL=STREAMLINE_PROXY"<<std::endl;
+        stage="ACTIVE_SWAPCHAIN_RECREATE_GET_DESC1";
+        DXGI_SWAP_CHAIN_DESC1 actualDesc{};
+        HRESULT actualDescHr=initial->GetDesc1(&actualDesc);
+        std::cout<<"ACTIVE_SWAPCHAIN_GET_DESC1_RESULT="<<(SUCCEEDED(actualDescHr)?"SUCCESS":"FAIL")<<std::endl;
+        std::cout<<"ACTIVE_SWAPCHAIN_GET_DESC1_HRESULT=0x"<<std::hex<<unsigned(actualDescHr)<<std::dec<<std::endl;hr(actualDescHr);
+        std::cout<<"ACTIVE_SWAPCHAIN_ACTUAL_FLAGS=0x"<<std::hex<<actualDesc.Flags<<std::dec<<std::endl;
+        bool actualTearing=(actualDesc.Flags&DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING)!=0;
+        std::cout<<"ACTIVE_SWAPCHAIN_ALLOW_TEARING="<<(actualTearing?"YES":"NO")<<std::endl;
+        if(!actualTearing)throw std::runtime_error("Active swapchain missing ALLOW_TEARING");
+        for(UINT i=0;i<2;i++){
+            stage=i==0?"ACTIVE_SWAPCHAIN_RECREATE_GET_BUFFER_0":"ACTIVE_SWAPCHAIN_RECREATE_GET_BUFFER_1";
+            HRESULT acquired=swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i]));
+            std::cout<<"NEW_BACKBUFFER_"<<i<<"_HRESULT=0x"<<std::hex<<unsigned(acquired)<<std::dec<<std::endl;hr(acquired);
+            device->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));
+            std::cout<<"NEW_BACKBUFFER_"<<i<<"_ACQUIRED=YES"<<std::endl;
+        }
+        std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_END=YES"<<std::endl;
+    }
     void draw(UINT frame){
         drain();hr(allocator->Reset());hr(commands->Reset(allocator.Get(),pipeline.Get()));UINT index=swap->GetCurrentBackBufferIndex();
         barrier(commands.Get(),buffers[index].Get(),D3D12_RESOURCE_STATE_PRESENT,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),hudless.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),uiColorAlpha.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);
@@ -354,6 +412,7 @@ int wmain(int argc,wchar_t** argv){
         auto stateFn=feature<PFun_slDLSSGGetState>(interposer,sl::kFeatureDLSS_G,"slDLSSGGetState");auto optionsFn=feature<PFun_slDLSSGSetOptions>(interposer,sl::kFeatureDLSS_G,"slDLSSGSetOptions");auto reflex=feature<PFun_slReflexSetOptions>(interposer,sl::kFeatureReflex,"slReflexSetOptions");auto sleep=feature<PFun_slReflexSleep>(interposer,sl::kFeatureReflex,"slReflexSleep");auto marker=feature<PFun_slPCLSetMarker>(interposer,sl::kFeaturePCL,"slPCLSetMarker");
         auto tokenFn=api<PFun_slGetNewFrameToken>(interposer,"slGetNewFrameToken");auto constantsFn=api<PFun_slSetConstants>(interposer,"slSetConstants");auto tagFn=api<PFun_slSetTagForFrame>(interposer,"slSetTagForFrame");sl::ViewportHandle viewport{0};
         stage="REFLEX";sl::ReflexOptions ro{};ro.mode=sl::ReflexMode::eLowLatency;ro.frameLimitUs=16667;result("REFLEX_OPTIONS_RESULT",reflex(ro));sl::DLSSGOptions options{};options.mode=sl::DLSSGMode::eOn;options.numFramesToGenerate=generatedCount;std::cout<<"REQUESTED_GENERATED_COUNT="<<generatedCount<<std::endl;stage="SET_OPTIONS";result("SET_OPTIONS_RESULT",optionsFn(viewport,options));
+        renderer.recreateSwapchainForActiveDLSSG(interposer);
         UINT successfulRealPresentCount=0;
         for(UINT frame=0;frame<60;frame++){
             MSG message{};while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}stage="FRAME";sl::FrameToken* token{};result("TOKEN_RESULT",tokenFn(token,&frame));result("REFLEX_SLEEP_RESULT",sleep(*token));result("SIM_BEGIN_RESULT",marker(sl::PCLMarker::eSimulationStart,*token));
