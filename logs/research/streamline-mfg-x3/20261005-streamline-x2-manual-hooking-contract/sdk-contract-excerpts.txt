@@ -1,0 +1,203 @@
+SDK_ARCHIVE=C:/Users/micha/Downloads/streamline-sdk-v2.12.0.zip
+HEADERS_BYTE_IDENTICAL_TO_BUILD=YES
+sl_core_api.h_SHA256=328dc3a2c1dee579c200ca97e2d5b1ec38c893be4ba2745ef5ad506af7172e81
+sl_core_types.h_SHA256=d0a4bc9d2efac5aa2d6171eb93f10e59a856c334a786536c0a871608ee8a877f
+sl_hooks.h_SHA256=cfeff70a52e1cc012cf4c955a15cc9d0b290f7e084dcb3c0168a9af06ff8f122
+sl_version.h_SHA256=46c827879cd81f459db908544f054c5620640a6f3801763aeebb12cc29f17807
+
+MANUAL_GUIDE_EXCERPTS (normalized CRCRLF -> LF)
+121: ### 4.0 ADDING HOOKS TO YOUR ENGINE
+122: 
+123: #### 4.1 DirectX
+124: 
+125: There are two scenarios depending on whether `sl.interposer.lib` is linked directly or not with the host application:
+126: 
+127: ```cpp
+128: 
+129: //! SL LIB LINKED WITH THE GAME, SL PROXIES ARE PROVIDED TO THE HOST
+130: 
+131: if(!sl::security::verifyEmbeddedSignature(PATH_TO_SL_IN_YOUR_BUILD + "/sl.interposer.dll"))
+132: {
+133:     // SL module not signed, disable SL
+134: }
+135: else
+136: {
+137:     // SL digitally signed, OK to use it!
+138: 
+139:     // D3D11
+140:     // 
+141:     // IMPORTANT: Note that for D3D11 there is NO proxy for a device in any scenario
+142:     ID3D11Device* nativeDevice;
+143:     [nativeDevice, proxySwapchain] = D3D11CreateDeviceAndSwapChain();
+144: 
+145:     // D3D12
+146:     proxyDevice = D3D12CreateDevice();
+147: 
+148:     ID3D12Device* nativeDevice{};
+149:     if(SL_FAILED(result, slGetNativeInterface(proxyDevice, &nativeDevice))
+150:     {
+151:         // Handle error, check logs
+152:     }
+153:     // Normally this is not done for D3D11 (see above)
+154:     auto proxyFactory = DXGICreateFactory();
+155:     auto proxySwapChain = proxyFactory->CreateSwapChain();
+156: 
+157:     // DXGI
+158:     //
+159:     // This part is identical for D3D11 and D3D12    
+160:     IDXGISwapChain* nativeSwapchain{};
+161:     if(SL_FAILED(result, slGetNativeInterface(proxySwapChain, &nativeSwapchain)))
+162:     {
+163:         // Handle error, check logs
+164:     }
+165: }
+166: ```
+167: 
+168: ```cpp
+169: 
+170: //! SL LIB NOT LINKED WITH THE GAME, NATIVE INTERFACES ARE PROVIDED TO THE HOST
+171: 
+172: if(!sl::security::verifyEmbeddedSignature(PATH_TO_SL_IN_YOUR_BUILD + "/sl.interposer.dll"))
+173: {
+174:     // SL module not signed, disable SL
+175: }
+176: else
+177: {
+178:     // SL digitally signed, we can load and use it!
+179:     auto mod = LoadLibrary(PATH_TO_SL_IN_YOUR_BUILD + "/sl.interposer.dll");
+180: 
+181:     // Declare all SL functions here, showing only the one we are using
+182:     SL_FUN_DECL(slUpgradeInterface);
+183:     SL_FUN_DECL(slGetNativeInterface);
+184: 
+185:     // Get all SL functions here, showing only the one we are using
+186:     auto slUpgradeInterface = reinterpret_cast<PFunSlGetUpgradeInterface>(GetProcAddress(mod, "slUpgradeInterface"));
+187:     auto slGetNativeInterface = reinterpret_cast<PFunSlGetNativeInterface>(GetProcAddress(mod, "slGetNativeInterface"));
+188: 
+189:     // D3D11
+190:     // 
+191:     // IMPORTANT: Note that for D3D11 there is NO proxy for a device in any scenario
+192:     ID3D11Device* nativeDevice;
+193:     [nativeDevice, nativeSwapchain] = D3D11CreateDeviceAndSwapChain();
+194: 
+195:     // D3D12
+196:     auto nativeDevice = D3D12CreateDevice();
+197:     auto nativeFactory = DXGICreateFactory();
+198: 
+199:     ID3D12Device* proxyDevice = nativeDevice;
+200:     if(SL_FAILED(result, slUpgradeInterface(&proxyDevice))
+201:     {
+202:         // Handle error, check logs
+203:     }
+204: 
+205:     //! IMPORTANT: Any create swap chain API must be intercepted as specified by `enum class FunctionHookID` in sl_hooks.h
+206:     //!
+207:     //! Therefore here we are using proxy factory and not a native one!
+208:     IDXGIFactory* proxyFactory = nativeFactory
+209:     if(SL_FAILED(result, slUpgradeInterface(&proxyFactory)))
+210:     {
+211:         // Handle error, check logs
+212:     }
+213: 
+214:     //! Now we can obtain our proxy swap-chain
+215:     proxySwapChain = proxyFactory->CreateSwapChain();
+216: 
+217:     //! Next we get our proxy device
+218:     ID3D12Device* proxyDevice = nativeDevice;
+219:     if(SL_FAILED(result, slUpgradeInterface(&proxyDevice)))
+220:     {
+221:         // Handle error, check logs
+222:     }
+223: 
+224:     //! Native swap-chain so we can call non-intercepted API directly
+225:     IDXGISwapChain* nativeSwapchain{};
+226:     if(SL_FAILED(result, slGetNativeInterface(proxySwapChain, &nativeSwapchain)))
+227:     {
+228:         // Handle error, check logs
+229:     }
+230: }
+231: ```
+232: 
+233: > **IMPORTANT**
+234: > One should use native interfaces EVERYWHERE in the host application EXCEPT for the APIs which are hooked by SL (listed as enums in sl_hooks.h).
+235: 
+236: For example, here is how to call NVAPI functions from the host side:
+237: 
+238: ```cpp
+239: //! IMPORTANT: When using 3rd party libs use native interfaces NOT the SL proxies
+240: NVAPI_D3D12_SET_CREATE_PIPELINE_STATE_OPTIONS_PARAMS state{}
+241: NvAPI_D3D12_SetCreatePipelineStateOptions(nativeDevice, &state);
+242: ```
+243: 
+244: Here is how one would add SL hooks to the swap-chain:
+245: 
+246: ```cpp
+247: //! FULL LIST OF SL API HOOKS IN sl_hooks.h
+248: //!
+249: //! eIDXGISwapChain_Present,
+250: //! eIDXGISwapChain_Present1,
+251: //! eIDXGISwapChain_GetBuffer,
+252: //! eIDXGISwapChain_ResizeBuffers,
+253: //! eIDXGISwapChain_ResizeBuffers1,
+254: //! eIDXGISwapChain_GetCurrentBackBufferIndex,
+255: //! eIDXGISwapChain_SetFullscreenState,
+256: //! eID3D12Device_CreateCommandQueue
+257: 
+258: //! IMPORTANT: NOT INTERCEPTED BY STREAMLINE
+259: //! 
+260: HRESULT myrhi::SwapChain::GetFullscreenDesc(DXGI_SWAP_CHAIN_FULLSCREEN_DESC *pDesc)
+310: 
+311: #### 4.2 Vulkan
+312: 
+313: SL hooking in Vulkan is also rather simple. All VK functions are obtained from `vulkan-1.dll` as usual but in addition for ones listed in the `sl_hooks.h` we need to obtain proxies from `sl.interposer.dll`. Here is some sample code:
+314: 
+315: ```cpp
+316: // VK export functions from the SL interposer, we use them to get our proxies
+317: PFN_vkGetDeviceProcAddr vkGetDeviceProcAddrProxy{}
+318: PFN_vkGetInstanceProcAddr vkGetInstanceProcAddrProxy{}
+319: 
+320: // Always secure load SL modules
+321: if(!sl::security::verifyEmbeddedSignature(PATH_TO_SL_IN_YOUR_BUILD + "/sl.interposer.dll"))
+322: {
+323:     // SL module not signed, disable SL
+324: }
+325: else
+326: {
+327:     auto mod = LoadLibray(PATH_TO_SL_IN_YOUR_BUILD + "/sl.interposer.dll");
+328: 
+329:     //! GetProcAddr proxies
+330:     //!
+331:     //! IMPORTANT: These proxies return functions from `vulkan-1.dll` except for those intercepted by SL and listed in sl_hooks.h
+332:     auto vkGetDeviceProcAddrProxy = reinterpret_cast<PFN_vkGetDeviceProcAddr>(GetProcAddress(mod, "vkGetDeviceProcAddr"));
+DLSS_G_DEVICE_EXCERPT
+116: 
+117: Once the main device is created call `slSetD3DDevice` or `slSetVulkanInfo`:
+118: 
+119: ```cpp
+120: if(SL_FAILED(res, slSetD3DDevice(nativeD3DDevice)))
+121: {
+122:     // Handle error, check the logs
+123: }
+124: ```
+125: 
+126: ### 3.0 CHECK IF DLSS-G IS SUPPORTED
+127: 
+128: As soon as SL is initialized, you can check if DLSS-G is available for the specific adapter you want to use:
+129: 
+130: ```cpp
+
+MANUAL_DEVICE_CONTRACT
+413: #### 5.1 DirectX
+414: 
+415: When using D3D simply create your device and call `slSetD3DDevice`. The following code snippet demonstrates how to do this:
+416: 
+417: ```cpp
+418: // Inform SL about the device we created
+419: if(SL_FAILED(result, slSetD3DDevice(nativeDevice))
+420: {
+421:     // Handle error, check the logs
+422: }
+423: ```
+424: 
+425: Skip Vulkan information and go to section [6.0 Tagging resources](#60-tagging-resources)
+426: 

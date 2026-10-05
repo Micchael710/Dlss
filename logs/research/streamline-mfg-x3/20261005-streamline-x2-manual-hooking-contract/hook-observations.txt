@@ -1,0 +1,33 @@
+MANDATORY_HOOK_COUNT=12
+MANDATORY_HOOKS_OBSERVED=CreateSwapChain,CreateSwapChainForHwnd,CreateSwapChainForCoreWindow,Present,Present1,GetBuffer,GetDesc,ResizeBuffers,ResizeBuffers1,GetCurrentBackBufferIndex,SetFullscreenState,CreateCommandQueue
+MANUAL_HOOKING_HOOK_REGISTRATION_COMPLETE=YES
+PRESENTCOMMON_OBSERVED=YES
+PRESENTCOMMON_OBSERVED_COUNT=UNKNOWN
+PRESENTCOMMON_LOGGED_MESSAGE_COUNT=1
+Exact per-frame call count is not observable from this log.
+
+[22-50-56][streamline][info][tid:1169184][8s:149ms:390us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChain:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:438us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForHwnd:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:485us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookCreateSwapChainForCoreWindow:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:529us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookResizeSwapChainPre:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:576us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:627us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookAfterPresent:after - OK
+[22-50-56][streamline][info][tid:1169184][8s:149ms:675us]pluginManager.cpp:1259[processPluginHooks] Hook sl.common:slHookPresent1:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:139us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChainForCoreWindow:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:170us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChainForHwnd:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:201us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateSwapChain:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:233us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookPresent:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:265us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookPresent1:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:298us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetDescPost:after - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:332us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResizeSwapChainPre:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:376us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResizeSwapChainPost:after - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:401us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResize1SwapChainPre:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:425us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookResize1SwapChainPost:after - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:448us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetBuffer:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:471us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookGetCurrentBackBufferIndex:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:494us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSetFullscreenStatePre:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:517us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSetFullscreenStatePost:after - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:540us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookSwapChainDestroyed:before - OK
+[22-50-56][streamline][info][tid:1169184][8s:182ms:568us]pluginManager.cpp:1259[processPluginHooks] Hook sl.dlss_g:slHookCreateCommandQueue:after - OK
+
+[22-51-00][streamline][info][tid:1169184][11s:384ms:057us]dlfgPresent.cpp:800[presentCommon] Present() is called on the thread 1169184.

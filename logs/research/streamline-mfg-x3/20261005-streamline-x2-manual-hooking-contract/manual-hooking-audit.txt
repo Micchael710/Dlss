@@ -1,0 +1,186 @@
+AUDIT_BEFORE_EDIT=YES
+GITHUB_START_HEAD=e4a2d3d85215f47dabb96c6247286d287d204ada
+SOURCE_VERSION=2.12.0
+BUILD_INCLUDE=superresolution/native/cpp/third_party/Streamline/include
+ARCHIVE_HEADERS_BYTE_IDENTICAL=YES
+CONTRACT=Use native interfaces everywhere except APIs enumerated in sl_hooks.h.
+MANDATORY_DIRECTX_HOOK_COUNT=12
+GUIDE_HEADER_DIFFERENCE=Guide enum omits GetDesc; build header explicitly lists GetDesc and takes precedence.
+
+API=IDXGIFactory::CreateSwapChain
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Unused API has no call-site violation.
+
+API=IDXGIFactory::CreateSwapChainForHwnd
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=PROXY
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Upgraded factory creates swapchain in create and recreate.
+
+API=IDXGIFactory::CreateSwapChainForCoreWindow
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Unused API has no call-site violation.
+
+API=IDXGISwapChain::Present
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=PROXY
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::Present1
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::GetBuffer
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=PROXY
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::GetDesc
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::ResizeBuffers
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::ResizeBuffers1
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::GetCurrentBackBufferIndex
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=PROXY
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain::SetFullscreenState
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=NOT_CALLED
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=IDXGISwapChain1::GetDesc1
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=GetDesc is hooked; GetDesc1 is not listed. initial obtained from proxy factory is used twice.
+
+API=ID3D12Device::CreateCommandQueue
+EXPECTED_INTERFACE=PROXY
+CURRENT_INTERFACE=PROXY
+STATUS=PASS
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=
+
+API=ID3D12Device::CreateDescriptorHeap
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateCommittedResource
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateCommandAllocator
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateCommandList
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateFence
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateRootSignature
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateGraphicsPipelineState
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::CreateRenderTargetView
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::GetDeviceRemovedReason
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=ID3D12Device::QueryInterface(ID3D12InfoQueue)
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=Renderer device is upgraded in place, native device not retained.
+
+API=slSetD3DDevice
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=NATIVE
+STATUS=PASS
+SOURCE=Local manual guide section 5.1; local DLSS-G guide section 2.1
+NOTE=Called before upgrade on newly created native device.
+
+API=IDXGIFactory::QueryInterface(IDXGIFactory5)
+EXPECTED_INTERFACE=NATIVE
+CURRENT_INTERFACE=PROXY_QUERY_WITH_NATIVE_FALLBACK
+STATUS=FAIL
+SOURCE=Local SDK 2.12 ProgrammingGuideManualHooking.md section 4.1 line 234; build sl_hooks.h enum FunctionHookID
+NOTE=The initial QueryInterface call is made on the upgraded factory. QueryInterface is not a hook in sl_hooks.h. Returned factory5 may already be native; CheckFeatureSupport itself is not claimed to be a demonstrated violation.
+
+POST_FIX=Native device retained; separately upgraded proxy used only for CreateCommandQueue. Native factories retained for non-hooked queries; proxy factories for CreateSwapChainForHwnd. Native swapchain obtained only for GetDesc1; GetBuffer/GetCurrentBackBufferIndex/Present continue using proxy. Native device used for InfoQueue and all non-hooked resource/pipeline operations.
+MANUAL_HOOKING_CONTRACT_SATISFIED_AFTER_FIX=YES

@@ -35,7 +35,7 @@ static std::string getTagName(sl::BufferType t){
 }
 struct Renderer {
     static constexpr UINT W=1280,H=720;
-    HWND window{};ComPtr<ID3D12Device> device;ComPtr<ID3D12CommandQueue> queue;
+    HWND window{};ComPtr<ID3D12Device> nativeDevice,proxyDevice;ComPtr<ID3D12CommandQueue> queue;
     ComPtr<IDXGISwapChain3> swap;ComPtr<ID3D12DescriptorHeap> rtvs;
     ComPtr<ID3D12Resource> buffers[2],depth,motion,hudless,uiColorAlpha;ComPtr<ID3D12CommandAllocator> allocator;
     ComPtr<ID3D12GraphicsCommandList> commands;ComPtr<ID3D12Fence> fence;
@@ -45,19 +45,20 @@ struct Renderer {
     void drain(){if(!queue||!fence)return;hr(queue->Signal(fence.Get(),++fenceValue));if(fence->GetCompletedValue()<fenceValue){hr(fence->SetEventOnCompletion(fenceValue,complete));if(WaitForSingleObject(complete,10000)!=WAIT_OBJECT_0)throw std::runtime_error("GPU drain timeout");}}
     ~Renderer(){if(complete)CloseHandle(complete);if(window)DestroyWindow(window);}
     void create(HMODULE sl,IDXGIAdapter1* adapter){
-        stage="D3D12_DEVICE";hr(D3D12CreateDevice(adapter,D3D_FEATURE_LEVEL_12_0,IID_PPV_ARGS(&device)));
-        result("SL_SET_D3D_DEVICE_RESULT",api<PFun_slSetD3DDevice>(sl,"slSetD3DDevice")(device.Get()));
+        stage="D3D12_DEVICE";hr(D3D12CreateDevice(adapter,D3D_FEATURE_LEVEL_12_0,IID_PPV_ARGS(&nativeDevice)));
+        result("SL_SET_D3D_DEVICE_RESULT",api<PFun_slSetD3DDevice>(sl,"slSetD3DDevice")(nativeDevice.Get()));
         auto upgrade=api<PFun_slUpgradeInterface>(sl,"slUpgradeInterface");
-        auto p=device.Detach();result("DEVICE_PROXY_RESULT",upgrade(reinterpret_cast<void**>(&p)));device.Attach(p);
-        D3D12_COMMAND_QUEUE_DESC q{};q.Type=D3D12_COMMAND_LIST_TYPE_DIRECT;hr(device->CreateCommandQueue(&q,IID_PPV_ARGS(&queue)));
+        proxyDevice=nativeDevice;auto p=proxyDevice.Detach();result("DEVICE_PROXY_RESULT",upgrade(reinterpret_cast<void**>(&p)));proxyDevice.Attach(p);
+        D3D12_COMMAND_QUEUE_DESC q{};q.Type=D3D12_COMMAND_LIST_TYPE_DIRECT;hr(proxyDevice->CreateCommandQueue(&q,IID_PPV_ARGS(&queue)));
+        std::cout<<"NATIVE_DEVICE_PRESERVED=YES\nPROXY_DEVICE_PRESERVED=YES\nCREATE_COMMAND_QUEUE_INTERFACE=PROXY\nNON_HOOKED_D3D12_INTERFACE=NATIVE\nCREATE_SWAPCHAIN_INTERFACE=PROXY\nPRESENT_INTERFACE=PROXY\nGET_BUFFER_INTERFACE=PROXY\nGET_CURRENT_BACKBUFFER_INDEX_INTERFACE=PROXY"<<std::endl;
         WNDCLASSW wc{};wc.lpfnWndProc=windowProc;wc.hInstance=GetModuleHandleW(nullptr);wc.lpszClassName=L"SLX3Standalone";RegisterClassW(&wc);
         RECT bounds{0,0,W,H};AdjustWindowRect(&bounds,WS_OVERLAPPEDWINDOW,FALSE);
         window=CreateWindowW(wc.lpszClassName,L"Streamline x3 isolated test",WS_OVERLAPPEDWINDOW,CW_USEDEFAULT,CW_USEDEFAULT,bounds.right-bounds.left,bounds.bottom-bounds.top,nullptr,nullptr,wc.hInstance,nullptr);
         if(!window)throw std::runtime_error("Window creation failed");ShowWindow(window,SW_SHOWNOACTIVATE);
-        stage="SWAPCHAIN";ComPtr<IDXGIFactory4> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));
+        stage="SWAPCHAIN";ComPtr<IDXGIFactory4> nativeFactory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&nativeFactory)));ComPtr<IDXGIFactory4> factory=nativeFactory;
         auto f=factory.Detach();result("FACTORY_PROXY_RESULT",upgrade(reinterpret_cast<void**>(&f)));factory.Attach(f);std::cout<<"FACTORY_PROXY_ACTIVE=YES"<<std::endl;
         ComPtr<IDXGIFactory5> factory5;
-        HRESULT factory5Hr=factory.As(&factory5);
+        HRESULT factory5Hr=nativeFactory.As(&factory5);
         if(FAILED(factory5Hr)||!factory5){
             void* nativeFac{};
             if(api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(factory.Get(),&nativeFac)==sl::Result::eOk&&nativeFac){
@@ -85,21 +86,23 @@ struct Renderer {
         ComPtr<IDXGISwapChain1> initial;hr(factory->CreateSwapChainForHwnd(queue.Get(),window,&desc,nullptr,nullptr,&initial));hr(initial.As(&swap));
         std::cout<<"SWAPCHAIN_CREATED=YES\nSTREAMLINE_PRESENT_MODEL=PROXY_SWAPCHAIN"<<std::endl;
         DXGI_SWAP_CHAIN_DESC1 actualDesc{};
-        HRESULT actualDescHr=initial->GetDesc1(&actualDesc);
+        ComPtr<IDXGISwapChain1> nativeSwapchain;
+        result("NATIVE_SWAPCHAIN_INTERFACE_RESULT",api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(initial.Get(),reinterpret_cast<void**>(nativeSwapchain.GetAddressOf())));
+        HRESULT actualDescHr=nativeSwapchain->GetDesc1(&actualDesc);
         std::cout<<"SWAPCHAIN_GET_DESC1_HRESULT=0x"<<std::hex<<unsigned(actualDescHr)<<std::dec<<std::endl;
         std::cout<<"SWAPCHAIN_ACTUAL_FLAGS=0x"<<std::hex<<actualDesc.Flags<<std::dec<<std::endl;
         bool actualTearing=(actualDesc.Flags&DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING)!=0;
         std::cout<<"SWAPCHAIN_ACTUAL_ALLOW_TEARING="<<(actualTearing?"YES":"NO")<<std::endl;
-        D3D12_DESCRIPTOR_HEAP_DESC heap{};heap.Type=D3D12_DESCRIPTOR_HEAP_TYPE_RTV;heap.NumDescriptors=6;hr(device->CreateDescriptorHeap(&heap,IID_PPV_ARGS(&rtvs)));stride=device->GetDescriptorHandleIncrementSize(heap.Type);
-        for(UINT i=0;i<2;i++){hr(swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i])));device->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));}
+        D3D12_DESCRIPTOR_HEAP_DESC heap{};heap.Type=D3D12_DESCRIPTOR_HEAP_TYPE_RTV;heap.NumDescriptors=6;hr(nativeDevice->CreateDescriptorHeap(&heap,IID_PPV_ARGS(&rtvs)));stride=nativeDevice->GetDescriptorHandleIncrementSize(heap.Type);
+        for(UINT i=0;i<2;i++){hr(swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i])));nativeDevice->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));}
         D3D12_HEAP_PROPERTIES props{};props.Type=D3D12_HEAP_TYPE_DEFAULT;
         D3D12_RESOURCE_DESC texture{};texture.Dimension=D3D12_RESOURCE_DIMENSION_TEXTURE2D;texture.Width=W;texture.Height=H;texture.DepthOrArraySize=1;texture.MipLevels=1;texture.SampleDesc.Count=1;texture.Flags=D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
-        texture.Format=DXGI_FORMAT_R32_FLOAT;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&depth)));device->CreateRenderTargetView(depth.Get(),nullptr,rtv(2));
-        texture.Format=DXGI_FORMAT_R16G16_FLOAT;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&motion)));device->CreateRenderTargetView(motion.Get(),nullptr,rtv(3));
-        texture.Format=DXGI_FORMAT_R8G8B8A8_UNORM;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&hudless)));device->CreateRenderTargetView(hudless.Get(),nullptr,rtv(4));
-        hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&uiColorAlpha)));device->CreateRenderTargetView(uiColorAlpha.Get(),nullptr,rtv(5));
+        texture.Format=DXGI_FORMAT_R32_FLOAT;hr(nativeDevice->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&depth)));nativeDevice->CreateRenderTargetView(depth.Get(),nullptr,rtv(2));
+        texture.Format=DXGI_FORMAT_R16G16_FLOAT;hr(nativeDevice->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&motion)));nativeDevice->CreateRenderTargetView(motion.Get(),nullptr,rtv(3));
+        texture.Format=DXGI_FORMAT_R8G8B8A8_UNORM;hr(nativeDevice->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&hudless)));nativeDevice->CreateRenderTargetView(hudless.Get(),nullptr,rtv(4));
+        hr(nativeDevice->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&uiColorAlpha)));nativeDevice->CreateRenderTargetView(uiColorAlpha.Get(),nullptr,rtv(5));
         std::cout<<"HUDLESS_RESOURCE_CREATED=YES\nHUDLESS_FORMAT=DXGI_FORMAT_R8G8B8A8_UNORM\nHUDLESS_SIZE=1280x720\nUI_COLOR_ALPHA_RESOURCE_CREATED=YES\nUI_COLOR_ALPHA_FORMAT=DXGI_FORMAT_R8G8B8A8_UNORM\nUI_COLOR_ALPHA_SIZE=1280x720\nCPU_TRANSPORT_COPY_COUNT=0"<<std::endl;
-        hr(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(&allocator)));hr(device->CreateCommandList(0,D3D12_COMMAND_LIST_TYPE_DIRECT,allocator.Get(),nullptr,IID_PPV_ARGS(&commands)));hr(commands->Close());hr(device->CreateFence(0,D3D12_FENCE_FLAG_NONE,IID_PPV_ARGS(&fence)));complete=CreateEventW(nullptr,FALSE,FALSE,nullptr);if(!complete)throw std::runtime_error("Fence event missing");
+        hr(nativeDevice->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(&allocator)));hr(nativeDevice->CreateCommandList(0,D3D12_COMMAND_LIST_TYPE_DIRECT,allocator.Get(),nullptr,IID_PPV_ARGS(&commands)));hr(commands->Close());hr(nativeDevice->CreateFence(0,D3D12_FENCE_FLAG_NONE,IID_PPV_ARGS(&fence)));complete=CreateEventW(nullptr,FALSE,FALSE,nullptr);if(!complete)throw std::runtime_error("Fence event missing");
         // Analytic textured plane at clip z=0.5 translates left by3 pixels/real frame.
         // Previous-minus-current motion is +3px, derived from that same transform.
         // No CPU image generation/upload/readback: all five outputs are GPU rasterized.
@@ -114,10 +117,10 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
 )";
         ComPtr<ID3DBlob> vs,ps,errors;hr(D3DCompile(shader,strlen(shader),nullptr,nullptr,nullptr,"vs","vs_5_0",0,0,&vs,&errors));hr(D3DCompile(shader,strlen(shader),nullptr,nullptr,nullptr,"ps","ps_5_0",0,0,&ps,&errors));
         D3D12_ROOT_PARAMETER param{};param.ParameterType=D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;param.Constants={0,0,2};param.ShaderVisibility=D3D12_SHADER_VISIBILITY_PIXEL;
-        D3D12_ROOT_SIGNATURE_DESC sig{};sig.NumParameters=1;sig.pParameters=&param;ComPtr<ID3DBlob> blob;hr(D3D12SerializeRootSignature(&sig,D3D_ROOT_SIGNATURE_VERSION_1,&blob,&errors));hr(device->CreateRootSignature(0,blob->GetBufferPointer(),blob->GetBufferSize(),IID_PPV_ARGS(&root)));
+        D3D12_ROOT_SIGNATURE_DESC sig{};sig.NumParameters=1;sig.pParameters=&param;ComPtr<ID3DBlob> blob;hr(D3D12SerializeRootSignature(&sig,D3D_ROOT_SIGNATURE_VERSION_1,&blob,&errors));hr(nativeDevice->CreateRootSignature(0,blob->GetBufferPointer(),blob->GetBufferSize(),IID_PPV_ARGS(&root)));
         D3D12_GRAPHICS_PIPELINE_STATE_DESC pso{};pso.pRootSignature=root.Get();pso.VS={vs->GetBufferPointer(),vs->GetBufferSize()};pso.PS={ps->GetBufferPointer(),ps->GetBufferSize()};pso.SampleMask=UINT_MAX;pso.RasterizerState.FillMode=D3D12_FILL_MODE_SOLID;pso.RasterizerState.CullMode=D3D12_CULL_MODE_NONE;pso.RasterizerState.DepthClipEnable=TRUE;pso.DepthStencilState.DepthEnable=FALSE;pso.DepthStencilState.StencilEnable=FALSE;
         for(auto& b:pso.BlendState.RenderTarget){b.SrcBlend=D3D12_BLEND_ONE;b.DestBlend=D3D12_BLEND_ZERO;b.BlendOp=D3D12_BLEND_OP_ADD;b.SrcBlendAlpha=D3D12_BLEND_ONE;b.DestBlendAlpha=D3D12_BLEND_ZERO;b.BlendOpAlpha=D3D12_BLEND_OP_ADD;b.LogicOp=D3D12_LOGIC_OP_NOOP;b.RenderTargetWriteMask=D3D12_COLOR_WRITE_ENABLE_ALL;}
-        pso.PrimitiveTopologyType=D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;pso.NumRenderTargets=5;pso.RTVFormats[0]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[1]=DXGI_FORMAT_R32_FLOAT;pso.RTVFormats[2]=DXGI_FORMAT_R16G16_FLOAT;pso.RTVFormats[3]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[4]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.SampleDesc.Count=1;hr(device->CreateGraphicsPipelineState(&pso,IID_PPV_ARGS(&pipeline)));
+        pso.PrimitiveTopologyType=D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;pso.NumRenderTargets=5;pso.RTVFormats[0]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[1]=DXGI_FORMAT_R32_FLOAT;pso.RTVFormats[2]=DXGI_FORMAT_R16G16_FLOAT;pso.RTVFormats[3]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[4]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.SampleDesc.Count=1;hr(nativeDevice->CreateGraphicsPipelineState(&pso,IID_PPV_ARGS(&pipeline)));
     }
     void recreateSwapchainForActiveDLSSG(HMODULE sl){
         std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_BEGIN=YES"<<std::endl;
@@ -129,7 +132,8 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
         std::cout<<"OLD_SWAPCHAIN_RELEASED=YES"<<std::endl;
 
         stage="ACTIVE_RECREATE_FACTORY";
-        ComPtr<IDXGIFactory4> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));
+        ComPtr<IDXGIFactory4> nativeFactory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&nativeFactory)));
+        ComPtr<IDXGIFactory4> factory=nativeFactory;
         auto upgrade=api<PFun_slUpgradeInterface>(sl,"slUpgradeInterface");
         auto f=factory.Detach();
         auto upgraded=upgrade(reinterpret_cast<void**>(&f));factory.Attach(f);
@@ -137,7 +141,7 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
         std::cout<<"ACTIVE_RECREATE_FACTORY_PROXY_ACTIVE=YES"<<std::endl;
         stage="ACTIVE_RECREATE_TEARING_QUERY";
         ComPtr<IDXGIFactory5> factory5;
-        HRESULT factory5Hr=factory.As(&factory5);
+        HRESULT factory5Hr=nativeFactory.As(&factory5);
         if(FAILED(factory5Hr)||!factory5){
             void* nativeFac{};
             if(api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(factory.Get(),&nativeFac)==sl::Result::eOk&&nativeFac){
@@ -161,7 +165,9 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
         std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_RESULT=SUCCESS\nACTIVE_SWAPCHAIN_CREATED_AFTER_DLSSG_ON=YES\nACTIVE_SWAPCHAIN_PRESENT_MODEL=STREAMLINE_PROXY"<<std::endl;
         stage="ACTIVE_SWAPCHAIN_RECREATE_GET_DESC1";
         DXGI_SWAP_CHAIN_DESC1 actualDesc{};
-        HRESULT actualDescHr=initial->GetDesc1(&actualDesc);
+        ComPtr<IDXGISwapChain1> nativeSwapchain;
+        result("NATIVE_SWAPCHAIN_INTERFACE_RESULT",api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(initial.Get(),reinterpret_cast<void**>(nativeSwapchain.GetAddressOf())));
+        HRESULT actualDescHr=nativeSwapchain->GetDesc1(&actualDesc);
         std::cout<<"ACTIVE_SWAPCHAIN_GET_DESC1_RESULT="<<(SUCCEEDED(actualDescHr)?"SUCCESS":"FAIL")<<std::endl;
         std::cout<<"ACTIVE_SWAPCHAIN_GET_DESC1_HRESULT=0x"<<std::hex<<unsigned(actualDescHr)<<std::dec<<std::endl;hr(actualDescHr);
         std::cout<<"ACTIVE_SWAPCHAIN_ACTUAL_FLAGS=0x"<<std::hex<<actualDesc.Flags<<std::dec<<std::endl;
@@ -172,7 +178,7 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o
             stage=i==0?"ACTIVE_SWAPCHAIN_RECREATE_GET_BUFFER_0":"ACTIVE_SWAPCHAIN_RECREATE_GET_BUFFER_1";
             HRESULT acquired=swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i]));
             std::cout<<"NEW_BACKBUFFER_"<<i<<"_HRESULT=0x"<<std::hex<<unsigned(acquired)<<std::dec<<std::endl;hr(acquired);
-            device->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));
+            nativeDevice->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));
             std::cout<<"NEW_BACKBUFFER_"<<i<<"_ACQUIRED=YES"<<std::endl;
         }
         std::cout<<"ACTIVE_SWAPCHAIN_RECREATE_END=YES"<<std::endl;
@@ -279,10 +285,10 @@ int wmain(int argc,wchar_t** argv){
         }
         renderer.create(interposer,adapter.Get());
         ComPtr<ID3D12InfoQueue> d3dInfoQueue;
-        HRESULT d3dIqHr = renderer.device.As(&d3dInfoQueue);
+        HRESULT d3dIqHr = renderer.nativeDevice.As(&d3dInfoQueue);
         if(FAILED(d3dIqHr) || !d3dInfoQueue){
             void* nativeDev{};
-            if(api<PFun_slGetNativeInterface>(interposer, "slGetNativeInterface")(renderer.device.Get(), &nativeDev) == sl::Result::eOk && nativeDev){
+            if(api<PFun_slGetNativeInterface>(interposer, "slGetNativeInterface")(renderer.proxyDevice.Get(), &nativeDev) == sl::Result::eOk && nativeDev){
                 d3dIqHr = reinterpret_cast<IUnknown*>(nativeDev)->QueryInterface(IID_PPV_ARGS(&d3dInfoQueue));
                 reinterpret_cast<IUnknown*>(nativeDev)->Release();
             }
@@ -400,7 +406,7 @@ int wmain(int argc,wchar_t** argv){
                 std::cout<<"ALLOW_TEARING_FIX=PASS\nDLSSG_LOADED_OFF_PRESENT=PASS\nPRESENT_BLOCKER_0x887A0001_RESOLVED=YES"<<std::endl;
             }
             stage="DRAIN";renderer.drain();
-            std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;
+            std::cout<<"DEVICE_REMOVED_REASON="<<renderer.nativeDevice->GetDeviceRemovedReason()<<std::endl;
             loadedModules();
             stage="SHUTDOWN";
             auto close=shutdown();
@@ -489,6 +495,6 @@ int wmain(int argc,wchar_t** argv){
             if(state.status!=sl::DLSSGStatus::eOk)throw std::runtime_error("Nonzero runtime DLSSGStatus");
         }
         std::cout<<"SUCCESSFUL_REAL_PRESENT_COUNT="<<successfulRealPresentCount<<std::endl;
-        stage="DRAIN";renderer.drain();options.mode=sl::DLSSGMode::eOff;result("DLSSG_OFF_RESULT",optionsFn(viewport,options));renderer.drain();std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;loadedModules();stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;return 0;
-    }catch(const std::exception& e){std::cout<<"FAIL_STAGE="<<stage<<"\nERROR="<<e.what()<<std::endl;if(renderer.device)std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;try{renderer.drain();}catch(...){std::cout<<"TERMINAL_DRAIN_FAILED=YES"<<std::endl;}if(initialized&&shutdown)std::cout<<"STREAMLINE_SHUTDOWN_RESULT="<<unsigned(shutdown())<<std::endl;return 1;}
+        stage="DRAIN";renderer.drain();options.mode=sl::DLSSGMode::eOff;result("DLSSG_OFF_RESULT",optionsFn(viewport,options));renderer.drain();std::cout<<"DEVICE_REMOVED_REASON="<<renderer.nativeDevice->GetDeviceRemovedReason()<<std::endl;loadedModules();stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;return 0;
+    }catch(const std::exception& e){std::cout<<"FAIL_STAGE="<<stage<<"\nERROR="<<e.what()<<std::endl;if(renderer.nativeDevice)std::cout<<"DEVICE_REMOVED_REASON="<<renderer.nativeDevice->GetDeviceRemovedReason()<<std::endl;try{renderer.drain();}catch(...){std::cout<<"TERMINAL_DRAIN_FAILED=YES"<<std::endl;}if(initialized&&shutdown)std::cout<<"STREAMLINE_SHUTDOWN_RESULT="<<unsigned(shutdown())<<std::endl;return 1;}
 }
