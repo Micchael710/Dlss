@@ -1,0 +1,51 @@
+================================================================================
+BUILD RECIPE AUDIT ACROSS OFFICIAL SOURCES
+================================================================================
+OFFICIAL_BUILD_RECIPE_FOUND=NO
+OFFICIAL_BUILD_RECIPE_SOURCE=NONE
+
+AUDITED REPOSITORIES AND ARTIFACTS:
+
+1. artur-graniszewski/dlss-enabler-optiscaler-embedder:
+   - Solution files (.sln): NONE
+   - Project files (.vcxproj): NONE
+   - CMake configuration (CMakeLists.txt): NONE
+   - Build scripts (.bat, .cmd, .ps1, .sh): NONE
+   - Workflows (.github/workflows): NONE
+   - Documentation / README: NONE
+   Result: No recipe to compile optiscaler_embed.cpp or main_wrapper.cpp into a static library.
+
+2. artur-graniszewski/dlss-enabler-main:
+   - References: Only references "Libs/OptiScaler.lib" in DLSSEnabler.vcxproj Link AdditionalDependencies.
+   - Build scripts: None for generating OptiScaler.lib.
+   - Submodules: Only External/unordered_dense.
+   Result: Assumes Libs/OptiScaler.lib is already prebuilt and provided.
+
+3. artur-graniszewski/DLSS-Enabler:
+   - Contains: build-optiscaler.ps1
+   - Analysis of build-optiscaler.ps1:
+       Script downloads or extracts a prebuilt runtime archive (e.g. OptiScaler_v0.7.7-pre12_20250630.7z) for InnoSetup installer packaging.
+       It copies OptiScaler.dll / nvngx.dll for distribution.
+       It does NOT build a static library, does not reference optiscaler_embed.cpp, and does not produce OptiScaler.lib.
+   Result: Packaging script for runtime binaries only; not a library build recipe.
+
+4. optiscaler/OptiScaler & artur-graniszewski/OptiScaler:
+   - OptiScaler.sln / OptiScaler.vcxproj:
+       ConfigurationType is strictly "DynamicLibrary" for all configurations (Debug/Release, x64).
+       There is no StaticLibrary target.
+       Zero references to optiscaler_embed.cpp, main_wrapper.cpp, or OptiScaler.lib.
+   Result: Upstream project only builds OptiScaler.dll.
+
+5. Comparison with dlss-enabler-fakenvapi-embedder:
+   - In contrast, artur-graniszewski's dlss-enabler-fakenvapi-embedder repository DOES include a complete MSBuild project file (fakenvapi_embed.vcxproj) with ConfigurationType=StaticLibrary.
+   - For optiscaler-embedder, the author never published or committed a project file or build recipe.
+
+PROTOCOL EVALUATION:
+Per user instruction:
+"NO considerar suficiente: 'puedo compilar estos .cpp manualmente'.
+La pregunta es: ¿PODEMOS DETERMINAR DE FORMA RAZONABLE Y REPRODUCIBLE CÓMO EL AUTOR PRODUCE LA LIB?
+Si NO:
+STOP.
+FAIL_STAGE=OPTISCALER_LIB_BUILD_RECIPE_UNRESOLVED"
+
+Conclusion: No official build recipe exists. The build process cannot be reproduced legitimately from official instructions or configuration files.

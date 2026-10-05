@@ -1,0 +1,27 @@
+================================================================================
+ARTURS OPTISCALER EMBEDDER REPOSITORY PROVENANCE
+================================================================================
+EMBEDDER_REPOSITORY=https://github.com/artur-graniszewski/dlss-enabler-optiscaler-embedder.git
+EMBEDDER_CLONE_DIRECTORY=D:/ProjectDllsss-research/arturs-optiscaler-embedder
+EMBEDDER_COMMIT=56f10d278fa22e74d495f6ee21ea6150af64d0b7
+EMBEDDER_COMMIT_MESSAGE=First update
+EMBEDDER_COMMIT_DATE=2026-02-01 18:29:52 +0100
+EMBEDDER_DEFAULT_BRANCH=main
+EMBEDDER_TREE_CLEAN=YES
+
+GIT COMMIT HISTORY IN EMBEDDER REPOSITORY:
+56f10d278fa22e74d495f6ee21ea6150af64d0b7 First update (Sun Feb 1 18:29:52 2026 +0100)
+2218067b312e95b8623312cda25cae074262c62a Initial commit (Sun Feb 1 18:24:52 2026 +0100)
+
+FILES PRESENT IN REPOSITORY:
+- LICENSE.txt (35801 bytes)
+- main_wrapper.cpp (251 bytes)
+- optiscaler_bypass.cpp (8950 bytes)
+- optiscaler_bypass.h (770 bytes)
+- optiscaler_embed.cpp (3699 bytes)
+- optiscaler_embed.h (663 bytes)
+
+PROVENANCE EVALUATION:
+Repository was cloned cleanly outside of the main repository into D:/ProjectDllsss-research/arturs-optiscaler-embedder/.
+No local edits or modifications were applied.
+No build project files (.sln, .vcxproj, CMakeLists.txt) exist in the repository tree.

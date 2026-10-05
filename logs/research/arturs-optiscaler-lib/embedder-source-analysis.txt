@@ -1,0 +1,33 @@
+================================================================================
+EMBEDDER SOURCE CODE ANALYSIS
+================================================================================
+EMBEDDER_IS_STANDALONE_PROJECT=NO
+EMBEDDER_EXPECTS_OPTISCALER_SOURCE_TREE=YES
+
+ARCHITECTURAL DESIGN AUDIT:
+1. main_wrapper.cpp:
+   Directly includes OptiScaler's implementation file:
+     #include "dllmain.cpp"
+   Renames OptiScaler's DllMain entrypoint to optisc_original_DllMain so that the module initialization can be deferred and invoked programmatically by the host.
+
+2. optiscaler_embed.cpp:
+   Directly includes internal OptiScaler headers:
+     #include "logger.h"
+     #include "spdlog/async.h"
+     #include "spdlog/sinks/basic_file_sink.h"
+     #include "spdlog/sinks/stdout_color_sinks.h"
+     #include "spdlog/sinks/callback_sink.h"
+     #include "Config.h"
+   Implements OptiScaler_Init(HMODULE hOpti, const OptiScalerConfig* cfg), configuring internal spdlog sinks and invoking optisc_original_DllMain(hOpti, DLL_PROCESS_ATTACH, nullptr).
+
+3. optiscaler_bypass.h & optiscaler_bypass.cpp:
+   Implements redirection macros:
+     #define GetFileVersionInfoSizeW MyGetFileVersionInfoSizeW
+     #define GetFileVersionInfoW     MyGetFileVersionInfoW
+     #define VerQueryValueW          MyVerQueryValueW
+     #define GetModuleFileNameW      MyGetModuleFileNameW
+     #define DllMain                 optisc_original_DllMain
+   Bypasses version.dll and module filename queries to spoof internal identification (e.g. recognizing dbghelp.dll, dxgi.dll, version.dll, dlss-enabler.asi).
+
+CONCLUSION:
+The repository dlss-enabler-optiscaler-embedder contains purely a layer of wrapper/injection source files intended to compile in conjunction with an external OptiScaler source tree. It has no build scripts, solution files, or buildable targets on its own.

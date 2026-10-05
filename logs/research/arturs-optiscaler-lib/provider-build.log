@@ -1,0 +1,11 @@
+================================================================================
+PROVIDER (dlss-enabler-main) BUILD LOG
+================================================================================
+PROVIDER_BUILD_COUNT=0
+PROVIDER_BUILD_RESULT=NOT_RUN
+REASON: Conditional build phase not unlocked. OPTISCALER_LIB_VALIDATED=NO.
+
+PROTOCOL ENFORCEMENT:
+Building dlss-enabler-main Release|x64 is strictly conditional on OPTISCALER_LIB_VALIDATED=YES.
+Because OptiScaler.lib could not be generated from an official, reproducible build recipe, provider compilation was not attempted.
+Existing cloned source tree of dlss-enabler-main at commit 62d32511805396d284bf5d60478f964d0ba8d228 remains unmodified.

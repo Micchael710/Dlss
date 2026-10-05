@@ -1,0 +1,38 @@
+================================================================================
+REQUIRED SYMBOLS AUDIT (MAIN VS EMBEDDER)
+================================================================================
+AUDIT OF CALL SITES IN dlss-enabler-main:
+1. OptiScaler_Init:
+   - Utils/Autoconfig.cpp (Line 493): if (!OptiScaler_Init(Common::GetModuleHandle(), &cfg)) {}
+   - Utils/Kernel32Proxy.cpp (Line 407): if (!OptiScaler_Init(Common::GetModuleHandle(), &cfg)) {}
+   MAIN_REFERENCES_OPTISCALER_INIT=YES
+
+2. OptiScaler_Shutdown:
+   - Core/Core.cpp (Line 72): OptiScaler_Shutdown();
+   MAIN_REFERENCES_OPTISCALER_SHUTDOWN=YES
+
+3. BeginVersionBypassHooks:
+   - Declared in Utils/Optiscaler.h (Line 11): bool BeginVersionBypassHooks();
+   - Never called or referenced anywhere in dlss-enabler-main source files.
+   MAIN_REFERENCES_BEGIN_VERSION_BYPASS_HOOKS=NO
+
+AUDIT OF DEFINITIONS IN dlss-enabler-optiscaler-embedder:
+1. OptiScaler_Init:
+   - Implemented in optiscaler_embed.cpp (Line 86):
+       bool OptiScaler_Init(HMODULE hOpti, const OptiScalerConfig* cfg)
+   EMBEDDER_DEFINES_OPTISCALER_INIT=YES
+
+2. OptiScaler_Shutdown:
+   - Declared in optiscaler_embed.h (Line 18):
+       void OptiScaler_Shutdown();
+   - NOT IMPLEMENTED anywhere in optiscaler_embed.cpp or any other file in the repository.
+   EMBEDDER_DEFINES_OPTISCALER_SHUTDOWN=NO
+
+3. BeginVersionBypassHooks:
+   - Neither declared nor defined in dlss-enabler-optiscaler-embedder.
+   EMBEDDER_DEFINES_BEGIN_VERSION_BYPASS_HOOKS=NO
+
+FATAL SYMBOL LINKAGE CONFLICT:
+Because dlss-enabler-main explicitly references OptiScaler_Shutdown in Core/Core.cpp, any library built strictly from dlss-enabler-optiscaler-embedder would fail linking in dlss-enabler-main with an unresolved external symbol error:
+  error LNK2019: unresolved external symbol OptiScaler_Shutdown referenced in function "void __cdecl Core::Shutdown(void)"
+The embedder repository at commit 56f10d2 is incomplete with respect to the symbols demanded by dlss-enabler-main.

@@ -1,0 +1,28 @@
+================================================================================
+OPTISCALER UPSTREAM COMPATIBILITY AND VERSION SELECTION
+================================================================================
+CANDIDATE COMMITS AUDITED:
+
+CANDIDATE 1:
+OPTISCALER_CANDIDATE_1_COMMIT=249076296a388eeb1e953d239ef1b9c1feab06bf
+OPTISCALER_CANDIDATE_1_DATE=2026-02-01
+OPTISCALER_CANDIDATE_1_REASON=Exact match for the commit date of dlss-enabler-optiscaler-embedder (2026-02-01). Corresponds to OptiScaler master tree right after 0.7.8 / early 0.9 preparation with GameQuirks.
+
+CANDIDATE 2:
+OPTISCALER_CANDIDATE_2_COMMIT=13b2b5d0653a127e6b250f72f13bb8f0778f4196
+OPTISCALER_CANDIDATE_2_TAG=v0.7.8
+OPTISCALER_CANDIDATE_2_REASON=Most recent stable release tag prior to Feb 1, 2026.
+
+CANDIDATE 3:
+OPTISCALER_CANDIDATE_3_COMMIT=12b321380b31cd89cb71aded7c8ef4e89c050418
+OPTISCALER_CANDIDATE_3_SOURCE=artur-graniszewski/OptiScaler (author's own fork)
+OPTISCALER_CANDIDATE_3_REASON=Fork created and maintained by Artur Graniszewski on GitHub, containing personal commits for menu refactoring and SL1 input support.
+
+SELECTION EVALUATION:
+OPTISCALER_COMPATIBLE_COMMIT=UNRESOLVED
+OPTISCALER_VERSION_SELECTION_CONFIDENCE=NONE (BLOCKED)
+
+REASONING:
+While Candidate 1 matches the date of the embedder commit and Candidate 3 represents the author's fork, neither upstream OptiScaler nor the author's fork provides a StaticLibrary build configuration for OptiScaler. Both repositories only configure DynamicLibrary (OptiScaler.dll) builds.
+Furthermore, no submodule, CMakeLists, or solution links the embedder to any specific OptiScaler commit.
+Without an official build recipe linking them together, any commit selection would be arbitrary speculation.

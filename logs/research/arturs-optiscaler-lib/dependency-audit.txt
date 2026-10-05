@@ -1,0 +1,23 @@
+================================================================================
+DEPENDENCY AUDIT
+================================================================================
+TARGET_LIBRARY: Libs/OptiScaler.lib
+INTENDED_PRODUCER: artur-graniszewski/dlss-enabler-optiscaler-embedder + OptiScaler
+STATUS: UNRESOLVED
+
+DEPENDENCY TABLE FOR OptiScaler.lib CREATION:
+------------------------------------------------------------------------------------------------------------------------------------
+COMPONENT                          REQUIRED                       PRESENT IN REPO         OFFICIAL BUILD SYSTEM   STATUS
+------------------------------------------------------------------------------------------------------------------------------------
+dlss-enabler-optiscaler-embedder   Wrapper source code            YES (commit 56f10d2)    NO (.vcxproj missing)   UNRESOLVED
+OptiScaler source tree             dllmain.cpp, logger.h, Config  EXTERNAL                NO (.lib target absent) UNRESOLVED
+spdlog headers / lib               Used by optiscaler_embed.cpp   EXTERNAL                OptiScaler external     UNRESOLVED
+OptiScaler_Shutdown implementation Referenced by Core/Core.cpp    NO (missing definition) N/A                     FATAL MISSING SYMBOL
+------------------------------------------------------------------------------------------------------------------------------------
+
+OVERALL STATUS:
+The chain of dependencies to build Libs/OptiScaler.lib officially and reproducibly cannot be resolved.
+1. dlss-enabler-optiscaler-embedder lacks a build definition (.vcxproj / CMakeLists.txt).
+2. dlss-enabler-optiscaler-embedder omits the definition of OptiScaler_Shutdown required by dlss-enabler-main.
+3. OptiScaler has no official static library target.
+4. Per protocol, manual compilation of files or creation of ad-hoc projects/stubs is explicitly forbidden.

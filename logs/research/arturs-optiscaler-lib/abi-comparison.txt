@@ -1,0 +1,34 @@
+================================================================================
+ABI AND STRUCT LAYOUT COMPARISON
+================================================================================
+HEADER 1: dlss-enabler-main/Utils/Optiscaler.h
+  struct OptiScalerConfig {
+      bool spoof_as_enabler = true;
+      bool isFrs4UpdateOff = false;
+  };
+  bool OptiScaler_Init(HMODULE self, const OptiScalerConfig* cfg);
+  void OptiScaler_Shutdown(); 
+  bool BeginVersionBypassHooks();
+
+HEADER 2: dlss-enabler-optiscaler-embedder/optiscaler_embed.h
+  struct OptiScalerConfig {
+      bool spoof_as_enabler = true;
+  };
+  bool OptiScaler_Init(HMODULE self, const OptiScalerConfig* cfg);
+  void OptiScaler_Shutdown();
+
+ABI METRICS:
+CONFIG_STRUCT_MAIN_SIZE_EXPECTED=2 bytes (2 bool fields: spoof_as_enabler, isFrs4UpdateOff)
+CONFIG_STRUCT_EMBEDDER_FIELDS=bool spoof_as_enabler (1 byte)
+CONFIG_STRUCT_PREFIX_COMPATIBLE=YES
+CONFIG_STRUCT_ABI_RISK=LOW_FOR_MEMORY_SAFETY_BUT_SEMANTIC_DIVERGENCE
+
+ANALYSIS OF MEMORY ACCESS AND ALIGNMENT:
+1. In dlss-enabler-main, OptiScalerConfig is allocated with 2 bytes. The caller sets:
+     cfg.spoof_as_enabler = true (offset 0)
+     cfg.isFrs4UpdateOff = false (offset 1)
+2. In dlss-enabler-optiscaler-embedder (commit 56f10d2), OptiScaler_Init accesses:
+     const bool spoof = cfg && cfg->spoof_as_enabler;
+   This reads offset 0. Since the caller allocated at least 2 bytes, reading 1 byte at offset 0 is memory-safe (no out-of-bounds read).
+3. However, semantic divergence exists:
+   dlss-enabler-optiscaler-embedder (Feb 1, 2026) predates the addition of isFrs4UpdateOff in dlss-enabler-main (Sep 2026). The embedder does not recognize or handle isFrs4UpdateOff.

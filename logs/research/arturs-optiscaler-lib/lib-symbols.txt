@@ -1,0 +1,15 @@
+================================================================================
+OptiScaler.lib SYMBOLS AUDIT
+================================================================================
+OPTISCALER_LIB_GENERATED=NO
+OPTISCALER_LIB_PATH=N/A
+OPTISCALER_LIB_SIZE=N/A
+OPTISCALER_LIB_SHA256=N/A
+
+STATIC SYMBOL DUMP (dumpbin /symbols):
+LIB_SYMBOL_OPTISCALER_INIT=NOT_GENERATED
+LIB_SYMBOL_OPTISCALER_SHUTDOWN=NOT_GENERATED
+LIB_SYMBOL_BEGIN_VERSION_BYPASS_HOOKS=NOT_GENERATED
+
+OPTISCALER_LIB_VALIDATED=NO
+STATUS: Static library was not generated because official build recipe is unresolved and required definition of OptiScaler_Shutdown is absent from embedder repository.

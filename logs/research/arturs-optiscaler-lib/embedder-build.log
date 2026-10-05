@@ -1,0 +1,19 @@
+================================================================================
+EMBEDDER BUILD LOG
+================================================================================
+EMBEDDER_BUILD_COUNT=0
+EMBEDDER_BUILD_RESULT=NOT_RUN
+OPTISCALER_LIB_GENERATED=NO
+FAIL_STAGE=OPTISCALER_LIB_BUILD_RECIPE_UNRESOLVED
+REASON: No official project file, solution, CMake configuration, or build script exists in dlss-enabler-optiscaler-embedder or related official repositories.
+
+PROTOCOL COMPLIANCE:
+Per project rules:
+"NO considerar suficiente: 'puedo compilar estos .cpp manualmente'.
+La pregunta es: ¿PODEMOS DETERMINAR DE FORMA RAZONABLE Y REPRODUCIBLE CÓMO EL AUTOR PRODUCE LA LIB?
+Si NO:
+STOP.
+FAIL_STAGE=OPTISCALER_LIB_BUILD_RECIPE_UNRESOLVED"
+"NO improvisar."
+
+No build command was executed.
