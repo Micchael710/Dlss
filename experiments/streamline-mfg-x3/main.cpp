@@ -6,21 +6,11 @@
 #include <sl_reflex.h>
 #include <sl_pcl.h>
 #include <cmath>
+#include <dxgi1_3.h>
 #include <d3d12sdklayers.h>
 #include <dxgidebug.h>
 #include <vector>
 #include <fstream>
-
-typedef HRESULT (WINAPI *PFun_DXGIGetDebugInterface1)(UINT Flags, REFIID riid, void **pDebug);
-static HRESULT callDXGIGetDebugInterface1(UINT Flags, REFIID riid, void **pDebug) {
-    HMODULE mod = LoadLibraryExW(L"dxgidebug.dll", nullptr, LOAD_LIBRARY_SEARCH_SYSTEM32);
-    if (!mod) mod = GetModuleHandleW(L"dxgidebug.dll");
-    if (!mod) return E_NOINTERFACE;
-    auto pfn = reinterpret_cast<PFun_DXGIGetDebugInterface1>(GetProcAddress(mod, "DXGIGetDebugInterface1"));
-    if (!pfn) return E_NOINTERFACE;
-    return pfn(Flags, riid, pDebug);
-}
-#define DXGIGetDebugInterface1 callDXGIGetDebugInterface1
 
 static LRESULT CALLBACK windowProc(HWND h,UINT m,WPARAM w,LPARAM l){return DefWindowProcW(h,m,w,l);}
 static void barrier(ID3D12GraphicsCommandList* c,ID3D12Resource* r,D3D12_RESOURCE_STATES a,D3D12_RESOURCE_STATES b){
@@ -112,6 +102,10 @@ int wmain(int argc,wchar_t** argv){
         HRESULT dxgiIqHr = DXGIGetDebugInterface1(0, IID_PPV_ARGS(&dxgiInfoQueue));
         std::cout << "DXGI_INFOQUEUE_HRESULT=0x" << std::hex << unsigned(dxgiIqHr) << std::dec << std::endl;
         std::cout << "DXGI_INFOQUEUE_AVAILABLE=" << (dxgiInfoQueue ? "YES" : "NO") << std::endl;
+        if(FAILED(dxgiIqHr) || !dxgiInfoQueue){
+            std::cout << "DXGI_INFOQUEUE_SETUP_FAILED=YES" << std::endl;
+            throw std::runtime_error("DXGI InfoQueue unavailable");
+        }
         renderer.create(interposer,adapter.Get());
         ComPtr<ID3D12InfoQueue> d3dInfoQueue;
         HRESULT d3dIqHr = renderer.device.As(&d3dInfoQueue);

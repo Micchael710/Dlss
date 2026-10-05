@@ -147,3 +147,7 @@ logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2361472.j
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_1852676.jsonl
 /logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_1852676.jsonl
 
+# Raw OFF DXGI infoqueue validation telemetry; bounded evidence committed.
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/backend_2246236.jsonl
+/logs/research/streamline-mfg-capability/20261004-sdk212/backend/loader_2246236.jsonl
+
