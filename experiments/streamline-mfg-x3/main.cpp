@@ -6,7 +6,7 @@
 #include <sl_reflex.h>
 #include <sl_pcl.h>
 #include <cmath>
-#include <dxgi1_3.h>
+#include <dxgi1_5.h>
 #include <d3d12sdklayers.h>
 #include <dxgidebug.h>
 #include <vector>
@@ -41,9 +41,40 @@ struct Renderer {
         if(!window)throw std::runtime_error("Window creation failed");ShowWindow(window,SW_SHOWNOACTIVATE);
         stage="SWAPCHAIN";ComPtr<IDXGIFactory4> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));
         auto f=factory.Detach();result("FACTORY_PROXY_RESULT",upgrade(reinterpret_cast<void**>(&f)));factory.Attach(f);std::cout<<"FACTORY_PROXY_ACTIVE=YES"<<std::endl;
+        ComPtr<IDXGIFactory5> factory5;
+        HRESULT factory5Hr=factory.As(&factory5);
+        if(FAILED(factory5Hr)||!factory5){
+            void* nativeFac{};
+            if(api<PFun_slGetNativeInterface>(sl,"slGetNativeInterface")(factory.Get(),&nativeFac)==sl::Result::eOk&&nativeFac){
+                factory5Hr=reinterpret_cast<IUnknown*>(nativeFac)->QueryInterface(IID_PPV_ARGS(&factory5));
+                reinterpret_cast<IUnknown*>(nativeFac)->Release();
+            }
+        }
+        std::cout<<"FACTORY5_QUERY_HRESULT=0x"<<std::hex<<unsigned(factory5Hr)<<std::dec<<std::endl;
+        if(FAILED(factory5Hr)||!factory5){
+            std::cout<<"TEARING_FEATURE_QUERY_AVAILABLE=NO"<<std::endl;
+            throw std::runtime_error("IDXGIFactory5 query failed");
+        }
+        BOOL tearingSupported=FALSE;
+        HRESULT tearingHr=factory5->CheckFeatureSupport(DXGI_FEATURE_PRESENT_ALLOW_TEARING,&tearingSupported,sizeof(tearingSupported));
+        std::cout<<"TEARING_CHECK_HRESULT=0x"<<std::hex<<unsigned(tearingHr)<<std::dec<<std::endl;
+        std::cout<<"TEARING_SUPPORTED="<<((SUCCEEDED(tearingHr)&&tearingSupported)?"YES":"NO")<<std::endl;
         DXGI_SWAP_CHAIN_DESC1 desc{};desc.Width=W;desc.Height=H;desc.Format=DXGI_FORMAT_R8G8B8A8_UNORM;desc.SampleDesc.Count=1;desc.BufferUsage=DXGI_USAGE_RENDER_TARGET_OUTPUT;desc.BufferCount=2;desc.SwapEffect=DXGI_SWAP_EFFECT_FLIP_DISCARD;
+        if(SUCCEEDED(tearingHr)&&tearingSupported){
+            desc.Flags|=DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING;
+            std::cout<<"SWAPCHAIN_ALLOW_TEARING_FLAG_ADDED=YES"<<std::endl;
+        }else{
+            std::cout<<"SWAPCHAIN_ALLOW_TEARING_FLAG_ADDED=NO\nRUNTIME_EXECUTED=NO"<<std::endl;
+            throw std::runtime_error("Tearing not supported");
+        }
         ComPtr<IDXGISwapChain1> initial;hr(factory->CreateSwapChainForHwnd(queue.Get(),window,&desc,nullptr,nullptr,&initial));hr(initial.As(&swap));
         std::cout<<"SWAPCHAIN_CREATED=YES\nSTREAMLINE_PRESENT_MODEL=PROXY_SWAPCHAIN"<<std::endl;
+        DXGI_SWAP_CHAIN_DESC1 actualDesc{};
+        HRESULT actualDescHr=initial->GetDesc1(&actualDesc);
+        std::cout<<"SWAPCHAIN_GET_DESC1_HRESULT=0x"<<std::hex<<unsigned(actualDescHr)<<std::dec<<std::endl;
+        std::cout<<"SWAPCHAIN_ACTUAL_FLAGS=0x"<<std::hex<<actualDesc.Flags<<std::dec<<std::endl;
+        bool actualTearing=(actualDesc.Flags&DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING)!=0;
+        std::cout<<"SWAPCHAIN_ACTUAL_ALLOW_TEARING="<<(actualTearing?"YES":"NO")<<std::endl;
         D3D12_DESCRIPTOR_HEAP_DESC heap{};heap.Type=D3D12_DESCRIPTOR_HEAP_TYPE_RTV;heap.NumDescriptors=4;hr(device->CreateDescriptorHeap(&heap,IID_PPV_ARGS(&rtvs)));stride=device->GetDescriptorHandleIncrementSize(heap.Type);
         for(UINT i=0;i<2;i++){hr(swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i])));device->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));}
         D3D12_HEAP_PROPERTIES props{};props.Type=D3D12_HEAP_TYPE_DEFAULT;
@@ -118,7 +149,126 @@ int wmain(int argc,wchar_t** argv){
         }
         std::cout << "D3D12_INFOQUEUE_HRESULT=0x" << std::hex << unsigned(d3dIqHr) << std::dec << std::endl;
         std::cout << "D3D12_INFOQUEUE_AVAILABLE=" << (d3dInfoQueue ? "YES" : "NO") << std::endl;
-        if(baseOnly||offOnly){if(offOnly){sl::AdapterInfo offInfo{};offInfo.deviceLUID=reinterpret_cast<uint8_t*>(&d.AdapterLuid);offInfo.deviceLUIDSizeInBytes=sizeof(LUID);stage="OFF_FEATURE_SUPPORT";result("DLSSG_FEATURE_SUPPORT_RESULT",api<PFun_slIsFeatureSupported>(interposer,"slIsFeatureSupported")(sl::kFeatureDLSS_G,offInfo));auto setOff=feature<PFun_slDLSSGSetOptions>(interposer,sl::kFeatureDLSS_G,"slDLSSGSetOptions");sl::DLSSGOptions offOptions{};offOptions.mode=sl::DLSSGMode::eOff;offOptions.numFramesToGenerate=1;stage="SET_OPTIONS_OFF";result("SET_OPTIONS_OFF_RESULT",setOff(sl::ViewportHandle{0},offOptions));std::cout<<"DLSSG_PLUGIN_REQUESTED=YES\nDLSSG_MODE=eOff"<<std::endl;}std::cout<<"DLSSG_ENABLED=NO"<<std::endl;PFun_slReflexSleep* offSleep{};PFun_slPCLSetMarker* offMarker{};PFun_slGetNewFrameToken* offToken{};if(offOnly){offSleep=feature<PFun_slReflexSleep>(interposer,sl::kFeatureReflex,"slReflexSleep");offMarker=feature<PFun_slPCLSetMarker>(interposer,sl::kFeaturePCL,"slPCLSetMarker");offToken=api<PFun_slGetNewFrameToken>(interposer,"slGetNewFrameToken");}void* native{};stage="VERIFY_SWAPCHAIN_PROXY";result("SWAPCHAIN_NATIVE_QUERY_RESULT",api<PFun_slGetNativeInterface>(interposer,"slGetNativeInterface")(renderer.swap.Get(),&native));bool proxy=native&&native!=renderer.swap.Get();std::cout<<"SWAPCHAIN_PROXY_ACTIVE="<<(proxy?"YES":"NO")<<std::endl;if(native)static_cast<IUnknown*>(native)->Release();if(!proxy)throw std::runtime_error("Base test requires SL proxy swapchain");for(UINT frame=0;frame<30;frame++){MSG message{};while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}if(offOnly){stage="OFF_FRAME_TOKEN";sl::FrameToken* token{};result("OFF_FRAME_TOKEN_RESULT",offToken(token,&frame));stage="OFF_REFLEX_SLEEP";result("OFF_REFLEX_SLEEP_RESULT",offSleep(*token));stage="OFF_SIM_START";result("OFF_SIM_START_RESULT",offMarker(sl::PCLMarker::eSimulationStart,*token));stage="OFF_SIM_END";result("OFF_SIM_END_RESULT",offMarker(sl::PCLMarker::eSimulationEnd,*token));stage="OFF_RENDER_START";result("OFF_RENDER_START_RESULT",offMarker(sl::PCLMarker::eRenderSubmitStart,*token));stage="BASE_DRAW";renderer.draw(frame);stage="OFF_RENDER_END";result("OFF_RENDER_END_RESULT",offMarker(sl::PCLMarker::eRenderSubmitEnd,*token));stage="OFF_PRESENT_START";result("OFF_PRESENT_START_RESULT",offMarker(sl::PCLMarker::ePresentStart,*token));UINT64 d3dBefore = 0, dxgiBefore = 0;if(frame == 0){d3dBefore = d3dInfoQueue ? d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter() : 0;dxgiBefore = dxgiInfoQueue ? dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL) : 0;std::cout << "D3D12_MESSAGES_BEFORE_PRESENT=" << d3dBefore << std::endl;std::cout << "DXGI_MESSAGES_BEFORE_PRESENT=" << dxgiBefore << std::endl;}stage="PRESENT";HRESULT presented=renderer.swap->Present(0,0);if(frame==0){std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;std::ofstream valLog(logs / "validation-messages.log");UINT64 d3dAfter = d3dInfoQueue ? d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter() : 0;std::cout << "D3D12_MESSAGES_AFTER_PRESENT=" << d3dAfter << std::endl;UINT64 d3dNew = (d3dAfter >= d3dBefore) ? (d3dAfter - d3dBefore) : 0;std::cout << "D3D12_NEW_MESSAGE_COUNT=" << d3dNew << std::endl;for(UINT64 i = d3dBefore; i < d3dAfter; ++i){SIZE_T size = 0;d3dInfoQueue->GetMessage(i, nullptr, &size);if(size > 0){std::vector<uint8_t> buf(size);auto* m = reinterpret_cast<D3D12_MESSAGE*>(buf.data());if(SUCCEEDED(d3dInfoQueue->GetMessage(i, m, &size))){std::string desc = m->pDescription ? m->pDescription : "";std::cout << "D3D12_DEBUG_MESSAGE_BEGIN\nINDEX=" << i << "\nCATEGORY=" << m->Category << "\nSEVERITY=" << m->Severity << "\nID=" << m->ID << "\nDESCRIPTION=" << desc << "\nD3D12_DEBUG_MESSAGE_END" << std::endl;valLog << "D3D12_DEBUG_MESSAGE_BEGIN\nINDEX=" << i << "\nCATEGORY=" << m->Category << "\nSEVERITY=" << m->Severity << "\nID=" << m->ID << "\nDESCRIPTION=" << desc << "\nD3D12_DEBUG_MESSAGE_END\n";}}}UINT64 dxgiAfter = dxgiInfoQueue ? dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL) : 0;std::cout << "DXGI_MESSAGES_AFTER_PRESENT=" << dxgiAfter << std::endl;UINT64 dxgiNew = (dxgiAfter >= dxgiBefore) ? (dxgiAfter - dxgiBefore) : 0;std::cout << "DXGI_NEW_MESSAGE_COUNT=" << dxgiNew << std::endl;for(UINT64 i = dxgiBefore; i < dxgiAfter; ++i){SIZE_T size = 0;dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, nullptr, &size);if(size > 0){std::vector<uint8_t> buf(size);auto* m = reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>(buf.data());if(SUCCEEDED(dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL, i, m, &size))){std::string desc = m->pDescription ? m->pDescription : "";std::cout << "DXGI_DEBUG_MESSAGE_BEGIN\nINDEX=" << i << "\nCATEGORY=" << m->Category << "\nSEVERITY=" << m->Severity << "\nID=" << m->ID << "\nDESCRIPTION=" << desc << "\nDXGI_DEBUG_MESSAGE_END" << std::endl;valLog << "DXGI_DEBUG_MESSAGE_BEGIN\nINDEX=" << i << "\nCATEGORY=" << m->Category << "\nSEVERITY=" << m->Severity << "\nID=" << m->ID << "\nDESCRIPTION=" << desc << "\nDXGI_DEBUG_MESSAGE_END\n";}}}valLog.close();if(FAILED(presented)){std::cout << "PRESENT_END_EXECUTED=NO" << std::endl;hr(presented);}}else{hr(presented);}stage="OFF_PRESENT_END";result("OFF_PRESENT_END_RESULT",offMarker(sl::PCLMarker::ePresentEnd,*token));std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;}else{stage="BASE_DRAW";renderer.draw(frame);stage="PRESENT";HRESULT presented=renderer.swap->Present(0,0);if(frame==0)std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;hr(presented);std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;}}stage="DRAIN";renderer.drain();std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;loadedModules();stage="SHUTDOWN";auto close=shutdown();initialized=false;result("STREAMLINE_SHUTDOWN_RESULT",close);std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;return 0;}sl::AdapterInfo info{};info.deviceLUID=reinterpret_cast<uint8_t*>(&d.AdapterLuid);info.deviceLUIDSizeInBytes=sizeof(LUID);stage="FEATURE_SUPPORT";result("DLSSG_FEATURE_SUPPORT_RESULT",api<PFun_slIsFeatureSupported>(interposer,"slIsFeatureSupported")(sl::kFeatureDLSS_G,info));
+        if(baseOnly||offOnly){
+            if(offOnly){
+                sl::AdapterInfo offInfo{};offInfo.deviceLUID=reinterpret_cast<uint8_t*>(&d.AdapterLuid);offInfo.deviceLUIDSizeInBytes=sizeof(LUID);
+                stage="OFF_FEATURE_SUPPORT";result("DLSSG_FEATURE_SUPPORT_RESULT",api<PFun_slIsFeatureSupported>(interposer,"slIsFeatureSupported")(sl::kFeatureDLSS_G,offInfo));
+                auto setOff=feature<PFun_slDLSSGSetOptions>(interposer,sl::kFeatureDLSS_G,"slDLSSGSetOptions");
+                sl::DLSSGOptions offOptions{};offOptions.mode=sl::DLSSGMode::eOff;offOptions.numFramesToGenerate=1;
+                stage="SET_OPTIONS_OFF";result("SET_OPTIONS_OFF_RESULT",setOff(sl::ViewportHandle{0},offOptions));
+                std::cout<<"DLSSG_PLUGIN_REQUESTED=YES\nDLSSG_MODE=eOff"<<std::endl;
+            }
+            std::cout<<"DLSSG_ENABLED=NO"<<std::endl;
+            PFun_slReflexSleep* offSleep{};PFun_slPCLSetMarker* offMarker{};PFun_slGetNewFrameToken* offToken{};
+            if(offOnly){
+                offSleep=feature<PFun_slReflexSleep>(interposer,sl::kFeatureReflex,"slReflexSleep");
+                offMarker=feature<PFun_slPCLSetMarker>(interposer,sl::kFeaturePCL,"slPCLSetMarker");
+                offToken=api<PFun_slGetNewFrameToken>(interposer,"slGetNewFrameToken");
+            }
+            void* native{};
+            stage="VERIFY_SWAPCHAIN_PROXY";
+            result("SWAPCHAIN_NATIVE_QUERY_RESULT",api<PFun_slGetNativeInterface>(interposer,"slGetNativeInterface")(renderer.swap.Get(),&native));
+            bool proxy=native&&native!=renderer.swap.Get();
+            std::cout<<"SWAPCHAIN_PROXY_ACTIVE="<<(proxy?"YES":"NO")<<std::endl;
+            if(native)static_cast<IUnknown*>(native)->Release();
+            if(!proxy)throw std::runtime_error("Base test requires SL proxy swapchain");
+            UINT successfulPresentCount=0;
+            for(UINT frame=0;frame<30;frame++){
+                MSG message{};while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}
+                if(offOnly){
+                    stage="OFF_FRAME_TOKEN";sl::FrameToken* token{};result("OFF_FRAME_TOKEN_RESULT",offToken(token,&frame));
+                    stage="OFF_REFLEX_SLEEP";result("OFF_REFLEX_SLEEP_RESULT",offSleep(*token));
+                    stage="OFF_SIM_START";result("OFF_SIM_START_RESULT",offMarker(sl::PCLMarker::eSimulationStart,*token));
+                    stage="OFF_SIM_END";result("OFF_SIM_END_RESULT",offMarker(sl::PCLMarker::eSimulationEnd,*token));
+                    stage="OFF_RENDER_START";result("OFF_RENDER_START_RESULT",offMarker(sl::PCLMarker::eRenderSubmitStart,*token));
+                    stage="BASE_DRAW";renderer.draw(frame);
+                    stage="OFF_RENDER_END";result("OFF_RENDER_END_RESULT",offMarker(sl::PCLMarker::eRenderSubmitEnd,*token));
+                    stage="OFF_PRESENT_START";result("OFF_PRESENT_START_RESULT",offMarker(sl::PCLMarker::ePresentStart,*token));
+                    UINT64 d3dBefore=0,dxgiBefore=0;
+                    if(frame==0){
+                        d3dBefore=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
+                        dxgiBefore=dxgiInfoQueue?dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL):0;
+                        std::cout<<"D3D12_MESSAGES_BEFORE_PRESENT="<<d3dBefore<<std::endl;
+                        std::cout<<"DXGI_MESSAGES_BEFORE_PRESENT="<<dxgiBefore<<std::endl;
+                    }
+                    stage="PRESENT";HRESULT presented=renderer.swap->Present(0,0);
+                    if(frame==0){
+                        std::cout<<"FIRST_PRESENT_RESULT="<<(SUCCEEDED(presented)?"SUCCESS":"FAIL")<<std::endl;
+                        std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;
+                        std::ofstream valLog(logs/"validation-messages.log");
+                        UINT64 d3dAfter=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
+                        std::cout<<"D3D12_MESSAGES_AFTER_PRESENT="<<d3dAfter<<std::endl;
+                        UINT64 d3dNew=(d3dAfter>=d3dBefore)?(d3dAfter-d3dBefore):0;
+                        std::cout<<"D3D12_NEW_MESSAGE_COUNT="<<d3dNew<<std::endl;
+                        for(UINT64 i=d3dBefore;i<d3dAfter;++i){
+                            SIZE_T size=0;d3dInfoQueue->GetMessage(i,nullptr,&size);
+                            if(size>0){
+                                std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<D3D12_MESSAGE*>(buf.data());
+                                if(SUCCEEDED(d3dInfoQueue->GetMessage(i,m,&size))){
+                                    std::string desc=m->pDescription?m->pDescription:"";
+                                    std::cout<<"D3D12_DEBUG_MESSAGE_BEGIN\nINDEX="<<i<<"\nCATEGORY="<<m->Category<<"\nSEVERITY="<<m->Severity<<"\nID="<<m->ID<<"\nDESCRIPTION="<<desc<<"\nD3D12_DEBUG_MESSAGE_END"<<std::endl;
+                                    valLog<<"D3D12_DEBUG_MESSAGE_BEGIN\nINDEX="<<i<<"\nCATEGORY="<<m->Category<<"\nSEVERITY="<<m->Severity<<"\nID="<<m->ID<<"\nDESCRIPTION="<<desc<<"\nD3D12_DEBUG_MESSAGE_END\n";
+                                }
+                            }
+                        }
+                        UINT64 dxgiAfter=dxgiInfoQueue?dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL):0;
+                        std::cout<<"DXGI_MESSAGES_AFTER_PRESENT="<<dxgiAfter<<std::endl;
+                        UINT64 dxgiNew=(dxgiAfter>=dxgiBefore)?(dxgiAfter-dxgiBefore):0;
+                        std::cout<<"DXGI_NEW_MESSAGE_COUNT="<<dxgiNew<<std::endl;
+                        bool id284Reproduced=false;
+                        for(UINT64 i=dxgiBefore;i<dxgiAfter;++i){
+                            SIZE_T size=0;dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL,i,nullptr,&size);
+                            if(size>0){
+                                std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>(buf.data());
+                                if(SUCCEEDED(dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL,i,m,&size))){
+                                    std::string desc=m->pDescription?m->pDescription:"";
+                                    if(m->ID==284)id284Reproduced=true;
+                                    std::cout<<"DXGI_DEBUG_MESSAGE_BEGIN\nINDEX="<<i<<"\nCATEGORY="<<m->Category<<"\nSEVERITY="<<m->Severity<<"\nID="<<m->ID<<"\nDESCRIPTION="<<desc<<"\nDXGI_DEBUG_MESSAGE_END"<<std::endl;
+                                    valLog<<"DXGI_DEBUG_MESSAGE_BEGIN\nINDEX="<<i<<"\nCATEGORY="<<m->Category<<"\nSEVERITY="<<m->Severity<<"\nID="<<m->ID<<"\nDESCRIPTION="<<desc<<"\nDXGI_DEBUG_MESSAGE_END\n";
+                                }
+                            }
+                        }
+                        std::cout<<"DXGI_MESSAGE_ID_284_REPRODUCED="<<(id284Reproduced?"YES":"NO")<<std::endl;
+                        valLog.close();
+                        if(FAILED(presented)){
+                            std::cout<<"PRESENT_END_EXECUTED=NO"<<std::endl;
+                            std::cout<<"SUCCESSFUL_PRESENT_COUNT="<<successfulPresentCount<<std::endl;
+                            hr(presented);
+                        }
+                    }else{
+                        if(FAILED(presented)){
+                            std::cout<<"PRESENT_END_EXECUTED=NO"<<std::endl;
+                            std::cout<<"FIRST_PRESENT_BLOCKER_RESOLVED=YES"<<std::endl;
+                            std::cout<<"FAILED_FRAME_INDEX="<<frame<<std::endl;
+                            std::cout<<"FAILED_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;
+                            std::cout<<"SUCCESSFUL_PRESENT_COUNT="<<successfulPresentCount<<std::endl;
+                            hr(presented);
+                        }
+                    }
+                    stage="OFF_PRESENT_END";result("OFF_PRESENT_END_RESULT",offMarker(sl::PCLMarker::ePresentEnd,*token));
+                    if(frame==0){
+                        std::cout<<"PRESENT_END_EXECUTED=YES"<<std::endl;
+                    }
+                    successfulPresentCount++;
+                    std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;
+                }else{
+                    stage="BASE_DRAW";renderer.draw(frame);stage="PRESENT";HRESULT presented=renderer.swap->Present(0,0);if(frame==0)std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;hr(presented);std::cout<<"REAL_PRESENT frame="<<frame<<std::endl;
+                }
+            }
+            std::cout<<"SUCCESSFUL_PRESENT_COUNT="<<successfulPresentCount<<std::endl;
+            if(offOnly&&successfulPresentCount==30){
+                std::cout<<"ALLOW_TEARING_FIX=PASS\nDLSSG_LOADED_OFF_PRESENT=PASS\nPRESENT_BLOCKER_0x887A0001_RESOLVED=YES"<<std::endl;
+            }
+            stage="DRAIN";renderer.drain();
+            std::cout<<"DEVICE_REMOVED_REASON="<<renderer.device->GetDeviceRemovedReason()<<std::endl;
+            loadedModules();
+            stage="SHUTDOWN";
+            auto close=shutdown();
+            initialized=false;
+            result("STREAMLINE_SHUTDOWN_RESULT",close);
+            std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;
+            return 0;
+        }sl::AdapterInfo info{};info.deviceLUID=reinterpret_cast<uint8_t*>(&d.AdapterLuid);info.deviceLUIDSizeInBytes=sizeof(LUID);stage="FEATURE_SUPPORT";result("DLSSG_FEATURE_SUPPORT_RESULT",api<PFun_slIsFeatureSupported>(interposer,"slIsFeatureSupported")(sl::kFeatureDLSS_G,info));
         auto stateFn=feature<PFun_slDLSSGGetState>(interposer,sl::kFeatureDLSS_G,"slDLSSGGetState");auto optionsFn=feature<PFun_slDLSSGSetOptions>(interposer,sl::kFeatureDLSS_G,"slDLSSGSetOptions");auto reflex=feature<PFun_slReflexSetOptions>(interposer,sl::kFeatureReflex,"slReflexSetOptions");auto sleep=feature<PFun_slReflexSleep>(interposer,sl::kFeatureReflex,"slReflexSleep");auto marker=feature<PFun_slPCLSetMarker>(interposer,sl::kFeaturePCL,"slPCLSetMarker");
         auto tokenFn=api<PFun_slGetNewFrameToken>(interposer,"slGetNewFrameToken");auto constantsFn=api<PFun_slSetConstants>(interposer,"slSetConstants");auto tagFn=api<PFun_slSetTagForFrame>(interposer,"slSetTagForFrame");sl::ViewportHandle viewport{0};
         stage="REFLEX";sl::ReflexOptions ro{};ro.mode=sl::ReflexMode::eLowLatency;ro.frameLimitUs=16667;result("REFLEX_OPTIONS_RESULT",reflex(ro));sl::DLSSGOptions options{};options.mode=sl::DLSSGMode::eOn;options.numFramesToGenerate=generatedCount;std::cout<<"REQUESTED_GENERATED_COUNT="<<generatedCount<<std::endl;stage="SET_OPTIONS";result("SET_OPTIONS_RESULT",optionsFn(viewport,options));
