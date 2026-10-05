@@ -1,0 +1,536 @@
+[
+  {
+    "release": "v0.9.4",
+    "asset": "dlss-enabler-setup_0.9.4-final.20260718._MM.exe",
+    "size": 33007175,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.4/dlss-enabler-setup_0.9.4-final.20260718._MM.exe"
+  },
+  {
+    "release": "v0.9.3",
+    "asset": "dlss-enabler-setup_0.9.3-final.20260618.exe",
+    "size": 32995655,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.3/dlss-enabler-setup_0.9.3-final.20260618.exe"
+  },
+  {
+    "release": "v0.9.2",
+    "asset": "dlss-enabler-setup_0.9.2-final.20260517.exe",
+    "size": 33024921,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.2/dlss-enabler-setup_0.9.2-final.20260517.exe"
+  },
+  {
+    "release": "v0.9.2",
+    "asset": "dlss-enabler-setup_0.9.2a-final.20260517._Reup.exe",
+    "size": 33023790,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.2/dlss-enabler-setup_0.9.2a-final.20260517._Reup.exe"
+  },
+  {
+    "release": "v0.9.1",
+    "asset": "dlss-enabler-setup_0.9.1-final.20260427._DSB.exe",
+    "size": 32985620,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.1/dlss-enabler-setup_0.9.1-final.20260427._DSB.exe"
+  },
+  {
+    "release": "v0.9.0",
+    "asset": "dlss-enabler-setup_0.9.0-final.20260401._AF.exe",
+    "size": 32961937,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.0/dlss-enabler-setup_0.9.0-final.20260401._AF.exe"
+  },
+  {
+    "release": "v0.9",
+    "asset": "dlss-enabler-setup_0.9.0-final.20260401._AF.exe",
+    "size": 32961944,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9/dlss-enabler-setup_0.9.0-final.20260401._AF.exe"
+  },
+  {
+    "release": "v0.7.9",
+    "asset": "dlss-enabler-setup_0.7.9.exe",
+    "size": 32691242,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.7.9/dlss-enabler-setup_0.7.9.exe"
+  },
+  {
+    "release": "v0.7.8",
+    "asset": "dlss-enabler-setup_v0.7.8_Typeless.exe",
+    "size": 35719930,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.7.8/dlss-enabler-setup_v0.7.8_Typeless.exe"
+  },
+  {
+    "release": "v0.7.7-pre9",
+    "asset": "dlss-enabler-setup_v0.7.7-pre9_Daria.exe",
+    "size": 35560309,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.7.7-pre9/dlss-enabler-setup_v0.7.7-pre9_Daria.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260704.exe",
+    "size": 33058218,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260704.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260705.exe",
+    "size": 33060559,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260705.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260706.exe",
+    "size": 33059756,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260706.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260707.exe",
+    "size": 33060208,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260707.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260708.exe",
+    "size": 33058826,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260708.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260709.exe",
+    "size": 33065883,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260709.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260710.exe",
+    "size": 33065885,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260710.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260711.exe",
+    "size": 33062595,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260711.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260712.exe",
+    "size": 33061159,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260712.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260713.exe",
+    "size": 33062969,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260713.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260714.exe",
+    "size": 33063252,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260714.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260715.exe",
+    "size": 33057896,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260715.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260716.exe",
+    "size": 33058981,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260716.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260717.exe",
+    "size": 33065886,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260717.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260718.exe",
+    "size": 33060493,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260718.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260719.exe",
+    "size": 33060935,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260719.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260720.exe",
+    "size": 33062190,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260720.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260721.exe",
+    "size": 33060354,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260721.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260722.exe",
+    "size": 33067576,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260722.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260723.exe",
+    "size": 33060898,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260723.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260724.exe",
+    "size": 33061353,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260724.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260725.exe",
+    "size": 33059895,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260725.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260726.exe",
+    "size": 33064898,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260726.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260727.exe",
+    "size": 33059942,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260727.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260728.exe",
+    "size": 33058419,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260728.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260729.exe",
+    "size": 33061384,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260729.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260730.exe",
+    "size": 33060243,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260730.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260731.exe",
+    "size": 33062716,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260731.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260801.exe",
+    "size": 33060213,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260801.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260802.exe",
+    "size": 33062154,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260802.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260803.exe",
+    "size": 33057774,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260803.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260804.exe",
+    "size": 33058367,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260804.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260805.exe",
+    "size": 33059940,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260805.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.10.0-pre1_20260806.exe",
+    "size": 33063845,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.10.0-pre1_20260806.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.7.7-pre12_20250705.exe",
+    "size": 35686267,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.7.7-pre12_20250705.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.7.7-pre12_20250707.exe",
+    "size": 35689121,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.7.7-pre12_20250707.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.7.7-pre13_20250719.exe",
+    "size": 35692870,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.7.7-pre13_20250719.exe"
+  },
+  {
+    "release": "nightly",
+    "asset": "dlss-enabler-setup_v0.7.7-pre13_20250731.exe",
+    "size": 33775377,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/nightly/dlss-enabler-setup_v0.7.7-pre13_20250731.exe"
+  },
+  {
+    "release": "3.02.000.0",
+    "asset": "dlss-enabler-setup-3.02.000.0.exe",
+    "size": 32327234,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0/dlss-enabler-setup-3.02.000.0.exe"
+  },
+  {
+    "release": "3.01.000.0",
+    "asset": "dlss-enabler-setup-3.01.000.0.exe",
+    "size": 31976438,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0/dlss-enabler-setup-3.01.000.0.exe"
+  },
+  {
+    "release": "3.03.000.0-trunk",
+    "asset": "dlss-enabler-setup-3.03.000.0-trunk.exe",
+    "size": 48354965,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.03.000.0-trunk/dlss-enabler-setup-3.03.000.0-trunk.exe"
+  },
+  {
+    "release": "3.03.000.0-alpha1",
+    "asset": "dlss-enabler-setup-3.03.000.0-alpha1.exe",
+    "size": 32594402,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.03.000.0-alpha1/dlss-enabler-setup-3.03.000.0-alpha1.exe"
+  },
+  {
+    "release": "3.02.000.0-beta9",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta9.exe",
+    "size": 32214989,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta9/dlss-enabler-setup-3.02.000.0-beta9.exe"
+  },
+  {
+    "release": "3.02.000.0-beta8",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta8.exe",
+    "size": 32209836,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta8/dlss-enabler-setup-3.02.000.0-beta8.exe"
+  },
+  {
+    "release": "3.02.000.0-beta7",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta7.exe",
+    "size": 32209269,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta7/dlss-enabler-setup-3.02.000.0-beta7.exe"
+  },
+  {
+    "release": "3.02.000.0-beta6",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta6.exe",
+    "size": 32208699,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta6/dlss-enabler-setup-3.02.000.0-beta6.exe"
+  },
+  {
+    "release": "3.02.000.0-beta5",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta5.exe",
+    "size": 32212471,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta5/dlss-enabler-setup-3.02.000.0-beta5.exe"
+  },
+  {
+    "release": "3.02.000.0-beta4",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta4.exe",
+    "size": 32202093,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta4/dlss-enabler-setup-3.02.000.0-beta4.exe"
+  },
+  {
+    "release": "3.02.000.0-beta11",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta11.exe",
+    "size": 32314639,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta11/dlss-enabler-setup-3.02.000.0-beta11.exe"
+  },
+  {
+    "release": "3.02.000.0-beta10",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta10.exe",
+    "size": 32214794,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta10/dlss-enabler-setup-3.02.000.0-beta10.exe"
+  },
+  {
+    "release": "3.02.000.0-beta1",
+    "asset": "dlss-enabler-setup-3.02.000.0-beta1.exe",
+    "size": 32194198,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.02.000.0-beta1/dlss-enabler-setup-3.02.000.0-beta1.exe"
+  },
+  {
+    "release": "3.01.001.0-beta8",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta8.exe",
+    "size": 32190641,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta8/dlss-enabler-setup-3.01.001.0-beta8.exe"
+  },
+  {
+    "release": "3.01.001.0-beta7",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta7.exe",
+    "size": 32189777,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta7/dlss-enabler-setup-3.01.001.0-beta7.exe"
+  },
+  {
+    "release": "3.01.001.0-beta5",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta5.exe",
+    "size": 32184010,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta5/dlss-enabler-setup-3.01.001.0-beta5.exe"
+  },
+  {
+    "release": "3.01.001.0-beta4",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta4.exe",
+    "size": 32182816,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta4/dlss-enabler-setup-3.01.001.0-beta4.exe"
+  },
+  {
+    "release": "3.01.001.0-beta2-gm",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta2-gm.exe",
+    "size": 32318886,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta2-gm/dlss-enabler-setup-3.01.001.0-beta2-gm.exe"
+  },
+  {
+    "release": "3.01.001.0-beta2",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta2.exe",
+    "size": 32179912,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta2/dlss-enabler-setup-3.01.001.0-beta2.exe"
+  },
+  {
+    "release": "3.01.001.0-beta12",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta12.exe",
+    "size": 32195293,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta12/dlss-enabler-setup-3.01.001.0-beta12.exe"
+  },
+  {
+    "release": "3.01.001.0-beta11",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta11.exe",
+    "size": 32194801,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta11/dlss-enabler-setup-3.01.001.0-beta11.exe"
+  },
+  {
+    "release": "3.01.001.0-beta1-gm",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta1-gm.exe",
+    "size": 32379267,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta1-gm/dlss-enabler-setup-3.01.001.0-beta1-gm.exe"
+  },
+  {
+    "release": "3.01.001.0-beta1",
+    "asset": "dlss-enabler-setup-3.01.001.0-beta1.exe",
+    "size": 32179470,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.001.0-beta1/dlss-enabler-setup-3.01.001.0-beta1.exe"
+  },
+  {
+    "release": "3.01.000.0-beta8",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta8.exe",
+    "size": 30044885,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta8/dlss-enabler-setup-3.01.000.0-beta8.exe"
+  },
+  {
+    "release": "3.01.000.0-beta6",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta6.exe",
+    "size": 30037675,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta6/dlss-enabler-setup-3.01.000.0-beta6.exe"
+  },
+  {
+    "release": "3.01.000.0-beta2",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta2.exe",
+    "size": 30033178,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta2/dlss-enabler-setup-3.01.000.0-beta2.exe"
+  },
+  {
+    "release": "3.01.000.0-beta14",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta14.exe",
+    "size": 31974684,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta14/dlss-enabler-setup-3.01.000.0-beta14.exe"
+  },
+  {
+    "release": "3.01.000.0-beta13-gm",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta13-gm.exe",
+    "size": 32164398,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta13-gm/dlss-enabler-setup-3.01.000.0-beta13-gm.exe"
+  },
+  {
+    "release": "3.01.000.0-beta13",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta13.exe",
+    "size": 31972642,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta13/dlss-enabler-setup-3.01.000.0-beta13.exe"
+  },
+  {
+    "release": "3.01.000.0-beta12-gm",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta12-gm.exe",
+    "size": 33799346,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta12-gm/dlss-enabler-setup-3.01.000.0-beta12-gm.exe"
+  },
+  {
+    "release": "3.01.000.0-beta12",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta12.exe",
+    "size": 33607777,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta12/dlss-enabler-setup-3.01.000.0-beta12.exe"
+  },
+  {
+    "release": "3.01.000.0-beta11-gm",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta11-gm.exe",
+    "size": 33892799,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta11-gm/dlss-enabler-setup-3.01.000.0-beta11-gm.exe"
+  },
+  {
+    "release": "3.01.000.0-beta11",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta11.exe",
+    "size": 33700267,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta11/dlss-enabler-setup-3.01.000.0-beta11.exe"
+  },
+  {
+    "release": "3.01.000.0-beta10",
+    "asset": "dlss-enabler-setup-3.01.000.0-beta10.exe",
+    "size": 33701756,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.01.000.0-beta10/dlss-enabler-setup-3.01.000.0-beta10.exe"
+  },
+  {
+    "release": "3.00.000.0",
+    "asset": "dlss-enabler-setup-3.00.000.0.exe",
+    "size": 30282889,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/3.00.000.0/dlss-enabler-setup-3.00.000.0.exe"
+  },
+  {
+    "release": "2.90.802.0",
+    "asset": "dlss-enabler-setup-2.90.802.0.exe",
+    "size": 29647964,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.802.0/dlss-enabler-setup-2.90.802.0.exe"
+  },
+  {
+    "release": "2.90.801.0",
+    "asset": "dlss-enabler-setup-2.90.801.0.exe",
+    "size": 29647049,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.801.0/dlss-enabler-setup-2.90.801.0.exe"
+  },
+  {
+    "release": "2.90.800.0",
+    "asset": "dlss-enabler-setup-2.90.800.0.exe",
+    "size": 29646630,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0/dlss-enabler-setup-2.90.800.0.exe"
+  },
+  {
+    "release": "2.90.800.0-beta20",
+    "asset": "dlss-enabler-setup-2.90.800.0-beta20.exe",
+    "size": 29647732,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta20/dlss-enabler-setup-2.90.800.0-beta20.exe"
+  },
+  {
+    "release": "2.90.800.0-beta19",
+    "asset": "dlss-enabler-setup-2.90.800.0-beta19.exe",
+    "size": 29644935,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta19/dlss-enabler-setup-2.90.800.0-beta19.exe"
+  },
+  {
+    "release": "2.90.800.0-beta15",
+    "asset": "dlss-enabler-setup-2.90.800.0-b15.exe",
+    "size": 66874704,
+    "url": "https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/2.90.800.0-beta15/dlss-enabler-setup-2.90.800.0-b15.exe"
+  }
+]

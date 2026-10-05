@@ -1,0 +1,3 @@
+EXPORT_VERIFICATION=NOT_PERFORMED_PROVIDER_UNAVAILABLE
+ARTURS_REQUIRED_EXPORTS_PRESENT=UNKNOWN_NOT_CHECKED
+No DLL exists locally and no authorized headless binary was obtained. No dumpbin, LoadLibrary, or GetProcAddress was executed.

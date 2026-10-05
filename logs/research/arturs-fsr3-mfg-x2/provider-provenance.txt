@@ -1,0 +1,19 @@
+SOURCE_REPOSITORY=https://github.com/artur-graniszewski/DLSS-Enabler
+SOURCE_RELEASE=https://github.com/artur-graniszewski/DLSS-Enabler/releases/tag/v0.9.4
+SOURCE_ASSET=NONE_IDENTIFIED_FOR_dlss-enabler-headless.dll
+DOWNLOAD_SOURCE=NOT_DOWNLOADED
+LOCAL_PATH=NOT_FOUND
+FILE_SIZE=NOT_AVAILABLE
+SHA256=NOT_AVAILABLE
+FILE_VERSION=NOT_AVAILABLE
+PROVIDER_NAME=ARTURS_DLSS_ENABLER_HEADLESS
+ARTURS_PROVIDER_AVAILABLE=NO
+FAIL_STAGE=OFFICIAL_PROVIDER_NOT_AVAILABLE
+
+Local search: rg --files --hidden --no-ignore in both authorized roots, exact DLL filename, no matches.
+Official release metadata: 51 releases, 89 assets, all dlss-enabler-setup*.exe installers.
+Latest advertised installer: dlss-enabler-setup_0.9.4-final.20260718._MM.exe (33007175 bytes).
+Installer contents were not inspected. This is NOT proof that no installer contains the DLL.
+No clearly identified headless provider binary/release asset was found. Per user STOP rule, no installer was downloaded or run and no substitute DLL was used.
+README points to installers and describes the upscaler DLL update, not a clearly published headless provider asset.
+Official metadata captured in official-release-assets.json and provider-search-summary.json.
