@@ -37,7 +37,7 @@ struct Renderer {
     static constexpr UINT W=1280,H=720;
     HWND window{};ComPtr<ID3D12Device> device;ComPtr<ID3D12CommandQueue> queue;
     ComPtr<IDXGISwapChain3> swap;ComPtr<ID3D12DescriptorHeap> rtvs;
-    ComPtr<ID3D12Resource> buffers[2],depth,motion;ComPtr<ID3D12CommandAllocator> allocator;
+    ComPtr<ID3D12Resource> buffers[2],depth,motion,hudless,uiColorAlpha;ComPtr<ID3D12CommandAllocator> allocator;
     ComPtr<ID3D12GraphicsCommandList> commands;ComPtr<ID3D12Fence> fence;
     ComPtr<ID3D12RootSignature> root;ComPtr<ID3D12PipelineState> pipeline;
     HANDLE complete{};UINT stride{};UINT64 fenceValue{};
@@ -90,37 +90,40 @@ struct Renderer {
         std::cout<<"SWAPCHAIN_ACTUAL_FLAGS=0x"<<std::hex<<actualDesc.Flags<<std::dec<<std::endl;
         bool actualTearing=(actualDesc.Flags&DXGI_SWAP_CHAIN_FLAG_ALLOW_TEARING)!=0;
         std::cout<<"SWAPCHAIN_ACTUAL_ALLOW_TEARING="<<(actualTearing?"YES":"NO")<<std::endl;
-        D3D12_DESCRIPTOR_HEAP_DESC heap{};heap.Type=D3D12_DESCRIPTOR_HEAP_TYPE_RTV;heap.NumDescriptors=4;hr(device->CreateDescriptorHeap(&heap,IID_PPV_ARGS(&rtvs)));stride=device->GetDescriptorHandleIncrementSize(heap.Type);
+        D3D12_DESCRIPTOR_HEAP_DESC heap{};heap.Type=D3D12_DESCRIPTOR_HEAP_TYPE_RTV;heap.NumDescriptors=6;hr(device->CreateDescriptorHeap(&heap,IID_PPV_ARGS(&rtvs)));stride=device->GetDescriptorHandleIncrementSize(heap.Type);
         for(UINT i=0;i<2;i++){hr(swap->GetBuffer(i,IID_PPV_ARGS(&buffers[i])));device->CreateRenderTargetView(buffers[i].Get(),nullptr,rtv(i));}
         D3D12_HEAP_PROPERTIES props{};props.Type=D3D12_HEAP_TYPE_DEFAULT;
         D3D12_RESOURCE_DESC texture{};texture.Dimension=D3D12_RESOURCE_DIMENSION_TEXTURE2D;texture.Width=W;texture.Height=H;texture.DepthOrArraySize=1;texture.MipLevels=1;texture.SampleDesc.Count=1;texture.Flags=D3D12_RESOURCE_FLAG_ALLOW_RENDER_TARGET;
         texture.Format=DXGI_FORMAT_R32_FLOAT;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&depth)));device->CreateRenderTargetView(depth.Get(),nullptr,rtv(2));
         texture.Format=DXGI_FORMAT_R16G16_FLOAT;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&motion)));device->CreateRenderTargetView(motion.Get(),nullptr,rtv(3));
+        texture.Format=DXGI_FORMAT_R8G8B8A8_UNORM;hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&hudless)));device->CreateRenderTargetView(hudless.Get(),nullptr,rtv(4));
+        hr(device->CreateCommittedResource(&props,D3D12_HEAP_FLAG_NONE,&texture,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,nullptr,IID_PPV_ARGS(&uiColorAlpha)));device->CreateRenderTargetView(uiColorAlpha.Get(),nullptr,rtv(5));
+        std::cout<<"HUDLESS_RESOURCE_CREATED=YES\nHUDLESS_FORMAT=DXGI_FORMAT_R8G8B8A8_UNORM\nHUDLESS_SIZE=1280x720\nUI_COLOR_ALPHA_RESOURCE_CREATED=YES\nUI_COLOR_ALPHA_FORMAT=DXGI_FORMAT_R8G8B8A8_UNORM\nUI_COLOR_ALPHA_SIZE=1280x720\nCPU_TRANSPORT_COPY_COUNT=0"<<std::endl;
         hr(device->CreateCommandAllocator(D3D12_COMMAND_LIST_TYPE_DIRECT,IID_PPV_ARGS(&allocator)));hr(device->CreateCommandList(0,D3D12_COMMAND_LIST_TYPE_DIRECT,allocator.Get(),nullptr,IID_PPV_ARGS(&commands)));hr(commands->Close());hr(device->CreateFence(0,D3D12_FENCE_FLAG_NONE,IID_PPV_ARGS(&fence)));complete=CreateEventW(nullptr,FALSE,FALSE,nullptr);if(!complete)throw std::runtime_error("Fence event missing");
         // Analytic textured plane at clip z=0.5 translates left by3 pixels/real frame.
         // Previous-minus-current motion is +3px, derived from that same transform.
-        // No CPU image generation/upload/readback: all three outputs are GPU rasterized.
+        // No CPU image generation/upload/readback: all five outputs are GPU rasterized.
         const char* shader=R"(
 cbuffer Transform : register(b0) { float offset; float delta; }
 struct V { float4 pos:SV_Position; };
 V vs(uint id:SV_VertexID){V v;float2 p=float2((id<<1)&2,id&2);v.pos=float4(p*float2(2,-2)+float2(-1,1),0.5,1);return v;}
-struct O {float4 color:SV_Target0;float depth:SV_Target1;float2 motion:SV_Target2;};
+struct O {float4 color:SV_Target0;float depth:SV_Target1;float2 motion:SV_Target2;float4 hudless:SV_Target3;float4 ui:SV_Target4;};
 O ps(V v){O o;float2 uv=v.pos.xy/float2(1280,720);float2 world=uv+float2(offset,0);
 float checker=fmod(floor(world.x*32)+floor(world.y*18),2);float stripes=0.5+0.5*sin(world.x*60);
-o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.depth=0.5;o.motion=float2(delta,0);return o;}
+o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.hudless=o.color;o.ui=float4(0,0,0,0);o.depth=0.5;o.motion=float2(delta,0);return o;}
 )";
         ComPtr<ID3DBlob> vs,ps,errors;hr(D3DCompile(shader,strlen(shader),nullptr,nullptr,nullptr,"vs","vs_5_0",0,0,&vs,&errors));hr(D3DCompile(shader,strlen(shader),nullptr,nullptr,nullptr,"ps","ps_5_0",0,0,&ps,&errors));
         D3D12_ROOT_PARAMETER param{};param.ParameterType=D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;param.Constants={0,0,2};param.ShaderVisibility=D3D12_SHADER_VISIBILITY_PIXEL;
         D3D12_ROOT_SIGNATURE_DESC sig{};sig.NumParameters=1;sig.pParameters=&param;ComPtr<ID3DBlob> blob;hr(D3D12SerializeRootSignature(&sig,D3D_ROOT_SIGNATURE_VERSION_1,&blob,&errors));hr(device->CreateRootSignature(0,blob->GetBufferPointer(),blob->GetBufferSize(),IID_PPV_ARGS(&root)));
         D3D12_GRAPHICS_PIPELINE_STATE_DESC pso{};pso.pRootSignature=root.Get();pso.VS={vs->GetBufferPointer(),vs->GetBufferSize()};pso.PS={ps->GetBufferPointer(),ps->GetBufferSize()};pso.SampleMask=UINT_MAX;pso.RasterizerState.FillMode=D3D12_FILL_MODE_SOLID;pso.RasterizerState.CullMode=D3D12_CULL_MODE_NONE;pso.RasterizerState.DepthClipEnable=TRUE;pso.DepthStencilState.DepthEnable=FALSE;pso.DepthStencilState.StencilEnable=FALSE;
         for(auto& b:pso.BlendState.RenderTarget){b.SrcBlend=D3D12_BLEND_ONE;b.DestBlend=D3D12_BLEND_ZERO;b.BlendOp=D3D12_BLEND_OP_ADD;b.SrcBlendAlpha=D3D12_BLEND_ONE;b.DestBlendAlpha=D3D12_BLEND_ZERO;b.BlendOpAlpha=D3D12_BLEND_OP_ADD;b.LogicOp=D3D12_LOGIC_OP_NOOP;b.RenderTargetWriteMask=D3D12_COLOR_WRITE_ENABLE_ALL;}
-        pso.PrimitiveTopologyType=D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;pso.NumRenderTargets=3;pso.RTVFormats[0]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[1]=DXGI_FORMAT_R32_FLOAT;pso.RTVFormats[2]=DXGI_FORMAT_R16G16_FLOAT;pso.SampleDesc.Count=1;hr(device->CreateGraphicsPipelineState(&pso,IID_PPV_ARGS(&pipeline)));
+        pso.PrimitiveTopologyType=D3D12_PRIMITIVE_TOPOLOGY_TYPE_TRIANGLE;pso.NumRenderTargets=5;pso.RTVFormats[0]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[1]=DXGI_FORMAT_R32_FLOAT;pso.RTVFormats[2]=DXGI_FORMAT_R16G16_FLOAT;pso.RTVFormats[3]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.RTVFormats[4]=DXGI_FORMAT_R8G8B8A8_UNORM;pso.SampleDesc.Count=1;hr(device->CreateGraphicsPipelineState(&pso,IID_PPV_ARGS(&pipeline)));
     }
     void draw(UINT frame){
         drain();hr(allocator->Reset());hr(commands->Reset(allocator.Get(),pipeline.Get()));UINT index=swap->GetCurrentBackBufferIndex();
-        barrier(commands.Get(),buffers[index].Get(),D3D12_RESOURCE_STATE_PRESENT,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);
-        D3D12_CPU_DESCRIPTOR_HANDLE targets[]={rtv(index),rtv(2),rtv(3)};commands->OMSetRenderTargets(3,targets,FALSE,nullptr);D3D12_VIEWPORT view{0,0,float(W),float(H),0,1};D3D12_RECT rect{0,0,LONG(W),LONG(H)};commands->RSSetViewports(1,&view);commands->RSSetScissorRects(1,&rect);commands->SetGraphicsRootSignature(root.Get());float constants[]={frame*3.f/W,frame?3.f/W:0};commands->SetGraphicsRoot32BitConstants(0,2,constants,0);commands->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);commands->DrawInstanced(3,1,0,0);
-        barrier(commands.Get(),buffers[index].Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_PRESENT);barrier(commands.Get(),depth.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);barrier(commands.Get(),motion.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);hr(commands->Close());ID3D12CommandList* list[]={commands.Get()};queue->ExecuteCommandLists(1,list);
+        barrier(commands.Get(),buffers[index].Get(),D3D12_RESOURCE_STATE_PRESENT,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),hudless.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);barrier(commands.Get(),uiColorAlpha.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE,D3D12_RESOURCE_STATE_RENDER_TARGET);
+        D3D12_CPU_DESCRIPTOR_HANDLE targets[]={rtv(index),rtv(2),rtv(3),rtv(4),rtv(5)};commands->OMSetRenderTargets(5,targets,FALSE,nullptr);D3D12_VIEWPORT view{0,0,float(W),float(H),0,1};D3D12_RECT rect{0,0,LONG(W),LONG(H)};commands->RSSetViewports(1,&view);commands->RSSetScissorRects(1,&rect);commands->SetGraphicsRootSignature(root.Get());float constants[]={frame*3.f/W,frame?3.f/W:0};commands->SetGraphicsRoot32BitConstants(0,2,constants,0);commands->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);commands->DrawInstanced(3,1,0,0);
+        barrier(commands.Get(),buffers[index].Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_PRESENT);barrier(commands.Get(),depth.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);barrier(commands.Get(),motion.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);barrier(commands.Get(),hudless.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);barrier(commands.Get(),uiColorAlpha.Get(),D3D12_RESOURCE_STATE_RENDER_TARGET,D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);hr(commands->Close());ID3D12CommandList* list[]={commands.Get()};queue->ExecuteCommandLists(1,list);
     }
 };
 int wmain(int argc,wchar_t** argv){
@@ -355,7 +358,25 @@ int wmain(int argc,wchar_t** argv){
         for(UINT frame=0;frame<60;frame++){
             MSG message{};while(PeekMessageW(&message,nullptr,0,0,PM_REMOVE)){TranslateMessage(&message);DispatchMessageW(&message);}stage="FRAME";sl::FrameToken* token{};result("TOKEN_RESULT",tokenFn(token,&frame));result("REFLEX_SLEEP_RESULT",sleep(*token));result("SIM_BEGIN_RESULT",marker(sl::PCLMarker::eSimulationStart,*token));
             sl::Constants c{};c.cameraViewToClip=c.clipToCameraView=c.clipToLensClip=c.clipToPrevClip=c.prevClipToClip=identity();c.cameraViewToClip.setRow(0,{float(Renderer::H)/Renderer::W,0,0,0});c.cameraViewToClip.setRow(2,{0,0,1.f/0.9f,0});c.cameraViewToClip.setRow(3,{0,0,-0.1f/0.9f,1});c.clipToCameraView.setRow(0,{float(Renderer::W)/Renderer::H,0,0,0});c.clipToCameraView.setRow(2,{0,0,0.9f,0});c.clipToCameraView.setRow(3,{0,0,0.1f,1});c.jitterOffset={0,0};c.mvecScale={1,1};c.cameraPinholeOffset={0,0};c.cameraPos={0,0,0};c.cameraUp={0,1,0};c.cameraRight={1,0,0};c.cameraFwd={0,0,1};c.cameraNear=0.1f;c.cameraFar=1;c.cameraFOV=1.5707963f;c.cameraAspectRatio=float(Renderer::W)/Renderer::H;c.motionVectorsInvalidValue=-65504;c.depthInverted=sl::eFalse;c.cameraMotionIncluded=sl::eTrue;c.motionVectors3D=sl::eFalse;c.reset=frame<3?sl::eTrue:sl::eFalse;c.orthographicProjection=sl::eTrue;c.motionVectorsDilated=sl::eFalse;c.motionVectorsJittered=sl::eFalse;result("CONSTANTS_RESULT",constantsFn(c,*token,viewport));result("SIM_END_RESULT",marker(sl::PCLMarker::eSimulationEnd,*token));result("RENDER_BEGIN_RESULT",marker(sl::PCLMarker::eRenderSubmitStart,*token));renderer.draw(frame);
-            sl::Resource depth(sl::ResourceType::eTex2d,renderer.depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE),motion(sl::ResourceType::eTex2d,renderer.motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);sl::ResourceTag tags[]={ {&depth,sl::kBufferTypeDepth,sl::ResourceLifecycle::eValidUntilPresent},{&motion,sl::kBufferTypeMotionVectors,sl::ResourceLifecycle::eValidUntilPresent}};result("TAGS_RESULT",tagFn(*token,viewport,tags,2,nullptr));result("RENDER_END_RESULT",marker(sl::PCLMarker::eRenderSubmitEnd,*token));result("PRESENT_BEGIN_RESULT",marker(sl::PCLMarker::ePresentStart,*token));
+            sl::Resource depth(sl::ResourceType::eTex2d,renderer.depth.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE),motion(sl::ResourceType::eTex2d,renderer.motion.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+            sl::Resource hudlessResource(sl::ResourceType::eTex2d,renderer.hudless.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE),uiResource(sl::ResourceType::eTex2d,renderer.uiColorAlpha.Get(),D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+            sl::Extent fullExtent{0,0,Renderer::W,Renderer::H};
+            sl::ResourceTag tags[]={
+                {&depth,sl::kBufferTypeDepth,sl::ResourceLifecycle::eValidUntilPresent,&fullExtent},
+                {&motion,sl::kBufferTypeMotionVectors,sl::ResourceLifecycle::eValidUntilPresent,&fullExtent},
+                {&hudlessResource,sl::kBufferTypeHUDLessColor,sl::ResourceLifecycle::eValidUntilPresent,&fullExtent},
+                {&uiResource,sl::kBufferTypeUIColorAndAlpha,sl::ResourceLifecycle::eValidUntilPresent,&fullExtent}};
+            stage="SET_TAG_FOR_FRAME";result("TAGS_RESULT",tagFn(*token,viewport,tags,4,nullptr));
+            if(frame==0){
+                std::cout<<"ACTIVE_TAG_COUNT=4"<<std::endl;
+                for(UINT i=0;i<4;++i)std::cout<<"ACTIVE_TAG_"<<i<<"="<<getTagName(tags[i].type)<<std::endl;
+                // Required list is the already captured contract from this exact staged runtime.
+                const sl::BufferType required[]={sl::kBufferTypeDepth,sl::kBufferTypeMotionVectors,sl::kBufferTypeHUDLessColor,sl::kBufferTypeUIColorAndAlpha};
+                bool covered=true;
+                for(auto type:required){bool found=false;for(auto& tag:tags)found|=tag.type==type&&tag.resource!=nullptr;covered&=found;}
+                std::cout<<"REQUIRED_TAG_CONTRACT_SATISFIED_AT_RUNTIME="<<(covered?"YES":"NO")<<std::endl;
+            }
+            result("RENDER_END_RESULT",marker(sl::PCLMarker::eRenderSubmitEnd,*token));result("PRESENT_BEGIN_RESULT",marker(sl::PCLMarker::ePresentStart,*token));
             UINT64 d3dBefore=0,dxgiBefore=0;
             if(frame==0){
                 d3dBefore=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
@@ -367,6 +388,7 @@ int wmain(int argc,wchar_t** argv){
                 std::cout<<"FIRST_PRESENT_RESULT="<<(SUCCEEDED(presented)?"SUCCESS":"FAIL")<<std::endl;
                 std::cout<<"FIRST_PRESENT_HRESULT=0x"<<std::hex<<unsigned(presented)<<std::dec<<std::endl;
                 std::ofstream valLog(logs/"validation-messages.log");
+                UINT d3dErrors=0,dxgiErrors=0;
                 UINT64 d3dAfter=d3dInfoQueue?d3dInfoQueue->GetNumStoredMessagesAllowedByRetrievalFilter():0;
                 UINT64 dxgiAfter=dxgiInfoQueue?dxgiInfoQueue->GetNumStoredMessages(DXGI_DEBUG_ALL):0;
                 for(UINT64 i=d3dBefore;i<d3dAfter;++i){
@@ -374,6 +396,7 @@ int wmain(int argc,wchar_t** argv){
                     if(size>0){
                         std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<D3D12_MESSAGE*>(buf.data());
                         if(SUCCEEDED(d3dInfoQueue->GetMessage(i,m,&size))){
+                            if(m->Severity==D3D12_MESSAGE_SEVERITY_ERROR||m->Severity==D3D12_MESSAGE_SEVERITY_CORRUPTION)++d3dErrors;
                             valLog<<"D3D12: "<<(m->pDescription?m->pDescription:"")<<"\n";
                         }
                     }
@@ -383,12 +406,14 @@ int wmain(int argc,wchar_t** argv){
                     if(size>0){
                         std::vector<uint8_t> buf(size);auto* m=reinterpret_cast<DXGI_INFO_QUEUE_MESSAGE*>(buf.data());
                         if(SUCCEEDED(dxgiInfoQueue->GetMessage(DXGI_DEBUG_ALL,i,m,&size))){
+                            if(m->Severity==DXGI_INFO_QUEUE_MESSAGE_SEVERITY_ERROR||m->Severity==DXGI_INFO_QUEUE_MESSAGE_SEVERITY_CORRUPTION)++dxgiErrors;
                             valLog<<"DXGI: "<<(m->pDescription?m->pDescription:"")<<"\n";
                         }
                     }
                 }
                 valLog.close();
-                if(FAILED(presented)){std::cout<<"PRESENT_END_EXECUTED=NO"<<std::endl;hr(presented);}
+                std::cout<<"D3D12_NEW_ERROR_COUNT="<<d3dErrors<<"\nDXGI_NEW_ERROR_COUNT="<<dxgiErrors<<std::endl;
+                if(FAILED(presented)){std::cout<<"FAILED_FRAME_INDEX="<<frame<<"\nPRESENT_END_EXECUTED=NO"<<std::endl;hr(presented);}
             }else{
                 if(FAILED(presented)){std::cout<<"FAILED_FRAME_INDEX="<<frame<<std::endl;hr(presented);}
             }
