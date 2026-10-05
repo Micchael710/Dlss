@@ -1,0 +1,1 @@
+NOT_RUN: build stopped at compiler preflight C1902; no NVIDIA/hybrid GPU invocation.

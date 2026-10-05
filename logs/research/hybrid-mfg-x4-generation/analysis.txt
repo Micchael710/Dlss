@@ -1,0 +1,17 @@
+Result: BUILD BLOCKED / GPU generation NOT VALIDATED.
+One build attempt, zero runtime executions. CMake MSVC compiler check failed on
+its own trivial testCXXCompiler.cxx with fatal C1902 Program database manager
+mismatch. Failure occurred before compiling main.cpp or any HLSL entry point.
+User permits a second build only for a trivial local error caused by new code;
+this compiler-installation/environment failure does not qualify. No retry.
+
+All source is a pending standalone D3D12 prototype. Generation booleans,
+fingerprints, centroids, CPU transport observations, device/crash/exit results
+are UNKNOWN/NOT_RUN, not inherited from historical x2 PASS. No presentation.
+Expected diagnostic readback if later authorized: 128 bytes GPU reductions plus
+16 bytes public NGX disable status. Expected history: four warmups and one target
+Evaluate, always count=1/index=1; never NVIDIA count=2.
+
+Baseline preservation verified by Git: only the two new experiment/evidence
+folders are changed. No Minecraft, direct NVIDIA, Streamline, SR, AMD or
+PresentWorker modification or execution in this iteration. No web research.

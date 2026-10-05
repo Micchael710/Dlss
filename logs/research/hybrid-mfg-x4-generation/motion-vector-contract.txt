@@ -1,0 +1,12 @@
+MOTION_VECTOR_FORMAT=DXGI_FORMAT_R32G32_FLOAT
+MOTION_VECTOR_UNITS=NDC/clip displacement; mvecScale=(1,1)
+MOTION_VECTOR_DIRECTION=current_to_previous
+MOTION_VECTOR_Y_ORIENTATION=clip Y positive up; texture Y positive down; uvDelta=mv*(0.5,-0.5)
+SOURCE=experiments/dlssg-external-harness/harness.cpp SyntheticFixture::motion/options; d3d12_worker.inc D3D12 camera Y correction
+SCENE=1280x720; 192x224 foreground checker rectangle; left=300+16*f; target A=f3 B=f4
+MV_OBJECT=(-2*16/1280,0); MV_BACKGROUND=(0,0); camera fixed; no jitter
+VERTICAL_OBSERVATION=existing fixture has zero Y motion; Y conversion follows inspected camera/options convention, not a runtime vertical-motion validation
+HYBRID_INPUTS=ColorA/ColorB/DepthA/DepthB/MotionA/MotionB only; no G50 SRV
+INVERSE_APPROXIMATION=use same backward displacement at the corresponding A surface as forward inverse approximation; translational fixture only
+WARMUP=4 NGX evaluations retained from known working standalone; target pair evaluations=1; total=5
+PRODUCTION_QUALITY_INTERPOLATION=NO
