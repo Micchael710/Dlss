@@ -1,0 +1,67 @@
+=== 7-ZIP ARCHIVE INSPECTION ATTEMPT ===
+Command: 7z l "D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe"
+Tool: 7-Zip 22.01 (x64)
+Result: ERROR: Cannot open the file as archive (Errors: 1, Exit code: 2)
+Reason: Installer uses modern Inno Setup self-extracting format not supported by standard 7-Zip.
+
+=== INNOEXTRACT ARCHIVE INSPECTION ATTEMPT ===
+Command: innoextract -l --list-sizes "D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe"
+Tool: innoextract 1.9
+Result: ERROR: Unexpected setup loader revision: 2; Setup loader checksum mismatch; Could not determine setup data version.
+Reason: innoextract 1.9 supports up to Inno Setup 6.0.5; target installer was created with Inno Setup 6.7.0.
+
+=== INNOUNP ARCHIVE INSPECTION (SUCCESSFUL STATIC EXTRACTION) ===
+Command: innounp -v -b "D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe"
+Tool: innounp 2.70.1 (2026-07-21)
+Inno Setup version detected: 6.7.0 (Unicode)
+
+Size        Date/Time            Filename
+-------------------------------------------------
+     14245  2026-08-07 15:41     {app}\dlss-enabler-xess.dll
+       130  2026-08-07 15:41     {app}\dlss-enabler.log
+     73728  2026-08-07 15:41     {app}\dxgi.dll
+     83456  2026-08-07 15:41     {app}\dlss-finder.exe
+   1310734  2026-08-07 15:41     {app}\nvapi64-proxy.dll
+    189952  2026-08-07 15:41     {app}\_nvngx.dll
+       235  2026-08-07 15:41     {app}\dlssg_to_fsr3.ini
+   3038208  2026-08-07 15:41     {app}\dlssg_to_fsr3_amd_is_better.dll
+      1122  2026-08-07 15:41     {app}\READ ME (DLSSG to FSR3 mod).txt
+      6800  2026-08-07 15:41     {app}\LICENSE (DLSSG to FSR3 mod).txt
+  25379632  2026-07-18 21:17     {app}\dlss-enabler-upscaler.dll
+     47477  2026-07-12 12:35     {app}\nvngx.ini
+  77795704  2025-11-24 23:51     {app}\libxess.dll
+     26376  2026-06-29 20:17     {app}\amd_fidelityfx_dx12.dll
+   9332432  2025-07-10 15:04     {app}\amd_fidelityfx_vk.dll
+    943616  2026-08-07 15:41     {app}\plugins\dlss-enabler.asi
+     31226  2026-08-07 15:41     {app}\Readme (DLSS enabler).txt
+      7648  2026-10-05 17:14     install_script.iss
+-------------------------------------------------
+
+=== INNO SETUP SCRIPT [Files] SECTION ANALYSIS ===
+Source: "{app}\dlss-enabler-xess.dll"; DestDir: "{app}"; Components: mandatory; Flags: deleteafterinstall ignoreversion 
+Source: "{app}\dlss-enabler-fsr.dll"; DestDir: "{app}"; Components: mandatory; Flags: deleteafterinstall ignoreversion 
+Source: "{app}\dlss-enabler.log"; DestDir: "{app}"; Components: mandatory; Flags: ignoreversion 
+Source: "{app}\dlssg_to_fsr3.log"; DestDir: "{app}"; Components: mandatory; Flags: ignoreversion 
+Source: "{app}\fakenvapi.log"; DestDir: "{app}"; Components: mandatory; Flags: ignoreversion 
+Source: "{app}\dxgi.dll"; DestDir: "{app}"; Components: nonnvidia\localdir mainfiles\dlldxgi; 
+Source: "{app}\dlss-finder.exe"; DestDir: "{app}"; Components: nonnvidia\localdir; 
+Source: "{app}\nvapi64-proxy.dll"; DestDir: "{app}"; Components: nonnvidia\localdir; 
+Source: "{app}\_nvngx.dll"; DestDir: "{app}"; Components: nonnvidia\localdir; Flags: ignoreversion 
+Source: "{app}\dlssg_to_fsr3.ini"; DestDir: "{app}"; Components: mandatory\fgdebug; Flags: ignoreversion 
+Source: "{app}\dlssg_to_fsr3_amd_is_better.dll"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: ignoreversion 
+Source: "{app}\READ ME (DLSSG to FSR3 mod).txt"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: deleteafterinstall ignoreversion 
+Source: "{app}\licenses\READ ME (DLSSG to FSR3 mod).txt"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: ignoreversion 
+Source: "{app}\LICENSE (DLSSG to FSR3 mod).txt"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: deleteafterinstall ignoreversion 
+Source: "{app}\licenses\LICENSE (DLSSG to FSR3 mod).txt"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: ignoreversion 
+Source: "{app}\nvngx-wrapper.dll"; DestDir: "{app}"; Components: mandatory mainfiles\dllversion mainfiles\asiversion mainfiles\dllwinmm mainfiles\dlldxgi; Flags: ignoreversion 
+Source: "{app}\dlss-enabler-upscaler.dll"; DestDir: "{app}"; Components: upscalers; Flags: skipifsourcedoesntexist ignoreversion 
+Source: "{app}\nvngx.ini"; DestDir: "{app}"; Components: upscalers; Flags: skipifsourcedoesntexist ignoreversion 
+Source: "{app}\libxess.dll"; DestDir: "{app}"; Components: upscalers; Flags: uninsneveruninstall skipifsourcedoesntexist 
+Source: "{app}\amd_fidelityfx_dx12.dll"; DestDir: "{app}"; Components: upscalers; Flags: skipifsourcedoesntexist ignoreversion 
+Source: "{app}\amd_fidelityfx_vk.dll"; DestDir: "{app}"; Components: upscalers; Flags: skipifsourcedoesntexist ignoreversion 
+Source: "{app}\plugins\dlss-enabler.asi"; DestDir: "{app}"; Components: mainfiles\asiversion; Flags: confirmoverwrite 
+Source: "{app}\dlss-enabler.dll"; DestDir: "{app}"; Components: mainfiles\dlldxgi; Flags: confirmoverwrite 
+Source: "{app}\version.dll"; DestDir: "{app}"; Components: mainfiles\dllversion; Flags: confirmoverwrite 
+Source: "{app}\winmm.dll"; DestDir: "{app}"; Components: mainfiles\dllwinmm; Flags: confirmoverwrite 
+Source: "{app}\Readme (DLSS enabler).txt"; DestDir: "{app}"; Components: mainfiles\dllwinmm mainfiles\dllversion mainfiles\asiversion mainfiles\dlldxgi; Flags: deleteafterinstall ignoreversion 
+Source: "{app}\licenses\Readme (DLSS enabler).txt"; DestDir: "{app}"; Components: mainfiles\dllwinmm mainfiles\dllversion mainfiles\asiversion mainfiles\dlldxgi; Flags: ignoreversion 

@@ -1,0 +1,14 @@
+REPOSITORY: https://github.com/artur-graniszewski/DLSS-Enabler
+RELEASE_TAG: v0.9.4
+RELEASE_NAME: DLSS Enabler (latest) - OptiScaler v0.9.4
+RELEASE_HTML_URL: https://github.com/artur-graniszewski/DLSS-Enabler/releases/tag/v0.9.4
+DRAFT: false
+PRERELEASE: false
+PUBLISHED_AT: 2026-07-19T01:25:05Z
+UPDATED_AT: 2026-08-07T15:42:11Z
+ASSET_NAME: dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+ASSET_SIZE: 33007175
+ASSET_DOWNLOAD_URL: https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.4/dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+ASSET_OFFICIAL_DIGEST: sha256:2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa
+CONFIRMED_STABLE: YES
+CONFIRMED_OFFICIAL: YES

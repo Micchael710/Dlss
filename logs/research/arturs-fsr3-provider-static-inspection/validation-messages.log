@@ -1,0 +1,19 @@
+[2026-10-05T21:05:09Z] Starting verification of official repository for Artur Graniszewski DLSS Enabler.
+[2026-10-05T21:08:06Z] GitHub release query: https://api.github.com/repos/artur-graniszewski/DLSS-Enabler/releases/tags/v0.9.4.
+[2026-10-05T21:08:06Z] Release confirmation: tag v0.9.4 is confirmed stable (draft=false, prerelease=false).
+[2026-10-05T21:08:06Z] Official asset identified: dlss-enabler-setup_0.9.4-final.20260718._MM.exe (33007175 bytes).
+[2026-10-05T21:08:06Z] Official SHA256 digest from GitHub release: 2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa.
+[2026-10-05T21:09:20Z] Asset downloaded to D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe.
+[2026-10-05T21:09:20Z] Local SHA256 computed: 2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa (MATCH).
+[2026-10-05T21:09:31Z] Authenticode check: NotSigned. ProductVersion: 3.01.20260807.154147. FileVersion: empty.
+[2026-10-05T21:09:45Z] Attempting 7-Zip static archive inspection (7z l): Cannot open file as archive (Exit code 2).
+[2026-10-05T21:09:59Z] Static header inspection identified Inno Setup signature in PE.
+[2026-10-05T21:13:39Z] Attempting innoextract 1.9: Failed with unexpected setup loader revision 2 (Inno Setup 6.7.0).
+[2026-10-05T21:14:10Z] Installed innounp 2.70.1 (supports Inno Setup through 6.7.0).
+[2026-10-05T21:14:39Z] Running static archive inspection with innounp -v -b: SUCCESS.
+[2026-10-05T21:14:39Z] Inno Setup 6.7.0 (Unicode) detected. 18 archive members listed.
+[2026-10-05T21:14:46Z] Extracted install_script.iss statically for deep component verification.
+[2026-10-05T21:15:04Z] Searching archive and install_script.iss for target provider: dlss-enabler-headless.dll.
+[2026-10-05T21:15:04Z] Target 'dlss-enabler-headless.dll' NOT FOUND in official installer package.
+[2026-10-05T21:15:04Z] Strict non-execution maintained: installer was NEVER executed (no Start-Process, no PE entrypoint invocation).
+[2026-10-05T21:15:04Z] Inspection conclusion: CASO B reached (ARTURS_OFFICIAL_PROVIDER_DISCOVERED=NO, FAIL_STAGE=PROVIDER_NOT_PRESENT_IN_OFFICIAL_INSTALLER, NEXT_EXPERIMENT=STOP).

@@ -1,0 +1,15 @@
+SOURCE_REPOSITORY=https://github.com/artur-graniszewski/DLSS-Enabler
+SOURCE_RELEASE=v0.9.4
+SOURCE_RELEASE_URL=https://github.com/artur-graniszewski/DLSS-Enabler/releases/tag/v0.9.4
+SOURCE_ASSET=dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+DOWNLOAD_URL=https://github.com/artur-graniszewski/DLSS-Enabler/releases/download/v0.9.4/dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+DOWNLOAD_TIMESTAMP=2026-10-05T21:09:20Z
+INSTALLER_LOCAL_PATH=D:\ProjectDllsss-research\arturs-official-installer\dlss-enabler-setup_0.9.4-final.20260718._MM.exe
+INSTALLER_FILE_SIZE=33007175
+INSTALLER_SHA256=2cf1373eb5a7c856b1459cfee3fde0d5f3cfbaa53184856ee05af4da663236aa
+INSTALLER_FILE_VERSION=UNKNOWN_NOT_EXPOSED
+INSTALLER_PRODUCT_VERSION=3.01.20260807.154147
+INSTALLER_SIGNATURE_STATUS=NotSigned
+INSTALLER_SIGNER_SUBJECT=UNKNOWN_NOT_EXPOSED
+INSTALLER_FORMAT=Inno Setup 6.7.0 (Unicode)
+INSTALLER_EXECUTED=NO

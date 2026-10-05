@@ -1,0 +1,29 @@
+TARGET_PROVIDER_NAME=dlss-enabler-headless.dll
+TARGET_PROVIDER_FOUND=NO
+TARGET_PROVIDER_OCCURRENCE_COUNT=0
+TARGET_PROVIDER_INTERNAL_PATH=NONE
+
+SEARCH_EXECUTION_DETAILS:
+- Binary searched: dlss-enabler-setup_0.9.4-final.20260718._MM.exe (Inno Setup 6.7.0 Unicode)
+- Inspection tool: innounp 2.70.1 (static unpacking and listing without execution)
+- Full file list inside archive: 18 items
+- Internal files matching target 'dlss-enabler-headless.dll': 0
+- Script files referencing target: 0
+
+SECONDARY_SEARCH_RELATED_MODULES:
+- headless.dll: NOT_FOUND
+- dlss-enabler-xess.dll: FOUND ({app}\dlss-enabler-xess.dll, 14245 bytes)
+- dlss-enabler-upscaler.dll: FOUND ({app}\dlss-enabler-upscaler.dll, 25379632 bytes)
+- dlss-enabler.dll: SCRIPT_REFERENCE_ONLY (installer copy target of dlssg_to_fsr3_amd_is_better.dll / wrapper)
+- dlss-enabler.asi: FOUND ({app}\plugins\dlss-enabler.asi, 943616 bytes)
+- dlssg_to_fsr3_amd_is_better.dll: FOUND ({app}\dlssg_to_fsr3_amd_is_better.dll, 3038208 bytes; Nukem9 DLSSG-to-FSR3 mod v0.100/v0.130)
+- _nvngx.dll: FOUND ({app}\_nvngx.dll, 189952 bytes)
+- nvapi64-proxy.dll: FOUND ({app}\nvapi64-proxy.dll, 1310734 bytes)
+- dxgi.dll: FOUND ({app}\dxgi.dll, 73728 bytes)
+- libxess.dll: FOUND ({app}\libxess.dll, 77795704 bytes)
+- amd_fidelityfx_dx12.dll: FOUND ({app}\amd_fidelityfx_dx12.dll, 26376 bytes)
+- amd_fidelityfx_vk.dll: FOUND ({app}\amd_fidelityfx_vk.dll, 9332432 bytes)
+
+VERDICT:
+The exact required provider binary 'dlss-enabler-headless.dll' is NOT present in the official installer of DLSS Enabler v0.9.4.
+No substitute binary is accepted as per protocol requirements.
