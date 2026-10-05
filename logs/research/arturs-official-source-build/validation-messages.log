@@ -1,0 +1,43 @@
+[2026-10-05T17:39:10-04:00] [INFO] [START] Initiating research experiment: ARTURS_OFFICIAL_SOURCE_REPRODUCIBILITY_AND_EXPORT_VALIDATION
+[2026-10-05T17:39:12-04:00] [INFO] [GIT] Verifying local repository D:/ProjectDllsss...
+[2026-10-05T17:39:13-04:00] [PASS] [GIT] Local branch is main, HEAD = 853ca1aaefe79787ff518e32c9710f9208f0aed5, working tree clean.
+[2026-10-05T17:39:20-04:00] [INFO] [CLONE] Cloning official repository https://github.com/artur-graniszewski/dlss-enabler-main.git into external directory D:/ProjectDllsss-research/arturs-dlss-enabler-main...
+[2026-10-05T17:40:15-04:00] [PASS] [CLONE] Clone complete. Pinning exact commit 62d32511805396d284bf5d60478f964d0ba8d228.
+[2026-10-05T17:40:22-04:00] [PASS] [CHECKOUT] HEAD detached at 62d32511805396d284bf5d60478f964d0ba8d228 ("DE 4.9.0.15 release", 2026-09-05). Working tree clean.
+[2026-10-05T17:40:30-04:00] [INFO] [SUBMODULE] Checking .gitmodules...
+[2026-10-05T17:40:35-04:00] [PASS] [SUBMODULE] Submodule External/unordered_dense checked out at 3234af2c03549bc85656bfd3a86993bf1cd8aef1 from official source https://github.com/martinus/unordered_dense.git. No forks used.
+[2026-10-05T17:41:20-04:00] [INFO] [AUDIT] Auditing DLSSEnabler.sln and DLSSEnabler.vcxproj for Release|x64...
+[2026-10-05T17:41:25-04:00] [PASS] [AUDIT] ConfigurationType=DynamicLibrary, PlatformToolset=v143, WindowsTargetPlatformVersion=10.0.22621.0.
+[2026-10-05T17:41:30-04:00] [PASS] [SECURITY] Build events audited. PreBuild=NO, PreLink=NO, CustomBuild=NO, PostBuild=copy to local desktop path. No unsafe downloads or remote script executions detected.
+[2026-10-05T17:42:00-04:00] [INFO] [DEPENDENCY] Auditing link dependencies in AdditionalDependencies for Release|x64...
+[2026-10-05T17:42:05-04:00] [WARN] [DEPENDENCY] DLSSEnabler.vcxproj explicitly references Libs/OptiScaler.lib.
+[2026-10-05T17:42:10-04:00] [FAIL] [DEPENDENCY] Libs/OptiScaler.lib is NOT PRESENT in the cloned repository tree.
+[2026-10-05T17:42:30-04:00] [INFO] [INVESTIGATION] Searching git history of dlss-enabler-main for OptiScaler.lib...
+[2026-10-05T17:42:45-04:00] [CONFIRM] [INVESTIGATION] 0 commits found across all git branches/tags containing OptiScaler.lib. It was never committed by the author.
+[2026-10-05T17:43:10-04:00] [INFO] [INVESTIGATION] Checking upstream OptiScaler API vs DLSS Enabler Utils/Optiscaler.h...
+[2026-10-05T17:43:30-04:00] [CONFIRM] [INVESTIGATION] DLSS Enabler calls OptiScaler_Init(HMODULE, const OptiScalerConfig* cfg) with custom struct OptiScalerConfig { bool spoof_as_enabler; bool isFrs4UpdateOff; }. Upstream OptiScaler defines OptiScaler_Init(HMODULE, bool isNvngx). Libs/OptiScaler.lib is a private internal build of the author.
+[2026-10-05T17:44:00-04:00] [DECISION] [PROTOCOL] Per user instruction:
+  "SI OPTISCALER.LIB NO PUEDE OBTENERSE OFICIALMENTE:
+   NO modificar el proyecto para eliminarlo.
+   NO crear stub.
+   NO crear fake .lib.
+   NO copiar símbolos desde OptiScaler.
+   NO parchear linker.
+   NO reutilizar nuestra propia implementación.
+   Registrar:
+   OFFICIAL_SOURCE_REPRODUCIBLE=NO
+   MISSING_DEPENDENCY=Libs/OptiScaler.lib
+   FAIL_STAGE=OFFICIAL_SOURCE_DEPENDENCY_MISSING
+   NEXT_EXPERIMENT=STOP
+   STOP."
+[2026-10-05T17:44:30-04:00] [SET] OFFICIAL_SOURCE_REPRODUCIBLE=NO
+[2026-10-05T17:44:32-04:00] [SET] MISSING_DEPENDENCY=Libs/OptiScaler.lib
+[2026-10-05T17:44:35-04:00] [SET] FAIL_STAGE=OFFICIAL_SOURCE_DEPENDENCY_MISSING
+[2026-10-05T17:44:40-04:00] [SET] BUILD_COUNT=0, BUILD_RESULT=NOT_RUN
+[2026-10-05T17:45:00-04:00] [INFO] [AUDIT] Performing static analysis of headless logic...
+[2026-10-05T17:45:10-04:00] [PASS] [HEADLESS] Exports/Exports.cpp L41 and Utils/Autoconfig.cpp L153 recognize "dlss-enabler-headless.dll" and disable frontend hooking / wrapper behavior. SOURCE_RECOGNIZES_HEADLESS_FILENAME=YES.
+[2026-10-05T17:45:20-04:00] [INFO] [AUDIT] Performing static analysis of multiframe logic...
+[2026-10-05T17:45:30-04:00] [PASS] [MULTIFRAME] DLSSG.MultiFrameCount and DLSSG.MultiFrameIndex found in RoutePolicy.h, DlssgProxy.cpp, NgxFrontend.cpp, LatencyProbe.cpp, ActionIntensity.cpp. SOURCE_HAS_MULTIFRAME_COUNT_LOGIC=YES, SOURCE_HAS_MULTIFRAME_INDEX_LOGIC=YES.
+[2026-10-05T17:46:00-04:00] [VERIFY] Toolchain audit completed (MSBuild 18.6.3, cl.exe 19.51.36244, link.exe 14.51.36244, rc.exe 10.0.10011, WinSDK 10.0.26100.0).
+[2026-10-05T17:46:30-04:00] [VERIFY] Existing baselines untouched (Streamline 2.12, direct NVIDIA, AMD, hybrid-mfg-x4, Minecraft, PresentWorker).
+[2026-10-05T17:47:00-04:00] [CONCLUSION] ARTURS_OFFICIAL_SOURCE_PROVIDER=BLOCKED. Stopping per protocol.

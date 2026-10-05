@@ -1,0 +1,18 @@
+================================================================================
+BUILD EXECUTION LOG
+================================================================================
+BUILD_COUNT=0
+BUILD_RESULT=NOT_RUN
+BUILD_EXIT_CODE=N/A
+FAIL_STAGE=OFFICIAL_SOURCE_DEPENDENCY_MISSING
+REASON=Link dependency Libs/OptiScaler.lib is referenced by Release|x64 in DLSSEnabler.vcxproj, but is missing from repository tree and unobtainable from official public sources.
+
+PROTOCOL COMPLIANCE:
+Per project rules:
+1. No source edits.
+2. No vcxproj edits.
+3. No modifying AdditionalDependencies.
+4. No stub / fake .lib creation.
+5. Build is only permitted if OFFICIAL_SOURCE_REPRODUCIBLE=YES.
+Because OFFICIAL_SOURCE_REPRODUCIBLE=NO, build was NOT executed.
+Official source is not reproducible out of the box with public dependencies.

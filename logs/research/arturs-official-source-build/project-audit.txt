@@ -1,0 +1,57 @@
+================================================================================
+DLSSEnabler PROJECT AUDIT (Release|x64)
+================================================================================
+SOLUTION_FILE=DLSSEnabler.sln
+PROJECT_FILE=DLSSEnabler.vcxproj
+DEF_FILE=Exports/Exports.def
+
+PROJECT_CONFIGURATION_TYPE=DynamicLibrary
+PROJECT_PLATFORM_TOOLSET=v143
+WINDOWS_TARGET_PLATFORM_VERSION=10.0.22621.0
+TARGET_NAME=$(ProjectName) -> DLSSEnabler
+TARGET_EXT=.dll
+OUT_DIR=$(SolutionDir)bin\$(Configuration)\
+INT_DIR=$(SolutionDir)bin\intermediates\$(ProjectName)\$(Configuration)\
+
+ADDITIONAL_INCLUDE_DIRECTORIES:
+  - $(ProjectDir)
+  - $(ProjectDir)External
+  - $(ProjectDir)External\unordered_dense\include
+  - $(ProjectDir)External\FidelityFX-SDK-v1.1\sdk\include
+  - $(ProjectDir)External\FSR2_212\src\ffx-fsr2-api
+  - $(ProjectDir)External\FSR31\include
+  - $(ProjectDir)External\OptiScaler\OptiScaler\include
+  - $(ProjectDir)External\freetype\include
+
+ADDITIONAL_LIBRARY_DIRECTORIES:
+  - $(ProjectDir)Libs
+
+ADDITIONAL_DEPENDENCIES (Release|x64):
+  - Libs/detours.lib
+  - Libs/fakenvapi_embed.lib
+  - Libs/freetype.lib
+  - Libs/libxess_fg.lib
+  - Libs/OptiScaler.lib
+  - Libs/fsr31/*.lib
+  - Libs/fsr3/*.lib
+  - Libs/fsr2/*.lib
+  - Libs/fsr2_212/*.lib
+  - dxgi.lib
+  - d3d12.lib
+  - d3d11.lib
+  - version.lib
+  - winhttp.lib
+
+ADDITIONAL_OPTIONS (Link):
+  /INCLUDE:DLSSG_NVSDK_NGX_D3D12_CreateFeature /INCLUDE:DLSSG_NVSDK_NGX_D3D12_EvaluateFeature /INCLUDE:DLSSG_NVSDK_NGX_D3D12_ReleaseFeature /INCLUDE:DLSSG_NVSDK_NGX_D3D12_PopulateParameters_Impl
+
+BUILD EVENTS:
+PROJECT_HAS_PREBUILD_EVENT=NO
+PROJECT_HAS_PRELINK_EVENT=NO
+PROJECT_HAS_POSTBUILD_EVENT=YES (Post-build copy to author's local desktop path C:\Users\Admin\Desktop\DLSS\Streamline_Sample-2.4.10\_bin\dbghelp.dll*)
+PROJECT_HAS_CUSTOM_BUILD_EXECUTION=NO
+
+MODULE DEFINITION FILE (Exports/Exports.def):
+Defines proxy export forwarders/stubs for dbghelp.dll, winhttp.dll, and dxgi.dll.
+It does NOT export any DLSSG_NVSDK_NGX_D3D12_* functions.
+Exports DLSSG_* are declared with __declspec(dllexport) in C++ source or forced by linker /INCLUDE options.

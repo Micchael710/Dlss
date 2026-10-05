@@ -1,0 +1,25 @@
+================================================================================
+ARTURS DLSS ENABLER OFFICIAL SOURCE PROVENANCE
+================================================================================
+CLONE_URL=https://github.com/artur-graniszewski/dlss-enabler-main.git
+PINNED_COMMIT=62d32511805396d284bf5d60478f964d0ba8d228
+PINNED_COMMIT_MESSAGE=DE 4.9.0.15 release
+PINNED_COMMIT_DATE=2026-09-05 12:35:56 +0200
+DEFAULT_BRANCH=main
+LOCAL_CLONE_DIRECTORY=D:/ProjectDllsss-research/arturs-dlss-enabler-main
+TREE_CLEAN=YES
+HEAD_STATUS=HEAD detached at 62d3251
+
+SUBMODULES_AUDIT:
+SUBMODULE_COUNT=1
+SUBMODULE_1_PATH=External/unordered_dense
+SUBMODULE_1_URL=https://github.com/martinus/unordered_dense.git
+SUBMODULE_1_COMMIT=3234af2c03549bc85656bfd3a86993bf1cd8aef1
+SUBMODULES_INITIALIZED=YES
+SUBMODULE_FORKS_USED=NO
+
+PROVENANCE_SUMMARY:
+The repository was cloned with --recursive directly from Artur Graniszewski's official public GitHub repository.
+The checkout was explicitly pinned to commit 62d32511805396d284bf5d60478f964d0ba8d228 without using a floating HEAD.
+The submodule External/unordered_dense was initialized from the official martinus/unordered_dense repository at commit 3234af2c03549bc85656bfd3a86993bf1cd8aef1.
+No local modifications have been made to the cloned repository tree.

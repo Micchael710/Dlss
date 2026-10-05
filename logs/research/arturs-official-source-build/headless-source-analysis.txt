@@ -1,0 +1,34 @@
+================================================================================
+HEADLESS SOURCE LOGIC STATIC ANALYSIS
+================================================================================
+SOURCE_RECOGNIZES_HEADLESS_FILENAME=YES
+
+EVIDENCE IN SOURCE FILES:
+
+1. Exports/Exports.cpp (Line 41):
+   --------------------------------------------------------------------------------
+   if (Common::GetModuleName() == L"dlss-enabler-headless.dll") {
+       LOG_INFO(L"[LOADER] Running in headless mode");
+       return true;
+   }
+   --------------------------------------------------------------------------------
+   Behavioral effect:
+   - When the loaded module filename is exactly "dlss-enabler-headless.dll", the proxy initialization routine identifies that the module is not acting as a system DLL wrapper (e.g. dbghelp.dll, dxgi.dll, winhttp.dll).
+   - It bypasses proxy symbol forwarding and hook installation routines for standard system DLLs, logging "[LOADER] Running in headless mode" and returning early.
+
+2. Utils/Autoconfig.cpp (Line 153):
+   --------------------------------------------------------------------------------
+   if (Common::GetModuleName() == L"dlss-enabler-headless.dll") {
+       ctx.isDlssEnablerOn = false;
+       return;
+   }
+   --------------------------------------------------------------------------------
+   Behavioral effect:
+   - Autoconfig.cpp sets `ctx.isDlssEnablerOn = false;` and terminates configuration early.
+   - It prevents DLSS Enabler from attempting to hijack or inject itself into game rendering loops via automatic hooking or calling `GetNGXLibrary()`.
+   - The DLL functions strictly in headless backend provider mode, suitable for being driven directly by an external host (such as OptiScaler's Nvngx_Arturs provider).
+
+HEADLESS BINARY COPY STATUS:
+- Since the binary could not be built due to missing Libs/OptiScaler.lib, no headless binary copy was generated.
+- HEADLESS_COPY_BINARY_IDENTICAL=NO (Provider binary not built)
+- HEADLESS_COPY_SHA256=NOT_APPLICABLE

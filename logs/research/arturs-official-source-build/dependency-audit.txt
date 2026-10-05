@@ -1,0 +1,70 @@
+================================================================================
+RELEASE|x64 LINK DEPENDENCIES AUDIT
+================================================================================
+PROJECT: DLSSEnabler.vcxproj
+COMMIT: 62d32511805396d284bf5d60478f964d0ba8d228
+
+OPTISCALER.LIB AUDIT:
+OPTISCALER_LIB_REFERENCED=YES
+OPTISCALER_LIB_PRESENT_IN_TREE=NO
+OPTISCALER_LIB_PATH=Libs/OptiScaler.lib
+OPTISCALER_LIB_SOURCE=UNAVAILABLE (Private / uncommitted internal build)
+
+DETAILED INVESTIGATION OF OptiScaler.lib:
+1. Git history analysis:
+   Executed `git log --all --full-history -- "**/OptiScaler.lib"`.
+   Result: 0 commits. The file was NEVER committed in any commit, branch, or tag in the official repository.
+2. Upstream OptiScaler contract comparison:
+   DLSS Enabler declares in `Utils/Optiscaler.h`:
+     struct OptiScalerConfig {
+         bool spoof_as_enabler = true;
+         bool isFrs4UpdateOff = false;
+     };
+     bool OptiScaler_Init(HMODULE self, const OptiScalerConfig* cfg);
+     void OptiScaler_Shutdown();
+     bool BeginVersionBypassHooks();
+   In contrast, official upstream OptiScaler (`optiscaler/OptiScaler`) exports:
+     bool OptiScaler_Init(HMODULE hModule, bool isNvngx);
+   This proves `Libs/OptiScaler.lib` is a proprietary/custom static library built by Artur Graniszewski with author-specific signatures (`OptiScalerConfig`), and is not standard upstream OptiScaler.
+3. Submodules:
+   The only submodule in `.gitmodules` is `External/unordered_dense`. No submodule exists for OptiScaler.
+4. Conclusion:
+   `Libs/OptiScaler.lib` is a private, uncommitted, non-public dependency. It cannot be resolved from official public repositories.
+
+COMPLETE LINK DEPENDENCIES TABLE (Release|x64):
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+DEPENDENCY_NAME                         REFERENCED  PRESENT  SOURCE                      HASH (SHA256)                                                     STATUS
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+Libs/OptiScaler.lib                     YES         NO       Private/Unpublished         N/A                                                               MISSING (BLOCKER)
+Libs/detours.lib                        YES         YES      Repo Libs/                  d7f0224c6d7a052af74e8ad55057eceddb88fe553ff98cc56ca2eeac16c9054e PRESENT
+Libs/fakenvapi_embed.lib                YES         YES      Repo Libs/                  1b5730213806754e3fa435557e830f615dd9f6ac1af74ba04fcde915c9b27b2e PRESENT
+Libs/freetype.lib                       YES         YES      Repo Libs/                  74856e22714bf99f2f04e59cfe77d7c85729e5aa3570030b939048115ef528ad PRESENT
+Libs/libxess_fg.lib                     YES         YES      Repo Libs/                  f8fbd0c5c35be79c49d63c8f24876871ed46eaf93674a732e8a1c13597affdc1 PRESENT
+Libs/fsr31/ffx_backend_dx11_x64.lib     YES         YES      Repo Libs/fsr31/            896d2a92f37a431b15eb9c61c20e46aef1acc458fe7f984d36f7e4319ba24331 PRESENT
+Libs/fsr31/ffx_backend_dx12_x64.lib     YES         YES      Repo Libs/fsr31/            7db099689452dac14388b4e5cf2eb4f188d1407ceb3d6cb7b58e3770e104cd87 PRESENT
+Libs/fsr31/ffx_frameinterpolation_x64.lib YES       YES      Repo Libs/fsr31/            5b2f9029bca011c64f6f3cd3a1022f221221db7cde6d0bf470097615bb7c68bb PRESENT
+Libs/fsr31/ffx_fsr3upscaler_x64.lib     YES         YES      Repo Libs/fsr31/            40655550c2e433135d32c30313283cbc84d36be6665b4160cbcf9a44c586986d PRESENT
+Libs/fsr31/ffx_fsr3_x64.lib             YES         YES      Repo Libs/fsr31/            a841361195e77575689fe09f122a32cefc923afb62981d7ef03c42d6e660d958 PRESENT
+Libs/fsr31/ffx_opticalflow_x64.lib      YES         YES      Repo Libs/fsr31/            5715f65f4a27387f17a8c9dd5abe6058fbae4d80f709e8a09c94a731ea5f016c PRESENT
+Libs/fsr3/*.lib                         YES         NO       Repo Libs/fsr3/ (empty/none) N/A                                                              DIR_ABSENT
+Libs/fsr2/ffx_fsr2_api_dx11_x64.lib     YES         YES      Repo Libs/fsr2/             09bae432b40540fd129e20b5a50ffdbc181eb66b3d35e0b2a581455ab739efc7 PRESENT
+Libs/fsr2/ffx_fsr2_api_dx11_x64d.lib    YES         YES      Repo Libs/fsr2/             96f716e91ae45dfd9d398bd004deceb95345b4631dcce5320d70063203ed21de PRESENT
+Libs/fsr2/ffx_fsr2_api_dx12_x64.lib     YES         YES      Repo Libs/fsr2/             0af49bc7c5a660cc2fdbdd969c83b9337e66cfe87f76b8654e3e8e9694200026 PRESENT
+Libs/fsr2/ffx_fsr2_api_dx12_x64d.lib    YES         YES      Repo Libs/fsr2/             fc75e44b90b49791f749a54c8fce0a850d340b4eb3338fc0b2eef7db0799d59f PRESENT
+Libs/fsr2/ffx_fsr2_api_vk_x64.lib       YES         YES      Repo Libs/fsr2/             e410a0e6ab0ad4bb1a1e1638cc723ad4087768777947129d6991ab05a3d1c094 PRESENT
+Libs/fsr2/ffx_fsr2_api_vk_x64d.lib      YES         YES      Repo Libs/fsr2/             1f0a5bd06bc445cfdd2cd13bbac5b84a98131527fb63b1762c844312997dd1b2 PRESENT
+Libs/fsr2/ffx_fsr2_api_x64.lib          YES         YES      Repo Libs/fsr2/             2755e4847ad9a648b305e3391abded44138588f30748ac36b63665740a6c855e PRESENT
+Libs/fsr2/ffx_fsr2_api_x64d.lib         YES         YES      Repo Libs/fsr2/             090df95a90a1030a34c693d17634b959e2639edd714643f924a4ac3af0fd62d4 PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_dx12_x64.lib YES     YES      Repo Libs/fsr2_212/         f6af216970b392656fa617e220059dc35863e6ee08b16494950415a89273925a PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_dx12_x64d.lib YES    YES      Repo Libs/fsr2_212/         dcb25f748bc404225c04d8d6514f48971306a65e51e2aa8d8969512e059c68ec PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_vk_x64.lib YES       YES      Repo Libs/fsr2_212/         0f993f9f34a686c64aaead36cae79d5ff3962f4079bcb9e01c64c691d0930175 PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_vk_x64d.lib YES      YES      Repo Libs/fsr2_212/         21453f5d4bec1ac31dbe609bd700bcfa0ce62b6cc8198e5c1c296f4a0661a813 PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_x64.lib  YES         YES      Repo Libs/fsr2_212/         14803a9de847d103183f75e5ddd30d51fd159ae8f640fe62abfc6135b4aa4f76 PRESENT
+Libs/fsr2_212/ffx_fsr2_212_api_x64d.lib YES         YES      Repo Libs/fsr2_212/         7977ea82de834b57723827c60b6290a94aad234a9a76a018f66406c1513c626c PRESENT
+dxgi.lib                                YES         YES      Windows SDK                 System                                                            PRESENT
+d3d12.lib                               YES         YES      Windows SDK                 System                                                            PRESENT
+d3d11.lib                               YES         YES      Windows SDK                 System                                                            PRESENT
+version.lib                             YES         YES      Windows SDK                 System                                                            PRESENT
+winhttp.lib                             YES         YES      Windows SDK                 System                                                            PRESENT
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+OVERALL DEPENDENCY STATUS: INCOMPLETE (Libs/OptiScaler.lib missing from repository tree and unobtainable from official public sources).

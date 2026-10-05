@@ -1,0 +1,36 @@
+================================================================================
+BUILD EVENTS AUDIT & SECURITY ANALYSIS
+================================================================================
+CONFIGURATION_AUDITED: Release|x64
+PROJECT: DLSSEnabler.vcxproj
+
+PRE-BUILD EVENT:
+- Present: NO
+- Command: None
+
+PRE-LINK EVENT:
+- Present: NO
+- Command: None
+
+CUSTOM BUILD STEPS:
+- Present: NO
+- Tool/Command: None
+
+POST-BUILD EVENT:
+- Present: YES
+- Exact Command: copy /Y "$(TargetPath)" "C:\Users\Admin\Desktop\DLSS\Streamline_Sample-2.4.10\_bin\dbghelp.dll*"
+
+SECURITY AUDIT CHECKLIST:
+- Downloads files: NO
+- Executes installers: NO
+- Executes remote PowerShell: NO
+- Executes remote curl / Invoke-WebRequest: NO
+- Automatic undocumented GitHub downloads: NO
+- Copies DLL FROM personal directories of the author: NO (it copies TO author's desktop path)
+- Executes games or Steam: NO
+- Executes external EXEs: NO
+
+REPRODUCIBILITY NOTE ON POSTBUILD:
+The PostBuildEvent targets a non-existent path on standard build environments ("C:\Users\Admin\Desktop\DLSS\Streamline_Sample-2.4.10\_bin\").
+While not an unsafe download, this step would produce a non-zero exit code if reached, because the destination path does not exist on external machines.
+However, compilation never proceeds to post-build due to missing static library dependency Libs/OptiScaler.lib.

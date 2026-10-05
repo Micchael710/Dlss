@@ -1,0 +1,55 @@
+================================================================================
+EXPORTS AUDIT & CONTRACT COMPARISON
+================================================================================
+STATUS: BUILD_NOT_RUN
+REASON: OFFICIAL_SOURCE_DEPENDENCY_MISSING (Libs/OptiScaler.lib)
+
+OUTPUT BINARY STATUS:
+BUILT_PROVIDER_PATH=NOT_BUILT
+BUILT_PROVIDER_NAME=NOT_BUILT
+BUILT_PROVIDER_SIZE=NOT_BUILT
+BUILT_PROVIDER_SHA256=NOT_BUILT
+BUILT_PROVIDER_VALID_PE=NOT_BUILT
+BUILT_PROVIDER_ARCHITECTURE=NOT_BUILT
+
+INDIVIDUAL EXPORT EVALUATION:
+BUILT_EXPORT_INIT=NOT_BUILT
+BUILT_EXPORT_INIT_EXT=NOT_BUILT
+BUILT_EXPORT_SHUTDOWN=NOT_BUILT
+BUILT_EXPORT_SHUTDOWN1=NOT_BUILT
+BUILT_EXPORT_SCRATCH_SIZE=NOT_BUILT
+BUILT_EXPORT_CREATE_FEATURE=NOT_BUILT
+BUILT_EXPORT_RELEASE_FEATURE=NOT_BUILT
+BUILT_EXPORT_REQUIREMENTS=NOT_BUILT
+BUILT_EXPORT_EVALUATE_FEATURE=NOT_BUILT
+BUILT_EXPORT_POPULATE_PARAMETERS_IMPL=NOT_BUILT
+
+OPTISCALER ARTURS CONTRACT COMPARISON:
+Nvngx_Arturs.cpp in OptiScaler queries the following entrypoints via GetProcAddress:
+  1. DLSSG_NVSDK_NGX_D3D12_Init / DLSSG_NVSDK_NGX_D3D12_Init_Ext
+  2. DLSSG_NVSDK_NGX_D3D12_Shutdown
+  3. DLSSG_NVSDK_NGX_D3D12_Shutdown1
+  4. DLSSG_NVSDK_NGX_D3D12_GetScratchBufferSize
+  5. DLSSG_NVSDK_NGX_D3D12_CreateFeature
+  6. DLSSG_NVSDK_NGX_D3D12_ReleaseFeature
+  7. DLSSG_NVSDK_NGX_D3D12_GetFeatureRequirements
+  8. DLSSG_NVSDK_NGX_D3D12_EvaluateFeature
+  9. DLSSG_NVSDK_NGX_D3D12_PopulateParameters_Impl
+
+OPTISCALER_EXPECTED_EXPORT_COUNT=9
+BUILT_MATCHED_EXPORT_COUNT=0 (Output binary could not be built)
+BUILT_PROVIDER_MATCHES_ARTURS_CONTRACT=NO
+
+STATIC EXPORT DEFINITIONS IN SOURCE TREE:
+1. Exports/Exports.def:
+   Defines only proxy exports for dbghelp.dll, winhttp.dll, and dxgi.dll.
+   Does NOT define any DLSSG_NVSDK_NGX_* exports.
+2. DLSSEnabler.vcxproj Linker Flags:
+   Specifies /INCLUDE for:
+     - NVSDK_NGX_D3D11_Init
+     - NVSDK_NGX_D3D11_CreateFeature
+     - DLSSG_NVSDK_NGX_D3D12_CreateFeature
+     - DLSSG_NVSDK_NGX_VULKAN_CreateFeature
+     - DLSSG_NVSDK_NGX_D3D11_CreateFeature
+     - DLSSG_NVSDK_NGX_GetGPUArchitecture
+   Note: Per protocol, /INCLUDE linker options force inclusion of symbols from libraries into the link, but do not prove export status in the final PE image without dumpbin verification on a successfully linked binary.
