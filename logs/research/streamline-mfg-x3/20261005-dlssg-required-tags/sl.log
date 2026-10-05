@@ -1,0 +1,24 @@
+[streamline][info]log.cpp:131[logva] Log file D:\ProjectDllsss\logs\research\streamline-mfg-x3\20261005-dlssg-required-tags\sl.log opened on 04.10.2026 at 22-14-35
+[22-14-35][streamline][info][tid:1469424][0s:004ms:558us]pluginManager.cpp:423[setHostSDKVersion] Streamline v2.12.0.17026aaf3 - built on Mon Jun 22 13:03:05 2026 - host SDK v2.12.0
+[22-14-35][streamline][info][tid:1469424][0s:579ms:552us]pluginManager.cpp:538[findPlugins] Looking for plugins in D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime ...
+[22-14-35][streamline][info][tid:1469424][0s:580ms:000us]pluginManager.cpp:1024[loadPlugins] eLoadDownloadedPlugins flag not passed to preferences, OTA'd plugins will not be loaded!
+[22-14-36][streamline][info][tid:1469424][0s:961ms:389us]plugin.cpp:94[isAppDenylisted] Plugin path: D:\ProjectDllsss\experiments\streamline-mfg-capability\runtime\
+[22-14-36][streamline][info][tid:1469424][0s:962ms:455us]plugin.cpp:110[isAppDenylisted] Plugin is not from OTA - denylist does not apply
+[22-14-36][streamline][info][tid:1469424][0s:962ms:555us]commonInterface.cpp:168[getSystemCaps] Enumerating up to 8 adapters but only one of them can be used to create a device - no mGPU support in this SDK
+[22-14-36][streamline][info][tid:1469424][1s:027ms:119us]commonInterface.cpp:290[getSystemCaps] >-----------------------------------------
+[22-14-36][streamline][info][tid:1469424][1s:027ms:237us]commonInterface.cpp:293[getSystemCaps] NVIDIA driver 596.49
+[22-14-36][streamline][info][tid:1469424][1s:041ms:842us]commonInterface.cpp:318[getSystemCaps] Adapter 0 architecture 0x1b0 implementation 0x7 revision 0xa1 - bit 0x1 - LUID 0.76108
+[22-14-36][streamline][info][tid:1469424][1s:041ms:958us]commonInterface.cpp:324[getSystemCaps] -----------------------------------------<
+[22-14-36][streamline][info][tid:1469424][1s:042ms:879us]commonEntry.cpp:1944[getOSVersionAndUpdateTimerResolution] Changed high resolution timer resolution to 5000 [100 ns units].
+[22-14-36][streamline][info][tid:1469424][1s:042ms:956us]commonEntry.cpp:2023[updateEmbeddedJSON] Detected Windows OS version 10.0.26200
+[22-14-36][streamline][info][tid:1469424][1s:043ms:840us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.common' - version 2.12.0.17026aaf3 PRODUCTION - id 4294967295 - priority 0 - adapter mask 0xf - interposer 'no'
+[22-14-40][streamline][info][tid:1469424][5s:310ms:300us]commonEntry.cpp:999[getNGXFeatureRequirements] NGX feature 11 requirements - minOS 10.0.19041 minHW 0x170
+[22-14-40][streamline][info][tid:1469424][5s:312ms:777us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.dlss_g' - version 2.12.0.17026aaf3 PRODUCTION - id 1000 - priority 1000 - adapter mask 0x1 - interposer 'no'
+[22-14-40][streamline][info][tid:1469424][5s:376ms:098us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.pcl' - version 2.12.0.17026aaf3 PRODUCTION - id 4 - priority 2 - adapter mask 0xf - interposer 'no'
+[22-14-40][streamline][info][tid:1469424][5s:420ms:866us]pluginManager.cpp:883[mapPlugins] Loaded plugin 'sl.reflex' - version 2.12.0.17026aaf3 PRODUCTION - id 3 - priority 100 - adapter mask 0xf - interposer 'no'
+[22-14-40][streamline][info][tid:1469424][5s:420ms:977us]pluginManager.cpp:1159[loadPlugins] Plugin execution order based on priority:
+[22-14-40][streamline][info][tid:1469424][5s:421ms:026us]pluginManager.cpp:1162[loadPlugins] P0 - sl.common
+[22-14-40][streamline][info][tid:1469424][5s:421ms:067us]pluginManager.cpp:1162[loadPlugins] P2 - sl.pcl
+[22-14-40][streamline][info][tid:1469424][5s:421ms:103us]pluginManager.cpp:1162[loadPlugins] P100 - sl.reflex
+[22-14-40][streamline][info][tid:1469424][5s:421ms:138us]pluginManager.cpp:1162[loadPlugins] P1000 - sl.dlss_g
+[22-14-40][streamline][info][tid:1469424][5s:459ms:786us]pluginManager.cpp:1171[unloadPlugins] Unloading all plugins ...

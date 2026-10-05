@@ -18,6 +18,21 @@ static void barrier(ID3D12GraphicsCommandList* c,ID3D12Resource* r,D3D12_RESOURC
 }
 template<class T> static T* feature(HMODULE m,sl::Feature f,const char* n){void* p{};result(n,api<PFun_slGetFeatureFunction>(m,"slGetFeatureFunction")(f,n,p));if(!p)throw std::runtime_error("Null feature function");return reinterpret_cast<T*>(p);}
 static sl::float4x4 identity(){sl::float4x4 m{};for(int i=0;i<4;i++)m.setRow(i,{i==0?1.f:0.f,i==1?1.f:0.f,i==2?1.f:0.f,i==3?1.f:0.f});return m;}
+static std::string getTagName(sl::BufferType t){
+    switch(t){
+        case sl::kBufferTypeDepth: return "Depth";
+        case sl::kBufferTypeMotionVectors: return "MotionVectors";
+        case sl::kBufferTypeHUDLessColor: return "HUDLessColor";
+        case sl::kBufferTypeScalingInputColor: return "ScalingInputColor";
+        case sl::kBufferTypeScalingOutputColor: return "ScalingOutputColor";
+        case sl::kBufferTypeNormals: return "Normals";
+        case sl::kBufferTypeRoughness: return "Roughness";
+        case sl::kBufferTypeAlbedo: return "Albedo";
+        case sl::kBufferTypeUIColorAndAlpha: return "UIColorAndAlpha";
+        case sl::kBufferTypeUIAlpha: return "UIAlpha";
+        default: return "UNKNOWN_" + std::to_string(static_cast<uint32_t>(t));
+    }
+}
 struct Renderer {
     static constexpr UINT W=1280,H=720;
     HWND window{};ComPtr<ID3D12Device> device;ComPtr<ID3D12CommandQueue> queue;
@@ -111,11 +126,75 @@ o.color=float4(0.15+0.65*checker,0.15+0.65*stripes,0.15+0.65*uv.y,1);o.depth=0.5
 int wmain(int argc,wchar_t** argv){
     Renderer renderer;HMODULE interposer{};PFun_slShutdown* shutdown{};bool initialized=false;
     try{
-        if(argc!=4)throw std::runtime_error("runtime-directory log-directory generated-count required");const bool reflexOnly=std::wstring(argv[3])==L"reflex",baseOnly=std::wstring(argv[3])==L"base"||reflexOnly,offOnly=std::wstring(argv[3])==L"off";const UINT generatedCount=(baseOnly||offOnly)?0:std::stoul(argv[3]);if(!baseOnly&&!offOnly&&(generatedCount<1||generatedCount>2))throw std::runtime_error("Only count1/count2 authorized");fs::path dir=fs::absolute(argv[1]),logs=fs::absolute(argv[2]);SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);AddDllDirectory(dir.c_str());
+        if(argc!=4)throw std::runtime_error("runtime-directory log-directory generated-count required");const bool reflexOnly=std::wstring(argv[3])==L"reflex",requirementsOnly=std::wstring(argv[3])==L"requirements",baseOnly=(std::wstring(argv[3])==L"base"||reflexOnly),offOnly=std::wstring(argv[3])==L"off";const UINT generatedCount=(baseOnly||offOnly||requirementsOnly)?0:std::stoul(argv[3]);if(!baseOnly&&!offOnly&&!requirementsOnly&&(generatedCount<1||generatedCount>2))throw std::runtime_error("Only count1/count2 authorized");fs::path dir=fs::absolute(argv[1]),logs=fs::absolute(argv[2]);SetDefaultDllDirectories(LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);AddDllDirectory(dir.c_str());
         stage="SM86_LOAD";if(!LoadLibraryW((dir/L"component/version.dll").c_str()))throw std::runtime_error("SM86 load failed");std::cout<<"SM86_PROXY_LOADED=YES"<<std::endl;
         interposer=LoadLibraryExW((dir/L"sl.interposer.dll").c_str(),nullptr,LOAD_LIBRARY_SEARCH_DLL_LOAD_DIR|LOAD_LIBRARY_SEARCH_DEFAULT_DIRS);if(!interposer)throw std::runtime_error("SL load failed");shutdown=api<PFun_slShutdown>(interposer,"slShutdown");
         const wchar_t* pluginPath=dir.c_str();sl::Feature features[]={sl::kFeatureDLSS_G,sl::kFeatureReflex};sl::Feature baseFeatures[]={sl::kFeaturePCL},reflexFeatures[]={sl::kFeaturePCL,sl::kFeatureReflex},offFeatures[]={sl::kFeaturePCL,sl::kFeatureReflex,sl::kFeatureDLSS_G};sl::Preferences pref{};pref.pathsToPlugins=&pluginPath;pref.numPathsToPlugins=1;pref.pathToLogsAndData=logs.c_str();pref.featuresToLoad=baseOnly?(reflexOnly?reflexFeatures:baseFeatures):(offOnly?offFeatures:features);pref.numFeaturesToLoad=baseOnly?(reflexOnly?2:1):(offOnly?3:2);pref.flags=sl::PreferenceFlags::eDisableCLStateTracking|sl::PreferenceFlags::eUseManualHooking|sl::PreferenceFlags::eUseFrameBasedResourceTagging;pref.engine=sl::EngineType::eCustom;pref.engineVersion="1.0.0";pref.projectId="3e6891d2-09ac-4f54-ae8d-f481c3150d4b";pref.renderAPI=sl::RenderAPI::eD3D12;
         stage="STREAMLINE_INIT";result("STREAMLINE_INIT_RESULT",api<PFun_slInit>(interposer,"slInit")(pref,sl::kSDKVersion));initialized=true;
+        if(requirementsOnly){
+            stage="FEATURE_REQUIREMENTS";
+            auto getRequirements=api<PFun_slGetFeatureRequirements>(interposer,"slGetFeatureRequirements");
+            sl::FeatureRequirements req{};
+            sl::Result reqResult=getRequirements(sl::kFeatureDLSS_G,req);
+            std::cout<<"DLSSG_FEATURE_REQUIREMENTS_RESULT="<<static_cast<unsigned>(reqResult)<<std::endl;
+            if(reqResult!=sl::Result::eOk){
+                stage="SHUTDOWN";
+                auto close=shutdown();
+                initialized=false;
+                result("STREAMLINE_SHUTDOWN_RESULT",close);
+                std::cout<<"NORMAL_SHUTDOWN=NO\nFAIL_STAGE=FEATURE_REQUIREMENTS"<<std::endl;
+                return 1;
+            }
+            std::cout<<"DLSSG_REQUIREMENT_FLAGS=0x"<<std::hex<<static_cast<uint32_t>(req.flags)<<std::dec<<std::endl;
+            std::cout<<"DLSSG_MAX_VIEWPORTS="<<req.maxNumViewports<<std::endl;
+            std::cout<<"DLSSG_REQUIRED_TAG_COUNT="<<req.numRequiredTags<<std::endl;
+            std::vector<std::string> missingTagNames;
+            std::vector<uint32_t> missingTagValues;
+            if(req.numRequiredTags>0&&req.requiredTags==nullptr){
+                std::cout<<"REQUIRED_TAG_POINTER_INVALID=YES"<<std::endl;
+            }else{
+                for(uint32_t i=0;i<req.numRequiredTags;++i){
+                    sl::BufferType tag=req.requiredTags[i];
+                    uint32_t val=static_cast<uint32_t>(tag);
+                    std::string name=getTagName(tag);
+                    std::cout<<"DLSSG_REQUIRED_TAG_"<<i<<"_VALUE="<<val<<std::endl;
+                    std::cout<<"DLSSG_REQUIRED_TAG_"<<i<<"_NAME="<<name<<std::endl;
+                    if(tag!=sl::kBufferTypeDepth&&tag!=sl::kBufferTypeMotionVectors){
+                        missingTagNames.push_back(name);
+                        missingTagValues.push_back(val);
+                    }
+                }
+            }
+            std::cout<<"HARNESS_PROVIDED_TAG_COUNT=2"<<std::endl;
+            std::cout<<"HARNESS_PROVIDED_TAG_0=Depth"<<std::endl;
+            std::cout<<"HARNESS_PROVIDED_TAG_1=MotionVectors"<<std::endl;
+            std::cout<<"MISSING_REQUIRED_TAG_COUNT="<<missingTagNames.size()<<std::endl;
+            for(size_t i=0;i<missingTagNames.size();++i){
+                std::cout<<"MISSING_REQUIRED_TAG_"<<i<<"_VALUE="<<missingTagValues[i]<<std::endl;
+                std::cout<<"MISSING_REQUIRED_TAG_"<<i<<"_NAME="<<missingTagNames[i]<<std::endl;
+            }
+            bool hudlessRequired=false;
+            for(const auto& name:missingTagNames){
+                if(name=="HUDLessColor"){
+                    hudlessRequired=true;
+                    break;
+                }
+            }
+            std::cout<<"HUDLESS_REQUIRED_BY_RUNTIME="<<(hudlessRequired?"YES":"NO")<<std::endl;
+            std::cout<<"HUDLESS_CURRENTLY_PROVIDED=NO"<<std::endl;
+            std::cout<<"REQUIRED_TAG_CONTRACT_SATISFIED="<<(missingTagNames.empty()?"YES":"NO")<<std::endl;
+            std::cout<<"DLSSG_SET_OPTIONS_CALLED=NO"<<std::endl;
+            std::cout<<"DLSSG_CREATE_CALLED=NO"<<std::endl;
+            std::cout<<"DLSSG_EVALUATE_CALLED=NO"<<std::endl;
+            std::cout<<"PRESENT_CALLED=NO"<<std::endl;
+            std::cout<<"REQUIRED_TAG_QUERY=PASS"<<std::endl;
+            stage="SHUTDOWN";
+            auto close=shutdown();
+            initialized=false;
+            result("STREAMLINE_SHUTDOWN_RESULT",close);
+            std::cout<<"NORMAL_SHUTDOWN=YES\nFAIL_STAGE=NONE"<<std::endl;
+            return 0;
+        }
         ComPtr<IDXGIFactory1> factory;hr(CreateDXGIFactory1(IID_PPV_ARGS(&factory)));ComPtr<IDXGIAdapter1> adapter;DXGI_ADAPTER_DESC1 d{};
         stage="ADAPTER";for(UINT i=0;;i++){ComPtr<IDXGIAdapter1> a;auto h=factory->EnumAdapters1(i,&a);if(h==DXGI_ERROR_NOT_FOUND)break;hr(h);hr(a->GetDesc1(&d));if(d.VendorId==0x10de&&std::wstring(d.Description).find(L"RTX 3050 Ti")!=std::wstring::npos){adapter=a;break;}}
         if(!adapter)throw std::runtime_error("RTX3050Ti absent");std::wcout<<L"GPU_NAME="<<d.Description<<std::endl;std::cout<<"ADAPTER_LUID=";auto bytes=reinterpret_cast<unsigned char*>(&d.AdapterLuid);for(UINT i=0;i<sizeof(LUID);i++)std::cout<<std::hex<<std::setw(2)<<std::setfill('0')<<unsigned(bytes[i]);std::cout<<std::dec<<std::endl;

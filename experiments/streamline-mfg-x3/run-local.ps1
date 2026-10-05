@@ -1,4 +1,4 @@
-param([Parameter(Mandatory)][string]$LogDirectory,[ValidateSet('1','2','base','off','reflex')][string]$GeneratedCount=1)
+param([Parameter(Mandatory)][string]$LogDirectory,[ValidateSet('1','2','base','off','reflex','requirements')][string]$GeneratedCount=1)
 $ErrorActionPreference='Stop'
 $taskRoot=Split-Path (Split-Path $PSScriptRoot -Parent) -Parent
 $taskRuntime=Join-Path $taskRoot 'experiments/streamline-mfg-capability/runtime'

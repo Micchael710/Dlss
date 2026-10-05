@@ -1,0 +1,47 @@
+{
+  "github_start_head": "dfd0205e431a0f730b7132c7932bfca2ce4ea0bc",
+  "experiment": "DLSSG_FEATURE_REQUIRED_TAG_QUERY",
+  "streamline_version": "2.12.0",
+  "sm86_version": "0.3.5",
+  "runtime_mode": "REQUIREMENTS_ONLY",
+  "feature": "DLSS_G",
+  "feature_requirements_result": "SUCCESS",
+  "requirement_flags": "0x16",
+  "required_tag_count": 4,
+  "required_tags": [
+    {
+      "value": 0,
+      "name": "Depth"
+    },
+    {
+      "value": 1,
+      "name": "MotionVectors"
+    },
+    {
+      "value": 2,
+      "name": "HUDLessColor"
+    },
+    {
+      "value": 23,
+      "name": "UIColorAndAlpha"
+    }
+  ],
+  "harness_provided_tags": [
+    "Depth",
+    "MotionVectors"
+  ],
+  "missing_required_tag_count": 2,
+  "missing_required_tags": [
+    "HUDLessColor",
+    "UIColorAndAlpha"
+  ],
+  "hudless_required_by_runtime": true,
+  "hudless_currently_provided": false,
+  "required_tag_contract_satisfied": false,
+  "dlssg_set_options_called": false,
+  "dlssg_create_called": false,
+  "dlssg_evaluate_called": false,
+  "present_called": false,
+  "required_tag_query": "PASS",
+  "config_restored_byte_identical": true
+}
