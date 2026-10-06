@@ -125,6 +125,7 @@ struct Session {
     ComPtr<ID3D12Resource> disableZero;
     ComPtr<ID3D12RootSignature> hybridRoot;
     ComPtr<ID3D12PipelineState> hybridPSO;
+    ComPtr<ID3D12RootSignature> motionConvertRoot;
     ComPtr<ID3D12PipelineState> motionConvertPSO;
     UINT descriptorStride{};
     uint64_t sequence{}, dxFrequency{}, submittedFrames{}, completedFrames{}, generatedFrames{};
@@ -189,6 +190,53 @@ struct Session {
             }
         } catch(const std::exception& ex){event("device_fault_query_error",ex.what());}
     }
+    void queryVram(const char* tag) {
+        ComPtr<IDXGIAdapter3> adapter3;
+        if (dx.adapter && SUCCEEDED(dx.adapter.As(&adapter3))) {
+            DXGI_QUERY_VIDEO_MEMORY_INFO memInfo{};
+            if (SUCCEEDED(adapter3->QueryVideoMemoryInfo(0, DXGI_MEMORY_SEGMENT_GROUP_LOCAL, &memInfo))) {
+                double budgetMB = double(memInfo.Budget) / (1024.0 * 1024.0);
+                double usageMB = double(memInfo.CurrentUsage) / (1024.0 * 1024.0);
+                double availMB = double(memInfo.Budget > memInfo.CurrentUsage ? memInfo.Budget - memInfo.CurrentUsage : 0) / (1024.0 * 1024.0);
+                evidence.raw("vram_budget_mb", std::to_string(budgetMB));
+                evidence.raw("vram_current_usage_mb", std::to_string(usageMB));
+                evidence.raw("vram_available_mb", std::to_string(availMB));
+                event("vram_info", std::string(tag) + " budget_mb=" + std::to_string(budgetMB) + " usage_mb=" + std::to_string(usageMB) + " avail_mb=" + std::to_string(availMB));
+            }
+        }
+    }
+    void recordDred(ID3D12Device* dev, const char* context) {
+#if defined(__ID3D12DeviceRemovedExtendedData1_INTERFACE_DEFINED__)
+        if (!dev) return;
+        ComPtr<ID3D12DeviceRemovedExtendedData1> dred;
+        if (SUCCEEDED(dev->QueryInterface(IID_PPV_ARGS(&dred))) && dred) {
+            D3D12_DRED_AUTO_BREADCRUMBS_OUTPUT1 breadcrumbs{};
+            if (SUCCEEDED(dred->GetAutoBreadcrumbsOutput1(&breadcrumbs))) {
+                const D3D12_AUTO_BREADCRUMB_NODE1* node = breadcrumbs.pHeadAutoBreadcrumbNode;
+                if (node && node->pLastBreadcrumbValue) {
+                    evidence.raw("dred_last_breadcrumb", std::to_string(*node->pLastBreadcrumbValue));
+                } else {
+                    evidence.str("dred_last_breadcrumb", "NONE");
+                }
+            }
+            D3D12_DRED_PAGE_FAULT_OUTPUT1 pageFault{};
+            if (SUCCEEDED(dred->GetPageFaultAllocationOutput1(&pageFault)) && pageFault.PageFaultVA != 0) {
+                std::ostringstream va; va << "0x" << std::hex << pageFault.PageFaultVA;
+                evidence.str("dred_page_fault_va", va.str());
+                const D3D12_DRED_ALLOCATION_NODE1* alloc = pageFault.pHeadExistingAllocationNode;
+                if (!alloc) alloc = pageFault.pHeadRecentFreedAllocationNode;
+                if (alloc && alloc->ObjectNameA) {
+                    evidence.str("dred_existing_allocation", alloc->ObjectNameA);
+                }
+                const D3D12_DRED_ALLOCATION_NODE1* freed = pageFault.pHeadRecentFreedAllocationNode;
+                if (freed && freed->ObjectNameA) {
+                    evidence.str("dred_recent_freed_allocation", freed->ObjectNameA);
+                }
+            }
+            event("dred_dump", std::string("context=") + context);
+        }
+#endif
+    }
     void initHybridPipelines() {
         D3D12_DESCRIPTOR_RANGE ranges[2]{};
         ranges[0] = {D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 7, 0, 0, 0};
@@ -216,8 +264,34 @@ struct Session {
         pd.CS = {g_HybridInterpolationCS, sizeof(g_HybridInterpolationCS)};
         hr(dx.device->CreateComputePipelineState(&pd, IID_PPV_ARGS(&hybridPSO)), "Create HybridInterpolationCS PSO");
 
-        pd.CS = {g_MotionConvertCS, sizeof(g_MotionConvertCS)};
-        hr(dx.device->CreateComputePipelineState(&pd, IID_PPV_ARGS(&motionConvertPSO)), "Create MotionConvertCS PSO");
+        // Dedicated root signature for MotionConvertCS:
+        // Parameter 0: SRV table with 1 descriptor (t0, InMotion)
+        // Parameter 1: UAV table with 1 descriptor (u0, OutNDC)
+        // Parameter 2: 32-bit constants (Width, Height, padding - 5 uints)
+        D3D12_DESCRIPTOR_RANGE mcRanges[2]{};
+        mcRanges[0] = {D3D12_DESCRIPTOR_RANGE_TYPE_SRV, 1, 0, 0, 0};
+        mcRanges[1] = {D3D12_DESCRIPTOR_RANGE_TYPE_UAV, 1, 0, 0, 0};
+        D3D12_ROOT_PARAMETER mcParams[3]{};
+        mcParams[0].ParameterType = mcParams[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_DESCRIPTOR_TABLE;
+        mcParams[0].DescriptorTable = {1, &mcRanges[0]};
+        mcParams[1].DescriptorTable = {1, &mcRanges[1]};
+        mcParams[2].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+        mcParams[2].Constants = {0, 0, 5};
+
+        D3D12_ROOT_SIGNATURE_DESC mcDesc{3, mcParams, 0, nullptr, D3D12_ROOT_SIGNATURE_FLAG_NONE};
+        ComPtr<ID3DBlob> mcBlob, mcErrBlob;
+        hr(D3D12SerializeRootSignature(&mcDesc, D3D_ROOT_SIGNATURE_VERSION_1, &mcBlob, &mcErrBlob), "Serialize motion convert root");
+        hr(dx.device->CreateRootSignature(0, mcBlob->GetBufferPointer(), mcBlob->GetBufferSize(), IID_PPV_ARGS(&motionConvertRoot)), "Create motion convert root");
+
+        D3D12_COMPUTE_PIPELINE_STATE_DESC mcPd{};
+        mcPd.pRootSignature = motionConvertRoot.Get();
+        mcPd.CS = {g_MotionConvertCS, sizeof(g_MotionConvertCS)};
+        hr(dx.device->CreateComputePipelineState(&mcPd, IID_PPV_ARGS(&motionConvertPSO)), "Create MotionConvertCS PSO");
+
+        evidence.str("motion_convert_dedicated_root_signature", "YES");
+        evidence.raw("motion_convert_srv_count", "1");
+        evidence.raw("motion_convert_uav_count", "1");
+        evidence.str("descriptor_table_out_of_range", "NO");
 
         descriptorStride = dx.device->GetDescriptorHandleIncrementSize(D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV);
 
@@ -231,18 +305,48 @@ struct Session {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
             throw std::runtime_error("Runtime SHA256 mismatch");
         vendorLog.open(out/"ngx.log"); validationLog.open(out/"d3d12-debug.log");
-        requestedMax=count;external.start(evidence,dll,count); dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
+        requestedMax=count;
+
+        // DRED initialization before D3D12 device creation
+        bool dredAvailable = false;
+        bool dredEnabled = false;
+#if defined(__ID3D12DeviceRemovedExtendedDataSettings_INTERFACE_DEFINED__)
+        ComPtr<ID3D12DeviceRemovedExtendedDataSettings> dredSettings;
+        HRESULT hrDred = D3D12GetDebugInterface(IID_PPV_ARGS(&dredSettings));
+        if (SUCCEEDED(hrDred) && dredSettings) {
+            dredAvailable = true;
+            dredSettings->SetAutoBreadcrumbsEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
+            dredSettings->SetPageFaultEnablement(D3D12_DRED_ENABLEMENT_FORCED_ON);
+            dredSettings->SetWatsonDumpEnablement(D3D12_DRED_ENABLEMENT_FORCED_OFF);
+            dredEnabled = true;
+        }
+#endif
+        evidence.str("dred_available", dredAvailable ? "YES" : "NO");
+        evidence.str("dred_enabled", dredEnabled ? "YES" : "NO");
+
+        // External loader for NVIDIA DLSSG: always start with 1 native generated frame
+        external.start(evidence, dll, 1);
+        dx.initialize(D3D12InitializationContext::EmbeddedMinecraft);
+
+        // Device removal status after device creation & NGX Init
+        auto reasonAfterCreate = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+        evidence.str("device_reason_after_create_device", hrHex(reasonAfterCreate));
+        evidence.str("device_reason_after_ngx_init", hrHex(reasonAfterCreate));
+
         NVSDK_NGX_Parameter* caps{};auto query=NVSDK_NGX_D3D12_GetCapabilityParameters(&caps);
         evidence.str("mfg_capability_query_result",resultHex(query));
         if(!NVSDK_NGX_SUCCEED(query)||!caps)throw std::runtime_error("NGX capabilities unavailable");
         unsigned available{};auto a=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_Parameter_FrameGeneration_Available,&available);
         unsigned rawMax{};auto m=NVSDK_NGX_Parameter_GetUI(caps,NVSDK_NGX_DLSSG_Parameter_MultiFrameCountMax,&rawMax);
         NVSDK_NGX_D3D12_DestroyParameters(caps);
-        evidence.raw("raw_reported_multiframecountmax",std::to_string(rawMax));evidence.str("raw_max_getter_result",resultHex(m));
+        evidence.raw("raw_reported_multiframecountmax",std::to_string(rawMax));
+        evidence.raw("sm86_reported_native_max",std::to_string(rawMax));
+        evidence.str("raw_max_getter_result",resultHex(m));
         evidence.str("capability_provenance","public NGX query after external loader; may be hooked; not proof of execution");
         if(!NVSDK_NGX_SUCCEED(a)||!available||!NVSDK_NGX_SUCCEED(m)||(rawMax<1))throw std::runtime_error("Requested MFG count exceeds reported NGX availability/max");
         // In Hybrid X4 mode (count == 3), our hybrid provider reports 3 to Java:
         reportedMax = (count == 3) ? 3 : rawMax;
+        evidence.raw("hybrid_provider_reported_max",std::to_string(reportedMax));
         evidence.raw("hybrid_reported_multiframecountmax",std::to_string(reportedMax));
         if(reportedMax < count) throw std::runtime_error("Requested MFG count exceeds reported max");
         hr(dx.queue->GetTimestampFrequency(&dxFrequency),"D3D12 timestamp frequency");
@@ -391,7 +495,7 @@ struct Session {
         std::swap(fb.Transition.StateBefore, fb.Transition.StateAfter);
         s.commands->ResourceBarrier(1, &fb);
     }
-    void copyHistory(Pool& p, Slot& s) {
+    void copyHistory(Pool& p, Slot& s, bool hasMotion) {
         // Color: s.images[0] -> p.historyColor
         dxBarrier(s, s.images[0], D3D12_RESOURCE_STATE_COPY_SOURCE);
         transitionRes(s, p.historyColor.Get(), D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_COPY_DEST);
@@ -406,12 +510,14 @@ struct Session {
         transitionRes(s, p.historyDepth.Get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_COMMON);
         dxBarrier(s, s.images[2], D3D12_RESOURCE_STATE_COMMON);
 
-        // Motion NDC: s.currentMotionNDC -> p.historyMotionNDC
-        transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_COPY_SOURCE);
-        transitionRes(s, p.historyMotionNDC.Get(), D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_COPY_DEST);
-        s.commands->CopyResource(p.historyMotionNDC.Get(), s.currentMotionNDC.Get());
-        transitionRes(s, p.historyMotionNDC.Get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_COMMON);
-        transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_COPY_SOURCE, D3D12_RESOURCE_STATE_COMMON);
+        if (hasMotion) {
+            // Motion NDC: s.currentMotionNDC -> p.historyMotionNDC
+            transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE, D3D12_RESOURCE_STATE_COPY_SOURCE);
+            transitionRes(s, p.historyMotionNDC.Get(), D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_COPY_DEST);
+            s.commands->CopyResource(p.historyMotionNDC.Get(), s.currentMotionNDC.Get());
+            transitionRes(s, p.historyMotionNDC.Get(), D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_COMMON);
+            transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_COPY_SOURCE, D3D12_RESOURCE_STATE_COMMON);
+        }
     }
     Pool* createPool(unsigned w,unsigned h,unsigned rw,unsigned rh,unsigned capacity,unsigned count) {
         if(!w||!h||!rw||!rh||capacity<2||capacity>64||!count||count>4||count>reportedMax||count>requestedMax)throw std::runtime_error("Invalid pool contract");
@@ -459,10 +565,23 @@ struct Session {
         NVSDK_NGX_DLSSG_Create_Params cp{};cp.Width=w;cp.Height=h;cp.RenderWidth=rw;cp.RenderHeight=rh;cp.NativeBackbufferFormat=DXGI_FORMAT_R8G8B8A8_UNORM;
         NVSDK_NGX_Parameter_SetUI(p->parameters,NVSDK_NGX_DLSSG_Parameter_Width,w);NVSDK_NGX_Parameter_SetUI(p->parameters,NVSDK_NGX_DLSSG_Parameter_Height,h);
         NVSDK_NGX_Parameter_SetUI(p->parameters,NVSDK_NGX_DLSSG_Parameter_UserInterfaceRecompositionEnabled,0);
+
+        queryVram("before_create_feature");
+
         dx.begin();code=NGX_D3D12_CREATE_DLSSG(dx.commands.Get(),1,1,&p->feature,p->parameters,&cp);
         evidence.str("create_result",resultHex(code));if(!NVSDK_NGX_SUCCEED(code)||!p->feature)throw std::runtime_error("CreateFeature "+resultHex(code));
         // This bounded setup wait is outside the per-frame handoff path.
         dx.complete("Minecraft pool CreateFeature");evidence.str("minecraft_create_feature","PASS");
+
+        // CREATEFEATURE GATE
+        auto reasonAfterCF = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+        evidence.str("device_reason_after_create_feature", hrHex(reasonAfterCF));
+        if (FAILED(reasonAfterCF)) {
+            evidence.str("fail_stage", "CREATE_FEATURE_GPU_EXECUTION");
+            recordDred(dx.device.Get(), "CREATE_FEATURE_FAIL");
+            throw std::runtime_error("Device removed during CreateFeature GPU execution " + hrHex(reasonAfterCF));
+        }
+
         return p;
     }
     void sharedBarrier(VkCommandBuffer command, Image& im, bool acquire, bool release, VkImageLayout newLayout=VK_IMAGE_LAYOUT_GENERAL) {
@@ -590,20 +709,6 @@ struct Session {
             createUAV(s.currentMotionNDC.Get(), DXGI_FORMAT_R32G32_FLOAT, cpu(s, 9));         // MotionConvert out
             createSRV(s.images[3].dx.resource.Get(), DXGI_FORMAT_R32G32_FLOAT, cpu(s, 10)); // MotionConvert in
 
-            // 1. Motion Convert CS
-            dxBarrier(s, s.images[3], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
-            transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_UNORDERED_ACCESS);
-            ID3D12DescriptorHeap* heaps[] = {s.heap.Get()};
-            s.commands->SetDescriptorHeaps(1, heaps);
-            s.commands->SetComputeRootSignature(hybridRoot.Get());
-            s.commands->SetComputeRootDescriptorTable(0, gpu(s, 10));
-            s.commands->SetComputeRootDescriptorTable(1, gpu(s, 9));
-            UINT mcConsts[] = {p.renderWidth, p.renderHeight, 0, 0, 0};
-            s.commands->SetComputeRoot32BitConstants(2, 5, mcConsts, 0);
-            s.commands->SetPipelineState(motionConvertPSO.Get());
-            s.commands->Dispatch((p.renderWidth + 7) / 8, (p.renderHeight + 7) / 8, 1);
-            transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_UNORDERED_ACCESS, D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
-
             auto fillOpts = [&](NVSDK_NGX_DLSSG_Opt_Eval_Params& opts, bool evalReset) {
                 opts.multiFrameCount = 1;
                 opts.multiFrameIndex = 1;
@@ -630,6 +735,21 @@ struct Session {
             };
 
             if(reset || !p.hasHistory) {
+                evidence.str("motion_convert_on_reset_frame", "NO");
+
+                // FIRST EVALUATE GATE: verify device alive before first evaluate
+                auto reasonBeforeEval = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+                evidence.str("device_reason_before_evaluate", hrHex(reasonBeforeEval));
+                if (SUCCEEDED(reasonBeforeEval)) {
+                    evidence.str("device_alive_before_first_evaluate", "YES");
+                } else {
+                    evidence.str("device_alive_before_first_evaluate", "NO");
+                    evidence.str("fail_stage", "DEVICE_REMOVED_BEFORE_FIRST_EVALUATE");
+                    recordDred(dx.device.Get(), "BEFORE_FIRST_EVALUATE_FAIL");
+                    throw std::runtime_error("Device already removed before first evaluate " + hrHex(reasonBeforeEval));
+                }
+                queryVram("before_first_evaluate");
+
                 setDisable(s, 0, disableSentinel.Get());
                 setDisable(s, 1, disableSentinel.Get());
                 setDisable(s, 2, disableSentinel.Get());
@@ -653,15 +773,47 @@ struct Session {
                 NVSDK_NGX_Parameter_SetULL(p.parameters, NVSDK_NGX_DLSSG_Parameter_BackbufferFrameID, frameId);
                 auto code = NGX_D3D12_EVALUATE_DLSSG(s.commands.Get(), p.feature, p.parameters, &ep, &opts);
                 state(s, "DLSSG_EVALUATE_RESET", "result=" + resultHex(code));
-                if (!NVSDK_NGX_SUCCEED(code)) { p.failed = true; throw std::runtime_error("NGX Evaluate reset " + resultHex(code)); }
+                evidence.str("ngx_first_evaluate_result", resultHex(code));
+                evidence.str("ngx_evaluate_result", resultHex(code));
+                if (!NVSDK_NGX_SUCCEED(code)) {
+                    p.failed = true;
+                    auto reasonAfter = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+                    evidence.str("device_reason_after_evaluate", hrHex(reasonAfter));
+                    evidence.str("underlying_d3d12", hrHex(reasonAfter));
+                    if (code == 0xbad00002) {
+                        evidence.str("ngx_evaluate_classification", "PLATFORM_ERROR");
+                    } else if (code == 0xbad00005) {
+                        evidence.str("ngx_evaluate_classification", "INVALID_PARAMETER");
+                    } else {
+                        evidence.str("ngx_evaluate_classification", "OTHER_FAILURE");
+                    }
+                    recordDred(dx.device.Get(), "FIRST_EVALUATE_FAIL");
+                    throw std::runtime_error("NGX Evaluate reset " + resultHex(code));
+                }
                 s.commands->EndQuery(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 1 * 2 + 1);
                 s.commands->ResolveQueryData(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 1 * 2, 2, s.timingReadback.Get(), 1 * 16);
 
                 dxBarrier(s, s.images[5], D3D12_RESOURCE_STATE_COMMON);
 
-                copyHistory(p, s);
+                copyHistory(p, s, false);
                 p.hasHistory = true;
             } else {
+                ID3D12DescriptorHeap* heaps[] = {s.heap.Get()};
+                s.commands->SetDescriptorHeaps(1, heaps);
+
+                // 1. Dedicated Motion Convert CS (Screen Space Pixels -> NDC Clip Space)
+                // Range contract: table 0 = 1 SRV (t0), table 1 = 1 UAV (u0), 5 constants
+                dxBarrier(s, s.images[3], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+                transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_COMMON, D3D12_RESOURCE_STATE_UNORDERED_ACCESS);
+                s.commands->SetComputeRootSignature(motionConvertRoot.Get());
+                s.commands->SetComputeRootDescriptorTable(0, gpu(s, 10)); // 1 SRV at index 10: s.images[3]
+                s.commands->SetComputeRootDescriptorTable(1, gpu(s, 9));  // 1 UAV at index 9: s.currentMotionNDC
+                UINT mcConsts[] = {p.renderWidth, p.renderHeight, 0, 0, 0};
+                s.commands->SetComputeRoot32BitConstants(2, 5, mcConsts, 0);
+                s.commands->SetPipelineState(motionConvertPSO.Get());
+                s.commands->Dispatch((p.renderWidth + 7) / 8, (p.renderHeight + 7) / 8, 1);
+                transitionRes(s, s.currentMotionNDC.Get(), D3D12_RESOURCE_STATE_UNORDERED_ACCESS, D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
+
                 dxBarrier(s, s.images[0], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
                 dxBarrier(s, s.images[1], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
                 dxBarrier(s, s.images[2], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
@@ -673,7 +825,6 @@ struct Session {
                 // 2. G25 Dispatch (t = 0.25f)
                 s.commands->EndQuery(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 0 * 2);
                 dxBarrier(s, s.images[4], D3D12_RESOURCE_STATE_UNORDERED_ACCESS);
-                s.commands->SetDescriptorHeaps(1, heaps);
                 s.commands->SetComputeRootSignature(hybridRoot.Get());
                 s.commands->SetComputeRootDescriptorTable(0, gpu(s, 0)); // t0..t6
                 s.commands->SetComputeRootDescriptorTable(1, gpu(s, 7)); // u0 = s.images[4]
@@ -703,7 +854,21 @@ struct Session {
                 NVSDK_NGX_Parameter_SetULL(p.parameters, NVSDK_NGX_DLSSG_Parameter_BackbufferFrameID, frameId);
                 auto code = NGX_D3D12_EVALUATE_DLSSG(s.commands.Get(), p.feature, p.parameters, &ep, &opts);
                 state(s, "DLSSG_EVALUATE_G50", "result=" + resultHex(code));
-                if (!NVSDK_NGX_SUCCEED(code)) { p.failed = true; throw std::runtime_error("NGX Evaluate G50 " + resultHex(code)); }
+                if (!NVSDK_NGX_SUCCEED(code)) {
+                    p.failed = true;
+                    auto reasonAfter = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+                    evidence.str("device_reason_after_evaluate", hrHex(reasonAfter));
+                    evidence.str("underlying_d3d12", hrHex(reasonAfter));
+                    if (code == 0xbad00002) {
+                        evidence.str("ngx_evaluate_classification", "PLATFORM_ERROR");
+                    } else if (code == 0xbad00005) {
+                        evidence.str("ngx_evaluate_classification", "INVALID_PARAMETER");
+                    } else {
+                        evidence.str("ngx_evaluate_classification", "OTHER_FAILURE");
+                    }
+                    recordDred(dx.device.Get(), "G50_EVALUATE_FAIL");
+                    throw std::runtime_error("NGX Evaluate G50 " + resultHex(code));
+                }
                 s.commands->EndQuery(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 1 * 2 + 1);
                 s.commands->ResolveQueryData(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 1 * 2, 2, s.timingReadback.Get(), 1 * 16);
                 dxBarrier(s, s.images[5], D3D12_RESOURCE_STATE_COMMON);
@@ -711,7 +876,6 @@ struct Session {
                 // 4. G75 Dispatch (t = 0.75f)
                 s.commands->EndQuery(s.timing.Get(), D3D12_QUERY_TYPE_TIMESTAMP, 2 * 2);
                 dxBarrier(s, s.images[6], D3D12_RESOURCE_STATE_UNORDERED_ACCESS);
-                s.commands->SetDescriptorHeaps(1, heaps);
                 s.commands->SetComputeRootSignature(hybridRoot.Get());
                 s.commands->SetComputeRootDescriptorTable(0, gpu(s, 0)); // t0..t6
                 s.commands->SetComputeRootDescriptorTable(1, gpu(s, 8)); // u0 = s.images[6]
@@ -726,7 +890,7 @@ struct Session {
                 setDisable(s, 2, disableZero.Get());
 
                 // 5. Update history
-                copyHistory(p, s);
+                copyHistory(p, s, true);
             }
 
             for(size_t j=0; j<4; ++j) dxBarrier(s, s.images[j], D3D12_RESOURCE_STATE_COMMON);
@@ -785,6 +949,12 @@ struct Session {
         state(s,"QUEUE_SUBMIT_RESULT","VkResult="+std::to_string(submitResult));
         if(submitResult==VK_ERROR_DEVICE_LOST)captureFault();
         vkcheck(submitResult,"input queue submit");state(s,"D3D12_READY","GPU_SIGNAL_SUBMITTED_NOT_YET_OBSERVED");
+        auto reasonBeforeSubmit = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+        evidence.str("device_reason_before_submit", hrHex(reasonBeforeSubmit));
+        if (FAILED(reasonBeforeSubmit)) {
+            recordDred(dx.device.Get(), "BEFORE_SUBMIT_FAIL");
+            throw std::runtime_error("Device removed before submit " + hrHex(reasonBeforeSubmit));
+        }
         hr(dx.queue->Wait(fence.Get(),s.ready),"D3D12 queue GPU wait");ID3D12CommandList* lists[]={s.commands.Get()};dx.queue->ExecuteCommandLists(1,lists);hr(dx.queue->Signal(fence.Get(),s.done),"D3D12 queue completion signal");unsafe=false;++submittedFrames;
         event("vulkan_d3d12_submit","realFrameId="+std::to_string(s.frameId)+" ready="+std::to_string(s.ready)+" completion="+std::to_string(s.done)+" cpuWait=false");
         if(s.borrowedReady[0])event("borrowed_copy_submit","realFrameId="+std::to_string(s.frameId)+" copyCommand="+std::to_string(reinterpret_cast<jlong>(s.inputs))+" copyCompleteValue="+std::to_string(s.ready)+" fgCompleteValue="+std::to_string(s.done)+" consumerQueue="+std::to_string(reinterpret_cast<jlong>(queue))+" consumerFamily="+std::to_string(family)+" waits=PRODUCER_BINARY cpuWait=false "+s.borrowedEvidence);
@@ -798,7 +968,12 @@ struct Session {
     void release(Pool& p,Slot& s) {
         // Called only after the normal Vulkan output fence and all presentation fences
         // have completed. Their GPU wait on done proves the D3D12 work also completed.
-        if(!s.leased||!s.submitted||fence->GetCompletedValue()<s.done||fence->GetCompletedValue()==UINT64_MAX)throw std::runtime_error("Premature lease retirement or device removed");
+        if(!s.leased||!s.submitted||fence->GetCompletedValue()<s.done||fence->GetCompletedValue()==UINT64_MAX) {
+            auto reason = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+            evidence.str("device_reason_on_release_fail", hrHex(reason));
+            if (FAILED(reason)) recordDred(dx.device.Get(), "RELEASE_COMPLETION_FAIL");
+            throw std::runtime_error("Premature lease retirement or device removed " + hrHex(reason));
+        }
         requireD3DDone(fence->GetCompletedValue(),s.done);
         state(s,"D3D12_DONE","observed="+std::to_string(fence->GetCompletedValue()));state(s,"OUTPUT_READY","CALLER_OUTPUT_AND_PRESENT_FENCES_RETIRED");
         hr(dx.device->GetDeviceRemovedReason(),"device removed reason");++completedFrames;
