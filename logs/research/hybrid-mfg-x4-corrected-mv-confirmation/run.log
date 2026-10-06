@@ -1,0 +1,7 @@
+RUN_COUNT_THIS_ITERATION=1
+EXECUTABLE=D:\ProjectDllsss\experiments\hybrid-mfg-x4-corrected-mv-confirmation\build\hybrid_mfg_x4_corrected_mv_confirmation.exe
+LOADER_DLL=D:\ProjectDllsss\logs\research\dlssg-ampere\deep\components\sdli-0.3.5\version.dll
+RUNTIME_DIR=D:\ProjectDllsss\experiments\ngx-dlssg-probe\vendor
+SHADERS_DIR=D:\ProjectDllsss\experiments\hybrid-mfg-x4-corrected-mv-confirmation\build
+EXIT_CODE=1
+DURATION_MS=1320.797

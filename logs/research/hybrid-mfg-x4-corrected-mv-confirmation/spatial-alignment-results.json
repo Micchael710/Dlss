@@ -1,0 +1,5 @@
+{
+  "status": "NOT_EVALUATED_DUE_TO_INITIALIZATION_FAILURE",
+  "fail_stage": "INITIALIZATION",
+  "error": "NGX D3D12 init failed 0xbad00005"
+}

@@ -1,0 +1,45 @@
+SHADER_RESTORATION_AUDIT_REPORT
+
+EXPERIMENT:
+HYBRID_X4_CORRECTED_MV_CONFIRMATION
+
+PREVIOUS_MV_AUDIT_CUSTOM_SHADER_CONTAMINATION=YES
+In experiments/hybrid-mfg-x4-mv-contract/HybridInterpolationCS.hlsl, the occlusion depth comparison logic:
+    if (abs(depthA - depthB) > 0.005f) value = depthA < depthB ? a : b;
+    else value = lerp(a, b, Time);
+had been replaced with a simplified lerp, altering the historical behavior of G25 and G75.
+
+RESTORATION:
+CUSTOM_INTERPOLATOR_RESTORED_FROM_VALID_BASELINE=YES
+CUSTOM_INTERPOLATOR_ALGORITHM_CHANGED=NO
+CUSTOM_INTERPOLATOR_BASELINE_SOURCE=experiments/hybrid-mfg-x4-depth-contract/HybridInterpolationCS.hlsl
+CUSTOM_INTERPOLATOR_SOURCE_SHA256=baa7bcd55d561bedf8bd027e396b574528a83405d7994fbbcf29426c4ec712a8
+
+EXACT RESTORED FUNCTION CODE:
+[numthreads(8,8,1)]
+void HybridInterpolationCS(uint3 id : SV_DispatchThreadID) {
+    if (id.x >= Width || id.y >= Height) return;
+    float2 pixel = id.xy;
+    float za = DepthA.Load(int3(id.xy, 0));
+    float zb = DepthB.Load(int3(id.xy, 0));
+    float2 backwardClip = za < zb ? MotionA.Load(int3(id.xy, 0)) : MotionB.Load(int3(id.xy, 0));
+    float2 backwardPixels = backwardClip * float2(0.5f, -0.5f) * float2(Width, Height);
+    float2 toA = pixel + Time * backwardPixels;
+    float2 toB = pixel - (1.0f - Time) * backwardPixels;
+    bool validA = inside(toA), validB = inside(toB);
+    float4 a = ColorA.SampleLevel(LinearClamp, uv(toA), 0.0f);
+    float4 b = ColorB.SampleLevel(LinearClamp, uv(toB), 0.0f);
+    float depthA = DepthA.SampleLevel(LinearClamp, uv(toA), 0.0f);
+    float depthB = DepthB.SampleLevel(LinearClamp, uv(toB), 0.0f);
+    float4 value;
+    if (!validA && !validB) value = Time < 0.5f ? ColorA.Load(int3(id.xy, 0)) : ColorB.Load(int3(id.xy, 0));
+    else if (!validA) value = b;
+    else if (!validB) value = a;
+    else if (abs(depthA - depthB) > 0.005f) value = depthA < depthB ? a : b;
+    else value = lerp(a, b, Time);
+    Output[id.xy] = value;
+}
+
+AUDIT STATUS:
+100% BYTE AND FUNCTIONALLY IDENTICAL TO HISTORICAL VALID BASELINE.
+All depth discontinuities and occlusion boundaries are handled with the validated depth-test selection logic.
