@@ -1,0 +1,2712 @@
+[2026-10-05 21:24:47] [NGXSafeInitializeLog:150] App logging hooks successfully initialized
+
+[2026-10-05 21:24:47] [NGXLoadLibrary:332] error: failed to load NGXCore: 126 (D:\ProjectDllsss\experiments\hybrid-mfg-x4-depth-contract\build\_nvngx.dll)
+
+[2026-10-05 21:24:47] [NGXLoadLibrary:332] error: failed to load NGXCore: 126 (D:\ProjectDllsss\experiments\hybrid-mfg-x4-depth-contract\build\nvngx.dll)
+
+[2026-10-05 21:24:47] [NGXLoadCoreLibrary:253] NGXCore not found next to the application
+
+[2026-10-05 21:24:47] [NGXGetPathUsingQAI:69] Checking for path to NGX using QueryAdapterInfo
+
+[2026-10-05 21:24:47] [NGXGetPathUsingQAI:153] Attempting to read from Parameters\NGXCore\NGXPath
+
+[2026-10-05 21:24:47] [NGXGetPathUsingQAI:177] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+
+[2026-10-05 21:24:47] [NGXLoadLibrary:328] Loaded NGXCore from path (C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\_nvngx.dll)
+
+[2026-10-05 21:24:47] [NGXLoadCoreLibrary:285] Loading C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\_nvngx.dll succeeded
+
+[2026-10-05 21:24:48] [NGXSafeInitializeLog:133] App logging hooks successfully initialized
+
+[2026-10-05 21:24:48] [NGXCheckArchitectureSupport:229] Found matching adapter with NVAPI physical GPU handle: 0x100 and LUID: { 0x0, 0x1294c }
+
+[2026-10-05 21:24:48] [NGXGetPathUsingQAI:475] Checking for path to NGX using QueryAdapterInfo
+
+[2026-10-05 21:24:48] [NGXGetPathUsingQAI:512] Path to driverStore found using QAI: C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+
+[2026-10-05 21:24:48] [NGXGetPath:1045] using path for models: C:\ProgramData\NVIDIA\NGX\models
+
+[2026-10-05 21:24:48] [NGXGetPath:1045] using path for models: C:\ProgramData\NVIDIA\NGX\models
+
+[2026-10-05 21:24:48] [CreateSecurityDescriptor:94] security attributes generated successfully
+
+[2026-10-05 21:24:48] [CreateFolderWithACEs:154] using generated security descriptor for creating folder at: C:\ProgramData\NVIDIA\NGX\models
+
+[2026-10-05 21:24:48] [ModifyExistingFolderDACL:211] updated access control list for NGX cache (NGX cache should now be usable by all authenticated users)
+
+[2026-10-05 21:24:48] [NGXCreateModelsFolder:1072] model folder created: C:\ProgramData\NVIDIA\NGX\models
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [dlss]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9FEB50=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9FF4BC=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9FD524=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DF510=1.3.106
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9CB0B8=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9E26B0=2.1.28
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D48D0=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E99B5EC=1.2.109
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DFA64=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9FD6C0=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9CF688=2.2.15
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D6F08=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9BF564=2.1.201
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DB4F4=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D2F5C=1.2.110
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D7388=1.0.108
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9F5618=2.1.29
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DAE68=1.2.109
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D8C54=1.2.109
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D3EF0=2.1.28
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9FACDC=2.1.201
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_F7361DC=2.1.28
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9C3560=2.1.201
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9B0430=2.1.28
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658702=0.0.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658701=0.0.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=310.9.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9393FC=2.1.201
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [dlisp]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9CF688=2.1.15
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E99B5EC=1.2.102
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=310.0.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D8C54=1.2.106
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9D2F5C=1.2.106
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DF510=1.3.101
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_B9DAE68=1.2.106
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_sdk_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_common_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_deepdvc_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_d_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_g_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_nis_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_deepdvc_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_nvperf_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_pcl_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_reflex_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658703=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [dlss_override]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=310.9.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [dlssd]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=310.9.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [dlssg]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=310.9.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_sdk_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_g_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_common_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_nis_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_dlss_d_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_nvperf_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_pcl_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [sl_reflex_override_0]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_E658700=2.14.0
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 86aa7b4
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::LoadMappingFileData:282]  project id 3F9D696D4363312194B0ECB2671E899F cms id B9FBD50
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 8618954
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId b9b05cc
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::LoadMappingFileData:268] listItem.engineVersion .* listItem.genericCMSId 876232c
+
+[2026-10-05 21:24:48] [MapProjectId:1905] Found cms id 876232c for engine: custom engineVersion 1.0.0 projectID 3e6891d2-09ac-4f54-ae8d-f481c3150d4b
+
+[2026-10-05 21:24:48] [NGXDRSInit:327] NvAPI_DRS_FindApplicationByName -166
+
+[2026-10-05 21:24:48] [NGXInitContext:245] called from module hybrid_mfg_x4_depth_contract.exe at D:\ProjectDllsss\experiments\hybrid-mfg-x4-depth-contract\build
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1144] [streamline-ota]
+
+[2026-10-05 21:24:48] [NGXLoadConfig:1150] app_84D32F0=1
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dldenoiser, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dldenoiser.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXReportStatusFeedback:1060] Override shared memory was opened successfully
+
+[2026-10-05 21:24:48] [NGXReportStatusFeedback:1072] Override shared memory was mapped successfully
+
+[2026-10-05 21:24:48] [NGXReportStatusFeedback:1101] Override feedback found available slot 0
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlss, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlss.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlinpainting, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlinpainting.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlisr, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlisr.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlslowmo, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlslowmo.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlvsr, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlvsr.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlcolorize, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlcolorize.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlstyletransfer, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlstyletransfer.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlvdenoiser, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlvdenoiser.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlisp, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlisp.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlresolve, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:48] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlresolve.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:48] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlssg, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:49] [NGXLoadLibrary:34] Loaded NGXCore from path (D:\ProjectDllsss\experiments\ngx-dlssg-probe\vendor/nvngx_dlssg.dll)
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1509] Validating snippet D:\ProjectDllsss\experiments\ngx-dlssg-probe\vendor/nvngx_dlssg.dll
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1511] NGX CORE API version : 0x15, Snippet requires at least : 0x13
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1530] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1558] Driver version : 596.49, Snippet expects at least : 520.0
+
+[2026-10-05 21:24:49] [NGXValidateSnippetMetaData:1585] Snippet version : 310.9.1, Embedded app Id : E658703 (0)
+
+[2026-10-05 21:24:49] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:49] [NGXSecureLoadFeature:1329] Feature dlssg failed to load (cmsid 141959980) from cache (location: C:\ProgramData\NVIDIA\NGX\models\dlssg\versions\0\files, name: 160_876232C.bin)
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:342] starting C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe with command line - C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -api update -cmsid 101950511 -feature dlssg -bootstrap  -gpuarch 352
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:343] process for NGX Updater created successfully
+
+[2026-10-05 21:24:49] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:49] [NGXSecureLoadFeature:1329] Feature dlssg failed to load (cmsid 241534723) from cache (location: C:\ProgramData\NVIDIA\NGX\models\dlssg\versions\0\files, name: 160_E658703.bin)
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:342] starting C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe with command line - C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -api update -cmsid 0 -feature dlssg -bootstrap  -gpuarch 352
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:343] process for NGX Updater created successfully
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:342] starting C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe with command line - C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -api update -cmsid 1 -feature dlssg -bootstrap  -gpuarch 352
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:343] process for NGX Updater created successfully
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:342] starting C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe with command line - C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -api update -cmsid 2 -feature dlssg -bootstrap  -gpuarch 352
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:343] process for NGX Updater created successfully
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:342] starting C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe with command line - C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af\nvngx_update.exe -api update -cmsid 3 -feature dlssg -bootstrap  -gpuarch 352
+
+[2026-10-05 21:24:49] [LaunchNGXUpdater:343] process for NGX Updater created successfully
+
+[2026-10-05 21:24:50] [NGXLoadLibrary:34] Loaded NGXCore from path (C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af/nvngx_dlssg.dll)
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1509] Validating snippet C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af/nvngx_dlssg.dll
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1511] NGX CORE API version : 0x15, Snippet requires at least : 0x13
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1515] GPU architecture : 0x170, Snippet expects at least : 0x170
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1530] Driver support flags : 0xF(SEAMLESS_OTA|LINUX_EXTENDED_DRIVER_VERSIONS|API_SPECIFIC_POPULATE_PARAMS|REQUIRE_CMSID), Snippet required flags : 0x0()
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1558] Driver version : 596.49, Snippet expects at least : 520.0
+
+[2026-10-05 21:24:50] [NGXValidateSnippetMetaData:1585] Snippet version : 310.9.1, Embedded app Id : E658703 (0)
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1366] Found dlssg driver fallback snippet at C:\WINDOWS\System32\DriverStore\FileRepository\nvlti.inf_amd64_af02d12a5c2283af
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1445] app 876232C feature dlssg snippet: D:\ProjectDllsss\experiments\ngx-dlssg-probe\vendor/nvngx_dlssg.dll version: 310.9.1
+
+[2026-10-05 21:24:50] [NGXLoadFeature:1527] Setting telemetry callback for dlssg [schema 3.0+]
+
+[2026-10-05 21:24:50] [NGXLoadFeature:1532] Setting override status callback for dlssg
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature deepdvc, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_deepdvc.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature dlssd, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_dlssd.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature truehdr, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_truehdr.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature latewarp, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_latewarp.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature vsr, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_vsr.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [NGXContextDenyListData::IsFeatureDenied:669] Feature fgx, denial value 0 for Cms ID 876232c
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [`anonymous-namespace'::SnippetLocationInfo::load:695] NGXLoadFromPath failed: -1160773628
+
+[2026-10-05 21:24:50] [NGXSecureLoadFeature:1231] warning: ModuleName - nvngx_fgx.dll doesn't exist in any of the search paths!
+
+[2026-10-05 21:24:50] [tid:1793136][NGXInitLog:208] App logging hooks successfully initialized
+
+[2026-10-05 21:24:50] [tid:1793136][NGXInitLog:214] Build v310.9.1 CL 38868064
+
+[2026-10-05 21:24:50] [tid:1793136][NGXInitLog:216] Built with APP_NAME = endpoint
+
+[2026-10-05 21:24:50] [tid:1793136][NGXInitLog:226] Loaded from path "D:\ProjectDllsss\logs\research\hybrid-mfg-x4-depth-contract\bundle-cache\f041be503d3fe093468a799be4e6e15cbbb91fdde5aa3a1b9bef8985a18057b7/nvngx_dlssg.dll" by hybrid_mfg_x4_depth_contract.exe
+
+[2026-10-05 21:24:50] [tid:1793136][DLSSGDRSKeys::ReadValuesFromDRSImpl:78] Finished loading values from DRS
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:135] Enabling texmode_raw
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:147] Enabling CuModule kernel path (load fatbin once, resolve entry points)
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:152] Build - PRODUCTION
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:156] GPU nodes 1 - visible node mask 1
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinKernelMap::InitCubins:42] Loading NGXCubin kernels
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::SetGPUArch:473] m_gpuArch = 0x170
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::genericPostInit:164] Fast UAV clear: supported
+
+[2026-10-05 21:24:50] [GetSystemInfo:985] Detected Windows Version 10.0.26100.9278
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:302] Sending Telemetry Init Data
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:303] appExeName = hybrid_mfg_x4_depth_contract.exe
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:304] drsProfileName = 
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:305] drsName = 
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:307] AppIdType = RENDERING_ENGINE
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:308] ProjectId = 3e6891d2-09ac-4f54-ae8d-f481c3150d4b
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:309] EngineVersion = 1.0.0
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:310] EngineType = custom
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:311] cmsId = 0
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:312] featureType = FrameGeneration
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:313] gpuDeviceId = 9632
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:314] gpuVendorId = 4318
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:315] gpuSubSys = 979179434
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:316] gpuRev = 161
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:317] ngxSDKVersion = 1.5
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:318] ngxCoreVersion = 1.4.0.0
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:319] ngxFeatureVersion = 310.9.1
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:320] displayDriverVersion = 596.49
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:321] osVersion = 10.0.26100.9278
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:322] APIType = 0
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:323] FeatureInitResult = NvNGXFeatureInitSuccess
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:324] GpuAPI = 2
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:326] StreamlineVersion = 
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:327] StreamlineGitSHA = 
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:328] ExeModuleName = hybrid_mfg_x4_depth_contract.exe
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:329] OTAEnabled = 1
+
+[2026-10-05 21:24:50] [NGXSendTelemetryInitializeData:335] -- END telemetry init data --
+
+[2026-10-05 21:24:50] [NVSDK_NGX_CreateFeature_Validate:731] app id is 141959980 
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::ProcessParameters:1424] Resources managed by host: false
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:135] Enabling texmode_raw
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:147] Enabling CuModule kernel path (load fatbin once, resolve entry points)
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:152] Build - PRODUCTION
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::Init:156] GPU nodes 1 - visible node mask 1
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinKernelMap::InitCubins:42] Loading NGXCubin kernels
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::SetGPUArch:473] m_gpuArch = 0x170
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::genericPostInit:164] Fast UAV clear: supported
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::ProcessParameters:1424] Resources managed by host: false
+
+[2026-10-05 21:24:50] [tid:1793136][EndpointCoreCreateParameters::ParseNGXParameters:82] Creating feature using NVSDK_NGX_DLSSG_Parameter_Width/Height
+
+[2026-10-05 21:24:50] [tid:1793136][EndpointConfiguration::ParseNGXParametersCreateTime:50] NVSDK_NGX_DLSSG_Parameter_UserInterfaceRecompositionEnabled: (false)
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=1, currentSize 0.9 MB, totalSize 0.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=2, currentSize 0.9 MB, totalSize 1.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=3, currentSize 7.0 MB, totalSize 8.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=4, currentSize 7.0 MB, totalSize 15.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=5, currentSize 7.0 MB, totalSize 22.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=6, currentSize 7.0 MB, totalSize 29.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=7, currentSize 1.8 MB, totalSize 31.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=8, currentSize 0.9 MB, totalSize 32.5 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=9, currentSize 0.9 MB, totalSize 33.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=10, currentSize 0.9 MB, totalSize 34.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=11, currentSize 0.0 MB, totalSize 34.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=12, currentSize 0.9 MB, totalSize 35.2 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=13, currentSize 0.9 MB, totalSize 36.0 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=14, currentSize 0.9 MB, totalSize 36.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=15, currentSize 0.2 MB, totalSize 37.1 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=16, currentSize 0.2 MB, totalSize 37.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=17, currentSize 0.2 MB, totalSize 37.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=18, currentSize 1.8 MB, totalSize 39.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=19, currentSize 1.8 MB, totalSize 41.1 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=20, currentSize 1.8 MB, totalSize 42.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=21, currentSize 1.8 MB, totalSize 44.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=22, currentSize 0.2 MB, totalSize 44.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=23, currentSize 0.3 MB, totalSize 45.2 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=24, currentSize 1.8 MB, totalSize 46.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=25, currentSize 1.8 MB, totalSize 48.7 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=26, currentSize 0.9 MB, totalSize 49.5 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=27, currentSize 0.9 MB, totalSize 50.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=28, currentSize 0.9 MB, totalSize 51.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=29, currentSize 0.4 MB, totalSize 51.7 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=30, currentSize 0.4 MB, totalSize 52.2 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=31, currentSize 0.2 MB, totalSize 52.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=32, currentSize 0.2 MB, totalSize 52.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=33, currentSize 0.2 MB, totalSize 52.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=34, currentSize 0.2 MB, totalSize 53.1 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateTexture2DResourceShared:1022] CUBIN 2D alloc (dlfg_resource), m_allocCount=35, currentSize 0.2 MB, totalSize 53.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=36, currentSize 1.9 MB, totalSize 55.2 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=37, currentSize 5.6 MB, totalSize 60.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=38, currentSize 1.8 MB, totalSize 62.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=39, currentSize 1.8 MB, totalSize 64.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=40, currentSize 0.0 MB, totalSize 64.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=41, currentSize 0.4 MB, totalSize 64.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=42, currentSize 3.6 MB, totalSize 68.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=43, currentSize 0.1 MB, totalSize 68.5 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=44, currentSize 0.0 MB, totalSize 68.5 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=45, currentSize 0.0 MB, totalSize 68.5 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=46, currentSize 1.8 MB, totalSize 70.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=47, currentSize 0.0 MB, totalSize 70.3 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=48, currentSize 0.4 MB, totalSize 70.7 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=49, currentSize 0.0 MB, totalSize 70.7 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=50, currentSize 0.1 MB, totalSize 70.8 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=51, currentSize 0.0 MB, totalSize 70.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=52, currentSize 0.0 MB, totalSize 70.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=53, currentSize 0.0 MB, totalSize 70.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=54, currentSize 0.0 MB, totalSize 70.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_resource), m_allocCount=55, currentSize 0.0 MB, totalSize 70.9 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=56, currentSize 3.8 MB, totalSize 74.6 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=57, currentSize 3.8 MB, totalSize 78.4 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=58, currentSize 3.8 MB, totalSize 82.1 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=59, currentSize 1.9 MB, totalSize 84.0 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=60, currentSize 0.9 MB, totalSize 85.0 MB
+
+[2026-10-05 21:24:50] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:50] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=61, currentSize 0.2 MB, totalSize 85.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=62, currentSize 0.1 MB, totalSize 85.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=63, currentSize 0.1 MB, totalSize 85.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=64, currentSize 0.1 MB, totalSize 85.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=65, currentSize 0.0 MB, totalSize 85.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=66, currentSize 0.0 MB, totalSize 85.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=67, currentSize 0.3 MB, totalSize 85.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=68, currentSize 0.3 MB, totalSize 86.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=69, currentSize 0.6 MB, totalSize 86.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=70, currentSize 0.6 MB, totalSize 87.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=71, currentSize 1.1 MB, totalSize 88.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=72, currentSize 1.1 MB, totalSize 89.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=73, currentSize 0.5 MB, totalSize 89.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=74, currentSize 0.5 MB, totalSize 90.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=75, currentSize 0.5 MB, totalSize 90.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=76, currentSize 0.5 MB, totalSize 91.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=77, currentSize 0.3 MB, totalSize 91.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=78, currentSize 0.3 MB, totalSize 92.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=79, currentSize 0.1 MB, totalSize 92.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=80, currentSize 0.1 MB, totalSize 92.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=81, currentSize 0.1 MB, totalSize 92.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=82, currentSize 0.1 MB, totalSize 92.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=83, currentSize 0.1 MB, totalSize 92.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=84, currentSize 0.1 MB, totalSize 92.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=85, currentSize 0.1 MB, totalSize 92.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=86, currentSize 0.1 MB, totalSize 92.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=87, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=88, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=89, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=90, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=91, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=92, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=93, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=94, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=95, currentSize 0.0 MB, totalSize 92.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=96, currentSize 0.0 MB, totalSize 92.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=97, currentSize 4.5 MB, totalSize 97.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=98, currentSize 3.6 MB, totalSize 100.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=99, currentSize 1.8 MB, totalSize 102.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=100, currentSize 0.9 MB, totalSize 103.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=101, currentSize 1.8 MB, totalSize 105.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=102, currentSize 8.1 MB, totalSize 113.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=103, currentSize 1.3 MB, totalSize 114.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=104, currentSize 1.8 MB, totalSize 116.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=105, currentSize 1.8 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=106, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=107, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=108, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=109, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=110, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=111, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=112, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=113, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=114, currentSize 0.0 MB, totalSize 118.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=115, currentSize 0.0 MB, totalSize 118.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=116, currentSize 0.0 MB, totalSize 118.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=117, currentSize 0.0 MB, totalSize 118.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=118, currentSize 0.1 MB, totalSize 118.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=119, currentSize 0.1 MB, totalSize 118.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=120, currentSize 0.0 MB, totalSize 118.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=121, currentSize 0.0 MB, totalSize 118.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=122, currentSize 0.1 MB, totalSize 118.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=123, currentSize 0.1 MB, totalSize 118.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=124, currentSize 0.0 MB, totalSize 118.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=125, currentSize 0.0 MB, totalSize 118.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=126, currentSize 0.1 MB, totalSize 118.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=127, currentSize 0.1 MB, totalSize 118.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=128, currentSize 0.0 MB, totalSize 118.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=129, currentSize 0.0 MB, totalSize 118.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=130, currentSize 0.1 MB, totalSize 119.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=131, currentSize 0.1 MB, totalSize 119.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=132, currentSize 0.0 MB, totalSize 119.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=133, currentSize 0.0 MB, totalSize 119.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=134, currentSize 0.1 MB, totalSize 119.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=135, currentSize 0.1 MB, totalSize 119.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=136, currentSize 0.0 MB, totalSize 119.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=137, currentSize 0.0 MB, totalSize 119.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=138, currentSize 0.1 MB, totalSize 119.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=139, currentSize 0.1 MB, totalSize 119.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=140, currentSize 0.0 MB, totalSize 119.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=141, currentSize 0.0 MB, totalSize 119.3 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=142, currentSize 0.1 MB, totalSize 119.4 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=143, currentSize 0.1 MB, totalSize 119.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=144, currentSize 0.0 MB, totalSize 119.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=145, currentSize 0.0 MB, totalSize 119.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=146, currentSize 0.1 MB, totalSize 119.5 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=147, currentSize 0.1 MB, totalSize 119.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=148, currentSize 0.0 MB, totalSize 119.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=149, currentSize 0.0 MB, totalSize 119.6 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=150, currentSize 0.1 MB, totalSize 119.7 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=151, currentSize 0.1 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=152, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=153, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=154, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=155, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=156, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=157, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=158, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=159, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=160, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=161, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=162, currentSize 0.0 MB, totalSize 119.8 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=163, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=164, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=165, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=166, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=167, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=168, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=169, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=170, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=171, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=172, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=173, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=174, currentSize 0.0 MB, totalSize 119.9 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=175, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=176, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=177, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=178, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=179, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=180, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=181, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=182, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=183, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=184, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=185, currentSize 0.0 MB, totalSize 120.0 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=186, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=187, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=188, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=189, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=190, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=191, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=192, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=193, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=194, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=195, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=196, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=197, currentSize 0.0 MB, totalSize 120.1 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=198, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=199, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=200, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=201, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=202, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=203, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=204, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CreateBufferResource:822] CUBIN 1D alloc (dlfg_network_resource), m_allocCount=205, currentSize 0.0 MB, totalSize 120.2 MB
+
+[2026-10-05 21:24:51] [tid:1793136][ResourceName::getPublicName:679] ProductionResourceName: 'nv.ngx.dlssg.resource'
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinD3D12::SetResourceName:1083] D3D12 SetResourceName: nv.ngx.dlssg.resource
+
+[2026-10-05 21:24:51] [NGXStoreCallToCreateFeature:780] stored create feature dlssg handle 1
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce89b20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce876f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce8bf50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce8cb60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb0b60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb1770
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceaf340
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceaff50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb53c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb6be0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb9c20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceba830
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb8400
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cebc050
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced3cb0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced54d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced30a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedfdb0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cee09c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cee21e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f1180
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0eed50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f0570
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f35b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f29a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f8a20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f65f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fa240
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f9630
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fc670
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fae50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10ddc0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10e9d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10f5e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d111a10
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1101f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d113230
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d112620
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d113e40
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1186a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d117a90
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1205c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d11f9b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d124e20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d121de0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d124210
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d127250
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d125a30
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12aea0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d127e60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12dee0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12c6c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16c090
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16e4c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16cca0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d172110
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1708f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d171500
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d177580
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d175150
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d175d60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1799b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1978c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1990e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d199cf0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d19b510
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d19a900
+
+[2026-10-05 21:24:51] [TelemetrySessionDataHelper::SetTelemetryDataForHandle:1159] warning: snippet is using telemetry schema version 4.4, which is greater than the driver's last known version (4.2). Telemetry data may be incomplete.
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:544] Sending Telemetry: DLSS-G Eval Data
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:600] QualityMode = 6
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:601] Width = 1280
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:602] Height = 720
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:603] FullscreenMode = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:604] WeightName = convoluted_cat
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:605] WeightVariantName = endpoint
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:606] TargetFrameRate = 0.000000
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:607] MultiFrameCount = 1
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:608] HasHudless = 1
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:609] HasAlphaUI = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:610] DepthInverted = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:611] MVJittered = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:613] LatewarpEnabled = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:614] MVHasCamera = 1
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:615] MVDilated = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:616] SLFGMode = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:617] ColorExtentWidth = 1280
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:618] ColorExtentHeight = 720
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:619] ColorExtentBaseX = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:620] ColorExtentBaseY = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:621] MVExtentWidth = 1280
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:622] MVExtentHeight = 720
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:623] MVExtentBaseX = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:624] MVExtentBaseY = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:625] MVSubrectHeight = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:626] MVSubrectWidth = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:627] MenuDetectionMode = 2
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:628] VRAMAllocated = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:875] appExeName = hybrid_mfg_x4_depth_contract.exe
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:876] drsProfileName = 
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:877] drsName = 
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:879] AppIdType = RENDERING_ENGINE
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:880] ProjectId = 3e6891d2-09ac-4f54-ae8d-f481c3150d4b
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:881] EngineVersion = 1.0.0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:882] EngineType = custom
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:883] cmsId = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:884] gpuDeviceId = 9632
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:885] gpuVendorId = 4318
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:886] gpuSubSys = 979179434
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:887] gpuRev = 161
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:888] ngxSDKVersion = 1.5
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:889] ngxCoreVersion = 1.4.0.0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:890] ngxFeatureVersion = 310.9.1
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:891] displayDriverVersion = 596.49
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:892] osVersion = 10.0.26100.9278
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:893] APIType = 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:894] GpuAPI = 2
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:896] StreamlineVersion = 
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:897] StreamlineGitSHA = 
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:898] ExeModuleName = hybrid_mfg_x4_depth_contract.exe
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:899] SnippetSchemaVer = 4.4
+
+[2026-10-05 21:24:51] [NGXSendTelemetryEvaluateDataV3:905] -- END telemetry evaluate data --
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad09ee0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad06ca0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0c490
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad09250
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0d120
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0b800
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0ddb0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0ab70
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0f6d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad0ea40
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce500f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec0ad10360
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce54740
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce53ab0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce51500
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce52190
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce52e20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce553d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce56cf0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce614c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce620d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce62ce0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce67900
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce56060
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce57980
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce58610
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5b850
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5c4e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce592a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5d170
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce59f30
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5de00
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5abc0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce603b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce5f720
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce68510
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce69120
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce6dd40
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce6e950
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce6f560
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce70170
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce70d80
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ebbf628ca0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce7d9d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce719e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce73e10
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce74a20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce725f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce73200
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce80a60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce81670
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce7fe50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce7e630
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce82280
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce7f240
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce846b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce852c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce85ed0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce82e90
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce86ae0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce83aa0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce88f10
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce88300
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce8a730
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce8b340
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ce8d770
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceadb20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceae730
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb2380
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb2f90
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb5fd0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb47b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb3ba0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb77f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cebb440
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceb9010
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cebcc60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced48c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced60e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced6cf0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced9120
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ceda940
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced7900
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedb550
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced8510
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedc160
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1ced9d30
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedd980
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cede590
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedcd70
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cee15d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1cedf1a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f1d90
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0ef960
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f41c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f4dd0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f7200
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f7e10
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0f59e0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fba60
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fde90
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d0fd280
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10d1b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10ad80
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10b990
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d10c5a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d110e00
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d114a50
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d115660
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d116e80
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1192b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d116270
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d119ec0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1211d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d11eda0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1229f0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d123600
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d126640
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d128a70
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d129680
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12a290
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12d2d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d12bab0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16f0d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16d8b0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d16fce0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d172d20
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d173930
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d174540
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d176970
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d178190
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d178da0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d17a5c0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d17b1d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1960a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d1984d0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d196cb0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroy:1142] Scheduled to destroy 0x1ec1d19d940
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroyIUnknown:1154] Scheduled to destroy IUnknown 0x1ec0b2b56a0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::PushToDestroyIUnknown:1154] Scheduled to destroy IUnknown 0x1ec0b2b1bb0
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced6cf0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce8cb60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16cca0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce89b20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0eed50 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb1770 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce876f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d11f9b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce8bf50 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1205c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb0b60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d171500 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce58610 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12c6c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceaf340 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1184] Releasing resource 0x0 (Unknown)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1184] Releasing resource 0x0 (Unknown)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d127250 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceaff50 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb53c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d121de0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f9630 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1978c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fae50 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb6be0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb9c20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d177580 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceba830 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d124210 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f1180 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce53ab0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb8400 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d175d60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d124e20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f0570 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cebc050 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce7fe50 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce73e10 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced3cb0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce69120 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cee09c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced54d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce73200 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced30a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f8a20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedfdb0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cee21e0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d127e60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f35b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d175150 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f29a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0ab70 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12aea0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f65f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fa240 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fc670 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad09250 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10ddc0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5f720 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d113e40 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10e9d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10f5e0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d111a10 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cee15d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced60e0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1101f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d113230 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d112620 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10d1b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce7d9d0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1186a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce725f0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d117a90 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d125a30 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce52e20 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12dee0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16c090 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16e4c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12bab0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d172110 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1708f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1799b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce852c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1990e0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d199cf0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d19b510 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16f0d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d19a900 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad09ee0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedd980 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad06ca0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce80a60 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0c490 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0d120 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0b800 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0ddb0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0f6d0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad0ea40 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce500f0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec0ad10360 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce54740 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb5fd0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce51500 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce52190 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce553d0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce56cf0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce83aa0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce614c0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce82e90 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce620d0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce62ce0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce67900 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce56060 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedc160 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce57980 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce7f240 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5b850 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5c4e0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce592a0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5d170 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce59f30 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5de00 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce5abc0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce603b0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce68510 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce6dd40 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce6e950 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce6f560 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce70170 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1192b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce70d80 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ebbf628ca0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d115660 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce719e0 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce74a20 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f7200 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce81670 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce7e630 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce82280 (nv.ngx.dlssg.dlfg_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce846b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb2f90 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce85ed0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce86ae0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce88f10 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce88300 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d19d940 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce8a730 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce8b340 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ce8d770 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceadb20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceae730 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb2380 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb47b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb3ba0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedb550 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb77f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cebb440 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceb9010 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cebcc60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced48c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced9120 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ceda940 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced7900 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced8510 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1ced9d30 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cede590 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedcd70 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fde90 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1cedf1a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d17a5c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f1d90 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0ef960 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f41c0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f4dd0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f7e10 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d178190 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0f59e0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fba60 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d0fd280 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10ad80 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10b990 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d10c5a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d110e00 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d114a50 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d116e80 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d116270 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d119ec0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1211d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d11eda0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1229f0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d123600 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d126640 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d128a70 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d129680 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12a290 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d12d2d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16d8b0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d16fce0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d172d20 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d173930 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d174540 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d176970 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d178da0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d17b1d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1960a0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d1984d0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::CollectGarbage:1177] Releasing resource 0x1ec1d196cb0 (nv.ngx.dlssg.dlfg_network_resource)
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::Shutdown:281] Delayed destroy resource list count 0
+
+[2026-10-05 21:24:51] [NGXStoreCallToReleaseFeature:1714] Stored release feature dlssg handle 1
+
+[2026-10-05 21:24:51] [tid:1793136][NGXCubinGeneric::Shutdown:281] Delayed destroy resource list count 0
+
+[2026-10-05 21:24:51] [NGXSendTelemetryShutdownData:958] Sending Telemetry Shutdown Data
+

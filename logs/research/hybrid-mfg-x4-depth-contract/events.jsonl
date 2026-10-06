@@ -1,0 +1,416 @@
+{"timestamp_ns":248258561797300,"pid":2726432,"type":"external_load_begin","detail":"D:\\ProjectDllsss\\logs\\research\\dlssg-ampere\\deep\\components\\sdli-0.3.5\\version.dll"}
+{"timestamp_ns":248258580453100,"pid":2726432,"type":"external_load_complete","detail":"00007FFD5BAF0000"}
+{"timestamp_ns":248258659483500,"pid":2726432,"type":"d3d12_result","detail":"CreateDXGIFactory2=0x00000000"}
+{"timestamp_ns":248258659903500,"pid":2726432,"type":"d3d12_result","detail":"EnumAdapters1=0x00000000"}
+{"timestamp_ns":248258659948000,"pid":2726432,"type":"d3d12_result","detail":"GetDesc1=0x00000000"}
+{"timestamp_ns":248258659982100,"pid":2726432,"type":"adapter","detail":"NVIDIA GeForce RTX 3050 Ti Laptop GPU vendor=4318 device=9632 flags=0 luid=4c29010000000000"}
+{"timestamp_ns":248259012833400,"pid":2726432,"type":"d3d12_result","detail":"D3D12CreateDevice=0x00000000"}
+{"timestamp_ns":248259056541000,"pid":2726432,"type":"d3d12_result","detail":"CreateCommandQueue=0x00000000"}
+{"timestamp_ns":248259056598400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommandAllocator=0x00000000"}
+{"timestamp_ns":248259059528100,"pid":2726432,"type":"d3d12_result","detail":"CreateCommandList=0x00000000"}
+{"timestamp_ns":248259059804000,"pid":2726432,"type":"d3d12_result","detail":"initial Close=0x00000000"}
+{"timestamp_ns":248259059860900,"pid":2726432,"type":"d3d12_result","detail":"CreateFence=0x00000000"}
+{"timestamp_ns":248262136954200,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262138035600,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262138068000,"pid":2726432,"type":"resource","detail":"A resource=000001EC0DE5A080 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262138098100,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262138874500,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262138899700,"pid":2726432,"type":"resource","detail":"B resource=000001EC0E5B0BC0 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262138918600,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262139704800,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262139728400,"pid":2726432,"type":"resource","detail":"G25 resource=000001EC0EACE100 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262139745500,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262140395500,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262140419000,"pid":2726432,"type":"resource","detail":"G50 resource=000001EC0AD96510 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262140436900,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262141092800,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262141116500,"pid":2726432,"type":"resource","detail":"G75 resource=000001EC0E5B1800 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262141134300,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262141803100,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262141828400,"pid":2726432,"type":"resource","detail":"DepthA resource=000001EC0CD4E4B0 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262141846700,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262142517400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262142542200,"pid":2726432,"type":"resource","detail":"DepthB resource=000001EC0CD4F0F0 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262142659800,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262143572700,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262143593900,"pid":2726432,"type":"resource","detail":"MotionA resource=000001EC0E5AF070 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262143611400,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262144481000,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262144504800,"pid":2726432,"type":"resource","detail":"MotionB resource=000001EC0E5AFCB0 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262144523800,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262145260400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262145284500,"pid":2726432,"type":"resource","detail":"warmupColor resource=000001EC0B204DE0 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262145302500,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262146016100,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262146043900,"pid":2726432,"type":"resource","detail":"warmupDepth resource=000001EC0B205A20 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262146064300,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262146985300,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262147009500,"pid":2726432,"type":"resource","detail":"warmupMotion resource=000001EC0B206660 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262147028300,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262147719900,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262147742200,"pid":2726432,"type":"resource","detail":"REF25 resource=000001EC0B2072A0 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262147761600,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262148643300,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262148670100,"pid":2726432,"type":"resource","detail":"REF50 resource=000001EC0B207EE0 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262148691900,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262149458000,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262149485700,"pid":2726432,"type":"resource","detail":"REF75 resource=000001EC0D578050 format=28 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262149506000,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262150137400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262150161600,"pid":2726432,"type":"resource","detail":"D25 resource=000001EC0D578C90 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262150181200,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262150802300,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262150827100,"pid":2726432,"type":"resource","detail":"D50 resource=000001EC0D5798D0 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262150845300,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262151811000,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262151855100,"pid":2726432,"type":"resource","detail":"D75 resource=000001EC0AD014B0 format=41 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262151873500,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262152710200,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262152735400,"pid":2726432,"type":"resource","detail":"M25 resource=000001EC0AD05380 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262152752600,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262153532000,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262153556800,"pid":2726432,"type":"resource","detail":"M50 resource=000001EC0AD02140 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262153574400,"pid":2726432,"type":"d3d12_result","detail":"format support=0x00000000"}
+{"timestamp_ns":248262154404200,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource image=0x00000000"}
+{"timestamp_ns":248262154426400,"pid":2726432,"type":"resource","detail":"M75 resource=000001EC0AD06010 format=16 extent=1280x720 flags=ALLOW_UNORDERED_ACCESS"}
+{"timestamp_ns":248262154449000,"pid":2726432,"type":"d3d12_result","detail":"Serialize root=0x00000000"}
+{"timestamp_ns":248262155091000,"pid":2726432,"type":"d3d12_result","detail":"Create root=0x00000000"}
+{"timestamp_ns":248262155683400,"pid":2726432,"type":"d3d12_result","detail":"Create descriptors=0x00000000"}
+{"timestamp_ns":248262155723000,"pid":2726432,"type":"d3d12_result","detail":"Create non-shader-visible CPU descriptor heap=0x00000000"}
+{"timestamp_ns":248262208612100,"pid":2726432,"type":"d3d12_result","detail":"FixtureCS=0x00000000"}
+{"timestamp_ns":248262228174500,"pid":2726432,"type":"d3d12_result","detail":"HybridInterpolationCS=0x00000000"}
+{"timestamp_ns":248262240002200,"pid":2726432,"type":"d3d12_result","detail":"ReductionCS=0x00000000"}
+{"timestamp_ns":248262252695200,"pid":2726432,"type":"d3d12_result","detail":"QualityMetricsCS=0x00000000"}
+{"timestamp_ns":248262253361400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262253686900,"pid":2726432,"type":"clear_uav_pair","detail":"stats resource=000001EC0B086200 format=R32_TYPELESS dimension=BUFFER CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262254330600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262254444400,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262268431600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262270866000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262270904300,"pid":2726432,"type":"submit","detail":"statistics initialize fenceValue=1 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262270928000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262276986600,"pid":2726432,"type":"completion","detail":"statistics initialize value=1"}
+{"timestamp_ns":248262280552900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262280653100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262288638700,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262288962800,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262288986100,"pid":2726432,"type":"submit","detail":"GPU fixture A_t0 t=0.000000 fenceValue=2 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262289029900,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262293988300,"pid":2726432,"type":"completion","detail":"GPU fixture A_t0 t=0.000000 value=2"}
+{"timestamp_ns":248262297068100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262297181000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262299111300,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262299507100,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262299525600,"pid":2726432,"type":"submit","detail":"GPU fixture B_t1 t=1.000000 fenceValue=3 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262299549800,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262304499600,"pid":2726432,"type":"completion","detail":"GPU fixture B_t1 t=1.000000 value=3"}
+{"timestamp_ns":248262307821700,"pid":2726432,"type":"clear_uav_pair","detail":"G25 resource=000001EC0EACE100 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262307864300,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262307950700,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262309494200,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262309717300,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262309733000,"pid":2726432,"type":"submit","detail":"GPU sentinel G25 fenceValue=4 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262309750200,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262313961300,"pid":2726432,"type":"completion","detail":"GPU sentinel G25 value=4"}
+{"timestamp_ns":248262316989900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262317084400,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262324628400,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262324951100,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262324973600,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 5 fenceValue=5 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262324993200,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262329965000,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 5 value=5"}
+{"timestamp_ns":248262332983800,"pid":2726432,"type":"clear_uav_pair","detail":"G50_init resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262333035900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262333123000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262335040100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262335381700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262335402000,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_init fenceValue=6 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262335425500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262340927100,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_init value=6"}
+{"timestamp_ns":248262344060600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262344176700,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262345872000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262346183600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262346262800,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 6 fenceValue=7 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262346287800,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262351697500,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 6 value=7"}
+{"timestamp_ns":248262354943100,"pid":2726432,"type":"clear_uav_pair","detail":"G75 resource=000001EC0E5B1800 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262354993200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262355131300,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262356908900,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262357113400,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262357130600,"pid":2726432,"type":"submit","detail":"GPU sentinel G75 fenceValue=8 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262357147500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262361911400,"pid":2726432,"type":"completion","detail":"GPU sentinel G75 value=8"}
+{"timestamp_ns":248262365087600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262365186100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262367106000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262367487000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262367573000,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 7 fenceValue=9 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262367594300,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262373394100,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 7 value=9"}
+{"timestamp_ns":248262378006600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262378089400,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262554441000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262554549500,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262554564500,"pid":2726432,"type":"submit","detail":"CreateFeature fenceValue=10 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262554597700,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262559369800,"pid":2726432,"type":"completion","detail":"CreateFeature value=10"}
+{"timestamp_ns":248262564239400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262564287000,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262564353100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262566177500,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262566265000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262566280200,"pid":2726432,"type":"submit","detail":"disable buffer initialize fenceValue=11 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262566302100,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262571343100,"pid":2726432,"type":"completion","detail":"disable buffer initialize value=11"}
+{"timestamp_ns":248262574876800,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262574999300,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262577376600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262584666900,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262584694800,"pid":2726432,"type":"submit","detail":"GPU fixture warmup_0 t=-3.000000 fenceValue=12 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262584708500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262590265300,"pid":2726432,"type":"completion","detail":"GPU fixture warmup_0 t=-3.000000 value=12"}
+{"timestamp_ns":248262593788300,"pid":2726432,"type":"clear_uav_pair","detail":"G50_frame_0 resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262593838500,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262593922500,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262596417200,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262596645700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262596664400,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_frame_0 fenceValue=13 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262596685700,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262603162900,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_frame_0 value=13"}
+{"timestamp_ns":248262607691100,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262607746700,"pid":2726432,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":248262607775200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262607853000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262611707100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262611920900,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262611938700,"pid":2726432,"type":"submit","detail":"disable sentinel upload fenceValue=14 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262611958100,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262622348900,"pid":2726432,"type":"completion","detail":"disable sentinel upload value=14"}
+{"timestamp_ns":248262625595600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262625710800,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262657689900,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262660414400,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262660447100,"pid":2726432,"type":"submit","detail":"warmup fenceValue=15 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262660466200,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262666908700,"pid":2726432,"type":"completion","detail":"warmup value=15"}
+{"timestamp_ns":248262672343600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262672657000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262674736400,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262675142500,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262675166000,"pid":2726432,"type":"submit","detail":"GPU fixture warmup_1 t=-2.000000 fenceValue=16 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262675189300,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262682270000,"pid":2726432,"type":"completion","detail":"GPU fixture warmup_1 t=-2.000000 value=16"}
+{"timestamp_ns":248262686665100,"pid":2726432,"type":"clear_uav_pair","detail":"G50_frame_1 resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262686726500,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262686824200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262695600600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262695890800,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262695915700,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_frame_1 fenceValue=17 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262695936100,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262702382700,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_frame_1 value=17"}
+{"timestamp_ns":248262706341400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262706398100,"pid":2726432,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":248262707039200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262707123600,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262708897300,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262709230000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262709253600,"pid":2726432,"type":"submit","detail":"disable sentinel upload fenceValue=18 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262709278500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262716260800,"pid":2726432,"type":"completion","detail":"disable sentinel upload value=18"}
+{"timestamp_ns":248262719519600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262720071300,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262731985100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262732456300,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262732479500,"pid":2726432,"type":"submit","detail":"warmup fenceValue=19 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262732498000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262744819400,"pid":2726432,"type":"completion","detail":"warmup value=19"}
+{"timestamp_ns":248262749213100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262749420200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262751722200,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262752047000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262752073800,"pid":2726432,"type":"submit","detail":"GPU fixture warmup_2 t=-1.000000 fenceValue=20 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262752094600,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262758988100,"pid":2726432,"type":"completion","detail":"GPU fixture warmup_2 t=-1.000000 value=20"}
+{"timestamp_ns":248262763826300,"pid":2726432,"type":"clear_uav_pair","detail":"G50_frame_2 resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262763909100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262764006600,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262765963100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262766256500,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262766281700,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_frame_2 fenceValue=21 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262766305500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262772599600,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_frame_2 value=21"}
+{"timestamp_ns":248262777463400,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262777553000,"pid":2726432,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":248262777596300,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262777760200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262780180100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262780398900,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262780416100,"pid":2726432,"type":"submit","detail":"disable sentinel upload fenceValue=22 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262780435300,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262785948300,"pid":2726432,"type":"completion","detail":"disable sentinel upload value=22"}
+{"timestamp_ns":248262789478900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262789645200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262804800000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262805272600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262805298300,"pid":2726432,"type":"submit","detail":"warmup fenceValue=23 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262805316900,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262815642300,"pid":2726432,"type":"completion","detail":"warmup value=23"}
+{"timestamp_ns":248262818580700,"pid":2726432,"type":"clear_uav_pair","detail":"G50_frame_3 resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262818629900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262818788300,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262820516000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262820820700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262820842700,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_frame_3 fenceValue=24 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262820861900,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262828655500,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_frame_3 value=24"}
+{"timestamp_ns":248262833220700,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262833303000,"pid":2726432,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":248262833342100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262833443700,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262835095300,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262835311700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262835374000,"pid":2726432,"type":"submit","detail":"disable sentinel upload fenceValue=25 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262835401000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262841960400,"pid":2726432,"type":"completion","detail":"disable sentinel upload value=25"}
+{"timestamp_ns":248262845084400,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262845187800,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262852555600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262853163400,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262853186700,"pid":2726432,"type":"submit","detail":"warmup fenceValue=26 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262853207700,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262881113000,"pid":2726432,"type":"completion","detail":"warmup value=26"}
+{"timestamp_ns":248262884232800,"pid":2726432,"type":"clear_uav_pair","detail":"G50_frame_4 resource=000001EC0AD96510 format=28 dimension=TEXTURE2D CLEAR_UAV_DESCRIPTOR_PAIR_VALID=YES"}
+{"timestamp_ns":248262884278700,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262884429500,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262887251700,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262887578200,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262887600100,"pid":2726432,"type":"submit","detail":"GPU sentinel G50_frame_4 fenceValue=27 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262887621200,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262892716800,"pid":2726432,"type":"completion","detail":"GPU sentinel G50_frame_4 value=27"}
+{"timestamp_ns":248262897920300,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262897965300,"pid":2726432,"type":"d3d12_result","detail":"disable upload Map=0x00000000"}
+{"timestamp_ns":248262898020100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262898087000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262899871800,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262900117300,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262900137000,"pid":2726432,"type":"submit","detail":"disable sentinel upload fenceValue=28 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262900158500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262906102500,"pid":2726432,"type":"completion","detail":"disable sentinel upload value=28"}
+{"timestamp_ns":248262909239900,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262909368200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262929368900,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262929710600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262929725000,"pid":2726432,"type":"submit","detail":"x2 target fenceValue=29 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262929739900,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262938777700,"pid":2726432,"type":"completion","detail":"x2 target value=29"}
+{"timestamp_ns":248262977522900,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248262977579200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262977756100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262979608600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262979891300,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262979911200,"pid":2726432,"type":"submit","detail":"disable readback fenceValue=30 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262979931600,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262984990300,"pid":2726432,"type":"completion","detail":"disable readback value=30"}
+{"timestamp_ns":248262988621800,"pid":2726432,"type":"d3d12_result","detail":"disable readback Map=0x00000000"}
+{"timestamp_ns":248262990599700,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248262990754600,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248262992715800,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248262992977600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248262992998100,"pid":2726432,"type":"submit","detail":"Hybrid t=0.250000 fenceValue=31 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248262993016500,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248262998617000,"pid":2726432,"type":"completion","detail":"Hybrid t=0.250000 value=31"}
+{"timestamp_ns":248263005022200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263005125600,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263012443500,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263012697600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263012716100,"pid":2726432,"type":"submit","detail":"Hybrid t=0.750000 fenceValue=32 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263012735000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263017920200,"pid":2726432,"type":"completion","detail":"Hybrid t=0.750000 value=32"}
+{"timestamp_ns":248263024426600,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263024520000,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263026617100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263026862000,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263026884400,"pid":2726432,"type":"submit","detail":"GPU fixture REF25 t=0.250000 fenceValue=33 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263026905100,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263032356900,"pid":2726432,"type":"completion","detail":"GPU fixture REF25 t=0.250000 value=33"}
+{"timestamp_ns":248263036131700,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263036240100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263038631400,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263038920900,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263038943200,"pid":2726432,"type":"submit","detail":"GPU fixture REF50 t=0.500000 fenceValue=34 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263038963300,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263044490600,"pid":2726432,"type":"completion","detail":"GPU fixture REF50 t=0.500000 value=34"}
+{"timestamp_ns":248263047725800,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263047838900,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263049506300,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263049747100,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263049769800,"pid":2726432,"type":"submit","detail":"GPU fixture REF75 t=0.750000 fenceValue=35 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263049789200,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263054975200,"pid":2726432,"type":"completion","detail":"GPU fixture REF75 t=0.750000 value=35"}
+{"timestamp_ns":248263058514100,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263058599900,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263060633200,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263061078200,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263061101900,"pid":2726432,"type":"submit","detail":"Quality metrics G25_vs_REF25 offset 128 fenceValue=36 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263061121600,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263066436800,"pid":2726432,"type":"completion","detail":"Quality metrics G25_vs_REF25 offset 128 value=36"}
+{"timestamp_ns":248263070545500,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263070642700,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263072596700,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263072840600,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263072861700,"pid":2726432,"type":"submit","detail":"Quality metrics G50_vs_REF50 offset 160 fenceValue=37 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263072881900,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263079294700,"pid":2726432,"type":"completion","detail":"Quality metrics G50_vs_REF50 offset 160 value=37"}
+{"timestamp_ns":248263082953300,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263083047700,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263085451900,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263085808200,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263085829300,"pid":2726432,"type":"submit","detail":"Quality metrics G75_vs_REF75 offset 192 fenceValue=38 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263085851800,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263091810900,"pid":2726432,"type":"completion","detail":"Quality metrics G75_vs_REF75 offset 192 value=38"}
+{"timestamp_ns":248263095308500,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263095413900,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263097097100,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263097299800,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263097319300,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 0 fenceValue=39 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263097341000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263102764700,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 0 value=39"}
+{"timestamp_ns":248263106804500,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263106909200,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263108525000,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263108922500,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263108944600,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 1 fenceValue=40 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263108963600,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263114292800,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 1 value=40"}
+{"timestamp_ns":248263118013800,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263118154500,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263119711600,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263119944900,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263119964300,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 2 fenceValue=41 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263119985800,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263125491600,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 2 value=41"}
+{"timestamp_ns":248263128991200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263129091800,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263130910700,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263131205300,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263131223500,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 3 fenceValue=42 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263131241000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263136531600,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 3 value=42"}
+{"timestamp_ns":248263140591200,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263140697100,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263142434700,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263142726700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263142747800,"pid":2726432,"type":"submit","detail":"GPU fingerprint slot 4 fenceValue=43 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263142767400,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263148884800,"pid":2726432,"type":"completion","detail":"GPU fingerprint slot 4 value=43"}
+{"timestamp_ns":248263153069300,"pid":2726432,"type":"d3d12_result","detail":"CreateCommittedResource buffer=0x00000000"}
+{"timestamp_ns":248263153132000,"pid":2726432,"type":"d3d12_result","detail":"allocator Reset=0x00000000"}
+{"timestamp_ns":248263153228300,"pid":2726432,"type":"d3d12_result","detail":"command list Reset=0x00000000"}
+{"timestamp_ns":248263154747400,"pid":2726432,"type":"d3d12_result","detail":"command list Close=0x00000000"}
+{"timestamp_ns":248263154957700,"pid":2726432,"type":"d3d12_result","detail":"queue Signal=0x00000000"}
+{"timestamp_ns":248263154974200,"pid":2726432,"type":"submit","detail":"256-byte bounded statistics readback fenceValue=44 commandList=000001EC0ACC6840"}
+{"timestamp_ns":248263154992000,"pid":2726432,"type":"d3d12_result","detail":"SetEventOnCompletion=0x00000000"}
+{"timestamp_ns":248263162293600,"pid":2726432,"type":"completion","detail":"256-byte bounded statistics readback value=44"}
+{"timestamp_ns":248263165320500,"pid":2726432,"type":"d3d12_result","detail":"Map statistics=0x00000000"}

@@ -1,0 +1,15 @@
+{
+  "frames": [
+    {"name": "a", "fingerprint": "8702a5e0627c3528", "position": 439.5, "object_pixels": 57600, "resource": "000001EC0DE5A080"},
+    {"name": "g25", "fingerprint": "3817724cc47b6456", "position": 447.368, "object_pixels": 59458, "resource": "000001EC0EACE100"},
+    {"name": "g50", "fingerprint": "00345a6aae91deb6", "position": 449.979, "object_pixels": 53458, "resource": "000001EC0AD96510"},
+    {"name": "g75", "fingerprint": "237d9c7400235a50", "position": 460.618, "object_pixels": 58866, "resource": "000001EC0E5B1800"},
+    {"name": "b", "fingerprint": "a906952832b7f8e8", "position": 467.5, "object_pixels": 57600, "resource": "000001EC0E5B0BC0"}
+  ],
+  "expected": {"position_a": 439.5, "expected_g25": 446.5, "actual_g25": 447.368, "error_g25": 0.867739, "expected_g50": 453.5, "actual_g50": 449.979, "error_g50": 3.5214, "expected_g75": 460.5, "actual_g75": 460.618, "error_g75": 0.118337, "position_b": 467.5},
+  "tolerance_pixels": 2,
+  "temporal_order_valid": true,
+  "positions_within_tolerance": false,
+  "resources_distinct": true,
+  "distinct_from_sentinels": true
+}

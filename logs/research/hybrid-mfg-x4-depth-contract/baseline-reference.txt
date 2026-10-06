@@ -1,0 +1,19 @@
+BASELINE EXPERIMENT REFERENCE
+
+STRUCTURAL BASELINE:
+  Path: experiments/hybrid-mfg-x4/
+  Commit: ff6b793afbd7f9b4096cc1bc2d54d2593336c9a0
+  Result: PASS
+  D3D12_VALIDATION_ERRORS: 0
+  HYBRID_X4_FRAMESET_GENERATION: PASS
+  Status: LOCKED, UNTOUCHED
+
+REAL SCENE CHARACTERIZATION BASELINE:
+  Path: experiments/hybrid-mfg-x4-real-scene/
+  Commit: ce65a07e2f6e5a8762c9dc5e3992e8a7d3925a0a
+  Result: CUSTOM_INTERPOLATOR_QUALITY=PASS, NVIDIA_G50_QUALITY=FAIL_CHALLENGING_REGIONS
+  Status: LOCKED, UNTOUCHED
+
+DEPTH CONTRACT EXPERIMENT:
+  Path: experiments/hybrid-mfg-x4-depth-contract/
+  Goal: Validate whether NVIDIA DLSS FG failure on G50 was caused by depth encoding incompatible with camera projection matrix.

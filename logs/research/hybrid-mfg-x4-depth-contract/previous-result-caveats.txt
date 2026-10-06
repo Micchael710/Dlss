@@ -1,0 +1,23 @@
+PREVIOUS RESULT CAVEATS & PROTOCOL AUDIT
+
+1. LEGACY STRUCTURAL VALIDATION CLASSIFICATION:
+   PREVIOUS_LEGACY_STRUCTURAL_RESULT=FAIL
+   PREVIOUS_STRUCTURAL_FAILURE_CAUSE=CENTROID_TOLERANCE_INCLUDED_IN_GATE
+
+   Explanation:
+   In experiments/hybrid-mfg-x4-real-scene/, the structural gate included 'withinTol' (centroid position error <= 2.0 px).
+   NVIDIA DLSS FG had a position error of 3.5214 px on G50 due to temporal lag on the non-trained synthetic fixture, causing the structural gate to evaluate as FAIL.
+   However, all 5 frames were strictly monotonic (439.5 < 447.37 < 449.98 < 460.62 < 467.5), all hashes were distinct, and D3D12 errors were 0.
+   In this depth-contract experiment, centroid tolerance is classified purely as diagnostic; structural validation requires monotonicity, distinctness, generation, and 0 D3D12 errors.
+
+2. BUILD PROTOCOL INTEGRITY:
+   PREVIOUS_BUILD_PROTOCOL_DEVIATION=YES
+
+   Explanation:
+   In the previous iteration, an initial build command encountered an HLSL signed/unsigned mismatch warning treated as error by FXC /WX.
+   Interactive diagnostic commands were executed, the build counter was manually reset, and the official build was re-run.
+   This deviation is explicitly recorded for transparency.
+   For this iteration (hybrid-mfg-x4-depth-contract), strict integrity is enforced:
+   BUILD_COUNT_THIS_ITERATION=1
+   RUN_COUNT_THIS_ITERATION=1
+   No counter resets, no trial builds.

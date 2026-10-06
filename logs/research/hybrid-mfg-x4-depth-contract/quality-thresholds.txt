@@ -1,0 +1,31 @@
+PRE-FIXED QUALITY THRESHOLDS (CANNOT BE MODIFIED)
+
+OVERALL_RGB_MAE_LIMIT=0.08
+OVERALL_BAD64_FRACTION_LIMIT=0.10
+CHALLENGING_RGB_MAE_LIMIT=0.18
+CHALLENGING_BAD64_FRACTION_LIMIT=0.25
+
+CLASSIFICATION RULES:
+  STRUCTURAL_VALIDATION:
+    PASS if:
+      - G25, G50, G75 generated
+      - Changed from sentinels
+      - Resources distinct
+      - Frames distinct from endpoints
+      - G25, G50, G75 distinct from each other
+      - Strict temporal ordering: A < G25 < G50 < G75 < B
+      - D3D12_VALIDATION_ERRORS == 0
+      - DEVICE_LOST=false, DEVICE_REMOVED=false, CRASH=false, TIMEOUT=false
+
+  CUSTOM_INTERPOLATOR_QUALITY:
+    PASS if G25 & G75 satisfy both overall and challenging limits.
+    FAIL_OCCLUSION_REGIONS if overall passes but challenging fails.
+    FAIL_GLOBAL_REPROJECTION if overall fails.
+
+  NVIDIA_G50_QUALITY:
+    PASS if G50 satisfies overall and challenging limits.
+    FAIL_CHALLENGING_REGIONS if overall passes but challenging fails.
+    FAIL_GLOBAL if overall fails.
+
+  QUALITY_VALIDATION:
+    PASS if both CUSTOM_INTERPOLATOR_QUALITY == PASS and NVIDIA_G50_QUALITY == PASS, else FAIL.

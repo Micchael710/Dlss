@@ -1,0 +1,40 @@
+SCENE SPECIFICATION: MULTI-LAYER SYNTHETIC SCENE WITH PROJECTED DEPTH
+Resolution: 1280x720 (Width=1280, Height=720)
+Parameter: Time t in [-3.0, 1.0]
+
+LAYER 1: BACKGROUND
+  View-Space Depth (viewZ): 5.0
+  Projected Device Depth: 98.0 / 99.9 (~0.980981)
+  Motion Type: Camera-like panning motion
+  Velocity: dx = +8.0 * t, dy = +4.0 * t
+  Current-to-Previous Motion Vector: (-8.0 px, -4.0 px)
+  NDC Motion Vector: (-16.0 / 1280, +8.0 / 720)
+  Texture: 16px high-contrast checkerboard
+  Colors: RGB(0.08, 0.18, 0.32) and RGB(0.16, 0.28, 0.44)
+
+LAYER 2: MIDGROUND
+  View-Space Depth (viewZ): 1.0
+  Projected Device Depth: 90.0 / 99.9 (~0.900901)
+  Motion Type: Diagonal independent object motion
+  Bounding Box: [420 + 16*t, 420 + 16*t + 360] x [220 + 12*t, 220 + 12*t + 260]
+  Velocity: dx = +16.0 * t, dy = +12.0 * t
+  Current-to-Previous Motion Vector: (-16.0 px, -12.0 px)
+  NDC Motion Vector: (-32.0 / 1280, +24.0 / 720)
+  Texture: 14px diagonal stripes
+  Colors: RGB(0.85, 0.55, 0.15) and RGB(0.48, 0.28, 0.08)
+
+LAYER 3: FOREGROUND
+  View-Space Depth (viewZ): 0.5
+  Projected Device Depth: 80.0 / 99.9 (~0.800801)
+  Motion Type: Crossing independent object motion occluding midground & background
+  Bounding Box: [320 + 28*t, 320 + 28*t + 240] x [290 - 8*t, 290 - 8*t + 240]
+  Velocity: dx = +28.0 * t, dy = -8.0 * t
+  Current-to-Previous Motion Vector: (-28.0 px, +8.0 px)
+  NDC Motion Vector: (-56.0 / 1280, -16.0 / 720)
+  Texture: 12px XOR high-contrast pattern
+  Colors: RGB(0.95, 0.20, 0.25) and RGB(0.65, 0.10, 0.50)
+
+KEY CHARACTERISTICS:
+  - Depths mathematically projected to match cameraNear=0.1, cameraFar=100.0
+  - FG (0.8008) < MG (0.9009) < BG (0.9810)
+  - Identical velocities and motion vector contract to previous experiment

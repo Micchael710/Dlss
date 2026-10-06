@@ -1,0 +1,22 @@
+MOTION VECTOR CONTRACT
+
+FORMAT: DXGI_FORMAT_R32G32_FLOAT
+COORDINATE_SPACE: NDC_CLIP_SPACE
+DIRECTION: current_to_previous
+
+CONVERSION FORMULA:
+  float2 mvecNDC = float2(2.0f * motionPixels.x / float(Width), -2.0f * motionPixels.y / float(Height));
+  where motionPixels = pos(T - 1.0) - pos(T)
+
+LAYER MOTION VALUES:
+  Background:
+    motionPixels = (-8.0, -4.0)
+    mvecNDC = (-16.0 / 1280, +8.0 / 720) = (-0.0125, +0.011111)
+  Midground:
+    motionPixels = (-16.0, -12.0)
+    mvecNDC = (-32.0 / 1280, +24.0 / 720) = (-0.0250, +0.033333)
+  Foreground:
+    motionPixels = (-28.0, +8.0)
+    mvecNDC = (-56.0 / 1280, -16.0 / 720) = (-0.04375, -0.022222)
+
+STATUS: IDENTICAL TO PREVIOUS REAL SCENE EXPERIMENT (UNMODIFIED)

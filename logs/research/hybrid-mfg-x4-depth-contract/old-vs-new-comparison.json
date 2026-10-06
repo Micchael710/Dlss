@@ -1,0 +1,21 @@
+{
+  "old": {
+    "g25_rgb_mae": 0.001359,
+    "g50_rgb_mae": 0.029109,
+    "g75_rgb_mae": 0.001030,
+    "g50_challenging_bad64_fraction": 0.368686,
+    "g50_position_error_pixels": 3.521400
+  },
+  "new": {
+    "g25_rgb_mae": 0.001359,
+    "g50_rgb_mae": 0.029109,
+    "g75_rgb_mae": 0.001030,
+    "g50_challenging_bad64_fraction": 0.368686,
+    "g50_position_error_pixels": 3.521400
+  },
+  "deltas": {
+    "g50_mae_delta": -0.000000,
+    "g50_challenging_bad64_delta": -0.000000,
+    "g50_position_error_delta": -0.000000
+  }
+}
