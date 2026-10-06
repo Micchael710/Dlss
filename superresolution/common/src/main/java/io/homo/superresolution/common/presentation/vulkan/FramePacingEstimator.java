@@ -31,14 +31,12 @@ import java.util.List;
  * FG-thread-owned estimator for real-frame production cadence.
  */
 final class FramePacingEstimator {
-    private static final double TRIM_FRACTION = 0.2;
+    private static final double EMA_ALPHA = 0.2;
     private static final long DEFAULT_REAL_PERIOD_NANOS = 16_666_667L;
     private static final long MIN_REAL_PERIOD_NANOS = 1_000_000L;
     private static final long MAX_REAL_PERIOD_NANOS = 500_000_000L;
-    private static final int HISTORY_WINDOW_SIZE = 20;
     private static final int REQUIRED_REAL_ONLY_BATCHES = 2;
     private final String providerId;
-    private final Deque<Long> recentPeriods = new ArrayDeque<>();
     private int plannedGeneratedCount = -1;
     private long swapchainGeneration = Long.MIN_VALUE;
     private long currentProducerTimeNanos;
@@ -55,29 +53,6 @@ final class FramePacingEstimator {
             throw new IllegalArgumentException("providerId cannot be blank");
         }
         this.providerId = providerId;
-    }
-
-    private static double trimmedMean(Iterable<Long> samples) {
-        List<Long> sorted = new ArrayList<>();
-        for (Long sample : samples) {
-            sorted.add(sample);
-        }
-        if (sorted.isEmpty()) {
-            return DEFAULT_REAL_PERIOD_NANOS;
-        }
-        sorted.sort(Long::compareTo);
-        int trimCount = (int) Math.floor(sorted.size() * TRIM_FRACTION);
-        int first = trimCount;
-        int lastExclusive = sorted.size() - trimCount;
-        if (first >= lastExclusive) {
-            first = 0;
-            lastExclusive = sorted.size();
-        }
-        double sum = 0.0;
-        for (int index = first; index < lastExclusive; index++) {
-            sum += sorted.get(index);
-        }
-        return sum / (lastExclusive - first);
     }
 
     private static long clamp(long value, long min, long max) {
@@ -207,11 +182,11 @@ final class FramePacingEstimator {
                 MAX_REAL_PERIOD_NANOS
         );
 
-        recentPeriods.addLast(sample);
-        while (recentPeriods.size() > HISTORY_WINDOW_SIZE) {
-            recentPeriods.removeFirst();
+        if (!hasEstimatedPeriod || estimatedPeriodNanos <= 0.0) {
+            estimatedPeriodNanos = (double) sample;
+        } else {
+            estimatedPeriodNanos = estimatedPeriodNanos * (1.0 - EMA_ALPHA) + (double) sample * EMA_ALPHA;
         }
-        estimatedPeriodNanos = trimmedMean(recentPeriods);
         hasEstimatedPeriod = true;
     }
 
@@ -228,7 +203,6 @@ final class FramePacingEstimator {
             long producerTimeNanos,
             boolean hasProducerTime
     ) {
-        recentPeriods.clear();
         estimatedPeriodNanos = 0.0;
         hasEstimatedPeriod = false;
         hasPreviousProducerTime = false;
@@ -244,10 +218,14 @@ final class FramePacingEstimator {
         );
     }
 
-    private long estimatedRealPeriodNanos() {
+    long estimatedRealPeriodNanos() {
         return hasEstimatedPeriod
                 ? Math.round(estimatedPeriodNanos)
                 : DEFAULT_REAL_PERIOD_NANOS;
+    }
+
+    double estimatedPeriodNanosDouble() {
+        return hasEstimatedPeriod ? estimatedPeriodNanos : (double) DEFAULT_REAL_PERIOD_NANOS;
     }
 
     private void resetBatchModeObservation() {

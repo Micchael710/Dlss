@@ -132,6 +132,12 @@ final class PresentPacer {
         previousGeneratedCount = -1;
     }
 
+    public static final double MAX_GENERATED_LATENESS_SPACINGS = 1.0;
+
+    long presentIntervalNanos() {
+        return presentIntervalNanos;
+    }
+
     private void beginBatch(boolean waited, boolean pacingEnabled, int generatedCount) {
         long now = clock.nanoTime();
         if (!pacingEnabled) {
@@ -140,10 +146,12 @@ final class PresentPacer {
             previousGeneratedCount = generatedCount;
             return;
         }
-        boolean resetTimeline = waited
-                || !previousPacingEnabled
+        boolean timelineStale = nextDeadlineNanos != 0L
+                && (now - nextDeadlineNanos > Math.max(presentIntervalNanos * 4L, MAX_PRESENT_INTERVAL_NANOS));
+        boolean resetTimeline = !previousPacingEnabled
                 || previousGeneratedCount != generatedCount
-                || nextDeadlineNanos == 0L;
+                || nextDeadlineNanos == 0L
+                || timelineStale;
         if (resetTimeline) {
             nextDeadlineNanos = now;
         }

@@ -142,6 +142,14 @@ final class PresentWorker {
 
     private void presentBatch(PresentImageBatch batch, boolean waited) {
         long queueDelayNs = Math.max(0L, System.nanoTime() - batch.publicationNs());
+        int pipelineDepth = presenter.pipelineDepth();
+        if ("wisteria:dlssg_fg".equals(presenter.providerId()) && batch.output() != null) {
+            long targetSpacingNs = batch.intervalNanos();
+            long realPeriodNs = targetSpacingNs * (batch.generatedCount() + 1L);
+            io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                    "X4_PACING realFrameId={} realPeriodNs={} targetSpacingNs={} queueDelayNs={} pipelineDepth={}",
+                    batch.realIndex(), realPeriodNs, targetSpacingNs, queueDelayNs, pipelineDepth);
+        }
         List<PreparedImage> prepared = new ArrayList<>(batch.imageCount());
         List<FrameGenerationDispatchCompletion> completions = new ArrayList<>();
         boolean captureReleased = batch.captureReleasedByGeneration();
@@ -156,6 +164,26 @@ final class PresentWorker {
                         && !batch.output().isGeneratedOutputPresentable(index)) {
                     batch.output().onGeneratedOutputDiscarded(index, System.nanoTime());
                     continue; // releaseBatch still drains this candidate's unconsumed semaphore.
+                }
+                if (presentImage.kind() == PresentImage.Kind.GENERATED && batch.pacingEnabled()) {
+                    long now = System.nanoTime();
+                    long baseDeadline = presenter.pacer.nextDeadlineNanos();
+                    if (baseDeadline != 0L) {
+                        long deadlineNs = baseDeadline + (long) index * batch.intervalNanos();
+                        long lateNs = now - deadlineNs;
+                        long maxAllowedLateNs = (long) (PresentPacer.MAX_GENERATED_LATENESS_SPACINGS * batch.intervalNanos());
+                        if (lateNs > maxAllowedLateNs) {
+                            if ("wisteria:dlssg_fg".equals(presenter.providerId())) {
+                                io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                                        "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=true",
+                                        batch.realIndex(), index + 1, deadlineNs, now, Math.max(0L, lateNs));
+                            }
+                            if (batch.output() != null) {
+                                batch.output().onGeneratedOutputDiscarded(index, now);
+                            }
+                            continue;
+                        }
+                    }
                 }
                 FramePacingTrace.Span acquireTrace =
                         beginTrace("present_target_acquire", batch, presentImage);
@@ -267,9 +295,17 @@ final class PresentWorker {
                             }
                         }
                         presentTrace.complete("complete", "presented=true");
+                        long requestNs = System.nanoTime();
+                        long lateNs = deadlineNs == 0L ? -1L : Math.max(0L, requestNs - deadlineNs);
+                        if ("wisteria:dlssg_fg".equals(presenter.providerId())) {
+                            int genIdx = image.image.kind() == PresentImage.Kind.GENERATED ? image.outputIndex + 1 : 0;
+                            io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                                    "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=false",
+                                    batch.realIndex(), genIdx, deadlineNs, requestNs, lateNs);
+                        }
                         if (batch.output() != null) batch.output().onPresented(image.image.displayIndex(),
                                 image.outputIndex, image.image.kind() == PresentImage.Kind.GENERATED,
-                                System.nanoTime(), queueDelayNs, deadlineNs);
+                                requestNs, queueDelayNs, deadlineNs);
                     } catch (Throwable throwable) {
                         presentTrace.complete(
                                 "failed",

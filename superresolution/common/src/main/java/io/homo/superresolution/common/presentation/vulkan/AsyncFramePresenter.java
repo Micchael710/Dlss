@@ -42,9 +42,12 @@ public final class AsyncFramePresenter implements AutoCloseable {
             throw new IllegalArgumentException("Invalid generated count");
         return PRESENTATION_QUEUE_CAPACITY / (generatedCount + 1) + 2;
     }
+    public static final int MAX_PIPELINED_REAL_FRAMES_X4 = 2;
     private static final long THREAD_JOIN_TIMEOUT_NANOS = 2_000_000_000L;
 
     final Object stateLock = new Object();
+    private final java.util.concurrent.atomic.AtomicInteger activeRealFrames =
+            new java.util.concurrent.atomic.AtomicInteger();
     final FrameQueue<FrameGenerationWork> generationQueue =
             new FrameQueue<>(GENERATION_QUEUE_CAPACITY);
     final FrameQueue<PresentImageBatch> presentationQueue =
@@ -149,14 +152,36 @@ public final class AsyncFramePresenter implements AutoCloseable {
                 "REAL",
                 providerId
         );
+        if ("wisteria:dlssg_fg".equals(providerId)) {
+            synchronized (stateLock) {
+                while (!hasFailed() && activeRealFrames.get() >= MAX_PIPELINED_REAL_FRAMES_X4) {
+                    try {
+                        stateLock.wait();
+                    } catch (InterruptedException e) {
+                        resources.markUnrecoverable();
+                        Thread.currentThread().interrupt();
+                        throw new IllegalStateException("Interrupted while waiting for frame pipeline capacity", e);
+                    }
+                }
+            }
+        }
+        activeRealFrames.incrementAndGet();
         try {
             framePacingTiming.recordExcludedWait(generationQueue.put(work));
             return true;
         } catch (InterruptedException exception) {
+            activeRealFrames.decrementAndGet();
+            synchronized (stateLock) {
+                stateLock.notifyAll();
+            }
             resources.markUnrecoverable();
             Thread.currentThread().interrupt();
             throw new IllegalStateException("Interrupted while enqueueing a real frame", exception);
         } catch (IllegalStateException exception) {
+            activeRealFrames.decrementAndGet();
+            synchronized (stateLock) {
+                stateLock.notifyAll();
+            }
             resources.markUnrecoverable();
             throwIfFailed();
             throw exception;
@@ -259,6 +284,14 @@ public final class AsyncFramePresenter implements AutoCloseable {
 
     void retireBatch(FrameGenerationWorker.RetiredBatch batch) {
         generationWorker.retireBatch(batch);
+        activeRealFrames.decrementAndGet();
+        synchronized (stateLock) {
+            stateLock.notifyAll();
+        }
+    }
+
+    public int pipelineDepth() {
+        return activeRealFrames.get();
     }
 
     void awaitState(BooleanSupplier complete) {
