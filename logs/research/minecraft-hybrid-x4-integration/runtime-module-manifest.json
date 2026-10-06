@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-10-06T00:54:00-04:00",
+  "modules": [
+    {
+      "module": "version.dll",
+      "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+      "loaded_by": "wisteria ExternalLoader / process init",
+      "status": "VALIDATED"
+    },
+    {
+      "module": "nvngx_dlssg.dll",
+      "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+      "loaded_by": "NGX runtime / D3D12NgxSession",
+      "status": "VALIDATED"
+    },
+    {
+      "module": "wisteria_dlssg_bridge.dll",
+      "sha256": "ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1",
+      "loaded_by": "DlssgBridge.load() via System.load()",
+      "status": "VALIDATED"
+    }
+  ],
+  "shaders": [
+    {
+      "shader": "HybridInterpolationCS",
+      "profile": "cs_5_0",
+      "entry": "HybridInterpolationCS",
+      "source": "experiments/hybrid-mfg-x4-corrected-mv-confirmation-retry/HybridInterpolationCS.hlsl",
+      "bytecode_header": "integration/minecraft-apparatia-hybrid-x4/HybridInterpolationCS.h",
+      "status": "COMPILED_INTO_DLL"
+    },
+    {
+      "shader": "MotionConvertCS",
+      "profile": "cs_5_0",
+      "entry": "MotionConvertCS",
+      "source": "integration/minecraft-apparatia-hybrid-x4/MotionConvertCS.hlsl",
+      "bytecode_header": "integration/minecraft-apparatia-hybrid-x4/MotionConvertCS.h",
+      "status": "COMPILED_INTO_DLL"
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+PROVIDER ARCHITECTURE AUDIT: APPARATIA / WISTERIA / SUPER RESOLUTION
+Date: 2026-10-06
+
+1. ARCHITECTURAL LEVEL CLASSIFICATION:
+   Apparatia / Super Resolution / Wisteria implementation corresponds to:
+   - Level C + D: Native Multi-frame batch generation and direct swapchain presentation control.
+   - The presentation engine (io.homo.superresolution.common.presentation.vulkan.FrameGenerationWorker)
+     accepts any list of VulkanTexture generated frames (batch size = generatedCount + 1).
+   - In previous iterations, setting requestedCount > 1 failed because the bridge attempted to loop
+     NGX_D3D12_EVALUATE_DLSSG with multiFrameIndex = 2, which RTX 3050 Ti rejects because its
+     raw hardware capability is strictly multiFrameCount = 1 (reportedMax = 1).
+
+2. HYBRID X4 SOLUTION:
+   - For an interval between Real Frame A and Real Frame B:
+     Target sequence: Real A -> G25 -> G50 -> G75 -> Real B.
+   - G25 ($t=0.25$): Generated via custom D3D12 compute shader HybridInterpolationCS.
+   - G50 ($t=0.50$): Generated via official NVIDIA DLSS Frame Generation (NGX_D3D12_EVALUATE_DLSSG)
+     with opts.multiFrameCount = 1 and opts.multiFrameIndex = 1.
+   - G75 ($t=0.75$): Generated via custom D3D12 compute shader HybridInterpolationCS.
+   - Slot Image Allocation in D3D12/Vulkan shared pool:
+     s.images[0] = Real B Color (DXGI_FORMAT_R8G8B8A8_UNORM)
+     s.images[1] = HUDless Color (DXGI_FORMAT_R8G8B8A8_UNORM)
+     s.images[2] = Depth (DXGI_FORMAT_R32_FLOAT)
+     s.images[3] = Raw Motion Vectors (DXGI_FORMAT_R32G32_FLOAT)
+     s.images[4] = Generated Frame 0: G25 ($t=0.25$, Custom)
+     s.images[5] = Generated Frame 1: G50 ($t=0.50$, NVIDIA DLSS-G)
+     s.images[6] = Generated Frame 2: G75 ($t=0.75$, Custom)
+
+3. DISABLE STATUS & JNI NOTIFICATION:
+   - s.disable[0]: Uploaded 0 via disableZero buffer when G25 evaluates successfully.
+   - s.disable[1]: Written directly by NVIDIA DLSS-G evaluate.
+   - s.disable[2]: Uploaded 0 via disableZero buffer when G75 evaluates successfully.
+   - If reset || !hasHistory:
+     All 3 disable slots are populated with disableSentinel (0xFFFFFFFF = -1),
+     instructing Java to bypass presentation for generated frames and present only real frame.
+   - On valid temporal history:
+     flags[0]=0, flags[1]=0, flags[2]=0 -> all 3 frames presentable.
+
+4. SWAPCHAIN PRESENTATION PACING:
+   - VulkanLowLatency reserves present batch IDs for 3 generated frames + 1 real frame.
+   - FrameGenerationWorker loops index = 0..2 presenting:
+       Slot Image 4 (G25)
+       Slot Image 5 (G50)
+       Slot Image 6 (G75)
+       Followed by Slot Image 0 (Real B).
+   - Monotonic presentation order is guaranteed: G25 -> G50 -> G75 -> B.
+
+5. MEMORY TRANSPORT CONTRACT:
+   - All color, depth, motion vector, and generated frame textures are allocated on GPU
+     in dedicated Win32-shared memory between Vulkan and Direct3D 12.
+   - PRODUCTION_CPU_TRANSPORT_COPY_COUNT = 0.
+   - Zero CPU stalls, zero CPU readbacks in the production rendering loop.

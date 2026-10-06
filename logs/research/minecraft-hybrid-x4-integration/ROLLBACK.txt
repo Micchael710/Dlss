@@ -1,0 +1,18 @@
+ROLLBACK INSTRUCTIONS FOR MINECRAFT APPARATIA ALPHA DLSS-X4 INTEGRATION
+================================================================================
+
+To restore the known-good DLSS-X2 baseline at any moment:
+
+1. Restore Super Resolution Configuration:
+   Copy-Item "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4-backup-manifest\config.toml.backup" "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\config\super_resolution\config.toml" -Force
+
+2. Restore TLauncher Java Configuration:
+   Copy-Item "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4-backup-manifest\minecraft_tlauncher_java_config.json.backup" "C:\Users\micha\AppData\Roaming\.tlauncher\minecraft_tlauncher_java_config.json" -Force
+
+3. Restore Wisteria Mod JAR:
+   Copy-Item "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4-backup-manifest\wisteria-sr-x2-handoff-4d720e9b98f0.jar.backup" "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\mods\wisteria-sr-x2-handoff-4d720e9b98f0.jar" -Force
+
+4. Verify DLSS-X2 Installation:
+   The directory "C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x2" has been kept 100% UNTOUCHED throughout this entire process and remains completely intact as the golden rollback reference.
+
+After these 3 copy steps, the system is 100% reverted to the working DLSS-X2 state.

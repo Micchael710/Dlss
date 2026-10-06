@@ -1,0 +1,48 @@
+APPARATIA FILE PATH DISCOVERY & AUDIT
+Date: 2026-10-06
+
+APPARATIA ROOT DIRECTORY:
+  C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha
+  8.3 Short Path: C:\Users\micha\AppData\Roaming\.minecraft\versions\APPARA~1
+
+ACTIVE MINECRAFT GAME DIRECTORY:
+  C:\Users\micha\AppData\Roaming\.minecraft
+
+MOD FILES:
+  Super Resolution:
+    C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\mods\superresolution-sr-x2-handoff-45d318d34be4.jar
+    SHA256: 11bd0e537934b889e5315d619ef90b103d3ac91562be4cd4cc1997f51091acc8
+  Wisteria:
+    C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\mods\wisteria-sr-x2-handoff-4d720e9b98f0.jar
+    Backup SHA256: dde3df832988042af9133dd7ed583964eea96d7f68159c80f22656a4cfac60cb
+
+PROTECTED DLSS-X2 INSTALLATION (GOLDEN ROLLBACK):
+  Path: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x2
+  Component: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x2\component\version.dll
+    SHA256: c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838
+  Runtime: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x2\stock-runtime\nvngx_dlssg.dll
+    SHA256: ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82
+  Status: 100% PRESERVED, UNTOUCHED, INTACT.
+
+EXPERIMENTAL DLSS-X4 INSTALLATION:
+  Root: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4
+  Component: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\component\version.dll
+    SHA256: c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838
+  Config: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\component\dlssg_sm86.ini
+  Runtime: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\stock-runtime\nvngx_dlssg.dll
+    SHA256: ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82
+  Native Bridge: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\native\wisteria_dlssg_bridge-ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1.dll
+    SHA256: ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1
+  Backend Logs: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\backend
+  Event Logs: C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4\frame-sequence.log
+
+BACKUP DIRECTORY:
+  C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\local\dlss-x4-backup-manifest
+
+CONFIGURATION FILES:
+  Super Resolution Config:
+    C:\Users\micha\AppData\Roaming\.minecraft\versions\Apparatia Alpha\config\super_resolution\config.toml
+  TLauncher Java Config:
+    C:\Users\micha\AppData\Roaming\.tlauncher\minecraft_tlauncher_java_config.json
+  TLauncher Properties:
+    C:\Users\micha\AppData\Roaming\.tlauncher\tlauncher-2.0.properties

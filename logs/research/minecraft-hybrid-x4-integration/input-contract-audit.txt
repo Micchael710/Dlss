@@ -1,0 +1,59 @@
+INPUT CONTRACT AUDIT: MINECRAFT REAL INPUTS & CONVERSIONS
+Date: 2026-10-06
+
+1. COLOR INPUT:
+   REAL_MINECRAFT_COLOR_AVAILABLE: YES
+   Format: DXGI_FORMAT_R8G8B8A8_UNORM / VK_FORMAT_R8G8B8A8_UNORM
+   Transfer Function: SRGB SDR
+   Dimensions: Display resolution (dynamic framebuffer width x height)
+   Resource: s.images[0] (Backbuffer), s.images[1] (HUDless)
+
+2. DEPTH INPUT:
+   REAL_MINECRAFT_DEPTH_AVAILABLE: YES
+   Format: DXGI_FORMAT_R32_FLOAT / VK_FORMAT_R32_SFLOAT
+   Convention: Projected device depth from Iris/SuperResolution
+   Near/Far: Dynamic from camera state (e.g., near=0.05, far=768.0)
+   Inverted Depth: 0 (standard device depth)
+   Dimensions: Render resolution (renderWidth x renderHeight)
+   Resource: s.images[2]
+
+3. MOTION VECTOR INPUT:
+   REAL_MINECRAFT_MV_AVAILABLE: YES
+   Format: DXGI_FORMAT_R32G32_FLOAT / VK_FORMAT_R16G16_SFLOAT (blitted to R32G32F)
+   Temporal Direction: CURRENT_TO_PREVIOUS ("previousMinusCurrentUV_Yflipped")
+   Camera Motion Included: YES
+   Dilated: NO
+   Raw Space: UV displacement coordinates [-1.0, 1.0]
+
+4. MOTION VECTOR ADAPTATION & RESOURCE SEPARATION:
+   NVIDIA DLSS FG CONTRACT:
+     Target Unit: SCREEN_SPACE_PIXELS
+     Temporal Direction: CURRENT_TO_PREVIOUS
+     Scale Factor: opts.mvecScale = (2.0, -2.0) applied via NGX metadata constants.
+     Resource Consumed: s.images[3] (Raw D3D12 motion texture directly).
+
+   CUSTOM INTERPOLATOR CONTRACT:
+     Target Unit: NDC_CLIP_SPACE
+     Temporal Direction: CURRENT_TO_PREVIOUS
+     Conversion: GPU Compute Shader MotionConvertCS:
+       mvecNDC.x = 2.0 * motionUV.x
+       mvecNDC.y = -2.0 * motionUV.y
+     Resource Consumed: currentMotionNDC (DXGI_FORMAT_R32G32_FLOAT)
+                        historyMotionNDC (DXGI_FORMAT_R32G32_FLOAT)
+
+   SEPARATION STATUS:
+     custom_nvidia_mv_resources_separate = YES
+     Neither algorithm mutates the other algorithm's motion vector representation.
+     Zero CPU readback for motion vector conversion.
+
+5. CAMERA & MATRIX CONTRACT:
+   REAL_CAMERA_MATRICES_AVAILABLE: YES
+   Packed Constants: 108 floats from DlssgMetadata.pack()
+     - cameraViewToClip (row-major D3D12 clip space)
+     - clipToCameraView (inverse)
+     - clipToLensClip
+     - clipToPrevClip
+     - prevClipToClip
+     - jitterOffset (x, y)
+     - cameraNear, cameraFar, cameraFOV, cameraAspectRatio
+     - cameraPos, cameraUp, cameraRight, cameraFwd

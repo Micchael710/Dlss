@@ -1,0 +1,38 @@
+ENVIRONMENT AUDIT: MINECRAFT_HYBRID_X4_INTEGRATION_PROTOTYPE
+Date: 2026-10-06
+Workspace: D:\ProjectDllsss
+Git Start HEAD: d70ac0f607f8562fec9d1b33b4babeb08d1aa057
+X4 Source Baseline: 4b7488cbac1dad1e3b6af0ac06c788c952f5c29e
+
+HARDWARE:
+  GPU: NVIDIA GeForce RTX 3050 Ti Laptop GPU
+  VRAM: 4096 MB (4 GB Dedicated)
+  GPU Driver: 596.49 (PCI Vendor 10de, Device 25a0)
+  Borrowed Vulkan UUID: 01895b66d1ca454d88788dd21fdef638
+  Borrowed Vulkan LUID: 4c29010000000000
+  CPU: AMD Ryzen 5 5600H with Radeon Graphics (6 Cores, 12 Threads)
+  RAM: 32 GB (32768 MB)
+
+OPERATING SYSTEM & PLATFORM:
+  OS: Windows 11 Home 64-bit (10.0, Build 26100)
+  Environment: Interactive Windows Desktop / Session 1
+
+JAVA ENVIRONMENT:
+  Runtime: Eclipse Adoptium / Oracle JDK 25.0.4
+  Java Home: C:\Program Files\Java\jdk-25.0.4
+  Java Binary: C:\Program Files\Java\jdk-25.0.4\bin\javaw.exe
+  Compilation Tools: MSVC 14.51.36231, Windows SDK 10.0.26100.0, CMake 3.31, Ninja 1.12.1
+
+GAME & LOADER:
+  Minecraft Version: Java Edition 1.21.1
+  Mod Loader: NeoForge 21.1.251 (FML 4.0.44)
+  Profile Name: Apparatia Alpha
+  Launcher: TLauncher 2.9378
+
+ACTIVE GRAPHICS & MOD SUBSYSTEMS:
+  Super Resolution Mod: superresolution-sr-x2-handoff-45d318d34be4.jar
+  Wisteria Mod: wisteria-sr-x2-handoff-4d720e9b98f0.jar
+  Render Backend: Vulkan
+  Presentation: Vulkan Swapchain with direct D3D12 shared handles
+  Low Latency: NVIDIA Reflex (BOOST)
+  Active Profile Config: mode = "X4", provider = "wisteria:dlssg_fg"

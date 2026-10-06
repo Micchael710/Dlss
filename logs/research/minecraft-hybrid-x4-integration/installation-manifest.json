@@ -1,0 +1,50 @@
+{
+  "timestamp": "2026-10-06T00:54:00-04:00",
+  "installation_target": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4",
+  "modules": [
+    {
+      "name": "version.dll",
+      "path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4\\component\\version.dll",
+      "sha256": "c3934a09399f022504227c72df0bf8c0de55f9a08880dddde898c5262cefa838",
+      "size_bytes": 30021920,
+      "role": "SM86 translation component loader"
+    },
+    {
+      "name": "nvngx_dlssg.dll",
+      "path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4\\stock-runtime\\nvngx_dlssg.dll",
+      "sha256": "ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82",
+      "size_bytes": 7460976,
+      "role": "Official NVIDIA DLSS Frame Generation stock runtime"
+    },
+    {
+      "name": "wisteria_dlssg_bridge.dll",
+      "path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4\\native\\wisteria_dlssg_bridge-ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1.dll",
+      "sha256": "ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1",
+      "size_bytes": 558592,
+      "role": "Native JNI bridge implementing Hybrid X4 GPU compute pipeline"
+    },
+    {
+      "name": "dlssg_sm86.ini",
+      "path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4\\component\\dlssg_sm86.ini",
+      "role": "SM86 component configuration with MaxGeneratedFrames=1"
+    }
+  ],
+  "mod_package": {
+    "jar_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\mods\\wisteria-sr-x2-handoff-4d720e9b98f0.jar",
+    "embedded_native": "natives/windows-x64/wisteria_dlssg_bridge.dll",
+    "embedded_native_sha256": "ba0a712cf3bc62fb131a58b5dbec8bf4429269525778fe197844daad37728ab1"
+  },
+  "config_updates": [
+    {
+      "file": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\config\\super_resolution\\config.toml",
+      "setting": "mode = \"X4\"",
+      "provider": "wisteria:dlssg_fg"
+    },
+    {
+      "file": "C:\\Users\\micha\\AppData\\Roaming\\.tlauncher\\minecraft_tlauncher_java_config.json",
+      "jvm_index": "2",
+      "requested_count": 3,
+      "run_dir": "C:/Users/micha/AppData/Roaming/.minecraft/versions/APPARA~1/local/dlss-x4"
+    }
+  ]
+}

@@ -1,0 +1,41 @@
+X4 PROVIDER CONTRACT SPECIFICATION
+Date: 2026-10-06
+
+1. IDENTITY & CAPABILITY:
+   Provider ID: wisteria:dlssg_fg
+   Backend ID: superresolution:auto
+   Execution Model: APPLICATION_MANAGED_ASYNC
+   Multiplier: 4
+   Generated Frames Per Real Interval: 3
+   Supported Generated Count Reported: 3
+   Raw Hardware NVIDIA Capability: 1 (RTX 3050 Ti Mobile)
+   Hybrid Framework: Custom D3D12 Compute Shader + NVIDIA DLSS-G
+
+2. TEMPORAL SLOTS & TIMESTAMPS:
+   t = 0.00: Real Frame A
+   t = 0.25: G25 (Custom Interpolation CS, Slot Image 4)
+   t = 0.50: G50 (Official NVIDIA DLSS Frame Generation, Slot Image 5)
+   t = 0.75: G75 (Custom Interpolation CS, Slot Image 6)
+   t = 1.00: Real Frame B (Slot Image 0)
+
+3. PRESENTATION ORDER:
+   Real A -> G25 -> G50 -> G75 -> Real B
+   Preserved monotonically by VulkanSwapchain / FrameGenerationWorker batch iteration.
+
+4. GPU DISPATCH PIPELINE (PER REAL FRAME B):
+   Step 1: MotionConvertCS converts input motion vector (s.images[3]) to currentMotionNDC.
+   Step 2: If reset || !hasHistory:
+           - Set disable flags 0..2 = 1.
+           - Evaluate NVIDIA DLSS-G for G50 with reset=true.
+           - Copy current frames to historyColor, historyDepth, historyMotionNDC.
+           - Mark hasHistory = true.
+   Step 3: If valid history:
+           - Dispatch G25 CS (t = 0.25) -> s.images[4], upload disableZero -> s.disable[0].
+           - Evaluate NVIDIA DLSS-G (t = 0.50) -> s.images[5], writes s.disable[1].
+           - Dispatch G75 CS (t = 0.75) -> s.images[6], upload disableZero -> s.disable[2].
+           - Copy s.images[0] -> historyColor.
+           - Copy s.images[2] -> historyDepth.
+           - Copy currentMotionNDC -> historyMotionNDC.
+   Step 4: Copy s.disable[0..2] to s.disableReadback[0..2].
+   Step 5: JNI completion callback notifyFlags returns flags[0..2] = {0, 0, 0}.
+   Step 6: Vulkan presentation queue presents images 4, 5, 6, and 0 in order.

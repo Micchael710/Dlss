@@ -1,0 +1,26 @@
+{
+  "backup_created_at": "2026-10-06T00:19:30-04:00",
+  "files": [
+    {
+      "original_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\config\\super_resolution\\config.toml",
+      "backup_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4-backup-manifest\\config.toml.backup",
+      "sha256_before": "0A0D7FB6B6793CD713FFF5BABA547C14CDA81A587978E9DB1467F052AA5A002F",
+      "size": 3540,
+      "reason_for_change": "Configure frame generation mode to X4 and set provider"
+    },
+    {
+      "original_path": "C:\\Users\\micha\\AppData\\Roaming\\.tlauncher\\minecraft_tlauncher_java_config.json",
+      "backup_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4-backup-manifest\\minecraft_tlauncher_java_config.json.backup",
+      "sha256_before": "604E3D4308BF16A2FB307B88F3B6BCF6D644C33695158FFEA8604EB5CEACF848",
+      "size": 1275,
+      "reason_for_change": "Configure JVM args for X4 runDir (dlss-x4) and requestedCount=3"
+    },
+    {
+      "original_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\mods\\wisteria-sr-x2-handoff-4d720e9b98f0.jar",
+      "backup_path": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha\\local\\dlss-x4-backup-manifest\\wisteria-sr-x2-handoff-4d720e9b98f0.jar.backup",
+      "sha256_before": "DDE3DF832988042AF9133DD7ED583964EEA96D7F68159C80F22656A4CFAC60CB",
+      "size": 3138588,
+      "reason_for_change": "Incorporate hybrid X4 native bridge into active Wisteria mod jar"
+    }
+  ]
+}

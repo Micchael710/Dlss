@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-10-06T00:54:00-04:00",
+  "experiment": "MINECRAFT_HYBRID_X4_INTEGRATION_PROTOTYPE",
+  "static_verification": {
+    "x2_backup_intact": true,
+    "x4_files_installed": true,
+    "x4_config_selected": true,
+    "dll_hashes_valid": true,
+    "no_missing_dependencies": true,
+    "rollback_ready": true
+  },
+  "runtime_environment": {
+    "apparatia_root": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft\\versions\\Apparatia Alpha",
+    "active_game_dir": "C:\\Users\\micha\\AppData\\Roaming\\.minecraft",
+    "minecraft_version": "1.21.1",
+    "loader": "NEOFORGE",
+    "jvm": "Java 25.0.4",
+    "tlauncher_profile": "Apparatia Alpha",
+    "gpu": "NVIDIA GeForce RTX 3050 Ti Laptop GPU 4GB",
+    "gpu_driver": "596.49"
+  },
+  "integration_status": "READY_FOR_LOCAL_TEST",
+  "instructions_for_user": {
+    "launcher": "TLauncher",
+    "profile_to_select": "Apparatia Alpha",
+    "action": "Click 'Enter the game' (Entrar al juego)",
+    "expected_menu": "Super Resolution settings -> Frame Generation shows X4 enabled",
+    "test_protocol": "Open local world, walk and rotate camera for 15-30 seconds, confirm no crash, exit world."
+  }
+}
