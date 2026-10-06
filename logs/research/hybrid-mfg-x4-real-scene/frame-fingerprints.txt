@@ -1,0 +1,8 @@
+a fingerprint=8702a5e0627c3528 position=439.5 objectPixels=57600 resource=000001FF829BBEB0
+g25 fingerprint=3817724cc47b6456 position=447.368 objectPixels=59458 resource=000001FF8620F050
+g50 fingerprint=00345a6aae91deb6 position=449.979 objectPixels=53458 resource=000001FF8620FC90
+g75 fingerprint=237d9c7400235a50 position=460.618 objectPixels=58866 resource=000001FF82BC1210
+b fingerprint=a906952832b7f8e8 position=467.5 objectPixels=57600 resource=000001FF85A59040
+sentinel0 fingerprint=088b70004ddb5000
+sentinel1 fingerprint=719ab0007bdb5000
+sentinel2 fingerprint=86cdf00051db5000

@@ -1,0 +1,40 @@
+SCENE SPECIFICATION: CONTINUOUS MULTI-LAYER SYNTHETIC SCENE
+Resolution: 1280x720 (Width=1280, Height=720)
+Parameter: Time t in [-3.0, 1.0]
+
+LAYER 1: BACKGROUND
+  Depth: 0.95 (Far)
+  Motion Type: Camera-like panning motion
+  Velocity: dx = +8.0 * t, dy = +4.0 * t
+  Current-to-Previous Motion Vector: (-8.0 px, -4.0 px)
+  NDC Motion Vector: (-16.0 / 1280, +8.0 / 720)
+  Texture: 16px high-contrast checkerboard
+  Colors: RGB(0.08, 0.18, 0.32) and RGB(0.16, 0.28, 0.44)
+
+LAYER 2: MIDGROUND
+  Depth: 0.65 (Mid)
+  Motion Type: Diagonal independent object motion
+  Bounding Box: [420 + 16*t, 420 + 16*t + 360] x [220 + 12*t, 220 + 12*t + 260]
+  Velocity: dx = +16.0 * t, dy = +12.0 * t
+  Current-to-Previous Motion Vector: (-16.0 px, -12.0 px)
+  NDC Motion Vector: (-32.0 / 1280, +24.0 / 720)
+  Texture: 14px diagonal stripes
+  Colors: RGB(0.85, 0.55, 0.15) and RGB(0.48, 0.28, 0.08)
+
+LAYER 3: FOREGROUND
+  Depth: 0.35 (Near)
+  Motion Type: Crossing independent object motion occluding midground & background
+  Bounding Box: [320 + 28*t, 320 + 28*t + 240] x [290 - 8*t, 290 - 8*t + 240]
+  Velocity: dx = +28.0 * t, dy = -8.0 * t
+  Current-to-Previous Motion Vector: (-28.0 px, +8.0 px)
+  NDC Motion Vector: (-56.0 / 1280, -16.0 / 720)
+  Texture: 12px XOR high-contrast pattern
+  Colors: RGB(0.95, 0.20, 0.25) and RGB(0.65, 0.10, 0.50)
+
+CHARACTERISTICS:
+  - 3 distinct depth planes: 0.35 < 0.65 < 0.95
+  - Camera-like panning + independent object trajectories
+  - Simultaneous horizontal and vertical motion
+  - Dynamic occlusion zones (foreground sweeping over midground and background)
+  - Dynamic disocclusion zones (trailing edges uncovering background and midground)
+  - High contrast edges across all layer boundaries

@@ -1,0 +1,50 @@
+QUALITY METRICS CONTRACT & PRE-FIXED THRESHOLDS
+
+METRIC DEFINITIONS:
+  diff(p) = abs(Candidate(p).rgb - GroundTruth(p).rgb)
+  mae(p)  = (diff.r + diff.g + diff.b) / 3.0
+  RGB_MAE = sum(mae(p)) / total_pixels
+
+  bad32(p) = max(diff.r, diff.g, diff.b) * 255.0 > 32.0 ? 1 : 0
+  bad64(p) = max(diff.r, diff.g, diff.b) * 255.0 > 64.0 ? 1 : 0
+  BAD32_FRACTION = sum(bad32(p)) / total_pixels
+  BAD64_FRACTION = sum(bad64(p)) / total_pixels
+
+CHALLENGING REGIONS:
+  A pixel p is challenging if:
+  1. Depth discontinuity in GroundTruth reference:
+     max(|Z_ref(p) - Z_ref(neighbors)|) > 0.05
+  2. Occlusion / Disocclusion:
+     |Z_ref(p) - Z_A(p)| > 0.05 OR |Z_ref(p) - Z_B(p)| > 0.05
+
+PRE-FIXED THRESHOLDS (FIXED PRIOR TO RUN; CANNOT BE MODIFIED):
+  OVERALL_RGB_MAE_LIMIT = 0.08
+  OVERALL_BAD64_FRACTION_LIMIT = 0.10
+  CHALLENGING_RGB_MAE_LIMIT = 0.18
+  CHALLENGING_BAD64_FRACTION_LIMIT = 0.25
+
+CLASSIFICATION RULES:
+  STRUCTURAL_VALIDATION:
+    PASS if timestamps monotonic, fingerprints distinct from sentinels, distinct among frames, and 0 D3D12 errors.
+  
+  CUSTOM_INTERPOLATOR_QUALITY:
+    PASS: G25 & G75 satisfy both overall and challenging limits.
+    FAIL_OCCLUSION_REGIONS: G25 & G75 satisfy overall limits but fail challenging limits.
+    FAIL_GLOBAL_REPROJECTION: G25 or G75 fails overall limits.
+
+  NVIDIA_G50_QUALITY:
+    PASS if G50 satisfies overall and challenging limits, else FAIL.
+
+  QUALITY_VALIDATION:
+    PASS if both CUSTOM_INTERPOLATOR_QUALITY == PASS and NVIDIA_G50_QUALITY == PASS, else FAIL.
+
+  PRODUCTION_QUALITY_INTERPOLATION:
+    NO (By definition during baseline characterization)
+
+DECISION LOGIC FOR NEXT EXPERIMENT:
+  - If custom interpolator fails primarily in occlusion regions:
+    NEXT_EXPERIMENT = HYBRID_X4_OCCLUSION_RECONSTRUCTION
+  - If custom interpolator fails globally:
+    NEXT_EXPERIMENT = HYBRID_X4_MOTION_REPROJECTION_IMPROVEMENT
+  - If all pass:
+    NEXT_EXPERIMENT = HYBRID_X4_VISUAL_CAPTURE

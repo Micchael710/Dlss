@@ -1,0 +1,21 @@
+EXPERIMENT=HYBRID_X4_REAL_SCENE_QUALITY
+FRAME_PIPELINE:
+  Frame A (t=0.00, Scene render)
+  -> G25  (t=0.25, HybridInterpolationCS baseline algorithm)
+  -> G50  (t=0.50, NVIDIA DLSS FG hardware/driver evaluation)
+  -> G75  (t=0.75, HybridInterpolationCS baseline algorithm)
+  -> Frame B (t=1.00, Scene render)
+
+GROUND TRUTH REFERENCES:
+  REF25 = Scene(0.25)
+  REF50 = Scene(0.50)
+  REF75 = Scene(0.75)
+  GROUND_TRUTH_USED_AS_GENERATION_INPUT = NO (Validation only)
+
+VALIDATION POLICIES:
+  BUILD_COUNT_THIS_ITERATION = 1 (Single build, no retries)
+  RUN_COUNT_THIS_ITERATION = 1   (Single run, no retries)
+  D3D12_DEBUG_LAYER = ENABLED_BEFORE_DEVICE
+  D3D12_VALIDATION_ERRORS = 0
+  CPU_TRANSPORT_COPY_COUNT = 0   (No full-frame readbacks)
+  BOUNDED_READBACK_BYTES = 272   (16 bytes disable status + 256 bytes GPU metrics)

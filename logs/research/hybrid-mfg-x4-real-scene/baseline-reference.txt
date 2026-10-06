@@ -1,0 +1,11 @@
+BASELINE_EXPERIMENT=experiments/hybrid-mfg-x4
+BASELINE_COMMIT=ff6b793afbd7f9b4096cc1bc2d54d2593336c9a0
+BASELINE_RESULT=PASS
+BASELINE_D3D12_VALIDATION_ERRORS=0
+BASELINE_HYBRID_X4_FRAMESET_GENERATION=PASS
+
+CONSTRAINTS:
+1. experiments/hybrid-mfg-x4 is LOCKED and unmodified.
+2. HybridInterpolationCS algorithm is 100% functionally identical to baseline.
+3. Ground truth references are NEVER provided as inputs to generation.
+4. Evaluation is purely diagnostic characterization of the current interpolator.
