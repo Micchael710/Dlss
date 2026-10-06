@@ -79,10 +79,31 @@ float2 uv(float2 pixel) { return (pixel + 0.5f) / float2(Width, Height); }
 [numthreads(8,8,1)]
 void HybridInterpolationCS(uint3 id : SV_DispatchThreadID) {
     if (id.x >= Width || id.y >= Height) return;
-    float2 pixel = id.xy;
-    float za = DepthA.Load(int3(id.xy, 0));
-    float zb = DepthB.Load(int3(id.xy, 0));
-    float2 backwardClip = za < zb ? MotionA.Load(int3(id.xy, 0)) : MotionB.Load(int3(id.xy, 0));
+    float2 pixel = float2(id.xy);
+
+    float2 displayUV = (pixel + 0.5f) / float2(Width, Height);
+
+    uint depthWidth;
+    uint depthHeight;
+    uint motionWidth;
+    uint motionHeight;
+
+    DepthA.GetDimensions(depthWidth, depthHeight);
+    MotionA.GetDimensions(motionWidth, motionHeight);
+
+    uint2 depthCoord = min(
+        uint2(displayUV * float2(depthWidth, depthHeight)),
+        uint2(depthWidth - 1u, depthHeight - 1u)
+    );
+
+    uint2 motionCoord = min(
+        uint2(displayUV * float2(motionWidth, motionHeight)),
+        uint2(motionWidth - 1u, motionHeight - 1u)
+    );
+
+    float za = DepthA.Load(int3(depthCoord, 0));
+    float zb = DepthB.Load(int3(depthCoord, 0));
+    float2 backwardClip = za < zb ? MotionA.Load(int3(motionCoord, 0)) : MotionB.Load(int3(motionCoord, 0));
     float2 backwardPixels = backwardClip * float2(0.5f, -0.5f) * float2(Width, Height);
     float2 toA = pixel + Time * backwardPixels;
     float2 toB = pixel - (1.0f - Time) * backwardPixels;
