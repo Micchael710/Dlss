@@ -1,0 +1,30 @@
+CONTRACT_CONFIRMATION_SPECIFICATION
+
+EXPERIMENT:
+HYBRID_X4_CORRECTED_MV_CONFIRMATION_RETRY
+
+CORRECTED DUAL-CONTRACT DESIGN:
+1. CUSTOM INTERPOLATOR (G25 / G75):
+   - MV Buffer Unit: NDC_CLIP_SPACE [-1, 1]
+   - Coordinates: mvecNDC = (2 * dx / Width, -2 * dy / Height)
+   - Direction: current_to_previous
+   - Shader Algorithm: Restored 100% byte/functionally identical to hybrid-mfg-x4-depth-contract.
+   - Resource: CustomMotionA, CustomMotionB (separate DXGI_FORMAT_R32G32_FLOAT textures).
+
+2. NVIDIA DLSS FG (G50):
+   - MV Buffer Unit: SCREEN_SPACE_PIXELS
+   - Coordinates: motionPixels = (dx, dy)
+   - Direction: current_to_previous
+   - Scale: mvecScaleX = 1.0, mvecScaleY = 1.0
+   - cameraMotionIncluded: true
+   - Resource: NvidiaMotionA, NvidiaMotionB (separate DXGI_FORMAT_R32G32_FLOAT textures).
+
+PHYSICAL MOTION DISPLACEMENTS:
+- Background: (-8, -4) px
+- Midground:  (-16, -12) px
+- Foreground: (-28, +8) px
+
+SEPARATION:
+CUSTOM_NVIDIA_MV_RESOURCES_SEPARATE=YES
+Neither algorithm is forced to consume an incompatible contract.
+Both receive their exact validated native input representations.

@@ -1,0 +1,11 @@
+{
+  "thresholds": {
+    "overall_rgb_mae_limit": 0.080000,
+    "overall_bad64_fraction_limit": 0.100000,
+    "challenging_rgb_mae_limit": 0.180000,
+    "challenging_bad64_fraction_limit": 0.250000
+  },
+  "g25": {"rgb_mae": 0.001359, "bad64_fraction": 0.003426, "challenging_bad64_fraction": 0.048067},
+  "g50": {"rgb_mae": 0.004728, "bad64_fraction": 0.007909, "challenging_rgb_mae": 0.011134, "challenging_bad64_fraction": 0.013100, "position_error": 0.018855},
+  "g75": {"rgb_mae": 0.001030, "bad64_fraction": 0.001904, "challenging_bad64_fraction": 0.015881}
+}

@@ -1,0 +1,14 @@
+{
+  "foreground": {
+    "best_shift_x": 0,
+    "best_shift_y": 0,
+    "mae_before": 0.000187,
+    "mae_after": 0.000187
+  },
+  "midground": {
+    "best_shift_x": 0,
+    "best_shift_y": 0,
+    "mae_before": 0.065229,
+    "mae_after": 0.065229
+  }
+}
