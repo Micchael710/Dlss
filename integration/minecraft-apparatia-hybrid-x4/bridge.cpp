@@ -472,7 +472,7 @@ struct Session {
         d.Format = fmt; d.ViewDimension = D3D12_SRV_DIMENSION_TEXTURE2D;
         d.Shader4ComponentMapping = D3D12_DEFAULT_SHADER_4_COMPONENT_MAPPING;
         d.Texture2D.MipLevels = 1;
-        dx.device->CreateShaderResourceView(res, res ? &d : nullptr, dest);
+        dx.device->CreateShaderResourceView(res, &d, dest);
     }
     void createUAV(ID3D12Resource* res, DXGI_FORMAT fmt, D3D12_CPU_DESCRIPTOR_HANDLE dest) {
         D3D12_UNORDERED_ACCESS_VIEW_DESC d{};
@@ -708,6 +708,15 @@ struct Session {
             createUAV(s.images[6].dx.resource.Get(), DXGI_FORMAT_R8G8B8A8_UNORM, cpu(s, 8)); // G75
             createUAV(s.currentMotionNDC.Get(), DXGI_FORMAT_R32G32_FLOAT, cpu(s, 9));         // MotionConvert out
             createSRV(s.images[3].dx.resource.Get(), DXGI_FORMAT_R32G32_FLOAT, cpu(s, 10)); // MotionConvert in
+
+            // Descriptor population gate: verify device alive immediately after populating descriptors
+            auto reasonAfterDescriptors = dx.device ? dx.device->GetDeviceRemovedReason() : E_FAIL;
+            evidence.str("device_reason_after_descriptor_population", hrHex(reasonAfterDescriptors));
+            if (FAILED(reasonAfterDescriptors)) {
+                evidence.str("fail_stage", "DESCRIPTOR_POPULATION");
+                recordDred(dx.device.Get(), "DESCRIPTOR_POPULATION_FAIL");
+                throw std::runtime_error("Device removed after descriptor population " + hrHex(reasonAfterDescriptors));
+            }
 
             auto fillOpts = [&](NVSDK_NGX_DLSSG_Opt_Eval_Params& opts, bool evalReset) {
                 opts.multiFrameCount = 1;
