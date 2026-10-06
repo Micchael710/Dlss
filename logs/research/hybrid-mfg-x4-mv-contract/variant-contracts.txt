@@ -1,0 +1,95 @@
+VARIANT_CONTRACTS_SPECIFICATION
+
+EXPERIMENT:
+HYBRID_X4_NVIDIA_MOTION_VECTOR_CONTRACT_AUDIT
+
+RESOLUTION: 1280x720
+CAMERA NEAR: 0.1, FAR: 100.0
+DEPTH VALUES (Projected Device Depth):
+- Foreground: 80.0 / 99.9 (~0.800801)
+- Midground:  90.0 / 99.9 (~0.900901)
+- Background: 98.0 / 99.9 (~0.980981)
+
+PHYSICAL MOTION DISPLACEMENTS (T in [0, 1]):
+- Foreground: pos = (320 + 28*T, 290 - 8*T)  -> delta = (+28 px, -8 px)
+- Midground:  pos = (420 + 16*T, 220 + 12*T) -> delta = (+16 px, +12 px)
+- Background: cam = (8*T, 4*T)               -> delta = (+8 px, +4 px)
+
+==================================================
+VARIANTE B0 — BASELINE REPRODUCTION
+==================================================
+NAME: B0_CURRENT_BASELINE
+SINGLE_VARIABLE_CHANGED: NONE (Baseline Control)
+DOCUMENTARY_BASIS: Retains exact implementation of hybrid-mfg-x4-g50-visual.
+MV_BUFFER_UNIT: NDC_CLIP_SPACE
+MVEC_SCALE_X: 1.0
+MVEC_SCALE_Y: 1.0
+TEMPORAL_DIRECTION: current_to_previous
+CAMERA_MOTION_INCLUDED: true
+MOTION_VECTORS_DILATED: false
+MATHEMATICAL BUFFER VALUES:
+- Foreground raw: (-2 * 28 / 1280, -2 * 8 / 720) = (-0.043750, -0.022222)
+- Midground raw:  (-2 * 16 / 1280, 2 * 12 / 720)  = (-0.025000, +0.033333)
+- Background raw: (-2 * 8 / 1280, 2 * 4 / 720)   = (-0.012500, +0.011111)
+EFFECTIVE MOTION VECTOR ACCORDING TO NVIDIA (buffer * mvecScale):
+- Foreground: (-0.043750, -0.022222) pixels (~640x smaller than physical motion)
+
+==================================================
+VARIANTE V1 — OFFICIAL VALUE SPACE & DECLARED SCALE PAIR
+==================================================
+NAME: V1_OFFICIAL_PIXEL_VALUE_SPACE
+SINGLE_VARIABLE_CHANGED: MV_VALUE_SPACE_AND_DECLARED_SCALE_PAIR
+DOCUMENTARY_BASIS: NVIDIA DLSS-FG Programming Guide v310.7.0, Sections 5 & 10 (PDF p. 20, 22, 97, 104-105).
+"Motion is expressed in units of screen-space pixels at the resolution of the motion vector resource... Default scale: 1.0".
+MV_BUFFER_UNIT: SCREEN_SPACE_PIXELS
+MVEC_SCALE_X: 1.0
+MVEC_SCALE_Y: 1.0
+TEMPORAL_DIRECTION: current_to_previous
+CAMERA_MOTION_INCLUDED: true
+MOTION_VECTORS_DILATED: false
+MATHEMATICAL BUFFER VALUES:
+- Foreground raw: (-28.0, +8.0)
+- Midground raw:  (-16.0, -12.0)
+- Background raw: (-8.0, -4.0)
+EFFECTIVE MOTION VECTOR ACCORDING TO NVIDIA (buffer * mvecScale):
+- Foreground: (-28.0, +8.0) pixels (Exact 1:1 physical screen-space motion)
+- Midground:  (-16.0, -12.0) pixels (Exact 1:1 physical screen-space motion)
+- Background: (-8.0, -4.0) pixels (Exact 1:1 physical screen-space motion)
+
+==================================================
+VARIANTE V2 — TEMPORAL DIRECTION
+==================================================
+NAME: V2_TEMPORAL_DIRECTION_INVERTED
+SINGLE_VARIABLE_CHANGED: TEMPORAL_DIRECTION
+DOCUMENTARY_BASIS: Inverts temporal convention from current_to_previous to previous_to_current on baseline B0.
+MV_BUFFER_UNIT: NDC_CLIP_SPACE
+MVEC_SCALE_X: 1.0
+MVEC_SCALE_Y: 1.0
+TEMPORAL_DIRECTION: previous_to_current
+CAMERA_MOTION_INCLUDED: true
+MOTION_VECTORS_DILATED: false
+MATHEMATICAL BUFFER VALUES:
+- Foreground raw: (+0.043750, +0.022222)
+- Midground raw:  (+0.025000, -0.033333)
+- Background raw: (+0.012500, -0.011111)
+
+==================================================
+VARIANTE V3 — CAMERA MOTION INCLUDED
+==================================================
+NAME: V3_CAMERA_MOTION_EXCLUDED
+SINGLE_VARIABLE_CHANGED: CAMERA_MOTION_INCLUDED
+DOCUMENTARY_BASIS: Tests cameraMotionIncluded=false on baseline B0.
+MV_BUFFER_UNIT: NDC_CLIP_SPACE
+MVEC_SCALE_X: 1.0
+MVEC_SCALE_Y: 1.0
+TEMPORAL_DIRECTION: current_to_previous
+CAMERA_MOTION_INCLUDED: false
+MOTION_VECTORS_DILATED: false
+MATHEMATICAL BUFFER VALUES: Same as B0.
+
+==================================================
+VARIANTE V4 — MOTION VECTORS DILATED
+==================================================
+NAME: V4_MOTION_VECTORS_DILATED
+STATUS: NOT_APPLICABLE
+REASON: Our procedural rasterization does not perform 3x3 nearest-depth dilation; setting motionVectorsDilated=true would falsely declare pre-dilated inputs.

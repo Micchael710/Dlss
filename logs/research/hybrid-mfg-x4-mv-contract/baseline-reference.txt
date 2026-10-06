@@ -1,0 +1,50 @@
+BASELINE_REFERENCE
+
+EXPERIMENT:
+HYBRID_X4_NVIDIA_MOTION_VECTOR_CONTRACT_AUDIT
+
+WORKSPACE:
+D:/ProjectDllsss
+
+HEAD:
+dfc5d55c2de7f6dd370856605946be059ef4ffc6
+
+PREVIOUS EXPERIMENT DEMONSTRATED RESULTS (HYBRID_X4_NVIDIA_G50_VISUAL_DIAGNOSTIC):
+- D3D12_VALIDATION_ERRORS = 0
+- STRUCTURAL_VALIDATION = PASS
+- CUSTOM_INTERPOLATOR_QUALITY = PASS
+  * G25_RGB_MAE = 0.001359
+  * G25_BAD64_FRACTION = 0.003426
+  * G25_CHALLENGING_BAD64_FRACTION = 0.048067
+  * G25_POSITION_ERROR_PIXELS = 0.867739
+  * G75_RGB_MAE = 0.001030
+  * G75_BAD64_FRACTION = 0.001904
+  * G75_CHALLENGING_BAD64_FRACTION = 0.015881
+  * G75_POSITION_ERROR_PIXELS = 0.118337
+- NVIDIA DLSS FG G50:
+  * G50_RGB_MAE = 0.029109
+  * G50_BAD64_FRACTION = 0.095190
+  * G50_CHALLENGING_RGB_MAE = 0.115283
+  * G50_CHALLENGING_BAD64_FRACTION = 0.368686
+  * EXPECTED_G50_POSITION = 453.500000
+  * ACTUAL_G50_POSITION = 449.978600
+  * G50_POSITION_ERROR_PIXELS = 3.521400
+  * BAD64_PIXEL_COUNT = 87727
+  * CHALLENGING_PIXEL_COUNT = 28626
+  * CHALLENGING_BAD64_PIXEL_COUNT = 10554
+  * REGION BREAKDOWN:
+    - BAD64_OCCLUSION_DISOCCLUSION = 10548 (12.02%)
+    - BAD64_DEPTH_EDGE = 6 (0.01%)
+    - BAD64_FOREGROUND = 22317 (25.44%)
+    - BAD64_MIDGROUND = 54856 (62.53%)
+    - BAD64_BACKGROUND = 0 (0.00%)
+  * ERROR CLASSIFICATION: TEMPORAL_SPATIAL_SHIFT_DOMINANT (~88% of errors inside moving object bodies)
+
+OBJECTIVE OF CURRENT AUDIT:
+Determine whether the 3.5214 px shift of G50 is caused by a discrepancy between our Motion Vector buffer/scale and the contract expected by NVIDIA DLSS FG.
+Investigate single-variable isolated variants:
+- B0: Baseline (NDC clip space buffer, mvecScale=(1,1))
+- V1: Official Value Space & Declared Scale Pair (Screen-space pixel units in buffer, mvecScale=(1,1))
+- V2: Temporal Direction (Inverted sign: previous_to_current, mvecScale=(1,1))
+- V3: Camera Motion Included (cameraMotionIncluded=false, mvecScale=(1,1))
+- V4: Motion Vectors Dilated (NOT_APPLICABLE: procedural buffer is un-dilated)

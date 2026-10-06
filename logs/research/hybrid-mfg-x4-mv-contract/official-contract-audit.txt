@@ -1,0 +1,48 @@
+OFFICIAL_CONTRACT_AUDIT
+
+SOURCE=NVIDIA DLSS Frame Generation SDK & Programming Guide (Version 310.7.0) + Official SDK Headers (nvsdk_ngx_defs_dlssg.h, nvsdk_ngx_params_dlssg.h, nvsdk_ngx_helpers_dlssg_d3d.h)
+SOURCE_COMMIT_OR_VERSION=v310.7.0 / DLSS SDK 3.7.0+ (Official NVIDIA SDK)
+
+MOTION_VECTOR_VALUE_SPACE:
+Per Programming Guide Section 5 (PDF p. 19-20) and Section 10 (PDF p. 97-98, lines 2942-2974):
+"Motion is expressed in units of screen-space pixels at the resolution of the motion vector resource.
+Screen space pixels define (0, 0) as the upper-left corner of the screen, with positive X extending to the right of the screen, and positive Y extending down.
+For example, for a 1080p motion vector resource, if an object moves from the top-right corner of the screen to the center, the motion vector at the center of the screen would have a value of (960, -540)."
+Format: two-channel floating point (e.g., DXGI_FORMAT_R32G32_FLOAT / RG32_FLOAT), R=X, G=Y.
+
+MVEC_SCALE_SEMANTICS:
+Per Programming Guide Section 10 (PDF p. 104-105, lines 3168-3188) and Section 5 (PDF p. 22, lines 616-618):
+"Factor by which the X/Y component of the input motion vectors will be multiplied. Motion vectors are expected to be provided in screen-space pixels at the resolution of the motion vector resource. For motion vectors which use a different scale or direction, you can use this parameter to rescale and/or invert them. Common values are ±1 (if no scale needs to be applied, i.e. values already in pixel units), or ± the width/height of the motion vector resource (if motion vectors are in normalized/UV space)."
+Header note in nvsdk_ngx_params_dlssg.h line 64: "Specifies scale factors used to normalize motion vectors (so the values are in [-1,1] range)" reflects legacy/internal normalization wording, but operational contract confirmed by programming guide is a multiplicative rescale into pixel space.
+
+TEMPORAL_DIRECTION:
+Per Programming Guide Section 5 (PDF p. 20, lines 571-574) and Section 10 (PDF p. 97, lines 2949-2950):
+"Motion vectors map a pixel from the current frame to its position in the previous frame. In other words, when the motion vector for a particular pixel is added to the pixel's position, the result is the location the pixel occupied in the previous frame."
+Direction: current_to_previous (Previous_Position - Current_Position).
+
+CAMERA_MOTION_INCLUDED_SEMANTICS:
+Per nvsdk_ngx_params_dlssg.h line 90-91 and nvsdk_ngx_defs_dlssg.h line 188-189:
+"Specifies if camera motion is included in the MVec buffer."
+Boolean flag: true indicates the motion vector buffer contains total motion (camera motion + object motion). False indicates it contains dynamic object motion only, and camera motion will be reconstructed from camera matrices.
+
+MOTION_VECTORS_DILATED_SEMANTICS:
+Per nvsdk_ngx_params_dlssg.h line 103-104 and nvsdk_ngx_defs_dlssg.h line 213:
+"Specifies if motion vectors are already dilated or not."
+Boolean flag: true indicates that the engine has already dilated motion vectors (e.g. 3x3 nearest-depth dilation for TAA/edge coverage). False indicates DLSS FG will perform internal dilation.
+Status for procedural synthetic fixture: NOT_APPLICABLE (fixture assigns raw per-pixel motion without 3x3 dilation).
+
+JITTER_SEMANTICS:
+Per nvsdk_ngx_params_dlssg.h line 62-63 and nvsdk_ngx_defs_dlssg.h line 138-140:
+"Specifies clip space jitter offset: jitterOffset[2] / DLSSG.JitterOffsetX/Y".
+For non-jittered rendering (such as our deterministic ground truth fixture), jitterOffset=(0, 0).
+
+TEMPORAL_MATRIX_SEMANTICS:
+Per nvsdk_ngx_params_dlssg.h line 50-60 and nvsdk_ngx_defs_dlssg.h line 125-136:
+"clipToPrevClip: Specifies matrix transformation from the current clip to the previous clip space."
+"prevClipToClip: Specifies matrix transformation from the previous clip to the current clip space."
+"IMPORTANT: All matrices should NOT contain temporal AA jitter offset."
+Row-major order float[4][4]. For static projection (no camera rotation/focal changes), identity matrix.
+
+UNRESOLVED_POINTS:
+None from documentation. The contract between pixel units vs normalized units with mvecScale is fully specified: DLSS FG expects pixel units (buffer in pixels with scale=1.0, or buffer in normalized units with scale=resolution).
+Our baseline B0 provided NDC clip-space units in buffer (magnitude ~0.04) with scale=1.0, representing a severe unit discrepancy (~640x too small).
