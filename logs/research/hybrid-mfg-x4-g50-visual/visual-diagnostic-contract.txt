@@ -1,0 +1,43 @@
+VISUAL_DIAGNOSTIC_CONTRACT
+
+EXPERIMENT:
+HYBRID_X4_NVIDIA_G50_VISUAL_DIAGNOSTIC
+
+CONFIGURATION & CONTRACT PARAMETERS:
+- RESOLUTION: 1280x720 (RGBA8, 32bpp)
+- FRAMES GENERATED:
+  * A (t=0.0)
+  * B (t=1.0)
+  * G25 (t=0.25, custom hybrid)
+  * G50 (t=0.50, NVIDIA DLSS FG)
+  * G75 (t=0.75, custom hybrid)
+  * REF25 (t=0.25, ground truth reference)
+  * REF50 (t=0.50, ground truth reference)
+  * REF75 (t=0.75, ground truth reference)
+- READBACK CONTRACT:
+  * PRODUCTION_CPU_TRANSPORT_COPY_COUNT = 0
+  * VISUAL_FULL_FRAME_READBACK = YES
+  * DIAGNOSTIC_CPU_READBACK_COUNT = 11 (8 color textures + 3 depth textures)
+- DIFFERENCE VISUALIZATION:
+  * DIFF_VISUALIZATION_GAIN = 4.0
+  * display = saturate(abs(candidate - reference) * 4.0)
+- HEATMAP:
+  * Intensity derived from: max(abs(Rdiff), abs(Gdiff), abs(Bdiff))
+  * HEATMAP_METHOD = STANDARD_SPECTRAL_MAX_RGB_DIFF
+- BAD64 MASK CRITERION:
+  * White pixel if max(abs(rgbDiff)) * 255.0 > 64.0, else black
+- CHALLENGING MASK CRITERION:
+  * Identical to QualityMetricsCS: isDepthEdge || isOcclOrDisoccl
+  * isDepthEdge: max neighboring |refZ - zNeighbor| > 0.05
+  * isOcclOrDisoccl: |refZ - zA| > 0.05 || |refZ - zB| > 0.05
+- REGION LABELING PRIORITY:
+  * Priority 1: OCCLUSION_DISOCCLUSION (isOcclOrDisoccl)
+  * Priority 2: DEPTH_EDGE (isDepthEdge && !isOcclOrDisoccl)
+  * Priority 3: FOREGROUND (refZ < 0.85 && !challenging)
+  * Priority 4: MIDGROUND (refZ >= 0.85 && refZ < 0.95 && !challenging)
+  * Priority 5: BACKGROUND (refZ >= 0.95 && !challenging)
+  * BAD64_OCCLUSION_DISOCCLUSION + BAD64_DEPTH_EDGE + BAD64_FOREGROUND + BAD64_MIDGROUND + BAD64_BACKGROUND == MASK_BAD64_PIXEL_COUNT
+- CENTROID DIAGNOSTIC:
+  * Expected foreground centroid at t=0.5: position_a + 0.5 * (position_b - position_a)
+  * Actual measured centroid: position_g50
+  * Annotated in G50_CENTROID_DIAGNOSTIC.png with vertical lines

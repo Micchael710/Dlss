@@ -1,0 +1,24 @@
+CAPTURE_MANIFEST
+TOTAL_CAPTURES=19
+
+FILENAME                          WIDTH       HEIGHT      SHA256
+------------------------------------------------------------------------------------------------------------------------
+A.png                             1280        720         5d44c688011858cdc144304a666464f94bcfcb71f7431e95ceaf757b8e68d9f8
+B.png                             1280        720         d50f02f8fea844f01f6c9dd81ec1c34c1c3d14f1fc80b03a358e42422b8a5f93
+G25.png                           1280        720         5ec64e5de219564541ede82e5b1963d74c88458e82871c739db09754910bb445
+REF25.png                         1280        720         7e01a9ed135b87a85eb025275fc9b14905117521b5df5bc3b45e80ed4d516041
+G25_vs_REF25_DIFF.png             1280        720         5119c391ff2904642cb05d7f74e6f8d250e0d5f4f3f15040740f2a7bed1fc0de
+G25_BAD64_MASK.png                1280        720         56224b1f7da87b111c89fdaf74de1a7d48d14031b71a140e68c14413c9eb4ed7
+G50.png                           1280        720         367107112ba5a000c4cf05def02e7e568b615945f146d4b02a50eca154787594
+REF50.png                         1280        720         4506ea98b3089225206254a326b512ca6efaff2c55ef13fc2c7a33552a979b4a
+G50_vs_REF50_DIFF.png             1280        720         cb68518c4ebefd3e4b3c87a0fbab215c4243654ad522e0e8fd19ac1aafb425fb
+G50_vs_REF50_HEATMAP.png          1280        720         1e3b44993c9c580ba4db570f7064d74cc231e08a5e618101a2c1d079af31de3d
+G50_BAD64_MASK.png                1280        720         b28b9f42bf00ce27583e39840e84de1c6619660835b61116dccb29bf574ed898
+CHALLENGING_MASK.png              1280        720         1ca91af302b0410a7114da1cf866205ceb27485c0dc7d1072f1678c5ab098fe5
+G50_CHALLENGING_BAD64_MASK.png    1280        720         f209c7fcc104eab70327fe71f79ae054fcc27ed64752738a3ef4e753db224a2d
+G50_ERROR_REGIONS.png             1280        720         4e64fd0a4fa3f5a429e9dbc1d5bf8ddffc8f1c3736416499b531c0940d2d73a1
+G50_CENTROID_DIAGNOSTIC.png       1280        720         c72a82d67f0beaf051b2c7e7f96c35fe72f5aba21fb3c1e9f11e545e277b97a8
+G75.png                           1280        720         0184273d6ac6a405f83ebdb5d43e2551bda6d0c9d83bd872e8912db652438bb2
+REF75.png                         1280        720         933957feaed866e20bd49835a5a7314cec5eaee92a86d4d8aa2bf84894788526
+G75_vs_REF75_DIFF.png             1280        720         c1d64e8cdcaf3596deff247274d675d6981724cf96e0951645d3d32d54d47568
+G75_BAD64_MASK.png                1280        720         7d60c04e1a45dcd909c040f306fa853c2f91230915893f105a54867d50efd2d3

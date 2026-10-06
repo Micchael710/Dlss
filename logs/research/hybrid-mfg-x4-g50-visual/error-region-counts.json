@@ -1,0 +1,22 @@
+{
+  "mask_bad64_pixel_count": 87727,
+  "gpu_metric_bad64_count": 87727,
+  "counts_match_exactly": true,
+  "challenging_pixel_count": 28626,
+  "challenging_bad64_pixel_count": 10554,
+  "regions": {
+    "bad64_occlusion_disocclusion": 10548,
+    "bad64_depth_edge": 6,
+    "bad64_foreground": 22317,
+    "bad64_midground": 54856,
+    "bad64_background": 0
+  },
+  "fractions_of_bad64": {
+    "occlusion_disocclusion": 0.120237,
+    "depth_edge": 6.8394e-05,
+    "foreground": 0.254391,
+    "midground": 0.625303,
+    "background": 0
+  },
+  "priority_order": ["OCCLUSION_DISOCCLUSION", "DEPTH_EDGE", "FOREGROUND", "MIDGROUND", "BACKGROUND"]
+}

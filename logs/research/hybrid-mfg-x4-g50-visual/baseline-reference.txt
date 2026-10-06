@@ -1,0 +1,43 @@
+EXPERIMENT_BASELINE_REFERENCE
+
+EXPERIMENT:
+HYBRID_X4_NVIDIA_G50_VISUAL_DIAGNOSTIC
+
+BASELINES PRESERVED UNTOUCHED:
+- experiments/hybrid-mfg-x4/
+- experiments/hybrid-mfg-x4-real-scene/
+- experiments/hybrid-mfg-x4-depth-contract/
+
+STARTING REPOSITORY HEAD:
+695ec9904a29a7045be885dd12f1cdc1cd786bff
+
+PRIOR ESTABLISHED RESULTS (HYBRID_X4_REAL_SCENE_DEPTH_CONTRACT_FIX):
+- Pipeline: REAL A -> G25 CUSTOM -> G50 NVIDIA DLSS FG -> G75 CUSTOM -> REAL B
+- D3D12_VALIDATION_ERRORS = 0
+- STRUCTURAL_VALIDATION = PASS
+- CUSTOM_INTERPOLATOR_QUALITY = PASS
+  * G25_RGB_MAE = 0.001359
+  * G75_RGB_MAE = 0.001030
+  * G25_CHALLENGING_RGB_MAE = 0.027206
+  * G75_CHALLENGING_RGB_MAE = 0.020225
+  * G25_CHALLENGING_BAD64_FRACTION = 0.048067
+  * G75_CHALLENGING_BAD64_FRACTION = 0.000000
+- NVIDIA DLSS FG G50:
+  * G50_RGB_MAE = 0.029109 (Limit <= 0.08: PASS)
+  * G50_BAD64_FRACTION = 0.095190 (Limit <= 0.10: PASS)
+  * G50_CHALLENGING_RGB_MAE = 0.115283 (Limit <= 0.18: PASS)
+  * G50_CHALLENGING_BAD64_FRACTION = 0.368686 (Limit <= 0.25: FAIL)
+  * NVIDIA_G50_QUALITY = FAIL_CHALLENGING_REGIONS
+- DEPTH HYPOTHESIS RESULT:
+  * Projected device depth contract (0.8008, 0.9009, 0.9810) produced identical results
+  * Delta = 0.000000 across all metrics
+  * DEPTH_ENCODING_CAUSE = NO_EVIDENCE
+
+OBJECTIVE OF CURRENT EXPERIMENT:
+Locate visually and quantitatively where the G50 error concentrates across the synthetic test scene.
+Distinguish among:
+1. Occlusion / disocclusion
+2. Depth edge
+3. Moving object interior (foreground / midground)
+4. High frequency pattern
+5. Temporal / spatial shift

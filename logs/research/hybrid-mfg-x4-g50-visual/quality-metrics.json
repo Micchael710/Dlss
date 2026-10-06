@@ -1,0 +1,41 @@
+{
+  "thresholds": {
+    "overall_rgb_mae_limit": 0.080000,
+    "overall_bad64_fraction_limit": 0.100000,
+    "challenging_rgb_mae_limit": 0.180000,
+    "challenging_bad64_fraction_limit": 0.250000
+  },
+  "g25": {
+    "rgb_mae": 0.001359,
+    "bad32_count": 3157,
+    "bad64_count": 3157,
+    "bad32_fraction": 0.003426,
+    "bad64_fraction": 0.003426,
+    "challenging_pixels": 28585,
+    "challenging_rgb_mae": 0.027206,
+    "challenging_bad32_fraction": 0.048067,
+    "challenging_bad64_fraction": 0.048067
+  },
+  "g50": {
+    "rgb_mae": 0.029109,
+    "bad32_count": 114691,
+    "bad64_count": 87727,
+    "bad32_fraction": 0.124448,
+    "bad64_fraction": 0.095190,
+    "challenging_pixels": 28626,
+    "challenging_rgb_mae": 0.115283,
+    "challenging_bad32_fraction": 0.611752,
+    "challenging_bad64_fraction": 0.368686
+  },
+  "g75": {
+    "rgb_mae": 0.001030,
+    "bad32_count": 1755,
+    "bad64_count": 1755,
+    "bad32_fraction": 0.001904,
+    "bad64_fraction": 0.001904,
+    "challenging_pixels": 28587,
+    "challenging_rgb_mae": 0.020225,
+    "challenging_bad32_fraction": 0.015881,
+    "challenging_bad64_fraction": 0.015881
+  }
+}
