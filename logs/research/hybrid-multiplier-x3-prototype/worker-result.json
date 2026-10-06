@@ -1,0 +1,11 @@
+{
+  "experiment": "HYBRID_MULTIPLIER_X3_PROTOTYPE",
+  "build_count_this_iteration": 1,
+  "run_count_this_iteration": 0,
+  "fail_stage": "BUILD",
+  "cl_exit_code": 2,
+  "build_error": "D:\\ProjectDllsss\\experiments\\hybrid-multiplier-x3-prototype\\main.cpp(166): error C2440: '=': cannot convert from 'D3D12_SRV_DIMENSION' to 'D3D12_UAV_DIMENSION'",
+  "structural_validation": "NOT_RUN",
+  "quality_validation": "NOT_RUN",
+  "multiplier_x3_prototype": "FAIL"
+}

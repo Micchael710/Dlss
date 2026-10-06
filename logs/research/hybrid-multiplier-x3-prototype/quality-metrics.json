@@ -1,0 +1,13 @@
+{
+  "thresholds": {
+    "overall_rgb_mae_limit": 0.08,
+    "overall_bad64_fraction_limit": 0.10,
+    "challenging_rgb_mae_limit": 0.18,
+    "challenging_bad64_fraction_limit": 0.25,
+    "position_error_limit_pixels": 2.0
+  },
+  "status": "NOT_RUN_DUE_TO_BUILD_FAILURE",
+  "g33": null,
+  "g67": null,
+  "nvidia_g50_diagnostic": null
+}

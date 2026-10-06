@@ -1,0 +1,25 @@
+{
+  "sequence_type": "MULTIPLIER_X3",
+  "presented_sequence": [
+    {"index": 0, "name": "REAL_A", "time": 0.0, "type": "REAL"},
+    {"index": 1, "name": "G33", "time": 0.3333333333, "type": "GENERATED_CUSTOM"},
+    {"index": 2, "name": "G67", "time": 0.6666666667, "type": "GENERATED_CUSTOM"},
+    {"index": 3, "name": "REAL_B", "time": 1.0, "type": "REAL"}
+  ],
+  "internal_diagnostic_anchor": {
+    "name": "NVIDIA_G50",
+    "time": 0.5,
+    "role": "DIAGNOSTIC_INTERNAL_ANCHOR",
+    "used_as_x3_output": false,
+    "used_as_generation_input_for_g33": false,
+    "used_as_generation_input_for_g67": false
+  },
+  "intervals": [
+    {"from": "REAL_A", "to": "G33", "duration": 0.3333333333},
+    {"from": "G33", "to": "G67", "duration": 0.3333333333},
+    {"from": "G67", "to": "REAL_B", "duration": 0.3333333333}
+  ],
+  "max_interval_deviation": 0.0,
+  "equal_interval_contract_valid": true,
+  "temporal_order_valid": "NOT_EVALUATED_DUE_TO_BUILD_FAILURE"
+}

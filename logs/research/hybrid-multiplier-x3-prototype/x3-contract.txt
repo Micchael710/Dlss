@@ -1,0 +1,40 @@
+HYBRID MULTIPLIER X3 CONTRACT
+==============================
+EXPERIMENT: HYBRID_MULTIPLIER_X3_PROTOTYPE
+
+1. SEQUENCE AND PRESENTATION CONTRACT:
+   Presented sequence:
+     REAL A (t = 0.000000)
+     G33    (t = 1/3 = 0.3333333333)
+     G67    (t = 2/3 = 0.6666666667)
+     REAL B (t = 1.000000)
+   
+   Presented generated frame count: 2
+   Internal diagnostic frame count: 1 (NVIDIA G50)
+   Multiplier: x3 (2 generated frames per real interval)
+   Intervals: [1/3, 1/3, 1/3]
+   Equal interval contract: VALID
+
+2. MOTION VECTOR CONTRACTS:
+   Custom interpolator: NDC clip-space [-1, 1], current_to_previous
+   NVIDIA DLSS FG: SCREEN_SPACE_PIXELS, current_to_previous, mvecScale=(1.0, 1.0)
+   Separate resources: YES
+
+3. ROLE OF NVIDIA G50:
+   NVIDIA_G50_ROLE = DIAGNOSTIC_INTERNAL_ANCHOR
+   NVIDIA_G50_USED_AS_X3_OUTPUT = NO
+   NVIDIA_G50_USED_AS_GENERATION_INPUT_FOR_G33 = NO
+   NVIDIA_G50_USED_AS_GENERATION_INPUT_FOR_G67 = NO
+   X3_NVIDIA_DIRECT_CONTRIBUTION = NO
+
+4. GROUND TRUTH POLICY:
+   REF33, REF67, REF50, D33, D67, D50 are generated EXCLUSIVELY for post-generation validation.
+   GROUND_TRUTH_USED_AS_GENERATION_INPUT = NO
+   Any ground truth leakage into generation inputs constitutes FAIL_STAGE = GROUND_TRUTH_LEAKAGE.
+
+5. QUALITY AND POSITION CRITERIA:
+   OVERALL_RGB_MAE <= 0.08
+   OVERALL_BAD64_FRACTION <= 0.10
+   CHALLENGING_RGB_MAE <= 0.18
+   CHALLENGING_BAD64_FRACTION <= 0.25
+   POSITION_ERROR_LIMIT_PIXELS <= 2.0 px
