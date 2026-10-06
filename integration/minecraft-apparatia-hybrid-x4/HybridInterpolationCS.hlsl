@@ -11,7 +11,7 @@ Texture2D<float2> MotionA : register(t2);
 Texture2D<float2> MotionB : register(t3);
 Texture2D<float> DepthA : register(t4);
 Texture2D<float> DepthB : register(t5);
-Texture2D<float> RefDepthTex : register(t6);
+Texture2D<float4> HudlessTex : register(t6);
 
 RWTexture2D<float4> Output : register(u0);
 RWTexture2D<float> FixtureDepth : register(u1);
@@ -75,50 +75,142 @@ bool inside(float2 pixel) {
 }
 float2 uv(float2 pixel) { return (pixel + 0.5f) / float2(Width, Height); }
 
-// BASELINE ALGORITHM: functionally identical to baseline experiments
+float3 RGBToYCoCg(float3 rgb) {
+    float Y  = dot(rgb, float3( 0.25f, 0.5f,  0.25f));
+    float Co = dot(rgb, float3( 0.5f,  0.0f, -0.5f));
+    float Cg = dot(rgb, float3(-0.25f, 0.5f, -0.25f));
+    return float3(Y, Co, Cg);
+}
+
+float3 YCoCgToRGB(float3 ycocg) {
+    float Y  = ycocg.x;
+    float Co = ycocg.y;
+    float Cg = ycocg.z;
+    return float3(
+        Y + Co - Cg,
+        Y + Cg,
+        Y - Co - Cg
+    );
+}
+
+// PORTED FROM AUTHORITATIVE FRIEND SOURCE (FSRFG_wisteria-main / fsr_fg_compute.comp)
 [numthreads(8,8,1)]
 void HybridInterpolationCS(uint3 id : SV_DispatchThreadID) {
     if (id.x >= Width || id.y >= Height) return;
-    float2 pixel = float2(id.xy);
+    int2 pixelCoord = int2(id.xy);
 
-    float2 displayUV = (pixel + 0.5f) / float2(Width, Height);
+    float2 texelSize = 1.0f / float2(Width, Height);
+    float2 uvCoord = (float2(pixelCoord) + 0.5f) * texelSize;
 
-    uint depthWidth;
-    uint depthHeight;
-    uint motionWidth;
-    uint motionHeight;
+    float4 currColor = ColorB.SampleLevel(LinearClamp, uvCoord, 0.0f);
+    float4 prevColor = ColorA.SampleLevel(LinearClamp, uvCoord, 0.0f);
 
-    DepthA.GetDimensions(depthWidth, depthHeight);
-    MotionA.GetDimensions(motionWidth, motionHeight);
+    // If history is reset (teleport, window resize, camera cut), smoothly output current frame
+    if (Frame == 0u) {
+        Output[pixelCoord] = currColor;
+        return;
+    }
 
-    uint2 depthCoord = min(
-        uint2(displayUV * float2(depthWidth, depthHeight)),
-        uint2(depthWidth - 1u, depthHeight - 1u)
-    );
+    // HUD isolation: detect 2D UI elements (chat, crosshair, hotbar, menus)
+    float4 hudlessColor = HudlessTex.SampleLevel(LinearClamp, uvCoord, 0.0f);
+    float3 hudDiff = abs(currColor.rgb - hudlessColor.rgb);
+    float maxHudDiff = max(hudDiff.r, max(hudDiff.g, hudDiff.b));
+    if (maxHudDiff > 0.02f) {
+        Output[pixelCoord] = currColor;
+        return;
+    }
 
-    uint2 motionCoord = min(
-        uint2(displayUV * float2(motionWidth, motionHeight)),
-        uint2(motionWidth - 1u, motionHeight - 1u)
-    );
+    // Depth & Hand isolation
+    float depth = DepthB.SampleLevel(LinearClamp, uvCoord, 0.0f).r;
+    float2 motionNDC = MotionB.SampleLevel(LinearClamp, uvCoord, 0.0f).xy;
+    if (!(abs(motionNDC.x) < 1000.0f) || !(abs(motionNDC.y) < 1000.0f)) {
+        motionNDC = float2(0.0f, 0.0f);
+    }
 
-    float za = DepthA.Load(int3(depthCoord, 0));
-    float zb = DepthB.Load(int3(depthCoord, 0));
-    float2 backwardClip = za < zb ? MotionA.Load(int3(motionCoord, 0)) : MotionB.Load(int3(motionCoord, 0));
-    float2 backwardPixels = backwardClip * float2(0.5f, -0.5f) * float2(Width, Height);
-    float2 toA = pixel + Time * backwardPixels;
-    float2 toB = pixel - (1.0f - Time) * backwardPixels;
-    bool validA = inside(toA), validB = inside(toB);
-    float4 a = ColorA.SampleLevel(LinearClamp, uv(toA), 0.0f);
-    float4 b = ColorB.SampleLevel(LinearClamp, uv(toB), 0.0f);
-    float depthA = DepthA.SampleLevel(LinearClamp, uv(toA), 0.0f);
-    float depthB = DepthB.SampleLevel(LinearClamp, uv(toB), 0.0f);
-    float4 value;
-    if (!validA && !validB) value = Time < 0.5f ? ColorA.Load(int3(id.xy, 0)) : ColorB.Load(int3(id.xy, 0));
-    else if (!validA) value = b;
-    else if (!validB) value = a;
-    else if (abs(depthA - depthB) > 0.005f) value = depthA < depthB ? a : b;
-    else value = lerp(a, b, Time);
-    Output[id.xy] = value;
+    // MotionConvertCS mapped: OutNDC = float2(2.0f * mv.x, -2.0f * mv.y)
+    // Convert NDC motion back to UV space motion vector:
+    float2 mv = float2(motionNDC.x * 0.5f, -motionNDC.y * 0.5f);
+
+    // First-person hand and held items in Minecraft/Iris:
+    // Hand depth <= 0.56 in normalized screen depth
+    bool isHand = (depth > 0.0f && depth <= 0.56f);
+    if (isHand) {
+        mv = float2(0.0f, 0.0f);
+    }
+
+    // Reprojection coordinates
+    float lambda = Time; // 0.25f for G25, 0.75f for G75
+    float2 uvPrev = clamp(uvCoord + lambda * mv, 0.0f, 1.0f);
+    float2 uvCurr = clamp(uvCoord - (1.0f - lambda) * mv, 0.0f, 1.0f);
+    float4 colPrev = ColorA.SampleLevel(LinearClamp, uvPrev, 0.0f);
+    float4 colCurr = ColorB.SampleLevel(LinearClamp, uvCurr, 0.0f);
+
+    float3 initDiffV = abs(colPrev.rgb - colCurr.rgb);
+    float initialDiff = max(initDiffV.r, max(initDiffV.g, initDiffV.b));
+
+    // Software Optical Flow (Local Block Matching) for Sable Sublevels & Physics Contraptions
+    if (!isHand && (dot(mv, mv) < 1e-7f || initialDiff > 0.12f)) {
+        float2 bestOffset = lambda * mv;
+        float bestDiff = initialDiff;
+
+        const int R = 6;
+        for (int dy = -R; dy <= R; dy += 2) {
+            for (int dx = -R; dx <= R; dx += 2) {
+                if (dx == 0 && dy == 0) continue;
+                float2 offset = float2(float(dx), float(dy)) * texelSize;
+                float2 testUvPrev = clamp(uvCoord + offset, 0.0f, 1.0f);
+                float4 testColPrev = ColorA.SampleLevel(LinearClamp, testUvPrev, 0.0f);
+                float3 d = abs(testColPrev.rgb - colCurr.rgb);
+                float diff = max(d.r, max(d.g, d.b));
+                if (diff < bestDiff) {
+                    bestDiff = diff;
+                    bestOffset = offset;
+                }
+            }
+        }
+
+        // If local optical flow found a superior match in prevColor:
+        if (bestDiff < initialDiff - 0.05f) {
+            uvPrev = clamp(uvCoord + bestOffset, 0.0f, 1.0f);
+            float factor = (1.0f - lambda) / max(lambda, 0.01f);
+            uvCurr = clamp(uvCoord - bestOffset * factor, 0.0f, 1.0f);
+            colPrev = ColorA.SampleLevel(LinearClamp, uvPrev, 0.0f);
+            colCurr = ColorB.SampleLevel(LinearClamp, uvCurr, 0.0f);
+        }
+    }
+
+    // YCoCg 3x3 Neighborhood Clamping for Water Flickering & Specular Stability
+    float3 ycocgMin = float3(1e9f, 1e9f, 1e9f);
+    float3 ycocgMax = float3(-1e9f, -1e9f, -1e9f);
+
+    for (int y = -1; y <= 1; ++y) {
+        for (int x = -1; x <= 1; ++x) {
+            float2 sampleUv = clamp(uvCurr + float2(float(x), float(y)) * texelSize, 0.0f, 1.0f);
+            float3 sampleYCoCg = RGBToYCoCg(ColorB.SampleLevel(LinearClamp, sampleUv, 0.0f).rgb);
+            ycocgMin = min(ycocgMin, sampleYCoCg);
+            ycocgMax = max(ycocgMax, sampleYCoCg);
+        }
+    }
+
+    float3 boxMargin = (ycocgMax - ycocgMin) * 0.05f;
+    ycocgMin -= boxMargin;
+    ycocgMax += boxMargin;
+
+    // Clamp previous sample into the temporal bounding box of current frame
+    float3 prevYCoCg = RGBToYCoCg(colPrev.rgb);
+    float3 clampedPrevYCoCg = clamp(prevYCoCg, ycocgMin, ycocgMax);
+    float3 clampedColPrev = YCoCgToRGB(clampedPrevYCoCg);
+
+    // Compute temporal motion interpolation
+    float3 motionColor = lerp(clampedColPrev, colCurr.rgb, lambda);
+
+    // Smooth disocclusion fallback: if color difference is still large, blend towards colCurr
+    float3 diff = abs(clampedColPrev - colCurr.rgb);
+    float maxDiff = max(diff.r, max(diff.g, diff.b));
+    float disocclusion = saturate((maxDiff - 0.25f) / 0.25f);
+    float3 finalRgb = lerp(motionColor, colCurr.rgb, disocclusion);
+
+    Output[pixelCoord] = float4(finalRgb, colCurr.a);
 }
 
 // Bounded reduction kernel for structural validation:
@@ -154,15 +246,15 @@ void QualityMetricsCS(uint3 id : SV_DispatchThreadID) {
     uint bad64 = maxDiff255 > 64.0f ? 1u : 0u;
 
     // Detect challenging regions: depth discontinuity or occlusion/disocclusion
-    float refZ = RefDepthTex.Load(int3(id.xy, 0));
+    float refZ = HudlessTex.Load(int3(id.xy, 0)).r;
     float zA   = DepthA.Load(int3(id.xy, 0));
     float zB   = DepthB.Load(int3(id.xy, 0));
     
     // Check neighbor depth variation in reference frame (depth edge)
-    float zUp   = RefDepthTex.Load(int3(clamp(int(id.x), 0, int(Width)-1), clamp(int(id.y)-1, 0, int(Height)-1), 0));
-    float zDown = RefDepthTex.Load(int3(clamp(int(id.x), 0, int(Width)-1), clamp(int(id.y)+1, 0, int(Height)-1), 0));
-    float zLeft = RefDepthTex.Load(int3(clamp(int(id.x)-1, 0, int(Width)-1), clamp(int(id.y), 0, int(Height)-1), 0));
-    float zRight= RefDepthTex.Load(int3(clamp(int(id.x)+1, 0, int(Width)-1), clamp(int(id.y), 0, int(Height)-1), 0));
+    float zUp   = HudlessTex.Load(int3(clamp(int(id.x), 0, int(Width)-1), clamp(int(id.y)-1, 0, int(Height)-1), 0)).r;
+    float zDown = HudlessTex.Load(int3(clamp(int(id.x), 0, int(Width)-1), clamp(int(id.y)+1, 0, int(Height)-1), 0)).r;
+    float zLeft = HudlessTex.Load(int3(clamp(int(id.x)-1, 0, int(Width)-1), clamp(int(id.y), 0, int(Height)-1), 0)).r;
+    float zRight= HudlessTex.Load(int3(clamp(int(id.x)+1, 0, int(Width)-1), clamp(int(id.y), 0, int(Height)-1), 0)).r;
     float maxEdgeZ = max(max(abs(refZ - zUp), abs(refZ - zDown)), max(abs(refZ - zLeft), abs(refZ - zRight)));
     
     bool isDepthEdge = (maxEdgeZ > 0.05f);

@@ -713,7 +713,7 @@ struct Session {
             createSRV(s.currentMotionNDC.Get(), DXGI_FORMAT_R32G32_FLOAT, cpu(s, 3));
             createSRV(p.historyDepth.Get(), DXGI_FORMAT_R32_FLOAT, cpu(s, 4));
             createSRV(s.images[2].dx.resource.Get(), DXGI_FORMAT_R32_FLOAT, cpu(s, 5));
-            createSRV(nullptr, DXGI_FORMAT_R32_FLOAT, cpu(s, 6));
+            createSRV(s.images[1].dx.resource.Get(), DXGI_FORMAT_R8G8B8A8_UNORM, cpu(s, 6));
 
             createUAV(s.images[4].dx.resource.Get(), DXGI_FORMAT_R8G8B8A8_UNORM, cpu(s, 7)); // G25
             createUAV(s.images[6].dx.resource.Get(), DXGI_FORMAT_R8G8B8A8_UNORM, cpu(s, 8)); // G75
@@ -853,7 +853,7 @@ struct Session {
                 s.commands->SetComputeRootDescriptorTable(0, gpu(s, 0)); // t0..t6
                 s.commands->SetComputeRootDescriptorTable(1, gpu(s, 7)); // u0 = s.images[4]
                 float t25 = 0.25f;
-                UINT g25Consts[] = {p.width, p.height, 0, std::bit_cast<UINT>(t25), 0};
+                UINT g25Consts[] = {p.width, p.height, p.hasHistory ? 1u : 0u, std::bit_cast<UINT>(t25), 0};
                 s.commands->SetComputeRoot32BitConstants(2, 5, g25Consts, 0);
                 s.commands->SetPipelineState(hybridPSO.Get());
                 s.commands->Dispatch((p.width + 7) / 8, (p.height + 7) / 8, 1);
@@ -904,7 +904,7 @@ struct Session {
                 s.commands->SetComputeRootDescriptorTable(0, gpu(s, 0)); // t0..t6
                 s.commands->SetComputeRootDescriptorTable(1, gpu(s, 8)); // u0 = s.images[6]
                 float t75 = 0.75f;
-                UINT g75Consts[] = {p.width, p.height, 0, std::bit_cast<UINT>(t75), 0};
+                UINT g75Consts[] = {p.width, p.height, p.hasHistory ? 1u : 0u, std::bit_cast<UINT>(t75), 0};
                 s.commands->SetComputeRoot32BitConstants(2, 5, g75Consts, 0);
                 s.commands->SetPipelineState(hybridPSO.Get());
                 s.commands->Dispatch((p.width + 7) / 8, (p.height + 7) / 8, 1);
