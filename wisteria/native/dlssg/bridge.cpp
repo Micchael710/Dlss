@@ -123,6 +123,7 @@ struct Session {
     ComPtr<ID3D12Fence> fence;
     ComPtr<ID3D12Resource> disableSentinel;
     ComPtr<ID3D12Resource> disableZero;
+    ComPtr<ID3D12Resource> disableOne;
     ComPtr<ID3D12RootSignature> hybridRoot;
     ComPtr<ID3D12PipelineState> hybridPSO;
     ComPtr<ID3D12RootSignature> motionConvertRoot;
@@ -300,6 +301,16 @@ struct Session {
         hr(disableZero->Map(0, &none, &map0), "disable zero map");
         std::memset(map0, 0, 16);
         disableZero->Unmap(0, nullptr);
+
+        // Reset intervals suppress custom G25/G75 outputs. Their status buffers
+        // still need a valid API value (1 = disabled); leaving the sentinel would
+        // make the Java output-status observer latch the provider unavailable.
+        disableOne = dx.buffer(16, D3D12_HEAP_TYPE_UPLOAD, D3D12_RESOURCE_STATE_GENERIC_READ);
+        void* map1{};
+        hr(disableOne->Map(0, &none, &map1), "disable one map");
+        std::memset(map1, 0, 16);
+        *static_cast<uint32_t*>(map1) = 1u;
+        disableOne->Unmap(0, nullptr);
     }
     Session(fs::path out, fs::path dll, fs::path runtime,unsigned count):evidence(out),dx(evidence,runtime),events(out/"provider-events.jsonl") {
         if(sha(readFile(runtime/"nvngx_dlssg.dll"))!="ff6e90eb78b827927dff5b4ecc6b1c870c2e9bca29ed9f48c7d348cc9e170b82")
@@ -759,9 +770,13 @@ struct Session {
                 }
                 queryVram("before_first_evaluate");
 
-                setDisable(s, 0, disableSentinel.Get());
+                // Reset suppresses all generated outputs. G25/G75 are skipped on
+                // this interval, so publish DISABLED instead of UNKNOWN sentinel.
+                // G50 remains sentinel until NGX writes its authoritative flag.
+                setDisable(s, 0, disableOne.Get());
                 setDisable(s, 1, disableSentinel.Get());
-                setDisable(s, 2, disableSentinel.Get());
+                setDisable(s, 2, disableOne.Get());
+                evidence.str("reset_custom_output_status", "DISABLED");
 
                 dxBarrier(s, s.images[0], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
                 dxBarrier(s, s.images[1], D3D12_RESOURCE_STATE_NON_PIXEL_SHADER_RESOURCE);
