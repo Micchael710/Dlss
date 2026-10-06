@@ -151,40 +151,49 @@ final class PresentWorker {
                     batch.realIndex(), realPeriodNs, targetSpacingNs, queueDelayNs, pipelineDepth);
         }
         List<PreparedImage> prepared = new ArrayList<>(batch.imageCount());
+        PreparedImage[] preparedSlots = new PreparedImage[batch.imageCount()];
         List<FrameGenerationDispatchCompletion> completions = new ArrayList<>();
         boolean captureReleased = batch.captureReleasedByGeneration();
         FramePacingTrace.Span batchTrace = beginTrace("present_batch", batch, null);
+        PresentPacer pacer = presenter.pacer;
         try {
             swapchain.ensurePresentBatchFits(batch.imageCount());
+            try {
+                pacer.beginPresentFrameBatch(
+                        waited, batch.pacingEnabled(), batch.generatedCount(), batch.intervalNanos());
+                long batchFirstSlotDeadlineNs = pacer.nextDeadlineNanos();
+
             // Submit the real image before pacing, so borrowed-input release publication
             // is not held behind the generated images' display intervals.
             for (int index = 0; index < batch.imageCount(); index++) {
                 PresentImage presentImage = batch.images().get(index);
-                if (presentImage.kind() == PresentImage.Kind.GENERATED && batch.output() != null
-                        && !batch.output().isGeneratedOutputPresentable(index)) {
-                    batch.output().onGeneratedOutputDiscarded(index, System.nanoTime());
-                    continue; // releaseBatch still drains this candidate's unconsumed semaphore.
-                }
-                if (presentImage.kind() == PresentImage.Kind.GENERATED && batch.pacingEnabled()) {
-                    long now = System.nanoTime();
-                    long baseDeadline = presenter.pacer.nextDeadlineNanos();
-                    if (baseDeadline != 0L) {
-                        long deadlineNs = baseDeadline + (long) index * batch.intervalNanos();
+                boolean drop = false;
+                if (presentImage.kind() == PresentImage.Kind.GENERATED) {
+                    if (batch.output() != null && !batch.output().isGeneratedOutputPresentable(index)) {
+                        drop = true;
+                        batch.output().onGeneratedOutputDiscarded(index, System.nanoTime());
+                    } else if (batch.pacingEnabled() && batchFirstSlotDeadlineNs != 0L) {
+                        long now = System.nanoTime();
+                        long deadlineNs = batchFirstSlotDeadlineNs + (long) index * batch.intervalNanos();
                         long lateNs = now - deadlineNs;
                         long maxAllowedLateNs = (long) (PresentPacer.MAX_GENERATED_LATENESS_SPACINGS * batch.intervalNanos());
                         if (lateNs > maxAllowedLateNs) {
+                            drop = true;
                             if ("wisteria:dlssg_fg".equals(presenter.providerId())) {
                                 io.homo.superresolution.common.SuperResolution.LOGGER.info(
-                                        "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=true",
-                                        batch.realIndex(), index + 1, deadlineNs, now, Math.max(0L, lateNs));
+                                        "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} phaseIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=true slotSkipped=true",
+                                        batch.realIndex(), index + 1, index + 1, deadlineNs, now, Math.max(0L, lateNs));
                             }
                             if (batch.output() != null) {
                                 batch.output().onGeneratedOutputDiscarded(index, now);
                             }
-                            continue;
                         }
                     }
                 }
+                if (drop) {
+                    continue; // releaseBatch still drains this candidate's unconsumed semaphore.
+                }
+
                 FramePacingTrace.Span acquireTrace =
                         beginTrace("present_target_acquire", batch, presentImage);
                 PreparedImage image;
@@ -194,6 +203,7 @@ final class PresentWorker {
                     acquireTrace.close();
                 }
                 prepared.add(image);
+                preparedSlots[index] = image;
                 boolean real = index == batch.generatedCount();
                 long[] waits;
                 if (batch.gpuReadyFences().size() == 0) {
@@ -242,85 +252,87 @@ final class PresentWorker {
                     captureReleased = true;
                 }
             }
-            PresentPacer pacer = presenter.pacer;
-            try {
-                int validGeneratedCount = prepared.size() - 1;
-                long validInterval = batch.intervalNanos() * (batch.generatedCount() + 1L)
-                        / (validGeneratedCount + 1L);
-                pacer.beginPresentFrameBatch(
-                        waited, batch.pacingEnabled(), validGeneratedCount, validInterval);
-                for (PreparedImage image : prepared) {
-                    if (isPaused()) {
-                        pacer.reset();
-                        break;
-                    }
-                    FramePacingTrace.Span waitTrace =
-                            beginTrace("present_pacing_wait", batch, image.image);
-                    long deadlineNs = pacer.nextDeadlineNanos();
-                    try {
-                        if (image.image.kind() == PresentImage.Kind.GENERATED) {
-                            pacer.sleepAtPresentGeneratedFrame();
-                        } else {
-                            pacer.sleepAtPresentRealFrame();
-                        }
-                    } finally {
-                        waitTrace.close();
-                    }
-                    boolean presented = false;
-                    pacer.beginPresentFrame();
-                    FramePacingTrace.Span presentTrace =
-                            beginTrace("present_call", batch, image.image);
-                    try {
-                        presentImage(batch, image);
-                        presented = true;
-                        if ("wisteria:fsr".equals(presenter.providerId()) && batch.metadata() != null) {
-                            long now = System.nanoTime();
-                            if (fsrPresentStart == 0) fsrPresentStart = now;
-                            if (image.image.kind() == PresentImage.Kind.GENERATED) fsrGeneratedPresented++;
-                            else fsrRealPresented++;
-                            var metadata = batch.metadata();
-                            io.homo.superresolution.common.SuperResolution.LOGGER.info(
-                                    "FSR_PRESENT_ORDER realFrameId={} displayIndex={} presentId={} kind={} VkImage={} timestamp={} generatedFrames={}",
-                                    metadata == null ? -1 : metadata.monotonicFrameId(), image.image.displayIndex(),
-                                    image.image.presentId(), image.image.kind(), image.image.source().handle(), now, fsrGeneratedPresented);
-                            if ((fsrGeneratedPresented + fsrRealPresented) % 120 == 0) {
-                                double seconds = (now - fsrPresentStart) / 1e9;
-                                double gpuMs = java.util.Arrays.stream(io.homo.superresolution.common.perf.PerformanceTracker
-                                        .getAllResultsGPU(io.homo.superresolution.common.perf.PerformanceTracker.VK_FRAME_GEN))
-                                        .filter(t -> t > 0).average().orElse(Double.NaN) / 1e6;
-                                io.homo.superresolution.common.SuperResolution.LOGGER.info(
-                                        "FSR_METRICS realPresentedFps={} presentedFps={} fgGpuMs={} realCount={} generatedFrames={} elapsedSeconds={}",
-                                        fsrRealPresented / seconds, (fsrRealPresented + fsrGeneratedPresented) / seconds,
-                                        gpuMs, fsrRealPresented, fsrGeneratedPresented, seconds);
-                            }
-                        }
-                        presentTrace.complete("complete", "presented=true");
-                        long requestNs = System.nanoTime();
-                        long lateNs = deadlineNs == 0L ? -1L : Math.max(0L, requestNs - deadlineNs);
-                        if ("wisteria:dlssg_fg".equals(presenter.providerId())) {
-                            int genIdx = image.image.kind() == PresentImage.Kind.GENERATED ? image.outputIndex + 1 : 0;
-                            io.homo.superresolution.common.SuperResolution.LOGGER.info(
-                                    "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=false",
-                                    batch.realIndex(), genIdx, deadlineNs, requestNs, lateNs);
-                        }
-                        if (batch.output() != null) batch.output().onPresented(image.image.displayIndex(),
-                                image.outputIndex, image.image.kind() == PresentImage.Kind.GENERATED,
-                                requestNs, queueDelayNs, deadlineNs);
-                    } catch (Throwable throwable) {
-                        presentTrace.complete(
-                                "failed",
-                                throwable.getClass().getSimpleName() + ": "
-                                        + String.valueOf(throwable.getMessage())
-                        );
-                        throw throwable;
-                    } finally {
-                        presentTrace.close();
-                        pacer.endPresentFrame(presented && batch.pacingEnabled());
-                    }
+
+            for (int slotIndex = 0; slotIndex < batch.imageCount(); slotIndex++) {
+                if (isPaused()) {
+                    pacer.reset();
+                    break;
                 }
-            } finally {
-                pacer.endPresentFrameBatch();
+                PreparedImage image = preparedSlots[slotIndex];
+                if (image == null) {
+                    if (batch.pacingEnabled()) {
+                        pacer.skipPresentFrameSlot();
+                    }
+                    continue;
+                }
+                FramePacingTrace.Span waitTrace =
+                        beginTrace("present_pacing_wait", batch, image.image);
+                long deadlineNs = pacer.nextDeadlineNanos();
+                try {
+                    if (image.image.kind() == PresentImage.Kind.GENERATED) {
+                        pacer.sleepAtPresentGeneratedFrame();
+                    } else {
+                        pacer.sleepAtPresentRealFrame();
+                    }
+                } finally {
+                    waitTrace.close();
+                }
+                boolean presented = false;
+                pacer.beginPresentFrame();
+                FramePacingTrace.Span presentTrace =
+                        beginTrace("present_call", batch, image.image);
+                try {
+                    presentImage(batch, image);
+                    presented = true;
+                    if ("wisteria:fsr".equals(presenter.providerId()) && batch.metadata() != null) {
+                        long now = System.nanoTime();
+                        if (fsrPresentStart == 0) fsrPresentStart = now;
+                        if (image.image.kind() == PresentImage.Kind.GENERATED) fsrGeneratedPresented++;
+                        else fsrRealPresented++;
+                        var metadata = batch.metadata();
+                        io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                                "FSR_PRESENT_ORDER realFrameId={} displayIndex={} presentId={} kind={} VkImage={} timestamp={} generatedFrames={}",
+                                metadata == null ? -1 : metadata.monotonicFrameId(), image.image.displayIndex(),
+                                image.image.presentId(), image.image.kind(), image.image.source().handle(), now, fsrGeneratedPresented);
+                        if ((fsrGeneratedPresented + fsrRealPresented) % 120 == 0) {
+                            double seconds = (now - fsrPresentStart) / 1e9;
+                            double gpuMs = java.util.Arrays.stream(io.homo.superresolution.common.perf.PerformanceTracker
+                                    .getAllResultsGPU(io.homo.superresolution.common.perf.PerformanceTracker.VK_FRAME_GEN))
+                                    .filter(t -> t > 0).average().orElse(Double.NaN) / 1e6;
+                            io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                                    "FSR_METRICS realPresentedFps={} presentedFps={} fgGpuMs={} realCount={} generatedFrames={} elapsedSeconds={}",
+                                    fsrRealPresented / seconds, (fsrRealPresented + fsrGeneratedPresented) / seconds,
+                                    gpuMs, fsrRealPresented, fsrGeneratedPresented, seconds);
+                        }
+                    }
+                    presentTrace.complete("complete", "presented=true");
+                    long requestNs = System.nanoTime();
+                    long lateNs = deadlineNs == 0L ? -1L : Math.max(0L, requestNs - deadlineNs);
+                    if ("wisteria:dlssg_fg".equals(presenter.providerId())) {
+                        int genIdx = image.image.kind() == PresentImage.Kind.GENERATED ? image.outputIndex + 1 : 0;
+                        int phaseIdx = slotIndex + 1;
+                        io.homo.superresolution.common.SuperResolution.LOGGER.info(
+                                "X4_OUTPUT_TIMING realFrameId={} generatedIndex={} phaseIndex={} deadlineNs={} requestNs={} lateNs={} droppedStale=false slotSkipped=false",
+                                batch.realIndex(), genIdx, phaseIdx, deadlineNs, requestNs, lateNs);
+                    }
+                    if (batch.output() != null) batch.output().onPresented(image.image.displayIndex(),
+                            image.outputIndex, image.image.kind() == PresentImage.Kind.GENERATED,
+                            requestNs, queueDelayNs, deadlineNs);
+                } catch (Throwable throwable) {
+                    presentTrace.complete(
+                            "failed",
+                            throwable.getClass().getSimpleName() + ": "
+                                    + String.valueOf(throwable.getMessage())
+                    );
+                    throw throwable;
+                } finally {
+                    presentTrace.close();
+                    pacer.endPresentFrame(presented && batch.pacingEnabled());
+                }
             }
+        } finally {
+            pacer.endPresentFrameBatch();
+        }
         } catch (VulkanSwapchain.PresentTargetUnavailableException exception) {
             presenter.pacer.reset();
             swapchain.requestRecreate();

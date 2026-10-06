@@ -112,6 +112,12 @@ final class PresentPacer {
         endPresentFrame(true);
     }
 
+    void skipPresentFrameSlot() {
+        if (nextDeadlineNanos != 0L) {
+            advance(presentIntervalNanos);
+        }
+    }
+
     void sleepAtPresentGeneratedFrame() {
         awaitNextImage();
     }
@@ -153,7 +159,7 @@ final class PresentPacer {
                 || nextDeadlineNanos == 0L
                 || timelineStale;
         if (resetTimeline) {
-            nextDeadlineNanos = now;
+            nextDeadlineNanos = now + presentIntervalNanos;
         }
         previousPacingEnabled = true;
         previousGeneratedCount = generatedCount;
@@ -186,7 +192,7 @@ final class PresentPacer {
         nextDeadlineNanos += intervalNanos;
         long lateBy = clock.nanoTime() - nextDeadlineNanos;
         if (lateBy > Math.max(intervalNanos * 4L, MAX_PRESENT_INTERVAL_NANOS)) {
-            nextDeadlineNanos = clock.nanoTime();
+            nextDeadlineNanos = clock.nanoTime() + intervalNanos;
         }
     }
 
