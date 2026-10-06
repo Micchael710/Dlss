@@ -1,0 +1,15 @@
+{
+  "frames": [
+    {"name": "a", "fingerprint": "33df800084ad1000", "position": 443.5, "object_pixels": 43008, "resource": "000001B5EA92F040"},
+    {"name": "g25", "fingerprint": "cf5710007f6b7000", "position": 447.5, "object_pixels": 43008, "resource": "000001B5EAAED040"},
+    {"name": "g50", "fingerprint": "9c05512a6cf62858", "position": 451.409, "object_pixels": 42907, "resource": "000001B5EA93A040"},
+    {"name": "g75", "fingerprint": "6d5ad0001ccf0000", "position": 455.5, "object_pixels": 43008, "resource": "000001B5EA93AC80"},
+    {"name": "b", "fingerprint": "4374d8001b5c1000", "position": 459.5, "object_pixels": 43008, "resource": "000001B5E9D2A1B0"}
+  ],
+  "expected": {"position_a": 443.5, "expected_g25": 447.5, "actual_g25": 447.5, "error_g25": 0, "expected_g50": 451.5, "actual_g50": 451.409, "error_g50": 0.0913254, "expected_g75": 455.5, "actual_g75": 455.5, "error_g75": 0, "position_b": 459.5},
+  "tolerance_pixels": 2,
+  "temporal_order_valid": true,
+  "positions_within_tolerance": true,
+  "resources_distinct": true,
+  "distinct_from_sentinels": true
+}

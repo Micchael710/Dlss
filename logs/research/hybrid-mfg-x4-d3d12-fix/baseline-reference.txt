@@ -1,0 +1,67 @@
+BASELINE REFERENCE: HYBRID MFG X4 VALIDATION FIX
+============================================================
+REFERENCE COMMIT: 30b2b77d219d30aa7f1251ee94e626db3d2a1c6a
+BASELINE DIRECTORY: logs/research/hybrid-mfg-x4-generation/
+BASELINE EXPERIMENT: WISTERIA_HYBRID_MFG_X4_FRAMESET_GENERATION
+TARGET HARDWARE: NVIDIA GeForce RTX 3050 Ti Laptop GPU (LUID: 4c29010000000000)
+
+DEMONSTRATED BASELINE CAPABILITIES (PREVIOUS RUN):
+------------------------------------------------------------
+NGX_INIT: PASS (0x00000001)
+NVIDIA_CREATE_RESULT: SUCCESS (0x00000001)
+NVIDIA_EVALUATE_RESULT: SUCCESS (0x00000001)
+NVIDIA_G50_GPU_COMPLETION: PASS
+NVIDIA_GENERATED_POSITION: 0.5
+NVIDIA_MULTIFRAME_COUNT: 1
+NVIDIA_MULTIFRAME_INDEX: 1
+G25_GENERATED: true
+G50_GENERATED: true
+G75_GENERATED: true
+G25_CHANGED_FROM_SENTINEL: true
+G50_CHANGED_FROM_SENTINEL: true
+G75_CHANGED_FROM_SENTINEL: true
+G25_DISTINCT_FROM_A_B: true
+G50_DISTINCT_FROM_A_B: true
+G75_DISTINCT_FROM_A_B: true
+G25_DISTINCT_FROM_G50: true
+G25_DISTINCT_FROM_G75: true
+G50_DISTINCT_FROM_G75: true
+RESOURCES_DISTINCT: true
+TEMPORAL_ORDER_VALID: true
+CPU_TRANSPORT_COPY_COUNT: 0
+PRESENT_EXECUTED: false
+CRASH: false
+TIMEOUT: false
+DEVICE_LOST: false
+DEVICE_REMOVED: false
+
+BASELINE OBSERVED POSITIONS:
+------------------------------------------------------------
+POSITION_A:   443.500000
+POSITION_G25: 447.500000
+POSITION_G50: 451.408675
+POSITION_G75: 455.500000
+POSITION_B:   459.500000
+
+Temporal sequence demonstrated: A < G25 < G50 < G75 < B
+
+REASON FOR PREVIOUS RUN FAILURE:
+------------------------------------------------------------
+D3D12_VALIDATION_ERRORS: 9
+FAIL_STAGE: HYBRID_TEMPORAL_REPROJECTION_INVALID
+PROCESS_EXIT_CODE: 1
+
+D3D12 DEBUG LAYER DIAGNOSIS:
+1) ClearUnorderedAccessViewUint / ClearUnorderedAccessViewFloat (9 errors):
+   "Specified descriptor handle ptr=... points to a descriptor heap type that is CPU write only, so reading it is invalid. UnorderedAccessViewCPUHandle is the issue."
+   Cause: The harness used a single descriptor heap created with D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE.
+   D3D12 API specification requires ViewCPUHandle to reside in a non-shader-visible descriptor heap (D3D12_DESCRIPTOR_HEAP_FLAG_NONE) because shader-visible heaps are typically write-combined memory where CPU reads are invalid or prohibited.
+2) CreateCommittedResource warnings (2 warnings):
+   "Ignoring InitialState D3D12_RESOURCE_STATE_UNORDERED_ACCESS. Buffers are effectively created in state D3D12_RESOURCE_STATE_COMMON."
+   Cause: Buffers in DEFAULT heap were initialized directly to D3D12_RESOURCE_STATE_UNORDERED_ACCESS, which violates D3D12 buffer creation rules. Buffers must be created in D3D12_RESOURCE_STATE_COMMON and explicitly transitioned to UNORDERED_ACCESS.
+
+OBJECTIVE OF CURRENT ITERATION:
+------------------------------------------------------------
+Fix the D3D12 descriptor and resource validation layer issues so that:
+D3D12_VALIDATION_ERRORS = 0
+Preserve frameset generation architecture, SM86 backend, NVIDIA FG anchor, and hybrid CS reprojection.

@@ -1,0 +1,67 @@
+D3D12 RESOURCE STATE AUDIT: BUFFERS AND TEXTURES
+============================================================
+DATE: 2026-10-05
+EXPERIMENT: HYBRID_MFG_X4_D3D12_VALIDATION_FIX
+
+1. BUFFER CREATION RULE CHECK:
+According to the D3D12 specification (Section 10.3 / CreateCommittedResource):
+- Committed buffers created in D3D12_HEAP_TYPE_DEFAULT must have an InitialState of D3D12_RESOURCE_STATE_COMMON.
+- Attempting to pass D3D12_RESOURCE_STATE_UNORDERED_ACCESS generates warning ID 1328:
+  "Ignoring InitialState D3D12_RESOURCE_STATE_UNORDERED_ACCESS. Buffers are effectively created in state D3D12_RESOURCE_STATE_COMMON."
+- Committed buffers created in D3D12_HEAP_TYPE_UPLOAD must have an InitialState of D3D12_RESOURCE_STATE_GENERIC_READ.
+- Committed buffers created in D3D12_HEAP_TYPE_READBACK must have an InitialState of D3D12_RESOURCE_STATE_COPY_DEST.
+
+2. BUFFER LIFECYCLE AUDIT:
+
+A. Resource: stats
+   - Dimensions: 128 bytes raw buffer
+   - Heap Type: D3D12_HEAP_TYPE_DEFAULT
+   - Flags: D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS
+   - Initial State at Creation: D3D12_RESOURCE_STATE_COMMON (COMPLIANT with D3D12)
+   - Transition 1: COMMON -> D3D12_RESOURCE_STATE_UNORDERED_ACCESS (explicit command list barrier before statistics initialize ClearUnorderedAccessViewUint)
+   - State During Clear: UNORDERED_ACCESS
+   - State During ReductionCS: UNORDERED_ACCESS (synchronized via UAV barrier)
+   - Transition 2: UNORDERED_ACCESS -> D3D12_RESOURCE_STATE_COPY_SOURCE (before readback CopyBufferRegion)
+   - State During Copy: COPY_SOURCE
+   - Transition 3: COPY_SOURCE -> D3D12_RESOURCE_STATE_UNORDERED_ACCESS (after readback CopyBufferRegion)
+   - D3D12 Validation Warning 1328 Eliminated: YES
+
+B. Resource: disable
+   - Dimensions: 16 bytes raw buffer
+   - Heap Type: D3D12_HEAP_TYPE_DEFAULT
+   - Flags: D3D12_RESOURCE_FLAG_ALLOW_UNORDERED_ACCESS
+   - Initial State at Creation: D3D12_RESOURCE_STATE_COMMON (COMPLIANT with D3D12)
+   - Transition 1: COMMON -> D3D12_RESOURCE_STATE_UNORDERED_ACCESS (explicit command list barrier on initialization)
+   - State During resetDisable: UNORDERED_ACCESS -> COPY_DEST -> UNORDERED_ACCESS (synchronized upload)
+   - State During NGX Evaluate: UNORDERED_ACCESS (bound as pOutputDisableInterpolation UAV)
+   - State During readDisable: UNORDERED_ACCESS -> COPY_SOURCE -> UNORDERED_ACCESS (synchronized readback)
+   - D3D12 Validation Warning 1328 Eliminated: YES
+
+C. Upload / Readback Transient Buffers:
+   - resetDisable::src (16 bytes): Heap=UPLOAD, InitialState=GENERIC_READ (COMPLIANT)
+   - readDisable::dst (16 bytes): Heap=READBACK, InitialState=COPY_DEST (COMPLIANT)
+   - readStats::readback (128 bytes): Heap=READBACK, InitialState=COPY_DEST (COMPLIANT)
+
+3. TEXTURE RESOURCE LIFECYCLE AUDIT:
+
+Resources: A, B, G25, G50, G75 (DXGI_FORMAT_R8G8B8A8_UNORM)
+           DepthA, DepthB, warmupDepth (DXGI_FORMAT_R32_FLOAT)
+           MotionA, MotionB, warmupMotion (DXGI_FORMAT_R32G32_FLOAT)
+           warmupColor (DXGI_FORMAT_R8G8B8A8_UNORM)
+
+   - Heap Type: D3D12_HEAP_TYPE_DEFAULT
+   - Initial State at Creation: D3D12_RESOURCE_STATE_COMMON
+   - State Transitions:
+     Managed via D3D12NgxSession::barrier(D3DImage&, D3D12_RESOURCE_STATES next):
+     - Transitions from current tracked state to next requested state via D3D12_RESOURCE_BARRIER_TYPE_TRANSITION.
+     - When next == current == UNORDERED_ACCESS, emits D3D12_RESOURCE_BARRIER_TYPE_UAV.
+     - Texture scene generation: COMMON -> UNORDERED_ACCESS -> NON_PIXEL_SHADER_RESOURCE
+     - Sentinel clears: (NON_PIXEL_SHADER_RESOURCE or COMMON) -> UNORDERED_ACCESS -> NON_PIXEL_SHADER_RESOURCE
+     - NGX evaluate: inputs in NON_PIXEL_SHADER_RESOURCE, G50 in UNORDERED_ACCESS
+     - Hybrid interpolate: inputs in NON_PIXEL_SHADER_RESOURCE, output in UNORDERED_ACCESS -> NON_PIXEL_SHADER_RESOURCE
+     - ReductionCS: inputs in NON_PIXEL_SHADER_RESOURCE
+
+SUMMARY:
+All buffer and texture creations adhere strictly to D3D12 initial resource state specifications.
+Explicit transitions guarantee valid resource states for every clear, dispatch, evaluate, and copy operation.
+Zero implicit decay or undefined state transitions exist.

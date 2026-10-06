@@ -1,0 +1,12 @@
+{
+    "experiment":  "HYBRID_MFG_X4_D3D12_VALIDATION_FIX",
+    "run_count_this_iteration":  1,
+    "build_count_this_iteration":  1,
+    "launched":  true,
+    "started_utc":  "2026-10-06T00:31:53.4997546Z",
+    "process_exit_code":  0,
+    "timeout":  false,
+    "crash":  false,
+    "retry_allowed":  false,
+    "completed_utc":  "2026-10-06T00:31:57.1309689Z"
+}

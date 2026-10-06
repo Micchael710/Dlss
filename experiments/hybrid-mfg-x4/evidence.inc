@@ -2,7 +2,7 @@ namespace fs=std::filesystem;
 using Bytes=std::vector<uint8_t>;
 constexpr uint32_t W=1280,H=720,DX=16;
 static std::mutex logMutex;
-static std::ofstream vendorLog,validationLog;
+static std::ofstream vendorLog,validationLog,validationMessagesLog;
 static std::string jsonQuote(const std::string& s) {
  std::ostringstream o;o<<'"';for(unsigned char c:s){if(c=='"'||c=='\\')o<<'\\'<<c;
  else if(c=='\n')o<<"\\n";else if(c=='\r')o<<"\\r";else if(c<32)o<<"\\u"<<std::hex<<std::setw(4)<<std::setfill('0')<<int(c);else o<<c;}return o.str()+'"';

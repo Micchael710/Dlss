@@ -1,0 +1,23 @@
+CHANGES: D3D12 VALIDATION FIX IN HYBRID MFG X4 HARNESS
+============================================================
+DATE: 2026-10-05
+EXPERIMENT: HYBRID_MFG_X4_D3D12_VALIDATION_FIX
+
+1. DESCRIPTOR HEAP AND HANDLE SEPARATION:
+- Issue: Prior implementation allocated a single shader-visible descriptor heap (D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE) and passed its CPU handles to ClearUnorderedAccessViewUint and ClearUnorderedAccessViewFloat. The D3D12 debug layer rejected these calls with: "Specified descriptor handle points to a descriptor heap type that is CPU write only, so reading it is invalid. UnorderedAccessViewCPUHandle is the issue."
+- Resolution: Added a companion non-shader-visible descriptor heap (cpuHeap) with D3D12_DESCRIPTOR_HEAP_FLAG_NONE.
+- Dual Descriptor Creation: When UAV views are registered (Compute::uav and stats UAV), identical descriptors are created in both the shader-visible heap (heap) and the CPU heap (cpuHeap).
+- API Conformance: ClearUnorderedAccessViewUint and ClearUnorderedAccessViewFloat now receive:
+  * ViewGPUHandleInCurrentHeap = gpu(slot) (from bound shader-visible heap)
+  * ViewCPUHandle = cpuClear(slot) (from non-shader-visible CPU heap)
+  * pResource = resource pointer
+
+2. INITIAL BUFFER STATE NORMALIZATION:
+- Issue: Default heap buffers (stats and disable) were created with D3D12_RESOURCE_STATE_UNORDERED_ACCESS, producing D3D12 debug layer warnings (ID 1328): "Ignoring InitialState D3D12_RESOURCE_STATE_UNORDERED_ACCESS. Buffers are effectively created in state D3D12_RESOURCE_STATE_COMMON."
+- Resolution: Created both buffers with initial state D3D12_RESOURCE_STATE_COMMON, followed immediately by explicit transitions to D3D12_RESOURCE_STATE_UNORDERED_ACCESS via command list barriers before any UAV operations or Evaluate calls.
+
+3. LOGGING AND EVIDENCE PIPELINE:
+- Updated experiment metadata to HYBRID_MFG_X4_D3D12_VALIDATION_FIX with current HEAD 6e06093c7eaa088bd7122e9649260563c2d6ddeb.
+- Set build_count_this_iteration=1 and run_count_this_iteration=1 without altering historical build-count.txt.
+- Added structured frame-diagnostics.json recording per-frame fingerprints, positions, object pixel counts, error margins against expected 25%/50%/75% checkpoints, and temporal ordering.
+- Dual-routed debug messages to both d3d12-debug.log and validation-messages.log.
