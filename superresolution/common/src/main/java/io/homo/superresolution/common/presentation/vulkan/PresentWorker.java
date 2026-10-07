@@ -88,8 +88,23 @@ final class PresentWorker {
     private void runLoop() {
         try {
             while (true) {
-                FrameQueue.HeadResult<PresentImageBatch> head = presenter.presentationQueue.awaitReadyHead(
-                        batch -> batch.output() == null || batch.output().presentationReadiness().isDone());
+                FramePacingTrace.Span readinessTrace = FramePacingTrace.INSTANCE.begin(
+                        "presentation_readiness_wait",
+                        -1,
+                        -1L,
+                        -1L,
+                        -1L,
+                        -1L,
+                        "BATCH",
+                        presenter.providerId()
+                );
+                FrameQueue.HeadResult<PresentImageBatch> head;
+                try {
+                    head = presenter.presentationQueue.awaitReadyHead(
+                            batch -> batch.output() == null || batch.output().presentationReadiness().isDone());
+                } finally {
+                    readinessTrace.close();
+                }
                 if (head.closedAndEmpty()) {
                     return;
                 }

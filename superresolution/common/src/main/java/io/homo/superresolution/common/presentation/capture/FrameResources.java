@@ -576,4 +576,18 @@ public final class FrameResources {
         semaphores[count] = resource.releaseSemaphore();
         return count + 1;
     }
+
+    public static FrameResources createForTest(int index) {
+        FramePacingTiming timing = new FramePacingTiming();
+        FrameResources resources = new FrameResources(index, null, timing);
+        resources.generation = 1L;
+        resources.logicalFrameIndex = index;
+        resources.lifecycle.beginRecording();
+        resources.lifecycle.seal();
+        return resources;
+    }
+
+    public boolean isUnrecoverable() {
+        return unrecoverable;
+    }
 }

@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 import static org.junit.Assert.*;
+import io.homo.superresolution.common.presentation.capture.FrameResources;
 
 public class X4LowLatencyPacingTest {
 
@@ -303,5 +304,161 @@ public class X4LowLatencyPacingTest {
         for (int i = 1; i < droppedSequence.length; i++) {
             assertTrue("Subsequence must remain strictly monotonic", droppedSequence[i] > droppedSequence[i - 1]);
         }
+    }
+
+    @Test
+    public void testDemonstrateOldGateConditionWouldBlock() {
+        // Old design had: while (!hasFailed() && activeRealFrames.get() >= MAX_PIPELINED_REAL_FRAMES_X4) { stateLock.wait(); }
+        // When activeRealFrames >= 2, the render thread would stall in stateLock.wait().
+        int active = 2;
+        boolean oldGateConditionBlocks = (active >= AsyncFramePresenter.MAX_PIPELINED_REAL_FRAMES_X4);
+        assertTrue("OLD_ACTIVE_REAL_FRAME_GATE_BLOCKS_PRODUCER=YES", oldGateConditionBlocks);
+    }
+
+    @Test
+    public void testActiveRealFramesZeroEnqueueDoesNotWait() {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+        assertEquals(0, presenter.activeRealFrames());
+
+        FrameResources res = FrameResources.createForTest(1);
+        long start = System.nanoTime();
+        boolean enqueued = presenter.enqueue(res, false);
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000L;
+
+        assertTrue(enqueued);
+        assertTrue("enqueue must not wait when activeRealFrames=0", elapsedMs < 200);
+        assertEquals(1, presenter.activeRealFrames());
+    }
+
+    @Test
+    public void testActiveRealFramesOneEnqueueDoesNotWait() {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+        presenter.activeRealFrames.set(1);
+
+        FrameResources res = FrameResources.createForTest(1);
+        long start = System.nanoTime();
+        boolean enqueued = presenter.enqueue(res, false);
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000L;
+
+        assertTrue(enqueued);
+        assertTrue("enqueue must not wait when activeRealFrames=1", elapsedMs < 200);
+        assertEquals(2, presenter.activeRealFrames());
+    }
+
+    @Test
+    public void testActiveRealFramesTwoDoesNotBlockEnqueue() {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+        presenter.activeRealFrames.set(2);
+
+        FrameResources res = FrameResources.createForTest(1);
+        long start = System.nanoTime();
+        boolean enqueued = presenter.enqueue(res, false);
+        long elapsedMs = (System.nanoTime() - start) / 1_000_000L;
+
+        assertTrue(enqueued);
+        assertTrue("enqueue must not block when activeRealFrames=2", elapsedMs < 200);
+        assertEquals(3, presenter.activeRealFrames());
+    }
+
+    @Test
+    public void testActiveRealFramesThreeSuccessiveWorkItems() throws Exception {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+
+        FrameResources res1 = FrameResources.createForTest(1);
+        FrameResources res2 = FrameResources.createForTest(2);
+        FrameResources res3 = FrameResources.createForTest(3);
+
+        assertTrue(presenter.enqueue(res1, false));
+        assertEquals(1, presenter.activeRealFrames());
+        assertNotNull(presenter.generationQueue.takeResult().value());
+        assertEquals(1, presenter.activeRealFrames());
+
+        assertTrue(presenter.enqueue(res2, false));
+        assertEquals(2, presenter.activeRealFrames());
+        assertNotNull(presenter.generationQueue.takeResult().value());
+        assertEquals(2, presenter.activeRealFrames());
+
+        assertTrue(presenter.enqueue(res3, false));
+        assertEquals(3, presenter.activeRealFrames());
+        assertNotNull(presenter.generationQueue.takeResult().value());
+        assertEquals(3, presenter.activeRealFrames());
+    }
+
+    @Test
+    public void testRetireBatchAccountingAndUnderflowProtection() {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+
+        presenter.activeRealFrames.set(3);
+        presenter.retireBatch(null);
+        assertEquals(2, presenter.activeRealFrames());
+
+        presenter.retireBatch(null);
+        assertEquals(1, presenter.activeRealFrames());
+
+        presenter.retireBatch(null);
+        assertEquals(0, presenter.activeRealFrames());
+
+        // Underflow protection: must not go negative
+        presenter.retireBatch(null);
+        assertEquals(0, presenter.activeRealFrames());
+    }
+
+    @Test
+    public void testFailureRollbackDoesNotLeakCounter() {
+        FramePacingTiming timing = new FramePacingTiming(System::nanoTime);
+        PresentPacer pacer = new PresentPacer(System::nanoTime, timing);
+        AsyncFramePresenter presenter = new AsyncFramePresenter("wisteria:dlssg_fg", timing, pacer);
+
+        presenter.generationQueue.close();
+
+        FrameResources res = FrameResources.createForTest(1);
+        try {
+            presenter.enqueue(res, false);
+            fail("enqueue should throw when queue is closed");
+        } catch (IllegalStateException expected) {
+            // Expected
+        }
+
+        assertEquals("activeRealFrames must remain 0 on enqueue failure", 0, presenter.activeRealFrames());
+        assertTrue("resources must be marked unrecoverable on failure", res.isUnrecoverable());
+    }
+
+    @Test
+    public void testGenerationQueueWaitCanBlockWhenFull() throws Exception {
+        FrameQueue<Integer> queue = new FrameQueue<>(2);
+        long wait1 = queue.put(1);
+        long wait2 = queue.put(2);
+        assertEquals(0L, wait1);
+        assertEquals(0L, wait2);
+        assertEquals(2, queue.size());
+
+        java.util.concurrent.atomic.AtomicBoolean blocked = new java.util.concurrent.atomic.AtomicBoolean(false);
+        java.util.concurrent.atomic.AtomicBoolean finished = new java.util.concurrent.atomic.AtomicBoolean(false);
+        Thread producer = new Thread(() -> {
+            try {
+                blocked.set(true);
+                queue.put(3);
+                finished.set(true);
+            } catch (InterruptedException ignored) {}
+        });
+        producer.start();
+
+        Thread.sleep(50);
+        assertTrue(blocked.get());
+        assertFalse("Producer must wait when generation queue is full", finished.get());
+
+        queue.removeHead(1);
+        producer.join(500);
+        assertTrue("Producer unblocks when capacity is freed", finished.get());
     }
 }
